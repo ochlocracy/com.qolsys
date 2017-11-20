@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ExtentManager">
+    <test name="PostUpdate">
+
+        <classes>
+            <class name="updateProcess.PostUpdate_Settings"/>
+            <class name="updateProcess.PreUpdateSensors"/>
+            <class name="updateProcess.PostUpdate_UserManagement"/>
+
+            <class name="settings.Alarm_Photos_Test"/>
+            <class name="settings.Allow_Master_Code_to_access_Camera_Settings_Test"/>
+            <class name="settings.Allow_Master_Code_to_access_Security_and_Arming_Test"/>
+            <class name="settings.Allow_Master_Code_to_access_Siren_and_Alarms_Test"/>
+            <class name="settings.Arm_Stay_No_Delay_Test"/>
+            <class name="settings.Auto_Bypass_Test"/>
+            <class name="settings.Auto_Exit_Time_Extension_Test"/>
+            <class name="settings.Auto_Stay_Test"/>
+            <class name="settings.Dealer_Code_Test"/>
+            <class name="settings.Disarm_Photos_Test"/>
+            <class name="settings.Duress_Authentication_Test"/>
+            <class name="settings.Installer_Code_Test"/>
+            <class name="settings.Keyfob_Alarm_Disarm_Test"/>
+            <class name="settings.Keyfob_Disarming_Test"/>
+            <class name="settings.Keyfob_Instant_Arming_Test"/>
+            <class name="settings.Panic_Disable_Test"/>
+            <class name="settings.Secure_Arming_Test"/>
+            <class name="settings.Secure_Delete_Images_Test"/>
+            <class name="settings.Settings_Photos_Test"/>
+
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+    <test name="Settings_Testing">
+        <classes>
+            <class name="settings.Allow_Master_Code_to_access_Siren_and_Alarms_Test" />
+            <class name="settings.Dealer_Code_Test" />
+            <class name="settings.Installer_Code_Test" />
+            <class name="settings.Duress_Authentication_Test" />
+            <class name="settings.Allow_Master_Code_to_access_Security_and_Arming_Test" />
+            <class name="settings.Allow_Master_Code_to_access_Camera_Settings_Test" />
+        </classes>
+    </test>
+</suite>

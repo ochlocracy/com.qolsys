@@ -1,0 +1,65 @@
+
+2017-11-20 10:48:59,988 - utils.Log -INFO - ********************************************************************
+2017-11-20 10:48:59,992 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Arm Away mode motion sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-20 10:48:59,996 - utils.Log -INFO - ********************************************************************
+2017-11-20 10:49:24,896 - adc.ADC -INFO - Request sensor list and Sensor names
+2017-11-20 10:49:35,813 - adc.ADC -INFO - Request equipment list
+2017-11-20 10:50:06,454 - Arm Away mode motion sensor testing -INFO - ArmAway During Delay Activate Group 15 motion sensor
+2017-11-20 10:50:06,626 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:50:12,457 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:50:25,591 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:51:10,077 - Arm Away mode motion sensor testing -INFO - ArmAway During Delay Activate Group 17 motion sensor
+2017-11-20 10:51:10,090 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:51:15,859 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:51:28,980 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:52:08,118 - Arm Away mode motion sensor testing -INFO - ArmAway During Delay Activate Group 20 motion sensor
+2017-11-20 10:52:08,129 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:52:13,873 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:52:27,000 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:53:07,183 - Arm Away mode motion sensor testing -INFO - ArmAway During Delay Activate Group 25 motion sensor
+2017-11-20 10:53:07,190 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:53:12,662 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:53:25,840 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:54:06,656 - Arm Away mode motion sensor testing -INFO - ArmAway During Delay Activate Group 35 motion sensor
+2017-11-20 10:54:06,670 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:54:12,497 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:54:25,600 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:55:06,466 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Activate Group 35 motion sensor
+2017-11-20 10:55:06,473 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:55:21,133 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:55:21,376 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:56:04,828 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Activate Group 15 motion sensor
+2017-11-20 10:56:04,830 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:56:19,304 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:56:21,387 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:57:05,435 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM
+2017-11-20 10:57:16,212 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Activate Group 35 motion sensor
+2017-11-20 10:57:16,230 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:57:31,023 - Arm Away mode motion sensor testing -INFO - Activate a sensor
+2017-11-20 10:57:33,094 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:58:13,873 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM
+2017-11-20 10:58:25,974 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Tamper Group 15 motion sensor
+2017-11-20 10:58:25,981 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:58:40,795 - Arm Away mode motion sensor testing -INFO - Tamper a sensor
+2017-11-20 10:58:40,979 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:58:43,123 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM
+2017-11-20 10:59:19,312 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Tamper Group 17 motion sensor
+2017-11-20 10:59:19,313 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 10:59:33,856 - Arm Away mode motion sensor testing -INFO - Tamper a sensor
+2017-11-20 10:59:33,930 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 10:59:36,095 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM
+2017-11-20 11:00:10,693 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Tamper Group 20 motion sensor
+2017-11-20 11:00:10,693 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 11:00:25,408 - Arm Away mode motion sensor testing -INFO - Tamper a sensor
+2017-11-20 11:00:25,511 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 11:00:27,635 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM
+2017-11-20 11:01:02,263 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Tamper Group 25 motion sensor
+2017-11-20 11:01:02,269 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 11:01:17,038 - Arm Away mode motion sensor testing -INFO - Tamper a sensor
+2017-11-20 11:01:17,102 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 11:01:19,292 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 11:01:56,325 - Arm Away mode motion sensor testing -INFO - ArmAway After Delay Tamper Group 35 motion sensor
+2017-11-20 11:01:56,328 - adcSanityTests.ArmedAway_Motion -INFO - Arm Away
+2017-11-20 11:02:11,082 - Arm Away mode motion sensor testing -INFO - Tamper a sensor
+2017-11-20 11:02:11,156 - adcSanityTests.ArmedAway_Motion -INFO - Pass: panel is in Arm Away mode
+2017-11-20 11:02:13,292 - adcSanityTests.ArmedAway_Motion -INFO - Pass: System is in ALARM

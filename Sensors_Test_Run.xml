@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+    <test name="Sensors_Smoke">
+        <classes>
+            <class name="sensors.Smoke_Test_DW" />
+            <class name="sensors.Smoke_Test_Motion" />
+            <class name="sensors.Smoke_Test_Smoke_CO" />
+            <class name="sensors.Smoke_Test_Glassbreak_Shock_Tilt" />
+            <class name="sensors.Smoke_Test_Freeze_Heat_Water" />
+            <class name="sensors.Smoke_Test_Keyfob_Keypad_Pendant" />
+            <class name="sensors.Smoke_Test_Doorbell_Occupancy" />
+        </classes>
+    </test>
+</suite>

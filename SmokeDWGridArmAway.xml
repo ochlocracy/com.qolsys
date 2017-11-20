@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" parallel="tests" thread-count="4">
+    <test name="Test1">
+        <parameter name="deviceName_" value="android5"/>
+        <parameter name="applicationName_" value="62c74a45"/>
+        <parameter name="UDID_" value="62c74a45"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.48:4733/wd/hub"/>
+        <parameter name="PORT_" value="4733"/>
+        <classes>
+            <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
+        </classes>
+    </test>
+    <test name="Test2">
+        <parameter name="deviceName_" value="android6"/>
+        <parameter name="applicationName_" value="62e9f0df"/>
+        <parameter name="UDID_" value="62e9f0df"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.48:4735/wd/hub"/>
+        <parameter name="PORT_" value="4735"/>
+        <classes>
+            <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
+        </classes>
+    </test>
+    <test name="Test3">
+        <parameter name="deviceName_" value="android7"/>
+        <parameter name="applicationName_" value="628f4aa0"/>
+        <parameter name="UDID_" value="628f4aa0"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.48:4737/wd/hub"/>
+        <parameter name="PORT_" value="4737"/>
+        <classes>
+            <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
+        </classes>
+    </test>
+    <test name="Test4">
+        <parameter name="deviceName_" value="android8"/>
+        <parameter name="applicationName_" value="2c63bc81"/>
+        <parameter name="UDID_" value="2c63bc81"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.48:4739/wd/hub"/>
+        <parameter name="PORT_" value="4739"/>
+        <classes>
+            <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
+        </classes>
+    </test>
+</suite>

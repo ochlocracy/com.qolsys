@@ -1,0 +1,992 @@
+2017-11-13 08:53:58,605 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:53:58,609 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Arm Away mode motion sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 08:53:58,611 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:54:28,228 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:54:28,232 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   adc Smoke Test: Smoke Sensor Arm Away   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 08:54:28,232 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:54:57,819 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:54:57,824 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Arm Away mode tilt sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 08:54:57,825 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:55:05,334 [main] INFO Arm Away mode tilt sensor testing - Adding a list of sensors
+2017-11-13 08:58:34,618 [main] INFO utils.Log - ********************************************************************
+2017-11-13 08:58:34,626 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Remote Toolkit   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 08:58:34,626 [main] INFO utils.Log - ********************************************************************
+2017-11-13 09:20:48,859 [main] INFO utils.Log - ********************************************************************
+2017-11-13 09:20:48,863 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Siren and Alarms page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 09:20:48,863 [main] INFO utils.Log - ********************************************************************
+2017-11-13 10:32:01,434 [main] INFO utils.Log - ********************************************************************
+2017-11-13 10:32:01,439 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 10:32:01,440 [main] INFO utils.Log - ********************************************************************
+2017-11-13 10:32:01,448 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-13 10:32:06,658 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-13 15:13:05,340 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:13:05,359 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 15:13:05,360 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:13:05,420 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-13 15:13:10,586 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-13 15:14:15,632 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:14:15,645 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 15:14:15,646 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:14:15,659 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-13 15:14:20,816 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-13 15:14:39,947 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-13 15:14:44,982 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-13 15:14:52,348 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-13 15:14:58,901 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-13 15:15:00,940 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-13 15:15:04,973 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-13 15:15:07,002 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-13 15:15:12,603 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-13 15:15:18,611 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-13 15:15:23,699 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-13 15:15:44,685 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-13 15:15:52,959 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-13 15:15:53,963 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-13 15:16:07,951 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-13 15:27:33,782 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:27:33,785 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Pre-updateProcess panel settings   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-13 15:27:33,785 [main] INFO utils.Log - ********************************************************************
+2017-11-13 15:27:33,797 [main] INFO Pre-updateProcess panel settings - SIA Limits: Disabled
+2017-11-13 15:27:34,799 [main] INFO Pre-updateProcess panel settings - Media Volume: 1/7
+2017-11-13 15:27:35,805 [main] INFO Pre-updateProcess panel settings - Voice Prompts: Disabled
+2017-11-13 15:27:36,823 [main] INFO Pre-updateProcess panel settings - All Chimes: Enabled
+2017-11-13 15:27:37,838 [main] INFO Pre-updateProcess panel settings - Trouble Beeps: Enabled
+2017-11-13 15:27:38,856 [main] INFO Pre-updateProcess panel settings - Fire Safety Device Trouble Beeps: Enabled
+2017-11-13 15:27:39,871 [main] INFO Pre-updateProcess panel settings - Wifi: Enabled
+2017-11-13 15:27:40,885 [main] INFO Pre-updateProcess panel settings - Secure Delete Images: Disabled
+2017-11-13 15:27:41,892 [main] INFO Pre-updateProcess panel settings - Disarm Photos: Disabled
+2017-11-13 15:27:42,903 [main] INFO Pre-updateProcess panel settings - Alarm Photos: Disabled
+2017-11-13 15:27:43,914 [main] INFO Pre-updateProcess panel settings - settings Photos: Enabled
+2017-11-13 15:27:44,926 [main] INFO Pre-updateProcess panel settings - Duress Authentication: Enabled
+2017-11-13 15:27:45,936 [main] INFO Pre-updateProcess panel settings - Secure Arming: Enabled
+2017-11-13 15:27:46,961 [main] INFO Pre-updateProcess panel settings - No Arming On Low Battery: Enabled
+2017-11-13 15:27:47,967 [main] INFO Pre-updateProcess panel settings - Auto Bypass: Disabled
+2017-11-13 15:27:48,970 [main] INFO Pre-updateProcess panel settings - Auto Stay: Disabled
+2017-11-13 15:27:49,986 [main] INFO Pre-updateProcess panel settings - Arm Stay No Delay: Disabled
+2017-11-13 15:27:51,001 [main] INFO Pre-updateProcess panel settings - Auto Exit Time Extension: Disabled
+2017-11-13 15:27:52,012 [main] INFO Pre-updateProcess panel settings - Keyfob Alarm Disarm: Enabled
+2017-11-13 15:27:53,022 [main] INFO Pre-updateProcess panel settings - Keyfob Disarming: Disabled
+2017-11-13 15:27:54,029 [main] INFO Pre-updateProcess panel settings - Normal Entry Delay: 33 seconds
+2017-11-13 15:27:55,044 [main] INFO Pre-updateProcess panel settings - Normal Exit Delay: 57 seconds
+2017-11-13 15:27:56,047 [main] INFO Pre-updateProcess panel settings - Long Entry Delay: 113 seconds
+2017-11-13 15:27:57,050 [main] INFO Pre-updateProcess panel settings - Long Exit Delay: 117 seconds
+2017-11-13 15:27:58,053 [main] INFO Pre-updateProcess panel settings - Siren Disable: Disabled
+2017-11-13 15:27:59,063 [main] INFO Pre-updateProcess panel settings - Fire Verification: Enabled
+2017-11-13 15:28:00,084 [main] INFO Pre-updateProcess panel settings - Severe Weather Siren Warning: Disabled
+2017-11-13 15:28:01,116 [main] INFO Pre-updateProcess panel settings - Dialer Delay: 23 seconds
+2017-11-13 15:28:02,123 [main] INFO Pre-updateProcess panel settings - Siren Timeout: 7 minutes
+2017-11-13 15:28:03,135 [main] INFO Pre-updateProcess panel settings - Water Freeze Alarm: Enabled
+2017-11-13 15:28:04,140 [main] INFO Pre-updateProcess panel settings - Police Panic: Disabled
+2017-11-13 15:28:05,145 [main] INFO Pre-updateProcess panel settings - Fire Panic: Disabled
+2017-11-13 15:28:06,149 [main] INFO Pre-updateProcess panel settings - Auxillary Panic: Disabled
+2017-11-13 15:28:07,152 [main] INFO Pre-updateProcess panel settings - Auto Upload Logs: Enabled
+2017-11-13 15:28:08,158 [main] INFO Pre-updateProcess panel settings - Power Management: Disabled
+2017-11-13 15:28:09,167 [main] INFO Pre-updateProcess panel settings - SIA Power Restoration: Enabled
+2017-11-13 15:28:10,179 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Non-emergency sensors: 12 hours
+2017-11-13 15:28:11,189 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Emergency sensors: 12 hours
+2017-11-13 15:28:12,193 [main] INFO Pre-updateProcess panel settings - Cell Signal Timeout: 25 seconds
+2017-11-13 15:28:13,204 [main] INFO Pre-updateProcess panel settings - RF Jam Detection: Enabled
+2017-11-13 15:28:14,216 [main] INFO Pre-updateProcess panel settings - Open/Close Reports for Auto Learn: Disabled
+2017-11-13 15:28:15,227 [main] INFO Pre-updateProcess panel settings - Bluetooth: Enabled
+2017-11-13 15:28:16,232 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm: Enabled
+2017-11-13 15:28:17,238 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm Timeout: 30 seconds
+2017-11-13 15:28:18,240 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Camera settings: Enabled
+2017-11-13 15:28:19,243 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Security and Arming settings: Enabled
+2017-11-13 15:28:20,254 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Siren and Alarms settings: Enabled
+2017-11-14 16:16:45,991 [main] INFO utils.Log - ********************************************************************
+2017-11-14 16:16:46,001 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Activity Monitor page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-14 16:16:46,002 [main] INFO utils.Log - ********************************************************************
+2017-11-14 16:16:46,076 [main] INFO Activity Monitor page testing - Verifying elements on the page...
+2017-11-14 16:16:47,077 [main] INFO Activity Monitor page testing - Adding sensors...
+2017-11-14 16:16:57,630 [main] ERROR utils.Log - *Quick Access* - Element is not found!
+2017-11-14 16:17:00,628 [main] ERROR utils.Log - *Quick Access image* - Element is not found!
+2017-11-16 09:50:29,048 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:50:29,058 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 09:50:29,059 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:50:29,078 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-16 09:50:34,288 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-16 09:50:52,296 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-16 09:50:57,311 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-16 09:51:03,436 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-16 09:51:08,670 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-16 09:51:10,702 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-16 09:51:14,721 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-16 09:51:16,743 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-16 09:51:22,238 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-16 09:51:28,232 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-16 09:51:33,778 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-16 09:51:51,115 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-16 09:51:59,096 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-16 09:52:00,100 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-16 09:52:11,733 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-16 09:57:39,220 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:57:39,227 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   cellular on the About page   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 09:57:39,228 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:57:50,608 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-11-16 09:58:49,359 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:58:49,366 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   cellular on the About page   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 09:58:49,367 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:59:05,112 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-11-16 09:59:38,618 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:59:38,627 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   cellular on the About page   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 09:59:38,628 [main] INFO utils.Log - ********************************************************************
+2017-11-16 09:59:54,675 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-11-16 10:21:22,240 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-16 10:21:33,371 [main] INFO adc.ADC - Request equipment list
+2017-11-16 10:22:01,916 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-16 10:22:12,898 [main] INFO updateProcess.SanitySensors - Pass: Fire icon Alarmed is present, value =
+2017-11-16 10:22:12,905 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-16 10:22:58,298 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-16 10:23:35,241 [main] INFO updateProcess.SanitySensors - Pass: System is ARMED STAY
+2017-11-16 10:23:35,508 [main] INFO updateProcess.SanitySensors - Pass: Tampered is present, value =
+2017-11-16 10:23:42,511 [main] INFO updateProcess.SanitySensors - Disarm
+2017-11-16 10:24:29,454 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:24:49,221 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 10:25:28,812 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:25:48,682 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 10:26:27,418 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:26:47,399 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 10:27:24,309 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:27:55,093 [main] INFO updateProcess.SanitySensors - Pass: System is in ALARM
+2017-11-16 10:28:28,060 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:28:59,294 [main] INFO updateProcess.SanitySensors - Pass: System is in ALARM
+2017-11-16 10:29:33,755 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:30:04,583 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 10:30:43,367 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:31:14,291 [main] INFO updateProcess.SanitySensors - Pass: System is in ALARM
+2017-11-16 10:31:49,981 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:32:20,864 [main] INFO updateProcess.SanitySensors - Pass: System is in ALARM
+2017-11-16 10:32:59,099 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 10:33:29,937 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 10:35:12,615 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:35:12,622 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Smoke Test Doorbell and Occupancy sensors   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 10:35:12,622 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:35:25,252 [main] INFO Smoke Test Doorbell and Occupancy sensors - Current software version: 2.1.0rc13-ADCS 3.13-ADCL 3.13
+2017-11-16 10:35:25,315 [main] INFO Smoke Test Doorbell and Occupancy sensors - Adding sensors...
+2017-11-16 10:36:07,697 [main] INFO Smoke Test Doorbell and Occupancy sensors - Disarm mode trigger doorbell group 25 -> Disarm
+2017-11-16 10:36:12,851 [main] INFO sensors.Smoke_Test_Doorbell_Occupancy - Pass: System is DISARMED
+2017-11-16 10:36:47,785 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:36:47,792 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Smoke Test Doorbell and Occupancy sensors   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 10:36:47,792 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:37:00,517 [main] INFO Smoke Test Doorbell and Occupancy sensors - Current software version: 2.1.0rc13-ADCS 3.13-ADCL 3.13
+2017-11-16 10:37:00,568 [main] INFO Smoke Test Doorbell and Occupancy sensors - Adding sensors...
+2017-11-16 10:38:15,697 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:38:15,707 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Smoke Test Doorbell and Occupancy sensors   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 10:38:15,708 [main] INFO utils.Log - ********************************************************************
+2017-11-16 10:38:28,477 [main] INFO Smoke Test Doorbell and Occupancy sensors - Current software version: 2.1.0rc13-ADCS 3.13-ADCL 3.13
+2017-11-16 10:38:28,515 [main] INFO Smoke Test Doorbell and Occupancy sensors - Adding sensors...
+2017-11-16 10:39:10,961 [main] INFO Smoke Test Doorbell and Occupancy sensors - Disarm mode trigger doorbell group 25 -> Disarm
+2017-11-16 10:39:16,111 [main] INFO sensors.Smoke_Test_Doorbell_Occupancy - Pass: System is DISARMED
+2017-11-16 11:12:22,556 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-16 11:12:34,032 [main] INFO adc.ADC - Request equipment list
+2017-11-16 14:06:33,462 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-16 14:06:46,227 [main] INFO adc.ADC - Request equipment list
+2017-11-16 14:07:17,788 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-16 14:07:28,919 [main] INFO updateProcess.SanitySensors - Pass: Fire icon Alarmed is present, value =
+2017-11-16 14:07:28,920 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-16 14:08:24,255 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-16 14:09:01,228 [main] INFO updateProcess.SanitySensors - Pass: System is ARMED STAY
+2017-11-16 14:09:01,511 [main] INFO updateProcess.SanitySensors - Pass: Tampered is present, value =
+2017-11-16 14:09:08,520 [main] INFO updateProcess.SanitySensors - Disarm
+2017-11-16 14:10:00,152 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 14:10:20,522 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 14:10:58,434 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 14:11:18,233 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 14:12:02,217 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 14:12:22,178 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-16 14:13:03,091 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-16 14:22:47,043 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:22:47,045 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 14:22:47,046 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:22:47,069 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-16 14:22:52,265 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-16 14:23:10,936 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-16 14:23:15,961 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-16 14:23:22,366 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-16 14:23:27,600 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-16 14:23:29,612 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-16 14:23:33,623 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-16 14:23:35,647 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-16 14:23:41,133 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-16 14:23:47,311 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-16 14:23:52,251 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-16 14:24:10,741 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-16 14:24:19,036 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-16 14:24:20,044 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-16 14:24:32,014 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-16 14:32:34,582 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:32:34,585 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 14:32:34,585 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:32:34,610 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-16 14:32:39,871 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-16 14:32:59,299 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-16 14:33:04,318 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-16 14:33:10,549 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-16 14:33:15,584 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-16 14:33:17,624 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-16 14:33:21,674 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-16 14:33:23,696 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-16 14:33:29,030 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-16 14:33:35,053 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-16 14:33:40,200 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-16 14:33:58,418 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-16 14:34:06,571 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-16 14:34:07,581 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-16 14:34:19,476 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-16 14:51:35,862 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:51:35,865 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 14:51:35,865 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:51:35,887 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-16 14:51:41,146 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-16 14:51:59,668 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-16 14:52:04,694 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-16 14:52:10,894 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-16 14:52:16,222 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-16 14:52:18,263 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-16 14:52:22,288 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-16 14:52:24,305 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-16 14:52:29,956 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-16 14:52:36,102 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-16 14:52:41,473 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-16 14:53:00,081 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-16 14:53:08,480 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-16 14:53:09,492 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-16 14:53:21,061 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-16 14:55:28,960 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:55:28,962 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Qolsys Access Point testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 14:55:28,963 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:55:41,030 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-11-16 14:55:55,856 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:55:55,858 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Qolsys Access Point testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 14:55:55,862 [main] INFO utils.Log - ********************************************************************
+2017-11-16 14:56:11,054 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-11-16 15:03:24,205 [main] INFO utils.Log - ********************************************************************
+2017-11-16 15:03:24,208 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   QTMS: ARM STAY   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 15:03:24,209 [main] INFO utils.Log - ********************************************************************
+2017-11-16 15:03:28,215 [main] INFO QTMS: ARM STAY - Verify the panel can be disarmed from adc
+2017-11-16 15:03:35,478 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:04:23,765 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:04:30,931 [main] INFO QTMS: ARM STAY - Verify the panel can be disarmed using a keyfob: If KeyFob Instant Arming is disabled, panel should arm away after exit delay.
+ If KeyFob Instant Arming is enabled, panel should arm away immediately.
+2017-11-16 15:05:02,357 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:05:18,705 [main] INFO qtmsSRF.Arm_Stay - Pass: panel is in Arm Away mode
+2017-11-16 15:05:24,247 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:05:30,056 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:05:32,219 [main] INFO qtmsSRF.Arm_Stay - Pass: panel is in Arm Away mode
+2017-11-16 15:05:42,981 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:05:57,540 [main] INFO QTMS: ARM STAY - Verify the panel returns to Arm Stay at the end of the entry delay if the user does not enter a valid user code
+2017-11-16 15:05:59,555 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:06:15,405 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:06:31,400 [main] INFO QTMS: ARM STAY - Verify the system will go into alarm at the end of the entry delay if a sensor in group 10 is opened in Arm Stay
+2017-11-16 15:06:38,541 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:07:01,681 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:07:01,804 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Open
+2017-11-16 15:07:12,790 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Closed***
+2017-11-16 15:07:14,999 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Open***
+2017-11-16 15:08:27,099 [main] INFO QTMS: ARM STAY - Verify the system will go into alarm at the end of the entry delay if a sensor in group 12 is opened in Arm Stay
+2017-11-16 15:08:34,286 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:08:57,450 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:08:57,533 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Open
+2017-11-16 15:09:08,385 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Closed***
+2017-11-16 15:09:10,503 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Open***
+2017-11-16 15:10:23,065 [main] INFO QTMS: ARM STAY - Verify the system will go into immediate alarm if a sensor in group 14 is opened in Arm Stay
+2017-11-16 15:10:30,208 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:10:39,363 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:10:39,491 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Open
+2017-11-16 15:10:50,179 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Closed***
+2017-11-16 15:10:52,398 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Open***
+2017-11-16 15:12:03,120 [main] INFO QTMS: ARM STAY - Verify the system will go into immediate alarm if a sensor in group 13 is opened in Arm Stay
+2017-11-16 15:12:11,306 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:12:20,636 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:12:20,746 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Open
+2017-11-16 15:12:31,543 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Closed***
+2017-11-16 15:12:33,711 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Open***
+2017-11-16 15:13:45,102 [main] INFO QTMS: ARM STAY - Verify the system will NOT go into  alarm if a sensor in group 16 is opened in Arm Stay
+2017-11-16 15:13:52,226 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:14:01,378 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:14:01,414 [main] INFO qtmsSRF.Arm_Stay - Disarm
+2017-11-16 15:14:12,353 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Closed***
+2017-11-16 15:14:14,504 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Open***
+2017-11-16 15:14:30,647 [main] INFO QTMS: ARM STAY - Verify the system will NOT go into  alarm if a sensor in group 17 is activated in Arm Stay
+2017-11-16 15:14:33,669 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:14:36,052 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:14:37,160 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:14:37,165 [main] INFO qtmsSRF.Arm_Stay - Disarm
+2017-11-16 15:14:47,769 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Arm-Stay***
+2017-11-16 15:14:49,888 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Sensor Deleted***
+2017-11-16 15:15:05,850 [main] INFO QTMS: ARM STAY - Verify the system will go into immediate alarm if a sensor in group 15 is activated in Arm Stay
+2017-11-16 15:15:08,884 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:15:11,405 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:15:15,524 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:15:26,721 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Idle***
+2017-11-16 15:15:28,906 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Activated***
+2017-11-16 15:16:45,532 [main] INFO QTMS: ARM STAY - Verify the system will NOT go into  alarm if a sensor in group 20 is activated in Arm Stay
+2017-11-16 15:16:48,556 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:16:50,782 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:16:56,955 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:17:00,959 [main] INFO qtmsSRF.Arm_Stay - Disarm
+2017-11-16 15:17:15,011 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Idle***
+2017-11-16 15:17:17,188 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Activated***
+2017-11-16 15:17:33,719 [main] INFO QTMS: ARM STAY - Verify the system will go into alarm at the end of the entry delay if a sensor in group 35 is Activated in Arm Stay
+2017-11-16 15:17:36,750 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:17:39,148 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:17:58,329 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:18:02,424 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Activated
+2017-11-16 15:18:14,900 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Idle***
+2017-11-16 15:18:17,053 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Activated***
+2017-11-16 15:19:28,062 [main] INFO QTMS: ARM STAY - Verify the system will go into immediate alarm if a sensor in group 15 is activate and that the system can be disarmed before the dialer delay.
+2017-11-16 15:19:31,103 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:19:33,389 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:19:34,643 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:19:34,743 [main] INFO qtmsSRF.Arm_Stay - Pass: Correct status is Activated
+2017-11-16 15:19:44,157 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Idle***
+2017-11-16 15:19:46,253 [main] INFO QTMS: ARM STAY - Pass: sensor status is displayed correctly: ***Activated***
+2017-11-16 15:20:51,046 [main] INFO QTMS: ARM STAY - Verify the system reports alarm on both sensors (10 and 12 groups) at the end of the entry delay 
+2017-11-16 15:20:57,074 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:21:02,935 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:21:26,099 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:21:26,145 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:21:26,414 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:22:25,813 [main] INFO QTMS: ARM STAY - Verify the system reports alarm on both sensors (10 and 14 groups) at the end of the entry delay 
+2017-11-16 15:22:31,831 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:22:37,675 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:23:00,938 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:23:01,041 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:23:01,120 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:23:59,393 [main] INFO QTMS: ARM STAY - Verify the panel goes into immediate alarm when a sensor in group 13 is activated and reports alarm on both sensors 
+2017-11-16 15:24:05,437 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:24:11,365 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:24:20,800 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:24:20,918 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:24:21,060 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:25:13,655 [main] INFO QTMS: ARM STAY - Verify the system can be disarmed during the entry delay (10 and 10 groups). 
+2017-11-16 15:25:19,683 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:25:22,168 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:25:38,887 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:25:39,890 [main] INFO QTMS: ARM STAY - panel history verification
+2017-11-16 15:25:45,218 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Changed to Active***
+2017-11-16 15:25:47,335 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Disarmed (Intrusion)***
+2017-11-16 15:25:49,459 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Timer Expired***
+2017-11-16 15:25:59,943 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Closed***
+2017-11-16 15:26:02,061 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Open***
+2017-11-16 15:26:04,345 [main] INFO QTMS: ARM STAY - User website history verification
+2017-11-16 15:27:02,596 [main] INFO QTMS: ARM STAY - Verify the system reports alarm on  only the sensor in group 10 at the end of the entry delay. Verify the system does not report alarm on group 16 
+2017-11-16 15:27:08,626 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:27:14,471 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:27:37,725 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:27:37,735 [main] INFO QTMS: ARM STAY - Sensor 16 event is not present on Alarm page
+2017-11-16 15:27:37,820 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:28:38,502 [main] INFO QTMS: ARM STAY - Verify the system can be disarmed during the entry delay (10 and 12 groups). 
+2017-11-16 15:28:44,554 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:28:46,974 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:29:03,479 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:29:04,485 [main] INFO QTMS: ARM STAY - panel history verification
+2017-11-16 15:29:09,783 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Changed to Active***
+2017-11-16 15:29:11,935 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Changed to Active***
+2017-11-16 15:29:14,030 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Disarmed (Intrusion)***
+2017-11-16 15:29:24,532 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Timer Expired***
+2017-11-16 15:29:26,658 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Closed***
+2017-11-16 15:29:28,992 [main] INFO QTMS: ARM STAY - User website history verification
+2017-11-16 15:30:31,279 [main] INFO QTMS: ARM STAY - Verify the system reports alarm on both sensors(10 and 15 groups)  at the end of the entry delay 
+2017-11-16 15:30:37,329 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:30:43,109 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:31:06,268 [main] INFO QTMS: ARM STAY - Pass: Correct status is Open
+2017-11-16 15:31:06,354 [main] INFO QTMS: ARM STAY - Pass: Correct status is Activated
+2017-11-16 15:31:06,445 [main] INFO qtmsSRF.Arm_Stay - Pass: System is in ALARM
+2017-11-16 15:32:04,966 [main] INFO QTMS: ARM STAY - Verify the system can be disarmed during the entry delay (10 and 15 groups). 
+2017-11-16 15:32:11,001 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:32:13,458 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 15:32:29,836 [main] INFO qtmsSRF.Arm_Stay - Pass: System is DISARMED
+2017-11-16 15:32:30,846 [main] INFO QTMS: ARM STAY - panel history verification
+2017-11-16 15:32:36,634 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Changed to Active***
+2017-11-16 15:32:38,718 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Changed to Active***
+2017-11-16 15:32:40,861 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Disarmed (Intrusion)***
+2017-11-16 15:32:50,982 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Timer Expired***
+2017-11-16 15:32:53,114 [main] INFO QTMS: ARM STAY - Failed: sensor status is displayed in correct: ***Timer Expired***
+2017-11-16 15:32:55,392 [main] INFO QTMS: ARM STAY - User website history verification
+2017-11-16 15:33:53,557 [main] INFO QTMS: ARM STAY - Verify the system reports alarm on both sensors(10 and 35 groups)  at the end of the entry delay 
+2017-11-16 15:33:59,589 [main] INFO qtmsSRF.Arm_Stay - Arm Stay
+2017-11-16 15:34:05,531 [main] INFO qtmsSRF.Arm_Stay - Pass: System is ARMED STAY
+2017-11-16 16:36:59,946 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:36:59,953 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   adc Smoke Test: Auxiliary Arm Away   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 16:36:59,953 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:37:36,901 [main] INFO adc Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:37:37,051 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:37:53,018 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:37:53,022 [main] INFO adc Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:37:55,795 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: Auxiliary Emergency Sent is present, value = Auxiliary Emergency Sent
+2017-11-16 16:38:30,796 [main] INFO adc Smoke Test: Auxiliary Arm Away - Cancel Emergency Alarm
+2017-11-16 16:39:10,761 [main] INFO adc Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:39:10,772 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:39:26,910 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:39:26,912 [main] INFO adc Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:39:29,707 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: Auxiliary Emergency Sent is present, value = Auxiliary Emergency Sent
+2017-11-16 16:40:04,709 [main] INFO adc Smoke Test: Auxiliary Arm Away - Cancel Emergency Alarm
+2017-11-16 16:40:42,314 [main] INFO adc Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:40:42,349 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:40:58,128 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:40:58,129 [main] INFO adc Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:41:00,889 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: Police Alarmed is present, value = Police Emergency Sent
+2017-11-16 16:41:35,905 [main] INFO adc Smoke Test: Auxiliary Arm Away - Cancel Emergency Alarm
+2017-11-16 16:42:12,461 [main] INFO adc Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 0 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:42:12,473 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:42:28,449 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:42:28,454 [main] INFO adc Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:42:31,217 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: Police Alarmed is present, value = Police Emergency Sent
+2017-11-16 16:43:06,218 [main] INFO adc Smoke Test: Auxiliary Arm Away - Cancel Emergency Alarm
+2017-11-16 16:45:52,612 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:45:52,618 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   ADC Smoke Test: Auxiliary Arm Away   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 16:45:52,618 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:46:34,546 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-16 16:46:45,969 [main] INFO adc.ADC - Request equipment list
+2017-11-16 16:47:17,887 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:47:18,064 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:47:33,876 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:47:33,888 [main] INFO ADC Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:47:35,992 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:47:35,999 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Disarm
+2017-11-16 16:47:38,892 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:47:38,901 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:47:45,241 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:47:45,259 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:47:50,400 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:47:50,428 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:47:54,592 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:47:54,602 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:47:59,575 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:47:59,590 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:04,202 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:48:04,209 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:07,875 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:48:07,881 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:12,598 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:48:12,603 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:17,454 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:48:17,463 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:23,280 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:48:23,281 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:28,732 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:48:28,741 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:48:33,559 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 0 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:48:33,566 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:49:36,336 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:49:36,341 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   ADC Smoke Test: Auxiliary Arm Away   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 16:49:36,342 [main] INFO utils.Log - ********************************************************************
+2017-11-16 16:50:17,756 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-16 16:50:28,721 [main] INFO adc.ADC - Request equipment list
+2017-11-16 16:50:58,233 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:50:58,352 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:14,455 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:51:14,455 [main] INFO ADC Smoke Test: Auxiliary Arm Away - Activate a sensor
+2017-11-16 16:51:16,593 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Pass: panel is in Arm Away mode
+2017-11-16 16:51:16,603 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Disarm
+2017-11-16 16:51:19,416 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:51:19,430 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:23,298 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 2 Silent Auxiliary Police Pendant during Arm Away
+2017-11-16 16:51:23,334 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:27,677 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:27,715 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:32,068 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:32,085 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:36,527 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 4 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:36,539 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:40,135 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:40,142 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:48,483 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:48,494 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:51:56,968 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 6 Auxiliary Medical Pendant during Arm Away
+2017-11-16 16:51:56,969 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:52:01,397 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:52:01,401 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:52:05,354 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:52:05,363 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:52:09,449 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 1 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:52:09,460 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 16:52:13,129 [main] INFO ADC Smoke Test: Auxiliary Arm Away - ArmAway -Activate Group 0 Auxiliary Police Pendant during Arm Away
+2017-11-16 16:52:13,132 [main] INFO adcSanityTests.ArmedAway_Auxiliary - Arm Away
+2017-11-16 17:09:27,604 [main] INFO utils.Log - ********************************************************************
+2017-11-16 17:09:27,612 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Arm Away mode contact sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-16 17:09:27,614 [main] INFO utils.Log - ********************************************************************
+2017-11-16 17:09:57,362 [main] INFO Arm Away mode contact sensor testing - ArmAway -Open/Close Group 12 contact sensor during exit delay
+2017-11-16 17:09:57,523 [main] INFO adcSanityTests.ArmedAway_Contact - Arm Away
+2017-11-16 17:10:05,531 [main] INFO Arm Away mode contact sensor testing - Open/Close a sensor
+2017-11-16 17:10:24,705 [main] INFO adcSanityTests.ArmedAway_Contact - Pass: panel is in Arm Away mode
+2017-11-16 17:11:12,731 [main] INFO Arm Away mode contact sensor testing - ArmAway - Open/Close Group 13 contact sensor during exit delay
+2017-11-16 17:11:12,741 [main] INFO adcSanityTests.ArmedAway_Contact - Arm Away
+2017-11-16 17:11:20,516 [main] INFO Arm Away mode contact sensor testing - Open/Close a sensor
+2017-11-16 17:11:39,697 [main] INFO adcSanityTests.ArmedAway_Contact - Pass: System is in ALARM
+2017-11-17 08:50:13,107 [main] INFO utils.Log - ********************************************************************
+2017-11-17 08:50:13,134 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Arm Away Mode Glass Break   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 08:50:13,135 [main] INFO utils.Log - ********************************************************************
+2017-11-17 08:50:19,698 [main] INFO Arm Away Mode Glass Break - Addig sensors
+2017-11-17 08:50:41,140 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-17 08:50:52,105 [main] INFO adc.ADC - Request equipment list
+2017-11-17 08:51:22,419 [main] INFO Arm Away Mode Glass Break - ArmAway -Trip glass break 13 sensor during exit delay
+2017-11-17 08:51:22,544 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Arm Away
+2017-11-17 08:51:27,491 [main] INFO Arm Away Mode Glass Break - Trip glass break sensor 13
+2017-11-17 08:51:29,516 [main] INFO Arm Away Mode Glass Break - Restore Glass Break 13
+2017-11-17 08:51:33,522 [main] INFO Arm Away Mode Glass Break - Verify Alarm
+2017-11-17 08:51:33,657 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Pass: System is in ALARM
+2017-11-17 08:51:34,661 [main] INFO Arm Away Mode Glass Break - Disarm with 1234
+2017-11-17 08:51:37,672 [main] INFO Arm Away Mode Glass Break - adc website verification
+2017-11-17 08:52:12,629 [main] INFO Arm Away Mode Glass Break - Pass: message is displayed: Glass Break 1 (Sensor 1) Pending Alarm (Awaiting Panel's Programmed Delay)
+2017-11-17 08:52:17,520 [main] INFO Arm Away Mode Glass Break - ArmStay -Trip glass break 17 sensor during exit delay
+2017-11-17 08:52:17,550 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Arm Away
+2017-11-17 08:52:22,460 [main] INFO Arm Away Mode Glass Break - Trip glass break sensor 17
+2017-11-17 08:52:24,468 [main] INFO Arm Away Mode Glass Break - Restore Glass Break 17
+2017-11-17 08:52:26,478 [main] INFO Arm Away Mode Glass Break - Verify Alarm
+2017-11-17 08:52:26,562 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Pass: System is in ALARM
+2017-11-17 08:52:27,566 [main] INFO Arm Away Mode Glass Break - Disarm with 1234
+2017-11-17 08:52:30,654 [main] INFO Arm Away Mode Glass Break - adc website verification
+2017-11-17 08:53:04,074 [main] INFO Arm Away Mode Glass Break - Pass: message is displayed: Glass Break 2 (Sensor 2) Pending Alarm (Awaiting Panel's Programmed Delay)
+2017-11-17 08:53:08,219 [main] INFO Arm Away Mode Glass Break - ArmStay -Trip glass break 13 sensor during exit delay
+2017-11-17 08:53:08,234 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Arm Away
+2017-11-17 08:53:24,054 [main] INFO Arm Away Mode Glass Break - Tamper glass break sensor 13
+2017-11-17 08:53:26,080 [main] INFO Arm Away Mode Glass Break - Restore Glass Break 13
+2017-11-17 08:53:29,085 [main] INFO Arm Away Mode Glass Break - Verify Alarm
+2017-11-17 08:53:29,227 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Pass: System is in ALARM
+2017-11-17 08:53:30,228 [main] INFO Arm Away Mode Glass Break - Disarm with 1234
+2017-11-17 08:53:33,152 [main] INFO Arm Away Mode Glass Break - adc website verification
+2017-11-17 08:54:04,971 [main] INFO Arm Away Mode Glass Break - Pass: message is displayed: Glass Break 1 (Sensor 1) Pending Alarm (Awaiting Panel's Programmed Delay)
+2017-11-17 08:54:07,990 [main] INFO Arm Away Mode Glass Break - ArmStay -Trip glass break 17 sensor during exit delay
+2017-11-17 08:54:08,015 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Arm Away
+2017-11-17 08:54:23,848 [main] INFO Arm Away Mode Glass Break - Tamper glass break sensor 17
+2017-11-17 08:54:25,853 [main] INFO Arm Away Mode Glass Break - Restore Glass Break 17
+2017-11-17 08:54:28,858 [main] INFO Arm Away Mode Glass Break - Verify Alarm
+2017-11-17 08:54:28,984 [main] INFO adcSanityTests.ArmedAway_GlassBreak - Pass: System is in ALARM
+2017-11-17 08:54:29,987 [main] INFO Arm Away Mode Glass Break - Disarm with 1234
+2017-11-17 08:54:32,969 [main] INFO Arm Away Mode Glass Break - adc website verification
+2017-11-17 08:55:03,301 [main] INFO Arm Away Mode Glass Break - Pass: message is displayed: Glass Break 2 (Sensor 2) Pending Alarm (Awaiting Panel's Programmed Delay)
+2017-11-17 09:03:36,252 [main] INFO utils.Log - ********************************************************************
+2017-11-17 09:03:36,256 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 09:03:36,259 [main] INFO utils.Log - ********************************************************************
+2017-11-17 09:03:36,268 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-17 09:03:41,478 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-17 09:03:59,489 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-17 09:04:04,507 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-17 09:04:10,574 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-17 09:04:15,526 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-17 09:04:17,537 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-17 09:04:21,573 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-17 09:04:23,618 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-17 09:04:28,800 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-17 09:04:34,741 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-17 09:04:39,632 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-17 09:04:57,272 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-17 09:05:05,269 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-17 09:05:06,276 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-17 09:05:17,736 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-17 09:49:30,684 [main] INFO updateProcess.SanityUpdate - Pass: panel is in Arm Away mode
+2017-11-17 10:03:32,885 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:03:32,891 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 10:03:32,892 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:03:32,907 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-17 10:03:38,112 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-17 10:04:03,901 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-17 10:04:08,912 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-17 10:04:14,859 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-17 10:04:19,962 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-17 10:04:21,990 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-17 10:04:29,004 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-17 10:04:31,030 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-17 10:04:36,191 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-17 10:04:41,911 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-17 10:04:46,810 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-17 10:05:04,060 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-17 10:05:12,105 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-17 10:05:13,118 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-17 10:05:25,254 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-17 10:06:31,558 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:06:31,564 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   PreUpdate User Management set up   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 10:06:31,565 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:06:34,702 [main] INFO PreUpdate User Management set up - Adding a new user NewUser with the user code 5643
+2017-11-17 10:06:45,776 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:06:45,863 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:06:52,545 [main] INFO PreUpdate User Management set up - Adding a new Master NewMaster with the code 3331
+2017-11-17 10:06:57,051 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:06:57,073 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:07:00,586 [main] INFO PreUpdate User Management set up - Adding a new Guest NewGuest with the code 8800
+2017-11-17 10:07:09,171 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:07:09,173 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:11:21,340 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:11:21,345 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   PreUpdate User Management set up   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 10:11:21,346 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:11:21,359 [main] INFO PreUpdate User Management set up - Adding a new user NewUser with the user code 5643
+2017-11-17 10:11:55,626 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:11:55,689 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:12:01,034 [main] INFO PreUpdate User Management set up - Adding a new Master NewMaster with the code 3331
+2017-11-17 10:12:01,095 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:12:01,106 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:12:01,189 [main] INFO PreUpdate User Management set up - Adding a new Guest NewGuest with the code 8800
+2017-11-17 10:12:01,321 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:12:01,333 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:17:00,736 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:17:00,739 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   PreUpdate User Management set up   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 10:17:00,740 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:17:00,762 [main] INFO PreUpdate User Management set up - Adding a new user NewUser with the user code 5643
+2017-11-17 10:17:36,863 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:17:36,904 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:17:47,201 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 10:17:48,210 [main] INFO PreUpdate User Management set up - Adding a new Master NewMaster with the code 3331
+2017-11-17 10:18:22,861 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:18:22,878 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:18:32,976 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 10:18:33,979 [main] INFO PreUpdate User Management set up - Adding a new Guest NewGuest with the code 8800
+2017-11-17 10:19:06,537 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 10:19:06,544 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 10:19:16,773 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 10:22:07,818 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:22:07,823 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Pre-updateProcess panel settings   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 10:22:07,823 [main] INFO utils.Log - ********************************************************************
+2017-11-17 10:22:07,840 [main] INFO Pre-updateProcess panel settings - SIA Limits: Disabled
+2017-11-17 10:22:08,849 [main] INFO Pre-updateProcess panel settings - Media Volume: 1/7
+2017-11-17 10:22:09,853 [main] INFO Pre-updateProcess panel settings - Voice Prompts: Disabled
+2017-11-17 10:22:10,856 [main] INFO Pre-updateProcess panel settings - All Chimes: Enabled
+2017-11-17 10:22:11,862 [main] INFO Pre-updateProcess panel settings - Trouble Beeps: Enabled
+2017-11-17 10:22:12,870 [main] INFO Pre-updateProcess panel settings - Fire Safety Device Trouble Beeps: Enabled
+2017-11-17 10:22:13,874 [main] INFO Pre-updateProcess panel settings - Wifi: Enabled
+2017-11-17 10:22:14,881 [main] INFO Pre-updateProcess panel settings - Secure Delete Images: Disabled
+2017-11-17 10:22:15,888 [main] INFO Pre-updateProcess panel settings - Disarm Photos: Disabled
+2017-11-17 10:22:16,891 [main] INFO Pre-updateProcess panel settings - Alarm Videos: Enabled
+2017-11-17 10:22:17,905 [main] INFO Pre-updateProcess panel settings - Alarm Photos: Disabled
+2017-11-17 10:22:18,909 [main] INFO Pre-updateProcess panel settings - settings Photos: Enabled
+2017-11-17 10:22:19,914 [main] INFO Pre-updateProcess panel settings - Duress Authentication: Enabled
+2017-11-17 10:22:20,926 [main] INFO Pre-updateProcess panel settings - Secure Arming: Enabled
+2017-11-17 10:22:21,932 [main] INFO Pre-updateProcess panel settings - No Arming On Low Battery: Enabled
+2017-11-17 10:22:22,945 [main] INFO Pre-updateProcess panel settings - Auto Bypass: Disabled
+2017-11-17 10:22:23,965 [main] INFO Pre-updateProcess panel settings - Auto Stay: Disabled
+2017-11-17 10:22:24,969 [main] INFO Pre-updateProcess panel settings - Arm Stay No Delay: Disabled
+2017-11-17 10:22:25,977 [main] INFO Pre-updateProcess panel settings - Auto Exit Time Extension: Disabled
+2017-11-17 10:22:26,981 [main] INFO Pre-updateProcess panel settings - Keyfob Alarm Disarm: Enabled
+2017-11-17 10:22:27,995 [main] INFO Pre-updateProcess panel settings - Keyfob Disarming: Disabled
+2017-11-17 10:22:29,001 [main] INFO Pre-updateProcess panel settings - Normal Entry Delay: 33 seconds
+2017-11-17 10:22:30,005 [main] INFO Pre-updateProcess panel settings - Normal Exit Delay: 57 seconds
+2017-11-17 10:22:31,010 [main] INFO Pre-updateProcess panel settings - Long Entry Delay: 113 seconds
+2017-11-17 10:22:32,016 [main] INFO Pre-updateProcess panel settings - Long Exit Delay: 117 seconds
+2017-11-17 10:22:33,037 [main] INFO Pre-updateProcess panel settings - Siren Disable: Disabled
+2017-11-17 10:22:34,050 [main] INFO Pre-updateProcess panel settings - Fire Verification: Enabled
+2017-11-17 10:22:35,058 [main] INFO Pre-updateProcess panel settings - Severe Weather Siren Warning: Disabled
+2017-11-17 10:22:36,061 [main] INFO Pre-updateProcess panel settings - Dialer Delay: 23 seconds
+2017-11-17 10:22:37,064 [main] INFO Pre-updateProcess panel settings - Siren Timeout: 7 minutes
+2017-11-17 10:22:38,084 [main] INFO Pre-updateProcess panel settings - Water Freeze Alarm: Enabled
+2017-11-17 10:22:39,096 [main] INFO Pre-updateProcess panel settings - Police Panic: Disabled
+2017-11-17 10:22:40,109 [main] INFO Pre-updateProcess panel settings - Fire Panic: Disabled
+2017-11-17 10:22:41,132 [main] INFO Pre-updateProcess panel settings - Auxillary Panic: Disabled
+2017-11-17 10:22:42,137 [main] INFO Pre-updateProcess panel settings - Auto Upload Logs: Enabled
+2017-11-17 10:22:43,150 [main] INFO Pre-updateProcess panel settings - Power Management: Disabled
+2017-11-17 10:22:44,154 [main] INFO Pre-updateProcess panel settings - SIA Power Restoration: Enabled
+2017-11-17 10:22:45,160 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Non-emergency sensors: 12 hours
+2017-11-17 10:22:46,165 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Emergency sensors: 12 hours
+2017-11-17 10:22:47,171 [main] INFO Pre-updateProcess panel settings - Cell Signal Timeout: 25 seconds
+2017-11-17 10:22:48,192 [main] INFO Pre-updateProcess panel settings - RF Jam Detection: Enabled
+2017-11-17 10:22:49,199 [main] INFO Pre-updateProcess panel settings - Open/Close Reports for Auto Learn: Disabled
+2017-11-17 10:22:50,202 [main] INFO Pre-updateProcess panel settings - Bluetooth: Enabled
+2017-11-17 10:22:51,210 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm: Enabled
+2017-11-17 10:22:52,223 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm Timeout: 30 seconds
+2017-11-17 10:22:53,237 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Camera settings: Enabled
+2017-11-17 10:22:54,275 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Security and Arming settings: Enabled
+2017-11-17 10:22:55,281 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Siren and Alarms settings: Enabled
+2017-11-17 12:42:22,781 [main] INFO updateProcess.SanityUpdate - Pass: panel is in Arm Away mode
+2017-11-17 12:42:45,100 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 12:42:55,489 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 12:42:56,355 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 12:43:06,748 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 12:43:07,380 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 12:43:17,726 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 13:26:07,716 [main] INFO updateProcess.SanitySettings - Verify Security and Arming icon disappears after disabling the setting
+2017-11-17 13:28:52,423 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:28:54,888 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:29:25,111 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:29:43,267 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:31:12,377 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:33:08,806 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:33:51,120 [main] INFO updateProcess.SanitySettings - Pass: Bypass pop-up message is present, value = Open Sensor
+2017-11-17 13:33:58,989 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:35:29,839 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:36:55,570 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 13:37:32,479 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:37:53,585 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 13:39:12,730 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:39:29,723 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:39:58,321 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:40:15,936 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 13:43:11,202 [main] INFO updateProcess.SanitySettings - Verify Dealer name changed
+2017-11-17 13:46:16,029 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:46:55,557 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:49:02,463 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 13:54:31,781 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 13:55:41,148 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:55:47,004 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 13:55:49,014 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:56:10,082 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 13:56:42,149 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 13:56:47,992 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:56:54,590 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 13:57:15,382 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 13:58:34,856 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 13:58:45,644 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 14:00:23,835 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 14:00:34,745 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 14:01:25,941 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 14:01:46,810 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 14:08:46,700 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 14:09:38,275 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 14:15:28,943 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-17 14:15:40,596 [main] INFO adc.ADC - Request equipment list
+2017-11-17 14:16:26,415 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:16:43,337 [main] ERROR utils.Log - *Fire icon Alarmed* - Element is not found!
+2017-11-17 14:16:43,410 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 14:16:50,632 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:17:01,470 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:19:13,065 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-17 14:19:24,887 [main] INFO adc.ADC - Request equipment list
+2017-11-17 14:20:08,221 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:20:23,841 [main] ERROR utils.Log - *Fire icon Alarmed* - Element is not found!
+2017-11-17 14:20:23,865 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 14:27:40,586 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:27:56,253 [main] ERROR utils.Log - *Fire icon Alarmed* - Element is not found!
+2017-11-17 14:27:56,295 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 14:30:05,437 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:30:16,913 [main] INFO updateProcess.SanitySensors - Pass: Fire icon Alarmed is present, value = 
+2017-11-17 14:30:16,926 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 14:33:07,533 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:35:45,403 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-17 14:35:56,571 [main] INFO adc.ADC - Request equipment list
+2017-11-17 14:36:43,846 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:36:54,861 [main] INFO updateProcess.SanitySensors - Pass: Fire icon Alarmed is present, value = 
+2017-11-17 14:36:54,862 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 14:37:48,827 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 14:38:25,772 [main] INFO updateProcess.SanitySensors - Pass: System is ARMED STAY
+2017-11-17 14:38:29,400 [main] ERROR utils.Log - *Tampered* - Element is not found!
+2017-11-17 14:38:36,416 [main] INFO updateProcess.SanitySensors - Disarm
+2017-11-17 14:39:33,323 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:39:54,268 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 14:40:34,880 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:40:55,710 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 14:41:42,602 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:42:03,568 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 14:42:41,737 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:48:34,794 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:51:37,977 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:52:08,471 [main] INFO updateProcess.SanitySensors - Pass: System is in ALARM
+2017-11-17 14:56:25,800 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 14:59:16,844 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-17 14:59:28,324 [main] INFO adc.ADC - Request equipment list
+2017-11-17 15:00:14,551 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 15:00:25,614 [main] INFO updateProcess.SanitySensors - Pass: Fire icon Alarmed is present, value = 
+2017-11-17 15:00:25,615 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
+2017-11-17 15:01:20,357 [main] INFO updateProcess.SanitySensors - Arm Stay
+2017-11-17 15:01:57,349 [main] INFO updateProcess.SanitySensors - Pass: System is ARMED STAY
+2017-11-17 15:01:57,631 [main] INFO updateProcess.SanitySensors - Pass: Tampered is present, value = 
+2017-11-17 15:02:04,660 [main] INFO updateProcess.SanitySensors - Disarm
+2017-11-17 15:03:02,777 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 15:03:23,822 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 15:04:13,100 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 15:04:34,028 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 15:05:15,087 [main] INFO updateProcess.SanitySensors - Arm Away
+2017-11-17 15:05:36,106 [main] INFO updateProcess.SanitySensors - Pass: panel is in Arm Away mode
+2017-11-17 15:20:59,824 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:20:59,827 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   PreUpdate User Management set up   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 15:20:59,828 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:20:59,853 [main] INFO PreUpdate User Management set up - Adding a new user NewUser with the user code 5643
+2017-11-17 15:21:35,707 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 15:21:35,742 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 15:21:46,467 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 15:21:47,474 [main] INFO PreUpdate User Management set up - Adding a new Master NewMaster with the code 3331
+2017-11-17 15:22:21,773 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 15:22:21,795 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 15:22:32,201 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 15:22:33,203 [main] INFO PreUpdate User Management set up - Adding a new Guest NewGuest with the code 8800
+2017-11-17 15:23:08,796 [main] INFO PreUpdate User Management set up - Verifying a new user code is working correctly
+2017-11-17 15:23:08,798 [main] INFO updateProcess.PreUpdateUserManagement - Arm Stay
+2017-11-17 15:23:19,224 [main] INFO updateProcess.PreUpdateUserManagement - Pass: System is DISARMED
+2017-11-17 15:26:50,261 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:26:50,263 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 15:26:50,265 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:26:50,278 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2017-11-17 15:26:55,515 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2017-11-17 15:27:21,480 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2017-11-17 15:27:26,499 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2017-11-17 15:27:32,376 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2017-11-17 15:27:37,729 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2017-11-17 15:27:39,752 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2017-11-17 15:27:46,821 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2017-11-17 15:27:48,844 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2017-11-17 15:27:53,996 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2017-11-17 15:27:59,963 [main] INFO Add sensors + sensors activity - Activate water sensors
+2017-11-17 15:28:05,040 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2017-11-17 15:28:23,211 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2017-11-17 15:28:31,402 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2017-11-17 15:28:32,409 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2017-11-17 15:28:44,400 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2017-11-17 15:42:38,546 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:42:38,549 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Pre-updateProcess panel settings   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-17 15:42:38,550 [main] INFO utils.Log - ********************************************************************
+2017-11-17 15:42:38,561 [main] INFO Pre-updateProcess panel settings - SIA Limits: Disabled
+2017-11-17 15:42:39,565 [main] INFO Pre-updateProcess panel settings - Media Volume: 1/7
+2017-11-17 15:42:40,571 [main] INFO Pre-updateProcess panel settings - Voice Prompts: Disabled
+2017-11-17 15:42:41,583 [main] INFO Pre-updateProcess panel settings - All Chimes: Enabled
+2017-11-17 15:42:42,589 [main] INFO Pre-updateProcess panel settings - Trouble Beeps: Enabled
+2017-11-17 15:42:43,593 [main] INFO Pre-updateProcess panel settings - Fire Safety Device Trouble Beeps: Enabled
+2017-11-17 15:42:44,601 [main] INFO Pre-updateProcess panel settings - Wifi: Enabled
+2017-11-17 15:42:45,607 [main] INFO Pre-updateProcess panel settings - Secure Delete Images: Disabled
+2017-11-17 15:42:46,618 [main] INFO Pre-updateProcess panel settings - Disarm Photos: Disabled
+2017-11-17 15:42:47,622 [main] INFO Pre-updateProcess panel settings - Alarm Videos: Enabled
+2017-11-17 15:42:48,626 [main] INFO Pre-updateProcess panel settings - Alarm Photos: Disabled
+2017-11-17 15:42:49,639 [main] INFO Pre-updateProcess panel settings - Settings Photos: Enabled
+2017-11-17 15:42:50,643 [main] INFO Pre-updateProcess panel settings - Duress Authentication: Enabled
+2017-11-17 15:42:51,670 [main] INFO Pre-updateProcess panel settings - Secure Arming: Enabled
+2017-11-17 15:42:52,675 [main] INFO Pre-updateProcess panel settings - No Arming On Low Battery: Enabled
+2017-11-17 15:42:53,680 [main] INFO Pre-updateProcess panel settings - Auto Bypass: Disabled
+2017-11-17 15:42:54,689 [main] INFO Pre-updateProcess panel settings - Auto Stay: Disabled
+2017-11-17 15:42:55,700 [main] INFO Pre-updateProcess panel settings - Arm Stay No Delay: Disabled
+2017-11-17 15:42:56,718 [main] INFO Pre-updateProcess panel settings - Auto Exit Time Extension: Disabled
+2017-11-17 15:42:57,726 [main] INFO Pre-updateProcess panel settings - Keyfob Alarm Disarm: Enabled
+2017-11-17 15:42:58,736 [main] INFO Pre-updateProcess panel settings - Keyfob Disarming: Disabled
+2017-11-17 15:42:59,750 [main] INFO Pre-updateProcess panel settings - Normal Entry Delay: 33 seconds
+2017-11-17 15:43:00,757 [main] INFO Pre-updateProcess panel settings - Normal Exit Delay: 57 seconds
+2017-11-17 15:43:01,776 [main] INFO Pre-updateProcess panel settings - Long Entry Delay: 113 seconds
+2017-11-17 15:43:02,790 [main] INFO Pre-updateProcess panel settings - Long Exit Delay: 117 seconds
+2017-11-17 15:43:03,798 [main] INFO Pre-updateProcess panel settings - Siren Disable: Disabled
+2017-11-17 15:43:04,812 [main] INFO Pre-updateProcess panel settings - Fire Verification: Enabled
+2017-11-17 15:43:05,819 [main] INFO Pre-updateProcess panel settings - Severe Weather Siren Warning: Disabled
+2017-11-17 15:43:06,834 [main] INFO Pre-updateProcess panel settings - Dialer Delay: 23 seconds
+2017-11-17 15:43:07,840 [main] INFO Pre-updateProcess panel settings - Siren Timeout: 7 minutes
+2017-11-17 15:43:08,855 [main] INFO Pre-updateProcess panel settings - Water Freeze Alarm: Enabled
+2017-11-17 15:43:09,857 [main] INFO Pre-updateProcess panel settings - Police Panic: Disabled
+2017-11-17 15:43:10,868 [main] INFO Pre-updateProcess panel settings - Fire Panic: Disabled
+2017-11-17 15:43:11,880 [main] INFO Pre-updateProcess panel settings - Auxiliary Panic: Disabled
+2017-11-17 15:43:12,885 [main] INFO Pre-updateProcess panel settings - Auto Upload Logs: Enabled
+2017-11-17 15:43:13,889 [main] INFO Pre-updateProcess panel settings - Power Management: Disabled
+2017-11-17 15:43:14,892 [main] INFO Pre-updateProcess panel settings - SIA Power Restoration: Enabled
+2017-11-17 15:43:15,893 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Non-emergency sensors: 12 hours
+2017-11-17 15:43:16,899 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Emergency sensors: 12 hours
+2017-11-17 15:43:17,902 [main] INFO Pre-updateProcess panel settings - Cell Signal Timeout: 25 seconds
+2017-11-17 15:43:18,911 [main] INFO Pre-updateProcess panel settings - RF Jam Detection: Enabled
+2017-11-17 15:43:19,918 [main] INFO Pre-updateProcess panel settings - Open/Close Reports for Auto Learn: Disabled
+2017-11-17 15:43:20,923 [main] INFO Pre-updateProcess panel settings - Bluetooth: Enabled
+2017-11-17 15:43:21,935 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm: Enabled
+2017-11-17 15:43:22,956 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm Timeout: 30 seconds
+2017-11-17 15:43:23,961 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Camera settings: Enabled
+2017-11-17 15:43:24,964 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Security and Arming settings: Enabled
+2017-11-17 15:43:25,968 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Siren and Alarms settings: Enabled
+2017-11-17 15:49:04,472 [main] INFO updateProcess.SanityUpdate - Pass: panel is in Arm Away mode
+2017-11-17 15:49:26,617 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 15:49:36,949 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 15:49:37,230 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 15:49:47,671 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 15:49:47,851 [main] INFO updateProcess.SanityUpdate - Arm Stay
+2017-11-17 15:49:58,124 [main] INFO updateProcess.SanityUpdate - Pass: System is DISARMED
+2017-11-17 16:00:45,192 [main] INFO updateProcess.SanitySettings - Verify Security and Arming icon disappears after disabling the setting
+2017-11-17 16:02:20,315 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:02:22,765 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:02:52,298 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:03:10,398 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:03:56,957 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:04:38,081 [main] INFO updateProcess.SanitySettings - Pass: Bypass pop-up message is present, value = Open Sensor
+2017-11-17 16:04:45,855 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:05:37,245 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:07:03,652 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:14:33,182 [main] INFO updateProcess.SanitySettings - Verify Security and Arming icon disappears after disabling the setting
+2017-11-17 16:16:09,511 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:16:11,828 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:16:41,160 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:16:59,130 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:17:46,181 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:18:26,672 [main] INFO updateProcess.SanitySettings - Pass: Bypass pop-up message is present, value = Open Sensor
+2017-11-17 16:18:34,443 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:19:25,234 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:20:51,888 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:21:31,624 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:21:52,548 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:22:38,256 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:22:55,201 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:23:23,396 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:23:40,873 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:25:18,273 [main] INFO updateProcess.SanitySettings - Verify Dealer name changed
+2017-11-17 16:27:44,608 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:28:23,346 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:29:53,210 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 16:33:08,445 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 16:33:42,596 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:33:48,315 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 16:33:50,317 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:34:10,927 [main] INFO updateProcess.SanitySettings - Pass: System is DISARMED
+2017-11-17 16:34:42,780 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:34:48,539 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:34:55,114 [main] INFO updateProcess.SanitySettings - Arm Away
+2017-11-17 16:35:15,973 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:36:03,445 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:36:14,097 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:37:03,958 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:37:24,723 [main] INFO updateProcess.SanitySettings - Pass: panel is in Arm Away mode
+2017-11-17 16:40:18,246 [main] INFO updateProcess.SanitySettings - Verify no code is required to Arm the system when setting is disabled
+2017-11-17 16:40:21,986 [main] INFO updateProcess.SanitySettings - Pass: System is ARMED STAY
+2017-11-17 16:40:47,781 [main] INFO updateProcess.SanitySettings - Verify code is required to Arm the system when setting is enabled
+2017-11-17 16:40:49,833 [main] INFO updateProcess.SanitySettings - Pass: code is requires to Arm the system
+2017-11-17 16:42:56,575 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-17 16:43:47,735 [main] INFO updateProcess.SanitySettings - Arm Stay
+2017-11-20 10:48:59,988 [main] INFO utils.Log - ********************************************************************
+2017-11-20 10:48:59,992 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Arm Away mode motion sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-20 10:48:59,996 [main] INFO utils.Log - ********************************************************************
+2017-11-20 10:49:24,896 [main] INFO adc.ADC - Request sensor list and Sensor names
+2017-11-20 10:49:35,813 [main] INFO adc.ADC - Request equipment list
+2017-11-20 10:50:06,454 [main] INFO Arm Away mode motion sensor testing - ArmAway During Delay Activate Group 15 motion sensor
+2017-11-20 10:50:06,626 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:50:12,457 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:50:25,591 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:51:10,077 [main] INFO Arm Away mode motion sensor testing - ArmAway During Delay Activate Group 17 motion sensor
+2017-11-20 10:51:10,090 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:51:15,859 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:51:28,980 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:52:08,118 [main] INFO Arm Away mode motion sensor testing - ArmAway During Delay Activate Group 20 motion sensor
+2017-11-20 10:52:08,129 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:52:13,873 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:52:27,000 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:53:07,183 [main] INFO Arm Away mode motion sensor testing - ArmAway During Delay Activate Group 25 motion sensor
+2017-11-20 10:53:07,190 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:53:12,662 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:53:25,840 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:54:06,656 [main] INFO Arm Away mode motion sensor testing - ArmAway During Delay Activate Group 35 motion sensor
+2017-11-20 10:54:06,670 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:54:12,497 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:54:25,600 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:55:06,466 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Activate Group 35 motion sensor
+2017-11-20 10:55:06,473 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:55:21,133 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:55:21,376 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:56:04,828 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Activate Group 15 motion sensor
+2017-11-20 10:56:04,830 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:56:19,304 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:56:21,387 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:57:05,435 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM
+2017-11-20 10:57:16,212 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Activate Group 35 motion sensor
+2017-11-20 10:57:16,230 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:57:31,023 [main] INFO Arm Away mode motion sensor testing - Activate a sensor
+2017-11-20 10:57:33,094 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:58:13,873 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM
+2017-11-20 10:58:25,974 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Tamper Group 15 motion sensor
+2017-11-20 10:58:25,981 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:58:40,795 [main] INFO Arm Away mode motion sensor testing - Tamper a sensor
+2017-11-20 10:58:40,979 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:58:43,123 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM
+2017-11-20 10:59:19,312 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Tamper Group 17 motion sensor
+2017-11-20 10:59:19,313 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 10:59:33,856 [main] INFO Arm Away mode motion sensor testing - Tamper a sensor
+2017-11-20 10:59:33,930 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 10:59:36,095 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM
+2017-11-20 11:00:10,693 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Tamper Group 20 motion sensor
+2017-11-20 11:00:10,693 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 11:00:25,408 [main] INFO Arm Away mode motion sensor testing - Tamper a sensor
+2017-11-20 11:00:25,511 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 11:00:27,635 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM
+2017-11-20 11:01:02,263 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Tamper Group 25 motion sensor
+2017-11-20 11:01:02,269 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 11:01:17,038 [main] INFO Arm Away mode motion sensor testing - Tamper a sensor
+2017-11-20 11:01:17,102 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 11:01:19,292 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 11:01:56,325 [main] INFO Arm Away mode motion sensor testing - ArmAway After Delay Tamper Group 35 motion sensor
+2017-11-20 11:01:56,328 [main] INFO adcSanityTests.ArmedAway_Motion - Arm Away
+2017-11-20 11:02:11,082 [main] INFO Arm Away mode motion sensor testing - Tamper a sensor
+2017-11-20 11:02:11,156 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: panel is in Arm Away mode
+2017-11-20 11:02:13,292 [main] INFO adcSanityTests.ArmedAway_Motion - Pass: System is in ALARM

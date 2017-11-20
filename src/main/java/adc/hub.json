@@ -1,0 +1,14 @@
+{
+  "host": null,
+  "port": 4444,
+  "newSessionWaitTimeout": -1,
+  "servlets" : [],
+  "prioritizer": null,
+  "capabilityMatcher": "myServiceClasses.MyCapabilityMatcher",
+  "throwOnCapabilityNotPresent": true,
+  "nodePolling": 5000,
+
+  "cleanUpCycle": 500,
+  "browserTimeout": 30000,
+  "jettyMaxThreads":-1
+}

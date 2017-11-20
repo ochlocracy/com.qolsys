@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" parallel="tests" thread-count="3">
+    <test name="Test1">
+        <parameter name="deviceName_" value="android1"/>
+        <parameter name="applicationName_" value="8ebdbc76"/>
+        <parameter name="UDID_" value="8ebdbc76"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.81:4725/wd/hub"/>
+        <parameter name="PORT_" value="4725"/>
+        <classes>
+            <class name="gridTesting.Test1"/>
+        </classes>
+    </test>
+    <test name="Test2">
+        <parameter name="deviceName_" value="android2"/>
+        <parameter name="applicationName_" value="8ebdbc7f"/>
+        <parameter name="UDID_" value="8ebdbc7f"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.81:4727/wd/hub"/>
+        <parameter name="PORT_" value="4727"/>
+        <classes>
+            <class name="gridTesting.Test1"/>
+        </classes>
+    </test>
+    <test name="Test3">
+        <parameter name="deviceName_" value="android3"/>
+        <parameter name="applicationName_" value="8ebdbce0"/>
+        <parameter name="UDID_" value="8ebdbce0"/>
+        <parameter name="platformVersion_" value="5.1"/>
+        <parameter name="URL_" value="http://172.16.101.81:4729/wd/hub"/>
+        <parameter name="PORT_" value="4729"/>
+        <classes>
+            <class name="gridTesting.Test1"/>
+        </classes>
+    </test>
+</suite>

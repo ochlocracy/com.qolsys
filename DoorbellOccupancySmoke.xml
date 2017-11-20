@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Sensors_Smoke">
+
+    <test name="DoorbellOccupancySmoke">
+        <classes>
+            <class name="sensors.Smoke_Test_Doorbell_Occupancy" />
+        </classes>
+    </test>
+</suite>

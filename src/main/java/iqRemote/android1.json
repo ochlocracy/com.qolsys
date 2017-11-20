@@ -1,0 +1,29 @@
+{
+  "class": "org.openqa.grid.common.RegistrationRequest",
+  "capabilities": [
+    {
+      "seleniumProtocol": "WebDriver",
+      "deviceName_": "test",
+      "version": "5.1",
+      "maxInstances": 1,
+      "platform": "ANDROID",
+      "applicationName": "test",
+      "newCommandTimeout":"500",
+      "deviceReadyTimeout":5
+    }
+  ],
+  "configuration": {
+    "nodeTimeout": 500,
+    "port": 4725,
+    "hubPort": 4444,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url": "http://172.16.101.144:4725/wd/hub",
+    "hubHost": "172.16.101.144",
+    "nodePolling": 2000,
+    "registerCycle": 10000,
+    "register": true,
+    "cleanUpCycle": 2000,
+    "timeout": 30000,
+    "maxSession": 1
+  }
+}

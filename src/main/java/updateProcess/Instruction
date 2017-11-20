@@ -1,0 +1,14 @@
+
+Please run the following tests before the panel update in the following order:
+
+PreUpdateSensors
+PreUpdateUserManagement
+PreUpdateSettings
+
+After software update, please run tests in the following order:
+
+SanityZwave
+SanityUpdate
+SanitySettings
+SanitySensors
+
