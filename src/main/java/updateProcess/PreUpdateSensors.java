@@ -25,6 +25,8 @@ public class PreUpdateSensors extends Setup {
         SensorsActivity.init();
     }
 
+
+
     @BeforeTest
     public void setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
