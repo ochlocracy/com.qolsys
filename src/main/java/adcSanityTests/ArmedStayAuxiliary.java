@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * Created by qolsysauto (Jeff) on 8/7/17.
  */
-public class ArmedStay_Auxiliary extends Setup {
+public class ArmedStayAuxiliary extends Setup {
     // PRECONDITIONS: Disable SIA limits, set Entry-Exit Delay time to 30, 31, 32, 33 sec; Disable ArmStay No-Delay setting
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
     String ADCexecute = "true";
@@ -30,21 +30,9 @@ public class ArmedStay_Auxiliary extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
 
-    public ArmedStay_Auxiliary() throws Exception {
+    public ArmedStayAuxiliary() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
-    }
-
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
     }
 
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {

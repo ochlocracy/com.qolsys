@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
 import utils.ConfigProps;
 import utils.Setup;
 import sensors.Sensors;
@@ -160,6 +161,30 @@ public class ADC extends Setup {
             accountId = " 5389996";
         }
         return accountId;
+    }
+
+    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
+        String[] message = {string, string1};
+        String ADCexecute ="";
+        if (ADCexecute.equals("true")) {
+            New_ADC_session(getAccountId());
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
+            Thread.sleep(10000);
+            for (int i = 0; i < message.length; i++) {
+                try {
+                    WebElement history_message = driver1.findElement(By.xpath(message[i]));
+                    Assert.assertTrue(history_message.isDisplayed());
+                    {
+                        System.out.println("Pass: message is displayed " + history_message.getText());
+                    }
+                } catch (Exception e) {
+                    System.out.println("***No such element found!***");
+                }
+            }
+        } else {
+            System.out.println("Set execute to TRUE to run adc verification part");
+        }
+        Thread.sleep(2000);
     }
 
     public void add_sensor(int zone, int group, int DLID, int sensor_type) throws IOException {
