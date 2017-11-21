@@ -14,7 +14,7 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Disarm_Auxiliary extends Setup {
+public class DisarmAuxiliary extends Setup {
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
     String ADCexecute = "true";
     String page_name = "ADC Smoke Test: Auxiliary in Disarm";
@@ -24,7 +24,7 @@ public class Disarm_Auxiliary extends Setup {
     ADC adc = new ADC();
     private String activate = "03 01";
 
-    public Disarm_Auxiliary() throws Exception {
+    public DisarmAuxiliary() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
     }

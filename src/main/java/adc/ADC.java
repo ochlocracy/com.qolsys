@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import utils.ConfigProps;
+import utils.SensorsActivity;
 import utils.Setup;
 import sensors.Sensors;
 import java.io.IOException;
@@ -16,7 +17,16 @@ public class ADC extends Setup {
 
     public ADC() throws Exception {
         ConfigProps.init();
+        SensorsActivity.init();
     }
+    public String ADCexecute;
+
+    public void setADCexecute(String ADCexecute){
+        this.ADCexecute = ADCexecute;
+    }
+    public String getADCexecute(){return ADCexecute;}
+
+
 
     public String new_dw_name = "NewDoor1";
     public String new_motion_name = "NewMotion1";
@@ -165,8 +175,7 @@ public class ADC extends Setup {
 
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
-        String ADCexecute ="";
-        if (ADCexecute.equals("true")) {
+        if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(10000);
@@ -180,9 +189,9 @@ public class ADC extends Setup {
                 } catch (Exception e) {
                     System.out.println("***No such element found!***");
                 }
-            }
+           }
         } else {
-            System.out.println("Set execute to TRUE to run adc verification part");
+            System.out.println("Set execute to TRUE to run ADC verification part");
         }
         Thread.sleep(2000);
     }
