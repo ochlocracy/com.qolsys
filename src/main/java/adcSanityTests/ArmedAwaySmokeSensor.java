@@ -63,7 +63,7 @@ public class ArmedAwaySmokeSensor extends Setup {
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
         adc.Request_equipment_list();
     }

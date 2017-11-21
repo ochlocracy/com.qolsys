@@ -42,18 +42,6 @@ public class ArmedAwayMotion extends Setup {
         SensorsActivity.init();
     }
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
-    }
-
     public void history_verification(String message) {
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         try {
@@ -67,26 +55,7 @@ public class ArmedAwayMotion extends Setup {
         }
     }
 
-    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
-        String[] message = {string, string1};
-
-        if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(3000);
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
-            Thread.sleep(5000);
-            for (int i = 0; i < message.length; i++) {
-
-                history_verification(message[i]);
-            }
-        } else {
-            System.out.println("Set execute to TRUE to run adc verification part");
-        }
-        Thread.sleep(2000);
-    }
-
-    public void ArmAway_Activate_During_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
+     public void ArmAway_Activate_During_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
         logger.info("ArmAway During Delay Activate Group " + group + " motion sensor");
         ARM_AWAY(ConfigProps.longExitDelay / 3);
         logger.info("Activate a sensor");
@@ -96,7 +65,7 @@ public class ArmedAwayMotion extends Setup {
         driver.findElement(By.id("com.qolsys:id/main")).click();
         enter_default_user_code();
         Thread.sleep(2000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         sensors.primary_call(DLID, close);
         Thread.sleep(2000);
     }
@@ -110,7 +79,7 @@ public class ArmedAwayMotion extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 3);
         enter_default_user_code();
         Thread.sleep(2000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         sensors.primary_call(DLID, close);
         Thread.sleep(2000);
     }
@@ -123,7 +92,7 @@ public class ArmedAwayMotion extends Setup {
         verify_armaway();
         sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
@@ -144,7 +113,7 @@ public class ArmedAwayMotion extends Setup {
             verify_armaway();
         else
             verify_in_alarm();
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         if (group == 25)
             driver.findElement(By.id("com.qolsys:id/main")).click();
         enter_default_user_code();
@@ -219,15 +188,11 @@ public class ArmedAwayMotion extends Setup {
     @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_15() throws Exception {
         ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 1) Pending Alarm')]", Armed_Away);
-        //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
-        //history_verification("//*[contains(text(), '(Sensor 1) Alarm')]");
     }
 
     @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_35() throws Exception {
         ArmAway_Activate_After_Delay_Disarm_During_Dialer(35, 5, DLID_35, "//*[contains(text(), '(Sensor 5) Pending Alarm')]", Armed_Away);
-        //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
-        //history_verification("//*[contains(text(), '(Sensor 5) Alarm')]");
     }
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
