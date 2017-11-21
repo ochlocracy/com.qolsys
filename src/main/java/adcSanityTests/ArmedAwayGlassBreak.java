@@ -26,11 +26,6 @@ public class ArmedAwayGlassBreak extends Setup {
         SensorsActivity.init();
     }
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-    }
-
     public void ArmsAway_Trigger_Sensor_During_Exit_Delay_Alarm(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Trip glass break " + group + " sensor during exit delay");
         ARM_AWAY(0);

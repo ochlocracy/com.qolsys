@@ -31,41 +31,6 @@ public class ArmedAwayAuxiliary extends Setup {
         ConfigProps.init();
     }
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
-    }
-
-    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
-        String[] message = {string, string1};
-        if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
-            for (int i = 0; i < message.length; i++) {
-                try {
-                    WebElement history_message = adc.driver1.findElement(By.xpath(message[i]));
-                    Assert.assertTrue(history_message.isDisplayed());
-                    {
-                        System.out.println("Pass: message is displayed " + history_message.getText());
-                    }
-                } catch (Exception e) {
-                    System.out.println("***No such element found!***");
-                }
-            }
-        } else {
-            System.out.println("Set execute to TRUE to run ADC verification part");
-        }
-        Thread.sleep(2000);
-    }
-
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
@@ -115,7 +80,7 @@ public class ArmedAwayAuxiliary extends Setup {
         enter_default_user_code();
         Thread.sleep(15000);
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     public void ArmStay_Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
@@ -133,7 +98,7 @@ public class ArmedAwayAuxiliary extends Setup {
         emg.Cancel_Emergency.click();
         enter_default_user_code();
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
 
     }
 
@@ -152,7 +117,7 @@ public class ArmedAwayAuxiliary extends Setup {
         emg.Cancel_Emergency.click();
         enter_default_user_code();
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
@@ -178,15 +143,14 @@ public class ArmedAwayAuxiliary extends Setup {
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_0() throws Exception {
         ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), '(Sensor 44) Police Panic')]");
-    }
+        for (int i = 42; i < 51; i++) {
+            System.out.println(i);
+            delete_from_primary(i);
+        }}
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 42; i > 51; i++) {
-            System.out.println(i);
-            delete_from_primary(i);
-        }
     }
 
     @AfterMethod
