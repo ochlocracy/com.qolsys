@@ -5,10 +5,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
+import sensors.Sensors;
 import utils.ConfigProps;
 import utils.SensorsActivity;
 import utils.Setup;
-import sensors.Sensors;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -19,14 +20,13 @@ public class ADC extends Setup {
         ConfigProps.init();
         SensorsActivity.init();
     }
+
     public String ADCexecute;
 
     public void setADCexecute(String ADCexecute){
         this.ADCexecute = ADCexecute;
     }
     public String getADCexecute(){return ADCexecute;}
-
-
 
     public String new_dw_name = "NewDoor1";
     public String new_motion_name = "NewMotion1";

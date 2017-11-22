@@ -3,9 +3,6 @@ package adcSanityTests;
 import adc.ADC;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
@@ -27,8 +24,6 @@ public class ArmedAwayMotion extends Setup {
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-
     private String close = "00 01";
     private String DLID_15 = "55 00 44";
     private String DLID_17 = "55 00 54";
@@ -40,38 +35,8 @@ public class ArmedAwayMotion extends Setup {
     public ArmedAwayMotion() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
         adc.setADCexecute("true");
-    }
-
-    public void history_verification(String message) {
-        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
-        try {
-            WebElement history_message = adc.driver1.findElement(By.xpath(message));
-            Assert.assertTrue(history_message.isDisplayed());
-            {
-                System.out.println("Pass: message is displayed " + history_message.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("***No such element found!***");
-        }
-    }
-
-    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
-        String[] message = {string, string1};
-        if (adc.getADCexecute().equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(3000);
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
-            Thread.sleep(5000);
-            for (int i = 0; i < message.length; i++) {
-
-                history_verification(message[i]);
-            }
-        } else {
-            System.out.println("Set execute to TRUE to run adc verification part");
-        }
-        Thread.sleep(2000);
     }
 
     public void ArmAway_Activate_During_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -84,7 +49,7 @@ public class ArmedAwayMotion extends Setup {
         driver.findElement(By.id("com.qolsys:id/main")).click();
         enter_default_user_code();
         Thread.sleep(2000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         sensors.primary_call(DLID, close);
         Thread.sleep(2000);
     }
@@ -98,7 +63,7 @@ public class ArmedAwayMotion extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 3);
         enter_default_user_code();
         Thread.sleep(2000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         sensors.primary_call(DLID, close);
         Thread.sleep(2000);
     }
@@ -111,7 +76,7 @@ public class ArmedAwayMotion extends Setup {
         verify_armaway();
         sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
@@ -132,7 +97,7 @@ public class ArmedAwayMotion extends Setup {
             verify_armaway();
         else
             verify_in_alarm();
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
         if (group == 25)
             driver.findElement(By.id("com.qolsys:id/main")).click();
         enter_default_user_code();
@@ -161,11 +126,11 @@ public class ArmedAwayMotion extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(1, 15, 5570628, 2);
-        add_primary_call(2, 17, 5570629, 2);
-        add_primary_call(3, 20, 5570630, 2);
-        add_primary_call(4, 25, 5570631, 2);
-        add_primary_call(5, 35, 5570632, 2);
+        add_primary_call(3, 15, 5570628, 2);
+        add_primary_call(4, 17, 5570629, 2);
+        add_primary_call(5, 20, 5570630, 2);
+        add_primary_call(6, 25, 5570631, 2);
+        add_primary_call(7, 35, 5570632, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -176,81 +141,81 @@ public class ArmedAwayMotion extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_15() throws Exception {
-        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 1) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 3) Activated')]", Armed_Away);
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_17() throws Exception {
-        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 2) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 4) Activated')]", Armed_Away);
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_20() throws Exception {
-        ArmAway_Activate_During_Delay(20, DLID_20, "//*[contains(text(), '(Sensor 3) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(20, DLID_20, "//*[contains(text(), '(Sensor 5) Activated')]", Armed_Away);
     }
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_25() throws Exception {
-        ArmAway_Activate_During_Delay(25, DLID_25, "//*[contains(text(), '(Sensor 4) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(25, DLID_25, "//*[contains(text(), '(Sensor 6) Activated')]", Armed_Away);
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_35() throws Exception {
-        ArmAway_Activate_During_Delay(35, DLID_35, "//*[contains(text(), '(Sensor 5) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(35, DLID_35, "//*[contains(text(), '(Sensor 7) Activated')]", Armed_Away);
     }
 
     @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringEntry_35() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Entry(35, DLID_35, "//*[contains(text(), 'Entry delay on sensor 5')]", Armed_Away);
+        ArmAway_Activate_After_Delay_Disarm_During_Entry(35, DLID_35, "//*[contains(text(), 'Entry delay on sensor 7')]", Armed_Away);
     }
 
     @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_15() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 1) Pending Alarm')]", Armed_Away);
+        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 3) Pending Alarm')]", Armed_Away);
         //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
         //history_verification("//*[contains(text(), '(Sensor 1) Alarm')]");
     }
 
     @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_35() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Dialer(35, 5, DLID_35, "//*[contains(text(), '(Sensor 5) Pending Alarm')]", Armed_Away);
+        ArmAway_Activate_After_Delay_Disarm_During_Dialer(35, 5, DLID_35, "//*[contains(text(), '(Sensor 7) Pending Alarm')]", Armed_Away);
         //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
         //history_verification("//*[contains(text(), '(Sensor 5) Alarm')]");
     }
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_15() throws Exception {
-        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 1) Tamper')]", Armed_Away);
+        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 3) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_17() throws Exception {
         //sensors.primary_call(DLID_17, close);
-        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 2) Tamper')]", Armed_Away);
+        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 4) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_20() throws Exception {
         //sensors.primary_call(DLID_20, close);
-        ArmAway_Tamper(20, 3, DLID_20, "//*[contains(text(), '(Sensor 3) Tamper')]", Armed_Away);
+        ArmAway_Tamper(20, 3, DLID_20, "//*[contains(text(), '(Sensor 5) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 11, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_25() throws Exception {
         //sensors.primary_call(DLID_25, close);
-        ArmAway_Tamper(25, 4, DLID_25, "//*[contains(text(), '(Sensor 4) Tamper')]", Armed_Away);
+        ArmAway_Tamper(25, 4, DLID_25, "//*[contains(text(), '(Sensor 6) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 12, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_35() throws Exception {
         //sensors.primary_call(DLID_35, close);
-        ArmAway_Tamper(35, 5, DLID_35, "//*[contains(text(), '(Sensor 5) Tamper')]", Armed_Away);
+        ArmAway_Tamper(35, 5, DLID_35, "//*[contains(text(), '(Sensor 7) Tamper')]", Armed_Away);
     }
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 5; i > 0; i--) {
+        for (int i = 3; i > 8; i++) {
             delete_from_primary(i);
         }
     }
