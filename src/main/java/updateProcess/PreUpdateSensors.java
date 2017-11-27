@@ -25,8 +25,6 @@ public class PreUpdateSensors extends Setup {
         SensorsActivity.init();
     }
 
-
-
     @BeforeTest
     public void setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
@@ -36,44 +34,44 @@ public class PreUpdateSensors extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         logger.info("Adding a list of sensors");
-        add_primary_call(1, 10, 6619296, 1); // 65 00 A0
-        add_primary_call(2, 12, 6619297, 1); // 65 00 A1
-        add_primary_call(3, 13, 6619298, 1); // 65 00 A2
-        add_primary_call(4, 14, 6619299, 1); // 65 00 A3
-        add_primary_call(5, 16, 6619300, 1); // 65 00 A4
-        add_primary_call(6, 8, 6619301, 1); // 65 00 A5
-        add_primary_call(7, 9, 6619302, 1); // 65 00 A6
-        add_primary_call(8, 25, 6619303, 1); // 65 00 A7
+        add_primary_call(3, 10, 6619296, 1); // 65 00 A0
+        add_primary_call(4, 12, 6619297, 1); // 65 00 A1
+        add_primary_call(5, 13, 6619298, 1); // 65 00 A2
+        add_primary_call(6, 14, 6619299, 1); // 65 00 A3
+        add_primary_call(7, 16, 6619300, 1); // 65 00 A4
+        add_primary_call(8, 8, 6619301, 1); // 65 00 A5
+        add_primary_call(9, 9, 6619302, 1); // 65 00 A6
+        add_primary_call(10, 25, 6619303, 1); // 65 00 A7
         Thread.sleep(1000);
-        add_primary_call(9, 15, 5570628, 2); // 55 00 44
-        add_primary_call(10, 17, 5570629, 2); // 55 00 45
-        add_primary_call(11, 20, 5570630, 2); // 55 00 46
-        add_primary_call(12, 25, 5570631, 2); // 55 00 47
-        add_primary_call(13, 35, 5570632, 2); // 55 00 48
+        add_primary_call(11, 15, 5570628, 2); // 55 00 44
+        add_primary_call(12, 17, 5570629, 2); // 55 00 45
+        add_primary_call(13, 20, 5570630, 2); // 55 00 46
+        add_primary_call(14, 25, 5570631, 2); // 55 00 47
+        add_primary_call(15, 35, 5570632, 2); // 55 00 48
         Thread.sleep(1000);
-        add_primary_call(14, 26, 6750242, 5); // 67 00 22
-        add_primary_call(15, 34, 7667882, 6); // 75 00 AA
-        add_primary_call(16, 13, 6750361, 19); // 67 00 99
-        add_primary_call(17, 17, 6750355, 19); // 67 00 93
+        add_primary_call(16, 26, 6750242, 5); // 67 00 22
+        add_primary_call(17, 34, 7667882, 6); // 75 00 AA
+        add_primary_call(18, 13, 6750361, 19); // 67 00 99
+        add_primary_call(19, 17, 6750355, 19); // 67 00 93
         Thread.sleep(1000);
-        add_primary_call(18, 10, 6488238, 16); // 63 00 AE
-        add_primary_call(19, 12, 6488239, 16); // 63 00 AF
-        add_primary_call(20, 25, 6488224, 16); // 63 00 A0
-        add_primary_call(21, 13, 6684828, 107); // 66 00 9C
-        add_primary_call(22, 17, 6684829, 107); // 66 00 9D
-        add_primary_call(23, 52, 7536801, 17); // 73 00 A1
+        add_primary_call(20, 10, 6488238, 16); // 63 00 AE
+        add_primary_call(21, 12, 6488239, 16); // 63 00 AF
+        add_primary_call(22, 25, 6488224, 16); // 63 00 A0
+        add_primary_call(23, 13, 6684828, 107); // 66 00 9C
+        add_primary_call(24, 17, 6684829, 107); // 66 00 9D
+        add_primary_call(25, 52, 7536801, 17); // 73 00 A1
         Thread.sleep(1000);
-        add_primary_call(24, 26, 7667810, 111); // 75 00 62
-        add_primary_call(25, 38, 7672224, 22); // 75 11 A0
-        add_primary_call(26, 1, 6619386, 102); // 65 00 FA
-        add_primary_call(27, 6, 6619387, 102); // 65 00 FB
-        add_primary_call(28, 4, 6619388, 102); // 65 00 FC
-        add_primary_call(29, 0, 8716538, 104); // 85 00 FA
-        add_primary_call(30, 2, 8716539, 104); // 85 00 FB
+        add_primary_call(26, 26, 7667810, 111); // 75 00 62
+        add_primary_call(27, 38, 7672224, 22); // 75 11 A0
+        add_primary_call(28, 1, 6619386, 102); // 65 00 FA
+        add_primary_call(29, 6, 6619387, 102); // 65 00 FB
+        add_primary_call(30, 4, 6619388, 102); // 65 00 FC
+        add_primary_call(31, 0, 8716538, 104); // 85 00 FA
+        add_primary_call(32, 2, 8716539, 104); // 85 00 FB
         Thread.sleep(1000);
-        add_primary_call(31, 25, 6405546, 109); // 61 BD AA
-        add_primary_call(32, 6, 6361649, 21); // 61 12 31
-        add_primary_call(33, 0, 6361650, 21); // 61 12 32
+        add_primary_call(33, 25, 6405546, 109); // 61 BD AA
+        add_primary_call(34, 6, 6361649, 21); // 61 12 31
+        add_primary_call(35, 0, 6361650, 21); // 61 12 32
     }
 
     public void open_close(String DLID) throws InterruptedException, IOException {
@@ -204,7 +202,7 @@ public class PreUpdateSensors extends Setup {
 
             logger.info("Activate medical pendant sensors");
             sensors.primary_call("61 12 13", "03 01");
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             emergency.Cancel_Emergency.click();
             enter_default_user_code();
             Thread.sleep(1000);

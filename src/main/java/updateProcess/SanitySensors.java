@@ -90,9 +90,9 @@ public class SanitySensors extends Setup {
         Thread.sleep(2000);
         log.log(LogStatus.INFO, "Adding sensors");
         add_primary_call(26, 26, 6750242, 5);
-        add_primary_call(1, 10, 6488238, 16);
-        add_primary_call(2, 12, 6488239, 16);
-        add_primary_call(3, 25, 6488224, 16);
+        add_primary_call(3, 10, 6488238, 16);
+        add_primary_call(4, 12, 6488239, 16);
+        add_primary_call(5, 25, 6488224, 16);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -351,14 +351,14 @@ public class SanitySensors extends Setup {
     public void ArmAway_Tamper_10() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Sensors.ArmAway_Tilt10_Tamper");
-        ArmAway_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 1 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 3 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 9)
     public void ArmAway_Tamper_12() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Sensors.ArmAway_Tilt12_Tamper");
-        ArmAway_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 2 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 4 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 10)
@@ -370,7 +370,7 @@ public class SanitySensors extends Setup {
                 .addSystemInfo("User Name", "Anya Dyshleva")
                 .addSystemInfo("Software Version", Software_Version());
         log = report.startTest("Sensors.ArmAway_Tilt25_Tamper");
-        ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 3 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 5 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @AfterMethod
@@ -389,7 +389,7 @@ public class SanitySensors extends Setup {
 
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
-        for (int i = 3; i > 0; i--) {
+        for (int i = 3; i > 6; i++) {
             delete_from_primary(i);
         }
         delete_from_primary(26);
