@@ -29,26 +29,24 @@ public class ArmedAwayContact extends Setup {
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "true";
-    String AccountID = adc.getAccountId();
-
     public ArmedAwayContact() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
-        servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
+        servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
-        servcall.set_NORMAL_EXIT_DELAY(ConfigProps.longEntryDelay);
+        servcall.set_NORMAL_EXIT_DELAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
-        servcall.set_LONG_ENTRY_DELAY(ConfigProps.longExitDelay);
+        servcall.set_LONG_ENTRY_DELAY(ConfigProps.longEntryDelay);
         Thread.sleep(1000);
-        servcall.set_LONG_EXIT_DELAY(ConfigProps.longEntryDelay);
+        servcall.set_LONG_EXIT_DELAY(ConfigProps.longExitDelay);
         servcall.set_AUTO_STAY(0);
         servcall.set_ARM_STAY_NO_DELAY_disable();
     }
@@ -61,8 +59,8 @@ public class ArmedAwayContact extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(1, 10, 6619296, 1);
-        add_primary_call(2, 12, 6619297, 1);
+        add_primary_call(11, 10, 6619296, 1);
+        add_primary_call(12, 12, 6619297, 1);
         add_primary_call(3, 13, 6619298, 1);
         add_primary_call(4, 14, 6619299, 1);
         add_primary_call(5, 16, 6619300, 1);
@@ -320,7 +318,7 @@ public class ArmedAwayContact extends Setup {
         logger.info("ArmAway Tamper Group " + group + " contact sensor");
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
-        logger.info("Open/Close a sensor");
+        logger.info("Trip a sensor");
         sensors.primary_call(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
         sensors.primary_call(DLID, SensorsActivity.CLOSE);
@@ -378,7 +376,7 @@ public class ArmedAwayContact extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 10; i > 0; i--) {
+        for (int i = 13; i > 2; i--) {
             delete_from_primary(i);
         }
     }

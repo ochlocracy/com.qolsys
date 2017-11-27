@@ -24,7 +24,6 @@ public class ArmedAwayMotion extends Setup {
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    private String close = "00 01";
     private String DLID_15 = "55 00 44";
     private String DLID_17 = "55 00 54";
     private String DLID_20 = "55 00 64";
@@ -33,9 +32,9 @@ public class ArmedAwayMotion extends Setup {
     private String Armed_Away = "//*[contains(text(), 'Armed Away')]";
 
     public ArmedAwayMotion() throws Exception {
-        ConfigProps.init();
         SensorsActivity.init();
-        /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
+        ConfigProps.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
         adc.setADCexecute("true");
     }
 
@@ -50,7 +49,7 @@ public class ArmedAwayMotion extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
-        sensors.primary_call(DLID, close);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -64,7 +63,7 @@ public class ArmedAwayMotion extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
-        sensors.primary_call(DLID, close);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -81,7 +80,7 @@ public class ArmedAwayMotion extends Setup {
         verify_in_alarm();
         Thread.sleep(2000);
         enter_default_user_code();
-        sensors.primary_call(DLID, close);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -92,7 +91,7 @@ public class ArmedAwayMotion extends Setup {
         verify_armaway();
         sensors.primary_call(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         if (group == 25)
             verify_armaway();
         else
@@ -126,11 +125,11 @@ public class ArmedAwayMotion extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(3, 15, 5570628, 2);
-        add_primary_call(4, 17, 5570629, 2);
-        add_primary_call(5, 20, 5570630, 2);
-        add_primary_call(6, 25, 5570631, 2);
-        add_primary_call(7, 35, 5570632, 2);
+        add_primary_call(1, 15, 5570628, 2);
+        add_primary_call(2, 17, 5570629, 2);
+        add_primary_call(3, 20, 5570630, 2);
+        add_primary_call(4, 25, 5570631, 2);
+        add_primary_call(5, 35, 5570632, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -141,81 +140,73 @@ public class ArmedAwayMotion extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_15() throws Exception {
-        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 3) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 1) Activated')]", Armed_Away);
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_17() throws Exception {
-        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 4) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 2) Activated')]", Armed_Away);
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_20() throws Exception {
-        ArmAway_Activate_During_Delay(20, DLID_20, "//*[contains(text(), '(Sensor 5) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(20, DLID_20, "//*[contains(text(), '(Sensor 3) Activated')]", Armed_Away);
     }
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_25() throws Exception {
-        ArmAway_Activate_During_Delay(25, DLID_25, "//*[contains(text(), '(Sensor 6) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(25, DLID_25, "//*[contains(text(), '(Sensor 4) Activated')]", Armed_Away);
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_35() throws Exception {
-        ArmAway_Activate_During_Delay(35, DLID_35, "//*[contains(text(), '(Sensor 7) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(35, DLID_35, "//*[contains(text(), '(Sensor 5) Activated')]", Armed_Away);
     }
 
     @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringEntry_35() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Entry(35, DLID_35, "//*[contains(text(), 'Entry delay on sensor 7')]", Armed_Away);
+        ArmAway_Activate_After_Delay_Disarm_During_Entry(35, DLID_35, "//*[contains(text(), 'Entry delay on sensor 5')]", Armed_Away);
     }
 
     @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_15() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 3) Pending Alarm')]", Armed_Away);
-        //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
-        //history_verification("//*[contains(text(), '(Sensor 1) Alarm')]");
+        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 1) Pending Alarm')]", Armed_Away);
     }
 
     @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_35() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Dialer(35, 5, DLID_35, "//*[contains(text(), '(Sensor 7) Pending Alarm')]", Armed_Away);
-        //adc.getDriver1().findElement(By.id("ctl00_phBody_butSearch")).click();
-        //history_verification("//*[contains(text(), '(Sensor 5) Alarm')]");
+        ArmAway_Activate_After_Delay_Disarm_During_Dialer(35, 5, DLID_35, "//*[contains(text(), '(Sensor 5) Pending Alarm')]", Armed_Away);
     }
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_15() throws Exception {
-        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 3) Tamper')]", Armed_Away);
+        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 1) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_17() throws Exception {
-        //sensors.primary_call(DLID_17, close);
-        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 4) Tamper')]", Armed_Away);
+        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 2) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_20() throws Exception {
-        //sensors.primary_call(DLID_20, close);
-        ArmAway_Tamper(20, 3, DLID_20, "//*[contains(text(), '(Sensor 5) Tamper')]", Armed_Away);
+        ArmAway_Tamper(20, 3, DLID_20, "//*[contains(text(), '(Sensor 3) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 11, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_25() throws Exception {
-        //sensors.primary_call(DLID_25, close);
-        ArmAway_Tamper(25, 4, DLID_25, "//*[contains(text(), '(Sensor 6) Tamper')]", Armed_Away);
+        ArmAway_Tamper(25, 4, DLID_25, "//*[contains(text(), '(Sensor 4) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 12, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_35() throws Exception {
-        //sensors.primary_call(DLID_35, close);
-        ArmAway_Tamper(35, 5, DLID_35, "//*[contains(text(), '(Sensor 7) Tamper')]", Armed_Away);
+        ArmAway_Tamper(35, 5, DLID_35, "//*[contains(text(), '(Sensor 5) Tamper')]", Armed_Away);
     }
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 3; i > 8; i++) {
+        for (int i = 5; i > 0; i--) {
             delete_from_primary(i);
         }
     }

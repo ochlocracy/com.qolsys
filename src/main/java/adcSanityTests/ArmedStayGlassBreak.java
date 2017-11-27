@@ -2,6 +2,7 @@ package adcSanityTests;
 
 import adc.ADC;
 import utils.ConfigProps;
+import utils.SensorsActivity;
 import utils.Setup;
 import sensors.Sensors;
 import org.apache.log4j.Logger;
@@ -13,7 +14,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class ArmedStay_GlassBreak extends Setup {
+public class ArmedStayGlassBreak extends Setup {
 
     String page_name = "Arm Stay mode";
     Logger logger = Logger.getLogger(page_name);
@@ -22,11 +23,10 @@ public class ArmedStay_GlassBreak extends Setup {
     String AccountID = adc.getAccountId();
 
     private int Normal_Exit_Delay = 35000;
-    private String active = "02 01";
-    private String tamper = "01 01";
-    private String restore = "04 01";
 
-    public ArmedStay_GlassBreak() throws Exception { ConfigProps.init();}
+    public ArmedStayGlassBreak() throws Exception {
+        ConfigProps.init();
+        SensorsActivity.init();}
 
     public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
@@ -39,10 +39,10 @@ public class ArmedStay_GlassBreak extends Setup {
         ARM_STAY();
         Thread.sleep(3000);
         logger.info("Trip glass break sensor " + group);
-        sensors.primary_call(DLID, active);
+        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(5000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         logger.info("Verify Alarm");
         verify_in_alarm();
@@ -76,10 +76,10 @@ public class ArmedStay_GlassBreak extends Setup {
         ARM_STAY();
         Thread.sleep(5000);
         logger.info("Trip glass break sensor " +group);
-        sensors.primary_call(DLID, active);
+        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(5000);
         logger.info("Restore Glass Break " +group);
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(Normal_Exit_Delay);
         logger.info("Disarm System");
         DISARM();
@@ -111,10 +111,10 @@ public class ArmedStay_GlassBreak extends Setup {
         ARM_STAY();
         Thread.sleep(Normal_Exit_Delay);
         logger.info("Tamper glass break sensor " + group);
-        sensors.primary_call(DLID, tamper);
+        sensors.primary_call(DLID, SensorsActivity.TAMPER);
         Thread.sleep(5000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(3000);
         logger.info("Verify Alarm");
         verify_in_alarm();
@@ -146,10 +146,10 @@ public class ArmedStay_GlassBreak extends Setup {
         ARM_STAY();
         Thread.sleep(Normal_Exit_Delay);
         logger.info("Tamper glass break sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primary_call(DLID, SensorsActivity.TAMPER);
         Thread.sleep(5000);
         logger.info("Restore Glass Break");
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(3000);
         logger.info("Disarm System");
         DISARM();
@@ -205,7 +205,7 @@ public class ArmedStay_GlassBreak extends Setup {
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
         adc.Request_equipment_list();
     }

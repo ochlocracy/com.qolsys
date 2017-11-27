@@ -18,7 +18,6 @@ public class ADC extends Setup {
 
     public ADC() throws Exception {
         ConfigProps.init();
-        SensorsActivity.init();
     }
 
     public String ADCexecute;

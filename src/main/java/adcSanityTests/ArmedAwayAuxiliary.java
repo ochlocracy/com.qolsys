@@ -3,10 +3,7 @@ package adcSanityTests;
 import adc.ADC;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.Emergency_Page;
 import panel.Home_Page;
@@ -18,8 +15,6 @@ import utils.Setup;
 import java.io.IOException;
 
 public class ArmedAwayAuxiliary extends Setup {
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "true";
     String page_name = "ADC Smoke Test: Auxiliary Arm Away";
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     Logger logger = Logger.getLogger(page_name);
@@ -29,6 +24,8 @@ public class ArmedAwayAuxiliary extends Setup {
 
     public ArmedAwayAuxiliary() throws Exception {
         ConfigProps.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest
