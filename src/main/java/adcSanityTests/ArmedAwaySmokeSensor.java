@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class ArmedAwaySmokeSensor extends Setup {
 
-    String page_name = "adc Smoke Test: Smoke Sensor Arm Away";
+    String page_name = "ADC Smoke Test: Smoke Sensor Arm Away";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
     ADC adc = new ADC();

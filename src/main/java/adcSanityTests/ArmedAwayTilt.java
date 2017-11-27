@@ -27,37 +27,14 @@ public class ArmedAwayTilt extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "false";
 
     public ArmedAwayTilt() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
-    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
-        String[] message = {string, string1};
-
-        if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
-            for (int i = 0; i < message.length; i++) {
-                try {
-                    WebElement history_message = adc.driver1.findElement(By.xpath(message[i]));
-                    Assert.assertTrue(history_message.isDisplayed());
-                    {
-                        System.out.println("Pass: message is displayed " + history_message.getText());
-                    }
-                } catch (Exception e) {
-                    System.out.println("***No such element found!***");
-                }
-            }
-        } else {
-            System.out.println("Set execute to TRUE to run adc verification part");
-        }
-        Thread.sleep(2000);
-    }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
@@ -110,7 +87,7 @@ public class ArmedAwayTilt extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
 
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(dependsOnMethods = {"addSensors"})
@@ -142,7 +119,7 @@ public class ArmedAwayTilt extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
 
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     public void ArmAway_Open_Close_sensor(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -161,7 +138,7 @@ public class ArmedAwayTilt extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
 
-        ADC_verification(element_to_verify, element_to_verify2);
+        adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 3)
@@ -194,7 +171,7 @@ public class ArmedAwayTilt extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
 
-        ADC_verification(element_to_verify, element_to_verify1);
+        adc.ADC_verification(element_to_verify, element_to_verify1);
     }
 
     public void ArmAway_Tamper_sensor(int group, String DLID, String element_to_verify, String element_to_verify1) throws Exception {
@@ -213,7 +190,7 @@ public class ArmedAwayTilt extends Setup {
         enter_default_user_code();
         Thread.sleep(2000);
 
-        ADC_verification(element_to_verify, element_to_verify1);
+        adc.ADC_verification(element_to_verify, element_to_verify1);
     }
 
     @Test(priority = 6)
