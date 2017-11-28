@@ -61,9 +61,9 @@ public class ArmedAwayTilt extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(1, 10, 6488238, 16);
-        add_primary_call(2, 12, 6488239, 16);
-        add_primary_call(3, 25, 6488224, 16);
+        add_primary_call(11, 10, 6488238, 16);
+        add_primary_call(12, 12, 6488239, 16);
+        add_primary_call(13, 25, 6488224, 16);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -195,23 +195,23 @@ public class ArmedAwayTilt extends Setup {
 
     @Test(priority = 6)
     public void ArmAway_Tamper_10() throws Exception {
-        ArmAway_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 1 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 11 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 7)
     public void ArmAway_Tamper_12() throws Exception {
-        ArmAway_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 2 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 12 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 8)
     public void ArmAway_Tamper_25() throws Exception {
-        ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 3 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 13 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 3; i > 0; i--) {
+        for (int i = 13; i > 10; i--) {
             delete_from_primary(i);
         }
     }

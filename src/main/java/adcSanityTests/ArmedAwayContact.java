@@ -113,42 +113,42 @@ public class ArmedAwayContact extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_10() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay(10, "65 00 0A", "//*[contains(text(), 'Door/Window 1 (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay(10, "65 00 0A", "//*[contains(text(), 'Door/Window 11 (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_12() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay(12, "65 00 1A", "//*[contains(text(), 'Door/Window 2 (Sensor 2) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay(12, "65 00 1A", "//*[contains(text(), 'Door/Window 12 (Sensor 12) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_13() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay_Alarm(13, "65 00 2A", "//*[contains(text(), 'Door/Window 3  (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay_Alarm(13, "65 00 2A", "//*[contains(text(), 'Door/Window 13  (Sensor 13) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_14() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay(14, "65 00 3A", "//*[contains(text(), 'Door/Window 4  (Sensor 4) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay(14, "65 00 3A", "//*[contains(text(), 'Door/Window 14  (Sensor 14) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_16() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay(16, "65 00 4A", "//*[contains(text(), 'Door/Window 5  (Sensor 5) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay(16, "65 00 4A", "//*[contains(text(), 'Door/Window 15  (Sensor 15) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_8() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay_Alarm(8, "65 00 5A", "//*[contains(text(), 'Door/Window 6')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay_Alarm(8, "65 00 5A", "//*[contains(text(), 'Door/Window 16')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_9() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay_Alarm(9, "65 00 6A", "//*[contains(text(), 'Delayed alarm on sensor 7 in partition 1')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay_Alarm(9, "65 00 6A", "//*[contains(text(), 'Delayed alarm on sensor 17 in partition 1')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_25() throws Exception {
-        ArmAway_Open_Close_during_Exit_Delay(25, "65 00 7A", "//*[contains(text(), 'Door/Window 8  (Sensor 8) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_during_Exit_Delay(25, "65 00 7A", "//*[contains(text(), 'Door/Window 18  (Sensor 18) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     /* ARM AWAY Open-Close sensors*/
@@ -191,27 +191,27 @@ public class ArmedAwayContact extends Setup {
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_10() throws Exception {
-        ArmAway_Open_Close(10, "65 00 0A", "//*[contains(text(), 'Door/Window 1  (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmAway_Open_Close(10, "65 00 0A", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 11 in partition 1')]");
     }
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_12() throws Exception {
-        ArmAway_Open_Close(12, "65 00 1A", "//*[contains(text(), 'Door/Window 2  (Sensor 2) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 2 in partition 2')]");
+        ArmAway_Open_Close(12, "65 00 1A", "//*[contains(text(), 'Door/Window 12  (Sensor 12) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 2')]");
     }
 
     @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_13() throws Exception {
-        ArmAway_Open_Close(13, "65 00 2A", "//*[contains(text(), 'Door/Window 3  (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close(13, "65 00 2A", "//*[contains(text(), 'Door/Window 13  (Sensor 13) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 11, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_14() throws Exception {
-        ArmAway_Open_Close(14, "65 00 3A", "//*[contains(text(), 'Door/Window 4  (Sensor 4) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close(14, "65 00 3A", "//*[contains(text(), 'Door/Window 14  (Sensor 14) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 12, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_16() throws Exception {
-        ArmAway_Open_Close(16, "65 00 4A", "//*[contains(text(), 'Door/Window 5  (Sensor 5) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close(16, "65 00 4A", "//*[contains(text(), 'Door/Window 15  (Sensor 15) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 13, retryAnalyzer = RetryAnalizer.class)
@@ -221,12 +221,12 @@ public class ArmedAwayContact extends Setup {
 
     @Test(priority = 14, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_9() throws Exception {
-        ArmAway_Open_Close(9, "65 00 6A", "//*[contains(text(), 'Entry delay on sensor 7')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close(9, "65 00 6A", "//*[contains(text(), 'Entry delay on sensor 17')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 15, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_25() throws Exception {
-        ArmAway_Open_Close_ArmAway(25, "65 00 7A", "//*[contains(text(), 'Door/Window 8  (Sensor 8) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_ArmAway(25, "65 00 7A", "//*[contains(text(), 'Door/Window 18  (Sensor 18) Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     /*** Contact + follower ***/
@@ -275,22 +275,22 @@ public class ArmedAwayContact extends Setup {
 
     @Test(priority = 16, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_10_follower_motion17() throws Exception {
-        ArmAway_Open_Close_Follower_Motion(10, 17, "65 00 0A", "55 00 44", "//*[contains(text(), 'Door/Window 1  (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close_Follower_Motion(10, 17, "65 00 0A", "55 00 44", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 17, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_10_follower_motion20() throws Exception {
-        ArmAway_Open_Close_Follower_Motion(10, 20, "65 00 0A", "55 00 54", "//*[contains(text(), 'Door/Window 1  (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmAway_Open_Close_Follower_Motion(10, 20, "65 00 0A", "55 00 54", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 18, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_10_follower_contact12() throws Exception {
-        ArmAway_Open_Close_Follower_Contact(10, 12, "65 00 0A", "65 00 1A", "//*[contains(text(), 'Door/Window 1  (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 2 in partition 1')]");
+        ArmAway_Open_Close_Follower_Contact(10, 12, "65 00 0A", "65 00 1A", "//*[contains(text(), 'Door/Window 12  (Sensor 12) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 1')]");
     }
 
     @Test(priority = 19, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_10_follower_contact14() throws Exception {
-        ArmAway_Open_Close_Follower_Contact(10, 14, "65 00 0A", "65 00 3A", "//*[contains(text(), 'Door/Window 1  (Sensor 1) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 4 in partition 1')]");
+        ArmAway_Open_Close_Follower_Contact(10, 14, "65 00 0A", "65 00 3A", "//*[contains(text(), 'Door/Window 11  (Sensor 11 Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 4 in partition 1')]");
     }
 
     /*** ARM AWAY Tamper sensors ***/
@@ -335,42 +335,42 @@ public class ArmedAwayContact extends Setup {
 
     @Test(priority = 20, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_10() throws Exception {
-        ArmAway_Tamper(10, "65 00 0A", "//*[contains(text(), 'Sensor 1 Tamper**')]", "//*[contains(text(), 'Sensor 1 End of tamper')]");
+        ArmAway_Tamper(10, "65 00 0A", "//*[contains(text(), 'Sensor 10 Tamper**')]", "//*[contains(text(), 'Sensor 10 End of tamper')]");
     }
 
     @Test(priority = 21, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_12() throws Exception {
-        ArmAway_Tamper(12, "65 00 1A", "//*[contains(text(), 'Sensor 2 Tamper**')]", "//*[contains(text(), 'Sensor 2 End of tamper')]");
+        ArmAway_Tamper(12, "65 00 1A", "//*[contains(text(), 'Sensor 12 Tamper**')]", "//*[contains(text(), 'Sensor 12 End of tamper')]");
     }
 
     @Test(priority = 22, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_13() throws Exception {
-        ArmAway_Tamper(13, "65 00 2A", "//*[contains(text(), 'Sensor 3 Tamper**')]", "//*[contains(text(), 'Sensor 3 End of tamper')]");
+        ArmAway_Tamper(13, "65 00 2A", "//*[contains(text(), 'Sensor 13 Tamper**')]", "//*[contains(text(), 'Sensor 13 End of tamper')]");
     }
 
     @Test(priority = 23, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_14() throws Exception {
-        ArmAway_Tamper(14, "65 00 3A", "//*[contains(text(), 'Sensor 4 Tamper**')]", "//*[contains(text(), 'Sensor 4 End of tamper')]");
+        ArmAway_Tamper(14, "65 00 3A", "//*[contains(text(), 'Sensor 14 Tamper**')]", "//*[contains(text(), 'Sensor 14 End of tamper')]");
     }
 
     @Test(priority = 24, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_16() throws Exception {
-        ArmAway_Tamper(16, "65 00 4A", "//*[contains(text(), 'Sensor 5 Tamper**')]", "//*[contains(text(), 'Sensor 5 End of tamper')]");
+        ArmAway_Tamper(16, "65 00 4A", "//*[contains(text(), 'Sensor 15 Tamper**')]", "//*[contains(text(), 'Sensor 15 End of tamper')]");
     }
 
     @Test(priority = 25, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_8() throws Exception {
-        ArmAway_Tamper(8, "65 00 5A", "//*[contains(text(), 'Sensor 6 Tamper**')]", "//*[contains(text(), 'Sensor 6 End of tamper')]");
+        ArmAway_Tamper(8, "65 00 5A", "//*[contains(text(), 'Sensor 16 Tamper**')]", "//*[contains(text(), 'Sensor 16 End of tamper')]");
     }
 
     @Test(priority = 26, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_9() throws Exception {
-        ArmAway_Tamper(9, "65 00 6A", "//*[contains(text(), 'Sensor 7 Tamper**')]", "//*[contains(text(), 'Sensor 7 End of tamper')]");
+        ArmAway_Tamper(9, "65 00 6A", "//*[contains(text(), 'Sensor 17 Tamper**')]", "//*[contains(text(), 'Sensor 17 End of tamper')]");
     }
 
     @Test(priority = 27, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_Tamper_25() throws Exception {
-        ArmAway_Tamper_ArmAway(25, "65 00 7A", "//*[contains(text(), 'Sensor 8 Tamper**')]", "//*[contains(text(), 'Sensor 8 End of tamper')]");
+        ArmAway_Tamper_ArmAway(25, "65 00 7A", "//*[contains(text(), 'Sensor 18 Tamper**')]", "//*[contains(text(), 'Sensor 18 End of tamper')]");
     }
 
     @AfterTest

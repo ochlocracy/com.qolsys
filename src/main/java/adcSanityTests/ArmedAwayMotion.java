@@ -125,8 +125,8 @@ public class ArmedAwayMotion extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(1, 15, 5570628, 2);
-        add_primary_call(2, 17, 5570629, 2);
+        add_primary_call(11, 15, 5570628, 2);
+        add_primary_call(12, 17, 5570629, 2);
         add_primary_call(3, 20, 5570630, 2);
         add_primary_call(4, 25, 5570631, 2);
         add_primary_call(5, 35, 5570632, 2);
@@ -140,12 +140,12 @@ public class ArmedAwayMotion extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_15() throws Exception {
-        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 1) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(15, DLID_15, "//*[contains(text(), '(Sensor 11) Activated')]", Armed_Away);
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayDelay_17() throws Exception {
-        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 2) Activated')]", Armed_Away);
+        ArmAway_Activate_During_Delay(17, DLID_17, "//*[contains(text(), '(Sensor 12) Activated')]", Armed_Away);
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
@@ -170,7 +170,7 @@ public class ArmedAwayMotion extends Setup {
 
     @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayAfterDelayDisarmDuringDialer_15() throws Exception {
-        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 1) Pending Alarm')]", Armed_Away);
+        ArmAway_Activate_After_Delay_Disarm_During_Dialer(15, 1, DLID_15, "//*[contains(text(), '(Sensor 11) Pending Alarm')]", Armed_Away);
     }
 
     @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
@@ -180,12 +180,12 @@ public class ArmedAwayMotion extends Setup {
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_15() throws Exception {
-        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 1) Tamper')]", Armed_Away);
+        ArmAway_Tamper(15, 1, DLID_15, "//*[contains(text(), ' (Sensor 11) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayTamperAfterDelay_17() throws Exception {
-        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 2) Tamper')]", Armed_Away);
+        ArmAway_Tamper(17, 2, DLID_17, "//*[contains(text(), '(Sensor 12) Tamper')]", Armed_Away);
     }
 
     @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
@@ -206,7 +206,7 @@ public class ArmedAwayMotion extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 5; i > 0; i--) {
+        for (int i = 12; i > 2; i--) {
             delete_from_primary(i);
         }
     }
