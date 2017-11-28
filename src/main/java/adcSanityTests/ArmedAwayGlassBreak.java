@@ -186,8 +186,8 @@ public class ArmedAwayGlassBreak extends Setup {
     public void addGlassBreakSensor() throws IOException, InterruptedException {
         logger.info("Addig sensors");
         Thread.sleep(2000);
-        add_primary_call(1, 13, 6750361, 19);
-        add_primary_call(2, 17, 6750355, 19);
+        add_primary_call(11, 13, 6750361, 19);
+        add_primary_call(12, 17, 6750355, 19);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -198,7 +198,7 @@ public class ArmedAwayGlassBreak extends Setup {
 
     @Test(dependsOnMethods = {"addGlassBreakSensor"})
     public void ArmsAwayExitDelay_13() throws Exception {
-        ArmsAway_Trigger_Sensor_During_Exit_Delay_Alarm(13, "67 00 99", "//*[contains(text(), 'Glass Break 1 (Sensor 1) Pending Alarm')]", "//*[contains(text(), 'Glass Break 1 (Sensor 1) Alarm')]");
+        ArmsAway_Trigger_Sensor_During_Exit_Delay_Alarm(13, "67 00 99", "//*[contains(text(), 'Glass Break 11 (Sensor 11) Pending Alarm')]", "//*[contains(text(), 'Glass Break 11 (Sensor 11) Alarm')]");
     }
 
     @Test(priority = 1, dependsOnMethods = {"addGlassBreakSensor"})
@@ -219,7 +219,7 @@ public class ArmedAwayGlassBreak extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 2; i > 0; i--) {
+        for (int i = 12; i > 10; i--) {
             delete_from_primary(i);
         }
     }

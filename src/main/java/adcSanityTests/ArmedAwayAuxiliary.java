@@ -32,6 +32,8 @@ public class ArmedAwayAuxiliary extends Setup {
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
+        servcall.set_SIA_LIMITS_disable();
+        Thread.sleep(2000);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalEntryDelay);
@@ -140,10 +142,9 @@ public class ArmedAwayAuxiliary extends Setup {
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_0() throws Exception {
         ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), '(Sensor 44) Police Panic')]");
-        for (int i = 42; i < 51; i++) {
-            System.out.println(i);
-            delete_from_primary(i);
-        }}
+            for (int i = 50; i > 42; i--) {
+                delete_from_primary(i);
+            }}
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {

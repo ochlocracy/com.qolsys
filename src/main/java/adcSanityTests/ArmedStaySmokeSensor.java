@@ -4,6 +4,7 @@ import adc.ADC;
 import utils.ConfigProps;
 import panel.Emergency_Page;
 import panel.Home_Page;
+import utils.SensorsActivity;
 import utils.Setup;
 import sensors.Sensors;
 import org.apache.log4j.Logger;
@@ -19,30 +20,18 @@ import java.io.IOException;
 /**
  * Created by qolsys on 7/27/17. Edited 7/27/17 by Jeff Maus
  */
-public class ArmedStay_SmokeSensor extends Setup{
+public class ArmedStaySmokeSensor extends Setup{
     // PRECONDITIONS: Disable SIA limits, set Entry-Exit Delay time to 30, 31, 32, 33 sec; Disable ArmStay No-Delay setting
 
-    public ArmedStay_SmokeSensor() throws Exception { ConfigProps.init();}
+    public ArmedStaySmokeSensor() throws Exception { ConfigProps.init();
+
+        SensorsActivity.init();}
 
     String page_name = "adc Smoke Test: Smoke Sensor Arm Stay";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     String AccountID = adc.getAccountId();
-
-    private String activate = "02 01";
-    private String restore = "00 01";
-    private String tamper = "01 01";
-
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);}
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
@@ -64,7 +53,7 @@ public class ArmedStay_SmokeSensor extends Setup{
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
         adc.Request_equipment_list();
 
@@ -75,9 +64,9 @@ public class ArmedStay_SmokeSensor extends Setup{
         ARM_STAY();
         Thread.sleep(5000);
         logger.info("Activate/Restore a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
@@ -116,12 +105,12 @@ public class ArmedStay_SmokeSensor extends Setup{
         Thread.sleep(33000);
         verify_armstay();
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primary_call(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
         verify_armstay();
         element_verification(home.Tamper_Status, "Tampered");
         Thread.sleep(5000);
-        sensors.primary_call(DLID, restore);
+        sensors.primary_call(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(15000);
@@ -161,9 +150,7 @@ public class ArmedStay_SmokeSensor extends Setup{
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i= 26; i>0; i--) {
-            delete_from_primary(i);
-        }
+        delete_from_primary(26);
     }
     @AfterMethod
     public void webDriverQuit(){

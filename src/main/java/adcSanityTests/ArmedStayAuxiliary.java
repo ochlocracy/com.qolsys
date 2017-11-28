@@ -31,32 +31,10 @@ public class ArmedStayAuxiliary extends Setup {
     ADC adc = new ADC();
 
     public ArmedStayAuxiliary() throws Exception {
-        ConfigProps.init();
         SensorsActivity.init();
-    }
-
-    public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
-        String[] message = {string, string1};
-
-        if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
-            adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
-            for (int i = 0; i < message.length; i++) {
-                try {
-                    WebElement history_message = adc.driver1.findElement(By.xpath(message[i]));
-                    Assert.assertTrue(history_message.isDisplayed());
-                    {
-                        System.out.println("Pass: message is displayed " + history_message.getText());
-                    }
-                } catch (Exception e) {
-                    System.out.println("***No such element found!***");
-                }
-            }
-        } else {
-            System.out.println("Set execute to TRUE to run adc verification part");
-        }
-        Thread.sleep(2000);
+        ConfigProps.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest
@@ -82,11 +60,11 @@ public class ArmedStayAuxiliary extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(1, 6, 6361649, 21);
-        add_primary_call(2, 0, 6361650, 21);
-        add_primary_call(3, 1, 6361652, 21);
-        add_primary_call(4, 2, 6361653, 21);
-        add_primary_call(5, 4, 6361654, 21);
+        add_primary_call(11, 6, 6361649, 21);
+        add_primary_call(12, 0, 6361650, 21);
+        add_primary_call(13, 1, 6361652, 21);
+        add_primary_call(14, 2, 6361653, 21);
+        add_primary_call(15, 4, 6361654, 21);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -106,7 +84,7 @@ public class ArmedStayAuxiliary extends Setup {
         DISARM();
         Thread.sleep(15000);
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     public void ArmStay_Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
@@ -123,7 +101,7 @@ public class ArmedStayAuxiliary extends Setup {
         emg.Cancel_Emergency.click();
         enter_default_user_code();
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     public void ArmStay_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
@@ -140,38 +118,38 @@ public class ArmedStayAuxiliary extends Setup {
         emg.Cancel_Emergency.click();
         enter_default_user_code();
         // adc website verification
-        ADC_verification(element_to_verify1, element_to_verify2);
+        adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_2() throws Exception {
-        ArmStay_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 49) Silent Police Panic')]", "//*[contains(text(), 'Sensor 49 Alarm')]");
+        ArmStay_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 14) Police Panic')]", "//*[contains(text(), 'Sensor 14 Alarm')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_4() throws Exception {
-        ArmStay_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 50) Pending Alarm')]", "//*[contains(text(), 'Sensor 50 Alarm')]");
+        ArmStay_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 15) Pending Alarm')]", "//*[contains(text(), 'Sensor 15 Alarm')]");
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_6() throws Exception {
-        ArmStay_Activate_Medical_Sensor(6, "61 12 13", "//*[contains(text(), '(Sensor 43) Pending Alarm')]", "//*[contains(text(), 'Sensor 43 Alarm')]");
+        ArmStay_Activate_Medical_Sensor(6, "61 12 13", "//*[contains(text(), '(Sensor 11) Pending Alarm')]", "//*[contains(text(), 'Sensor 11 Alarm')]");
     }
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_1() throws Exception {
-        ArmStay_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 48) Pending Alarm')]", "//*[contains(text(), '(Sensor 48) Police Panic')]");
+        ArmStay_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 13) Pending Alarm')]", "//*[contains(text(), '(Sensor 13) Police Panic')]");
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_0() throws Exception {
-        ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), '(Sensor 44) Police Panic')]");
+        ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 12) Pending Alarm')]", "//*[contains(text(), '(Sensor 12) Police Panic')]");
     }
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 50; i > 0; i--) {
+        for (int i = 15; i > 10; i--) {
             delete_from_primary(i);
         }
     }

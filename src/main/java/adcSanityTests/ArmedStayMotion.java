@@ -16,7 +16,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class ArmedStay_Motion extends Setup{
+public class ArmedStayMotion extends Setup{
 
     String page_name = "Arm Stay mode motion sensor testing";
     Logger logger = Logger.getLogger(page_name);
@@ -27,8 +27,9 @@ public class ArmedStay_Motion extends Setup{
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
     String ADCexecute = "true";
 
-    public ArmedStay_Motion() throws Exception {
+    public ArmedStayMotion() throws Exception {
         ConfigProps.init();
+        adc.setADCexecute("true");
         SensorsActivity.init();}
 
     private String DLID_15 = "55 00 44";
@@ -148,11 +149,11 @@ public class ArmedStay_Motion extends Setup{
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(1, 15, 5570628, 2);
-        add_primary_call(2, 17, 5570629, 2);
-        add_primary_call(3, 20, 5570630, 2);
-        add_primary_call(4, 25, 5570631, 2);
-        add_primary_call(5, 35, 5570632, 2);
+        add_primary_call(11, 15, 5570628, 2);
+        add_primary_call(12, 17, 5570629, 2);
+        add_primary_call(13, 20, 5570630, 2);
+        add_primary_call(14, 25, 5570631, 2);
+        add_primary_call(15, 35, 5570632, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -217,7 +218,7 @@ public class ArmedStay_Motion extends Setup{
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i= 5; i>0; i--) {
+        for (int i= 15; i>10; i--) {
             delete_from_primary(i);
         }
     }
