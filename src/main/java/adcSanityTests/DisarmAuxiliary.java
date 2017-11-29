@@ -15,8 +15,6 @@ import utils.Setup;
 import java.io.IOException;
 
 public class DisarmAuxiliary extends Setup {
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "true";
     String page_name = "ADC Smoke Test: Auxiliary in Disarm";
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     Logger logger = Logger.getLogger(page_name);
@@ -27,6 +25,8 @@ public class DisarmAuxiliary extends Setup {
     public DisarmAuxiliary() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest

@@ -529,7 +529,7 @@ public class SanityUpdate extends Setup {
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 3; i > 36; i++) {
+        for (int i = 3; i < 36; i++) {
             delete_from_primary(i);
         }
     }

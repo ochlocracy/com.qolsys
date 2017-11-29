@@ -390,7 +390,7 @@ public class SanitySettings extends Setup {
         Home_Page home = PageFactory.initElements(driver, Home_Page.class);
         System.out.println("Adding sensors...");
         serv.set_ARM_STAY_NO_DELAY_enable();
-        sensors.add_primary_call(1, 10, 6619296, 1);
+        sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         System.out.println("Verify that Auto Bypass works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Bypass works when enabled");
@@ -464,7 +464,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 
@@ -487,7 +487,7 @@ public class SanitySettings extends Setup {
         System.out.println("Verify that Auto Exit Time Extension works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Exit Time Extension works when enabled");
         System.out.println("Adding sensors...");
-        sensors.add_primary_call(1, 10, 6619296, 1);
+        sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         ARM_AWAY(3);
         sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
@@ -553,7 +553,7 @@ public class SanitySettings extends Setup {
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 
@@ -568,7 +568,7 @@ public class SanitySettings extends Setup {
         Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
         Home_Page home = PageFactory.initElements(driver, Home_Page.class);
         System.out.println("Adding sensors...");
-        sensors.add_primary_call(1, 10, 6619296, 1);
+        sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         System.out.println("Verify that Auto Stay works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Stay works when enabled");
@@ -605,7 +605,7 @@ public class SanitySettings extends Setup {
         arming.Auto_Stay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 
@@ -908,7 +908,7 @@ public class SanitySettings extends Setup {
         Home_Page home = PageFactory.initElements(driver, Home_Page.class);
         Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
         System.out.println("Adding sensors...");
-        sensors.add_primary_call(1, 4, 6619386, 102);
+        sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
         System.out.println("Verify that Keyfod Alarm Disarm does not work when disabled");
         log.log(LogStatus.INFO, "Verify that Keyfod Alarm Disarm does not work when disabled");
@@ -960,7 +960,7 @@ public class SanitySettings extends Setup {
         arming.Keyfob_Alarm_Disarm.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 
@@ -978,7 +978,7 @@ public class SanitySettings extends Setup {
         PanelInfo_ServiceCalls service = PageFactory.initElements(driver, PanelInfo_ServiceCalls.class);
         System.out.println("Adding sensors...");
         service.set_AUTO_STAY(00);
-        sensors.add_primary_call(1, 4, 6619386, 102);
+        sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
         System.out.println("Verify that Keyfob Disarming works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Disarming works when enabled");
@@ -1038,7 +1038,7 @@ public class SanitySettings extends Setup {
         swipe_vertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         settings.Home_button.click();
         service.set_AUTO_STAY(01);
         Thread.sleep(2000);
@@ -1059,7 +1059,7 @@ public class SanitySettings extends Setup {
         System.out.println("Verify that Keyfob Instant Arming works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Instant Arming works when enabled");
         System.out.println("Adding sensors...");
-        sensors.add_primary_call(1, 4, 6619386, 102);
+        sensors.add_primary_call(3, 4, 6619386, 102);
         System.out.println("Arm Stay the system");
         Thread.sleep(3000);
         sensors.primary_call("65 00 AF", armstay);
@@ -1136,7 +1136,7 @@ public class SanitySettings extends Setup {
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 

@@ -7,6 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.Home_Page;
+import panel.PanelInfo_ServiceCalls;
 import panel.User_Management_Page;
 import utils.Setup;
 
@@ -17,6 +18,7 @@ public class PreUpdateUserManagement extends Setup {
 
     String page_name = "PreUpdate User Management set up";
     Logger logger = Logger.getLogger(page_name);
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
     public PreUpdateUserManagement() throws Exception {}
 
@@ -48,6 +50,7 @@ public class PreUpdateUserManagement extends Setup {
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
+        servcall.set_ARM_STAY_NO_DELAY_enable();
     }
 
     @Test
