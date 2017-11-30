@@ -3,9 +3,6 @@ package adcSanityTests;
 import adc.ADC;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
@@ -77,13 +74,12 @@ public class Water extends Setup {
         Thread.sleep(5000);
         enter_default_user_code();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(dependsOnMethods = {"addSensors"})
     public void ArmStayExitDelay_38() throws Exception {
-        ArmStay_Activate_sensor_during_Exit_Delay(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmStay_Activate_sensor_during_Exit_Delay(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     public void ArmStay_Activate_sensor_Alarm(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -99,13 +95,12 @@ public class Water extends Setup {
         Thread.sleep(5000);
         enter_default_user_code();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 2)
     public void ArmStay_38() throws Exception {
-        ArmStay_Activate_sensor_Alarm(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmStay_Activate_sensor_Alarm(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     /*** Tamper sensor ***/
@@ -122,13 +117,12 @@ public class Water extends Setup {
         Thread.sleep(5000);
         DISARM();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 3)
     public void ArmStayTamper_38() throws Exception {
-        ArmStay_Tamper_sensor(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmStay_Tamper_sensor(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     /*** ARM AWAY ***/
@@ -143,13 +137,12 @@ public class Water extends Setup {
         Thread.sleep(5000);
         enter_default_user_code();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 4)
     public void ArmAwayExitDelay_38() throws Exception {
-        ArmAway_Activate_sensor_during_Exit_Delay(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmAway_Activate_sensor_during_Exit_Delay(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     public void ArmAway_Activate_sensor_Alarm(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -164,13 +157,12 @@ public class Water extends Setup {
         Thread.sleep(5000);
         enter_default_user_code();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 5)
     public void ArmAway_38() throws Exception {
-        ArmAway_Activate_sensor_Alarm(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmAway_Activate_sensor_Alarm(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     public void ArmAway_Tamper_sensor(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -184,13 +176,12 @@ public class Water extends Setup {
         verify_in_alarm();
         enter_default_user_code();
         Thread.sleep(2000);
-
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
 
     @Test(priority = 6)
     public void ArmAwayTamper_38() throws Exception {
-        ArmAway_Tamper_sensor(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 1')]", "//*[contains(text(), 'Delayed alarm on sensor 1 in partition 1')]");
+        ArmAway_Tamper_sensor(38, "75 11 0A", "//*[contains(text(), 'Multi-Function-1 3')]", "//*[contains(text(), 'Delayed alarm on sensor 3 in partition 1')]");
     }
 
     @AfterTest

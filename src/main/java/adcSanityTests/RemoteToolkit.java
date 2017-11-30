@@ -1,8 +1,6 @@
 package adcSanityTests;
 
 import adc.ADC;
-import panel.PanelInfo_ServiceCalls;
-import utils.Setup;
 import jxl.read.biff.BiffException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,11 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import panel.PanelInfo_ServiceCalls;
+import utils.Setup;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class Remote_Toolkit extends Setup {
+public class RemoteToolkit extends Setup {
 
     String page_name = "Remote Toolkit";
     Logger logger = Logger.getLogger(page_name);
@@ -27,7 +27,7 @@ public class Remote_Toolkit extends Setup {
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
     String ADCexecute = "true";
 
-    public Remote_Toolkit() throws Exception {
+    public RemoteToolkit() throws Exception {
     }
 
     public void New_ADC_session(String accountID) throws InterruptedException {
@@ -93,7 +93,7 @@ public class Remote_Toolkit extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =1)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 1)
     public void Remote_Advanced_Panel_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -160,7 +160,7 @@ public class Remote_Toolkit extends Setup {
 
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =2)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 2)
     public void Remote_Alarm_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -273,7 +273,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("*Remote_Alarm_Settings Test Suite finished*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =3)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 3)
     public void Remote_Arming_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -377,7 +377,7 @@ public class Remote_Toolkit extends Setup {
 
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =4)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 4)
     public void Remote_Beeps_and_Speaker_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -794,7 +794,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("*Remote_Beeps_and_Speaker_Settings Test Suite finished*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =5)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 5)
     public void Remote_Broadband_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -836,27 +836,27 @@ public class Remote_Toolkit extends Setup {
         logger.info("Wi-Fi Test name change finish");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =6)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 6)
     public void Remote_Communication_Settings() throws InterruptedException, IOException, BiffException {
-            Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
+        Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
-            logger.info("Dual_Path_Communication_settings Test DualPath/Cell begin");
-            remote.Communication_Dropdown.click();
-            remote.Dual_Path_Communication_settings.click();
-            DualPathSelectTextDropdown("Cell");
-            remote.Dual_Path_Send_Command.click();
-            Thread.sleep(2000);
-            remote.Communication_Dropdown.click();
-            remote.Dual_Path_Communication_settings.click();
-            DualPathSelectTextDropdown("Dual-Path");
-            remote.Dual_Path_Send_Command.click();
-            Thread.sleep(2000);
-            logger.info("Dual_Path_Communication_settings Test DualPath/Cell finish");
+        logger.info("Dual_Path_Communication_settings Test DualPath/Cell begin");
+        remote.Communication_Dropdown.click();
+        remote.Dual_Path_Communication_settings.click();
+        DualPathSelectTextDropdown("Cell");
+        remote.Dual_Path_Send_Command.click();
+        Thread.sleep(2000);
+        remote.Communication_Dropdown.click();
+        remote.Dual_Path_Communication_settings.click();
+        DualPathSelectTextDropdown("Dual-Path");
+        remote.Dual_Path_Send_Command.click();
+        Thread.sleep(2000);
+        logger.info("Dual_Path_Communication_settings Test DualPath/Cell finish");
 
-            logger.info("*Communication_Settings Test Suite finish*");
+        logger.info("*Communication_Settings Test Suite finish*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =7)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 7)
     public void Remote_Date_And_Time_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -875,7 +875,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("*Date_And_Time_Settings Test Suite finish*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =8)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 8)
     public void Remote_General_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -962,7 +962,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("*General_Settings Test Suite finish*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =9)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 9)
     public void Remote_Image_Sensor_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1017,7 +1017,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("*Image Sensor settings Test Suite finish*");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =10)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 10)
     public void Remote_Keypad_And_Screen_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1176,7 +1176,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("Keypad_And_Screen_Settings Test Suite Finished");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =11)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 11)
     public void Remote_Panel_Information() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1222,7 +1222,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("Remote_Panel_Information Test suite finished");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =12)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 12)
     public void Remote_Sensors() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1244,7 +1244,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("Remote_Sensors Test suite finished");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =13)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 13)
     public void Remote_Timers() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1351,7 +1351,7 @@ public class Remote_Toolkit extends Setup {
 
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =14)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 14)
     public void Remote_Trouble_Condition_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1414,7 +1414,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("Remote_Trouble_Condition_Settings Test suite finished");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =15)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 15)
     public void Remote_User_Codes_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1520,7 +1520,7 @@ public class Remote_Toolkit extends Setup {
         logger.info("Remote_User_Codes_Settings Test suite finished");
     }
 
-    @Test (dependsOnMethods = {"GetToRemoteKitPage"}, priority =16)
+    @Test(dependsOnMethods = {"GetToRemoteKitPage"}, priority = 16)
     public void Remote_Z_Wave_Settings() throws InterruptedException, IOException, BiffException {
         Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
 
@@ -1677,13 +1677,14 @@ public class Remote_Toolkit extends Setup {
     }
 
 
-        @AfterTest
+    @AfterTest
     public void tearDown() throws IOException, InterruptedException {
-            adc.driver1.quit();}
+        adc.driver1.quit();
+    }
 
 
     @AfterMethod
-    public void webDriverQuit(){
+    public void webDriverQuit() {
         adc.driver1.quit();
     }
 }
