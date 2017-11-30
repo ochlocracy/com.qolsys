@@ -1,22 +1,21 @@
 package iqRemote;
 
 
-import utils.ConfigProps;
-import panel.Panel_Camera_Page;
-import utils.Setup;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import panel.Panel_Camera_Page;
+import utils.ConfigProps;
+import utils.Setup;
 
-public class DisarmPhotos extends  Setup_Remote {
-
-    public DisarmPhotos() throws Exception {
-        ConfigProps.init();
-    }
+public class DisarmPhotos extends SetupRemote {
 
     EventContains EventContaints = new EventContains();
     Setup setup = new Setup();
     String logcat = "/home/qolsys/IdeaProjects/comqolsys2017/log/test.txt";
+    public DisarmPhotos() throws Exception {
+        ConfigProps.init();
+    }
 
     @BeforeMethod
     public void Setup() throws Exception {
@@ -26,7 +25,6 @@ public class DisarmPhotos extends  Setup_Remote {
 
     @Test
     public void Delete_All_Photos() throws Exception {
-
         System.out.println("Delete_All_Photos Begin");
         Thread.sleep(3000);
 
@@ -34,17 +32,18 @@ public class DisarmPhotos extends  Setup_Remote {
         swipeFromLefttoRight(); //check
         Thread.sleep(3000);
         try {
-            while (camera.Photo_lable.isDisplayed()){
+            while (camera.Photo_lable.isDisplayed()) {
                 camera.Camera_delete.click();
                 camera.Camera_delete_yes.click();
-                enter_default_user_code();}
-        }catch (Exception e) {
+                enter_default_user_code();
+            }
+        } catch (Exception e) {
             System.out.println("No photos left to delete...");
         } finally {
         }
         swipeFromRighttoLeft();
         Thread.sleep(3000);
-        rt.exec( ConfigProps.adbPath + " ls -l /storage/sdcard0/DisarmPhotos | busybox1.11  wc -l");
+        rt.exec(ConfigProps.adbPath + " ls -l /storage/sdcard0/DisarmPhotos | busybox1.11  wc -l");
     }
 
     @Test
@@ -52,7 +51,7 @@ public class DisarmPhotos extends  Setup_Remote {
         System.out.println("Add_All_Photos Begin");
 
     }
-    }
+}
 //check qtms for testing rules examples
 
 //precondition; delete all photos
@@ -68,8 +67,6 @@ public class DisarmPhotos extends  Setup_Remote {
 //run test. then wait for remote to disconnect and connect again.
 
 //verify on remote
-
-
 
 
 //eventually

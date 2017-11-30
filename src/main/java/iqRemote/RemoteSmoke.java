@@ -1,9 +1,5 @@
 package iqRemote;
 
-import utils.ConfigProps;
-import panel.Emergency_Page;
-import panel.Home_Page;
-import utils.Setup;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,28 +7,30 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import panel.Emergency_Page;
+import panel.Home_Page;
+import utils.ConfigProps;
+import utils.Setup;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-
-public class Remote_Smoke extends Setup {
-
-    public Remote_Smoke() throws Exception {
-        ConfigProps.init();}
+public class RemoteSmoke extends Setup {
 
     public Runtime rt = Runtime.getRuntime();
-
     SimpleDateFormat time_formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
     String currentTime = time_formatter.format(System.currentTimeMillis());
+    public RemoteSmoke() throws Exception {
+        ConfigProps.init();
+    }
 
     public void AppiumStart() throws IOException, InterruptedException {
-     rt.exec(ConfigProps.adbPath + " /usr/local/bin/appium");
+        rt.exec(ConfigProps.adbPath + " /usr/local/bin/appium");
         System.out.println("Appium session is started successfully");
         Thread.sleep(4000);
     }
 
-    public void setSliderValue ( WebElement elem, int intToSlideValue) {
+    public void setSliderValue(WebElement elem, int intToSlideValue) {
         WebElement slider = elem;
         int startX = slider.getLocation().getX();
         int yAxis = slider.getLocation().getY();
@@ -43,29 +41,25 @@ public class Remote_Smoke extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");}
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+    }
 
     @Test
-    public void Test1 () throws Exception {
-
+    public void Test1() throws Exception {
         swipeFromRighttoLeft();
         Thread.sleep(3000);
         WebElement slider = driver.findElement(By.id("com.qolsys:id/dimmer_seek_bar"));
         int sliderSize = slider.getSize().getHeight();
-        setSliderValue(slider,(int)(sliderSize *0.5));
+        setSliderValue(slider, (int) (sliderSize * 0.5));
         Thread.sleep(3000);
     }
 
     @Test
     public void TestMain() throws Exception {
         /*** PANEL ARMING ***/
-
         Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
-
         rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
-
-        for (int i =1000; i>0; i--) {
+        for (int i = 1000; i > 0; i--) {
             ARM_STAY();
             Thread.sleep(5000);
             DISARM();
@@ -77,9 +71,7 @@ public class Remote_Smoke extends Setup {
             Thread.sleep(5000);
 
             /*** EMERGENCY ***/
-
             Emergency_Page emergency_page = PageFactory.initElements(driver, Emergency_Page.class);
-
             emergency_page.Emergency_Button.click();
             Thread.sleep(2000);
             emergency_page.Police_icon.click();
@@ -104,13 +96,10 @@ public class Remote_Smoke extends Setup {
             enter_default_user_code();
             Thread.sleep(5000);
         }
-
     }
 
     @AfterClass
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         driver.quit();
     }
 }
-
-

@@ -15,17 +15,12 @@ public class ElementsList {
     public WebElement ArmStay;
     @FindBy(id = "com.qolsys:id/img_arm_away")
     public WebElement ArmAway;
-    @FindBy(id="com.qolsys:id/tv_keyOne")
+    @FindBy(id = "com.qolsys:id/tv_keyOne")
     public WebElement One;
-    @FindBy(id="com.qolsys:id/tv_keyTwo")
+    @FindBy(id = "com.qolsys:id/tv_keyTwo")
     public WebElement Two;
-    @FindBy(id="com.qolsys:id/tv_keyThree")
+    @FindBy(id = "com.qolsys:id/tv_keyThree")
     public WebElement Three;
-    @FindBy(id="com.qolsys:id/tv_keyFour")
+    @FindBy(id = "com.qolsys:id/tv_keyFour")
     public WebElement Four;
-
-
-
-
-
 }
