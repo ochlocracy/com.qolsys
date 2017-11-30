@@ -255,7 +255,8 @@ public class SanitySensors extends Setup {
         sensors.primary_call(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
         sensors.primary_call(DLID, SensorsActivity.CLOSE);
-        TimeUnit.SECONDS.sleep(ConfigProps.normalExitDelay);
+        TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
+        Thread.sleep(2000);
         verify_in_alarm();
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
         enter_default_user_code();
@@ -389,7 +390,7 @@ public class SanitySensors extends Setup {
 
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
-        for (int i = 3; i > 6; i++) {
+        for (int i = 3; i < 6; i++) {
             delete_from_primary(i);
         }
         delete_from_primary(26);

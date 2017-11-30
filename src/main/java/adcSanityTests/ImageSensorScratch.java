@@ -13,14 +13,14 @@ import java.io.IOException;
 /**
  * Created by nchortek on 8/17/17.
  */
-public class ImageSensor_Scratch extends Setup {
+public class ImageSensorScratch extends Setup {
 
     String page_name = "Image Sensor Scratch";
     Logger logger = Logger.getLogger(page_name);
     ImageSensor_ServiceCalls servcall = new ImageSensor_ServiceCalls();
     ADC adc = new ADC();
 
-    public ImageSensor_Scratch() throws Exception {
+    public ImageSensorScratch() throws Exception {
     }
 
     @BeforeTest
