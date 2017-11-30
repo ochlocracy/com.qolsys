@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 
-public class Remote_Toolkit_Variables {
+public class RemoteToolkitVariables {
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_butChange']")
     public WebElement Change;

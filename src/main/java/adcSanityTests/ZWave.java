@@ -1,9 +1,9 @@
 package adcSanityTests;
 
-import utils.ConfigProps;
-import utils.Setup;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.ConfigProps;
+import utils.Setup;
 
 import java.io.IOException;
 
@@ -28,21 +28,23 @@ public class ZWave extends Setup {
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
         System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
     }
+
     public void addLights(int Lights_number) throws IOException, InterruptedException {
         Thread.sleep(3000);
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAdd);
         System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAdd);
         Thread.sleep(3000);
 
-        for (int i = Lights_number; i>0; i--){
-        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
-        System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
-        Thread.sleep(20000);
+        for (int i = Lights_number; i > 0; i--) {
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
+            System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
+            Thread.sleep(20000);
         }
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
         System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
 
     }
+
     public void addThermostat() throws IOException {
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 3");
     }
@@ -55,12 +57,13 @@ public class ZWave extends Setup {
 
 
     @Test
-    public void addTranmitter () throws IOException, InterruptedException {
-       includeBridge();
+    public void addTranmitter() throws IOException, InterruptedException {
+        includeBridge();
 
     }
+
     @Test
-    public void addLigth() throws IOException, InternalError{
+    public void addLigth() throws IOException, InternalError {
 
     }
 

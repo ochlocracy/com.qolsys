@@ -1,6 +1,5 @@
 package cellular;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +12,7 @@ import utils.Setup;
 import java.io.IOException;
 import java.util.List;
 
-public class About_page extends Setup {
+public class AboutPage extends Setup {
 
     public static final int SIGNAL_STRENGTH_NONE_OR_UNKNOWN_ZERO = 0;
     public static final int GSM_SIGNAL_STRENGTH_NONE_OR_UNKNOWN_99 = 99;
@@ -27,7 +26,8 @@ public class About_page extends Setup {
     private static final String TAG = "CellSignalStrengthUtil";
     String page_name = "cellular on the About page";
 
-    public About_page() throws Exception {}
+    public AboutPage() throws Exception {
+    }
 
     /* Steven.N, Added method to convert LTE DBm to a 6 level representation */
     public static int convertDbmToLevel(int dbm) {
@@ -90,7 +90,6 @@ public class About_page extends Setup {
 
     @Test
     public void Check_all_Elements_in_Cellular_tap() throws InterruptedException {
-
         panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
         Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
         navigate_to_Advanced_Settings_page();
@@ -102,19 +101,15 @@ public class About_page extends Setup {
         System.out.println("Carrier Name: " + Cellular_Info.get(0).getText());
         System.out.println("cellular Connection Status: " + Cellular_Info.get(1).getText());
         System.out.println("cellular Signal Strength: " + Cellular_Info.get(2).getText());
-
         String convertDbmToLevel = (Cellular_Info.get(2).getText()).split("\\s")[0];
         System.out.println("The value " + convertDbmToLevel + " is used for conversion");
         int dBm = Integer.parseInt(convertDbmToLevel);
         // Cellular_Info.get(dBm);
         convertDbmToLevel(dBm);
-
         //System.out.println(Carrier_Name.get(3).getText()); /* IMEI */
-
         swipe_vertical1();
         Thread.sleep(2000);
         List<WebElement> Cellular_Info1 = driver.findElements(By.id("com.qolsys:id/summary"));
-
         System.out.println("Baseband Version: " + Cellular_Info1.get(4).getText());
         System.out.println("Configuration Version: " + Cellular_Info1.get(5).getText());
         Thread.sleep(2000);
@@ -125,5 +120,4 @@ public class About_page extends Setup {
         log.endTestCase(page_name);
         driver.quit();
     }
-
 }
