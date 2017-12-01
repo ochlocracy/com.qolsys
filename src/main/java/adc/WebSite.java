@@ -84,9 +84,9 @@ public class WebSite extends Setup {
 
     @Test
     public void Test3() throws Exception {
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Devices_Page devices = PageFactory.initElements(driver, Devices_Page.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        DevicesPage devices = PageFactory.initElements(driver, DevicesPage.class);
         Security_Sensors_Page sec_sencsors = PageFactory.initElements(driver, Security_Sensors_Page.class);
         logger.info("********************************************************");
         logger.info("Rename sensors from panel");

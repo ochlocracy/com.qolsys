@@ -2,7 +2,7 @@ package qtmsSRF;
 
 import adc.ADC;
 import utils.ConfigProps;
-import panel.Home_Page;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import utils.Setup;
 import sensors.Sensors;
@@ -113,7 +113,7 @@ public class Auto_Bypass extends Setup{
         servcall.set_AUTO_BYPASS(01);
         Thread.sleep(2000);
         logger.info("Verify that open sensor will be selected for bypass and at top of sensor list when pushing arm button.");
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         sensors.primary_call("65 00 0A", open);
         Thread.sleep(2000);
         servcall.get_AUTO_BYPASS();
@@ -157,7 +157,7 @@ public class Auto_Bypass extends Setup{
         logger.info("Verify that TTS will not announce opening and closing of bypassed sensor while armed");
         add_primary_call(1, 10, 6619296, 1);
         Thread.sleep(2000);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("open before ARM AWAY");
         Thread.sleep(2000);
         sensors.primary_call("65 00 0A", open);
@@ -237,7 +237,7 @@ public class Auto_Bypass extends Setup{
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(10000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         sensors.primary_call("65 00 0A", open);
         Thread.sleep(two_sec);
         home_page.DISARM.click();
@@ -272,7 +272,7 @@ public class Auto_Bypass extends Setup{
         //servcall.set_AUTO_BYPASS(0);
       //  servcall.set_AUTO_STAY(0);
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         sensors.primary_call("65 00 0A", open);
         Thread.sleep(4000);
         home_page.DISARM.click();
@@ -310,7 +310,7 @@ public class Auto_Bypass extends Setup{
         servcall.set_AUTO_BYPASS(1);
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(6000);
         home_page.DISARM.click();
         Thread.sleep(two_sec);
@@ -333,7 +333,7 @@ public class Auto_Bypass extends Setup{
         Thread.sleep(2000);
         add_primary_call(1, 10, 6619296, 1);
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_AUTO_BYPASS(1);
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
@@ -375,7 +375,7 @@ public class Auto_Bypass extends Setup{
         Thread.sleep(2000);
         servcall.get_AUTO_BYPASS();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(6000);
         sensors.primary_call("65 00 0A", open);
@@ -476,7 +476,7 @@ public class Auto_Bypass extends Setup{
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(6000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
        // home_page.DISARM.click();
@@ -537,7 +537,7 @@ public class Auto_Bypass extends Setup{
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(1);
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         sensors.primary_call("65 00 1A", open);
         Thread.sleep(6000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();

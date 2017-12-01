@@ -5,7 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import panel.Home_Page;
+import panel.HomePage;
 import utils.ConfigProps;
 
 public class EventsCheck extends SetupRemote {
@@ -46,7 +46,7 @@ public class EventsCheck extends SetupRemote {
 
     @Test
     public void Test2() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay - Disarm");
         for (int i = 5; i > 0; i--) {
             Thread.sleep(15000);
@@ -74,7 +74,7 @@ public class EventsCheck extends SetupRemote {
 
     @Test
     public void Test3() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Away - Disarm");
         for (int i = 5; i > 0; i--) {
             Thread.sleep(20000);

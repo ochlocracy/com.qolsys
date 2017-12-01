@@ -1,8 +1,8 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.ContactUs;
+import panel.EmergencyPage;
+import panel.HomePage;
 import utils.Setup1;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -36,9 +36,9 @@ public class Smoke_Test_Freeze_Heat_Water_Grid {
     @Parameters ({"UDID_"})
     @Test
     public void Test1(String UDID_) throws Exception {
-        Home_Page home_page = PageFactory.initElements(s.getDriver(), Home_Page.class);
-        Contact_Us contact_us = PageFactory.initElements(s.getDriver(), Contact_Us.class);
-        Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+        HomePage home_page = PageFactory.initElements(s.getDriver(), HomePage.class);
+        ContactUs contact_us = PageFactory.initElements(s.getDriver(), ContactUs.class);
+        EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
         SensorsList list = PageFactory.initElements(s.getDriver(), SensorsList.class);
 
         logger.info("Current software version: " + s.Software_Version());

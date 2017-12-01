@@ -39,9 +39,9 @@ public class WebSite_Grid_Rename {
 
     @Test
     public void Test3() throws Exception {
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Devices_Page devices = PageFactory.initElements(s.getDriver(), Devices_Page.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        DevicesPage devices = PageFactory.initElements(s.getDriver(), DevicesPage.class);
         Security_Sensors_Page sec_sensors = PageFactory.initElements(s.getDriver(), Security_Sensors_Page.class);
         logger.info("********************************************************");
         logger.info("Rename sensors from panel");

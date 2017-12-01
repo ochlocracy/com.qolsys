@@ -3,33 +3,33 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Photo_Frame_Page {
+public class PhotoFramePage {
 
-    @FindBy(id= "com.qolsys:id/uiTV_title")
+    @FindBy(id = "com.qolsys:id/uiTV_title")
     public WebElement Photo_Frame_page_title;
-    @FindBy(id= "com.qolsys:id/uiBTN_Play")
+    @FindBy(id = "com.qolsys:id/uiBTN_Play")
     public WebElement Photo_Frame_Play;
-    @FindBy(id= "com.qolsys:id/uiBTN_Rmv")
+    @FindBy(id = "com.qolsys:id/uiBTN_Rmv")
     public WebElement Photo_Frame_Delete;
-    @FindBy(id= "com.qolsys:id/uiBTN_delete_image")
+    @FindBy(id = "com.qolsys:id/uiBTN_delete_image")
     public WebElement Photo_Frame_Delete_delete_page;
-    @FindBy(id= "com.qolsys:id/uiBTN_Add")
+    @FindBy(id = "com.qolsys:id/uiBTN_Add")
     public WebElement Photo_Frame_Add;
-    @FindBy(id= "com.qolsys:id/uiBTN_Settings")
+    @FindBy(id = "com.qolsys:id/uiBTN_Settings")
     public WebElement Photo_Frame_Settings;
-    @FindBy(id= "com.qolsys:id/uiTV_title")
+    @FindBy(id = "com.qolsys:id/uiTV_title")
     public WebElement Photo_Frame_delete_page_tille;
-    @FindBy(id= "com.qolsys:id/uiBTN_select_all")
+    @FindBy(id = "com.qolsys:id/uiBTN_select_all")
     public WebElement Photo_Frame_Select_All;
-    @FindBy(id= "com.qolsys:id/uiBTN_cancel")
+    @FindBy(id = "com.qolsys:id/uiBTN_cancel")
     public WebElement Photo_Frame_Cancel;
-    @FindBy(id= "com.qolsys:id/ui_tv_space_remaining")
+    @FindBy(id = "com.qolsys:id/ui_tv_space_remaining")
     public WebElement Photo_Frame_Space_Remaining;
-    @FindBy(id= "com.qolsys:id/uiBTN_add_images")
+    @FindBy(id = "com.qolsys:id/uiBTN_add_images")
     public WebElement Photo_Frame_Add_New_Photos;
-    @FindBy(id= "com.qolsys:id/uiBTN_replace_images")
+    @FindBy(id = "com.qolsys:id/uiBTN_replace_images")
     public WebElement Photo_Frame_Replace_All_Photos;
-    @FindBy(id= "com.qolsys:id/sourceoption")
+    @FindBy(id = "com.qolsys:id/sourceoption")
     public WebElement Photo_Frame_Sourse_Option;
     @FindBy(xpath = "//android.widget.TextView[@text='SD Card']")
     public WebElement Photo_Frame_SD_Card;

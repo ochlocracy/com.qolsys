@@ -29,11 +29,11 @@ public class Auto_Bypass_Test extends Setup {
     }
     @Test
     public void Verify_Auto_Bypass_works() throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Adding sensors...");
         serv.set_ARM_STAY_NO_DELAY_enable();
         sensors.add_primary_call(1,10,6619296,1);

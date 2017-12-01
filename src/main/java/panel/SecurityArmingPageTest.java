@@ -9,28 +9,28 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Security_Arming_Page_Test extends Setup {
+public class SecurityArmingPageTest extends Setup {
 
     String page_name = "Security and Arming page testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public Security_Arming_Page_Test() throws Exception {}
+    public SecurityArmingPageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Security_Arming_page() throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
-
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
         element_verification(arming.Dealer_Code_summery, "Dealer Code summery");
@@ -39,6 +39,15 @@ public class Security_Arming_Page_Test extends Setup {
         arming.Duress_Authentication.click();
         element_verification(arming.Duress_Authentication_summery_enabled, "Duress Authentication summery when enabled");
         arming.Duress_Authentication.click();
+        element_verification(arming.SwingerShutdown, "Swinger Shutdown");
+        element_verification(arming.SwingerShutdownEnabled, "Swinger shutdown enabled");
+        arming.SwingerShutdown.click();
+        element_verification(arming.SwingerShutdownDisabled, "Swinger shutdown disabled");
+        arming.SwingerShutdown.click();
+        element_verification(arming.SwingerShutdownCount, "Swinger Shutdown Count");
+        swipe_vertical();
+
+
         element_verification(arming.Secure_Arming_summery, "Secure Arming summery");  //DISABLED by default
         arming.Secure_Arming.click();
         element_verification(arming.Secure_Arming_summery, " Secure Arming summery when enabled");
@@ -91,8 +100,9 @@ public class Security_Arming_Page_Test extends Setup {
         element_verification(arming.Long_Entry_Delay, "Long Entry Delay");
         element_verification(arming.Long_Exit_Delay, " Long Exit Delay");
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

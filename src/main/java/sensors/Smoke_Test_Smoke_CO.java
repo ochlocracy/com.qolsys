@@ -36,9 +36,9 @@ public class Smoke_Test_Smoke_CO extends Setup {
 
     @Test
     public void Test1() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
-        Contact_Us contact_us = PageFactory.initElements(driver, Contact_Us.class);
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
 //        logger.info("Current software version: "+ Software_Version());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");

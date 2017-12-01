@@ -9,16 +9,17 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Advanced_Settings_Page_Test extends Setup {
+public class AdvancedSettingsPageTest extends Setup {
 
     String page_name = "Advanced settings page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Advanced_Settings_Page_Test() throws Exception {}
+    public AdvancedSettingsPageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
@@ -26,7 +27,7 @@ public class Advanced_Settings_Page_Test extends Setup {
     public void Check_all_elements_on_Advanced_Settings_page() throws Exception {
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
         Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Advanced_Settings_Page adv =  PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
 
@@ -44,15 +45,16 @@ public class Advanced_Settings_Page_Test extends Setup {
         element_verification(adv.SYSTEM_TESTS, "System Tests");
         element_verification(adv.ZWAVE_DEVICE_LIST, "Z-Wave Device List");
         element_verification(adv.DEALER_CONTACT, "Dealer Contact");
-        element_verification(adv.PANEL_REBOOT, "panel Reboot");
+        element_verification(adv.PANEL_REBOOT, "Panel Reboot");
         element_verification(adv.POWER_DOWN, "Power Down");
         element_verification(adv.UPGRADE_SOFTWARE, "Upgrade Software");
         element_verification(adv.WI_FI, "Wi-Fi");
         element_verification(adv.SOUND, "Sound");
         element_verification(adv.DATE_TIME, "Date &Time");
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

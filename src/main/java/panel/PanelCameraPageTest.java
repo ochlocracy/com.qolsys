@@ -10,12 +10,12 @@ import utils.Setup;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class Panel_Camera_Page_Test extends Setup {
+public class PanelCameraPageTest extends Setup {
 
     String page_name = "panel Camera page testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public Panel_Camera_Page_Test() throws Exception {}
+    public PanelCameraPageTest() throws Exception {}
 
     @Override ()
     public void swipe_vertical_up() throws InterruptedException {
@@ -33,14 +33,15 @@ public class Panel_Camera_Page_Test extends Setup {
 
     @Test
     public void Check_all_elements_on_Photo_Frame_page() throws Exception {
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
-        Installation_Page installation = PageFactory.initElements(driver, Installation_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Camera_Settings_Page cam_set = PageFactory.initElements(driver, Camera_Settings_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+        InstallationPage installation = PageFactory.initElements(driver, InstallationPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        CameraSettingsPage cam_set = PageFactory.initElements(driver, CameraSettingsPage.class);
         delete_all_camera_photos();
         TimeUnit.SECONDS.sleep(2);
+        swipeFromRighttoLeft();
         swipeFromRighttoLeft();
         logger.info("Verifying elements on the page...");
         element_verification(camera.Panel_camera_page_title, "panel Camera title");
@@ -54,6 +55,7 @@ public class Panel_Camera_Page_Test extends Setup {
         TimeUnit.SECONDS.sleep(3);
         emergency.Cancel_Emergency.click();
         enter_default_user_code();
+        swipeFromRighttoLeft();
         swipeFromRighttoLeft();
         TimeUnit.SECONDS.sleep(2);
         camera.Disarm_photos.click();
@@ -76,14 +78,8 @@ public class Panel_Camera_Page_Test extends Setup {
         emergency.Cancel_Emergency.click();
         enter_default_user_code();
         swipeFromRighttoLeft();
+        swipeFromRighttoLeft();
         TimeUnit.SECONDS.sleep(2);
-        swipe_vertical_up();
-        TimeUnit.SECONDS.sleep(2);
-        element_verification(camera.Alarm_Videos_title, "Alarm Videos title");
-        element_verification(camera.POLICE_EMERGENCY_PANEL, "POLICE EMERGENCY (PANEL)");
-        TimeUnit.SECONDS.sleep(2);
-        camera.Alarm_Video_img.click();
-        TimeUnit.SECONDS.sleep(7);
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
         enter_default_user_code();

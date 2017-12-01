@@ -9,22 +9,23 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Emergency_Page_Test extends Setup {
+public class EmergencyPageTest extends Setup {
 
     String page_name = "Emergency page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Emergency_Page_Test() throws Exception {}
+    public EmergencyPageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Emergency_page() throws Exception {
-        Emergency_Page emergency_page = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emergency_page = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
 
@@ -41,7 +42,7 @@ public class Emergency_Page_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

@@ -14,8 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import panel.*;
-import utils.ConfigProps;
-import utils.Log;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -158,27 +156,27 @@ public class Setup1 {
         Thread.sleep(1000);
     }
     public void DISARM () throws InterruptedException {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
         enter_default_user_code();
     }
 
     public void ARM_STAY () throws InterruptedException {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
         Thread.sleep(1000);
         home_page.ARM_STAY.click();
     }
 
     public void ARM_AWAY(int delay) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
         home_page.ARM_AWAY.click();
         TimeUnit.SECONDS.sleep(delay);
     }
 
     public void enter_default_user_code () throws InterruptedException {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         TimeUnit.SECONDS.sleep(1);
         home_page.One.click();
         Thread.sleep(1000);
@@ -190,7 +188,7 @@ public class Setup1 {
     }
 
     public void verify_disarm(String UDID_) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("DISARMED")) {
             logger.info("Pass: " + UDID_ + " System is DISARMED");
         } else {
@@ -200,7 +198,7 @@ public class Setup1 {
     }
 
     public void verify_armstay(String UDID_) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("ARMED STAY")) {
             logger.info("Pass: "+ UDID_ +" System is ARMED STAY");
         } else {
@@ -209,7 +207,7 @@ public class Setup1 {
     }
 
     public void verify_armaway(String UDID_) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ArwAway_State.isDisplayed()) {
             logger.info("Pass: " + UDID_ +" panel is in Arm Away mode");
         } else {
@@ -217,7 +215,7 @@ public class Setup1 {
             logger.info("Failed: panel is not in Arm Away mode");}
     }
     public void verify_in_alarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
@@ -262,7 +260,7 @@ public class Setup1 {
     }
 
     public void verify_status_open() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else {
@@ -271,7 +269,7 @@ public class Setup1 {
     }
 
     public void verify_status_activated() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         }else {
@@ -279,7 +277,7 @@ public class Setup1 {
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());}
     }
     public void verify_status_tampered() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         }else { take_screenshot();
@@ -287,7 +285,7 @@ public class Setup1 {
     }
 
     public void verify_status_alarmed() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is Alarmed");
         }else { take_screenshot();
@@ -298,8 +296,8 @@ public class Setup1 {
         TimeUnit.SECONDS.sleep(3);
         Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        About_page about = PageFactory.initElements(driver, About_page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
         settings.ADVANCED_SETTINGS.click();
@@ -324,7 +322,7 @@ public class Setup1 {
         driver.findElement(By.id("com.qolsys:id/addsensor")).click();
     }
     public void delete_all_camera_photos() throws Exception {
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         swipeFromLefttoRight();
         Thread.sleep(3000);
         try {
@@ -400,10 +398,10 @@ public class Setup1 {
         System.out.println(deleteFromPrimary);
     }
     public void autoStaySetting () throws InterruptedException {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         Thread.sleep(1000);

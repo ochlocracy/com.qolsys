@@ -1,7 +1,7 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Emergency_Page;
+import panel.ContactUs;
+import panel.EmergencyPage;
 import utils.Log;
 import utils.Setup;
 import org.apache.log4j.Logger;
@@ -38,7 +38,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
     }
 
     public void verify_police_emergency() throws Exception {
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Police Emergency Sent")){
             logger.info("Pass: Police Emergency is Sent");
         } else { take_screenshot();
@@ -46,7 +46,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
     }
 
     public void verify_auxiliary_emergency() throws Exception {
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Auxiliary Emergency Sent")) {
             logger.info("Pass: Auxiliary Emergency is Sent");
         } else { take_screenshot();
@@ -55,8 +55,8 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
 
     @Test
     public void Test1() throws Exception {
-        Contact_Us contact_us = PageFactory.initElements(driver, Contact_Us.class);
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
+        ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("Current software version: " + Software_Version());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");

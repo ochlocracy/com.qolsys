@@ -6,8 +6,8 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-import panel.Home_Page;
-import panel.Panel_Camera_Page;
+import panel.HomePage;
+import panel.PanelCameraPage;
 import sensors.EventConstants;
 import utils.ConfigProps;
 import utils.Setup;
@@ -41,7 +41,7 @@ public class SetupRemote {
     }
 
     public void ARM_STAY() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
         home_page.DISARM.click();
         home_page.ARM_STAY.click();
@@ -74,7 +74,7 @@ public class SetupRemote {
     }
 
     public void verify_disarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("DISARMED")) {
             System.out.println("Pass: System is DISARMED");
         } else {
@@ -83,7 +83,7 @@ public class SetupRemote {
     }
 
     public void verify_armstay() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("ARMED STAY")) {
             System.out.println("Pass: System is ARM STAY");
         } else {
@@ -92,7 +92,7 @@ public class SetupRemote {
     }
 
     public void verify_armaway() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ArwAway_State.isDisplayed()) {
             System.out.println("Pass: panel is in Arm Away mode");
         } else {
@@ -101,7 +101,7 @@ public class SetupRemote {
     }
 
     public void enter_default_user_code() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
         home_page.Three.click();
@@ -127,7 +127,7 @@ public class SetupRemote {
     }
 
     public void delete_all_camera_photos() throws Exception {
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         swipeFromLefttoRight();
         Thread.sleep(3000);
         try {

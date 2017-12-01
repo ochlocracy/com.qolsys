@@ -162,8 +162,8 @@ public class ARM_AWAY extends Setup {
         logger.info("Verify the system can be disarmed during the entry delay using a Guest code)");
         logger.info("Adding a new Guest NewGuest with the code 1233");
         User_Management_Page user_m =  PageFactory.initElements(driver, User_Management_Page.class);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
-        Advanced_Settings_Page advanced =  PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
+        AdvancedSettingsPage advanced =  PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
@@ -253,7 +253,7 @@ public class ARM_AWAY extends Setup {
     }
 
     public void sensor_status_check(String Status, String Status1, int n,int n1 ) throws InterruptedException, IOException {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
@@ -502,7 +502,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else { take_screenshot();
@@ -531,7 +531,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else { take_screenshot();
@@ -561,7 +561,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else { take_screenshot();
@@ -593,7 +593,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else { take_screenshot();
@@ -623,7 +623,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else { take_screenshot();
@@ -650,7 +650,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         }else { take_screenshot();
@@ -678,7 +678,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(1000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         }else { take_screenshot();
@@ -713,7 +713,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -759,7 +759,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -804,7 +804,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -849,7 +849,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -894,7 +894,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(15000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -929,7 +929,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -979,7 +979,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1004,7 +1004,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1029,7 +1029,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1054,7 +1054,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1079,7 +1079,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1104,7 +1104,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1129,7 +1129,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1154,7 +1154,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1179,7 +1179,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1205,7 +1205,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1230,7 +1230,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1256,7 +1256,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1281,7 +1281,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1306,7 +1306,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(3000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1326,7 +1326,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM_from_away.click();
         Thread.sleep(15000);
         verify_in_alarm();
@@ -1457,7 +1457,7 @@ public class ARM_AWAY extends Setup {
         sensors.primary_call("66 00 C9", close);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1488,7 +1488,7 @@ public class ARM_AWAY extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Open")) {
@@ -1553,7 +1553,7 @@ public void AA_63() throws Exception {
     Thread.sleep(2000);
     verify_in_alarm();
     Thread.sleep(2000);
-    Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+    HomePage home_page = PageFactory.initElements(driver, HomePage.class);
     List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
     // for (int j = 0; j < events.size(); j++)
     if (events.get(1).getText().equals("Open")) {
@@ -1602,7 +1602,7 @@ public void AA_63() throws Exception {
         Thread.sleep(4000);
         verify_in_alarm();
         Thread.sleep(4000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Alarmed")) {
@@ -1643,7 +1643,7 @@ public void AA_63() throws Exception {
      Thread.sleep(2000);
      verify_in_alarm();
      Thread.sleep(1000);
-     Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+     HomePage home_page = PageFactory.initElements(driver, HomePage.class);
      List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
      if (events.get(0).getText().equals("Tampered")) {
          logger.info("Pass: Correct status is Tampered");
@@ -1661,7 +1661,7 @@ public void AA_63() throws Exception {
     public void AA_66() throws Exception {
         logger.info("Verify the panel will go into immediate alarm is a Glass-break detector in group 13 is activated");
         add_primary_call(28,13,6750361,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(6);
         Thread.sleep(5000);
         servcall.EVENT_ARM_STAY();
@@ -1714,7 +1714,7 @@ public void AA_63() throws Exception {
     public void AA_67() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 17 is activated");
         add_primary_call(29,17,6750355,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(4000);
         add_primary_call(12, 12,6619297, 1);
         Thread.sleep(3000);
@@ -1775,7 +1775,7 @@ public void AA_63() throws Exception {
     public void AA_68() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 17 is activated");
         add_primary_call(29,17,6750355,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(4000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
@@ -1826,7 +1826,7 @@ public void AA_63() throws Exception {
     public void AA_69() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if a Glass-break detector in group 13 is tampered");
         add_primary_call(28,13,6750361,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
@@ -1891,7 +1891,7 @@ public void AA_63() throws Exception {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Open")) {
@@ -1940,7 +1940,7 @@ public void AA_63() throws Exception {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
@@ -1968,7 +1968,7 @@ public void AA_63() throws Exception {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is Alarmed");
@@ -2009,7 +2009,7 @@ public void AA_63() throws Exception {
         Thread.sleep(13000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {
@@ -2074,7 +2074,7 @@ public void AA_63() throws Exception {
         Thread.sleep(13000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Open")) {

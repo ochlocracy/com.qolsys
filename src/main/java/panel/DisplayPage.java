@@ -3,19 +3,16 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by qolsys on 3/22/17.
- */
-public class Display_Page {
+public class DisplayPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Brightness Level']")
     public WebElement Brightness_Level;
     @FindBy(xpath = "//android.widget.TextView[@text='100%']")
     public WebElement Brightness_Level_summery_default;
-    @FindBy(id ="com.qolsys:id/title")
+    @FindBy(id = "com.qolsys:id/title")
     public WebElement Brightness_Level_title;
     @FindBy(id = "com.qolsys:id/bright_ness_level_tv")
     public WebElement Brightness_lvl;
-    @FindBy (id ="com.qolsys:id/negative_button")
+    @FindBy(id = "com.qolsys:id/negative_button")
     public WebElement Brightness_Close;
     @FindBy(xpath = "//android.widget.TextView[@text='Font Size']")
     public WebElement Font_Size;

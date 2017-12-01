@@ -4,7 +4,7 @@ import adc.ADC;
 import adc.UIRepo;
 import cellular.Dual_path_page_elements;
 import cellular.System_Tests_page;
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
 import panel.PanelInfo_ServiceCalls;
 import utils.Setup;
 import org.apache.log4j.Logger;
@@ -76,7 +76,7 @@ public class SystemTest_DualPath_ADC extends Setup{
     @Test
     public void SASST_030() throws Exception {
         servcall.get_WiFi();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Advanced_Settings_page();
@@ -93,7 +93,7 @@ public class SystemTest_DualPath_ADC extends Setup{
     @Test
     public void SASST_031() throws Exception {
         servcall.get_ALL_CHIMES();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Advanced_Settings_page();
@@ -127,7 +127,7 @@ public class SystemTest_DualPath_ADC extends Setup{
     @Test
     public void SASST_030_usersitearming() throws Exception {
         repo = PageFactory.initElements(driver, UIRepo.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Advanced_Settings_page();

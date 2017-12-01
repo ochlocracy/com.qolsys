@@ -26,12 +26,12 @@ public class Secure_Delete_Images_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Secure_Delete_Images_works(String UDID_) throws Exception {
-        Home_Page home  = PageFactory.initElements(s.getDriver(), Home_Page.class);
-        Panel_Camera_Page camera = PageFactory.initElements(s.getDriver(), Panel_Camera_Page.class);
-        Camera_Settings_Page set_cam = PageFactory.initElements(s.getDriver(), Camera_Settings_Page.class);
+        HomePage home  = PageFactory.initElements(s.getDriver(), HomePage.class);
+        PanelCameraPage camera = PageFactory.initElements(s.getDriver(), PanelCameraPage.class);
+        CameraSettingsPage set_cam = PageFactory.initElements(s.getDriver(), CameraSettingsPage.class);
         Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         logger.info("Verifying deleting panel images requires valid code...");
         s.delete_all_camera_photos();
         Thread.sleep(1000);

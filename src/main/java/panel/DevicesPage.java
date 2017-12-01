@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Devices_Page {
+public class DevicesPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Security Sensors']")
     public WebElement Security_Sensors;
     @FindBy(xpath = "//android.widget.TextView[@text='Wi-Fi Devices']")

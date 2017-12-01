@@ -1,7 +1,7 @@
 package practice;
 
-import panel.About_page;
-import panel.Advanced_Settings_Page;
+import panel.AboutPage;
+import panel.AdvancedSettingsPage;
 import utils.Setup;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -26,8 +26,8 @@ public class Sergio_test extends Setup {
 
     @Test
     public  void Check_Zwave_Version() throws Exception{
-        About_page about = PageFactory.initElements(driver, About_page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AboutPage about = PageFactory.initElements(driver, AboutPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();

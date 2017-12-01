@@ -2,8 +2,8 @@ package adcSanityTests;
 
 import adc.ADC;
 import utils.ConfigProps;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.EmergencyPage;
+import panel.HomePage;
 import utils.SensorsActivity;
 import utils.Setup;
 import sensors.Sensors;
@@ -60,7 +60,7 @@ public class ArmedStaySmokeSensor extends Setup{
     }
     public void ArmStay_Activate_Restore_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate/Restore Group " + group + " smoke sensor during exit delay");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_STAY();
         Thread.sleep(5000);
         logger.info("Activate/Restore a sensor");
@@ -100,7 +100,7 @@ public class ArmedStaySmokeSensor extends Setup{
     }
     public void ArmStay_Tamper_sensor_during_Arm_Stay(int group, String DLID, String element_to_verify1, String element_to_verify2 ) throws Exception {
         logger.info("ArmStay -Tamper Group " +group + " smoke sensor during Arm Stay");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(33000);
         verify_armstay();

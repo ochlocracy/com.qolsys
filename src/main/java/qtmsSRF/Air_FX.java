@@ -1,7 +1,7 @@
 package qtmsSRF;
 
 import adc.ADC;
-import adcSanityTests.Remote_Toolkit_Variables;
+import adcSanityTests.RemoteToolkitVariables;
 import panel.PanelInfo_ServiceCalls;
 import utils.Setup;
 import sensors.Sensors;
@@ -111,7 +111,7 @@ public class Air_FX extends Setup {
 
     @Test (dependsOnMethods = {"Navigate_Sensor_Control_Page"}, priority =1)
     public void ADC_Add_A_Sensor() throws InterruptedException, IOException, BiffException {
-        Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
+        RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
 
         String SensorDL = "6500A1";
         String SensorID = "1";
@@ -138,7 +138,7 @@ public class Air_FX extends Setup {
 
     @Test (dependsOnMethods = {"Check_Panel_For_Added_Sensor"}, priority =3)
     public void ADC_Change_Sensor_Data() throws InterruptedException, IOException, BiffException {
-        Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
+        RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
 
         String NewSensorName = "Cool Door Window";
 
@@ -195,7 +195,7 @@ public class Air_FX extends Setup {
 
         @Test (dependsOnMethods = {"Check_Panel_For_Updated_Sensor"}, priority =4)
     public void ADC_Delete_A_Sensor() throws InterruptedException, IOException, BiffException {
-        Remote_Toolkit_Variables remote = PageFactory.initElements(adc.driver1, Remote_Toolkit_Variables.class);
+        RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
 
         Sensor_Data_Change("Delete Sensor");
         remote.Send_Command_Change.click();

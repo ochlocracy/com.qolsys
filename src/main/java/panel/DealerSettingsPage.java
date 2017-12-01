@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Dealer_Settings_Page {
+public class DealerSettingsPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Account Number']")
     public WebElement Account_Number;
     @FindBy(xpath = "//android.widget.TextView[@text='Enter 10-character account number']")
@@ -30,11 +30,11 @@ public class Dealer_Settings_Page {
     public WebElement _12_hours;
     @FindBy(xpath = "//android.widget.TextView[@text='4 hours']") //default
     public WebElement _4_hours;
-    @FindBy(id= "com.qolsys:id/negative_button")
+    @FindBy(id = "com.qolsys:id/negative_button")
     public WebElement DSettings_Cancel;
     @FindBy(xpath = "//android.widget.TextView[@text='Loss of supervisory signals for non-emergency sensors']")
-    public WebElement  Loss_of_supervisory_signals_for_non_emergency_sensors;
+    public WebElement Loss_of_supervisory_signals_for_non_emergency_sensors;
 
     @FindBy(xpath = "//android.widget.TextView[@text='SIA Limits']")
-    public WebElement  SIA_Limits;
+    public WebElement SIA_Limits;
 }
