@@ -32,6 +32,7 @@ public class DisarmPhotos extends SetupRemote {
         Thread.sleep(15000);
 
         swipeFromRighttoLeft(); //check
+        
         Thread.sleep(3000);
         try {
             while (camera.Photo_lable.isDisplayed()) {
