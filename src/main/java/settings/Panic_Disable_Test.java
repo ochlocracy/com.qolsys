@@ -27,9 +27,9 @@ public class Panic_Disable_Test extends Setup {
     public void Verify_Keyfob_Alarm_Disarm_works() throws Exception {
         Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         Thread.sleep(1000);
         logger.info("Verify panic disappears from the Emergency page when disabled");
         navigate_to_Advanced_Settings_page();

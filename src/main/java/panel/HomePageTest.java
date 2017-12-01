@@ -9,22 +9,23 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Home_Page_Test extends Setup {
+public class HomePageTest extends Setup {
 
     String page_name = "Home page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Home_Page_Test() throws Exception {}
+    public HomePageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
-    public void Check_all_elements_on_Home_page () throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+    public void Check_all_elements_on_Home_page() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
 
@@ -73,25 +74,10 @@ public class Home_Page_Test extends Setup {
         /*Checking Emergency page*/
 //
         element_verification(home_page.Emergency_Button, "Emergency button");
-
-
-//    public void Stress_Dropdown_menu(int x) throws  Exception{
-//        log.startTestCase("Stress_Dropdown_menu");
-//        for (int i =x; i>0;i--){
-//            WebElement drop_menu = driver.findElementById(icon.drop_menu);
-//            drop_menu.click();
-//            WebElement system_state =  driver.findElementById(icon.system_state);
-//            system_state.isDisplayed();
-//            WebElement drop_menu_close = driver.findElementById(icon.drop_menu_collapse);
-//            drop_menu_close.click();
-//            Thread.sleep(1000);}
-//        System.out.println("Pass: successfully expand/collapse the dropdown menu for " +x+ " times");
-//        log.endTestCase("Stress_Dropdown_menu");
-//    }
-  }
+    }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

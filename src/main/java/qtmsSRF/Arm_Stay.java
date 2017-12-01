@@ -75,7 +75,7 @@ public class Arm_Stay extends Setup {
         System.out.println(deleteFromPrimary);
     }
     public void sensor_status_check(String DLID, String Status, String Status1, int n,int n1 ) throws InterruptedException, IOException {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
@@ -140,7 +140,7 @@ public class Arm_Stay extends Setup {
     public void AS_04() throws Exception {
         logger.info("Verify the panel can be disarmed using a keyfob: If KeyFob Instant Arming is disabled, panel should arm away after exit delay.\n" +
                 " If KeyFob Instant Arming is enabled, panel should arm away immediately.");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         servcall.set_KEYFOB_NO_DELAY_disable();
         Thread.sleep(2000);
         servcall.set_SIA_LIMITS_disable();
@@ -209,7 +209,7 @@ public class Arm_Stay extends Setup {
         add_primary_call(38, 1, 6619386, 102);
         Thread.sleep(2000);
         ARM_STAY();
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         home.DISARM.click();
         Thread.sleep(13000);
         verify_armstay();
@@ -485,7 +485,7 @@ public class Arm_Stay extends Setup {
         sensors.primary_call(DLID2, open);
         Thread.sleep(time);
         //Thread.sleep(15000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals(Status1)) {
@@ -625,7 +625,7 @@ public class Arm_Stay extends Setup {
         verify_disarm();
         Thread.sleep(1000);
         logger.info("panel history verification");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
@@ -963,7 +963,7 @@ public class Arm_Stay extends Setup {
             Thread.sleep(3000);
             sensors.primary_call(DLID, tamper);
             Thread.sleep(3000);
-            Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+            HomePage home_page = PageFactory.initElements(driver, HomePage.class);
             List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
             if (events.get(0).getText().equals(Status)) {
                 logger.info("Pass: Correct status is " + Status);
@@ -1325,7 +1325,7 @@ public class Arm_Stay extends Setup {
     }
     @Test(priority = 46)
     public void AS_56() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will Arm Away at the end of the exit delay if Arm Away button is pressed by 6-group keyfob");
         add_primary_call(39, 6, 6619387, 102);
         servcall.set_KEYFOB_NO_DELAY_disable();
@@ -1451,7 +1451,7 @@ public class Arm_Stay extends Setup {
 
     @Test(priority = 50)
     public void AS_68() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         add_primary_call(33, 13, 6684828, 107);
         Thread.sleep(2000);
@@ -1497,7 +1497,7 @@ public class Arm_Stay extends Setup {
 
     @Test(priority = 52)
     public void AS_67() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         add_primary_call(33, 13, 6684828, 107);
         Thread.sleep(2000);
@@ -1542,7 +1542,7 @@ public class Arm_Stay extends Setup {
     }
     @Test(priority = 53)
     public void AS_69() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         add_primary_call(33, 13, 6684828, 107);
         Thread.sleep(2000);
@@ -1602,7 +1602,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Open")) {
@@ -1668,7 +1668,7 @@ public class Arm_Stay extends Setup {
             Thread.sleep(2000);
             verify_in_alarm();
             Thread.sleep(2000);
-            Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+            HomePage home_page = PageFactory.initElements(driver, HomePage.class);
             List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
             // for (int j = 0; j < events.size(); j++)
             if (events.get(1).getText().equals("Open")) {
@@ -1731,7 +1731,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Alarmed")) {
@@ -1782,7 +1782,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Tampered")) {
@@ -1824,7 +1824,7 @@ public class Arm_Stay extends Setup {
 
     @Test(priority = 58)
     public void AS_75() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will just create notification if a shock-detector in group 17 is activated");
         add_primary_call(34, 17,  6684829 , 107);
         Thread.sleep(3000);
@@ -1848,7 +1848,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(4000);}
     @Test(priority = 59)
     public void AS_76() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
         add_primary_call(34, 17,  6684829 , 107);
         Thread.sleep(3000);
@@ -1873,7 +1873,7 @@ public class Arm_Stay extends Setup {
 
     @Test(priority = 61)
     public void AS_77() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
         add_primary_call(34, 17,  6684829 , 107);
         Thread.sleep(3000);
@@ -1945,7 +1945,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_armstay();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
         Thread.sleep(2000);
         sensors.primary_call("66 00 D9", active);
@@ -1962,7 +1962,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(4000);}
     @Test(priority = 64)
     public void AS_81() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will just create notification if a shock-detector in group 17 is activated");
         //add_primary_call(28, 13,  6750361 , 19);
         add_primary_call(28,13,6750361,19);
@@ -2006,7 +2006,7 @@ public class Arm_Stay extends Setup {
 
     @Test(priority = 66)
     public void AS_82() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a Glass-break detector in group 13 is tampered");
         //add_primary_call(28, 13,  6750361 , 19);
         add_primary_call(28,13,6750361,19);
@@ -2063,7 +2063,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Open")) {
@@ -2128,7 +2128,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Open")) {
@@ -2188,7 +2188,7 @@ public class Arm_Stay extends Setup {
         sensors.primary_call("67 00 99", active);
         Thread.sleep(2000);
         verify_in_alarm();
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Alarmed")) {
@@ -2239,7 +2239,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_in_alarm();
         Thread.sleep(4000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Tampered")) {
@@ -2280,7 +2280,7 @@ public class Arm_Stay extends Setup {
     public void AS_87() throws Exception {
         logger.info("Verify the panel will go into immediate alarm is a Glass-break detector in group 13 is activated");
         add_primary_call(28,13,6750361,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
@@ -2325,7 +2325,7 @@ public class Arm_Stay extends Setup {
     public void AS_88() throws Exception {
         logger.info("Verify the panel will go into immediate alarm is a Glass-break detector in group 13 is activated");
         add_primary_call(28,13,6750361,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
@@ -2369,7 +2369,7 @@ public class Arm_Stay extends Setup {
     public void AS_89() throws Exception {
         logger.info("Verify the panel will  just create notification if a Glass-break detector in group 17 is tampered");
         add_primary_call(28,13,6750361,19);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
@@ -2418,7 +2418,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(2000);
         verify_armstay();
         Thread.sleep(2000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
         Thread.sleep(2000);
         sensors.primary_call("67 00 39", active);

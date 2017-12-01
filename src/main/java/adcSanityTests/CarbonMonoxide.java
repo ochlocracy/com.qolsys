@@ -21,13 +21,11 @@ public class CarbonMonoxide extends Setup {
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "true";
-
     public CarbonMonoxide() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
-    }
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");}
 
     @BeforeTest
     public void capabilities_setup() throws Exception {

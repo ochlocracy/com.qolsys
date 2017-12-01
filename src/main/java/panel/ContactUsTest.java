@@ -9,22 +9,23 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Contact_Us_Test extends Setup {
+public class ContactUsTest extends Setup {
 
     String page_name = "Contact Us page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Contact_Us_Test() throws Exception {}
+    public ContactUsTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Contact_Us_page() throws Exception {
-        Contact_Us contact_us = PageFactory.initElements(driver, Contact_Us.class);
+        ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
 
@@ -38,7 +39,7 @@ public class Contact_Us_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

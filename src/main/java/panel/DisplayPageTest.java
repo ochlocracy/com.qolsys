@@ -9,24 +9,24 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Display_Page_Test extends Setup {
+public class DisplayPageTest extends Setup {
 
     String page_name = "Display page testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public Display_Page_Test() throws Exception {}
+    public DisplayPageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Display_page() throws Exception {
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Display_Page display = PageFactory.initElements(driver, Display_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        DisplayPage display = PageFactory.initElements(driver, DisplayPage.class);
         logger.info("Verifying elements on the page...");
         navigate_to_Settings_page();
         settings.DISPLAY.click();
@@ -41,7 +41,7 @@ public class Display_Page_Test extends Setup {
         display.Brightness_Close.click();
         Thread.sleep(1000);
         element_verification(display.Font_Size, "Font Size");
-        element_verification(display.Font_Size_summery_default, "Font Size summery" );
+        element_verification(display.Font_Size_summery_default, "Font Size summery");
         display.Font_Size.click();
         Thread.sleep(1000);
         element_verification(display.Font_Size_title, "Font Size title");
@@ -56,8 +56,9 @@ public class Display_Page_Test extends Setup {
         element_verification(display.Use_24hour_format_summery_enabled, "Use 24-hour format summery when enabled");
         display.Use_24hour_format.click();
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

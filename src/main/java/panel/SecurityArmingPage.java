@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class Security_Arming_Page {
+public class SecurityArmingPage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='Dealer Code']")
     public WebElement Dealer_Code;
@@ -20,6 +20,16 @@ public class Security_Arming_Page {
     public WebElement Duress_Authentication_summery;
     @FindBy(xpath = "//android.widget.TextView[@text='User can create a duress code for triggering silent alarms']")
     public WebElement Duress_Authentication_summery_enabled;
+    @FindBy(xpath = "//android.widget.TextView[@text='Swinger Shutdown']")
+    public WebElement SwingerShutdown;
+    @FindBy(xpath = "//android.widget.TextView[@text='Swinger shutdown enabled']")
+    public WebElement SwingerShutdownEnabled;
+    @FindBy(xpath = "//android.widget.TextView[@text='Swinger shutdown disabled']")
+    public WebElement SwingerShutdownDisabled;
+    @FindBy(xpath = "//android.widget.TextView[@text='Swinger Shutdown Count']")
+    public WebElement SwingerShutdownCount;
+
+
     @FindBy(xpath = "//android.widget.TextView[@text='Secure Arming']")
     public WebElement Secure_Arming;
     @FindBy(xpath = "//android.widget.TextView[@text='Require valid User Code to Arm the System']")
@@ -78,5 +88,4 @@ public class Security_Arming_Page {
     public WebElement Delay_Set;
     @FindBy(id = "android:id/checkbox")
     public WebElement Checkbox;
-
 }

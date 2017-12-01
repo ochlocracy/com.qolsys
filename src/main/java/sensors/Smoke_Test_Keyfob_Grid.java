@@ -1,7 +1,7 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Emergency_Page;
+import panel.ContactUs;
+import panel.EmergencyPage;
 import utils.Setup1;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -31,7 +31,7 @@ public class Smoke_Test_Keyfob_Grid {
         s.setup_logger(page_name, UDID_);
     }
     public void verify_police_emergency() throws Exception {
-        Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+        EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Police Emergency Sent")){
             logger.info("Pass: Police Emergency is Sent");
         } else { s.take_screenshot();
@@ -39,7 +39,7 @@ public class Smoke_Test_Keyfob_Grid {
     }
 
     public void verify_auxiliary_emergency() throws Exception {
-        Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+        EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Auxiliary Emergency Sent")) {
             logger.info("Pass: Auxiliary Emergency is Sent");
         } else { s.take_screenshot();
@@ -48,8 +48,8 @@ public class Smoke_Test_Keyfob_Grid {
     @Parameters ({"UDID_"})
     @Test
     public void Test1(String UDID_) throws Exception {
-        Contact_Us contact_us = PageFactory.initElements(s.getDriver(), Contact_Us.class);
-        Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+        ContactUs contact_us = PageFactory.initElements(s.getDriver(), ContactUs.class);
+        EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
 
         logger.info("Current software version: " + s.Software_Version());
         MySensors.read_sensors_from_csv();

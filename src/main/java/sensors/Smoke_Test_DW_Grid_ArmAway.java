@@ -1,7 +1,7 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Home_Page;
+import panel.ContactUs;
+import panel.HomePage;
 import utils.Log;
 import utils.Setup1;
 import org.apache.log4j.Logger;
@@ -40,8 +40,8 @@ public class Smoke_Test_DW_Grid_ArmAway {
     @Test
     public void Test1 (String UDID_) throws Exception {
         MySensors.read_sensors_from_csv();
-        Home_Page home_page = PageFactory.initElements(s.getDriver(), Home_Page.class);
-        Contact_Us contact_us = PageFactory.initElements(s.getDriver(), Contact_Us.class);
+        HomePage home_page = PageFactory.initElements(s.getDriver(), HomePage.class);
+        ContactUs contact_us = PageFactory.initElements(s.getDriver(), ContactUs.class);
         SensorsList list = PageFactory.initElements(s.getDriver(), SensorsList.class);
 
         MySensors.read_sensors_from_csv();

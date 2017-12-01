@@ -1,7 +1,7 @@
 package cellular;
 
-import panel.Advanced_Settings_Page;
-import panel.Home_Page;
+import panel.AdvancedSettingsPage;
+import panel.HomePage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -27,7 +27,7 @@ public class Dual_path_page extends Setup{
 
 @Test
         public void accessDual_path_page() throws InterruptedException {
-            Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+            AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
             System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
             navigate_to_Advanced_Settings_page();
             adv.SYSTEM_TESTS.click();
@@ -58,10 +58,10 @@ public class Dual_path_page extends Setup{
     // Test2 The default setting values. In this case, dual-path and wifi are enabled
     @Test(priority = 2)
     public void Dual_path_test_when_wifi_settings_unchecked() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         WiFi_setting_page_elements w = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Home_Page h = PageFactory.initElements(driver, Home_Page.class);
+        HomePage h = PageFactory.initElements(driver, HomePage.class);
         navigate_to_Advanced_Settings_page();
         adv.WI_FI.click();
         Thread.sleep(2000);

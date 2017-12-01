@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Advanced_Settings_Page {
+public class AdvancedSettingsPage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='Installation']")
     public WebElement INSTALLATION;
@@ -17,7 +17,7 @@ public class Advanced_Settings_Page {
     public WebElement ZWAVE_DEVICE_LIST;
     @FindBy(xpath = "//android.widget.TextView[@text='Dealer Contact']")
     public WebElement DEALER_CONTACT;
-    @FindBy(xpath = "//android.widget.TextView[@text='panel Reboot']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Panel Reboot']")
     public WebElement PANEL_REBOOT;
     @FindBy(xpath = "//android.widget.TextView[@text='Power Down']")
     public WebElement POWER_DOWN;

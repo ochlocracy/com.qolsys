@@ -9,28 +9,28 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Installation_Page_Test extends Setup {
+public class InstallationPageTest extends Setup {
 
     String page_name = "Installation page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Installation_Page_Test() throws Exception {}
+    public InstallationPageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Installation_page() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
-
         element_verification(instal.DEVICES, "Devices");
         element_verification(instal.DEALER_SETTINGS, "Dealer settings");
         element_verification(instal.SYSTEM_LOGS, "System Logs");
@@ -41,7 +41,8 @@ public class Installation_Page_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
-        driver.quit();}
+        driver.quit();
+    }
 }

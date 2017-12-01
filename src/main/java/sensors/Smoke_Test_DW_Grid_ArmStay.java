@@ -1,7 +1,7 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Home_Page;
+import panel.ContactUs;
+import panel.HomePage;
 import utils.Log;
 import utils.Setup1;
 import org.apache.log4j.Logger;
@@ -40,9 +40,9 @@ public class Smoke_Test_DW_Grid_ArmStay {
     @Test
     public void b_Armed_Stay_Mode (String UDID_) throws Exception {
 
-        Home_Page home_page = PageFactory.initElements(s.getDriver(), Home_Page.class);
+        HomePage home_page = PageFactory.initElements(s.getDriver(), HomePage.class);
         SensorsList list = PageFactory.initElements(s.getDriver(), SensorsList.class);
-        Contact_Us contact = PageFactory.initElements(s.getDriver(), Contact_Us.class);
+        ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
         TimeUnit.SECONDS.sleep(5);
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");

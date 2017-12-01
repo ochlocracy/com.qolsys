@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Activity_Monitor_Page {
+public class ActivityMonitorPage {
     @FindBy(id = "com.qolsys:id/t3_tv_quick_access")
     public WebElement Quick_Access;
     @FindBy(id = "com.qolsys:id/t3_img_quick_access")

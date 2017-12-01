@@ -1,6 +1,6 @@
 package cellular;
 
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -25,7 +25,7 @@ public class Cellular_Tests_page extends Setup {
 
     @Test(priority = 1)
     public void Check_all_elements_on_Cellular_test_page() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements c_test = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         navigate_to_Advanced_Settings_page();
@@ -46,7 +46,7 @@ public class Cellular_Tests_page extends Setup {
     }
     @Test (priority = 2)
     public void Cancel_Cellular_test_after_running() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements c_test = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         navigate_to_Advanced_Settings_page();

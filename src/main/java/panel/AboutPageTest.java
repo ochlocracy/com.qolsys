@@ -17,7 +17,7 @@ public class AboutPageTest extends Setup {
     String page_name = "About page testing";
     Logger logger = Logger.getLogger(page_name);
     AboutPage about;
-    Advanced_Settings_Page adv;
+    AdvancedSettingsPage adv;
 
     public AboutPageTest() throws Exception {
     }
@@ -39,7 +39,7 @@ public class AboutPageTest extends Setup {
     @Test
     public void Check_all_elements_on_About_page() throws Exception {
         about = PageFactory.initElements(driver, AboutPage.class);
-        adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();

@@ -4,7 +4,7 @@ package iqRemote;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import panel.Panel_Camera_Page;
+import panel.PanelCameraPage;
 import utils.ConfigProps;
 import utils.Setup;
 
@@ -28,7 +28,7 @@ public class DisarmPhotos extends SetupRemote {
         System.out.println("Delete_All_Photos Begin");
         Thread.sleep(3000);
 
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         swipeFromLefttoRight(); //check
         Thread.sleep(3000);
         try {

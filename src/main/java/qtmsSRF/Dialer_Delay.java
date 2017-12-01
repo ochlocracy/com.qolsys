@@ -2,7 +2,7 @@ package qtmsSRF;
 
 import adc.ADC;
 import utils.ConfigProps;
-import panel.Home_Page;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import utils.Setup;
 import sensors.Sensors;
@@ -164,7 +164,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 5)
     public void alarm_09() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
@@ -207,7 +207,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 6)
     public void alarm_09d() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         home.Emergency_Button.click();
@@ -246,7 +246,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 7)
     public void alarm_10() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
@@ -289,7 +289,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 8)
     public void alarm_10d() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         home.Emergency_Button.click();
@@ -328,7 +328,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 9)
     public void alarm_11() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
@@ -371,7 +371,7 @@ public class Dialer_Delay extends Setup {
     @Test(priority = 10)
     public void alarm_11d() throws Exception {
         Thread.sleep(3000);
-        Home_Page home =  PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =  PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
         home.Emergency_Button.click();

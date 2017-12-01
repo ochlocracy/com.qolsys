@@ -9,23 +9,25 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Photo_Frame_Page_Test extends Setup {
+public class PhotoFramePageTest extends Setup {
 
     String page_name = "Photo Frame page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Photo_Frame_Page_Test() throws Exception {}
+    public PhotoFramePageTest() throws Exception {
+    }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setup_logger(page_name);
+    }
 
     @Test
     public void Check_all_elements_on_Photo_Frame_page() throws Exception {
         Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Photo_Frame_Page frame = PageFactory.initElements(driver, Photo_Frame_Page.class);
+        PhotoFramePage frame = PageFactory.initElements(driver, PhotoFramePage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
         menu.Slide_menu_open.click();
@@ -107,8 +109,9 @@ public class Photo_Frame_Page_Test extends Setup {
         element_verification(frame.Automatically_turn_on_display, "Automatically Turn On display");
         element_verification(frame.Automatically_turn_on_display_summery, "Automatically Turn On display summery");
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

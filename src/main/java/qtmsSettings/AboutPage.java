@@ -1,6 +1,7 @@
 package qtmsSettings;
 
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
+import panel.HomePage;
 import utils.Log;
 import utils.Setup;
 import org.apache.log4j.Logger;
@@ -15,8 +16,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.List;
 
-public class About_page extends Setup {
-    public About_page() throws Exception {}
+public class AboutPage extends Setup {
+    public AboutPage() throws Exception {}
 
     private String page_name = "About page testing";
     Logger logger = Logger.getLogger(page_name);
@@ -36,14 +37,14 @@ public class About_page extends Setup {
     }
     @Test
     public void accessAboutPage() throws InterruptedException {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();
         Thread.sleep(2000);
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_001_SASA_002_SASA_003 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying that battery info");
         element_verification(about.Battery, "Battery");
         about.Battery.click();
@@ -59,7 +60,7 @@ public class About_page extends Setup {
     @Parameters ({"Linux Version", "Android OS Version"})
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_004_SASA_005_SASA_006 (String Linux_Version, String Android_OS_Version) throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying software info");
         element_verification(about.Software, "Software");
         about.Software.click();
@@ -86,7 +87,7 @@ public class About_page extends Setup {
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_007_SASA_008_SASA_009 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying hardware info");
         element_verification(about.Hardware, "Hardware");
         about.Hardware.click();
@@ -122,8 +123,8 @@ public class About_page extends Setup {
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_010_SASA_011_SASA_012_SASA_014 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
-        panel.Home_Page home = PageFactory.initElements(driver, panel.Home_Page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verifying patches info");
         element_verification(about.Patches, "Patches");
         about.Patches.click();
@@ -143,7 +144,7 @@ public class About_page extends Setup {
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_015_SASA_016_SASA_017_SASA_018 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying panel info");
         element_verification(about.Panel_About, "panel");
         about.Panel_About.click();
@@ -159,7 +160,7 @@ public class About_page extends Setup {
     @Parameters ({"Baseband_Version", "Verizon_Config_Version", "ATandT_Config_version"})
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_019_SASA_020_SASA_021_SASA_022_SASA_023_SASA_024_SASA_025 (String Baseband_Version, String Verizon_Config_Version, String ATandT_Config_version) throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying cellular info");
         element_verification(about.Cellular, "cellular");
         about.Cellular.click();
@@ -201,7 +202,7 @@ public class About_page extends Setup {
     @Parameters ({"Z_Wave_Firmware"})
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_026_SASA_027_SASA_028_SASA_030_SASA_031 (String Z_Wave_Firmware) throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying Z-Wave info");
         element_verification(about.ZWave_About, "Z-Wave");
         about.ZWave_About.click();
@@ -231,7 +232,7 @@ public class About_page extends Setup {
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_037_SASA_038_SASA_039_SASA_040_SASA_041 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying Wi-Fi info");
         element_verification(about.WI_FI_Info, "Wi-Fi Info");
         about.WI_FI_Info.click();
@@ -255,7 +256,7 @@ public class About_page extends Setup {
     }
     @Test (dependsOnMethods = {"accessAboutPage"})
     public void SASA_049_SASA_050_SASA_051_SASA_052_SASA_053 () throws Exception {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         logger.info("Verifying Internal Storage info");
         element_verification(about.Internal_storage, "Internal Storage");
         about.Internal_storage.click();
