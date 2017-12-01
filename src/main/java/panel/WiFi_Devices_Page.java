@@ -8,21 +8,21 @@ public class WiFi_Devices_Page {
     public WebElement Associated_Wifi_Clients;
     @FindBy(xpath = "//android.widget.TextView[@text='Access Point Settings']")
     public WebElement Qolsys_Access_Point;
-    @FindBy(xpath = "//android.widget.TextView[@text='Wifi Access Point']")
+    @FindBy(xpath = "//android.widget.TextView[@text='WI-FI Access Point']")
     public WebElement Wifi_Access_Point;
-    @FindBy(xpath = "//android.widget.TextView[@text='Wifi Access Point Disabled']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Wi-Fi Access Point Disabled']")
     public WebElement Wifi_Access_Point_summery;
-    @FindBy(xpath = "//android.widget.TextView[@text='Wifi Access Point Enabled']")
+    @FindBy(xpath = "//*[contains(text(), ' Enabled ')]")
     public WebElement Wifi_Access_Point_summery_Enabled;
     @FindBy(xpath = "//android.widget.TextView[@text='SSID']")
     public WebElement SSID;
     @FindBy(id = "com.qolsys:id/ui_di_body_sc")
     public WebElement SSID_txt_field;
-    @FindBy(xpath = "//android.widget.TextView[@text='DHCP Range']")
+    @FindBy(xpath = "//android.widget.TextView[@text='DHCP IP Range']")
     public WebElement DHCP_Range;
     @FindBy(className = "//android.widget.EditText']")
     public WebElement DHCP_Range_txt_field;
-    @FindBy(xpath = "//android.widget.TextView[@text='DHCP Range is set to 50']")
+    @FindBy(xpath = "//android.widget.TextView[@text='DHCP IP Range is set to 50']")
     public WebElement DHCP_Range_summery;
     @FindBy(xpath = "//android.widget.TextView[@text='Change Password']")
     public WebElement Change_Password;
@@ -46,10 +46,10 @@ public class WiFi_Devices_Page {
     public WebElement AP_MODE_BROADCAST;
     @FindBy(xpath = "//android.widget.TextView[@text='HIDDEN']")
     public WebElement AP_MODE_HIDDEN;
-    @FindBy(xpath = "//android.widget.TextView[@text='WPS PUSH BUTTON']")
-    public WebElement WPS_PUSH_BUTTON;
-    @FindBy(xpath = "//android.widget.TextView[@text='AP PASSWORD']")
-    public WebElement AP_PASSWORD;
+    @FindBy(xpath = "//android.widget.TextView[@text='Activate WPS']")
+    public WebElement ActiveWPS;
+    @FindBy(xpath = "//android.widget.TextView[@text='Access Point Password']")
+    public WebElement AccessPointPassword;
     @FindBy(xpath = "//android.widget.TextView[@text='No']")
     public WebElement No;
     @FindBy(xpath = "//android.widget.TextView[@text='MAC Address']")

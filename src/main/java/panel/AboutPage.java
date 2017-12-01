@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class About_page {
+public class AboutPage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='Battery']")
     public WebElement Battery;
@@ -59,15 +59,15 @@ public class About_page {
     public WebElement Panel_About;
     @FindBy(xpath = "//android.widget.TextView[@text='MAC Address']")
     public WebElement MAC_Address;
-    @FindBy(xpath = "//android.widget.TextView[@text='panel Up Time(YY:MM:DD:HH:mm)']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Panel Up Time(YY:MM:DD:HH:mm)']")
     public WebElement Panel_Up_Time;
     @FindBy(xpath = "//android.widget.TextView[@text='Cellular']")
     public WebElement Cellular;
     @FindBy(xpath = "//android.widget.TextView[@text='Carrier']")
     public WebElement Carrier;
-    @FindBy(xpath = "//android.widget.TextView[@text='cellular Connection']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Cellular Connection']")
     public WebElement Cellular_Connection;
-    @FindBy(xpath = "//android.widget.TextView[@text='cellular Signal Strength']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Cellular Signal Strength']")
     public WebElement Cellular_Signal_Strength;
     @FindBy(xpath = "//android.widget.TextView[@text='IMEI']")
     public WebElement IMEI;
@@ -91,6 +91,8 @@ public class About_page {
     public WebElement Product_Type;
     @FindBy(xpath = "//android.widget.TextView[@text='Product ID']")
     public WebElement Product_ID;
+    @FindBy(xpath = "//android.widget.TextView[@text='Ethernet']")
+    public WebElement Ethernet;
     @FindBy(xpath = "//android.widget.TextView[@text='WI-FI Information']")
     public WebElement WI_FI_Info;
     @FindBy(xpath = "//android.widget.TextView[@text='Connection']")
@@ -107,7 +109,7 @@ public class About_page {
     public WebElement Internal_storage;
     @FindBy(xpath = "//android.widget.TextView[@text='Total space']")
     public WebElement Total_space;
-    @FindBy(xpath = "//android.widget.TextView[@text='Available space']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Total space']")
     public WebElement Available_space;
     @FindBy(xpath = "//android.widget.TextView[@text='Photos']")
     public WebElement Photos_About;

@@ -12,15 +12,15 @@ import utils.Setup;
 import java.io.IOException;
 import java.util.List;
 
-public class About_Page_Test extends Setup {
+public class AboutPageTest extends Setup {
 
     String page_name = "About page testing";
     Logger logger = Logger.getLogger(page_name);
-    About_page about;
+    AboutPage about;
     Advanced_Settings_Page adv;
 
-
-    public About_Page_Test() throws Exception {}
+    public AboutPageTest() throws Exception {
+    }
 
     public void swipe_vertical1() throws InterruptedException {
         int starty = 620;
@@ -32,13 +32,13 @@ public class About_Page_Test extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_About_page() throws Exception {
-        about = PageFactory.initElements(driver, About_page.class);
+        about = PageFactory.initElements(driver, AboutPage.class);
         adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
         logger.info("Verifying elements on the page...");
         navigate_to_Advanced_Settings_page();
@@ -86,18 +86,18 @@ public class About_Page_Test extends Setup {
         element_verification(about.Last_Upgrade_Date, "Last Upgrade Date");
         about.Patches.click();
         Thread.sleep(1000);
-        element_verification(about.Panel_About, "panel");
+        element_verification(about.Panel_About, "Panel");
         about.Panel_About.click();
         element_verification(about.MAC_Address, "MAC Address");
-        element_verification(about.Panel_Up_Time, "panel Up Time");
+        element_verification(about.Panel_Up_Time, "Panel Up Time");
         about.Panel_About.click();
         Thread.sleep(1000);
-        element_verification(about.Cellular, "cellular");
+        element_verification(about.Cellular, "Cellular");
         about.Cellular.click();
         Thread.sleep(1000);
         element_verification(about.Carrier, "Carrier");
-        element_verification(about.Cellular_Connection, "cellular Connection");
-        element_verification(about.Cellular_Signal_Strength, "cellular Signal Strength");
+        element_verification(about.Cellular_Connection, "Cellular Connection");
+        element_verification(about.Cellular_Signal_Strength, "Cellular Signal Strength");
         element_verification(about.IMEI, "IMEI");
         swipe_vertical1();
         Thread.sleep(1000);
@@ -118,6 +118,7 @@ public class About_Page_Test extends Setup {
         element_verification(about.Product_Type, "Product Type");
         element_verification(about.Product_ID, "Product ID");
         about.Product_ID.click();
+        element_verification(about.Ethernet, "Ethernet");
         element_verification(about.WI_FI_Info, "Wi-Fi Info");
         about.WI_FI_Info.click();
         Thread.sleep(1000);
@@ -135,7 +136,7 @@ public class About_Page_Test extends Setup {
         element_verification(about.Total_space, "Total space");
         swipe_vertical1();
         Thread.sleep(1000);
-        element_verification(about.Available_space, "Available space");
+        element_verification(about.Available_space, "Total space");
         element_verification(about.Photos_About, "Photos");
         element_verification(about.Videos_About, "Videos");
         element_verification(about.Logs, "Logs");
@@ -143,7 +144,7 @@ public class About_Page_Test extends Setup {
     }
 
     @AfterClass
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }
