@@ -25,8 +25,7 @@ public class CarbonMonoxide extends Setup {
         ConfigProps.init();
         SensorsActivity.init();
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
-        adc.setADCexecute("true");
-    }
+        adc.setADCexecute("true");}
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
