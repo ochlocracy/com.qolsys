@@ -22,6 +22,8 @@ public class Device_Renaming extends Setup{
     String rename = "TEMP";
     String rename1 = "adc";
 
+    //test here
+
     //adc Credentials
     String login = "Gen2-8334";
     String password = "qolsys1234";
