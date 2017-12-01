@@ -26,7 +26,7 @@ public class User_Management_Page_Test extends Setup {
 
     @Test
     public void Check_all_elements_on_User_Management_page() throws Exception {
-       Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+       AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
        User_Management_Page um = PageFactory.initElements(driver, User_Management_Page.class);
        navigate_to_Advanced_Settings_page();
        adv.USER_MANAGEMENT.click();

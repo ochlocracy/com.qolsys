@@ -3,12 +3,9 @@ package adcSanityTests;
 import adc.ADC;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
-import panel.Home_Page;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.ConfigProps;
@@ -73,7 +70,7 @@ public class ArmedAwayTilt extends Setup {
     }
 
     public void ArmAway_Open_Close_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("ArmAway -Open/Close Group " + group + " tilt sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
@@ -123,7 +120,7 @@ public class ArmedAwayTilt extends Setup {
     }
 
     public void ArmAway_Open_Close_sensor(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("ArmAway -Open/Close Group " + group + " tilt sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
@@ -175,7 +172,7 @@ public class ArmedAwayTilt extends Setup {
     }
 
     public void ArmAway_Tamper_sensor(int group, String DLID, String element_to_verify, String element_to_verify1) throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("ArmAway Tamper Group " + group + " contact sensor");
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);

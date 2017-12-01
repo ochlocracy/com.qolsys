@@ -1,6 +1,5 @@
 package iqRemote;
 
-import sensors.Sensors;
 import io.appium.java_client.android.AndroidDriver;
 import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
@@ -10,15 +9,20 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import utils.ConfigProps;
+import utils.SensorsActivity;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class ArmingTestGrid {
     public AndroidDriver<WebElement> driver;
+    public Runtime rt = Runtime.getRuntime();
     DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    public ArmingTestGrid() throws IOException, BiffException {
+    public ArmingTestGrid() throws Exception {
+        ConfigProps.init();
+        SensorsActivity.init();
     }
 
     public AndroidDriver<WebElement> getDriver() {
@@ -41,24 +45,21 @@ public class ArmingTestGrid {
         capabilities.setCapability("newCommandTimeout", "10000");
         this.driver = new AndroidDriver<WebElement>(new URL(URL_), getCapabilities());
     }
-    private String open = "06 00";
-    private String close = "04 00";
-    private String activate = "02 01";
-    String adbPath = "/home/qolsys/android-sdk-linux/platform-tools/adb";
-    public Runtime rt = Runtime.getRuntime();
 
     public void primary_call(String UDID_, String DLID, String State) throws IOException {
-        String primary_send = " -s " + UDID_ +" shell rfinjector 02 " + DLID + " " + State;
-        rt.exec(adbPath + primary_send);
-        System.out.println(adbPath + " " + primary_send);
+        String primary_send = " -s " + UDID_ + " shell rfinjector 02 " + DLID + " " + State;
+        rt.exec(ConfigProps.adbPath + primary_send);
+        System.out.println(ConfigProps.adbPath + " " + primary_send);
     }
+
     public void add_primary_call(String UDID_, int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " -s "+UDID_ +" shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(adbPath + add_primary);
+        String add_primary = " -s " + UDID_ + " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
+        rt.exec(ConfigProps.adbPath + add_primary);
     }
+
     public void logging(String UDID_) throws IOException {
-        String log = " -s " +UDID_ + " logcat > /data/log.txt";
-        rt.exec(adbPath + log);
+        String log = " -s " + UDID_ + " logcat > /data/log.txt";
+        rt.exec(ConfigProps.adbPath + log);
     }
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_"})
@@ -66,6 +67,7 @@ public class ArmingTestGrid {
     public void setUp(String deviceName_, String applicationName_, String UDID_, String platformVersion_, String URL_, String PORT_) throws Exception {
         setCapabilities(URL_);
     }
+
     @Test
     @Parameters({"UDID_"})
     public void Test2(String UDID_) throws InterruptedException, IOException {
@@ -92,7 +94,7 @@ public class ArmingTestGrid {
             getDriver().findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
             getDriver().findElement(By.id("com.qolsys:id/img_arm_stay")).click();
             Thread.sleep(5000);
-            primary_call(UDID_, "01 E2 31", open);
+            primary_call(UDID_, "01 E2 31", SensorsActivity.OPEN);
             Thread.sleep(2000);
             //       driver_primary.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
             //       Thread.sleep(3000);
@@ -100,20 +102,20 @@ public class ArmingTestGrid {
             getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
-            primary_call(UDID_, "01 E2 31", close);
+            primary_call(UDID_, "01 E2 31", SensorsActivity.CLOSE);
             Thread.sleep(5000);
             System.out.println("ArmAway");
             getDriver().findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
             getDriver().findElement(By.id("com.qolsys:id/img_arm_away")).click();
             Thread.sleep(20000);
-            primary_call(UDID_, "01 E2 71", open);
+            primary_call(UDID_, "01 E2 71", SensorsActivity.OPEN);
             Thread.sleep(2000);
             ///       driver_primary.findElement(By.id("com.qolsys:id/main")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyOne")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
             getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
-            primary_call(UDID_, "01 E2 71", close);
+            primary_call(UDID_, "01 E2 71", SensorsActivity.CLOSE);
             System.out.println("Fire Emergency");
             getDriver().findElement(By.id("com.qolsys:id/t3_emergency_icon")).click();
             Thread.sleep(3000);
@@ -125,27 +127,27 @@ public class ArmingTestGrid {
             getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
             Thread.sleep(300000);
             System.out.println("Open/close door window sensors");
-            primary_call(UDID_, "01 E2 31", open);
-            primary_call(UDID_, "01 E2 41", open);
-            primary_call(UDID_, "01 E2 51", open);
-            primary_call(UDID_, "01 E2 61", open);
-            primary_call(UDID_, "01 E2 71", open);
-            primary_call(UDID_, "01 E2 81", open);
-            primary_call(UDID_, "01 E2 91", open);
-            primary_call(UDID_, "01 E2 A1", open);
-            primary_call(UDID_, "01 E2 B1", open);
-            primary_call(UDID_, "01 E2 C1", open);
+            primary_call(UDID_, "01 E2 31", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 41", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 51", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 61", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 71", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 81", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 91", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 A1", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 B1", SensorsActivity.OPEN);
+            primary_call(UDID_, "01 E2 C1", SensorsActivity.OPEN);
             Thread.sleep(10000);
-            primary_call(UDID_, "01 E2 31", close);
-            primary_call(UDID_, "01 E2 41", close);
-            primary_call(UDID_, "01 E2 51", close);
-            primary_call(UDID_, "01 E2 61", close);
-            primary_call(UDID_, "01 E2 71", close);
-            primary_call(UDID_, "01 E2 81", close);
-            primary_call(UDID_, "01 E2 91", close);
-            primary_call(UDID_, "01 E2 A1", close);
-            primary_call(UDID_, "01 E2 B1", close);
-            primary_call(UDID_, "01 E2 C1", close);
+            primary_call(UDID_, "01 E2 31", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 41", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 51", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 61", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 71", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 81", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 91", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 A1", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 B1", SensorsActivity.CLOSE);
+            primary_call(UDID_, "01 E2 C1", SensorsActivity.CLOSE);
             Thread.sleep(150000);
             System.out.println("Arm Stay");
             getDriver().findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
@@ -159,10 +161,10 @@ public class ArmingTestGrid {
             getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
             Thread.sleep(10000);
             System.out.println("Activate motion sensors ");
-            primary_call(UDID_, "05 16 18", activate);
-            primary_call(UDID_, "05 16 28", activate);
-            primary_call(UDID_, "05 16 38", activate);
-            primary_call(UDID_, "05 16 48", activate);
+            primary_call(UDID_, "05 16 18", SensorsActivity.ACTIVATE);
+            primary_call(UDID_, "05 16 28", SensorsActivity.ACTIVATE);
+            primary_call(UDID_, "05 16 38", SensorsActivity.ACTIVATE);
+            primary_call(UDID_, "05 16 48", SensorsActivity.ACTIVATE);
             Thread.sleep(5000);
             System.out.println(i);
         }
@@ -224,6 +226,6 @@ public class ArmingTestGrid {
 
     @AfterClass
     public void tearDown() throws IOException, InterruptedException {
-            getDriver().quit();
+        getDriver().quit();
     }
 }

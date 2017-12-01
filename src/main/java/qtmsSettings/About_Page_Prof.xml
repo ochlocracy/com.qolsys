@@ -10,7 +10,7 @@
         <parameter name="ATandT_Config_version" value="48280015"/>
         <parameter name="Z_Wave_Firmware" value="6.51.07"/>
         <classes>
-            <class name="qtmsSettings.About_page" />
+            <class name="qtmsSettings.AboutPage" />
         </classes>
 
     </test>

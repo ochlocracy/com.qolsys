@@ -1,35 +1,36 @@
 package iqRemote;
 
-import utils.ConfigProps;
-import panel.Home_Page;
-import utils.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import panel.HomePage;
+import utils.ConfigProps;
 
-public class EventsCheck extends Setup_Remote {
+public class EventsCheck extends SetupRemote {
 
-    public EventsCheck() throws Exception {}
     EventContains EventContaints = new EventContains();
-    Setup setup = new Setup();
-    String logcat = "/home/qolsys/IdeaProjects/comqolsys2017/log/test.txt";
+    String logcat = new String(System.getProperty("user.dir")) + "/log/test.txt";
+
+    public EventsCheck() throws Exception {
+        ConfigProps.init();
+    }
 
     @BeforeMethod
-    public void Setup () throws Exception {
+    public void Setup() throws Exception {
         setup_driver("6NJUMAGLVK", "http://127.0.1.1", "4723");
         deleteLogFile(logcat);
         ConfigProps.init();
     }
 
     @Test
-    public void Test1 () throws Exception {
+    public void Test1() throws Exception {
         System.out.println("Press pair button:");
         Thread.sleep(3000);
-        rt.exec(ConfigProps.adbPath+ " now=$(date +\"%b_%d_%Y_%k_%M\"");
-        rt.exec(ConfigProps.adbPath+ " shell logcat -c");
-        rt.exec(ConfigProps.adbPath+ " logcat|tee $now");
+        rt.exec(ConfigProps.adbPath + " now=$(date +\"%b_%d_%Y_%k_%M\"");
+        rt.exec(ConfigProps.adbPath + " shell logcat -c");
+        rt.exec(ConfigProps.adbPath + " logcat|tee $now");
 
         driver.findElement(By.id("com.qolsys:id/pair_to_primary_button")).click();
         Thread.sleep(25000);
@@ -39,16 +40,15 @@ public class EventsCheck extends Setup_Remote {
                 EventContaints.Certificate_exchange_complete,
                 EventContaints.Initialization,
                 EventContaints.Attempt_to_connect,
-                EventContaints.DB_sync},6);
+                EventContaints.DB_sync}, 6);
         Thread.sleep(2000);
     }
 
-
     @Test
-    public void Test2 () throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+    public void Test2() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay - Disarm");
-        for (int i =5; i>0; i--) {
+        for (int i = 5; i > 0; i--) {
             Thread.sleep(15000);
             home_page.DISARM.click();
             home_page.ARM_STAY.click();
@@ -65,17 +65,18 @@ public class EventsCheck extends Setup_Remote {
             eventLogsGenerating(logcat, new String[]{
                     EventContains.DISARM_event,
                     EventContains.DISARM_Ui,
-                    EventContains.Exception},3);
+                    EventContains.Exception}, 3);
 
             Thread.sleep(15000);
-            System.out.println("Counter: "+i);
+            System.out.println("Counter: " + i);
         }
     }
+
     @Test
     public void Test3() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Away - Disarm");
-        for (int i = 5; i>0; i--) {
+        for (int i = 5; i > 0; i--) {
             Thread.sleep(20000);
             home_page.DISARM.click();
             home_page.ARM_AWAY.click();
@@ -88,12 +89,13 @@ public class EventsCheck extends Setup_Remote {
             verify_disarm();
             Thread.sleep(15000);
             eventLogsGenerating(logcat, new String[]{
-                EventContains.Exception},1);
+                    EventContains.Exception}, 1);
             System.out.println("Counter: " + i);
         }
     }
+
     @AfterMethod
-    public void TearDown(){
+    public void TearDown() {
         driver.quit();
     }
 

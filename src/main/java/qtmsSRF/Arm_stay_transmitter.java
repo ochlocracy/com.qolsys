@@ -1,7 +1,7 @@
 package qtmsSRF;
 
 import adc.ADC;
-import panel.Home_Page;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import panel.Settings_Page;
 import utils.Setup;
@@ -46,7 +46,7 @@ public class Arm_stay_transmitter extends Setup {
         ARM_STAY();
         // sensors.primary_call(DLID, tamper);
         Thread.sleep(1000);
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals(Status)) {
             logger.info("Pass: Correct status is " + Status);
@@ -82,7 +82,7 @@ public class Arm_stay_transmitter extends Setup {
         enter_default_user_code();
         Thread.sleep(1000);
         // sensors.primary_call(DLID, restore);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);

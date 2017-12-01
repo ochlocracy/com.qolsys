@@ -25,8 +25,8 @@ public class Siren_Alarms_Page_Test extends Setup {
     @Test
     public void Check_all_elements_on_Siren_Alarms_page() throws Exception {
         Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();

@@ -1,8 +1,5 @@
 package iqRemote;
 
-/**
- * Created by qolsys on 9/18/17.
- */
 public class EventContains {
 
     public static final String Exception = "Caught Exception";

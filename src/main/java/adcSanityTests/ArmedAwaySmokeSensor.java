@@ -8,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.EmergencyPage;
+import panel.HomePage;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.Setup;
@@ -70,7 +70,7 @@ public class ArmedAwaySmokeSensor extends Setup {
 
     public void ArmAway_Activate_Restore_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate/Restore Group " + group + " smoke sensor during exit delay");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(5);
         logger.info("Activate/Restore a sensor");
         sensors.primary_call(DLID, activate);
@@ -110,7 +110,7 @@ public class ArmedAwaySmokeSensor extends Setup {
 
     public void ArmAway_Tamper_sensor_during_Arm_Stay(int group, String DLID, String element_to_verify1, String element_to_verify2, String element_to_verify3, String elemnt_to_verify4) throws Exception {
         logger.info("ArmAway -Tamper Group " + group + " smoke sensor during Arm Away");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(33);
         verify_armaway();
         logger.info("Tamper a sensor");

@@ -3,7 +3,7 @@ package qtmsSettings;
 import cellular.Cellular_test_page_elements;
 import cellular.System_Tests_page;
 import cellular.WiFi_setting_page_elements;
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
 import panel.PanelInfo_ServiceCalls;
 import panel.Settings_Page;
 import utils.Setup;
@@ -32,7 +32,7 @@ public class SystemTest_WiFi_Cell extends Setup{
     public void SASSY_001_SASST_002() throws Exception {
         servcall.get_WiFi_name();
         Thread.sleep(2000);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         navigate_to_Advanced_Settings_page();
         adv.SYSTEM_TESTS.click();
@@ -49,7 +49,7 @@ public class SystemTest_WiFi_Cell extends Setup{
     public void SASSY_004WifiEnabled() throws Exception {
         servcall.get_WiFi();
         Thread.sleep(5000);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements cell = PageFactory.initElements(driver,Cellular_test_page_elements.class);
         navigate_to_Advanced_Settings_page();
@@ -72,7 +72,7 @@ public class SystemTest_WiFi_Cell extends Setup{
         Thread.sleep(5000);
         servcall.get_WiFi();
         Thread.sleep(2000);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements cell = PageFactory.initElements(driver,Cellular_test_page_elements.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);

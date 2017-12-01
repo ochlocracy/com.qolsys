@@ -25,10 +25,10 @@ public class Allow_Master_Code_to_access_Security_and_Arming_Test extends Setup 
 
     @Test
     public void Verify_Master_Code_gets_access_to_Security_and_Arming_page() throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
         logger.info("Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
         navigate_to_Advanced_Settings_page();

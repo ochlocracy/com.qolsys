@@ -1,7 +1,7 @@
 package sensors;
 
-import panel.Contact_Us;
-import panel.Home_Page;
+import panel.ContactUs;
+import panel.HomePage;
 import utils.Log;
 import utils.Setup;
 import org.apache.log4j.Logger;
@@ -146,7 +146,7 @@ public class Smoke_Test_DW extends Setup {
     public void b_Armed_Stay_Mode () throws Exception {
 
         MySensors.read_sensors_from_csv();
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping sensors group 10 -> Expected result = 30 sec delay -> Alarm");
@@ -359,8 +359,8 @@ public class Smoke_Test_DW extends Setup {
     public void c_Armed_Away_Mode() throws Exception {
 
         MySensors.read_sensors_from_csv();
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
-        Contact_Us contact_us = PageFactory.initElements(driver, Contact_Us.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
 
         logger.info("********************************************************");
         logger.info("ArmAway mode tripping sensors group 10 -> Expected result = 30 sec delay -> Alarm");

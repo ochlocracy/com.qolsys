@@ -1,11 +1,11 @@
 package adcSanityTests;
 
 import adc.ADC;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.*;
+import utils.Setup;
 
 import java.io.IOException;
 
@@ -14,28 +14,25 @@ import java.io.IOException;
  */
 public class Zwave_ADC extends Setup {
 
-    public Zwave_ADC() throws Exception {
-    }
-
     ADC adc = new ADC();
-
     String page_name = "Zwave_ADC ExtentManager";
     Logger logger = Logger.getLogger(page_name);
-
     //adc Credentials
     String user_login = "Gen2-8334";
     String user_password = "qolsys1234";
-
     String accountID = adc.getAccountId();
+
+    public Zwave_ADC() throws Exception {
+    }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @BeforeMethod
-    public  void webDriver(){
+    public void webDriver() {
         adc.webDriverSetUp();
     }
 
@@ -60,7 +57,7 @@ public class Zwave_ADC extends Setup {
     }
 
     @AfterMethod
-    public void webDriverQuit () {
+    public void webDriverQuit() {
         adc.driver1.quit();
     }
 

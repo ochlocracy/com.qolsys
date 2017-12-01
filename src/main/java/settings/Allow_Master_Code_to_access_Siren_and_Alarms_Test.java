@@ -27,8 +27,8 @@ public class Allow_Master_Code_to_access_Siren_and_Alarms_Test extends Setup {
     public void Verify_Master_Code_gets_access_to_Siren_and_Alarms_page() throws Exception {
         Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
         logger.info("Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
         navigate_to_Advanced_Settings_page();

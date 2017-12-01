@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
-import panel.Emergency_Page;
+import panel.EmergencyPage;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.ConfigProps;
@@ -82,7 +82,7 @@ public class DisarmAuxiliary extends Setup {
 
     public void Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Auxiliary Medical Pendant during Disarm");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         verify_disarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");
@@ -100,7 +100,7 @@ public class DisarmAuxiliary extends Setup {
 
     public void Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Auxiliary Police Pendant during Disarm");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         verify_disarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");

@@ -31,11 +31,11 @@ public class Auto_Exit_Time_Extension_Test_Grid {
     @Parameters ({"UDID_"})
     @Test
     public void Verify_Arm_Stay_No_Delay_works(String UDID_) throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(s.getDriver(), Security_Arming_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
         Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
-        Home_Page home = PageFactory.initElements(s.getDriver(), Home_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
+        HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         Thread.sleep(2000);
         logger.info("Verify that Auto Exit Time Extension works when enabled");
         logger.info("Adding sensors...");

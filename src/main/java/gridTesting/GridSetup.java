@@ -103,8 +103,8 @@ public class GridSetup {
         TimeUnit.SECONDS.sleep(3);
         Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        About_page about = PageFactory.initElements(driver, About_page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
         settings.ADVANCED_SETTINGS.click();
@@ -130,7 +130,7 @@ public class GridSetup {
         driver.findElement(By.id("com.qolsys:id/addsensor")).click();
     }
     public void verify_disarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("DISARMED")) {
             logger.info("Pass: System is DISARMED");
         } else {
@@ -146,7 +146,7 @@ public class GridSetup {
             logger.info(sensor_name +" is NOT opened/activated");}
     }
     public void verify_status_open() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         }else {
@@ -154,7 +154,7 @@ public class GridSetup {
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());}
     }
     public void verify_in_alarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
@@ -162,7 +162,7 @@ public class GridSetup {
             logger.info("Failed: System is NOT in ALARM");}
     }
     public void enter_default_user_code (){
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
         home_page.Three.click();
@@ -176,7 +176,7 @@ public class GridSetup {
             logger.info(sensor_name +" is NOT tampered");}
     }
     public void verify_status_tampered() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         }else {

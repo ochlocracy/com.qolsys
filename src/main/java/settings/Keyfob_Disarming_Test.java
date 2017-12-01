@@ -30,11 +30,11 @@ public class Keyfob_Disarming_Test extends Setup {
 
     @Test
     public void Verify_Keyfob_Disarming_works() throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelInfo_ServiceCalls service = PageFactory.initElements(driver, PanelInfo_ServiceCalls.class);
         logger.info("Adding sensors...");
         service.set_AUTO_STAY(00);

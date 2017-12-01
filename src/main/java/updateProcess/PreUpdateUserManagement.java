@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import panel.Home_Page;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import panel.User_Management_Page;
 import utils.Setup;
@@ -57,7 +57,7 @@ public class PreUpdateUserManagement extends Setup {
     public void addUserUnlimited() throws InterruptedException {
         logger.info("Adding a new user NewUser with the user code 5643");
         User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();
         Thread.sleep(1000);
@@ -70,7 +70,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test(priority = 1)
     public void verifyNewUserCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();
@@ -87,7 +87,7 @@ public class PreUpdateUserManagement extends Setup {
     public void addMasterUnlimited() throws InterruptedException {
         logger.info("Adding a new Master NewMaster with the code 3331");
         User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();
         Thread.sleep(1000);
@@ -102,7 +102,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test(priority = 3)
     public void verifyNewMasterCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();
@@ -119,7 +119,7 @@ public class PreUpdateUserManagement extends Setup {
     public void addGuestUnlimited() throws InterruptedException {
         logger.info("Adding a new Guest NewGuest with the code 8800");
         User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();
         Thread.sleep(1000);
@@ -134,7 +134,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test(priority = 5)
     public void verifyNewGuestCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();

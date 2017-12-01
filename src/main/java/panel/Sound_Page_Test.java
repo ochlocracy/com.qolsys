@@ -33,7 +33,7 @@ public class Sound_Page_Test extends Setup {
     @Test
     public void Check_all_elements_on_Sound_page() throws Exception {
         Sound_Page sound = PageFactory.initElements(driver, Sound_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.SOUND.click();
 

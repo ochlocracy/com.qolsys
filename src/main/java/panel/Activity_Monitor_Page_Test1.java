@@ -52,7 +52,7 @@ public class Activity_Monitor_Page_Test1 {
     @Parameters ({"UDID_"})
     @org.testng.annotations.Test
     public void Test1_Check_all_elements_on_Activity_Monitor_page(String UDID_) throws Exception {
-        Activity_Monitor_Page activity = PageFactory.initElements(s.getDriver(), Activity_Monitor_Page.class);
+        ActivityMonitorPage activity = PageFactory.initElements(s.getDriver(), ActivityMonitorPage.class);
         Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
@@ -103,10 +103,10 @@ public class Activity_Monitor_Page_Test1 {
     @Parameters ({"UDID_"})
    @Test
     public void Test2_Check_Activity_Monitor_behavior(String UDID_) throws Exception {
-        Activity_Monitor_Page activity = PageFactory.initElements( s.getDriver(), Activity_Monitor_Page.class);
+        ActivityMonitorPage activity = PageFactory.initElements( s.getDriver(), ActivityMonitorPage.class);
         Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Home_Page home = PageFactory.initElements(s.getDriver(), Home_Page.class);
-        Contact_Us contact = PageFactory.initElements(s.getDriver(), Contact_Us.class);
+        HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
+        ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(3000);
         logger.info("Adding sensors...");

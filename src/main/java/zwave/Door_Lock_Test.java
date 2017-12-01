@@ -1,6 +1,6 @@
 package zwave;
 
-import panel.Home_Page;
+import panel.HomePage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -49,7 +49,7 @@ public class Door_Lock_Test extends Setup {
     @Test(priority = 0)
     public void Check_all_elements_on_DoorLock_page() throws Exception {
         Door_Lock_Page door = PageFactory.initElements(driver, Door_Lock_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         swipeFromRighttoLeft();
         Thread.sleep(2000);

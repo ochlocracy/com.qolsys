@@ -25,12 +25,12 @@ public class Disarm_Photos_Test extends Setup {
 
     @Test
     public void Verify_Disarm_Photos_works() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
-        Camera_Settings_Page set_cam = PageFactory.initElements(driver, Camera_Settings_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying Disarm photo is taken when setting in enabled...");
         delete_all_camera_photos();
         Thread.sleep(1000);

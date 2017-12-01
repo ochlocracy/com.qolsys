@@ -37,9 +37,9 @@ public class WiFi extends Setup {
     /*** WiFi is connected ***/
     @Test
     public void SASW_004_SASW_005_SASW_006_SASW_009_SASW_0010_SASW_011_SASW_012() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Home_Page home =PageFactory.initElements(driver, Home_Page.class);
+        HomePage home =PageFactory.initElements(driver, HomePage.class);
         navigate_to_Advanced_Settings_page();
         element_verification(adv.WI_FI, "WiFi icon");
         adv.WI_FI.click();
@@ -87,7 +87,7 @@ public class WiFi extends Setup {
 /*** WiFi setting is disabled, One network has known ***/
 @Test(priority = 2)
 public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
-    Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+    AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
     WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
     Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
     navigate_to_Settings_page();
@@ -120,7 +120,7 @@ public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
     /*** WiFi is connected ***/
     @Test (priority = 1)
     public void WiFiCheckbox_unchecked_SASW_002() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
@@ -138,7 +138,7 @@ public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
     /*** WiFi is connected ***/
     @Test (priority = 3)
     public void Forgot_wifi_credentials_SASW_003() throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
         navigate_to_Settings_page();
