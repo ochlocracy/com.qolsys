@@ -1,30 +1,29 @@
 package settings;
 
-import panel.*;
-import sensors.Sensors;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import panel.*;
+import sensors.Sensors;
+import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
 
-public class Auto_Exit_Time_Extension_Test extends Setup {
-
+public class AutoExitTimeExtensionTest extends Setup {
     String page_name = "Auto Exit Time Extension testing";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
-    private String open = "06 00";
-    private String close = "04 00";
 
-    public Auto_Exit_Time_Extension_Test() throws Exception {
+    public AutoExitTimeExtensionTest() throws Exception {
+        SensorsActivity.init();
     }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
@@ -38,21 +37,21 @@ public class Auto_Exit_Time_Extension_Test extends Setup {
         Thread.sleep(2000);
         logger.info("Verify that Auto Exit Time Extension works when enabled");
         logger.info("Adding sensors...");
-        sensors.add_primary_call(1, 10, 6619296, 1);
+        sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A",open);
+        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",close);
+        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",open);
+        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",close);
+        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
         try {
             if (home.ArwAway_State.isDisplayed())
                 take_screenshot();
-                logger.info("Failed: System is ARMED AWAY");
+            logger.info("Failed: System is ARMED AWAY");
         } catch (Exception e) {
             logger.info("Pass: System is NOT ARMED AWAY");
         } finally {
@@ -76,13 +75,13 @@ public class Auto_Exit_Time_Extension_Test extends Setup {
         settings.Home_button.click();
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A",open);
+        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",close);
+        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",open);
+        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A",close);
+        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(10000);
         verify_armaway();
         Thread.sleep(2000);
@@ -99,7 +98,7 @@ public class Auto_Exit_Time_Extension_Test extends Setup {
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        sensors.delete_from_primary(1);
+        sensors.delete_from_primary(3);
         Thread.sleep(2000);
     }
 
