@@ -2,9 +2,6 @@ package qtmsSRF;
 
 import adc.ADC;
 import adcSanityTests.RemoteToolkitVariables;
-import panel.PanelInfo_ServiceCalls;
-import utils.Setup;
-import sensors.Sensors;
 import jxl.read.biff.BiffException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
@@ -18,26 +15,24 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import panel.PanelInfo_ServiceCalls;
+import sensors.Sensors;
+import utils.Setup;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class Air_FX extends Setup {
-
+public class AirFX extends Setup {
     String page_name = "Air_FX";
     Logger logger = Logger.getLogger(page_name);
     ADC adc = new ADC();
-    String accountID = adc.getAccountId();
-    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     Sensors sensors = new Sensors();
-    private int Long_Exit_Delay = 12;
-    private String activate = "02 01";
-
-
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
     String ADCexecute = "true";
-
-    public Air_FX() throws Exception {}
+    private int Long_Exit_Delay = 12;
+    private String activate = "02 01";
+    public AirFX() throws Exception {
+    }
 
     public void New_ADC_session(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
@@ -83,7 +78,7 @@ public class Air_FX extends Setup {
         Stoolkit_options.selectByVisibleText(linkText);
     }
 
-    public void history_verification (String message) {
+    public void history_verification(String message) {
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         try {
             WebElement history_message = adc.driver1.findElement(By.xpath(message));
@@ -98,25 +93,24 @@ public class Air_FX extends Setup {
 
     @BeforeClass
     public void webDriver() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         adc.webDriverSetUp();
     }
 
     @Test
     public void Navigate_Sensor_Control_Page() throws java.lang.Exception {
-        New_ADC_session(accountID);
+        New_ADC_session(adc.getAccountId());
         adc.driver1.manage().window().maximize();
         Thread.sleep(2000);
     }
 
-    @Test (dependsOnMethods = {"Navigate_Sensor_Control_Page"}, priority =1)
+    @Test(dependsOnMethods = {"Navigate_Sensor_Control_Page"}, priority = 1)
     public void ADC_Add_A_Sensor() throws InterruptedException, IOException, BiffException {
         RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
 
         String SensorDL = "6500A1";
         String SensorID = "1";
         String SensorName = "Door Window Sensor";
-
         logger.info("Upload Logs Test begin");
         Thread.sleep(2000);
         remote.Add_Sensors.click();
@@ -127,21 +121,18 @@ public class Air_FX extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test (dependsOnMethods = {"ADC_Add_A_Sensor"}, priority =2)
+    @Test(dependsOnMethods = {"ADC_Add_A_Sensor"}, priority = 2)
     public void Check_Panel_For_Added_Sensor() throws InterruptedException, IOException, BiffException {
-
         Navigate_To_Edit_Sensor_Page();
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView4")).getText().contains("Door/Window"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Door/Window 1"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView6")).getText().contains("10-Entry-Exit-Normal Delay"));
     }
 
-    @Test (dependsOnMethods = {"Check_Panel_For_Added_Sensor"}, priority =3)
+    @Test(dependsOnMethods = {"Check_Panel_For_Added_Sensor"}, priority = 3)
     public void ADC_Change_Sensor_Data() throws InterruptedException, IOException, BiffException {
         RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
-
         String NewSensorName = "Cool Door Window";
-
         //adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Click here to visit the Equipment List screen"))).click();
         remote.Remote_Back.click();
         Thread.sleep(2000);
@@ -153,37 +144,30 @@ public class Air_FX extends Setup {
         String alertText = simpleAlert.getText();
         System.out.println("Alert text is " + alertText);
         simpleAlert.accept();
-
         Sensor_Data_Change("Change Sensor Type");
         SensorTypeDropDown("Orientation");
         remote.Send_Command_Update.click();
-
         Sensor_Data_Change("Change Sensor Group");
         SensorGroupDropDown("12");
         remote.Send_Command_Change.click();
-
         Sensor_Data_Change("Change Sensor Activity Monitoring Status");
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_rbtMonitoring_1"))).click();
         remote.Send_Command_Change.click();
         Thread.sleep(120000);
-
         adc.driver1.get("https://alarmadmin.alarm.com/Support/RemoteToolkit.aspx");
         remote.Arming_Setting_Dropdown.click();
         remote.Auto_Stay.click();
         clickAnElementByLinkText("On");
         remote.Change.click();
         Thread.sleep(2000);
-
     }
 
-
-    @Test (dependsOnMethods = {"ADC_Change_Sensor_Data"}, priority =4)
+    @Test(dependsOnMethods = {"ADC_Change_Sensor_Data"}, priority = 4)
     public void Check_Panel_For_Updated_Sensor(String DLID, String element_to_verify, int sensor) throws Exception {
         Navigate_To_Edit_Sensor_Page();
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Cool Door Window"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView6")).getText().contains("12-Entry-Exit-Long Delay"));
-
-        ARM_AWAY(Long_Exit_Delay/5);
+        ARM_AWAY(Long_Exit_Delay / 5);
         verify_armaway();
         sensors.primary_call(DLID, activate);
         Thread.sleep(2000);
@@ -193,10 +177,9 @@ public class Air_FX extends Setup {
         enter_default_user_code();
     }
 
-        @Test (dependsOnMethods = {"Check_Panel_For_Updated_Sensor"}, priority =4)
+    @Test(dependsOnMethods = {"Check_Panel_For_Updated_Sensor"}, priority = 4)
     public void ADC_Delete_A_Sensor() throws InterruptedException, IOException, BiffException {
         RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
-
         Sensor_Data_Change("Delete Sensor");
         remote.Send_Command_Change.click();
         Alert simpleAlert = adc.driver1.switchTo().alert();
@@ -207,8 +190,8 @@ public class Air_FX extends Setup {
 
     @AfterClass
     public void tearDown() throws IOException, InterruptedException {
-        for (int i = 2; i>0; i--){
-        sensors.delete_from_primary(i);
+        for (int i = 2; i > 0; i--) {
+            sensors.delete_from_primary(i);
         }
         adc.driver1.quit();
         driver.quit();

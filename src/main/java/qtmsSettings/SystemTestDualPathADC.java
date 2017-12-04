@@ -4,9 +4,6 @@ import adc.ADC;
 import adc.UIRepo;
 import cellular.Dual_path_page_elements;
 import cellular.System_Tests_page;
-import panel.AdvancedSettingsPage;
-import panel.PanelInfo_ServiceCalls;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -18,34 +15,38 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import panel.AdvancedSettingsPage;
+import panel.PanelInfo_ServiceCalls;
+import utils.Setup;
 
 import java.io.IOException;
 
 
-public class SystemTest_DualPath_ADC extends Setup{
-    public SystemTest_DualPath_ADC() throws Exception {}
-
+public class SystemTestDualPathADC extends Setup {
+    public WebDriverWait wait;
     String page_name = "QTMS SystemTest_DualPath test cases";
     Logger logger = Logger.getLogger(page_name);
     ADC adc = new ADC();
-   UIRepo repo ;
+    UIRepo repo;
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     String AccountID = adc.getAccountId();
     String ADCexecute = "true";
-    public WebDriverWait wait;
+    public SystemTestDualPathADC() throws Exception {
+    }
 
-    public void webDriverSetUp () {
+    public void webDriverSetUp() {
         driver1 = new FirefoxDriver();
         wait = new WebDriverWait(driver1, 300);
     }
-    public void ADC_verification (String string, String string1, String string3) throws IOException, InterruptedException {
+
+    public void ADC_verification(String string, String string1, String string3) throws IOException, InterruptedException {
         String[] message = {string, string1, string3};
 
         if (ADCexecute.equals("true")) {
             adc.New_ADC_session(AccountID);
             adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(10000);
-            for (int i =0; i< message.length; i++) {
+            for (int i = 0; i < message.length; i++) {
                 try {
                     WebElement history_message = adc.driver1.findElement(By.xpath(message[i]));
                     Assert.assertTrue(history_message.isDisplayed());
@@ -56,7 +57,7 @@ public class SystemTest_DualPath_ADC extends Setup{
                     System.out.println("***No such element found!***");
                 }
             }
-        }else{
+        } else {
             System.out.println("Set execute to TRUE to run adc verification part");
         }
         Thread.sleep(2000);
@@ -64,9 +65,9 @@ public class SystemTest_DualPath_ADC extends Setup{
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setup_logger(page_name);
+    }
 
     @BeforeMethod
     public void webDriver() {
@@ -90,6 +91,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         logger.info("SASST_030 Pass.");
         servcall.EVENT_DISARM();
     }
+
     @Test
     public void SASST_031() throws Exception {
         servcall.get_ALL_CHIMES();
@@ -105,7 +107,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         logger.info("adc AirFX");
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + adc.getAccountId();
-         adc.driver1.get(ADC_URL);
+        adc.driver1.get(ADC_URL);
         String login = "qapple";
         String password = "qolsys123";
         Thread.sleep(2000);
@@ -124,6 +126,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         Thread.sleep(300000);
         servcall.get_ALL_CHIMES();
     }
+
     @Test
     public void SASST_030_usersitearming() throws Exception {
         repo = PageFactory.initElements(driver, UIRepo.class);
@@ -140,7 +143,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         String ADC_URL = "https://www.alarm.com/login.aspx";
         adc.driver1.get(ADC_URL);
         String login = "LeBron_James";
-       // String login = "panAut";
+        // String login = "panAut";
         String password = "qolsys123";
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")));
@@ -152,32 +155,35 @@ public class SystemTest_DualPath_ADC extends Setup{
             if (adc.driver1.findElement(By.xpath("//*[@id='ember735']")).isDisplayed()) {
                 adc.driver1.findElement(By.xpath("//*[@id='ember735']")).click();
             }
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_ArmingStateWidget_btnArmStay"))).click();
         Thread.sleep(2000);
         adc.driver1.findElement(By.xpath("//div[contains(@class, 'icon ') and contains(@title, 'Disarmed ')]")).click();
         Thread.sleep(2000);
         adc.driver1.findElement(By.xpath("//button[contains(@id, 'ember') and contains(@class, 'armed-stay btn ember-view')]")).click();
-      // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionSilent")).click();
-       // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionNoEntryDelay")).click();
-       // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_btnArmOptionStay")).click();
-       Thread.sleep(5000);
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionSilent")).click();
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionNoEntryDelay")).click();
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_btnArmOptionStay")).click();
+        Thread.sleep(5000);
         System.out.println("status verification");
 
-       // if (adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay today ')]"))).isDisplayed()) {
+        // if (adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay today ')]"))).isDisplayed()) {
         verify_armstay();
         Thread.sleep(4000);
-      // System.out.println("Please wait 5 minutes to get update of User site");
-       logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");
-       servcall.EVENT_DISARM();}
+        // System.out.println("Please wait 5 minutes to get update of User site");
+        logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");
+        servcall.EVENT_DISARM();
+    }
 
-       @AfterTest
-    public void tearDown () throws IOException, InterruptedException {
+    @AfterTest
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
-        driver.quit(); }
+        driver.quit();
+    }
 
     @AfterMethod
-    public void webDriverQuit(){
+    public void webDriverQuit() {
         adc.driver1.quit();
     }
 }

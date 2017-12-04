@@ -3,29 +3,30 @@ package qtmsSettings;
 import cellular.Cellular_test_page_elements;
 import cellular.System_Tests_page;
 import cellular.WiFi_setting_page_elements;
-import panel.AdvancedSettingsPage;
-import panel.PanelInfo_ServiceCalls;
-import panel.SettingsPage;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import panel.AdvancedSettingsPage;
+import panel.PanelInfo_ServiceCalls;
+import panel.SettingsPage;
+import utils.Setup;
 
 import java.io.IOException;
 
-
-public class SystemTest_WiFi_Cell extends Setup{
-    public SystemTest_WiFi_Cell() throws Exception {}
+public class SystemTestWiFiCell extends Setup {
     String page_name = "QTMS SystemTest_WiFI_Cell test cases";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+    public SystemTestWiFiCell() throws Exception {
+    }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);  }
+        setup_logger(page_name);
+    }
 
     /*** WiFi is connected ***/
     @Test
@@ -42,16 +43,17 @@ public class SystemTest_WiFi_Cell extends Setup{
         element_verification(sys.WiFiTest_result, "Test result");
         element_verification(sys.WiFiTest_time, "Test time");
         element_verification(sys.WiFiTest_status, "Test status");
-         logger.info(" SASST_001, SASST_002 Pass: Wi-Fi test can be passed when connecting to a router/hotspot network");
+        logger.info(" SASST_001, SASST_002 Pass: Wi-Fi test can be passed when connecting to a router/hotspot network");
         Thread.sleep(5000);
     }
+
     @Test(priority = 1)
     public void SASSY_004WifiEnabled() throws Exception {
         servcall.get_WiFi();
         Thread.sleep(5000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
-        Cellular_test_page_elements cell = PageFactory.initElements(driver,Cellular_test_page_elements.class);
+        Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         navigate_to_Advanced_Settings_page();
         adv.SYSTEM_TESTS.click();
         sys.CELLULAR_TEST.click();
@@ -64,7 +66,8 @@ public class SystemTest_WiFi_Cell extends Setup{
         element_verification(cell.start_button, "start_button");
         element_verification(cell.cancel_button, "cancel_button");
         logger.info(" SASST_4 Pass: cellular test passed successfully when wifi is enabled");
-        Thread.sleep(5000);}
+        Thread.sleep(5000);
+    }
 
     @Test(priority = 2)
     public void SASSY_004WifiDisabled() throws Exception {
@@ -74,7 +77,7 @@ public class SystemTest_WiFi_Cell extends Setup{
         Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
-        Cellular_test_page_elements cell = PageFactory.initElements(driver,Cellular_test_page_elements.class);
+        Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         navigate_to_Settings_page();
@@ -108,10 +111,11 @@ public class SystemTest_WiFi_Cell extends Setup{
         servcall.Wifi_enable();
         System.out.println("1");
         Thread.sleep(5000);
-        }
+    }
 
     @AfterTest
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
-        driver.quit();}
+        driver.quit();
+    }
 }
