@@ -8,20 +8,20 @@
             <class name="panel.EmergencyPageTest" />
             <class name="panel.PanelCameraPageTest" />
             <class name="panel.ContactUsTest" />
-            <class name="panel.Slide_Menu_Test" />
+            <class name="panel.SlideMenuTest" />
             <class name="panel.PhotoFramePageTest" />
-            <class name="panel.Settings_Page_Test" />
+            <class name="panel.SettingsPageTest" />
             <class name="panel.DisplayPageTest" />
             <class name="panel.ActivityMonitorPageTest" />
             <class name="panel.AdvancedSettingsPageTest" />
             <class name="panel.InstallationPageTest" />
-            <class name="panel.WiFi_Devices_Page" />
-            <class name="panel.User_Management_Page_Test" />
+            <class name="panel.WiFiDevicesPage" />
+            <class name="panel.UserManagementPageTest" />
             <class name="panel.AboutPageTest" />
             <class name="panel.SecurityArmingPage" />
-            <class name="panel.Siren_Alarms_Page_Test" />
+            <class name="panel.SirenAlarmsPageTest" />
             <class name="panel.CameraSettingsPageTest" />
-            <class name="panel.Sound_Page_Test" />
+            <class name="panel.SoundPageTest" />
         </classes>
     </test>
 </suite>

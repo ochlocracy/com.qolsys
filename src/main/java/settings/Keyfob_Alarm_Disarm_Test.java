@@ -28,7 +28,7 @@ public class Keyfob_Alarm_Disarm_Test extends Setup {
     @Test
     public void Verify_Keyfob_Alarm_Disarm_works() throws Exception {
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);

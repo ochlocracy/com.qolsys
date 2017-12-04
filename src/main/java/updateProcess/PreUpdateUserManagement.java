@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
-import panel.User_Management_Page;
+import panel.UserManagementPage;
 import utils.Setup;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class PreUpdateUserManagement extends Setup {
     public PreUpdateUserManagement() throws Exception {}
 
     public void addUser(String Name, String UserCode) throws InterruptedException {
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         user_m.Add_User_Name_field.sendKeys(Name);
         user_m.Add_User_Code_field.sendKeys(UserCode);
         user_m.Add_Confirm_User_Code_field.sendKeys(UserCode);
@@ -56,7 +56,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test
     public void addUserUnlimited() throws InterruptedException {
         logger.info("Adding a new user NewUser with the user code 5643");
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();
@@ -86,7 +86,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test(priority = 2)
     public void addMasterUnlimited() throws InterruptedException {
         logger.info("Adding a new Master NewMaster with the code 3331");
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();
@@ -118,7 +118,7 @@ public class PreUpdateUserManagement extends Setup {
     @Test(priority = 4)
     public void addGuestUnlimited() throws InterruptedException {
         logger.info("Adding a new Guest NewGuest with the code 8800");
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         user_m.Add_User.click();

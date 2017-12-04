@@ -156,14 +156,14 @@ public class Setup {
     }
 
     public void navigate_to_Settings_page() {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
     }
 
     public void navigate_to_Advanced_Settings_page() throws InterruptedException {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
         Thread.sleep(1000);
@@ -176,7 +176,7 @@ public class Setup {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        Security_Sensors_Page sec = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         instal.DEVICES.click();

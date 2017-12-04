@@ -27,11 +27,11 @@ public class Dealer_Code_Test extends Setup {
 
     @Test
     public void Verify_Dealer_Code_Change() throws Exception {
-        Settings_Page settings =  PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings =  PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        User_Management_Page user = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();

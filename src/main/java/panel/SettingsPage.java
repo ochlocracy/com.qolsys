@@ -3,8 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Settings_Page {
-
+public class SettingsPage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='DISPLAY']")
     public WebElement DISPLAY;

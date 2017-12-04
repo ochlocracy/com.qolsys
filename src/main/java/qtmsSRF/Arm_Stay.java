@@ -76,7 +76,7 @@ public class Arm_Stay extends Setup {
     }
     public void sensor_status_check(String DLID, String Status, String Status1, int n,int n1 ) throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();
@@ -626,7 +626,7 @@ public class Arm_Stay extends Setup {
         Thread.sleep(1000);
         logger.info("panel history verification");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();
@@ -887,7 +887,7 @@ public class Arm_Stay extends Setup {
         sensors.primary_call(DLID, restore);
         Thread.sleep(4000);
         //Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(2000);
         sett.STATUS.click();
@@ -938,7 +938,7 @@ public class Arm_Stay extends Setup {
             System.out.println("No such element found!!!"); }
         DISARM();
         Thread.sleep(3000);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();
@@ -1000,7 +1000,7 @@ public class Arm_Stay extends Setup {
             Thread.sleep(1000);
             sensors.primary_call(DLID, restore);
             Thread.sleep(3000);
-            Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+            SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
             navigate_to_Settings_page();
             Thread.sleep(1000);
             sett.STATUS.click();

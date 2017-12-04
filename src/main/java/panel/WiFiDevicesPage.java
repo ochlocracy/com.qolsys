@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class WiFi_Devices_Page {
+public class WiFiDevicesPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Access Point Connected Devices']")
     public WebElement Associated_Wifi_Clients;
     @FindBy(xpath = "//android.widget.TextView[@text='Access Point Settings']")
@@ -28,9 +28,9 @@ public class WiFi_Devices_Page {
     public WebElement Change_Password;
     @FindBy(xpath = "//android.widget.TextView[@text='Password Changes']")
     public WebElement Change_Password_title;
-    @FindBy(id= "com.qolsys:id/uiEdit")
+    @FindBy(id = "com.qolsys:id/uiEdit")
     public WebElement New_Password_field;
-    @FindBy(id= "com.qolsys:id/uichngepwd")
+    @FindBy(id = "com.qolsys:id/uichngepwd")
     public WebElement Confirm_Password_field;
     @FindBy(id = "com.qolsys:id/positive_button")
     public WebElement Access_Point_OK_Button;

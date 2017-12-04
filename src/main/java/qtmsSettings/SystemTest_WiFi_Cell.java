@@ -5,7 +5,7 @@ import cellular.System_Tests_page;
 import cellular.WiFi_setting_page_elements;
 import panel.AdvancedSettingsPage;
 import panel.PanelInfo_ServiceCalls;
-import panel.Settings_Page;
+import panel.SettingsPage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -75,7 +75,7 @@ public class SystemTest_WiFi_Cell extends Setup{
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements cell = PageFactory.initElements(driver,Cellular_test_page_elements.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);

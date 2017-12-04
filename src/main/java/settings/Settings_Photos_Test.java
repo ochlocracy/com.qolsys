@@ -27,7 +27,7 @@ public class Settings_Photos_Test extends Setup {
     public void Verify_Settings_Photos_works() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying settings photo is NOT taken when setting in disabled...");

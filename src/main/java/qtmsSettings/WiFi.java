@@ -89,7 +89,7 @@ public class WiFi extends Setup {
 public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
     AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
     WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-    Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+    SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
     navigate_to_Settings_page();
     Thread.sleep(1000);
   if (wifi.Warning_message.isDisplayed()){
@@ -122,7 +122,7 @@ public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
     public void WiFiCheckbox_unchecked_SASW_002() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         settings.ADVANCED_SETTINGS.click();
@@ -140,7 +140,7 @@ public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
     public void Forgot_wifi_credentials_SASW_003() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         settings.ADVANCED_SETTINGS.click();

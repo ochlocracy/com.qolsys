@@ -27,7 +27,7 @@ public class Duress_Authentication_Test extends Setup {
 
     @Test
     public void Verify_Duress_Authentication_works() throws Exception {
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);

@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Status_page_elements {
+public class StatusPageElements {
     @FindBy(id = "com.qolsys:id/uiTabName4")
     public WebElement HISTORY_tab;
     @FindBy(id = "com.qolsys:id/uiTabName3")

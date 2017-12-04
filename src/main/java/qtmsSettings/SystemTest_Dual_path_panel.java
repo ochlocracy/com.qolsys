@@ -5,7 +5,7 @@ import cellular.System_Tests_page;
 import cellular.WiFi_setting_page_elements;
 import panel.AdvancedSettingsPage;
 import panel.PanelInfo_ServiceCalls;
-import panel.Settings_Page;
+import panel.SettingsPage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -78,7 +78,7 @@ public class SystemTest_Dual_path_panel extends Setup{
         @Test(priority = 3)
     public void SASST_020() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Settings_page();
@@ -124,7 +124,7 @@ public class SystemTest_Dual_path_panel extends Setup{
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
@@ -148,7 +148,7 @@ public class SystemTest_Dual_path_panel extends Setup{
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
@@ -195,7 +195,7 @@ public class SystemTest_Dual_path_panel extends Setup{
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();

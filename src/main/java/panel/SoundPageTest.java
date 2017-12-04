@@ -9,12 +9,13 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Sound_Page_Test extends Setup {
+public class SoundPageTest extends Setup {
 
     String page_name = "Sound page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Sound_Page_Test() throws Exception {}
+    public SoundPageTest() throws Exception {
+    }
 
     public void swipe_up() throws InterruptedException {
         int starty = 260;
@@ -26,13 +27,13 @@ public class Sound_Page_Test extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Sound_page() throws Exception {
-        Sound_Page sound = PageFactory.initElements(driver, Sound_Page.class);
+        SoundPage sound = PageFactory.initElements(driver, SoundPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.SOUND.click();
@@ -97,13 +98,13 @@ public class Sound_Page_Test extends Setup {
         sound.ZWave_Remote_Voice_Prompts.click();
         swipe_vertical();
         Thread.sleep(1000);
-        if (sound.All_chimes_summery_enabled.isDisplayed()) {
-            logger.info("Pass: Correct All Chimes summery when ENABLED");
-        }
-//        sound.All_Chimes.click();
-//        if (sound.All_chimes_summery_disabled.isDisplayed()) {
-//            logger.info("Pass: Correct All Chimes summery when DISABLED");
+//        if (sound.All_chimes_summery_enabled.isDisplayed()) {
+//            logger.info("Pass: Correct All Chimes summery when ENABLED");
 //        }
+ //       sound.All_Chimes.click();
+        if (sound.All_chimes_summery_disabled.isDisplayed()) {
+            logger.info("Pass: Correct All Chimes summery when DISABLED");
+        }
         sound.All_Chimes.click();
         if (sound.Sensor_chime_summery_enabled.isDisplayed()) {
             logger.info("Pass: Correct Sensor Chime summery when ENABLED");
@@ -186,9 +187,9 @@ public class Sound_Page_Test extends Setup {
         swipe_up();
         sound.Trouble_Beeps.click();
     }
-    
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

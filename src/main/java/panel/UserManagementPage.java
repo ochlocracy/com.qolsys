@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class User_Management_Page {
+public class UserManagementPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Id']")
     public WebElement User_Management_Id;
     @FindBy(xpath = "//android.widget.TextView[@text='Name']")

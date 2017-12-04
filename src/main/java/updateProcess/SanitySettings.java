@@ -51,7 +51,7 @@ public class SanitySettings extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
@@ -122,7 +122,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Allow_Master_Code_Access_Camera_Settings");
 
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
@@ -189,7 +189,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Allow_Master_Code_Access_Security_Arming");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
@@ -259,8 +259,8 @@ public class SanitySettings extends Setup {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Allow_Master_Code_Access_Siren_Alarms");
 
-        Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
@@ -329,7 +329,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Arm_Stay_No_Delay");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -386,7 +386,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Auto_Bypass");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -481,7 +481,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Auto_Exit_Time_Extention");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -565,7 +565,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Auto_Stay");
         int delay = 15;
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -615,11 +615,11 @@ public class SanitySettings extends Setup {
     public void Settings_Test9() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Dealer_Code");
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        User_Management_Page user = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         navigate_to_Advanced_Settings_page();
         log.log(LogStatus.INFO, "Verify a Dealer code can be changed");
         adv.INSTALLATION.click();
@@ -695,7 +695,7 @@ public class SanitySettings extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
@@ -758,7 +758,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test11() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Duress_Authentication");
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
@@ -823,11 +823,11 @@ public class SanitySettings extends Setup {
     public void Settings_Test12() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Installer_Code");
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        User_Management_Page user = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         System.out.println("Verify Installer Code can be modified");
         log.log(LogStatus.INFO, "Verify Installer Code can be modified");
         navigate_to_Advanced_Settings_page();
@@ -904,7 +904,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Keyfob_Alarm_Disarm");
         String disarm = "08 01";
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -973,7 +973,7 @@ public class SanitySettings extends Setup {
         int delay = 15;
         String disarm = "08 01";
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -1053,7 +1053,7 @@ public class SanitySettings extends Setup {
         String armstay = "04 01";
         String armaway = "04 04";
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -1146,8 +1146,8 @@ public class SanitySettings extends Setup {
     public void Settings_Test16() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Panic_Disable");
-        Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1246,7 +1246,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test17() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Secure_Arming");
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
@@ -1302,7 +1302,7 @@ public class SanitySettings extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying deleting panel images requires valid code...");
@@ -1378,7 +1378,7 @@ public class SanitySettings extends Setup {
         log = report.startTest("Settings.Settings_Potos");
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying settings photo is NOT taken when setting in disabled...");

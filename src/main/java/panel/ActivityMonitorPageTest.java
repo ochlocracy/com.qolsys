@@ -53,7 +53,7 @@ public class ActivityMonitorPageTest extends Setup {
     @Test(priority = 1)
     public void Check_all_elements_on_Activity_Monitor_page() throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements(driver, ActivityMonitorPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
         logger.info("Adding sensors...");
@@ -105,7 +105,7 @@ public class ActivityMonitorPageTest extends Setup {
     @Test(priority = 2)
     public void Check_Activity_Monitor_behavior() throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements(driver, ActivityMonitorPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);

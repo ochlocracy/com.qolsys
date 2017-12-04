@@ -161,7 +161,7 @@ public class ARM_AWAY extends Setup {
     public void AA_05() throws Exception {
         logger.info("Verify the system can be disarmed during the entry delay using a Guest code)");
         logger.info("Adding a new Guest NewGuest with the code 1233");
-        User_Management_Page user_m =  PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m =  PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home =  PageFactory.initElements(driver, HomePage.class);
         AdvancedSettingsPage advanced =  PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
@@ -254,7 +254,7 @@ public class ARM_AWAY extends Setup {
 
     public void sensor_status_check(String Status, String Status1, int n,int n1 ) throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();

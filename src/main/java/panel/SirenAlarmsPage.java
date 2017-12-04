@@ -3,9 +3,9 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Siren_Alarms_Page {
-    @FindBy(xpath = "//android.widget.TextView[@text='Disable Siren']")
-    public WebElement Disable_Siren;
+public class SirenAlarmsPage {
+    @FindBy(xpath = "//android.widget.TextView[@text='Panel Sirens']")
+    public WebElement Panel_Sirens;
     @FindBy(xpath = "//android.widget.TextView[@text='Currently all sirens are Enabled']")
     public WebElement Disable_Siren_summery;
     @FindBy(xpath = "//android.widget.TextView[@text='ALL SIRENS OFF']")
@@ -42,17 +42,17 @@ public class Siren_Alarms_Page {
     public WebElement Dialer_Delay_summery;
     @FindBy(xpath = "//android.widget.TextView[@text='Set value in seconds']")
     public WebElement Set_value_title;
-    @FindBy(id ="com.qolsys:id/Set")
+    @FindBy(id = "com.qolsys:id/Set")
     public WebElement Set;
-    @FindBy(id ="com.qolsys:id/Cancel")
+    @FindBy(id = "com.qolsys:id/Cancel")
     public WebElement Cancel;
     @FindBy(xpath = "//android.widget.TextView[@text='Siren Timeout']")
     public WebElement Siren_Timeout;
     @FindBy(xpath = "//android.widget.TextView[@text='Siren stops sounding after 4 minutes during an alarm event']")
     public WebElement Siren_Timeout_summery;
-    @FindBy(id= "com.qolsys:id/title")
+    @FindBy(id = "com.qolsys:id/title")
     public WebElement Siren_Timeout_title;
-    @FindBy(id="com.qolsys:id/negative_button")
+    @FindBy(id = "com.qolsys:id/negative_button")
     public WebElement Siren_Cancel;
     @FindBy(xpath = "//android.widget.TextView[@text='Water/Freeze Siren']")
     public WebElement Water_Freeze_Siren;

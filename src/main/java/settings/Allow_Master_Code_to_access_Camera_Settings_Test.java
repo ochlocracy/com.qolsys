@@ -26,7 +26,7 @@ public class Allow_Master_Code_to_access_Camera_Settings_Test extends Setup {
     @Test
     public void Verify_Master_Code_gets_access_to_Camera_Settings_page() throws Exception {
         CameraSettingsPage set_cam =  PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);

@@ -31,7 +31,7 @@ public class Keyfob_Disarming_Test_Grid {
         @Test
         public void Verify_Keyfob_Disarming_works(String UDID_) throws Exception {
             SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
-            Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+            SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
             AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
             InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
             HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);

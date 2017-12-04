@@ -9,22 +9,23 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Siren_Alarms_Page_Test extends Setup {
+public class SirenAlarmsPageTest extends Setup {
 
     String page_name = "Siren and Alarms page testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public Siren_Alarms_Page_Test() throws Exception {
+    public SirenAlarmsPageTest() throws Exception {
     }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setup_logger(page_name);
+    }
 
     @Test
     public void Check_all_elements_on_Siren_Alarms_page() throws Exception {
-        Siren_Alarms_Page siren = PageFactory.initElements(driver, Siren_Alarms_Page.class);
+        SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         navigate_to_Advanced_Settings_page();
@@ -33,7 +34,7 @@ public class Siren_Alarms_Page_Test extends Setup {
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
         element_verification(siren.Disable_Siren_summery, "Disable Siren summery");
-        siren.Disable_Siren.click();
+        siren.Panel_Sirens.click();
         Thread.sleep(1000);
         element_verification(siren.ALL_SIRENS_OFF, "ALL SIRENS OFF");
         element_verification(siren.ALL_SIRENS_ON, "ALL SIRENS ON");
@@ -41,11 +42,11 @@ public class Siren_Alarms_Page_Test extends Setup {
         siren.ALL_SIRENS_OFF.click();
         Thread.sleep(1000);
         element_verification(siren.Disable_Siren_summery_disabled, "Disable Siren summery when Disabled");
-        siren.Disable_Siren.click();
+        siren.Panel_Sirens.click();
         Thread.sleep(1000);
         siren.INSTALLER_TEST_MODE.click();
         element_verification(siren.Disable_Siren_summery_Installer_Mode, "Disable Siren summery in Installer mode");
-        siren.Disable_Siren.click();
+        siren.Panel_Sirens.click();
         Thread.sleep(1000);
         siren.ALL_SIRENS_ON.click();
         Thread.sleep(1000);
@@ -117,7 +118,7 @@ public class Siren_Alarms_Page_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

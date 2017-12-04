@@ -10,24 +10,26 @@ import utils.Setup;
 import java.io.IOException;
 
 
-public class Slide_Menu_Test extends Setup {
+public class SlideMenuTest extends Setup {
 
     String page_name = "Slide Menu";
     Logger logger = Logger.getLogger(page_name);
 
-    public Slide_Menu_Test() throws Exception {
+    public SlideMenuTest() throws Exception {
     }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
+
     @Test
     public void Check_all_elements_on_Slide_Menu() throws Exception {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         logger.info("Verifying elements on the page...");
-        Thread.sleep(1000); Thread.sleep(1000);
+        Thread.sleep(1000);
+        Thread.sleep(1000);
 
         menu.Slide_menu_open.click();
         element_verification(menu.System_state_icon, "System state");
@@ -54,7 +56,7 @@ public class Slide_Menu_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

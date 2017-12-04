@@ -29,8 +29,8 @@ public class Allow_Master_Code_to_access_Siren_and_Alarms_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Master_Code_gets_access_to_Siren_and_Alarms_page(String UDID_) throws Exception {
-        Siren_Alarms_Page siren = PageFactory.initElements(s.getDriver(), Siren_Alarms_Page.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+        SirenAlarmsPage siren = PageFactory.initElements(s.getDriver(), SirenAlarmsPage.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         Thread.sleep(3000);

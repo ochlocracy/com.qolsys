@@ -3,7 +3,7 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Security_Sensors_Page {
+public class SecuritySensorsPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Auto Learn Sensor']")
     public WebElement Auto_Learn_Sensor;
     @FindBy(xpath = "//android.widget.TextView[@text='Add Sensor']")
@@ -16,16 +16,16 @@ public class Security_Sensors_Page {
     public WebElement Sensor_Status;
     @FindBy(xpath = "//android.widget.TextView[@text='Sensor Group']")
     public WebElement Sensor_Group;
-    @FindBy(id="com.qolsys:id/imageView1")
+    @FindBy(id = "com.qolsys:id/imageView1")
     public WebElement Edit_Img;
-    @FindBy(id="com.qolsys:id/sensorDescText")
+    @FindBy(id = "com.qolsys:id/sensorDescText")
     public WebElement Custom_Description;
-    @FindBy(id="com.qolsys:id/addsensor")
+    @FindBy(id = "com.qolsys:id/addsensor")
     public WebElement Save;
-    @FindBy(id="com.qolsys:id/btnDelete")
+    @FindBy(id = "com.qolsys:id/btnDelete")
     public WebElement Delete;
-    @FindBy(id="com.qolsys:id/ok")
+    @FindBy(id = "com.qolsys:id/ok")
     public WebElement OK;
-    @FindBy(id="com.qolsys:id/sensor_id")
+    @FindBy(id = "com.qolsys:id/sensor_id")
     public WebElement Sensor_DLID;
 }

@@ -502,7 +502,7 @@ public class SanityUpdate extends Setup {
 
     @Test(priority = 5)
     public void deleteNewUsers() throws Exception {
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         List<WebElement> delete = driver.findElements(By.id("com.qolsys:id/deleteImg"));

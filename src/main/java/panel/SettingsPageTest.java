@@ -9,27 +9,27 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class Settings_Page_Test extends Setup {
+public class SettingsPageTest extends Setup {
 
-    String page_name = "settings page";
+    String page_name = "Settings page";
     Logger logger = Logger.getLogger(page_name);
 
-    public Settings_Page_Test() throws Exception {
+    public SettingsPageTest() throws Exception {
     }
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Settings_page() throws Exception {
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
 
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
         element_verification(settings.DISPLAY, "Display");
@@ -47,8 +47,8 @@ public class Settings_Page_Test extends Setup {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
-           }
     }
+}

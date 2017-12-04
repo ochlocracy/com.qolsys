@@ -27,7 +27,7 @@ public class Secure_Delete_Images_Test extends Setup {
         HomePage home  = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying deleting panel images requires valid code...");

@@ -53,7 +53,7 @@ public class Activity_Monitor_Page_Test1 {
     @org.testng.annotations.Test
     public void Test1_Check_all_elements_on_Activity_Monitor_page(String UDID_) throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements(s.getDriver(), ActivityMonitorPage.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
         logger.info("Adding sensors...");
@@ -104,7 +104,7 @@ public class Activity_Monitor_Page_Test1 {
    @Test
     public void Test2_Check_Activity_Monitor_behavior(String UDID_) throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements( s.getDriver(), ActivityMonitorPage.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
         logger.info("Verifying elements on the page...");

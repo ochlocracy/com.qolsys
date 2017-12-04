@@ -132,14 +132,14 @@ public class Setup1 {
     /* Navigation to the panel settings pages */
 
     public void navigate_to_Settings_page () {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
     }
 
     public void navigate_to_Advanced_Settings_page () throws InterruptedException {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
         Thread.sleep(2000);
         menu.Settings.click();
@@ -294,8 +294,8 @@ public class Setup1 {
 
     public String Software_Version () throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         menu.Slide_menu_open.click();
