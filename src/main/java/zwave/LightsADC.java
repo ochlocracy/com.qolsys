@@ -1,7 +1,6 @@
 package zwave;
 
 import adc.ADC;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,15 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by nchortek on 7/6/17.
- */
-public class LightsADC extends Setup{
+public class LightsADC extends Setup {
     String page_name = "Lights_ADC";
     Logger logger = Logger.getLogger(page_name);
     ADC adc = new ADC();
@@ -44,7 +41,7 @@ public class LightsADC extends Setup{
     }
 
     //compares each light icon on the page to a given state
-    public void checkPanelUI(String state) throws Exception{
+    public void checkPanelUI(String state) throws Exception {
         File light_state = new File(projectPath + "/scr/" + state);
         Thread.sleep(10000);
         List<WebElement> status = driver.findElements(By.id("com.qolsys:id/statusButton"));
@@ -53,7 +50,7 @@ public class LightsADC extends Setup{
     }
 
     //given a trigger, response, and light number (0, 1, or 2), creates a corresponding rule
-    public void add_light_rule(String trigger, String response, int light_number){
+    public void add_light_rule(String trigger, String response, int light_number) {
         driver1.findElement(By.partialLinkText("Add a Rule")).click();
         driver1.findElement(By.id("ctl00_phBody_txtRuleName")).sendKeys(response + " upon " + trigger);
         driver1.findElement(By.id("ctl00_phBody_rbArmingTrigger")).click();
@@ -61,7 +58,7 @@ public class LightsADC extends Setup{
         Select dropdown2 = new Select(driver1.findElement(By.id("ctl00_phBody_ddlAction")));
         dropdown1.selectByVisibleText(trigger);
         dropdown2.selectByVisibleText(response);
-        driver1.findElement(By.id("ctl00_phBody_ucLightGroupsWithFewLights_rptDevices_ctl0"+ light_number +
+        driver1.findElement(By.id("ctl00_phBody_ucLightGroupsWithFewLights_rptDevices_ctl0" + light_number +
                 "_lnkDeviceName")).click();
 
         driver1.findElement(By.id("ctl00_phBody_pageActionButtons_buttonSave")).click();
@@ -70,13 +67,13 @@ public class LightsADC extends Setup{
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         adc.webDriverSetUp();
         setup_logger(page_name);
     }
 
     @Test
-    public void turnOnLights() throws Exception{
+    public void turnOnLights() throws Exception {
         logger.info("individually turning lights on from adc");
 
         //navigate to user site
@@ -103,8 +100,8 @@ public class LightsADC extends Setup{
         checkPanelUI(light_on);
     }
 
-    @Test (priority = 1)
-    public void turnOffLights() throws Exception{
+    @Test(priority = 1)
+    public void turnOffLights() throws Exception {
         logger.info("individually turning lights off from adc");
 
         //individually turn all 3 lights off
@@ -121,8 +118,8 @@ public class LightsADC extends Setup{
         checkPanelUI(light_off);
     }
 
-    @Test (priority = 2)
-    public void groupOn() throws Exception{
+    @Test(priority = 2)
+    public void groupOn() throws Exception {
         logger.info("turning lights on as a group in adc");
 
         //begin creation of new group
@@ -152,8 +149,8 @@ public class LightsADC extends Setup{
         checkPanelUI(light_on);
     }
 
-    @Test (priority = 3)
-    public void groupOff() throws Exception{
+    @Test(priority = 3)
+    public void groupOff() throws Exception {
         logger.info("turning lights off as a group in adc");
 
         //turn off group
@@ -169,8 +166,8 @@ public class LightsADC extends Setup{
         checkPanelUI(light_off);
     }
 
-    @Test (priority = 4)
-    public void rules() throws Exception{
+    @Test(priority = 4)
+    public void rules() throws Exception {
         logger.info("testing adc rule creation");
         /*adc.navigate_to_user_site(login, password);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("emPower")));
@@ -204,7 +201,7 @@ public class LightsADC extends Setup{
     }
 
     @AfterTest
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
         adc.driver1.quit();

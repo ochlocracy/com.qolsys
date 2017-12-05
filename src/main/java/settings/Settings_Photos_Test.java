@@ -39,6 +39,7 @@ public class Settings_Photos_Test extends Setup {
         Thread.sleep(1000);
         settings.Home_button.click();
         swipeFromLefttoRight();
+        swipeFromLefttoRight();
         camera.Settings_photos.click();
         try {
             if (camera.Photo_lable.isDisplayed())
@@ -60,6 +61,7 @@ public class Settings_Photos_Test extends Setup {
         enter_default_user_code();
         Thread.sleep(1000);
         settings.Home_button.click();
+        swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Settings_photos.click();
         if (camera.Photo_lable.isDisplayed()) {

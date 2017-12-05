@@ -3,11 +3,7 @@ package zwave;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by nchortek on 6/22/17.
- */
 public class LightsPage {
-
     @FindBy(id = "com.qolsys:id/allOn")
     public WebElement On_Button;
     @FindBy(id = "com.qolsys:id/allOff")

@@ -1,16 +1,16 @@
 package zwave;
 
-import panel.Advanced_Settings_Page;
-import panel.Devices_Page;
-import panel.Home_Page;
-import panel.Installation_Page;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import panel.AdvancedSettingsPage;
+import panel.DevicesPage;
+import panel.HomePage;
+import panel.InstallationPage;
+import utils.Setup;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,20 +19,21 @@ import java.util.ArrayList;
 
 public class ThermostatTest extends Setup {
 
-    ArrayList <WebElement> elem = new ArrayList<>();
+    ArrayList<WebElement> elem = new ArrayList<>();
 
     String page_name = "Thermostat_Testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public ThermostatTest() throws Exception {}
+    public ThermostatTest() throws Exception {
+    }
 
-    public String method (String str) {
+    public String method(String str) {
         return str.split("°")[0];
     } /**/
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
@@ -83,127 +84,124 @@ public class ThermostatTest extends Setup {
     @Test
     public void Thermostat_test() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
+        swipeFromRighttoLeft();
+        swipeFromRighttoLeft();
+        Thread.sleep(2000);
+        therm.Set_Mode.click();
+        Thread.sleep(4000);
+        therm.Heat_Icon.click();
+        Thread.sleep(7000);
+        if (therm.Target_Temp.getText().equals("OFF")) {
+            System.out.println("Failed: Thermostat mode is not HEAT");
+        }
 
-    swipeFromRighttoLeft();
-    swipeFromRighttoLeft();
+        if (therm.Current_Mode.getText().equals("HEAT")) {
+            System.out.println("Pass: Mode successfully changed to HEAT");
+        } else {
+            System.out.println("Failed: Mode is not set to HEAT");
+        }
 
-    Thread.sleep(2000);
-    therm.Set_Mode.click();
-    Thread.sleep(4000);
-    therm.Heat_Icon.click();
-    Thread.sleep(7000);
-    if (therm.Target_Temp.getText().equals("OFF")) {
-        System.out.println("Failed: Thermostat mode is not HEAT");
-    }
+        String target_temp_up = therm.Target_Temp.getText();
+        Integer target_temp_up_int = Integer.valueOf(method(target_temp_up));
+        System.out.println("Target temperature is " + target_temp_up_int);
 
-    if (therm.Current_Mode.getText().equals("HEAT")) {
-        System.out.println("Pass: Mode successfully changed to HEAT");
-    } else {
-        System.out.println("Failed: Mode is not set to HEAT");
-    }
+        therm.Temp_Up.click();
+        therm.Temp_Up.click();
+        Thread.sleep(4000);
 
-    String target_temp_up = therm.Target_Temp.getText();
-    Integer target_temp_up_int = Integer.valueOf(method(target_temp_up));
-    System.out.println("Target temperature is " + target_temp_up_int);
+        String new_target_temp_up = therm.Target_Temp.getText();
+        Integer new_target_temp_up_int = Integer.valueOf(method(new_target_temp_up));
+        System.out.println("New target temperature is " + new_target_temp_up_int);
 
-    therm.Temp_Up.click();
-    therm.Temp_Up.click();
-    Thread.sleep(4000);
+        if (new_target_temp_up_int == (target_temp_up_int + 2)) {
+            System.out.println("Pass: the temperature was successfully changed");
+        } else {
+            System.out.println("Failed: the temperature was not successfully changed");
+        }
+        Thread.sleep(5000);
 
-    String new_target_temp_up = therm.Target_Temp.getText();
-    Integer new_target_temp_up_int = Integer.valueOf(method(new_target_temp_up));
-    System.out.println("New target temperature is " + new_target_temp_up_int);
+        String target_temp_down = therm.Target_Temp.getText();
+        Integer target_temp_down_int = Integer.valueOf(method(target_temp_down));
+        System.out.println("Target temperature is " + target_temp_down_int);
 
-    if (new_target_temp_up_int == (target_temp_up_int + 2)) {
-        System.out.println("Pass: the temperature was successfully changed");
-    } else {
-        System.out.println("Failed: the temperature was not successfully changed");
-    }
-    Thread.sleep(5000);
+        therm.Temp_Down.click();
+        therm.Temp_Down.click();
+        Thread.sleep(4000);
 
-    String target_temp_down = therm.Target_Temp.getText();
-    Integer target_temp_down_int = Integer.valueOf(method(target_temp_down));
-    System.out.println("Target temperature is " + target_temp_down_int);
+        String new_target_temp_down = therm.Target_Temp.getText();
+        Integer new_target_temp_down_int = Integer.valueOf(method(new_target_temp_down));
+        System.out.println("New target temperature is " + new_target_temp_down_int);
 
-    therm.Temp_Down.click();
-    therm.Temp_Down.click();
-    Thread.sleep(4000);
-
-    String new_target_temp_down = therm.Target_Temp.getText();
-    Integer new_target_temp_down_int = Integer.valueOf(method(new_target_temp_down));
-    System.out.println("New target temperature is " + new_target_temp_down_int);
-
-    if (new_target_temp_down_int == (target_temp_down_int - 2)) {
-        System.out.println("Pass: the temperature was successfully changed");
-    } else {
-        System.out.println("Failed: the temperature was not successfully changed");
-    }
-    Thread.sleep(5000);
-    therm.Set_Mode.click();
-    Thread.sleep(3000);
-    therm.Off_Mode_Icon.click();
-    Thread.sleep(7000);
+        if (new_target_temp_down_int == (target_temp_down_int - 2)) {
+            System.out.println("Pass: the temperature was successfully changed");
+        } else {
+            System.out.println("Failed: the temperature was not successfully changed");
+        }
+        Thread.sleep(5000);
+        therm.Set_Mode.click();
+        Thread.sleep(3000);
+        therm.Off_Mode_Icon.click();
+        Thread.sleep(7000);
 
         /** COOL MODE **/
 
-    therm.Set_Mode.click();
-    Thread.sleep(4000);
-    therm.Cool_Icon.click();
-    Thread.sleep(5000);
-    if (therm.Target_Temp.getText().equals("OFF")) {
-        System.out.println("Failed: Thermostat mode is not COOL");
-    }
+        therm.Set_Mode.click();
+        Thread.sleep(4000);
+        therm.Cool_Icon.click();
+        Thread.sleep(5000);
+        if (therm.Target_Temp.getText().equals("OFF")) {
+            System.out.println("Failed: Thermostat mode is not COOL");
+        }
 
-    if (therm.Current_Mode.getText().equals("COOL")) {
+        if (therm.Current_Mode.getText().equals("COOL")) {
             System.out.println("Pass: Mode successfully changed to COOL");
-    } else {
+        } else {
             System.out.println("Failed: Mode is not set to COOL");
-    }
+        }
 
-    String cool_target_temp_up = therm.Target_Temp.getText();
-    Integer cool_target_temp_up_int = Integer.valueOf(method(cool_target_temp_up));
-    System.out.println("Target temperature is " + cool_target_temp_up_int);
+        String cool_target_temp_up = therm.Target_Temp.getText();
+        Integer cool_target_temp_up_int = Integer.valueOf(method(cool_target_temp_up));
+        System.out.println("Target temperature is " + cool_target_temp_up_int);
 
-    therm.Temp_Up.click();
-    therm.Temp_Up.click();
-    Thread.sleep(4000);
+        therm.Temp_Up.click();
+        therm.Temp_Up.click();
+        Thread.sleep(4000);
 
-    String new_cool_target_temp_up = therm.Target_Temp.getText();
-    Integer new_cool_target_temp_up_int = Integer.valueOf(method(new_cool_target_temp_up));
-    System.out.println("New target temperature is " + new_cool_target_temp_up_int);
+        String new_cool_target_temp_up = therm.Target_Temp.getText();
+        Integer new_cool_target_temp_up_int = Integer.valueOf(method(new_cool_target_temp_up));
+        System.out.println("New target temperature is " + new_cool_target_temp_up_int);
 
-    if (new_target_temp_up_int == (target_temp_up_int + 2)) {
-        System.out.println("Pass: the temperature was successfully changed");
-    } else {
-        System.out.println("Failed: the temperature was not successfully changed");
-    }
-    Thread.sleep(5000);
+        if (new_target_temp_up_int == (target_temp_up_int + 2)) {
+            System.out.println("Pass: the temperature was successfully changed");
+        } else {
+            System.out.println("Failed: the temperature was not successfully changed");
+        }
+        Thread.sleep(5000);
 
-    String cool_target_temp_down = therm.Target_Temp.getText();
-    Integer cool_target_temp_down_int = Integer.valueOf(method(cool_target_temp_down));
-    System.out.println("Target temperature is " + cool_target_temp_down_int);
+        String cool_target_temp_down = therm.Target_Temp.getText();
+        Integer cool_target_temp_down_int = Integer.valueOf(method(cool_target_temp_down));
+        System.out.println("Target temperature is " + cool_target_temp_down_int);
 
-    therm.Temp_Down.click();
-    therm.Temp_Down.click();
-    Thread.sleep(4000);
+        therm.Temp_Down.click();
+        therm.Temp_Down.click();
+        Thread.sleep(4000);
 
-    String new_cool_target_temp_down = therm.Target_Temp.getText();
-    Integer new_cool_target_temp_down_int = Integer.valueOf(method(new_cool_target_temp_down));
-    System.out.println("New target temperature is " + new_cool_target_temp_down_int);
+        String new_cool_target_temp_down = therm.Target_Temp.getText();
+        Integer new_cool_target_temp_down_int = Integer.valueOf(method(new_cool_target_temp_down));
+        System.out.println("New target temperature is " + new_cool_target_temp_down_int);
 
-    if (new_target_temp_down_int == (target_temp_down_int - 2)) {
-        System.out.println("Pass: the temperature was successfully changed");
-    } else {
-        System.out.println("Failed: the temperature was not successfully changed");
-    }
-    Thread.sleep(5000);
-    therm.Set_Mode.click();
-    Thread.sleep(3000);
-    therm.Off_Mode_Icon.click();
-    Thread.sleep(7000);
+        if (new_target_temp_down_int == (target_temp_down_int - 2)) {
+            System.out.println("Pass: the temperature was successfully changed");
+        } else {
+            System.out.println("Failed: the temperature was not successfully changed");
+        }
+        Thread.sleep(5000);
+        therm.Set_Mode.click();
+        Thread.sleep(3000);
+        therm.Off_Mode_Icon.click();
+        Thread.sleep(7000);
 
         /** AUTO MODE **/
-
 
         therm.Set_Mode.click();
         Thread.sleep(4000);
@@ -223,20 +221,19 @@ public class ThermostatTest extends Setup {
             System.out.println("Pass: Current temp is displayed as N/A");
         }
 
-    Thread.sleep(5000);
-    therm.Set_Mode.click();
-    Thread.sleep(3000);
-    therm.Off_Mode_Icon.click();
-    Thread.sleep(7000);
-
+        Thread.sleep(5000);
+        therm.Set_Mode.click();
+        Thread.sleep(3000);
+        therm.Off_Mode_Icon.click();
+        Thread.sleep(7000);
     }
 
     public void Z_Wave_Thermostat_Disarm_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZT_D_001*******************************");
         logger.info("Disarm mode: Verify that a Thermostat can be paired with a Panel");
@@ -318,11 +315,11 @@ public class ThermostatTest extends Setup {
     }
 
     public void Z_Wave_Thermostat_Arm_Stay_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZT_AS_006*******************************");
         logger.info("Arm Stay mode: Verify that changing the Mode on a Thermostat the Mode on the Panel will match (OFF/Heat/Cool/Auto)");
@@ -372,11 +369,11 @@ public class ThermostatTest extends Setup {
     }
 
     public void Z_Wave_Thermostat_Arm_Away_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZT_AW_003*******************************");
         logger.info("Arm Away mode: Verify that changing the Mode on a Thermostat the Mode on the Panel will match (OFF/Heat/Cool/Auto)");
@@ -411,11 +408,11 @@ public class ThermostatTest extends Setup {
     }
 
     public void Z_Wave_Thermostat_Schedules(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZT_D_023*******************************");
         logger.info("Disarm mode: Verify that temperature schedule can be created and panel/thermostat are following this schedule");
@@ -436,10 +433,8 @@ public class ThermostatTest extends Setup {
         logger.info("Arm Away mode: Verify that away from home thermostat override mode works as expected");
     }
 
-
-
     @AfterClass
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

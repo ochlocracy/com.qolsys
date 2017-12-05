@@ -1,6 +1,5 @@
 package zwave;
 
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
@@ -9,26 +8,26 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 /**
  * Created by nchortek on 6/22/17.
  * Edited by JMAUS 11/3/17
  */
-public class LightsTest extends Setup{
+public class LightsTest extends Setup {
     String page_name = "Z-Wave Lights and Switches Test";
     Logger logger = Logger.getLogger(page_name);
-
 
     public LightsTest() throws Exception {
     }
 
-
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
 
@@ -60,10 +59,8 @@ public class LightsTest extends Setup{
 //        li3.clear();
 //    }
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void Test_Lights_Page() throws Exception {
-
-
         // navigate to lights page and initialize variables
         LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
         File light_on = new File(projectPath + "/scr/light_on");
@@ -79,18 +76,17 @@ public class LightsTest extends Setup{
 
         // check if light can be selected
         li.get(0).click();
-        if(!checkAttribute(li.get(0), "checked", "true"))
+        if (!checkAttribute(li.get(0), "checked", "true"))
             return;
-
 
         // check if light can be turned on
         lights.On_Button.click();
         Thread.sleep(6000);
-        if(!checkAttribute(li.get(0), "checked", "false"))
+        if (!checkAttribute(li.get(0), "checked", "false"))
             return;
 
         // check if light icon turns yellow
-        if(!checkStatus(light_on, status.get(0)))
+        if (!checkStatus(light_on, status.get(0)))
             return;
 
         //test dimmer functionality
@@ -101,7 +97,7 @@ public class LightsTest extends Setup{
         int endx = startx + DimWidth - 10;
 
         touchSwipe(endx, starty, startx, starty);
-        if(!checkStatus(light_off, status.get(0)))
+        if (!checkStatus(light_off, status.get(0)))
             return;
 
         li.get(0).click();
@@ -109,18 +105,18 @@ public class LightsTest extends Setup{
 
         // ensure light can be selected
         li.get(0).click();
-        if(!checkAttribute(li.get(0), "checked", "true"))
+        if (!checkAttribute(li.get(0), "checked", "true"))
             return;
 
         // check if light is deselected upon turn-off
         lights.Off_Button.click();
         Thread.sleep(10000);
-        if(!checkAttribute(li.get(0), "checked", "false")){
+        if (!checkAttribute(li.get(0), "checked", "false")) {
             return;
         }
 
         // check if light icon turns grey
-        if(!checkStatus(light_off, status.get(0)))
+        if (!checkStatus(light_off, status.get(0)))
             return;
 
         // repeat above process but for multiple lights
@@ -130,13 +126,13 @@ public class LightsTest extends Setup{
         Thread.sleep(10000);
 
         //check that they're deselected
-        if(!checkAttribute(li.get(0), "checked","false"))
+        if (!checkAttribute(li.get(0), "checked", "false"))
             return;
 
-        if(!checkAttribute(li.get(1), "checked","false"))
+        if (!checkAttribute(li.get(1), "checked", "false"))
             return;
 
-        if(!checkAttribute(li.get(2), "checked","false"))
+        if (!checkAttribute(li.get(2), "checked", "false"))
             return;
 
         // check that lights turn yellow
@@ -147,13 +143,13 @@ public class LightsTest extends Setup{
         Thread.sleep(10000);
 
         //check that they're deselected
-        if(!checkAttribute(li.get(0), "checked","false"))
+        if (!checkAttribute(li.get(0), "checked", "false"))
             return;
 
-        if(!checkAttribute(li.get(1), "checked","false"))
+        if (!checkAttribute(li.get(1), "checked", "false"))
             return;
 
-        if(!checkAttribute(li.get(2), "checked","false"))
+        if (!checkAttribute(li.get(2), "checked", "false"))
             return;
 
         // check that lights turn grey
@@ -171,9 +167,6 @@ public class LightsTest extends Setup{
     }
 
     public void Z_Wave_Lights_Disarm_Mode(String UDID_) throws Exception {
-
-
-
         logger.info("********************************************************");
         logger.info("Disarm mode: Verify that a Light can be paired with a panel");
 
@@ -285,8 +278,13 @@ public class LightsTest extends Setup{
         logger.info("********************************************************");
         logger.info("Disarm mode: Power Metering on adc");
     }
-    public void Z_Wave_Lights_Arm_Stay_Mode(String UDID_) throws Exception {}
-    public void Z_Wave_Lights_Arm_Away_Mode(String UDID_) throws Exception {}
+
+    public void Z_Wave_Lights_Arm_Stay_Mode(String UDID_) throws Exception {
+    }
+
+    public void Z_Wave_Lights_Arm_Away_Mode(String UDID_) throws Exception {
+    }
+
     public void Z_Wave_Lights_Scedules(String UDID_) throws Exception {
 
         logger.info("********************************************************");
@@ -298,8 +296,9 @@ public class LightsTest extends Setup{
         logger.info("********************************************************");
         logger.info("Schedules: Add a schedule:  On these days: select; Perform these scheduled actions: Turn Off based on: Time of day at -select");
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

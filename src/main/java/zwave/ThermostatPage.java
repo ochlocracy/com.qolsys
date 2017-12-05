@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ThermostatPage {
-
     @FindBy(id = "com.qolsys:id/uiTargTemp")
     public WebElement Target_Temp;
     @FindBy(id = "com.qolsys:id/btTempUp")

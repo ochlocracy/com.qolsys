@@ -2,8 +2,8 @@ package zwave;
 
 /**
  * Created by qolsys on 10/24/17.
- *
- *
+ * <p>
+ * <p>
  * Methods to add
  * -Add transmitter
  * -delete transmitter
@@ -17,8 +17,9 @@ package zwave;
  * -turn off light
  * -turn on all lights
  * -turn off all lights
-// *
-// */
+ * // *
+ * //
+ */
 
 //public class ZWave_Transmitter extends Setup {
 //// bridge will be included to the Gen2 an nodeID 2

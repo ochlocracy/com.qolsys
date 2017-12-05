@@ -1,16 +1,16 @@
 package zwave;
 
-import panel.Advanced_Settings_Page;
-import panel.Devices_Page;
-import panel.Home_Page;
-import panel.Installation_Page;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import panel.AdvancedSettingsPage;
+import panel.DevicesPage;
+import panel.HomePage;
+import panel.InstallationPage;
+import utils.Setup;
 
 import java.io.IOException;
 
@@ -32,16 +32,14 @@ public class DoorLockTest extends Setup {
         }
     }
 
-    public void smart_click(WebElement element, WebElement element2, String status, String message ){
+    public void smart_click(WebElement element, WebElement element2, String status, String message) {
         if (element.getText().equals(status)) {
-           element2.click();
+            element2.click();
             System.out.println("Door lock is successfully " + message);
         } else {
             System.out.println("Status is not as expected");
         }
     }
-
-
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
@@ -52,8 +50,7 @@ public class DoorLockTest extends Setup {
     @Test(priority = 0)
     public void Check_all_elements_on_DoorLock_page() throws Exception {
         DoorLockPage door = PageFactory.initElements(driver, DoorLockPage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         swipeFromRighttoLeft();
         Thread.sleep(2000);
         element_verification(door.Key_icon, "Key icon");
@@ -69,13 +66,12 @@ public class DoorLockTest extends Setup {
     @Test(priority = 1)
     public void Door_Lock_events() throws Exception {
         DoorLockPage door = PageFactory.initElements(driver, DoorLockPage.class);
-
         swipeFromRighttoLeft();
-        smart_click(door.DoorLock_Status,  door.Lock_ALL, "UNLOCKED", "Locked");
+        smart_click(door.DoorLock_Status, door.Lock_ALL, "UNLOCKED", "Locked");
         Thread.sleep(7000);
         status_verification(door.DoorLock_Status, "LOCKED");
         Thread.sleep(5000);
-        smart_click(door.DoorLock_Status,  door.Unlock_ALL, "LOCKED", "Unlocked");
+        smart_click(door.DoorLock_Status, door.Unlock_ALL, "LOCKED", "Unlocked");
         Thread.sleep(7000);
         status_verification(door.DoorLock_Status, "UNLOCKED");
         Thread.sleep(5000);
@@ -83,11 +79,11 @@ public class DoorLockTest extends Setup {
 
 
     public void Z_Wave_Door_Locks_Disarm_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZD_D_001*******************************");
         logger.info("Disarm mode: Verify that a Door Lock can be paired with a Panel");
@@ -179,12 +175,13 @@ public class DoorLockTest extends Setup {
         logger.info("*************************ZD_D_030*******************************");
         logger.info("Disarm mode: Verify that a Door Lock can be deleted from the ADC website");
     }
+
     public void Z_Wave_Door_Locks_Arm_Stay_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZD_AS_001*******************************");
         logger.info("Arm Stay mode: Create rule engine for Door Locks");
@@ -202,12 +199,13 @@ public class DoorLockTest extends Setup {
         logger.info("Arm Stay mode: Verify that  a Door Lock can be deleted from the ADC website");
 
     }
+
     public void Z_Wave_Door_Locks_Arm_Away_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZD_AW_001*******************************");
         logger.info("Arm Away mode: Create rule engine for Door Locks");
@@ -224,10 +222,11 @@ public class DoorLockTest extends Setup {
         logger.info("*************************ZD_AW_005*******************************");
         logger.info("Arm Away mode: Verify that  a Door Lock can be deleted from the ADC website");
     }
-        @AfterClass
-        public void tearDown () throws IOException, InterruptedException {
-            log.endTestCase(page_name);
-            driver.quit();
-        }
+
+    @AfterClass
+    public void tearDown() throws IOException, InterruptedException {
+        log.endTestCase(page_name);
+        driver.quit();
     }
+}
 

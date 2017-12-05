@@ -1,32 +1,23 @@
 package zwave;
 
-import jxl.read.biff.BiffException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
-import panel.Advanced_Settings_Page;
-import panel.Devices_Page;
-import panel.Home_Page;
-import panel.Installation_Page;
+import panel.*;
 import utils.Setup;
 
-import java.io.IOException;
-
-/**
- * Created by qolsys on 5/10/17.
- */
-public class GarageDoorTest extends Setup{
+public class GarageDoorTest extends Setup {
     String page_name = "Door Lock Testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public GarageDoorTest() throws IOException, BiffException, Exception {}
-
+    public GarageDoorTest() throws Exception {
+    }
 
     public void Z_Wave_Garage_Door_Disarm_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZGD_D_001*******************************");
         logger.info("Disarm mode: Verify that a Garage Door Controller can be paired with a panel");
@@ -66,12 +57,13 @@ public class GarageDoorTest extends Setup{
 
 
     }
+
     public void Z_Wave_Garage_Door_Arm_Stay_Mode(String UDID_) throws Exception {
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
         logger.info("*************************ZGD_AS_004*******************************");
         logger.info("Arm Stay mode: Verify that a Garage Door can be opened from a panel");
@@ -99,9 +91,5 @@ public class GarageDoorTest extends Setup{
 
         logger.info("*************************ZGD_AS_008*******************************");
         logger.info("Arm Stay mode: Verify that the history events are displayed on the Home Control Status page");
-
-
     }
-
-
 }
