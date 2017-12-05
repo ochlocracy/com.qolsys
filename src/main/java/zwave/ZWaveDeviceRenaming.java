@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * At least one zwave device must be paired, no devices can be named "TEMP" or "adc"
  */
-public class Device_Renaming extends Setup{
+public class ZWaveDeviceRenaming extends Setup{
 
     String page_name = "Device Renaming";
     Logger logger = Logger.getLogger(page_name);
@@ -28,7 +28,7 @@ public class Device_Renaming extends Setup{
     String login = "Gen2-8334";
     String password = "qolsys1234";
 
-    public Device_Renaming() throws Exception {
+    public ZWaveDeviceRenaming() throws Exception {
     }
 
     public void navigate_to_ZWave_Page() throws InterruptedException {

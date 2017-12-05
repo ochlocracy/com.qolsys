@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by qolsys on 5/10/17.
  */
-public class Door_Lock_Page {
+public class DoorLockPage {
     @FindBy(id = "com.qolsys:id/doorStatusbutton")
     public WebElement Key_icon;
     @FindBy(id = "com.qolsys:id/doorLockName")
