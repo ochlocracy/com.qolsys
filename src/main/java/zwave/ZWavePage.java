@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by qolsysauto on 9/15/17.
  */
-public class Z_Wave_Page {
+public class ZWavePage {
 
 
     //Main Z-Wave Page

@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by nchortek on 7/6/17.
  */
-public class Lights_ADC extends Setup{
+public class LightsADC extends Setup{
     String page_name = "Lights_ADC";
     Logger logger = Logger.getLogger(page_name);
     ADC adc = new ADC();
@@ -40,7 +40,7 @@ public class Lights_ADC extends Setup{
     String turn_on = "Turn ON";
     //String turn_off = "Turn OFF";
 
-    public Lights_ADC() throws Exception {
+    public LightsADC() throws Exception {
     }
 
     //compares each light icon on the page to a given state

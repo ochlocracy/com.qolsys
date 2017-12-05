@@ -17,12 +17,12 @@ import java.util.List;
  * Created by nchortek on 6/22/17.
  * Edited by JMAUS 11/3/17
  */
-public class Lights_Test extends Setup{
+public class LightsTest extends Setup{
     String page_name = "Z-Wave Lights and Switches Test";
     Logger logger = Logger.getLogger(page_name);
 
 
-    public Lights_Test() throws Exception {
+    public LightsTest() throws Exception {
     }
 
 
@@ -65,7 +65,7 @@ public class Lights_Test extends Setup{
 
 
         // navigate to lights page and initialize variables
-        Lights_Page lights = PageFactory.initElements(driver, Lights_Page.class);
+        LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
         File light_on = new File(projectPath + "/scr/light_on");
         File light_off = new File(projectPath + "/scr/light_off");
         swipe_left();
@@ -287,7 +287,6 @@ public class Lights_Test extends Setup{
     }
     public void Z_Wave_Lights_Arm_Stay_Mode(String UDID_) throws Exception {}
     public void Z_Wave_Lights_Arm_Away_Mode(String UDID_) throws Exception {}
-
     public void Z_Wave_Lights_Scedules(String UDID_) throws Exception {
 
         logger.info("********************************************************");

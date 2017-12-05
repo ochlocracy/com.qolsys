@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by nchortek on 6/22/17.
  */
-public class Lights_Page {
+public class LightsPage {
 
     @FindBy(id = "com.qolsys:id/allOn")
     public WebElement On_Button;
@@ -22,4 +22,6 @@ public class Lights_Page {
     public WebElement UI_Name;
     @FindBy(id = "com.qolsys:id/dimmer_seek_bar")
     public WebElement Dimmer;
+    @FindBy(id = "com.qolsys:id/selectallbtn")
+    public WebElement Select_All;
 }
