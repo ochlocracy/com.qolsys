@@ -97,7 +97,7 @@ public class Misc extends Setup {
     /***** ARM AWAY BY KEY FOB *****/
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 1)
     public void ArmAway_by_keyfob_group1() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Away by keyfob");
@@ -126,7 +126,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 2)
     public void ArmAway_by_keyfob_group6() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Away by keyfob");
@@ -155,7 +155,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 3)
     public void ArmAway_by_keyfob_group4() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 4: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Away by keyfob");
@@ -185,7 +185,7 @@ public class Misc extends Setup {
     /***** ARM STAY BY KEY FOB *****/
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 4)
     public void ArmStay_by_keyfob_group1() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Stay by keyfob");
@@ -214,7 +214,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 5)
     public void ArmStay_by_keyfob_group6() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Stay by keyfob");
@@ -243,7 +243,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 6)
     public void ArmStay_by_keyfob_group4() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Stay by keyfob");
@@ -274,7 +274,7 @@ public class Misc extends Setup {
     //normal delay 30, 31; long delay 32, 33
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 7)
     public void Disarm_by_keyfob_group1() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
         Thread.sleep(10000);
         logger.info("**** DISARM BY 1-group KEY FOB ****");
@@ -303,7 +303,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 8)
     public void Disarm_by_keyfob_group6() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
         Thread.sleep(10000);
         logger.info("**** DISARM BY 6-group KEY FOB ****");
@@ -332,7 +332,7 @@ public class Misc extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 9)
     public void Disarm_by_keyfob_group4() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
         Thread.sleep(10000);
         logger.info("**** DISARM BY 4-group KEY FOB ****");
@@ -428,9 +428,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();
@@ -515,9 +515,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(3000);
         menu.Slide_menu_open.click();
@@ -588,9 +588,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(4000);
         menu.Slide_menu_open.click();
@@ -657,9 +657,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();
@@ -698,9 +698,9 @@ public class Misc extends Setup {
         sensors.primary_call("65 00 0A", D_Restore);
         logger.info("sensor1 Closed");
         Thread.sleep(2000);*/
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();

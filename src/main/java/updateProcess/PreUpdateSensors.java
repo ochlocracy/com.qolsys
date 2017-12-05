@@ -5,8 +5,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import panel.Contact_Us;
-import panel.Emergency_Page;
+import panel.ContactUs;
+import panel.EmergencyPage;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.SensorsActivity;
@@ -84,8 +84,8 @@ public class PreUpdateSensors extends Setup {
     @Test(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
-        Contact_Us contact = PageFactory.initElements(driver, Contact_Us.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         for (int i = 1; i > 0; i--) {
             open_close("65 00 0A");
             open_close("65 00 1A");

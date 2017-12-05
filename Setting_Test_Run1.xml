@@ -5,12 +5,12 @@
 
     <test name="Settings_Testing1">
         <classes>
-            <class name="settings.Keyfob_Instant_Arming_Test" />
-            <class name="settings.Keyfob_Alarm_Disarm_Test" />
-            <class name="settings.Keyfob_Disarming_Test" />
-            <class name="settings.Secure_Delete_Images_Test" />
-            <class name="settings.Disarm_Photos_Test" />
-            <class name="settings.Alarm_Photos_Test" />
+            <class name="settings.KeyfobInstantArmingTest" />
+            <class name="settings.KeyfobAlarmDisarmTest" />
+            <class name="settings.KeyfobDisarmingTest" />
+            <class name="settings.SecureDeleteImagesTest" />
+            <class name="settings.DisarmPhotosTest" />
+            <class name="settings.AlarmPhotosTest" />
             <class name="settings.Settings_Photos_Test" />
         </classes>
     </test>

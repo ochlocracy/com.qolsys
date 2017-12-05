@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
 import utils.Setup;
 
 import java.io.IOException;
@@ -90,8 +90,8 @@ public class AboutPage extends Setup {
 
     @Test
     public void Check_all_Elements_in_Cellular_tap() throws InterruptedException {
-        panel.About_page about = PageFactory.initElements(driver, panel.About_page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();
         Thread.sleep(4000);

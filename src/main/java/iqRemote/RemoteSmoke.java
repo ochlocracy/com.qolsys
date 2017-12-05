@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.EmergencyPage;
+import panel.HomePage;
 import utils.ConfigProps;
 import utils.Setup;
 
@@ -57,7 +57,7 @@ public class RemoteSmoke extends Setup {
     @Test
     public void TestMain() throws Exception {
         /*** PANEL ARMING ***/
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
         for (int i = 1000; i > 0; i--) {
             ARM_STAY();
@@ -71,7 +71,7 @@ public class RemoteSmoke extends Setup {
             Thread.sleep(5000);
 
             /*** EMERGENCY ***/
-            Emergency_Page emergency_page = PageFactory.initElements(driver, Emergency_Page.class);
+            EmergencyPage emergency_page = PageFactory.initElements(driver, EmergencyPage.class);
             emergency_page.Emergency_Button.click();
             Thread.sleep(2000);
             emergency_page.Police_icon.click();

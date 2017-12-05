@@ -28,12 +28,12 @@ public class Duress_Authentication_Test_Grid {
     @Parameters({ "UDID_" })
     @Test
     public void Verify_Duress_Authentication_works(String UDID_) throws Exception {
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Contact_Us contact = PageFactory.initElements(s.getDriver(), Contact_Us.class);
-        Security_Arming_Page arming = PageFactory.initElements(s.getDriver(), Security_Arming_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
-        Home_Page home = PageFactory.initElements(s.getDriver(), Home_Page.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
+        ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
+        SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
+        HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         Thread.sleep(2000);
         logger.info("Verify system can not be DISARMED with Duress code when the setting is disabled");
         s.ARM_STAY();

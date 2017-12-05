@@ -96,8 +96,8 @@ public class Keypad extends Setup {
     }
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_by_keypad_group0() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM STAY BY KEYPAD****************************");
         logger.info("Keypad group 0 - Fixed Intrusion");
         Thread.sleep(4000);
@@ -116,8 +116,8 @@ public class Keypad extends Setup {
     /** please disarm system from User Site, after 2group keypad activation **/
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_by_keypad_group2() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM STAY BY KEYPAD****************************");
         logger.info("Keypad group 2 - Fixed Silent");
         Thread.sleep(4000);
@@ -135,8 +135,8 @@ public class Keypad extends Setup {
 
     @Test (dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Armaway_by_keyfob_group1() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 0 - Fixed Intrusion");
         Thread.sleep(4000);
@@ -155,8 +155,8 @@ public class Keypad extends Setup {
     /** please disarm system from User Site, after 2group keypad activation **/
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_by_keypad_group2() throws Exception {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM AWAY BY KEYPAD****************************");
         logger.info("Keypad group 2 - Fixed Silent");
         Thread.sleep(4000);

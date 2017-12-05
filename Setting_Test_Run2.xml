@@ -5,12 +5,12 @@
 
     <test name="Settings_Testing">
         <classes>
-            <class name="settings.Panic_Disable_Test" />
-            <class name="settings.Secure_Arming_Test" />
+            <class name="settings.PanicDisableTest" />
+            <class name="settings.SecureArmingTest" />
             <!--<class nasettingsings.Auto_Bypass_Test" />-->
-            <class name="settings.Auto_Stay_Test" />
-            <class name="settings.Arm_Stay_No_Delay_Test" />
-            <class name="settings.Auto_Exit_Time_Extension_Test" />
+            <class name="settings.AutoStayTest" />
+            <class name="settings.ArmStayNoDelayTest" />
+            <class name="settings.AutoExitTimeExtensionTest" />
         </classes>
     </test>
 </suite>

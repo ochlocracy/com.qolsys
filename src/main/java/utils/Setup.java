@@ -156,14 +156,14 @@ public class Setup {
     }
 
     public void navigate_to_Settings_page() {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
     }
 
     public void navigate_to_Advanced_Settings_page() throws InterruptedException {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
         Thread.sleep(1000);
@@ -173,10 +173,10 @@ public class Setup {
     }
 
     public void Navigate_To_Edit_Sensor_Page() throws IOException, InterruptedException {
-        Installation_Page instal = PageFactory.initElements(driver, Installation_Page.class);
-        Devices_Page dev = PageFactory.initElements(driver, Devices_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Security_Sensors_Page sec = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         instal.DEVICES.click();
@@ -185,28 +185,28 @@ public class Setup {
     }
 
     public void navigateToUserManagementPage() throws InterruptedException {
-        Advanced_Settings_Page advanced = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage advanced = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         navigate_to_Advanced_Settings_page();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
     }
 
     public void DISARM() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Disarm");
         home_page.DISARM.click();
         enter_default_user_code();
     }
 
     public void ARM_STAY() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Arm Stay");
         home_page.DISARM.click();
         home_page.ARM_STAY.click();
     }
 
     public void ARM_AWAY(int delay) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Arm Away");
         home_page.DISARM.click();
         home_page.ARM_AWAY.click();
@@ -214,7 +214,7 @@ public class Setup {
     }
 
     public void enter_default_DURESS_code() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.Nine.click();
         home_page.Nine.click();
         home_page.Nine.click();
@@ -222,7 +222,7 @@ public class Setup {
     }
 
     public void enter_default_user_code() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
         home_page.Three.click();
@@ -230,7 +230,7 @@ public class Setup {
     }
 
     public void enter_guest_code() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
         home_page.Three.click();
@@ -238,7 +238,7 @@ public class Setup {
     }
 
     public void enter_default_dealer_code() {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.Two.click();
         home_page.Two.click();
         home_page.Two.click();
@@ -246,7 +246,7 @@ public class Setup {
     }
 
     public void verify_disarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("DISARMED")) {
             logger.info("Pass: System is DISARMED");
         } else {
@@ -256,7 +256,7 @@ public class Setup {
     }
 
     public void verify_armstay() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("ARMED STAY")) {
             logger.info("Pass: System is ARMED STAY");
         } else {
@@ -266,7 +266,7 @@ public class Setup {
     }
 
     public void verify_armaway() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ArwAway_State.isDisplayed()) {
             logger.info("Pass: panel is in Arm Away mode");
         } else {
@@ -276,7 +276,7 @@ public class Setup {
     }
 
     public void verify_photoframe_mode() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.PhotoFrame_Mode.isDisplayed()) {
             logger.info("Pass: panel is in Photo Frame mode");
         } else {
@@ -286,7 +286,7 @@ public class Setup {
     }
 
     public void verify_in_alarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
@@ -296,7 +296,7 @@ public class Setup {
     }
 
     public void verify_panel_alarm() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.panel_Alarm.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
@@ -324,7 +324,7 @@ public class Setup {
     }
 
     public void verify_status_open() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
@@ -334,7 +334,7 @@ public class Setup {
     }
 
     public void verify_status_activated() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         } else {
@@ -344,7 +344,7 @@ public class Setup {
     }
 
     public void verify_status_tampered() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
@@ -354,7 +354,7 @@ public class Setup {
     }
 
     public void verify_status_alarmed() throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is Alarmed");
         } else {
@@ -364,7 +364,7 @@ public class Setup {
     }
 
     public void verify_sensorstatus_inAlarm(String Al_status) throws Exception {
-        Home_Page home_page = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals(Al_status)) {
             logger.info("Pass: Correct status is " + Al_status);
         } else {
@@ -375,8 +375,8 @@ public class Setup {
 
     public String Software_Version() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        About_page about = PageFactory.initElements(driver, About_page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();
         about.Software.click();
@@ -397,7 +397,7 @@ public class Setup {
     }
 
     public void delete_all_camera_photos() throws Exception {
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         Thread.sleep(3000);
@@ -458,10 +458,10 @@ public class Setup {
     }
 
     public void autoStaySetting() throws InterruptedException {
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
-        Security_Arming_Page arming = PageFactory.initElements(driver, Security_Arming_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -497,6 +497,23 @@ public class Setup {
         Thread.sleep(2000);
     }
 
+    /*public void imageCaptureRotateCropById(String img, String element) throws Exception{
+        logger.info("Image Capturing is in progress .......");
+        WebElement ele = driver.findElement(By.id(element));
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File screenshotLocation = new File(projectPath+img);
+        FileUtils.copyFile(screenshot, screenshotLocation);
+        //rotateImage(screenshotLocation);
+        BufferedImage  fullImg = ImageIO.read(new File(projectPath+img));
+        Point point = ele.getLocation();
+        int eleWidth = ele.getSize().getWidth();
+        int eleHeight = ele.getSize().getHeight();
+        BufferedImage eleScreenshot= fullImg.getSubimage(point.getX(), point.getY(), eleWidth, eleHeight);
+        ImageIO.write(eleScreenshot, "png", screenshot);
+        File screenshotLocation1 = new File(projectPath+img);
+        FileUtils.copyFile(screenshot, screenshotLocation1);
+    }*/
+
     public void swipe_down() throws InterruptedException {
         int startY = 227;
         int endY = 616;
@@ -514,23 +531,6 @@ public class Setup {
             return false;
         }
     }
-
-    /*public void imageCaptureRotateCropById(String img, String element) throws Exception{
-        logger.info("Image Capturing is in progress .......");
-        WebElement ele = driver.findElement(By.id(element));
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        File screenshotLocation = new File(projectPath+img);
-        FileUtils.copyFile(screenshot, screenshotLocation);
-        //rotateImage(screenshotLocation);
-        BufferedImage  fullImg = ImageIO.read(new File(projectPath+img));
-        Point point = ele.getLocation();
-        int eleWidth = ele.getSize().getWidth();
-        int eleHeight = ele.getSize().getHeight();
-        BufferedImage eleScreenshot= fullImg.getSubimage(point.getX(), point.getY(), eleWidth, eleHeight);
-        ImageIO.write(eleScreenshot, "png", screenshot);
-        File screenshotLocation1 = new File(projectPath+img);
-        FileUtils.copyFile(screenshot, screenshotLocation1);
-    }*/
 
     //compares two images and returns whether or not they're identical
     public boolean compareImage(File fileA, File fileB) {
@@ -685,9 +685,23 @@ public class Setup {
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
+
     public void delete_from_primary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
+    }
+
+    public void deleteReport() {
+        try {
+            File file = new File(projectPath + "Report/SanityReport.html");
+            if (file.delete()) {
+                System.out.println(file.getName() + " is deleted!");
+            } else {
+                System.out.println("Failed to delete!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

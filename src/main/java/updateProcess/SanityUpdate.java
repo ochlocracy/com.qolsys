@@ -155,6 +155,7 @@ public class SanityUpdate extends Setup {
     @BeforeClass
     public void setUp() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        deleteReport();
     }
 
     @Test
@@ -275,9 +276,9 @@ public class SanityUpdate extends Setup {
         log = report.startTest("UpdateProcess.Sensors");
 
         System.out.println("Open-Close contact sensors");
-        Emergency_Page emergency = PageFactory.initElements(driver, Emergency_Page.class);
-        Contact_Us contact = PageFactory.initElements(driver, Contact_Us.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(2000);
         log.log(LogStatus.INFO, "Verify sensors activity");
         log.log(LogStatus.INFO, "Activate DW sensors");
@@ -448,7 +449,7 @@ public class SanityUpdate extends Setup {
         log = report.startTest("UpdateProcess.UserCode");
         System.out.println("Verifying a new user code is working correctly");
         log.log(LogStatus.INFO, "Verifying a new user code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();
@@ -467,7 +468,7 @@ public class SanityUpdate extends Setup {
         log = report.startTest("UpdateProcess.MasterCode");
         System.out.println("Verifying a new master code is working correctly");
         log.log(LogStatus.INFO, "Verifying a new master code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();
@@ -486,7 +487,7 @@ public class SanityUpdate extends Setup {
         log = report.startTest("UpdateProcess.GuestCode");
         System.out.println("Verifying a new guest code is working correctly");
         log.log(LogStatus.INFO, "Verifying a new guest code is working correctly");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(3000);
         home.DISARM.click();
@@ -501,8 +502,8 @@ public class SanityUpdate extends Setup {
 
     @Test(priority = 5)
     public void deleteNewUsers() throws Exception {
-        User_Management_Page user_m = PageFactory.initElements(driver, User_Management_Page.class);
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         List<WebElement> delete = driver.findElements(By.id("com.qolsys:id/deleteImg"));
         for (int i = 3; i > 0; i--) {

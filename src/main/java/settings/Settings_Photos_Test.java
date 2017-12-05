@@ -1,18 +1,17 @@
 package settings;
 
-import panel.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import panel.*;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class Settings_Photos_Test extends Setup {
-
-    String page_name = "settings Photos testing";
+    String page_name = "Settings Photos testing";
     Logger logger = Logger.getLogger(page_name);
 
     public Settings_Photos_Test() throws Exception {
@@ -20,16 +19,17 @@ public class Settings_Photos_Test extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver( get_UDID(),"http://127.0.1.1", "4723");
+        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
     }
+
     @Test
     public void Verify_Settings_Photos_works() throws Exception {
-        Panel_Camera_Page camera = PageFactory.initElements(driver, Panel_Camera_Page.class);
-        Camera_Settings_Page set_cam = PageFactory.initElements(driver, Camera_Settings_Page.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(driver, Installation_Page.class);
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying settings photo is NOT taken when setting in disabled...");
         delete_all_camera_photos();
         Thread.sleep(1000);
@@ -43,7 +43,7 @@ public class Settings_Photos_Test extends Setup {
         try {
             if (camera.Photo_lable.isDisplayed())
                 take_screenshot();
-                logger.info("Failed: Disarm photo is displayed");
+            logger.info("Failed: Disarm photo is displayed");
         } catch (Exception e) {
             logger.info("Pass: Disarm photo is NOT displayed");
         } finally {
@@ -62,10 +62,12 @@ public class Settings_Photos_Test extends Setup {
         settings.Home_button.click();
         swipeFromLefttoRight();
         camera.Settings_photos.click();
-        if (camera.Photo_lable.isDisplayed()){
+        if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: settings photo is displayed");
-        }else { take_screenshot();
-            logger.info("Failed: settings photo is NOT displayed");}
+        } else {
+            take_screenshot();
+            logger.info("Failed: settings photo is NOT displayed");
+        }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
         enter_default_user_code();
@@ -76,8 +78,9 @@ public class Settings_Photos_Test extends Setup {
         Thread.sleep(1000);
         settings.Home_button.click();
     }
+
     @AfterMethod
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }

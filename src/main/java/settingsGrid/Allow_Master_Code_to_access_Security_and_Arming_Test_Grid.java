@@ -29,10 +29,10 @@ public class Allow_Master_Code_to_access_Security_and_Arming_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Master_Code_gets_access_to_Security_and_Arming_page(String UDID_) throws Exception {
-        Security_Arming_Page arming = PageFactory.initElements(s.getDriver(), Security_Arming_Page.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
+        SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         Thread.sleep(3000);
         logger.info("Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
         s.navigate_to_Advanced_Settings_page();

@@ -29,13 +29,13 @@ public class Keyfob_Alarm_Disarm_Test_Grid {
     @Parameters ({"UDID_"})
     @Test
     public void Verify_Keyfob_Alarm_Disarm_works(String UDID_) throws Exception {
-            Security_Arming_Page arming = PageFactory.initElements(s.getDriver(), Security_Arming_Page.class);
-            Contact_Us contact = PageFactory.initElements(s.getDriver(), Contact_Us.class);
-            Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-            Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-            Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
-            Home_Page home = PageFactory.initElements(s.getDriver(), Home_Page.class);
-            Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+            SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
+            ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
+            SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
+            AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+            InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
+            HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
+            EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
             logger.info("Adding sensors...");
             s.add_primary_call(1, 4, 6619386, 102, UDID_);
             Thread.sleep(2000);

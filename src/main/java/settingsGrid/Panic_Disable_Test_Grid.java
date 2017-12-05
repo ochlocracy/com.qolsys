@@ -27,11 +27,11 @@ public class Panic_Disable_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Keyfob_Alarm_Disarm_works(String UDID_) throws Exception {
-        Siren_Alarms_Page siren = PageFactory.initElements(s.getDriver(), Siren_Alarms_Page.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
-        Advanced_Settings_Page adv = PageFactory.initElements(s.getDriver(), Advanced_Settings_Page.class);
-        Installation_Page inst = PageFactory.initElements(s.getDriver(), Installation_Page.class);
-        Emergency_Page emergency = PageFactory.initElements(s.getDriver(), Emergency_Page.class);
+        SirenAlarmsPage siren = PageFactory.initElements(s.getDriver(), SirenAlarmsPage.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
+        EmergencyPage emergency = PageFactory.initElements(s.getDriver(), EmergencyPage.class);
         Thread.sleep(1000);
         logger.info("Verify panic disappears from the Emergency page when disabled");
         s.navigate_to_Advanced_Settings_page();

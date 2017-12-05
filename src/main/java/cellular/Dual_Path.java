@@ -1,8 +1,8 @@
 package cellular;
 
-import panel.Advanced_Settings_Page;
+import panel.AdvancedSettingsPage;
 import panel.PanelInfo_ServiceCalls;
-import panel.Settings_Page;
+import panel.SettingsPage;
 import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -30,7 +30,7 @@ public void test1() throws Exception {
     logger.info("/*** WiFi On, Cell On, DualPath On ***/");
     servcall.data_verification();
     servcall.get_WiFi_name();
-    Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+    AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
     System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
     Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
     navigate_to_Advanced_Settings_page();
@@ -63,11 +63,11 @@ public void test1() throws Exception {
         Thread.sleep(3000);
         servcall.data_verification();
         servcall.get_WiFi();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
@@ -101,11 +101,11 @@ public void test1() throws Exception {
      //  Thread.sleep(3000);
         servcall.data_verification();
         //servcall.get_WiFi();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
@@ -132,10 +132,10 @@ public void test1() throws Exception {
         //servcall.Wifi_disable(); // Precondition
         Thread.sleep(3000);
         servcall.data_verification();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         navigate_to_Settings_page();
         wifi.OK.click();
@@ -171,10 +171,10 @@ public void test1() throws Exception {
       //  servcall.Wifi_disable(); // Precondition
         Thread.sleep(3000);
         servcall.data_verification();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        Settings_Page set = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         navigate_to_Settings_page();
         wifi.OK.click();
@@ -203,7 +203,7 @@ public void test1() throws Exception {
         servcall.Wifi_enable(); // Precondition
         Thread.sleep(5000);
         servcall.data_verification();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Advanced_Settings_page();
@@ -230,7 +230,7 @@ public void test1() throws Exception {
        // servcall.Wifi_enable(); // Precondition
         Thread.sleep(5000);
         servcall.data_verification();
-        Advanced_Settings_Page adv = PageFactory.initElements(driver, Advanced_Settings_Page.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         navigate_to_Advanced_Settings_page();

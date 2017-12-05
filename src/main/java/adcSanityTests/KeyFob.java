@@ -8,8 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.EmergencyPage;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.ConfigProps;
@@ -88,7 +87,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Disarm_keyfob_group1() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************DISARM KEY FOB****************************");
         logger.info("Keyfob group 1: Disarm, panic = Police");
         Thread.sleep(4000);
@@ -104,7 +103,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Disarm_keyfob_group4() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************DISARM KEY FOB****************************");
         logger.info("Keyfob group 4: Disarm, panic = Auxiliary");
         Thread.sleep(4000);
@@ -120,7 +119,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Disarm_keyfob_group6() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************DISARM KEY FOB****************************");
         logger.info("Keyfob group 6: Disarm, panic = Auxiliary");
         Thread.sleep(4000);
@@ -136,7 +135,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_by_keyfob_group1() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: ArmStay-ArmAway-Disarm, panic = Police");
         Thread.sleep(4000);
@@ -155,7 +154,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_by_keyfob_group6() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         Thread.sleep(4000);
@@ -174,7 +173,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_by_keyfob_group4() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 4: ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         Thread.sleep(4000);
@@ -193,7 +192,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Armaway_by_keyfob_group1() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: ArmStay-ArmAway-Disarm, panic = Police");
         Thread.sleep(4000);
@@ -212,7 +211,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Armaway_by_keyfob_group6() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         Thread.sleep(4000);
@@ -231,7 +230,7 @@ public class KeyFob extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void Armaway_by_keyfob_group4() throws Exception {
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 4: ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         Thread.sleep(4000);

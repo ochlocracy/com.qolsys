@@ -5,8 +5,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
-import panel.Emergency_Page;
-import panel.Home_Page;
+import panel.EmergencyPage;
+import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.ConfigProps;
@@ -67,7 +67,7 @@ public class ArmedAwayAuxiliary extends Setup {
 
     public void ArmStay_Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Silent Auxiliary Police Pendant during Arm Away");
-        Home_Page home = PageFactory.initElements(driver, Home_Page.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         verify_armaway();
@@ -84,7 +84,7 @@ public class ArmedAwayAuxiliary extends Setup {
 
     public void ArmStay_Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Auxiliary Medical Pendant during Arm Away");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         verify_armaway();
@@ -103,7 +103,7 @@ public class ArmedAwayAuxiliary extends Setup {
 
     public void ArmStay_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Auxiliary Police Pendant during Arm Away");
-        Emergency_Page emg = PageFactory.initElements(driver, Emergency_Page.class);
+        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         verify_armaway();
