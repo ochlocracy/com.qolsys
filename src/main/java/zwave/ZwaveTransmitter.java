@@ -101,7 +101,6 @@ public class ZwaveTransmitter extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         navigate_to_Advanced_Settings_page();
-        navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();
         Install.DEVICES.click();
         dev.Zwave_Devices.click();
