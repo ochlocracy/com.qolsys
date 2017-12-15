@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import sensors.Sensors;
 import utils.ConfigProps;
-import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
