@@ -437,7 +437,7 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 46 i32 0 i32 0";
         rt.exec(command);
         String value = (execCmd(command)).toString();
-        System.out.println(value);
+       // System.out.println(value);
         if (value.contains("00000000 00000000 ")) {
             System.out.println("All Chimes setting disabled");
         } else if (value.contains("00000000 00000001 ")) {

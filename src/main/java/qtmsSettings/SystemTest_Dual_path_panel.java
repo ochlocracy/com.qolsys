@@ -39,7 +39,7 @@ public class SystemTest_Dual_path_panel extends Setup{
         dual.start_button.click();
         Thread.sleep(6000);
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
-        logger.info("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");}
+        System.out.println("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");}
 
     /*** WiFi On and Dual Path Off ***/
     @Test (priority = 2)

@@ -377,6 +377,8 @@ public class Setup {
         TimeUnit.SECONDS.sleep(3);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
+
+
         navigate_to_Advanced_Settings_page();
         adv.ABOUT.click();
         about.Software.click();

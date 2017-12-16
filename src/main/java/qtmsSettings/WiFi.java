@@ -156,6 +156,7 @@ public void Connect_toKnown_WiFiNetwork_SASW_001() throws Exception {
         Thread.sleep(5000);
         servcall.get_WiFi_name();
         logger.info(" SASW 003 Pass: user is able to forget the selected network");
+        System.out.println("ENTER WIFI CREDENTIALS!!! :P");
         Thread.sleep(5000);
     }
     @AfterTest

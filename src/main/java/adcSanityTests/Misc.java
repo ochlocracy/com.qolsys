@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.ConfigProps;
+import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
@@ -25,6 +26,10 @@ public class Misc extends Setup {
 
     public Misc() throws Exception {
         ConfigProps.init();
+        SensorsActivity.init();
+        ConfigProps.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     String page_name = " *** Miscellanies *** ";
@@ -32,36 +37,9 @@ public class Misc extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    private String keyfobAway = "04 04";
-    private String keyfobStay = "04 01";
-    private String keyfobDisarm = "08 01";
-    private String Motion_Activated = "02 01";
-    private String Motion_Restore = "00 01";
-    private String Motion_Tamper = "01 01";
-    private String D_Open = "06 00";
     private String D_Restore = "04 00";
     private String D_Tamper = "01 00";
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
-    }
-
-    public void request_equipment_list() throws IOException, InterruptedException {
-        adc.New_ADC_session(adc.getAccountId());
-        Thread.sleep(2000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
-        Thread.sleep(2000);
-        adc.Request_equipment_list();
-        //  Thread.sleep(60000);
-    }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
@@ -70,16 +48,22 @@ public class Misc extends Setup {
     }
 
     @BeforeMethod
-    public void webDriver() {
+    public void webDriver() throws IOException, InterruptedException {
         adc.webDriverSetUp();
+        servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
+        Thread.sleep(1000);
+        servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
+        Thread.sleep(1000);
+        servcall.set_LONG_ENTRY_DELAY(ConfigProps.longEntryDelay);
+        Thread.sleep(1000);
+        servcall.set_LONG_EXIT_DELAY(ConfigProps.longExitDelay);
+        Thread.sleep(1000);
+        servcall.set_SIA_LIMITS_disable();
+        Thread.sleep(1000);
     }
 
     @Test
     public void addSensors() throws IOException, InterruptedException {
-        delete_from_primary(1);
-        delete_from_primary(38);
-        delete_from_primary(39);
-        delete_from_primary(40);
         servcall.set_KEYFOB_DISARMING(1);
         servcall.set_KEYFOB_NO_DELAY_enable();
         add_primary_call(38, 1, 6619386, 102);
@@ -89,20 +73,20 @@ public class Misc extends Setup {
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
         adc.Request_equipment_list();
     }
 
     /***** ARM AWAY BY KEY FOB *****/
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 1)
+    @Test( priority = 1)
     public void ArmAway_by_keyfob_group1() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 AF", keyfobAway);
+        sensors.primary_call("65 00 AF", SensorsActivity.KAWAY);
         Thread.sleep(3000);
         verify_armaway();
         Thread.sleep(3000);
@@ -124,14 +108,14 @@ public class Misc extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 2)
+    @Test(priority = 2)
     public void ArmAway_by_keyfob_group6() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 BF", keyfobAway);
+        sensors.primary_call("65 00 BF",SensorsActivity.KAWAY);
         Thread.sleep(3000);
         verify_armaway();
         Thread.sleep(3000);
@@ -153,14 +137,14 @@ public class Misc extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 3)
+    @Test(priority = 3)
     public void ArmAway_by_keyfob_group4() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM AWAY BY KEY FOB****************************");
         logger.info("Keyfob group 4: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 CF", keyfobAway);
+        sensors.primary_call("65 00 CF", SensorsActivity.KAWAY);
         Thread.sleep(3000);
         verify_armaway();
         Thread.sleep(3000);
@@ -183,14 +167,14 @@ public class Misc extends Setup {
     }
 
     /***** ARM STAY BY KEY FOB *****/
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 4)
+    @Test(priority = 4)
     public void ArmStay_by_keyfob_group1() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 AF", keyfobStay);
+        sensors.primary_call("65 00 AF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
         verify_armstay();
         Thread.sleep(3000);
@@ -212,14 +196,14 @@ public class Misc extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 5)
+    @Test(priority = 5)
     public void ArmStay_by_keyfob_group6() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 BF", keyfobStay);
+        sensors.primary_call("65 00 BF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
         verify_armstay();
         Thread.sleep(3000);
@@ -241,14 +225,14 @@ public class Misc extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 6)
+    @Test(priority = 6)
     public void ArmStay_by_keyfob_group4() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************ARM STAY BY KEY FOB****************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 CF", keyfobStay);
+        sensors.primary_call("65 00 CF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
         verify_armstay();
         Thread.sleep(3000);
@@ -271,8 +255,7 @@ public class Misc extends Setup {
     }
 
     /**** DISARM BY KEY FOB *****/
-    //normal delay 30, 31; long delay 32, 33
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 7)
+      @Test( priority = 7)
     public void Disarm_by_keyfob_group1() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
@@ -284,7 +267,7 @@ public class Misc extends Setup {
         home.ARM_AWAY.click();
         Thread.sleep(33000);
         verify_armaway();
-        sensors.primary_call("65 00 AF", keyfobDisarm);
+        sensors.primary_call("65 00 AF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verify_disarm();
         adc.New_ADC_session(adc.getAccountId());
@@ -299,9 +282,11 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
+        delete_from_primary(38);
+          Thread.sleep(2000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 8)
+    @Test(priority = 8)
     public void Disarm_by_keyfob_group6() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
@@ -313,7 +298,7 @@ public class Misc extends Setup {
         home.ARM_AWAY.click();
         Thread.sleep(33000);
         verify_armaway();
-        sensors.primary_call("65 00 BF", keyfobDisarm);
+        sensors.primary_call("65 00 BF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verify_disarm();
         adc.New_ADC_session(adc.getAccountId());
@@ -328,9 +313,11 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
+        delete_from_primary(40);
+        Thread.sleep(2000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class, priority = 9)
+    @Test(priority = 9)
     public void Disarm_by_keyfob_group4() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("****************************DISARM BY KEY FOB****************************");
@@ -342,7 +329,7 @@ public class Misc extends Setup {
         home.ARM_AWAY.click();
         Thread.sleep(33000);
         verify_armaway();
-        sensors.primary_call("65 00 CF", keyfobDisarm);
+        sensors.primary_call("65 00 CF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verify_disarm();
         adc.New_ADC_session(adc.getAccountId());
@@ -357,6 +344,8 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
+        delete_from_primary(39);
+        Thread.sleep(2000);
     }
 
 
@@ -364,9 +353,9 @@ public class Misc extends Setup {
     @Test (priority = 10)
     public void AirFX_sensor_addition() throws IOException, InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-        String ID = "1";
+        String ID = "10";
         String DL = "6500A0";
-        String sensor1 = "sensor1";
+        String sensor1 = "sensor10";
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + adc.getAccountId();
         adc.driver1.get(ADC_URL);
@@ -740,9 +729,9 @@ public class Misc extends Setup {
        public void tearDown () throws IOException, InterruptedException {
            log.endTestCase(page_name);
            driver.quit();
-           for (int i= 40; i>37; i--) {
-           delete_from_primary(i);
-           }
+           //for (int i= 40; i>37; i--) {
+          // delete_from_primary(i);
+          // }
        }
 
     @AfterMethod
