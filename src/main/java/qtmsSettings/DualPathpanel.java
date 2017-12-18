@@ -3,24 +3,25 @@ package qtmsSettings;
 import cellular.Dual_path_page_elements;
 import cellular.System_Tests_page;
 import cellular.WiFi_setting_page_elements;
-import panel.AdvancedSettingsPage;
-import panel.PanelInfo_ServiceCalls;
-import panel.SettingsPage;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import panel.AdvancedSettingsPage;
+import panel.PanelInfo_ServiceCalls;
+import panel.SettingsPage;
+import utils.Setup;
 
 import java.io.IOException;
 
-public class DualPathpanel extends Setup{
-    public DualPathpanel() throws Exception {}
+public class DualPathpanel extends Setup {
     String page_name = "QTMS SystemTest_DualPath test cases panel part";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
+    public DualPathpanel() throws Exception {
+    }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
@@ -39,10 +40,11 @@ public class DualPathpanel extends Setup{
         dual.start_button.click();
         Thread.sleep(6000);
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
-        System.out.println("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");}
+        System.out.println("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");
+    }
 
     /*** WiFi On and Dual Path Off ***/
-    @Test (priority = 2)
+    @Test(priority = 2)
     public void SASST_028() throws Exception {
         servcall.get_WiFi_name();
         Thread.sleep(4000);
@@ -55,12 +57,15 @@ public class DualPathpanel extends Setup{
         dual.Dual_path_Control_check_box.click();
         Thread.sleep(6000);
         element_verification(dual.chkbox_result_text, "Dual_path_checkbox_text");
-        {dual.start_button.click();}
+        {
+            dual.start_button.click();
+        }
         Thread.sleep(6000);
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
-        logger.info("SASST_028 Pass:Dual Path Wi-Fi test won't pass if Dual-Path control is disabled and Wi-Fi is connected.");}
+        logger.info("SASST_028 Pass:Dual Path Wi-Fi test won't pass if Dual-Path control is disabled and Wi-Fi is connected.");
+    }
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void SASST_019() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
@@ -73,7 +78,8 @@ public class DualPathpanel extends Setup{
         dual.cancel_button.click();
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
         logger.info("SASST_019 Pass:Wi-Fi communication test canceled. The message is shown.");
-        Thread.sleep(2000);}
+        Thread.sleep(2000);
+    }
 
     @Test(priority = 3)
     public void SASST_020() throws Exception {
@@ -98,10 +104,11 @@ public class DualPathpanel extends Setup{
         logger.info("SASST_020 Pass: User can enable/disable dual-path control.\n" +
                 "Enable message 'Dual-path is enabled; using cellular and Wi-Fi.'\n" +
                 "Disable message 'Dual-path is disabled; using cellular only.'");
-        Thread.sleep(2000);}
+        Thread.sleep(2000);
+    }
 
     /*** WiFi is connected***/
-    @Test (priority = 4)
+    @Test(priority = 4)
     public void SASST_021022() throws Exception {
         servcall.get_WiFi();
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -113,7 +120,9 @@ public class DualPathpanel extends Setup{
         Thread.sleep(1000);
         element_verification(dual.WiFi_status, "WiFi status");
         logger.info("SASST_021022 Pass:Wi-Fi status shows 'Connected' when Wi-Fi is connected to a router/hotspot network.");
-        Thread.sleep(2000);}
+        Thread.sleep(2000);
+    }
+
     @Test(priority = 5)
     public void SASST_023() throws Exception {
         servcall.Wifi_disable();
@@ -137,7 +146,10 @@ public class DualPathpanel extends Setup{
         // servcall.Wifi_enable();
         Thread.sleep(6000);
     }
-    /** Dual path is enabled**/
+
+    /**
+     * Dual path is enabled
+     **/
     @Test(priority = 6)
     public void SASST_026() throws Exception {
         // servcall.Wifi_disable();
@@ -209,12 +221,14 @@ public class DualPathpanel extends Setup{
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
         logger.info("SASST_029 Pass:Dual Path Wi-Fi test won't pass if Dual-Path control is disabled and Wi-Fi is disconnected.");
         servcall.Wifi_enable();
-        Thread.sleep(8000);}
+        Thread.sleep(8000);
+    }
 
 
     @AfterTest
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
-        driver.quit(); }
+        driver.quit();
+    }
 
 }

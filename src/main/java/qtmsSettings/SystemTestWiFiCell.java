@@ -19,6 +19,7 @@ public class SystemTestWiFiCell extends Setup {
     String page_name = "QTMS SystemTest_WiFI_Cell test cases";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+
     public SystemTestWiFiCell() throws Exception {
     }
 

@@ -4,9 +4,6 @@ import adc.ADC;
 import adc.UIRepo;
 import cellular.Dual_path_page_elements;
 import cellular.System_Tests_page;
-import panel.AdvancedSettingsPage;
-import panel.PanelInfo_ServiceCalls;
-import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -16,24 +13,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import panel.AdvancedSettingsPage;
+import panel.PanelInfo_ServiceCalls;
+import utils.Setup;
 
 import java.io.IOException;
 
 
-public class DualPathADC extends Setup{
+public class DualPathADC extends Setup {
+    public WebDriverWait wait;
+    String page_name = "QTMS SystemTest_DualPath test cases";
+    Logger logger = Logger.getLogger(page_name);
+    ADC adc = new ADC();
+    UIRepo repo;
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     public DualPathADC() throws Exception {
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
         adc.setADCexecute("true");
     }
 
-    String page_name = "QTMS SystemTest_DualPath test cases";
-    Logger logger = Logger.getLogger(page_name);
-    ADC adc = new ADC();
-    UIRepo repo ;
-    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    public WebDriverWait wait;
-
-    public void webDriverSetUp () {
+    public void webDriverSetUp() {
         driver1 = new FirefoxDriver();
         wait = new WebDriverWait(driver1, 300);
     }
@@ -42,7 +41,8 @@ public class DualPathADC extends Setup{
     public void capabilities_setup() throws Exception {
 
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setup_logger(page_name);
+    }
 
     @BeforeMethod
     public void webDriver() {
@@ -68,6 +68,7 @@ public class DualPathADC extends Setup{
         servcall.EVENT_DISARM();
         Thread.sleep(2000);
     }
+
     @Test
     public void SASST_031() throws Exception {
         servcall.set_ALL_CHIMES(1);
@@ -106,6 +107,7 @@ public class DualPathADC extends Setup{
         servcall.get_ALL_CHIMES();
         Thread.sleep(2000);
     }
+
     @Test
     public void SASST_030_usersitearming() throws Exception {
         repo = PageFactory.initElements(driver, UIRepo.class);
@@ -134,7 +136,8 @@ public class DualPathADC extends Setup{
             if (adc.driver1.findElement(By.xpath("//*[@id='ember735']")).isDisplayed()) {
                 adc.driver1.findElement(By.xpath("//*[@id='ember735']")).click();
             }
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_ArmingStateWidget_btnArmStay"))).click();
         Thread.sleep(2000);
         adc.driver1.findElement(By.xpath("//div[contains(@class, 'icon ') and contains(@title, 'Disarmed ')]")).click();
@@ -151,15 +154,17 @@ public class DualPathADC extends Setup{
         Thread.sleep(4000);
         // System.out.println("Please wait 5 minutes to get update of User site");
         logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");
-        servcall.EVENT_DISARM();}
+        servcall.EVENT_DISARM();
+    }
 
     @AfterTest
-    public void tearDown () throws IOException, InterruptedException {
+    public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
-        driver.quit(); }
+        driver.quit();
+    }
 
     @AfterMethod
-    public void webDriverQuit(){
+    public void webDriverQuit() {
         adc.driver1.quit();
     }
 }
