@@ -121,7 +121,7 @@ public class Disarm extends Setup {
 
     public void sensor_status_check( String DLID, String Status, String Status2 ) throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();
@@ -233,7 +233,7 @@ public class Disarm extends Setup {
     }
     @Test (priority = 10)
     public void Disb_21_DW8() throws Exception {
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("*Disb_21* Open/Close event is displayed in panel history for sensor group 8");
         add_primary_call(1, 8, 6619302, 1);
@@ -276,7 +276,7 @@ public class Disarm extends Setup {
 //    }
     @Test (priority = 12)
     public void Disb_23_DW9() throws Exception {
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         logger.info("*Disb_23* Open/Close event is displayed in panel history for sensor group 9, system goes into alarm at the end of entry delay");
         add_primary_call(1, 9, 6619303, 1);
         navigate_to_Settings_page();
@@ -318,7 +318,7 @@ public class Disarm extends Setup {
     }
     @Test (priority = 15)
     public void Disb_26_DW10() throws Exception {
-        Security_Sensors_Page sen = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("*Disb_26* sensor name can be edited and changes will be reflected on the panel and website");
         add_primary_call(1, 10, 6619296, 1);
@@ -355,7 +355,7 @@ public class Disarm extends Setup {
     }
     @Test (dependsOnMethods = {"Disb_26_DW10"}, priority = 16)
     public void Disb_27_DW10() throws Exception {
-        Security_Sensors_Page sen = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("*Disb_27* sensor can be deleted, change is reflected on the website");
         navigate_to_Security_Sensors_page();
@@ -377,7 +377,7 @@ public class Disarm extends Setup {
     }
     @Test(priority = 17)
     public void Disb_28_DW10() throws Exception {
-        Security_Sensors_Page sen = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("*Disb_28* readd same sensor from panel");
         navigate_to_Security_Sensors_page();

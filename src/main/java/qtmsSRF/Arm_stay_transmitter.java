@@ -3,7 +3,7 @@ package qtmsSRF;
 import adc.ADC;
 import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
-import panel.Settings_Page;
+import panel.SettingsPage;
 import utils.Setup;
 import sensors.Sensors;
 import org.apache.log4j.Logger;
@@ -83,7 +83,7 @@ public class Arm_stay_transmitter extends Setup {
         Thread.sleep(1000);
         // sensors.primary_call(DLID, restore);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        Settings_Page sett = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigate_to_Settings_page();
         Thread.sleep(1000);
         sett.STATUS.click();

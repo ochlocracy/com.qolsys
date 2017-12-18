@@ -27,7 +27,7 @@ public class AccessPointTest extends Setup {
 
     @Test(priority = 1)
     public void Verify_elements_on_Access_Point_page() throws Exception {
-        WiFi_Devices_Page access = PageFactory.initElements(driver, WiFi_Devices_Page.class);
+        WiFiDevicesPage access = PageFactory.initElements(driver, WiFiDevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         DevicesPage devices = PageFactory.initElements(driver, DevicesPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);

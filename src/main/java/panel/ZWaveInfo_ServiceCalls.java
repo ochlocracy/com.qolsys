@@ -13,6 +13,7 @@ public class ZWaveInfo_ServiceCalls extends Setup {
 
     public ZWaveInfo_ServiceCalls() throws Exception {
         ConfigProps.init();
+
     }
 
 

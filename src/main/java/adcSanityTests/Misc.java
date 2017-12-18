@@ -417,9 +417,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();
@@ -504,9 +504,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(3000);
         menu.Slide_menu_open.click();
@@ -577,9 +577,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(4000);
         menu.Slide_menu_open.click();
@@ -646,9 +646,9 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(4000);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();
@@ -687,9 +687,9 @@ public class Misc extends Setup {
         sensors.primary_call("65 00 0A", D_Restore);
         logger.info("sensor1 Closed");
         Thread.sleep(2000);*/
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Status_page_elements tabs = PageFactory.initElements(driver, Status_page_elements.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        StatusPageElements tabs = PageFactory.initElements(driver, StatusPageElements.class);
         logger.info("Checking for the notification in the Event History of panel ");
         Thread.sleep(2000);
         menu.Slide_menu_open.click();

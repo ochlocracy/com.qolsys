@@ -28,7 +28,7 @@ public class Duress_Authentication_Test_Grid {
     @Parameters({ "UDID_" })
     @Test
     public void Verify_Duress_Authentication_works(String UDID_) throws Exception {
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
         SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);

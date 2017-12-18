@@ -25,7 +25,7 @@ public class DisplayPageTest extends Setup {
 
     @Test
     public void Check_all_elements_on_Display_page() throws Exception {
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         DisplayPage display = PageFactory.initElements(driver, DisplayPage.class);
         logger.info("Verifying elements on the page...");
         navigate_to_Settings_page();

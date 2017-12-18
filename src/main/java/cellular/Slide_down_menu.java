@@ -1,7 +1,7 @@
 package cellular;
 
 import utils.Setup;
-import panel.Slide_Menu;
+import panel.SlideMenu;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
@@ -31,7 +31,7 @@ public class Slide_down_menu extends Setup{
     }
     @Test
     public void Check_all_elements_on_Slide_Menu() throws Exception {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000); Thread.sleep(1000);
         menu.Slide_menu_open.click();

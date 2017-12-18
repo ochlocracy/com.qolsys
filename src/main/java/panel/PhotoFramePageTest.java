@@ -25,8 +25,8 @@ public class PhotoFramePageTest extends Setup {
 
     @Test
     public void Check_all_elements_on_Photo_Frame_page() throws Exception {
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         PhotoFramePage frame = PageFactory.initElements(driver, PhotoFramePage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);

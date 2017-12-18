@@ -25,8 +25,8 @@ public class AdvancedSettingsPageTest extends Setup {
 
     @Test
     public void Check_all_elements_on_Advanced_Settings_page() throws Exception {
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);

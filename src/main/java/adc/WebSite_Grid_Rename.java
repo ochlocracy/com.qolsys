@@ -42,7 +42,7 @@ public class WebSite_Grid_Rename {
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
         DevicesPage devices = PageFactory.initElements(s.getDriver(), DevicesPage.class);
-        Security_Sensors_Page sec_sensors = PageFactory.initElements(s.getDriver(), Security_Sensors_Page.class);
+        SecuritySensorsPage sec_sensors = PageFactory.initElements(s.getDriver(), SecuritySensorsPage.class);
         logger.info("********************************************************");
         logger.info("Rename sensors from panel");
         s.navigate_to_Advanced_Settings_page();

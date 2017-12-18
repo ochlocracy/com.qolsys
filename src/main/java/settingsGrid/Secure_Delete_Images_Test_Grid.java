@@ -29,7 +29,7 @@ public class Secure_Delete_Images_Test_Grid {
         HomePage home  = PageFactory.initElements(s.getDriver(), HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(s.getDriver(), PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(s.getDriver(), CameraSettingsPage.class);
-        Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         logger.info("Verifying deleting panel images requires valid code...");

@@ -30,7 +30,7 @@ public class Allow_Master_Code_to_access_Camera_Settings_Page_Test_Grid {
         @Test
         public void Verify_Master_Code_gets_access_to_Camera_Settings_page(String UDID_) throws Exception {
             CameraSettingsPage set_cam =  PageFactory.initElements(s.getDriver(), CameraSettingsPage.class);
-            Settings_Page settings = PageFactory.initElements(s.getDriver(), Settings_Page.class);
+            SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
             AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
             InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
             Thread.sleep(3000);

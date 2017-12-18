@@ -27,12 +27,12 @@ public class Installer_Code_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Installer_Code_Change(String UDID_) throws Exception {
-    Settings_Page settings =  PageFactory.initElements(s.getDriver(), Settings_Page.class);
+    SettingsPage settings =  PageFactory.initElements(s.getDriver(), SettingsPage.class);
     ContactUs contact =  PageFactory.initElements(s.getDriver(), ContactUs.class);
     SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
     AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
     InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
-    User_Management_Page user = PageFactory.initElements(s.getDriver(), User_Management_Page.class);
+    UserManagementPage user = PageFactory.initElements(s.getDriver(), UserManagementPage.class);
         Thread.sleep(2000);
         s.navigate_to_Advanced_Settings_page();
         adv.INSTALLATION.click();

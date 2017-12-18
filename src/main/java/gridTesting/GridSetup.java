@@ -101,8 +101,8 @@ public class GridSetup {
     public String Software_Version () throws InterruptedException {
 
         TimeUnit.SECONDS.sleep(3);
-        Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-        Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         menu.Slide_menu_open.click();

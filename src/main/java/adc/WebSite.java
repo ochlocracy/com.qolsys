@@ -87,7 +87,7 @@ public class WebSite extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         DevicesPage devices = PageFactory.initElements(driver, DevicesPage.class);
-        Security_Sensors_Page sec_sencsors = PageFactory.initElements(driver, Security_Sensors_Page.class);
+        SecuritySensorsPage sec_sencsors = PageFactory.initElements(driver, SecuritySensorsPage.class);
         logger.info("********************************************************");
         logger.info("Rename sensors from panel");
         navigate_to_Advanced_Settings_page();

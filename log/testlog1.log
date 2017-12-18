@@ -3326,3 +3326,133 @@
 2017-11-22 15:14:05,946 [main] INFO adcSanityTests.ArmedAwayContact - Arm Away
 2017-11-22 15:14:08,229 [main] INFO Arm Away mode contact sensor testing - ArmAway -Open/Close Group 14 contact sensor during exit delay
 2017-11-22 15:14:08,235 [main] INFO adcSanityTests.ArmedAwayContact - Arm Away
+2017-11-28 14:23:33,741 [main] INFO utils.Log - ********************************************************************
+2017-11-28 14:23:33,744 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   About page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-11-28 14:23:33,744 [main] INFO utils.Log - ********************************************************************
+2017-11-28 14:23:33,762 [main] INFO About page testing - Verifying elements on the page...
+2017-11-28 14:23:48,009 [main] INFO panel.About_Page_Test - Pass: Battery is present, value = Battery
+2017-11-28 14:23:50,369 [main] INFO panel.About_Page_Test - Pass: Battery Status is present, value = Battery Status
+2017-11-28 14:23:50,928 [main] INFO panel.About_Page_Test - Pass: Battery Level is present, value = Battery Level
+2017-11-28 14:23:52,987 [main] INFO panel.About_Page_Test - Pass: Software is present, value = Software
+2017-11-28 14:23:54,615 [main] INFO panel.About_Page_Test - Pass: Software Version is present, value = Software Version
+2017-11-28 14:23:55,167 [main] INFO panel.About_Page_Test - Pass: Build Number is present, value = Build Number
+2017-11-28 14:23:55,782 [main] INFO panel.About_Page_Test - Pass: Linux Version is present, value = Linux Version
+2017-11-28 14:23:56,460 [main] INFO panel.About_Page_Test - Pass: Android OS Version is present, value = Android OS Version
+2017-11-28 14:23:58,481 [main] INFO panel.About_Page_Test - Pass: Hardware is present, value = Hardware
+2017-11-28 14:24:00,581 [main] INFO panel.About_Page_Test - Pass: Manufacturer is present, value = Manufacturer
+2017-11-28 14:24:06,632 [main] INFO panel.About_Page_Test - Pass: PCA Serial Number is present, value = PCA Serial Number
+2017-11-28 14:24:07,184 [main] INFO panel.About_Page_Test - Pass: Part Number is present, value = Part Number
+2017-11-28 14:24:07,736 [main] INFO panel.About_Page_Test - Pass: System Configuration is present, value = System Configuration
+2017-11-28 14:24:08,314 [main] INFO panel.About_Page_Test - Pass: System Serial Number is present, value = System Serial Number
+2017-11-28 14:24:14,326 [main] INFO panel.About_Page_Test - Pass: RF Pic Version is present, value = RF PIC Version
+2017-11-28 14:24:14,870 [main] INFO panel.About_Page_Test - Pass: EEPROM Format Version is present, value = EEPROM Format Version
+2017-11-28 14:24:15,418 [main] INFO panel.About_Page_Test - Pass: Image Sensor Version is present, value = Image Sensor Version
+2017-11-28 14:24:16,842 [main] INFO panel.About_Page_Test - Pass: Patches is present, value = Patches
+2017-11-28 14:24:18,775 [main] INFO panel.About_Page_Test - Pass: Patch Description is present, value = Patch Description
+2017-11-28 14:24:19,291 [main] INFO panel.About_Page_Test - Pass: Last Upgrade Date is present, value = Last Upgrade Date
+2017-11-28 14:24:21,207 [main] INFO panel.About_Page_Test - Pass: panel is present, value = Panel
+2017-11-28 14:24:22,801 [main] INFO panel.About_Page_Test - Pass: MAC Address is present, value = MAC Address
+2017-11-28 14:24:24,544 [main] ERROR utils.Log - *panel Up Time* - Element is not found!
+2017-11-28 14:24:26,578 [main] INFO panel.About_Page_Test - Pass: cellular is present, value = Cellular
+2017-11-28 14:24:28,621 [main] INFO panel.About_Page_Test - Pass: Carrier is present, value = Carrier
+2017-11-28 14:24:30,187 [main] ERROR utils.Log - *cellular Connection* - Element is not found!
+2017-11-28 14:24:31,838 [main] ERROR utils.Log - *cellular Signal Strength* - Element is not found!
+2017-11-28 14:24:32,416 [main] INFO panel.About_Page_Test - Pass: IMEI is present, value = IMEI
+2017-11-28 14:24:37,477 [main] INFO panel.About_Page_Test - Pass: IMSI is present, value = IMSI
+2017-11-28 14:24:38,028 [main] INFO panel.About_Page_Test - Pass: ICCID is present, value = ICCID
+2017-11-28 14:24:38,632 [main] INFO panel.About_Page_Test - Pass: Baseband Version is present, value = Baseband Version
+2017-11-28 14:24:40,634 [main] INFO panel.About_Page_Test - Pass: Z-Wave is present, value = Z-Wave
+2017-11-28 14:24:42,615 [main] INFO panel.About_Page_Test - Pass: Home-ID is present, value = Home ID
+2017-11-28 14:24:43,181 [main] INFO panel.About_Page_Test - Pass: Z-Wave Firmware Version is present, value = Z-Wave Firmware Version
+2017-11-28 14:24:43,709 [main] INFO panel.About_Page_Test - Pass: Z-Wave Api Version is present, value = Z-Wave Api Version
+2017-11-28 14:24:48,738 [main] INFO panel.About_Page_Test - Pass: Manufacturing ID is present, value = Manufacturing ID
+2017-11-28 14:24:49,353 [main] INFO panel.About_Page_Test - Pass: Product Type is present, value = Product Type
+2017-11-28 14:24:49,871 [main] INFO panel.About_Page_Test - Pass: Product ID is present, value = Product ID
+2017-11-28 14:24:51,337 [main] INFO panel.About_Page_Test - Pass: Wi-Fi Info is present, value = WI-FI Information
+2017-11-28 14:24:53,430 [main] INFO panel.About_Page_Test - Pass: Connection is present, value = Connection
+2017-11-28 14:24:53,960 [main] INFO panel.About_Page_Test - Pass: IP Address is present, value = IP Address
+2017-11-28 14:24:59,077 [main] INFO panel.About_Page_Test - Pass: SSID is present, value = SSID
+2017-11-28 14:24:59,622 [main] INFO panel.About_Page_Test - Pass: Speed is present, value = Speed
+2017-11-28 14:25:00,149 [main] INFO panel.About_Page_Test - Pass: Internet is present, value = Internet
+2017-11-28 14:25:01,597 [main] INFO panel.About_Page_Test - Pass: Internal storage is present, value = Internal storage
+2017-11-28 14:25:03,560 [main] INFO panel.About_Page_Test - Pass: Total space is present, value = Total space
+2017-11-28 14:25:10,037 [main] ERROR utils.Log - *Available space* - Element is not found!
+2017-11-28 14:25:10,646 [main] INFO panel.About_Page_Test - Pass: Photos is present, value = Photos
+2017-11-28 14:25:11,203 [main] INFO panel.About_Page_Test - Pass: Videos is present, value = Videos
+2017-11-28 14:25:11,769 [main] INFO panel.About_Page_Test - Pass: Logs is present, value = Logs
+2017-11-28 14:25:12,269 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 11:39:27,056 [main] INFO utils.Log - ********************************************************************
+2017-12-05 11:39:27,058 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   About page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2017-12-05 11:39:27,058 [main] INFO utils.Log - ********************************************************************
+2017-12-05 11:39:27,080 [main] INFO About page testing - Verifying elements on the page...
+2017-12-05 11:39:41,870 [main] INFO panel.AboutPageTest - Pass: Battery is present, value = Battery
+2017-12-05 11:39:44,322 [main] INFO panel.AboutPageTest - Pass: Battery Status is present, value = Battery Status
+2017-12-05 11:39:44,872 [main] INFO panel.AboutPageTest - Pass: Battery Level is present, value = Battery Level
+2017-12-05 11:39:46,840 [main] INFO panel.AboutPageTest - Pass: Software is present, value = Software
+2017-12-05 11:39:48,476 [main] INFO panel.AboutPageTest - Pass: Software Version is present, value = Software Version
+2017-12-05 11:39:49,046 [main] INFO panel.AboutPageTest - Pass: Build Number is present, value = Build Number
+2017-12-05 11:39:49,567 [main] INFO panel.AboutPageTest - Pass: Linux Version is present, value = Linux Version
+2017-12-05 11:39:50,134 [main] INFO panel.AboutPageTest - Pass: Android OS Version is present, value = Android OS Version
+2017-12-05 11:39:52,287 [main] INFO panel.AboutPageTest - Pass: Hardware is present, value = Hardware
+2017-12-05 11:39:54,310 [main] INFO panel.AboutPageTest - Pass: Manufacturer is present, value = Manufacturer
+2017-12-05 11:40:00,433 [main] INFO panel.AboutPageTest - Pass: PCA Serial Number is present, value = PCA Serial Number
+2017-12-05 11:40:01,105 [main] INFO panel.AboutPageTest - Pass: Part Number is present, value = Part Number
+2017-12-05 11:40:01,709 [main] INFO panel.AboutPageTest - Pass: System Configuration is present, value = System Configuration
+2017-12-05 11:40:02,228 [main] INFO panel.AboutPageTest - Pass: System Serial Number is present, value = System Serial Number
+2017-12-05 11:40:08,330 [main] INFO panel.AboutPageTest - Pass: RF Pic Version is present, value = RF PIC Version
+2017-12-05 11:40:08,878 [main] INFO panel.AboutPageTest - Pass: EEPROM Format Version is present, value = EEPROM Format Version
+2017-12-05 11:40:09,392 [main] INFO panel.AboutPageTest - Pass: Image Sensor Version is present, value = Image Sensor Version
+2017-12-05 11:40:10,841 [main] INFO panel.AboutPageTest - Pass: Patches is present, value = Patches
+2017-12-05 11:40:12,860 [main] INFO panel.AboutPageTest - Pass: Patch Description is present, value = Patch Description
+2017-12-05 11:40:13,417 [main] INFO panel.AboutPageTest - Pass: Last Upgrade Date is present, value = Last Upgrade Date
+2017-12-05 11:40:15,397 [main] INFO panel.AboutPageTest - Pass: Panel is present, value = Panel
+2017-12-05 11:40:16,945 [main] INFO panel.AboutPageTest - Pass: MAC Address is present, value = MAC Address
+2017-12-05 11:40:17,494 [main] INFO panel.AboutPageTest - Pass: Panel Up Time is present, value = Panel Up Time(YY:MM:DD:HH:mm)
+2017-12-05 11:40:19,525 [main] INFO panel.AboutPageTest - Pass: Cellular is present, value = Cellular
+2017-12-05 11:40:21,430 [main] INFO panel.AboutPageTest - Pass: Carrier is present, value = Carrier
+2017-12-05 11:40:21,979 [main] INFO panel.AboutPageTest - Pass: Cellular Connection is present, value = Cellular Connection
+2017-12-05 11:40:22,536 [main] INFO panel.AboutPageTest - Pass: Cellular Signal Strength is present, value = Cellular Signal Strength
+2017-12-05 11:40:23,073 [main] INFO panel.AboutPageTest - Pass: IMEI is present, value = IMEI
+2017-12-05 11:40:28,044 [main] INFO panel.AboutPageTest - Pass: IMSI is present, value = IMSI
+2017-12-05 11:40:28,524 [main] INFO panel.AboutPageTest - Pass: ICCID is present, value = ICCID
+2017-12-05 11:40:29,087 [main] INFO panel.AboutPageTest - Pass: Baseband Version is present, value = Baseband Version
+2017-12-05 11:40:31,118 [main] INFO panel.AboutPageTest - Pass: Z-Wave is present, value = Z-Wave
+2017-12-05 11:40:33,159 [main] INFO panel.AboutPageTest - Pass: Home-ID is present, value = Home ID
+2017-12-05 11:40:33,736 [main] INFO panel.AboutPageTest - Pass: Z-Wave Firmware Version is present, value = Z-Wave Firmware Version
+2017-12-05 11:40:34,289 [main] INFO panel.AboutPageTest - Pass: Z-Wave Api Version is present, value = Z-Wave Api Version
+2017-12-05 11:40:39,383 [main] INFO panel.AboutPageTest - Pass: Manufacturing ID is present, value = Manufacturing ID
+2017-12-05 11:40:39,891 [main] INFO panel.AboutPageTest - Pass: Product Type is present, value = Product Type
+2017-12-05 11:40:40,379 [main] INFO panel.AboutPageTest - Pass: Product ID is present, value = Product ID
+2017-12-05 11:40:41,803 [main] INFO panel.AboutPageTest - Pass: Ethernet is present, value = Ethernet
+2017-12-05 11:40:42,290 [main] INFO panel.AboutPageTest - Pass: Wi-Fi Info is present, value = WI-FI Information
+2017-12-05 11:40:44,453 [main] INFO panel.AboutPageTest - Pass: Connection is present, value = Connection
+2017-12-05 11:40:44,969 [main] INFO panel.AboutPageTest - Pass: IP Address is present, value = IP Address
+2017-12-05 11:40:49,993 [main] INFO panel.AboutPageTest - Pass: SSID is present, value = SSID
+2017-12-05 11:40:50,548 [main] INFO panel.AboutPageTest - Pass: Speed is present, value = Speed
+2017-12-05 11:40:51,594 [main] INFO panel.AboutPageTest - Pass: Internet is present, value = Internet
+2017-12-05 11:40:53,044 [main] INFO panel.AboutPageTest - Pass: Internal storage is present, value = Internal storage
+2017-12-05 11:40:54,941 [main] INFO panel.AboutPageTest - Pass: Total space is present, value = Total space
+2017-12-05 11:41:00,283 [main] INFO panel.AboutPageTest - Pass: Total space is present, value = Total space
+2017-12-05 11:41:00,831 [main] INFO panel.AboutPageTest - Pass: Photos is present, value = Photos
+2017-12-05 11:41:01,315 [main] INFO panel.AboutPageTest - Pass: Videos is present, value = Videos
+2017-12-05 11:41:01,840 [main] INFO panel.AboutPageTest - Pass: Logs is present, value = Logs
+2017-12-05 11:41:02,288 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 14:23:22,438 [main] INFO zwave.ZwaveTransmitter - Panel in remote clear mode with service call
+2017-12-05 14:23:28,494 [main] INFO zwave.ZwaveTransmitter - Exclude/Clear transmitter to panel 
+2017-12-05 14:24:28,496 [main] INFO zwave.ZwaveTransmitter - Aborting remote Add
+2017-12-05 14:26:18,350 [main] INFO zwave.ZwaveTransmitter - Panel in remote add mode with service call
+2017-12-05 14:26:27,416 [main] INFO zwave.ZwaveTransmitter - Including transmitter to panel 
+2017-12-05 14:58:23,043 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 15:01:26,703 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:15:51,794 [main] INFO zwave - Adding door lock
+2017-12-05 16:15:51,847 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:18:07,219 [main] INFO zwave - Adding door lock
+2017-12-05 16:18:07,268 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:18:37,158 [main] INFO zwave - Adding door lock
+2017-12-05 16:18:37,209 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:19:09,969 [main] INFO zwave - Adding door lock
+2017-12-05 16:19:10,019 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:19:41,924 [main] INFO zwave - Adding door lock
+2017-12-05 16:19:41,974 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2017-12-05 16:20:16,746 [main] INFO zwave - Adding door lock
+2017-12-05 16:20:16,796 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
