@@ -10,20 +10,18 @@ import utils.Setup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 
-public class SystemTest_DualPath_ADC extends Setup{
-    public SystemTest_DualPath_ADC() throws Exception {
+public class DualPathADC extends Setup{
+    public DualPathADC() throws Exception {
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
         adc.setADCexecute("true");
     }
@@ -88,7 +86,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         logger.info("adc AirFX");
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + adc.getAccountId();
-         adc.driver1.get(ADC_URL);
+        adc.driver1.get(ADC_URL);
         String login = "qapple";
         String password = "qolsys123";
         Thread.sleep(2000);
@@ -123,7 +121,7 @@ public class SystemTest_DualPath_ADC extends Setup{
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         adc.driver1.get(ADC_URL);
-       // String login = "LeBron_James";
+        // String login = "LeBron_James";
         String login = "pan7Aut";
         String password = "qolsys123";
         Thread.sleep(2000);
@@ -139,23 +137,23 @@ public class SystemTest_DualPath_ADC extends Setup{
         } catch (NoSuchElementException e) {}
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_ArmingStateWidget_btnArmStay"))).click();
         Thread.sleep(2000);
-       adc.driver1.findElement(By.xpath("//div[contains(@class, 'icon ') and contains(@title, 'Disarmed ')]")).click();
+        adc.driver1.findElement(By.xpath("//div[contains(@class, 'icon ') and contains(@title, 'Disarmed ')]")).click();
         Thread.sleep(2000);
-       adc.driver1.findElement(By.xpath("//button[contains(@id, 'ember') and contains(@class, 'armed-stay btn ember-view')]")).click();
-      // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionSilent")).click();
-       // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionNoEntryDelay")).click();
-       // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_btnArmOptionStay")).click();
-       Thread.sleep(5000);
+        adc.driver1.findElement(By.xpath("//button[contains(@id, 'ember') and contains(@class, 'armed-stay btn ember-view')]")).click();
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionSilent")).click();
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_cbArmOptionNoEntryDelay")).click();
+        // adc.getDriver1().findElement(By.id("ctl00_phBody_ArmingStateWidget_btnArmOptionStay")).click();
+        Thread.sleep(5000);
         System.out.println("status verification");
 
-       // if (adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay today ')]"))).isDisplayed()) {
+        // if (adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay today ')]"))).isDisplayed()) {
         verify_armstay();
         Thread.sleep(4000);
-      // System.out.println("Please wait 5 minutes to get update of User site");
-       logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");
-       servcall.EVENT_DISARM();}
+        // System.out.println("Please wait 5 minutes to get update of User site");
+        logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");
+        servcall.EVENT_DISARM();}
 
-       @AfterTest
+    @AfterTest
     public void tearDown () throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit(); }

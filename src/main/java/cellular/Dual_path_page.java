@@ -25,8 +25,8 @@ public class Dual_path_page extends Setup{
         setup_logger(page_name);}
 
         public void accessDual_path_page() throws InterruptedException {
-            Slide_Menu menu = PageFactory.initElements(driver, Slide_Menu.class);
-            Settings_Page settings = PageFactory.initElements(driver, Settings_Page.class);
+            SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+            SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
             menu.Slide_menu_open.click();
             menu.Settings.click();
             Thread.sleep(2000);
