@@ -9,7 +9,7 @@ public class System_Tests_page {
     public WebElement WIFI_TEST;
     @FindBy(xpath = "//android.widget.TextView[@text='Sensor Test']")
     public WebElement SENSOR_TEST;
-    @FindBy(xpath = "//android.widget.TextView[@text='cellular Test']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Cellular Test']")
     public WebElement CELLULAR_TEST;
     @FindBy(xpath = "//android.widget.TextView[@text='Image Sensor Config']")
     public WebElement IMAGE_SENSOR_TEST;

@@ -33,6 +33,7 @@ public class KeyFob extends Setup {
     public KeyFob() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        adc.setADCexecute("true");
     }
 
     public void ADC_verification(String string, String string1, String string3) throws IOException, InterruptedException {
@@ -64,7 +65,9 @@ public class KeyFob extends Setup {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
         setup_logger(page_name);
         servcall.set_ARM_STAY_NO_DELAY_enable();
+        Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
+        Thread.sleep(2000);
     }
 
     @BeforeMethod
@@ -83,6 +86,7 @@ public class KeyFob extends Setup {
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
         adc.Request_equipment_list();
+        Thread.sleep(2000);
     }
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)

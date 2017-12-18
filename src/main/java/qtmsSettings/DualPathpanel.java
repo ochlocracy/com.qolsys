@@ -15,18 +15,18 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class SystemTestDualPathPanel extends Setup {
+public class DualPathpanel extends Setup {
     String page_name = "QTMS SystemTest_DualPath test cases panel part";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    public SystemTestDualPathPanel() throws Exception {
+
+    public DualPathpanel() throws Exception {
     }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
-    }
+        setup_logger(page_name);}
 
     /*** WiFi On and Dual Path ON ***/
     @Test
@@ -40,7 +40,7 @@ public class SystemTestDualPathPanel extends Setup {
         dual.start_button.click();
         Thread.sleep(6000);
         element_verification(dual.Test_result, "Dual_path_Test_result_text");
-        logger.info("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");
+        System.out.println("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");
     }
 
     /*** WiFi On and Dual Path Off ***/
@@ -224,9 +224,11 @@ public class SystemTestDualPathPanel extends Setup {
         Thread.sleep(8000);
     }
 
+
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
     }
+
 }

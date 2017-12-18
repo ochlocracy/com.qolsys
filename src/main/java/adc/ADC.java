@@ -167,7 +167,9 @@ public class ADC extends Setup {
             accountId = "5389996";
         } else if (get_UDID().equals("62864b84")) { //Olga AT&T
             accountId = "5434143";
-        }
+        } else if (get_UDID().equals("f003b8cb")) { //iqhub6
+        accountId = " 5765486";
+    }
         return accountId;
     }
 

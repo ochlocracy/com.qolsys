@@ -19,6 +19,7 @@ public class SystemTestWiFiCell extends Setup {
     String page_name = "QTMS SystemTest_WiFI_Cell test cases";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+
     public SystemTestWiFiCell() throws Exception {
     }
 
@@ -102,14 +103,13 @@ public class SystemTestWiFiCell extends Setup {
         element_verification(cell.Cellular_status, "cellular Status");
         element_verification(cell.signal_strength, "signal strength");
         element_verification(cell.test_result, "Test Result");
-        logger.info(" SASST_4 Pass: cellular test passed successfully when wifi is disabled");
+        System.out.println(" SASST_4 Pass: cellular test passed successfully when wifi is disabled");
         servcall.data_verification();
         Thread.sleep(2000);
         servcall.get_Cell_data();
-        System.out.println("1");
-        Thread.sleep(2000);
+        Thread.sleep(5000);
+        System.out.println("Turning back WiFi");
         servcall.Wifi_enable();
-        System.out.println("1");
         Thread.sleep(5000);
     }
 
