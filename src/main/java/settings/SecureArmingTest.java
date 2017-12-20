@@ -19,8 +19,8 @@ public class SecureArmingTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -35,11 +35,11 @@ public class SecureArmingTest extends Setup {
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Secure_Arming.click();
@@ -52,12 +52,12 @@ public class SecureArmingTest extends Setup {
         if (home.Enter_Code_to_Access_the_Area.isDisplayed()) {
             logger.info("Pass: code is requires to Arm the system");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Secure_Arming.click();

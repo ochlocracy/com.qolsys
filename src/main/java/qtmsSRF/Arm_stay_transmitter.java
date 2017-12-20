@@ -44,18 +44,18 @@ public class Arm_stay_transmitter extends Setup {
     public void immediate_tamper_alarm(int zone, int group, String DLID, String Status, String Status1, int n0, int n1) throws Exception {
         Thread.sleep(1000);
         ARM_STAY();
-        // sensors.primary_call(DLID, tamper);
+        // sensors.primaryCall(DLID, tamper);
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals(Status)) {
             logger.info("Pass: Correct status is " + Status);
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        verify_in_alarm();
-        //sensors.primary_call(DLID, restore);
+        verifyInAlarm();
+        //sensors.primaryCall(DLID, restore);
         adc.New_ADC_session_User(login, password);
         Thread.sleep(60000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -79,12 +79,12 @@ public class Arm_stay_transmitter extends Setup {
         } catch (Exception e) {
             System.out.println("No such element found!!!");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        // sensors.primary_call(DLID, restore);
+        // sensors.primaryCall(DLID, restore);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
         sett.Panel_history.click();
@@ -103,14 +103,14 @@ public class Arm_stay_transmitter extends Setup {
         Thread.sleep(2000);
 
 
-        // delete_from_primary(zone);
+        // deleteFromPrimary(zone);
         Thread.sleep(1000);
     }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver("62964b68", "http://127.0.0.1", "4723");
-        setup_logger(page_name);
+        setupDriver("62964b68", "http://127.0.0.1", "4723");
+        setupLogger(page_name);
         Thread.sleep(1000);
     }
 
@@ -124,10 +124,10 @@ public class Arm_stay_transmitter extends Setup {
         servcall.EVENT_ARM_STAY_Transmitter();
         //ARM_STAY();
         TimeUnit.SECONDS.sleep(2);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
       //  MySensors.sendTamper_allSensors_selectedGroup(2, 8);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(3000);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 8, Close);
         //  MySensors.deleteAllSensorsTransmitter();

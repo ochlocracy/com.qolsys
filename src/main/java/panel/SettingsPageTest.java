@@ -19,8 +19,8 @@ public class SettingsPageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -32,18 +32,18 @@ public class SettingsPageTest extends Setup {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
-        element_verification(settings.DISPLAY, "Display");
-        element_verification(settings.SD_CARD, "SD Card");
-        element_verification(settings.WEATHER_TEMPERATURE, "Weather temperature");
-        element_verification(settings.STATUS, "Status");
-        element_verification(settings.ZWAVE_STATUS, "ZWave device status");
-        element_verification(settings.OTHER_ZWAVE, "Other ZWave devices");
-        element_verification(settings.AUTOMATION, "Automation");
-        element_verification(settings.ACTIVITY_MONITOR, "Activity Monitor");
-        element_verification(settings.ADVANCED_SETTINGS, "Advanced settings");
-        element_verification(settings.Back_button, "Back button");
-        element_verification(settings.Emergency_button, "Emergency button");
-        element_verification(settings.Home_button, "Home button");
+        elementVerification(settings.DISPLAY, "Display");
+        elementVerification(settings.SD_CARD, "SD Card");
+        elementVerification(settings.WEATHER_TEMPERATURE, "Weather temperature");
+        elementVerification(settings.STATUS, "Status");
+        elementVerification(settings.ZWAVE_STATUS, "ZWave device status");
+        elementVerification(settings.OTHER_ZWAVE, "Other ZWave devices");
+        elementVerification(settings.AUTOMATION, "Automation");
+        elementVerification(settings.ACTIVITY_MONITOR, "Activity Monitor");
+        elementVerification(settings.ADVANCED_SETTINGS, "Advanced settings");
+        elementVerification(settings.Back_button, "Back button");
+        elementVerification(settings.Emergency_button, "Emergency button");
+        elementVerification(settings.Home_button, "Home button");
     }
 
     @AfterMethod

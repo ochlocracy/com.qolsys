@@ -32,7 +32,7 @@ public class ZWaveDeviceRenaming extends Setup {
     }
 
     public void navigate_to_ZWave_Page() throws InterruptedException {
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Installation']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Devices']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Z-wave Devices']")).click();
@@ -51,8 +51,8 @@ public class ZWaveDeviceRenaming extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @BeforeMethod
@@ -64,7 +64,7 @@ public class ZWaveDeviceRenaming extends Setup {
     public void renameFromPanel() throws Exception {
         int i, j, x, y;
 
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
 
         navigate_to_ZWave_Page();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Edit Device']")).click();
@@ -110,7 +110,7 @@ public class ZWaveDeviceRenaming extends Setup {
             logger.info("Pass: Name change successfully reflected in panel UI (Edit Z-Wave Devices Page)");
 
         driver.findElement(By.id("com.qolsys:id/ft_home_button")).click();
-        swipe_left();
+        swipeLeft();
 
         Thread.sleep(2000);
         if (!driver.findElement(By.id("com.qolsys:id/uiName")).getAttribute("text").equals(rename))
@@ -141,7 +141,7 @@ public class ZWaveDeviceRenaming extends Setup {
         renameLightFromUserSite(rename1);
 
         if (driver.findElements(By.id("com.qolsys:id/allOn")).size() == 0)
-            swipe_left();
+            swipeLeft();
 
         List<WebElement> li = driver.findElements(By.id("com.qolsys:id/uiName"));
 

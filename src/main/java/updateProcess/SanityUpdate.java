@@ -138,13 +138,13 @@ public class SanityUpdate extends Setup {
     }
 
     public void open_close(String DLID) throws InterruptedException, IOException {
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(500);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(500);
     }
 
-    public void verify_setting(String setting, String call, String expected) throws IOException {
+    public void verifySetting(String setting, String call, String expected) throws IOException {
         String result = execCmd(ConfigProps.adbPath + " shell service call qservice " + call).split(" ")[2];
         if (result.equals(expected))
             log.log(LogStatus.PASS, "[Pass] " + setting + " has value: " + expected);
@@ -154,7 +154,7 @@ public class SanityUpdate extends Setup {
 
     @BeforeClass
     public void setUp() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         deleteReport();
     }
 
@@ -165,104 +165,104 @@ public class SanityUpdate extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("UpdateProcess.Settings");
 
-        verify_setting("Media Volume", "36 i32 0 i32 0 i32 39 i32 0 i32 0", ON);
+        verifySetting("Media Volume", "36 i32 0 i32 0 i32 39 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("All Voice Prompts", "37 i32 0 i32 0 i32 42 i32 0 i32 0", OFF);
+        verifySetting("All Voice Prompts", "37 i32 0 i32 0 i32 42 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("All Chimes", "37 i32 0 i32 0 i32 46 i32 0 i32 0", ON);
+        verifySetting("All Chimes", "37 i32 0 i32 0 i32 46 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("All Trouble Beeps", "37 i32 0 i32 0 i32 111 i32 0 i32 0", ON);
+        verifySetting("All Trouble Beeps", "37 i32 0 i32 0 i32 111 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Fire Safety Device", "37 i32 0 i32 0 i32 146 i32 0 i32 0", ON);
+        verifySetting("Fire Safety Device", "37 i32 0 i32 0 i32 146 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("WiFi", "37 i32 0 i32 0 i32 32 i32 0 i32 0", ON);
+        verifySetting("WiFi", "37 i32 0 i32 0 i32 32 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Secure Delete Images", "37 i32 0 i32 0 i32 104 i32 0 i32 0", OFF);
+        verifySetting("Secure Delete Images", "37 i32 0 i32 0 i32 104 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Disarm Photo", "37 i32 0 i32 0 i32 102 i32 0 i32 0", OFF);
+        verifySetting("Disarm Photo", "37 i32 0 i32 0 i32 102 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Alarm Videos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
+        verifySetting("Alarm Videos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Alarm Photos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
+        verifySetting("Alarm Photos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("settings Photos", "37 i32 0 i32 0 i32 143 i32 0 i32 0", ON);
+        verifySetting("settings Photos", "37 i32 0 i32 0 i32 143 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Duress Authentication", "37 i32 0 i32 0 i32 61 i32 0 i32 0", ON);
+        verifySetting("Duress Authentication", "37 i32 0 i32 0 i32 61 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Secure Arming", "37 i32 0 i32 0 i32 35 i32 0 i32 0", ON);
+        verifySetting("Secure Arming", "37 i32 0 i32 0 i32 35 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("No Arming On Low Battery", "37 i32 0 i32 0 i32 36 i32 0 i32 0", ON);
+        verifySetting("No Arming On Low Battery", "37 i32 0 i32 0 i32 36 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Auto Bypass", "37 i32 0 i32 0 i32 19 i32 0 i32 0", OFF);
+        verifySetting("Auto Bypass", "37 i32 0 i32 0 i32 19 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Auto Stay", "37 i32 0 i32 0 i32 20 i32 0 i32 0", OFF);
+        verifySetting("Auto Stay", "37 i32 0 i32 0 i32 20 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", OFF);
+        verifySetting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Auto Exit Time Extension", "37 i32 0 i32 0 i32 84 i32 0 i32 0", OFF);
+        verifySetting("Auto Exit Time Extension", "37 i32 0 i32 0 i32 84 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Keyfob Alarm Disarm", "37 i32 0 i32 0 i32 129 i32 0 i32 0", ON);
+        verifySetting("Keyfob Alarm Disarm", "37 i32 0 i32 0 i32 129 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Keyfob Disarming", "37 i32 0 i32 0 i32 134 i32 0 i32 0", OFF);
+        verifySetting("Keyfob Disarming", "37 i32 0 i32 0 i32 134 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "00000021");
+        verifySetting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "00000021");
         Thread.sleep(one_sec);
-        verify_setting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "00000039");
+        verifySetting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "00000039");
         Thread.sleep(one_sec);
-        verify_setting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "00000071");
+        verifySetting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "00000071");
         Thread.sleep(one_sec);
-        verify_setting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "00000075");
+        verifySetting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "00000075");
         Thread.sleep(one_sec);
-        verify_setting("Siren Disable", "37 i32 0 i32 0 i32 14 i32 0 i32 0", OFF);
+        verifySetting("Siren Disable", "37 i32 0 i32 0 i32 14 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Fire Verification", "37 i32 0 i32 0 i32 100 i32 0 i32 0", ON);
+        verifySetting("Fire Verification", "37 i32 0 i32 0 i32 100 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Severe Weather Siren Warning", "37 i32 0 i32 0 i32 103 i32 0 i32 0", OFF);
+        verifySetting("Severe Weather Siren Warning", "37 i32 0 i32 0 i32 103 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Dialer Delay", "36 i32 0 i32 0 i32 12 i32 0 i32 0", "00000017");
+        verifySetting("Dialer Delay", "36 i32 0 i32 0 i32 12 i32 0 i32 0", "00000017");
         Thread.sleep(one_sec);
-        verify_setting("Siren Timeout", "36 i32 0 i32 0 i32 13 i32 0 i32 0", "000001a4");
+        verifySetting("Siren Timeout", "36 i32 0 i32 0 i32 13 i32 0 i32 0", "000001a4");
         Thread.sleep(one_sec);
-        verify_setting("Water Freeze Alarm", "37 i32 0 i32 0 i32 122  i32 0 i32 0", ON);
+        verifySetting("Water Freeze Alarm", "37 i32 0 i32 0 i32 122  i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Police Panic", "37 i32 0 i32 0 i32 131 i32 0 i32 0", OFF);
+        verifySetting("Police Panic", "37 i32 0 i32 0 i32 131 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Fire Panic", "37 i32 0 i32 0 i32 132 i32 0 i32 0", OFF);
+        verifySetting("Fire Panic", "37 i32 0 i32 0 i32 132 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Auxillary Panic", "37 i32 0 i32 0 i32 133 i32 0 i32 0", OFF);
+        verifySetting("Auxillary Panic", "37 i32 0 i32 0 i32 133 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Auto Upload Logs", "37 i32 0 i32 0 i32 90 i32 0 i32 0", ON);
+        verifySetting("Auto Upload Logs", "37 i32 0 i32 0 i32 90 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Power Management On/Off", "37 i32 0 i32 0 i32 73 i32 0 i32 0", OFF);
+        verifySetting("Power Management On/Off", "37 i32 0 i32 0 i32 73 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("SIA Power Restoration", "37 i32 0 i32 0 i32 74 i32 0 i32 0", ON);
+        verifySetting("SIA Power Restoration", "37 i32 0 i32 0 i32 74 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Loss of Supervisory Signals for Non-emergency sensors", "36 i32 0 i32 0 i32 31 i32 0 i32 0", "0000000c");
+        verifySetting("Loss of Supervisory Signals for Non-emergency sensors", "36 i32 0 i32 0 i32 31 i32 0 i32 0", "0000000c");
         Thread.sleep(one_sec);
-        verify_setting("Loss of Supervisory Signals for Emergency sensors", "36 i32 0 i32 0 i32 118 i32 0 i32 0", "0000000c");
+        verifySetting("Loss of Supervisory Signals for Emergency sensors", "36 i32 0 i32 0 i32 118 i32 0 i32 0", "0000000c");
         Thread.sleep(one_sec);
-        verify_setting("Cell Signal Timeout", "36 i32 0 i32 0 i32 101 i32 0 i32 0", "00000019");
+        verifySetting("Cell Signal Timeout", "36 i32 0 i32 0 i32 101 i32 0 i32 0", "00000019");
         Thread.sleep(one_sec);
-        verify_setting("SIA Limits", "37 i32 0 i32 0 i32 37 i32 0 i32 0", OFF);
+        verifySetting("SIA Limits", "37 i32 0 i32 0 i32 37 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("RF Jam Detect", "37 i32 0 i32 0 i32 25 i32 0 i32 0", ON);
+        verifySetting("RF Jam Detect", "37 i32 0 i32 0 i32 25 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Open/Close Reports for Auto Learn", "37 i32 0 i32 0 i32 127 i32 0 i32 0", OFF);
+        verifySetting("Open/Close Reports for Auto Learn", "37 i32 0 i32 0 i32 127 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verify_setting("Bluetooth", "37 i32 0 i32 0 i32 142 i32 0 i32 0", ON);
+        verifySetting("Bluetooth", "37 i32 0 i32 0 i32 142 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Bluetooth Disarm", "37 i32 0 i32 0 i32 138 i32 0 i32 0", ON);
+        verifySetting("Bluetooth Disarm", "37 i32 0 i32 0 i32 138 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Bluetooth Disarm Timeout", "36 i32 0 i32 0 i32 139 i32 0 i32 0", "0000001e");
+        verifySetting("Bluetooth Disarm Timeout", "36 i32 0 i32 0 i32 139 i32 0 i32 0", "0000001e");
         Thread.sleep(one_sec);
-        verify_setting("Allow Master Code to Access Camera settings", "37 i32 0 i32 0 i32 107 i32 0 i32 0", ON);
+        verifySetting("Allow Master Code to Access Camera settings", "37 i32 0 i32 0 i32 107 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Allow Master Code to Access Security and Arming settings", "37 i32 0 i32 0 i32 106 i32 0 i32 0", ON);
+        verifySetting("Allow Master Code to Access Security and Arming settings", "37 i32 0 i32 0 i32 106 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verify_setting("Allow Master Code to Access Siren and Alarms settings", "37 i32 0 i32 0 i32 105 i32 0 i32 0", ON);
+        verifySetting("Allow Master Code to Access Siren and Alarms settings", "37 i32 0 i32 0 i32 105 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         Thread.sleep(5000);
         System.out.println("Done, setting default settings");
@@ -288,52 +288,52 @@ public class SanityUpdate extends Setup {
         open_close("65 00 3A");
         open_close("65 00 4A");
         open_close("65 00 5A");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         open_close("65 00 6A");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         open_close("65 00 7A");
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: DW sensors behavior is as expected");
         System.out.println("Activate motion sensors");
         log.log(LogStatus.INFO, "Activate motion sensors");
-        sensors.primary_call("55 00 44", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 44", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        sensors.primary_call("55 00 54", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 54", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        sensors.primary_call("55 00 64", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 64", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        sensors.primary_call("55 00 74", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 74", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        sensors.primary_call("55 00 84", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 84", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: DW sensors behavior is as expected");
 
         System.out.println("Activate smoke sensors");
         log.log(LogStatus.INFO, "Activate smoke sensor");
-        sensors.primary_call("67 00 22", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: smoke sensor behavior is as expected");
 
         System.out.println("Activate CO sensors");
         log.log(LogStatus.INFO, "Activate CO sensor");
-        sensors.primary_call("75 00 AA", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("75 00 AA", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: CO sensor behavior is as expected");
 
         System.out.println("Activate glassbreak sensors");
         log.log(LogStatus.INFO, "Activate glassbreak sensors");
-        sensors.primary_call("67 00 99", SensorsActivity.ACTIVATE);
-        sensors.primary_call("67 00 99", SensorsActivity.RESTORE);
+        sensors.primaryCall("67 00 99", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 99", SensorsActivity.RESTORE);
         Thread.sleep(1000);
-        sensors.primary_call("67 00 39", SensorsActivity.ACTIVATE);
-        sensors.primary_call("67 00 39", SensorsActivity.RESTORE);
+        sensors.primaryCall("67 00 39", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 39", SensorsActivity.RESTORE);
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: CO sensor behavior is as expected");
 
@@ -347,88 +347,88 @@ public class SanityUpdate extends Setup {
 
         System.out.println("Activate IQShock sensors");
         log.log(LogStatus.INFO, "Activate IQShock sensors");
-        sensors.primary_call("66 00 C9", SensorsActivity.ACTIVATE);
-        sensors.primary_call("66 00 C9", SensorsActivity.RESTORE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.RESTORE);
         Thread.sleep(1000);
-        sensors.primary_call("66 00 D9", SensorsActivity.ACTIVATE);
-        sensors.primary_call("66 00 D9", SensorsActivity.RESTORE);
+        sensors.primaryCall("66 00 D9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 D9", SensorsActivity.RESTORE);
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: IQShock sensors behavior is as expected");
 
         System.out.println("Activate freeze sensor");
         log.log(LogStatus.INFO, "Activate Freeze sensor");
-        sensors.primary_call("73 00 1A", SensorsActivity.ACTIVATE);
-        sensors.primary_call("73 00 1A", SensorsActivity.RESTORE);
+        sensors.primaryCall("73 00 1A", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("73 00 1A", SensorsActivity.RESTORE);
         Thread.sleep(1000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: freeze sensor behavior is as expected");
 
         System.out.println("Activate heat sensor");
         log.log(LogStatus.INFO, "Activate heat sensor");
-        sensors.primary_call("75 00 26", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: heat sensor behavior is as expected");
 
         System.out.println("Activate water sensors");
         log.log(LogStatus.INFO, "Activate water sensor");
-        sensors.primary_call("75 11 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("75 11 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: water sensor behavior is as expected");
 
         System.out.println("Activate keyfobs");
         log.log(LogStatus.INFO, "Activate keyfobs");
-        sensors.primary_call("65 00 AF", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 AF", SensorsActivity.OPEN);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
 
-        sensors.primary_call("65 00 BF", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
 
-        sensors.primary_call("65 00 CF", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 CF", SensorsActivity.OPEN);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: keyfobs behavior is as expected");
 
         System.out.println("Activate keypad sensors");
         log.log(LogStatus.INFO, "Activate keypads");
-        sensors.primary_call("85 00 AF", SensorsActivity.OPEN);
+        sensors.primaryCall("85 00 AF", SensorsActivity.OPEN);
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
 
-        sensors.primary_call("85 00 BF", "04 04");
-        Thread.sleep(2000);
-        verify_armaway();
-        sensors.primary_call("85 00 BF", "08 01");
+        sensors.primaryCall("85 00 BF", "04 04");
+        Thread.sleep(4000);
+        verifyArmaway();
+        sensors.primaryCall("85 00 BF", "08 01");
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: keypads behavior is as expected");
 
         System.out.println("Activate medical pendants");
         log.log(LogStatus.INFO, "Activate medical pendants");
-        sensors.primary_call("61 12 13", "03 01");
+        sensors.primaryCall("61 12 13", "03 01");
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
 
-        sensors.primary_call("61 12 23", "03 01");
+        sensors.primaryCall("61 12 23", "03 01");
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: medical pendants behavior is as expected");
 
@@ -439,7 +439,7 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.PASS, "Pass: doorbell sensor behavior is as expected");
 
         contact.acknowledge_all_alerts();
-        swipe_left();
+        swipeLeft();
         Thread.sleep(1000);
     }
 
@@ -458,7 +458,7 @@ public class SanityUpdate extends Setup {
         home.Four.click();
         home.Three.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: new user code is working correctly");
     }
 
@@ -477,7 +477,7 @@ public class SanityUpdate extends Setup {
         home.Three.click();
         home.One.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: new master code is working correctly");
     }
 
@@ -496,7 +496,7 @@ public class SanityUpdate extends Setup {
         home.Zero.click();
         home.Zero.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: new guest code is working correctly");
     }
 
@@ -529,9 +529,13 @@ public class SanityUpdate extends Setup {
 
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
-        driver.quit();
         for (int i = 3; i < 36; i++) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
+        System.out.println("*****Stop driver*****");
+        driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

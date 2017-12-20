@@ -35,8 +35,8 @@ public class WiFi extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     /*** WiFi is connected ***/
@@ -45,8 +45,8 @@ public class WiFi extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        navigate_to_Advanced_Settings_page();
-        element_verification(adv.WI_FI, "WiFi icon");
+        navigateToAdvancedSettingsPage();
+        elementVerification(adv.WI_FI, "WiFi icon");
         adv.WI_FI.click();
         logger.info("SASW_004 Pass: WI-FI icon is present and enabled under the Advanced settings page");
         logger.info("SASW_005 Pass: User can access Wi-Fi page in Disarm mode");
@@ -72,23 +72,23 @@ public class WiFi extends Setup {
         logger.info(n_li11.get(4).getText() + " : " + n_li1.get(4).getText());
         logger.info("SASW_006 Pass: IP Address, Status, Signal Strength, Link Speed, Frequency, and Security information are displayed");
         wifi.DONE.click();
-        element_verification(wifi.Home_button, "Home Button");
-        element_verification(wifi.Back_button, "Back Button");
-        element_verification(wifi.Emergency_Button, "Emergency_Button");
+        elementVerification(wifi.Home_button, "Home Button");
+        elementVerification(wifi.Back_button, "Back Button");
+        elementVerification(wifi.Emergency_Button, "Emergency_Button");
         logger.info("SASW_007 Pass: 'Back', 'Emergency' and 'Home' buttons are present on the footer");
         wifi.Emergency_Button.click();
-        element_verification(wifi.Emergency_page, "Emergency_page");
+        elementVerification(wifi.Emergency_page, "Emergency_page");
         logger.info("SASW_011 Pass: User is taken to the Emergency page");
-        swipe_left();
-        navigate_to_Advanced_Settings_page();
+        swipeLeft();
+        navigateToAdvancedSettingsPage();
         adv.WI_FI.click();
         wifi.Home_button.click();
-        element_verification(home.Disarmed_text, "Home page");
+        elementVerification(home.Disarmed_text, "Home page");
         logger.info("SASW_012 Pass: User is taken to the Home page");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.WI_FI.click();
         wifi.Back_button.click();
-        element_verification(adv.WI_FI, "WiFi icon");
+        elementVerification(adv.WI_FI, "WiFi icon");
         logger.info("SASW_010 Pass: User is taken back to the previous page.");
         Thread.sleep(5000);
     }
@@ -99,7 +99,7 @@ public class WiFi extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         if (wifi.Warning_message.isDisplayed()) {
             logger.info("Warning message: " + wifi.Warning_message.getText());
@@ -108,10 +108,10 @@ public class WiFi extends Setup {
             System.out.println("Incorrect precondition");
         }
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.WI_FI.click();
         Thread.sleep(1000);
-        element_verification(wifi.Checkbox, "Checkbox");
+        elementVerification(wifi.Checkbox, "Checkbox");
         wifi.Checkbox.click();
         if (wifi.Checkbox.isEnabled()) {
             logger.info("Pass: Checkbox is enabled");
@@ -133,10 +133,10 @@ public class WiFi extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.WI_FI.click();
         Thread.sleep(1000);
         wifi.Checkbox.click();
@@ -152,10 +152,10 @@ public class WiFi extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.WI_FI.click();
         Thread.sleep(1000);
         List<WebElement> li = driver.findElements(By.id("android:id/title"));

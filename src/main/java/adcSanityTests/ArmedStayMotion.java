@@ -58,9 +58,9 @@ public class ArmedStayMotion extends Setup{
         ARM_STAY();
         logger.info("Activate a sensor");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/3);
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armstay();
+        verifyArmstay();
         DISARM();
         Thread.sleep(2000);
 
@@ -71,10 +71,10 @@ public class ArmedStayMotion extends Setup{
         ARM_STAY();
         logger.info("Activate a sensor");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armstay();
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        verifyArmstay();
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/3);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -84,43 +84,43 @@ public class ArmedStayMotion extends Setup{
         ARM_STAY();
         logger.info("Activate a sensor");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armstay();
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        verifyArmstay();
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
         Thread.sleep(2000);
         adc.driver1.findElement(By.id("ctl00_phBody_butSearch")).click();
         TimeUnit.SECONDS.sleep(3);
         history_verification("//*[contains(text(), '(Sensor " + sensor + ") Alarm')]");
-        enter_default_user_code();
+        enterDefaultUserCode();
     }
     public void ArmStay_Tamper_Alarm(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
         logger.info("ArmStay After Delay Tamper Group " + group + " motion sensor");
         ARM_STAY();
         logger.info("Tamper a sensor");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armstay();
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        verifyArmstay();
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         adc.ADC_verification(element_to_verify, element_to_verify2);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
         adc.driver1.findElement(By.id("ctl00_phBody_butSearch")).click();
         history_verification("//*[contains(text(), 'End of Tamper')]");
-        enter_default_user_code();
+        enterDefaultUserCode();
     }
     public void ArmStay_Tamper(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
         logger.info("ArmStay After Delay Tamper Group " + group + " motion sensor");
         ARM_STAY();
         logger.info("Tamper a sensor");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armstay();
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        verifyArmstay();
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_armstay();
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        verifyArmstay();
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         adc.ADC_verification(element_to_verify, element_to_verify2);
         adc.driver1.findElement(By.id("ctl00_phBody_butSearch")).click();
         Thread.sleep(5000);
@@ -130,8 +130,8 @@ public class ArmedStayMotion extends Setup{
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -149,11 +149,11 @@ public class ArmedStayMotion extends Setup{
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(11, 15, 5570628, 2);
-        add_primary_call(12, 17, 5570629, 2);
-        add_primary_call(13, 20, 5570630, 2);
-        add_primary_call(14, 25, 5570631, 2);
-        add_primary_call(15, 35, 5570632, 2);
+        addPrimaryCall(11, 15, 5570628, 2);
+        addPrimaryCall(12, 17, 5570629, 2);
+        addPrimaryCall(13, 20, 5570630, 2);
+        addPrimaryCall(14, 25, 5570631, 2);
+        addPrimaryCall(15, 35, 5570632, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -219,7 +219,7 @@ public class ArmedStayMotion extends Setup{
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i= 15; i>10; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

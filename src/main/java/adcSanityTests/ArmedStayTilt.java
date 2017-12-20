@@ -8,9 +8,6 @@ import utils.Setup;
 import sensors.Sensors;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
@@ -33,8 +30,8 @@ public class ArmedStayTilt extends Setup{
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -55,9 +52,9 @@ public class ArmedStayTilt extends Setup{
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(11, 10, 6488238, 16);
-        add_primary_call(12, 12, 6488239, 16);
-        add_primary_call(13, 25, 6488224, 16);
+        addPrimaryCall(11, 10, 6488238, 16);
+        addPrimaryCall(12, 12, 6488239, 16);
+        addPrimaryCall(13, 25, 6488224, 16);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -70,11 +67,11 @@ public class ArmedStayTilt extends Setup{
         ARM_STAY();
         TimeUnit.SECONDS.sleep( ConfigProps.longExitDelay/2);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalExitDelay);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
         DISARM();
         Thread.sleep(2000);
@@ -101,12 +98,12 @@ public class ArmedStayTilt extends Setup{
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -117,11 +114,11 @@ public class ArmedStayTilt extends Setup{
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         DISARM();
         Thread.sleep(2000);
 
@@ -149,13 +146,13 @@ public class ArmedStayTilt extends Setup{
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -166,11 +163,11 @@ public class ArmedStayTilt extends Setup{
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(2000);
@@ -195,7 +192,7 @@ public class ArmedStayTilt extends Setup{
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i= 13; i>10; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
     @AfterMethod

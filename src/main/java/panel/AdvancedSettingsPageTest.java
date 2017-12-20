@@ -19,8 +19,8 @@ public class AdvancedSettingsPageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -39,18 +39,18 @@ public class AdvancedSettingsPageTest extends Setup {
         settings.Two.click();
         settings.Two.click();
 
-        element_verification(adv.INSTALLATION, "Installation");
-        element_verification(adv.USER_MANAGEMENT, "User Management");
-        element_verification(adv.ABOUT, "About");
-        element_verification(adv.SYSTEM_TESTS, "System Tests");
-        element_verification(adv.ZWAVE_DEVICE_LIST, "Z-Wave Device List");
-        element_verification(adv.DEALER_CONTACT, "Dealer Contact");
-        element_verification(adv.PANEL_REBOOT, "Panel Reboot");
-        element_verification(adv.POWER_DOWN, "Power Down");
-        element_verification(adv.UPGRADE_SOFTWARE, "Upgrade Software");
-        element_verification(adv.WI_FI, "Wi-Fi");
-        element_verification(adv.SOUND, "Sound");
-        element_verification(adv.DATE_TIME, "Date &Time");
+        elementVerification(adv.INSTALLATION, "Installation");
+        elementVerification(adv.USER_MANAGEMENT, "User Management");
+        elementVerification(adv.ABOUT, "About");
+        elementVerification(adv.SYSTEM_TESTS, "System Tests");
+        elementVerification(adv.ZWAVE_DEVICE_LIST, "Z-Wave Device List");
+        elementVerification(adv.DEALER_CONTACT, "Dealer Contact");
+        elementVerification(adv.PANEL_REBOOT, "Panel Reboot");
+        elementVerification(adv.POWER_DOWN, "Power Down");
+        elementVerification(adv.UPGRADE_SOFTWARE, "Upgrade Software");
+        elementVerification(adv.WI_FI, "Wi-Fi");
+        elementVerification(adv.SOUND, "Sound");
+        elementVerification(adv.DATE_TIME, "Date &Time");
     }
 
     @AfterMethod

@@ -23,8 +23,8 @@ public class KeyfobInstantArmingTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -40,70 +40,70 @@ public class KeyfobInstantArmingTest extends Setup {
         sensors.add_primary_call(3, 4, 6619386, 102);
         logger.info("Arm Stay the system");
         Thread.sleep(3000);
-        sensors.primary_call("65 00 AF", armstay);
+        sensors.primaryCall("65 00 AF", armstay);
         Thread.sleep(5000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         logger.info("Arm Away the system");
-        sensors.primary_call("65 00 AF", armaway);
+        sensors.primaryCall("65 00 AF", armaway);
         Thread.sleep(4000);
-        verify_armaway();
+        verifyArmaway();
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         logger.info("Verify that Keyfob Instant Arming does not work when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         logger.info("Arm Stay the system");
-        sensors.primary_call("65 00 AF", armstay);
+        sensors.primaryCall("65 00 AF", armstay);
         Thread.sleep(4000);
         try {
             if (home.Disarmed_text.getText().equals("ARMED STAY"))
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: System is ARMED STAY");
         } catch (Exception e) {
             logger.info("Pass: System is NOT ARMED STAY");
         } finally {
         }
         Thread.sleep(10000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         logger.info("Arm Away the system");
-        sensors.primary_call("65 00 AF", armaway);
+        sensors.primaryCall("65 00 AF", armaway);
         Thread.sleep(4000);
         try {
             if (home.ArwAway_State.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: System is ARMED STAY");
         } catch (Exception e) {
             logger.info("Pass: System is NOT ARMED AWAY");
         } finally {
         }
         Thread.sleep(10000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();

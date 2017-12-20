@@ -24,8 +24,8 @@ public class Dual_Path extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
 
     }
 
@@ -42,7 +42,7 @@ public class Dual_Path extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -56,11 +56,11 @@ public class Dual_Path extends Setup {
             } else {
                 dual.start_button.click();
                 Thread.sleep(8000);
-                element_verification(dual.Test_result, "Test result");
+                elementVerification(dual.Test_result, "Test result");
             }
         }
         Thread.sleep(8000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: Dual Path test passed if Dual-Path control is enabled, Wi-Fi and Cell are connected.");
     }
 
@@ -77,10 +77,10 @@ public class Dual_Path extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -94,11 +94,11 @@ public class Dual_Path extends Setup {
             } else {
                 dual.start_button.click();
                 Thread.sleep(8000);
-                element_verification(dual.Test_result, "Test result");
+                elementVerification(dual.Test_result, "Test result");
             }
         }
         Thread.sleep(8000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected error when NO wifi connection");
         // servcall.Wifi_enable();// turning on wiFi */
     }
@@ -117,10 +117,10 @@ public class Dual_Path extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -131,7 +131,7 @@ public class Dual_Path extends Setup {
         }
         dual.start_button.click();
         Thread.sleep(6000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected message:' Dual-Path is not enabled; Wi-Fi test is not supported'");
         // servcall.Wifi_enable();// turning on wiFi */
     }
@@ -151,10 +151,10 @@ public class Dual_Path extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -168,11 +168,11 @@ public class Dual_Path extends Setup {
             } else {
                 dual.start_button.click();
                 Thread.sleep(8000);
-                element_verification(dual.Test_result, "Test result");
+                elementVerification(dual.Test_result, "Test result");
             }
         }
         Thread.sleep(8000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected message: 'Dual-Path is not enabled; Wi-Fi test is not supported.'");
         servcall.APN_disable();// turning on cell
         // servcall.Wifi_enable();
@@ -192,10 +192,10 @@ public class Dual_Path extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -206,7 +206,7 @@ public class Dual_Path extends Setup {
         }
         dual.start_button.click();
         Thread.sleep(8000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected message: 'Dual-Path is not enabled; Wi-Fi test is not supported.'");
         // servcall.APN_disable();// turning on cell
         // servcall.Wifi_enable();
@@ -223,7 +223,7 @@ public class Dual_Path extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -234,7 +234,7 @@ public class Dual_Path extends Setup {
         }
         dual.start_button.click();
         Thread.sleep(8000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected message: 'Dual-Path is not enabled; Wi-Fi test is not supported.'");
         // servcall.APN_disable();// turning on cell
         // servcall.Wifi_enable();
@@ -253,7 +253,7 @@ public class Dual_Path extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         if (checkAttribute(dual.Dual_path_Control_check_box, "checked", "true")) {
@@ -267,12 +267,12 @@ public class Dual_Path extends Setup {
             } else {
                 dual.start_button.click();
                 Thread.sleep(8000);
-                element_verification(dual.Test_result, "Test result");
+                elementVerification(dual.Test_result, "Test result");
             }
         }
         dual.start_button.click();
         Thread.sleep(10000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("Pass: expected message: 'Dual-Path is not enabled; Wi-Fi test is not supported.'");
         servcall.APN_disable();// turning on cell
         Thread.sleep(5000);
@@ -281,7 +281,7 @@ public class Dual_Path extends Setup {
     }
 
     public void accessDual_path_page() throws InterruptedException {
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         adv.SYSTEM_TESTS.click();
@@ -296,14 +296,14 @@ public class Dual_Path extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Elements verification, Happy path");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
     }
 
     // Test2 The default setting values. In this case, dual-path and wifi are enabled
@@ -313,7 +313,7 @@ public class Dual_Path extends Setup {
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         WiFi_setting_page_elements w = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         HomePage h = PageFactory.initElements(driver, HomePage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.WI_FI.click();
         Thread.sleep(2000);
         try {
@@ -334,14 +334,14 @@ public class Dual_Path extends Setup {
         Thread.sleep(2000);
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("WiFi settings is disabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(30000);
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
         Assert.assertTrue(d_test.Test_result.isDisplayed());
         try {
             Assert.assertTrue(d_test.Test_result.isDisplayed());
@@ -368,16 +368,16 @@ public class Dual_Path extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Dual path control check-box is Enabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
         d_test.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
         servcall.APN_disable();// turning on cell
         Thread.sleep(5000);
     }
@@ -387,16 +387,16 @@ public class Dual_Path extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Dual path control check-box is Disabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
         d_test.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
     }
 
     public void UploadLogs() throws Exception {
@@ -415,7 +415,7 @@ public class Dual_Path extends Setup {
 
     @Test(priority = 11)//Cell&WiFi On
     public void UploadLogsPositive() throws Exception {
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         if (driver.findElement(By.xpath("//android.widget.TextView[@text='Uploading logs started']")).isDisplayed()) {
@@ -428,7 +428,7 @@ public class Dual_Path extends Setup {
 
     @Test(priority = 12)//Cell&WiFi On
     public void UploadLogsCancell() throws Exception {
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/cancel")).click();
         if (driver.findElement(By.xpath("//android.widget.TextView[@text='Upload Logs to the server']")).isDisplayed()) {
@@ -444,10 +444,10 @@ public class Dual_Path extends Setup {
         Thread.sleep(5000);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_dealer_code();
+        enterDefaultDealerCode();
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         if (driver.findElement(By.xpath("//android.widget.TextView[@text='Uploading logs started']")).isDisplayed()) {
@@ -470,10 +470,10 @@ public class Dual_Path extends Setup {
         Thread.sleep(5000);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_dealer_code();
+        enterDefaultDealerCode();
         Thread.sleep(2000);
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/cancel")).click();
@@ -492,7 +492,7 @@ public class Dual_Path extends Setup {
         Thread.sleep(5000);
         servcall.Wifi_enable();
         Thread.sleep(5000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         Thread.sleep(2000);
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/cancel")).click();
@@ -505,7 +505,7 @@ public class Dual_Path extends Setup {
 
     @Test(priority = 16)//Cell&WiFi On
     public void UploadLogsPositiveCellOff() throws Exception {
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         UploadLogs();
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         if (driver.findElement(By.xpath("//android.widget.TextView[@text='Uploading logs started']")).isDisplayed()) {

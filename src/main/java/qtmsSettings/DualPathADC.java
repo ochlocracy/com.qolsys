@@ -40,8 +40,8 @@ public class DualPathADC extends Setup {
     @BeforeTest
     public void capabilities_setup() throws Exception {
 
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @BeforeMethod
@@ -55,12 +55,12 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.start_button.click();
         Thread.sleep(10000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         servcall.set_ARM_STAY_NO_DELAY_enable();
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
@@ -78,12 +78,12 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.start_button.click();
         Thread.sleep(5000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         logger.info("adc AirFX");
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + adc.getAccountId();
@@ -114,12 +114,12 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.start_button.click();
         Thread.sleep(6000);
-        element_verification(dual.Test_result, "Test result");
+        elementVerification(dual.Test_result, "Test result");
         adc.driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         adc.driver1.get(ADC_URL);
@@ -150,7 +150,7 @@ public class DualPathADC extends Setup {
         System.out.println("status verification");
 
         // if (adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay today ')]"))).isDisplayed()) {
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(4000);
         // System.out.println("Please wait 5 minutes to get update of User site");
         logger.info("SASST_030 Pass:Remote arming takes less than 5 minutes after Dual path test passed.");

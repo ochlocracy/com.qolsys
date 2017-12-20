@@ -192,11 +192,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10,Open);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
 //        WebElement Door4 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 4']");
-//        s.verify_sensor_is_displayed(UDID_, Door4);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door4);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -205,11 +205,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 12,Open);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
 //        WebElement Door5 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 5']");
-//        s.verify_sensor_is_displayed(UDID_, Door5);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door5);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 12,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -218,11 +218,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 13,Open);
 //        TimeUnit.SECONDS.sleep(3);
 //        WebElement Door6 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 6']");
-//        s.verify_sensor_is_displayed(UDID_, Door6);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door6);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 13,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -231,11 +231,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 14,Open);
 //        TimeUnit.SECONDS.sleep(5);
 //        WebElement Door9 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 9']");
-//        s.verify_sensor_is_displayed(UDID_, Door9);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door9);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 14,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -244,11 +244,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 16,Open);
 //        TimeUnit.SECONDS.sleep(3);
 //        WebElement Door7 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 7']");
-//        s.verify_sensor_is_displayed(UDID_, Door7);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door7);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 16,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -257,11 +257,11 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 8,Open);
 //        TimeUnit.SECONDS.sleep(3);
 //        WebElement Door2 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 2']");
-//        s.verify_sensor_is_displayed(UDID_, Door2);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door2);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 8,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -270,12 +270,12 @@ public class Smoke_Test_DW_Grid  {
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 9,Open);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
 //        WebElement Door3 = s.getDriver().findElementByXPath("//android.widget.TextView[@text='Door/Window 3']");
-//        s.verify_sensor_is_displayed(UDID_, Door3);
-//        s.verify_status_open();
-//        s.verify_in_alarm();
+//        s.verifySensorIsDisplayed(UDID_, Door3);
+//        s.verifyStatusOpen();
+//        s.verifyInAlarm();
 //        TimeUnit.SECONDS.sleep(5);
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 9,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -283,10 +283,10 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 25,Open);
 //        TimeUnit.SECONDS.sleep(3);
-//        s.verify_armaway(UDID_);
+//        s.verifyArmaway(UDID_);
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 25,Close);
 //        home_page.ArwAway_State.click();
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(3);
 //        //    autostayPref();
 //
@@ -295,11 +295,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 10);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-//        s.verify_sensor_is_tampered(Door4);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door4);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -307,11 +307,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 12);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-//        s.verify_sensor_is_tampered(Door5);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door5);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 12,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -319,11 +319,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 13);
 //        TimeUnit.SECONDS.sleep(3);
-//        s.verify_sensor_is_tampered(Door6);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door6);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 13,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -331,11 +331,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 14);
 //        TimeUnit.SECONDS.sleep(5);
-//        s.verify_sensor_is_tampered(Door9);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door9);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 14,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -343,11 +343,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 16);
 //        TimeUnit.SECONDS.sleep(3);
-//        s.verify_sensor_is_tampered(Door7);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door7);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 16,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -355,10 +355,10 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 25);
 //        TimeUnit.SECONDS.sleep(3);
-//        s.verify_armaway(UDID_);
+//        s.verifyArmaway(UDID_);
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 25,Close);
 //        home_page.ArwAway_State.click();
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -366,11 +366,11 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 8);
 //        TimeUnit.SECONDS.sleep(3);
-//        s.verify_sensor_is_tampered(Door2);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door2);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 8,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        logger.info("********************************************************");
@@ -378,12 +378,12 @@ public class Smoke_Test_DW_Grid  {
 //        s.ARM_AWAY(Long_Exit_Delay);
 //        MySensors.sendTamper_allSensors_selectedGroup(MySensors.door_window_zones, 9);
 //        TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-//        s.verify_sensor_is_tampered(Door3);
-//        s.verify_status_tampered();
-//        s.verify_in_alarm();
+//        s.verifySensorIsTampered(Door3);
+//        s.verifyStatusTampered();
+//        s.verifyInAlarm();
 //        TimeUnit.SECONDS.sleep(5);
 //        MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 9,Close);
-//        s.enter_default_user_code();
+//        s.enterDefaultUserCode();
 //        TimeUnit.SECONDS.sleep(5);
 //
 //        contact_us.acknowledge_all_alerts();

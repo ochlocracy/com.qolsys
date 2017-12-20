@@ -117,8 +117,8 @@ public class Smoke_Test_Freeze_Heat_Water_Grid {
         s.ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.freeze_zones, 52);
         TimeUnit.SECONDS.sleep(6);
-//        s.verify_sensor_is_tampered(list.Freeze27);
- //       s.verify_status_tampered();
+//        s.verifySensorIsTampered(list.Freeze27);
+ //       s.verifyStatusTampered();
         s.verify_in_alarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.freeze_zones, 52,Idle);
         s.enter_default_user_code();

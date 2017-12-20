@@ -67,9 +67,9 @@ public class LightsADC extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         adc.webDriverSetUp();
-        setup_logger(page_name);
+        setupLogger(page_name);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class LightsADC extends Setup {
                 "_ctl02_btnDevicesViewDeviceOn')")).click();
         Thread.sleep(2000);
 
-        swipe_left();
+        swipeLeft();
         checkPanelUI(light_on);
     }
 
@@ -189,8 +189,8 @@ public class LightsADC extends Setup {
         Thread.sleep(3000);
         ARM_AWAY(15);
         driver.findElement(By.id("com.qolsys:id/main")).click();
-        enter_default_user_code();
-        swipe_left();
+        enterDefaultUserCode();
+        swipeLeft();
         Thread.sleep(3000);
 
         checkPanelUI(light_on);

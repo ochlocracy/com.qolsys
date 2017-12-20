@@ -31,8 +31,8 @@ public class LightsTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test(priority = 1)
@@ -41,7 +41,7 @@ public class LightsTest extends Setup {
         LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
         File light_on = new File(projectPath + "/scr/light_on");
         File light_off = new File(projectPath + "/scr/light_off");
-        swipe_left();
+        swipeLeft();
         List<WebElement> li = driver.findElements(By.id("com.qolsys:id/lightSelect"));
         List<WebElement> status = driver.findElements(By.id("com.qolsys:id/statusButton"));
 
@@ -151,7 +151,7 @@ public class LightsTest extends Setup {
 
         logger.info("*************************ZLS_DDD_001*******************************");
         logger.info("Disarm mode: Verify that a Light can be paired with a Panel");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         instal.DEVICES.click();
         dev.Zwave_Devices.click();
@@ -162,9 +162,9 @@ public class LightsTest extends Setup {
         // wait.until();
         zwave.Add_Device_OK_Button_Z_Wave_Add_Device_Page.click();
         home.Home_button.click();
-        swipe_right();
-        swipe_right();
-        // element_verification();
+        swipeRight();
+        swipeRight();
+        // elementVerification();
 
         logger.info("****************************ZLS_DDD_003****************************");
         logger.info("Disarm mode: Verify that multiple Lights can be paired with a Panel");

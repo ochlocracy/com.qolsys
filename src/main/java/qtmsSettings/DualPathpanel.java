@@ -25,8 +25,8 @@ public class DualPathpanel extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);}
 
     /*** WiFi On and Dual Path ON ***/
     @Test
@@ -34,12 +34,12 @@ public class DualPathpanel extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.start_button.click();
         Thread.sleep(6000);
-        element_verification(dual.Test_result, "Dual_path_Test_result_text");
+        elementVerification(dual.Test_result, "Dual_path_Test_result_text");
         System.out.println("SASST_027 Pass:Dual Path Wi-Fi test pass if Dual-Path control is enabled and Wi-Fi is connected.");
     }
 
@@ -51,17 +51,17 @@ public class DualPathpanel extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.Dual_path_Control_check_box.click();
         Thread.sleep(6000);
-        element_verification(dual.chkbox_result_text, "Dual_path_checkbox_text");
+        elementVerification(dual.chkbox_result_text, "Dual_path_checkbox_text");
         {
             dual.start_button.click();
         }
         Thread.sleep(6000);
-        element_verification(dual.Test_result, "Dual_path_Test_result_text");
+        elementVerification(dual.Test_result, "Dual_path_Test_result_text");
         logger.info("SASST_028 Pass:Dual Path Wi-Fi test won't pass if Dual-Path control is disabled and Wi-Fi is connected.");
     }
 
@@ -70,13 +70,13 @@ public class DualPathpanel extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         dual.start_button.click();
         Thread.sleep(1000);
         dual.cancel_button.click();
-        element_verification(dual.Test_result, "Dual_path_Test_result_text");
+        elementVerification(dual.Test_result, "Dual_path_Test_result_text");
         logger.info("SASST_019 Pass:Wi-Fi communication test canceled. The message is shown.");
         Thread.sleep(2000);
     }
@@ -87,19 +87,19 @@ public class DualPathpanel extends Setup {
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         set.ADVANCED_SETTINGS.click();
         Thread.sleep(1000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         Thread.sleep(1000);
         dual.Dual_path_Control_check_box.click();
-        element_verification(dual.chkbox_result_text, "Dual_path_checkbox_text");
+        elementVerification(dual.chkbox_result_text, "Dual_path_checkbox_text");
         Thread.sleep(1000);
         dual.Dual_path_Control_check_box.click();
-        element_verification(dual.chkbox_result_text, "Dual_path_checkbox_text");
+        elementVerification(dual.chkbox_result_text, "Dual_path_checkbox_text");
         dual.Dual_path_Control_check_box.click();
         logger.info("SASST_020 Pass: User can enable/disable dual-path control.\n" +
                 "Enable message 'Dual-path is enabled; using cellular and Wi-Fi.'\n" +
@@ -114,11 +114,11 @@ public class DualPathpanel extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         Thread.sleep(1000);
-        element_verification(dual.WiFi_status, "WiFi status");
+        elementVerification(dual.WiFi_status, "WiFi status");
         logger.info("SASST_021022 Pass:Wi-Fi status shows 'Connected' when Wi-Fi is connected to a router/hotspot network.");
         Thread.sleep(2000);
     }
@@ -134,14 +134,14 @@ public class DualPathpanel extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         Thread.sleep(1000);
-        element_verification(dual.WiFi_status, "WiFi status");
+        elementVerification(dual.WiFi_status, "WiFi status");
         logger.info("SASST_023 Pass: Wi-Fi status shows 'Disabled' when Wi-Fi is disabled.");
         // servcall.Wifi_enable();
         Thread.sleep(6000);
@@ -161,21 +161,21 @@ public class DualPathpanel extends Setup {
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adv.SYSTEM_TESTS.click();
         Thread.sleep(2000);
         sys.DUAL_PATH_TEST.click();
         Thread.sleep(3000);
-        element_verification(dual.WiFi_status, "WiFi status");
+        elementVerification(dual.WiFi_status, "WiFi status");
         dual.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
         dual.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
-        element_verification(dual.warning_message, "Warning message");
+        elementVerification(dual.warning_message, "Warning message");
         System.out.println("Press 'OK'");
         Thread.sleep(2000);
         dual.warning_message_OK_button.click();
@@ -191,7 +191,7 @@ public class DualPathpanel extends Setup {
         dual.Dual_path_Control_check_box.click();
 //       dual.warning_message_OK_button.click();
         //   dual.Dual_path_Control_check_box.click();
-        element_verification(dual.WiFi_status, "WiFi status");
+        elementVerification(dual.WiFi_status, "WiFi status");
         Thread.sleep(6000);
     }
 
@@ -208,17 +208,17 @@ public class DualPathpanel extends Setup {
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         wifi.OK.click();
         set.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
         Thread.sleep(3000);
-        element_verification(dual.chkbox_result_text, "Dual_path_checkbox_text");
+        elementVerification(dual.chkbox_result_text, "Dual_path_checkbox_text");
         Thread.sleep(10000);
         dual.start_button.click();
-        element_verification(dual.Test_result, "Dual_path_Test_result_text");
+        elementVerification(dual.Test_result, "Dual_path_Test_result_text");
         logger.info("SASST_029 Pass:Dual Path Wi-Fi test won't pass if Dual-Path control is disabled and Wi-Fi is disconnected.");
         servcall.Wifi_enable();
         Thread.sleep(8000);

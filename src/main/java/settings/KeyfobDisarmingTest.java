@@ -23,8 +23,8 @@ public class KeyfobDisarmingTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -42,51 +42,51 @@ public class KeyfobDisarmingTest extends Setup {
         logger.info("Verify that Keyfob Disarming works when enabled");
         ARM_STAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         ARM_AWAY(delay);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         logger.info("Verify that Keyfob Disarming does not work when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         ARM_STAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         ARM_AWAY(delay);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
         sensors.delete_from_primary(3);

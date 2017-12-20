@@ -31,16 +31,16 @@ public class ArmedAwayGlassBreak extends Setup {
         ARM_AWAY(0);
         Thread.sleep(3000);
         logger.info("Trip glass break sensor " + group);
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(4000);
         logger.info("Verify Alarm");
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         logger.info("Disarm with 1234");
-        enter_default_user_code();
+        enterDefaultUserCode();
         /*** ADC website verification ***/
         logger.info("ADC website verification");
         adc.New_ADC_session(adc.getAccountId());
@@ -66,16 +66,16 @@ public class ArmedAwayGlassBreak extends Setup {
         ARM_AWAY(0);
         Thread.sleep(3000);
         logger.info("Trip glass break sensor " + group);
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
         logger.info("Verify Alarm");
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         logger.info("Disarm with 1234");
-        enter_default_user_code();
+        enterDefaultUserCode();
         /*** ADC website verification ***/
         logger.info("ADC website verification");
         adc.New_ADC_session(adc.getAccountId());
@@ -100,16 +100,16 @@ public class ArmedAwayGlassBreak extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         logger.info("Tamper glass break sensor " + group);
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         logger.info("Verify Alarm");
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         logger.info("Disarm with 1234");
-        enter_default_user_code();
+        enterDefaultUserCode();
         /*** ADC website verification ***/
         logger.info("ADC website verification");
         adc.New_ADC_session(adc.getAccountId());
@@ -134,16 +134,16 @@ public class ArmedAwayGlassBreak extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         logger.info("Tamper glass break sensor " + group);
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
         logger.info("Restore Glass Break " + group);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         logger.info("Verify Alarm");
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         logger.info("Disarm with 1234");
-        enter_default_user_code();
+        enterDefaultUserCode();
         /*** ADC website verification ***/
         logger.info("ADC website verification");
         adc.New_ADC_session(adc.getAccountId());
@@ -163,7 +163,7 @@ public class ArmedAwayGlassBreak extends Setup {
         }
     }
 
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
+    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
@@ -171,9 +171,9 @@ public class ArmedAwayGlassBreak extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
-        setArmStay_NoDelay("Disable");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
+        setArmStayNoDelay("Disable");
         setAutoStay("Disable");
     }
 
@@ -186,8 +186,8 @@ public class ArmedAwayGlassBreak extends Setup {
     public void addGlassBreakSensor() throws IOException, InterruptedException {
         logger.info("Addig sensors");
         Thread.sleep(2000);
-        add_primary_call(11, 13, 6750361, 19);
-        add_primary_call(12, 17, 6750355, 19);
+        addPrimaryCall(11, 13, 6750361, 19);
+        addPrimaryCall(12, 17, 6750355, 19);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -220,7 +220,7 @@ public class ArmedAwayGlassBreak extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 12; i > 10; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

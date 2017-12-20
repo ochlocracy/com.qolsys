@@ -22,7 +22,7 @@ public class SanityZWave extends Setup {
 
     @BeforeClass
     public void setUp() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
 
     @Test
@@ -32,7 +32,7 @@ public class SanityZWave extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
 
         log = report.startTest("Zwave.Light");
 

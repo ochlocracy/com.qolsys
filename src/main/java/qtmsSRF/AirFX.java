@@ -15,7 +15,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.Setup;
 
@@ -93,7 +92,7 @@ public class AirFX extends Setup {
 
     @BeforeClass
     public void webDriver() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         adc.webDriverSetUp();
     }
 
@@ -123,7 +122,7 @@ public class AirFX extends Setup {
 
     @Test(dependsOnMethods = {"ADC_Add_A_Sensor"}, priority = 2)
     public void Check_Panel_For_Added_Sensor() throws InterruptedException, IOException, BiffException {
-        Navigate_To_Edit_Sensor_Page();
+        navigateToEditSensorPage();
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView4")).getText().contains("Door/Window"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Door/Window 1"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView6")).getText().contains("10-Entry-Exit-Normal Delay"));
@@ -164,17 +163,17 @@ public class AirFX extends Setup {
 
     @Test(dependsOnMethods = {"ADC_Change_Sensor_Data"}, priority = 4)
     public void Check_Panel_For_Updated_Sensor(String DLID, String element_to_verify, int sensor) throws Exception {
-        Navigate_To_Edit_Sensor_Page();
+        navigateToEditSensorPage();
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Cool Door Window"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView6")).getText().contains("12-Entry-Exit-Long Delay"));
         ARM_AWAY(Long_Exit_Delay / 5);
-        verify_armaway();
-        sensors.primary_call(DLID, activate);
+        verifyArmaway();
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         adc.driver1.findElement(By.id("ctl00_phBody_butSearch")).click();
         history_verification("//*[contains(text(), '(Sensor " + sensor + ") Alarm')]");
-        enter_default_user_code();
+        enterDefaultUserCode();
     }
 
     @Test(dependsOnMethods = {"Check_Panel_For_Updated_Sensor"}, priority = 4)

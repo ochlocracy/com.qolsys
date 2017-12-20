@@ -27,8 +27,8 @@ public class Zwave_ADC extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @BeforeMethod
@@ -52,7 +52,7 @@ public class Zwave_ADC extends Setup {
                 "AndExit")));
 
         //check panel UI
-        element_verification(driver.findElement(By.id("com.qolsys:id/title")), "Remote Add Status");
+        elementVerification(driver.findElement(By.id("com.qolsys:id/title")), "Remote Add Status");
         adc.driver1.findElement(By.id("ctl00_phBody_ZWaveRemoteAddDevices_btnSaveAndExit")).click();
     }
 

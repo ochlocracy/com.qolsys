@@ -58,8 +58,8 @@ public class Keypad extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
@@ -73,9 +73,9 @@ public class Keypad extends Setup {
 
     @Test
     public void addSensors() throws IOException, InterruptedException {
-        add_primary_call(41, 0, 8716538, 104);
+        addPrimaryCall(41, 0, 8716538, 104);
         Thread.sleep(2000);
-        add_primary_call(42, 2, 8716539, 104);
+        addPrimaryCall(42, 2, 8716539, 104);
         Thread.sleep(2000);
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -91,13 +91,13 @@ public class Keypad extends Setup {
         Thread.sleep(4000);
         ARM_STAY();
         Thread.sleep(1000);
-        verify_armstay();
-        sensors.primary_call("85 00 AF", keypadActivated);
+        verifyArmstay();
+        sensors.primaryCall("85 00 AF", keypadActivated);
         Thread.sleep(2000);
-        element_verification(emg.Emergency_sent_text, "Emergency Icon" );
+        elementVerification(emg.Emergency_sent_text, "Emergency Icon" );
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         String   element_to_verify2 = "//*[contains(text(), ' KeypadTouchscreen 41 Delayed Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
         Thread.sleep(2000);
@@ -110,10 +110,10 @@ public class Keypad extends Setup {
         Thread.sleep(4000);
         ARM_STAY();
         Thread.sleep(1000);
-        verify_armstay();
-        sensors.primary_call("85 00 BF", keypadActivated);
+        verifyArmstay();
+        sensors.primaryCall("85 00 BF", keypadActivated);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         System.out.println("Pass: the system  continues to be in ARM STAY");
         String   element_to_verify2 = "//*[contains(text(), 'Keypad/Touchscreen(42) Silent Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -129,13 +129,13 @@ public class Keypad extends Setup {
         Thread.sleep(4000);
         ARM_AWAY(Long_Exit_Delay);
         Thread.sleep(2000);
-        verify_armaway();
-        sensors.primary_call("85 00 AF", keypadActivated);
+        verifyArmaway();
+        sensors.primaryCall("85 00 AF", keypadActivated);
         Thread.sleep(2000);
-        element_verification(emg.Emergency_sent_text, "Emergency Icon" );
+        elementVerification(emg.Emergency_sent_text, "Emergency Icon" );
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         String   element_to_verify2 = "//*[contains(text(), ' KeypadTouchscreen 41 Delayed Police Panic')]";
         ADC_verification(element_to_verify1, element_to_verify2, element_to_verify3);
         Thread.sleep(2000);
@@ -149,15 +149,15 @@ public class Keypad extends Setup {
         Thread.sleep(4000);
         ARM_AWAY(Long_Exit_Delay);
         Thread.sleep(2000);
-        verify_armaway();
-        sensors.primary_call("85 00 BF", keypadActivated);
+        verifyArmaway();
+        sensors.primaryCall("85 00 BF", keypadActivated);
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         System.out.println("Pass: the system continues to be in ARM AWAY");
         String   element_to_verify2 = "//*[contains(text(), 'Keypad/Touchscreen(42) Silent Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
         home.DISARM_from_away.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
            }
 
@@ -166,7 +166,7 @@ public class Keypad extends Setup {
         log.endTestCase(page_name);
         driver.quit();
         for (int i= 42; i>40; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

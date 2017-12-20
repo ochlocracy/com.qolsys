@@ -29,8 +29,8 @@ public class Water extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -52,7 +52,7 @@ public class Water extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(3, 38, 7672224, 22);
+        addPrimaryCall(3, 38, 7672224, 22);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -67,12 +67,12 @@ public class Water extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        verifyInAlarm();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -88,12 +88,12 @@ public class Water extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        verifyInAlarm();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -110,10 +110,10 @@ public class Water extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
-        verify_armstay();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
+        verifyArmstay();
         Thread.sleep(5000);
         DISARM();
         Thread.sleep(2000);
@@ -130,12 +130,12 @@ public class Water extends Setup {
         logger.info("ArmAway -Activate Group " + group + " water sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        verifyInAlarm();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -150,12 +150,12 @@ public class Water extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        verifyInAlarm();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -170,11 +170,11 @@ public class Water extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
-        verify_in_alarm();
-        enter_default_user_code();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -187,7 +187,7 @@ public class Water extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(3);
+        deleteFromPrimary(3);
     }
 
     @AfterMethod

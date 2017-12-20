@@ -60,7 +60,7 @@ public class SanitySensors extends Setup {
 
     @BeforeClass
     public void setUp() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalEntryDelay);
@@ -68,7 +68,7 @@ public class SanitySensors extends Setup {
         servcall.set_LONG_ENTRY_DELAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
         servcall.set_LONG_EXIT_DELAY(ConfigProps.longEntryDelay);
-        setArmStay_NoDelay("Disable");
+        setArmStayNoDelay("Disable");
         setAutoStay("Disable");
     }
 
@@ -84,15 +84,15 @@ public class SanitySensors extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Sensors.SmokeSensorArmStay");
 
         Thread.sleep(2000);
         log.log(LogStatus.INFO, "Adding sensors");
-        add_primary_call(26, 26, 6750242, 5);
-        add_primary_call(3, 10, 6488238, 16);
-        add_primary_call(4, 12, 6488239, 16);
-        add_primary_call(5, 25, 6488224, 16);
+        addPrimaryCall(26, 26, 6750242, 5);
+        addPrimaryCall(3, 10, 6488238, 16);
+        addPrimaryCall(4, 12, 6488239, 16);
+        addPrimaryCall(5, 25, 6488224, 16);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -108,15 +108,15 @@ public class SanitySensors extends Setup {
         ARM_STAY();
         Thread.sleep(5000);
         System.out.println("Activate/Restore a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());
@@ -152,13 +152,13 @@ public class SanitySensors extends Setup {
         ARM_STAY();
         Thread.sleep(33000);
         System.out.println("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_armstay();
-        element_verification(home.Tamper_Status, "Tampered");
+        verifyArmstay();
+        elementVerification(home.Tamper_Status, "Tampered");
         log.log(LogStatus.PASS, "Pass: Sensor is tampered, system is in Armed Stay mode");
         Thread.sleep(5000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(15000);
@@ -210,15 +210,15 @@ public class SanitySensors extends Setup {
         log.log(LogStatus.INFO, "ArmAway -Open/Close Group " + group + " tilt sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         System.out.println("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalExitDelay);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: System is in ArmAway mode");
         Thread.sleep(3000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify2);
@@ -252,14 +252,14 @@ public class SanitySensors extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         System.out.println("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify2);
@@ -272,15 +272,15 @@ public class SanitySensors extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         System.out.println("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalExitDelay);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: System is in Armed Away mode");
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify2);
@@ -314,14 +314,14 @@ public class SanitySensors extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         System.out.println("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
-        verify_in_alarm();
+        verifyInAlarm();
         log.log(LogStatus.PASS, "Pass: system is in Alarm");
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -334,15 +334,15 @@ public class SanitySensors extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         System.out.println("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: system is in Armed Away mode");
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -369,7 +369,7 @@ public class SanitySensors extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Sensors.ArmAway_Tilt25_Tamper");
         ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 5 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
@@ -391,9 +391,13 @@ public class SanitySensors extends Setup {
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
         for (int i = 3; i < 6; i++) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
-        delete_from_primary(26);
+        deleteFromPrimary(26);
+        System.out.println("*****Stop driver*****");
         driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

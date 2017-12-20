@@ -23,8 +23,8 @@ public class AutoExitTimeExtensionTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -40,61 +40,61 @@ public class AutoExitTimeExtensionTest extends Setup {
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
         try {
             if (home.ArwAway_State.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: System is ARMED AWAY");
         } catch (Exception e) {
             logger.info("Pass: System is NOT ARMED AWAY");
         } finally {
         }
         Thread.sleep(60000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         logger.info("Verify that Auto Exit Time Extension does not works when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(10000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();

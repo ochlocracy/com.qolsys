@@ -100,7 +100,7 @@ public class ZwaveTransmitter extends Setup {
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Install.DEVICES.click();
         dev.Zwave_Devices.click();
@@ -132,7 +132,7 @@ public class ZwaveTransmitter extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(primary, "http://127.0.1.1", "4723");
+        setupDriver(primary, "http://127.0.1.1", "4723");
 
     }
 

@@ -20,13 +20,13 @@ public class ArmingPhotos {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        s.setup_driver(s.get_UDID(), "http://127.0.1.1", "4723");
-        s.setup_logger(page_name);
+        s.setupDriver(s.get_UDID(), "http://127.0.1.1", "4723");
+        s.setupLogger(page_name);
     }
 
     @Test
     public void Test1() throws Exception {
-        s.delete_all_camera_photos();
+        s.deleteAllCameraPhotos();
         TimeUnit.SECONDS.sleep(5);
         for (int i = 22; i > 0; i--) {
             s.ARM_STAY();
@@ -41,7 +41,7 @@ public class ArmingPhotos {
     public void Test2() throws Exception {
         HomePage home = PageFactory.initElements(s.driver, HomePage.class);
         EmergencyPage emg = PageFactory.initElements(s.driver, EmergencyPage.class);
-        s.delete_all_camera_photos();
+        s.deleteAllCameraPhotos();
         TimeUnit.SECONDS.sleep(5);
         for (int i = 22; i > 0; i--) {
             home.Emergency_Button.click();
@@ -49,7 +49,7 @@ public class ArmingPhotos {
             emg.Fire_icon.click();
             TimeUnit.SECONDS.sleep(5);
             emg.Cancel_Emergency.click();
-            s.enter_default_user_code();
+            s.enterDefaultUserCode();
             TimeUnit.SECONDS.sleep(5);
 
             System.out.println(i);
