@@ -102,11 +102,9 @@ public class Android_settings {
                   return ;
                 }
             } catch (Exception e) {
-            System.out.println("NO ONE SELECTED");
-            }
+            System.out.println("NO ONE SELECTED");  }
         Thread.sleep(2000);
            // a.tap(40,30);
-
               Thread.sleep(2000);
         System.out.println("End of testing");
     }

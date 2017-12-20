@@ -65,8 +65,7 @@ public class Cellular_Tests_page extends Setup {
         Thread.sleep(1000);
         c_test.cancel_button.click();
         Thread.sleep(1000);
-        element_verification(c_test.test_result, "test result");
-    }
+        element_verification(c_test.test_result, "test result");}
 
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {
