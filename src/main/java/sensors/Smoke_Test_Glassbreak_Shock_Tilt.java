@@ -34,15 +34,15 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
 
     @BeforeMethod
     public void capabilitiesSetup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
     public void Test1() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
-        logger.info("Current software version: " + Software_Version());
+        logger.info("Current software version: " + softwareVersion());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");
         MySensors.addAllSensors();
@@ -53,7 +53,7 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(2);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
 
@@ -64,11 +64,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement glass19 = driver.findElement(By.xpath("//android.widget.TextView[@text='Glass Break 19']"));
-        verify_sensor_is_displayed(glass19);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(glass19);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -77,10 +77,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -88,11 +88,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_displayed(glass19);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(glass19);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -101,11 +101,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement glass20 = driver.findElement(By.xpath("//android.widget.TextView[@text='Glass Break 20']"));
-        verify_sensor_is_displayed(glass20);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(glass20);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("***********************TAMPER***********************");
@@ -113,9 +113,9 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 13);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(glass19);
-        verify_sensor_is_tampered(glass20);
-        verify_disarm();
+        verifySensorIsTampered(glass19);
+        verifySensorIsTampered(glass20);
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
         TimeUnit.SECONDS.sleep(5);
@@ -126,11 +126,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(glass19);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(glass19);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -139,11 +139,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(glass20);
-        verify_armstay();
+        verifySensorIsTampered(glass20);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -151,11 +151,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(glass19);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(glass19);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -163,11 +163,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.glassbreak_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(glass20);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(glass20);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.glassbreak_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
 
@@ -182,7 +182,7 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
-        verify_disarm();
+        verifyDisarm();
 
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping Tilt group 10 -> Expected result = 30 sec delay -> Alarm");
@@ -191,11 +191,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Open);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
         WebElement tilt21 = driver.findElement(By.xpath("//android.widget.TextView[@text='Tilt 21']"));
-        verify_sensor_is_displayed(tilt21);
-        verify_status_open();
-        verify_in_alarm();
+        verifySensorIsDisplayed(tilt21);
+        verifyStatusOpen();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -205,11 +205,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Open);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
         WebElement tilt22 = driver.findElement(By.xpath("//android.widget.TextView[@text='Tilt 22']"));
-        verify_sensor_is_displayed(tilt22);
-        verify_status_open();
-        verify_in_alarm();
+        verifySensorIsDisplayed(tilt22);
+        verifyStatusOpen();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -219,11 +219,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Open);
         TimeUnit.SECONDS.sleep(3);
         WebElement tilt23 = driver.findElement(By.xpath("//android.widget.TextView[@text='Tilt 23']"));
-        verify_sensor_is_displayed(tilt23);
-        verify_armstay();
+        verifySensorIsDisplayed(tilt23);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -231,11 +231,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Open);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-        verify_sensor_is_displayed(tilt21);
-        verify_status_open();
-        verify_in_alarm();
+        verifySensorIsDisplayed(tilt21);
+        verifyStatusOpen();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -243,11 +243,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Open);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-        verify_sensor_is_displayed(tilt22);
-        verify_status_open();
-        verify_in_alarm();
+        verifySensorIsDisplayed(tilt22);
+        verifyStatusOpen();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -255,10 +255,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Open);
         TimeUnit.SECONDS.sleep(3);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(3);
 
         logger.info("***********************TAMPER***********************");
@@ -266,10 +266,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 10);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 12);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 25);
-        verify_sensor_is_tampered(tilt21);
-        verify_sensor_is_tampered(tilt22);
-        verify_sensor_is_tampered(tilt23);
-        verify_disarm();
+        verifySensorIsTampered(tilt21);
+        verifySensorIsTampered(tilt22);
+        verifySensorIsTampered(tilt23);
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
@@ -279,11 +279,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 10);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(tilt21);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(tilt21);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -291,11 +291,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 12);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(tilt22);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(tilt22);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -303,11 +303,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 25);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(tilt23);
-        verify_armstay();
+        verifySensorIsTampered(tilt23);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -315,11 +315,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 10);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(tilt21);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(tilt21);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 10, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -327,11 +327,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 12);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(tilt22);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(tilt22);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 12, Close);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -339,17 +339,17 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.tilt_zones, 25);
         TimeUnit.SECONDS.sleep(3);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.tilt_zones, 25, Close);
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(3);
 
         logger.info("***********************SHOCK_OTHER***********************");
         logger.info("Disarm mode tripping Shock group 13 -> Disarm");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
         TimeUnit.SECONDS.sleep(3);
 
@@ -360,11 +360,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement other_shock35 = driver.findElement(By.xpath("//android.widget.TextView[@text='Other Shock 35']"));
-        verify_sensor_is_displayed(other_shock35);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(other_shock35);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -372,18 +372,18 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_displayed(other_shock35);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(other_shock35);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
         logger.info("Disarm mode tripping Shock group 17 -> Disarm");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
         TimeUnit.SECONDS.sleep(3);
 
@@ -393,10 +393,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -405,11 +405,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement other_shock36 = driver.findElement(By.xpath("//android.widget.TextView[@text='Other Shock 36']"));
-        verify_sensor_is_displayed(other_shock36);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(other_shock36);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("***********************TAMPER***********************");
@@ -417,10 +417,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 13);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 17);
         TimeUnit.SECONDS.sleep(5);
-        verify_sensor_is_tampered(other_shock35);
+        verifySensorIsTampered(other_shock35);
         TimeUnit.SECONDS.sleep(2);
-        verify_sensor_is_tampered(other_shock36);
-        verify_disarm();
+        verifySensorIsTampered(other_shock36);
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
 
@@ -429,11 +429,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(other_shock35);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(other_shock35);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -441,11 +441,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(other_shock36);
-        verify_armstay();
+        verifySensorIsTampered(other_shock36);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -453,11 +453,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(other_shock35);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(other_shock35);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -466,11 +466,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_other_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(other_shock36);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(other_shock36);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_other_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(3);
 
 
@@ -478,7 +478,7 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         logger.info("Disarm mode tripping Shock group 13 -> Disarm");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
         TimeUnit.SECONDS.sleep(3);
 
@@ -489,11 +489,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement iq_shock24 = driver.findElement(By.xpath("//android.widget.TextView[@text='IQ Shock 24']"));
-        verify_sensor_is_displayed(iq_shock24);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(iq_shock24);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -501,18 +501,18 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_displayed(iq_shock24);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(iq_shock24);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
         logger.info("Disarm mode tripping Shock group 17 -> Disarm");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
         TimeUnit.SECONDS.sleep(3);
 
@@ -522,10 +522,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -534,11 +534,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Activate);
         TimeUnit.SECONDS.sleep(3);
         WebElement iq_shock25 = driver.findElement(By.xpath("//android.widget.TextView[@text='IQ Shock 25']"));
-        verify_sensor_is_displayed(iq_shock25);
-        verify_status_alarmed();
-        verify_in_alarm();
+        verifySensorIsDisplayed(iq_shock25);
+        verifyStatusAlarmed();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("***********************TAMPER***********************");
@@ -546,10 +546,10 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17);
         TimeUnit.SECONDS.sleep(5);
-        verify_sensor_is_tampered(iq_shock24);
+        verifySensorIsTampered(iq_shock24);
         TimeUnit.SECONDS.sleep(2);
-        verify_sensor_is_tampered(iq_shock25);
-        verify_disarm();
+        verifySensorIsTampered(iq_shock25);
+        verifyDisarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
 
@@ -558,11 +558,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(iq_shock24);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(iq_shock24);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -570,11 +570,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(iq_shock25);
-        verify_armstay();
+        verifySensorIsTampered(iq_shock25);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -582,11 +582,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(iq_shock24);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(iq_shock24);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 13, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -595,11 +595,11 @@ public class Smoke_Test_Glassbreak_Shock_Tilt extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(iq_shock25);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(iq_shock25);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.shock_IQ_zones, 17, Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(3);
 
         contact_us.acknowledge_all_alerts();

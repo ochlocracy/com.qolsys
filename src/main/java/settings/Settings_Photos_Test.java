@@ -19,8 +19,8 @@ public class Settings_Photos_Test extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -31,11 +31,11 @@ public class Settings_Photos_Test extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying settings photo is NOT taken when setting in disabled...");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();
         swipeFromLefttoRight();
@@ -43,22 +43,22 @@ public class Settings_Photos_Test extends Setup {
         camera.Settings_photos.click();
         try {
             if (camera.Photo_lable.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Disarm photo is displayed");
         } catch (Exception e) {
             logger.info("Pass: Disarm photo is NOT displayed");
         } finally {
         }
         logger.info("Verifying settings photo is taken when setting in enabled...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();
         swipeFromLefttoRight();
@@ -67,13 +67,13 @@ public class Settings_Photos_Test extends Setup {
         if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: settings photo is displayed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: settings photo is NOT displayed");
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Settings_Photos.click();

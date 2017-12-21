@@ -32,8 +32,8 @@ public class Freeze extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -55,7 +55,7 @@ public class Freeze extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(52, 52, 7536801, 17);
+        addPrimaryCall(52, 52, 7536801, 17);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -69,10 +69,10 @@ public class Freeze extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification( element_to_verify, element_to_verify2);
     }
@@ -88,10 +88,10 @@ public class Freeze extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification( element_to_verify, element_to_verify2);
     }
@@ -108,10 +108,10 @@ public class Freeze extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
-        verify_armstay();
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
+        verifyArmstay();
         DISARM();
         Thread.sleep(2000);
         adc.ADC_verification( element_to_verify, element_to_verify2);
@@ -127,10 +127,10 @@ public class Freeze extends Setup {
         logger.info("ArmAway -Activate Group " + group + " freeze sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -145,10 +145,10 @@ public class Freeze extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -163,11 +163,11 @@ public class Freeze extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
-        verify_in_alarm();
-        enter_default_user_code();
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -180,7 +180,7 @@ public class Freeze extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(52);
+        deleteFromPrimary(52);
     }
 
     @AfterMethod

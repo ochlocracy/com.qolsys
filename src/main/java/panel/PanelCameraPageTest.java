@@ -18,7 +18,7 @@ public class PanelCameraPageTest extends Setup {
     public PanelCameraPageTest() throws Exception {}
 
     @Override ()
-    public void swipe_vertical_up() throws InterruptedException {
+    public void swipeVerticalUp() throws InterruptedException {
         int starty = 705;
         int endy = 270;
         int startx = 110;
@@ -28,8 +28,8 @@ public class PanelCameraPageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);}
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);}
 
     @Test
     public void Check_all_elements_on_Photo_Frame_page() throws Exception {
@@ -39,32 +39,32 @@ public class PanelCameraPageTest extends Setup {
         InstallationPage installation = PageFactory.initElements(driver, InstallationPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         CameraSettingsPage cam_set = PageFactory.initElements(driver, CameraSettingsPage.class);
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         TimeUnit.SECONDS.sleep(2);
         swipeFromRighttoLeft();
         swipeFromRighttoLeft();
         logger.info("Verifying elements on the page...");
-        element_verification(camera.Panel_camera_page_title, "panel Camera title");
-        element_verification(camera.Disarm_photos, "Disarm tab");
-        element_verification(camera.Settings_photos, "settings tab");
-        element_verification(camera.Alarms_photo, "Alarms tab");
-        element_verification(camera.All_photos, "All tab");
+        elementVerification(camera.Panel_camera_page_title, "panel Camera title");
+        elementVerification(camera.Disarm_photos, "Disarm tab");
+        elementVerification(camera.Settings_photos, "settings tab");
+        elementVerification(camera.Alarms_photo, "Alarms tab");
+        elementVerification(camera.All_photos, "All tab");
         home.Emergency_Button.click();
         TimeUnit.SECONDS.sleep(2);
         emergency.Police_icon.click();
         TimeUnit.SECONDS.sleep(3);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromRighttoLeft();
         swipeFromRighttoLeft();
         TimeUnit.SECONDS.sleep(2);
         camera.Disarm_photos.click();
-        element_verification(camera.DISARMED_BY_ADMIN, "DISARMED BY ADMIN");
+        elementVerification(camera.DISARMED_BY_ADMIN, "DISARMED BY ADMIN");
         camera.Alarms_photo.click();
-        element_verification(camera.POLICE_EMERGENCY_PANEL, "POLICE EMERGENCY (PANEL)");
+        elementVerification(camera.POLICE_EMERGENCY_PANEL, "POLICE EMERGENCY (PANEL)");
         TimeUnit.SECONDS.sleep(2);
         logger.info("Enabling Alarm Videos...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         installation.CAMERA_SETTINGS.click();
         TimeUnit.SECONDS.sleep(1);
@@ -76,14 +76,14 @@ public class PanelCameraPageTest extends Setup {
         emergency.Police_icon.click();
         TimeUnit.SECONDS.sleep(3);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromRighttoLeft();
         swipeFromRighttoLeft();
         TimeUnit.SECONDS.sleep(2);
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         installation.CAMERA_SETTINGS.click();
         TimeUnit.SECONDS.sleep(2);

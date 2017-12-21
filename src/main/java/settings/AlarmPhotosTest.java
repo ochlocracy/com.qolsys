@@ -19,8 +19,8 @@ public class AlarmPhotosTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -33,28 +33,28 @@ public class AlarmPhotosTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying Alarm photo is taken when setting in enabled...");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
         if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: Alarm photo is displayed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Alarm photo is NOT displayed");
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         logger.info("Verifying Alarm photo is NOT taken when setting in disabled...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(1000);
@@ -66,20 +66,20 @@ public class AlarmPhotosTest extends Setup {
         emergency.Police_icon.click();
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
         try {
             if (camera.Photo_lable.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Alarm photo is displayed");
         } catch (Exception e) {
             logger.info("Pass: Alarm photo is NOT displayed");
         } finally {
         }
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Alarm_Photos.click();

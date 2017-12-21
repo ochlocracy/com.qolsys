@@ -22,8 +22,8 @@ public class Dual_path_page extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     public void accessDual_path_page() throws InterruptedException {
@@ -38,7 +38,7 @@ public class Dual_path_page extends Setup {
         }
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
-        enter_default_dealer_code();
+        enterDefaultDealerCode();
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         adv.SYSTEM_TESTS.click();
@@ -52,14 +52,14 @@ public class Dual_path_page extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Elements verification, Happy path");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
     }
 
     // Test2 The default setting values. In this case, dual-path and wifi are enabled
@@ -69,7 +69,7 @@ public class Dual_path_page extends Setup {
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         WiFi_setting_page_elements w = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
         HomePage h = PageFactory.initElements(driver, HomePage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.WI_FI.click();
         Thread.sleep(2000);
         try {
@@ -90,14 +90,14 @@ public class Dual_path_page extends Setup {
         Thread.sleep(2000);
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("WiFi settings is disabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(30000);
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
         Assert.assertTrue(d_test.Test_result.isDisplayed());
         try {
             Assert.assertTrue(d_test.Test_result.isDisplayed());
@@ -130,16 +130,16 @@ public class Dual_path_page extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Dual path control check-box is Enabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
         d_test.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
         servcall.APN_disable();// turning on cell
         Thread.sleep(5000);
     }
@@ -149,16 +149,16 @@ public class Dual_path_page extends Setup {
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Dual path control check-box is Disabled");
-        element_verification(d_test.WiFi_status, "WiFI_status");
-        element_verification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
+        elementVerification(d_test.WiFi_status, "WiFI_status");
+        elementVerification(d_test.Dual_path_Control_check_box, "Dual_path_Control_check_box");
         d_test.Dual_path_Control_check_box.click();
         Thread.sleep(2000);
-        element_verification(d_test.start_button, "start_button");
-        element_verification(d_test.cancel_button, "cancel_button");
+        elementVerification(d_test.start_button, "start_button");
+        elementVerification(d_test.cancel_button, "cancel_button");
         d_test.start_button.click();
         Thread.sleep(6000);
-        element_verification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
-        element_verification(d_test.Test_result, "Dual_path_Test_result_text");
+        elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
+        elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
     }
 
     @AfterClass

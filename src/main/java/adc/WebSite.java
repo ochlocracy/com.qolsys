@@ -35,7 +35,7 @@ public class WebSite extends Setup {
         PropertyConfigurator.configure(new File(appDir, "log4j.properties").getAbsolutePath());
         log.clearLog();
         log.startTestCase("adc sensors name change");
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
         myADC.webDriverSetUp();
     }
 
@@ -50,7 +50,7 @@ public class WebSite extends Setup {
     @Test
     public void Test1 () throws IOException, InterruptedException {
         logger.info("********************************************************");
-    //    logger.info("Current software version: " + Software_Version());
+    //    logger.info("Current software version: " + softwareVersion());
         logger.info("Add sensors");
         myADC.add_all_sensor_types();
         logger.info("sensors added successfully");
@@ -90,50 +90,50 @@ public class WebSite extends Setup {
         SecuritySensorsPage sec_sencsors = PageFactory.initElements(driver, SecuritySensorsPage.class);
         logger.info("********************************************************");
         logger.info("Rename sensors from panel");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.DEVICES.click();
         devices.Security_Sensors.click();
         sec_sencsors.Edit_Sensor.click();
         TimeUnit.SECONDS.sleep(3);
         logger.info("Renaming door_window sensor, new name: "+myADC.new_dw_name);
-        Rename_Sensor(0, myADC.new_dw_name);
+        renameSensor(0, myADC.new_dw_name);
         logger.info("Renaming motion sensor, new name: "+ myADC.new_motion_name);
-        Rename_Sensor(1, myADC.new_motion_name);
+        renameSensor(1, myADC.new_motion_name);
         logger.info("Renaming smoke detector, new name: "+ myADC.new_smoke_name);
-        Rename_Sensor(2, myADC.new_smoke_name);
+        renameSensor(2, myADC.new_smoke_name);
         logger.info("Renaming co_detector, new name: "+ myADC.new_co_name);
-        Rename_Sensor(3, myADC.new_co_name);
+        renameSensor(3, myADC.new_co_name);
         swipingVertical();
         TimeUnit.SECONDS.sleep(10);
         logger.info("Renaming glassbreak sensor, new name: "+ myADC.new_glassbreak_name);
-        Rename_Sensor(0, myADC.new_glassbreak_name);
+        renameSensor(0, myADC.new_glassbreak_name);
         logger.info("Renaming tilt sensor, new name: "+ myADC.new_tilt_name);
-        Rename_Sensor(1, myADC.new_tilt_name);
+        renameSensor(1, myADC.new_tilt_name);
         logger.info("Renaming shock_other sensor, new name: "+ myADC.new_shock_other_name);
-        Rename_Sensor(2, myADC.new_shock_other_name);
+        renameSensor(2, myADC.new_shock_other_name);
         logger.info("Renaming freeze sensor, new name: "+ myADC.new_freeze_name);
-        Rename_Sensor(3, myADC.new_freeze_name);
+        renameSensor(3, myADC.new_freeze_name);
         swipingVertical();
         TimeUnit.SECONDS.sleep(10);
         logger.info("Renaming heat sensor, new name: "+ myADC.new_heat_name);
-        Rename_Sensor(0, myADC.new_heat_name);
+        renameSensor(0, myADC.new_heat_name);
         logger.info("Renaming water_flood sensor, new name: "+ myADC.new_water_flood_name);
-        Rename_Sensor(1, myADC.new_water_flood_name);
+        renameSensor(1, myADC.new_water_flood_name);
         logger.info("Renaming keyfob, new name: "+ myADC.new_keyfob_name);
-        Rename_Sensor(2, myADC.new_keyfob_name);
+        renameSensor(2, myADC.new_keyfob_name);
         logger.info("Renaming keypad, new name: "+ myADC.new_keypad_name);
-        Rename_Sensor(3, myADC.new_keypad_name);
+        renameSensor(3, myADC.new_keypad_name);
         swipingVertical();
         TimeUnit.SECONDS.sleep(10);
         logger.info("Renaming auxiliary pendant, new name: "+ myADC.new_med_pendant_name);
-        Rename_Sensor(1, myADC.new_med_pendant_name);
+        renameSensor(1, myADC.new_med_pendant_name);
         logger.info("Renaming doorbell sensor, new name: "+ myADC.new_doorbell_name);
-        Rename_Sensor(2, myADC.new_doorbell_name);
+        renameSensor(2, myADC.new_doorbell_name);
         logger.info("Renaming occupancy sensor, new name: "+ myADC.new_occupancy_name);
-        Rename_Sensor(3, myADC.new_occupancy_name);
+        renameSensor(3, myADC.new_occupancy_name);
         logger.info("Renaming iq shock sensor, new name: "+ myADC.new_iq_shock_name);
-        Rename_Sensor(4, myADC.new_iq_shock_name);
+        renameSensor(4, myADC.new_iq_shock_name);
         logger.info("sensors renamed successfully");
     }
 

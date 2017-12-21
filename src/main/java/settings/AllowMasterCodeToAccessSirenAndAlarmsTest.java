@@ -23,8 +23,8 @@ public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -35,49 +35,49 @@ public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
         logger.info("Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         if (inst.SIREN_AND_ALARMS.isDisplayed()) {
             logger.info("Pass: Siren and Alarms icon is present");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Siren and Alarms icon is NOT present");
         }
         Thread.sleep(2000);
         settings.Home_button.click();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         logger.info("Verify Siren and Alarms icon disappears after disabling the setting");
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.SIREN_AND_ALARMS.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Siren and Alarms icon is present");
         } catch (Exception e) {
             logger.info("Pass: Siren and Alarms icon is NOT present");

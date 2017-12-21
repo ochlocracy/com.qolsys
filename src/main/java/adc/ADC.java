@@ -13,19 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ADC extends Setup {
-    Sensors mySensors = new Sensors();
-
-    public ADC() throws Exception {
-        ConfigProps.init();
-    }
-
     public String ADCexecute;
-
-    public void setADCexecute(String ADCexecute){
-        this.ADCexecute = ADCexecute;
-    }
-    public String getADCexecute(){return ADCexecute;}
-
     public String new_dw_name = "NewDoor1";
     public String new_motion_name = "NewMotion1";
     public String new_smoke_name = "NewSmoke1";
@@ -42,7 +30,6 @@ public class ADC extends Setup {
     public String new_doorbell_name = "NewDoorBell1";
     public String new_occupancy_name = "NewOccupancy1";
     public String new_iq_shock_name = "NewIQShock1";
-
     public String door_window_DLID = "65 00 9A";
     public String motion_DLID = "55 00 44";
     public String smoke_DLID = "67 00 22";
@@ -55,6 +42,7 @@ public class ADC extends Setup {
     public String water_flood_DLID = "75 11 0A";
     public String doorbell_DLID = "61 BD AA";
     public String occupancy_DLID = "85 00 1A";
+    Sensors mySensors = new Sensors();
     private int door_window = 1;
     private int motion = 2;
     private int smoke_detector = 5;
@@ -71,6 +59,18 @@ public class ADC extends Setup {
     private int med_pendant = 21;
     private int doorbell = 109;
     private int occupancy = 114;
+
+    public ADC() throws Exception {
+        ConfigProps.init();
+    }
+
+    public String getADCexecute() {
+        return ADCexecute;
+    }
+
+    public void setADCexecute(String ADCexecute) {
+        this.ADCexecute = ADCexecute;
+    }
 
     public int getDoor_window() {
         return door_window;
@@ -138,18 +138,14 @@ public class ADC extends Setup {
 
     public String getAccountId() throws IOException {
         String accountId = null;
-        if (get_UDID().equals("8ebdbc76")) {      //Anya
-            accountId = "4679473";
-         //   System.out.println("panel is found");
+        if (get_UDID().equals("4216551")) {      //Anya
+            accountId = "4910737";
             return accountId;
         } else if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
         } else if (get_UDID().equals("ac82129c")) {    //Sergio
             accountId = "5434757";
-            return accountId;
-        } else if (get_UDID().equals("8ebdbc27")) {    //Nathan
-            accountId = "5347653";
             return accountId;
         } else if (get_UDID().equals("8ebdbcf1")) {    //Zach
             accountId = "5434890";
@@ -189,7 +185,7 @@ public class ADC extends Setup {
                 } catch (Exception e) {
                     System.out.println("***No such element found!***");
                 }
-           }
+            }
         } else {
             System.out.println("Set execute to TRUE to run ADC verification part");
         }

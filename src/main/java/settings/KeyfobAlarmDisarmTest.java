@@ -22,8 +22,8 @@ public class KeyfobAlarmDisarmTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -41,25 +41,25 @@ public class KeyfobAlarmDisarmTest extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         if (emergency.Emergency_sent_text.isDisplayed()) {
             logger.info("Pass: Police Emergency is displayed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Police Emergency is NOT displayed");
         }
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         logger.info("Verify that Keyfod Alarm Disarm  works when enabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Alarm_Disarm.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -67,17 +67,17 @@ public class KeyfobAlarmDisarmTest extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         arming.Keyfob_Alarm_Disarm.click();
         Thread.sleep(2000);
         settings.Home_button.click();

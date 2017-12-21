@@ -19,8 +19,8 @@ public class SecureDeleteImagesTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -32,11 +32,11 @@ public class SecureDeleteImagesTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying deleting panel images requires valid code...");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         camera.Camera_delete.click();
         Thread.sleep(2000);
@@ -47,14 +47,14 @@ public class SecureDeleteImagesTest extends Setup {
         if (home.Enter_Code_to_Access_the_Area.isDisplayed()) {
             logger.info("Pass: Password is required to delete the image");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Password is NOT required to delete the image");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         swipeFromLefttoRight();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Secure_Delete_Images.click();
@@ -64,7 +64,7 @@ public class SecureDeleteImagesTest extends Setup {
         logger.info("Verifying deleting panel images does not require valid code...");
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         camera.Camera_delete.click();
         Thread.sleep(2000);
@@ -74,14 +74,14 @@ public class SecureDeleteImagesTest extends Setup {
         camera.Camera_delete_yes.click();
         try {
             if (home.Enter_Code_to_Access_the_Area.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Password is required to delete the image");
         } catch (Exception e) {
             logger.info("Pass: Password is NOT required to delete the image");
         } finally {
         }
         swipeFromLefttoRight();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Secure_Delete_Images.click();

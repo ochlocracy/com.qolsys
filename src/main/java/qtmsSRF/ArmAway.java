@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.*;
 import sensors.Sensors;
-import updateProcess.PreUpdateUserManagement;
 import utils.ConfigProps;
 import utils.SensorsActivity;
 import utils.Setup;
@@ -35,8 +34,8 @@ public class ArmAway extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         Thread.sleep(1000);
     }
 
@@ -54,14 +53,14 @@ public class ArmAway extends Setup {
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         adc.New_ADC_session_User(login, password);
         Thread.sleep(5000);
         adc.driver1.findElement(By.xpath("//div[contains(@class, 'icon ') and contains(@title, 'Armed Away ')]")).click();
         Thread.sleep(4000);
         adc.driver1.findElement(By.xpath("//button[contains(@id, 'ember') and contains(@class, 'disarmed btn ember-view')]")).click();
         Thread.sleep(10000);
-        verify_disarm();
+        verifyDisarm();
         System.out.println("Pass");
     }
 
@@ -69,17 +68,17 @@ public class ArmAway extends Setup {
     public void AA_02() throws Exception {
         logger.info("Verify the panel can be disarmed using a keyfob");
         servcall.set_KEYFOB_DISARMING(1);
-        add_primary_call(38, 1, 6619386, 102);
+        addPrimaryCall(38, 1, 6619386, 102);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
         //ARM_AWAY(Long_Exit_Delay);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", keyfobDisarm);
+        sensors.primaryCall("65 00 AF", keyfobDisarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(38);
+        deleteFromPrimary(38);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -89,22 +88,22 @@ public class ArmAway extends Setup {
         logger.info("Verify the system can be disarmed during the entry delay");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         sensor_status_check("Open", "Closed", 3, 2);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -114,22 +113,22 @@ public class ArmAway extends Setup {
         logger.info("Verify the system can be disarmed during the entry delay (12 group)");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 1A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         sensor_status_check("Open", "Closed", 3, 2);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -141,7 +140,7 @@ public class ArmAway extends Setup {
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         AdvancedSettingsPage advanced = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
         user_m.Add_User.click();
@@ -163,22 +162,22 @@ public class ArmAway extends Setup {
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(3000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 1A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        enter_guest_code();
+        enterGuestCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        swipe_right();
-        swipe_right();
+        swipeRight();
+        swipeRight();
         Thread.sleep(2000);
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/title"));
         if (li_status1.get(0).getText().equals("DISARMED BY NEWGUEST")) {
@@ -188,9 +187,9 @@ public class ArmAway extends Setup {
         }
         Thread.sleep(2000);
         sensor_status_check("Open", "Closed", 3, 2);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
         List<WebElement> delete = driver.findElements(By.id("com.qolsys:id/deleteImg"));
@@ -205,29 +204,29 @@ public class ArmAway extends Setup {
     public void AA_06() throws Exception {
         logger.info("Verify the system can be disarmed during the entry delay (10 and 12 groups)");
         servcall.set_AUTO_STAY(0);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         sensor_status_check("Open", "Closed", 4, 3);
         sensor_status_check("Open", "Disarmed", 2, 1);
         Thread.sleep(2000);
-        delete_from_primary(12);
-        delete_from_primary(10);
+        deleteFromPrimary(12);
+        deleteFromPrimary(10);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -235,7 +234,7 @@ public class ArmAway extends Setup {
     public void sensor_status_check(String Status, String Status1, int n, int n1) throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
         sett.Panel_history.click();
@@ -260,29 +259,29 @@ public class ArmAway extends Setup {
     public void AA_07() throws Exception {
         logger.info("Verify the system can be disarmed during the entry delay (10 and 12 groups)");
         servcall.set_AUTO_STAY(0);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(17, 17, 5570629, 2);
+        addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("55 00 54", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 54", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         sensor_status_check("Open", "Closed", 5, 4);
         sensor_status_check("Idle", "Activated", 2, 3);
         Thread.sleep(2000);
-        delete_from_primary(12);
-        delete_from_primary(17);
+        deleteFromPrimary(12);
+        deleteFromPrimary(17);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -291,21 +290,21 @@ public class ArmAway extends Setup {
     public void AA_08() throws Exception {
         logger.info("Verify the system can be disarmed during the entry delay (20group)");
         servcall.set_AUTO_STAY(0);
-        add_primary_call(20, 20, 5570630, 2);
+        addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("55 00 64", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 64", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         sensor_status_check("Idle", "Activated", 2, 3);
         Thread.sleep(2000);
-        delete_from_primary(20);
+        deleteFromPrimary(20);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -319,22 +318,22 @@ public class ArmAway extends Setup {
 //        Thread.sleep(1000);
 //        servcall.set_DURESS_AUTHENTICATION_enable();
 //        Thread.sleep(1000);
-//        add_primary_call(10, 10,6619296, 1);
+//        addPrimaryCall(10, 10,6619296, 1);
 //        Thread.sleep(1000);
 //        servcall.EVENT_ARM_AWAY();
 //        Thread.sleep(3000);
-//        verify_armaway();
+//        verifyArmaway();
 //        Thread.sleep(3000);
-//        sensors.primary_call("65 00 0A", open);
+//        sensors.primaryCall("65 00 0A", open);
 //        Thread.sleep(2000);
-//        sensors.primary_call("65 00 0A", close);
+//        sensors.primaryCall("65 00 0A", close);
 //        Thread.sleep(2000);
-//        enter_default_DURESS_code();
+//        enterDefaultDuressCode();
 //        Thread.sleep(2000);
-//        verify_disarm();
+//        verifyDisarm();
 //        Thread.sleep(2000);
 //        sensor_status_check( "Open", "Closed", 3,2);
-//        delete_from_primary(10);
+//        deleteFromPrimary(10);
 //        Thread.sleep(2000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(5000);
@@ -370,22 +369,22 @@ public class ArmAway extends Setup {
 //        Thread.sleep(1000);
 //        servcall.set_DURESS_AUTHENTICATION_enable();
 //        Thread.sleep(1000);
-//        add_primary_call(12, 12,6619297, 1);
+//        addPrimaryCall(12, 12,6619297, 1);
 //        Thread.sleep(1000);
 //        servcall.EVENT_ARM_AWAY();
 //        Thread.sleep(3000);
-//        verify_armaway();
+//        verifyArmaway();
 //        Thread.sleep(3000);
-//        sensors.primary_call("65 00 1A", open);
+//        sensors.primaryCall("65 00 1A", open);
 //        Thread.sleep(2000);
-//        sensors.primary_call("65 00 1A", close);
+//        sensors.primaryCall("65 00 1A", close);
 //        Thread.sleep(2000);
-//        enter_default_DURESS_code();
+//        enterDefaultDuressCode();
 //        Thread.sleep(2000);
-//        verify_disarm();
+//        verifyDisarm();
 //        Thread.sleep(2000);
 //        sensor_status_check( "Open", "Closed", 3,2);
-//        delete_from_primary(12);
+//        deleteFromPrimary(12);
 //        Thread.sleep(2000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(5000);
@@ -418,24 +417,24 @@ public class ArmAway extends Setup {
         Thread.sleep(1000);
         servcall.set_DURESS_AUTHENTICATION_disable();
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        enter_default_DURESS_code();
+        enterDefaultDuressCode();
         Thread.sleep(1000);
         System.out.println("Pass: invalid User code");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -447,24 +446,24 @@ public class ArmAway extends Setup {
         Thread.sleep(1000);
         servcall.set_DURESS_AUTHENTICATION_disable();
         Thread.sleep(1000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 1A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 1A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        enter_default_DURESS_code();
+        enterDefaultDuressCode();
         Thread.sleep(1000);
         System.out.println("Pass: invalid User code");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -475,28 +474,28 @@ public class ArmAway extends Setup {
                 " in Arm Away");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -507,28 +506,28 @@ public class ArmAway extends Setup {
                 " in Arm Away");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 1A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 1A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -540,30 +539,30 @@ public class ArmAway extends Setup {
                 " and verify the system can be disarmed from Alarm");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(13, 13, 6619298, 1);
+        addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 2A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 2A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 2A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 2A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(13);
+        deleteFromPrimary(13);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -575,30 +574,30 @@ public class ArmAway extends Setup {
                 " and verify the system can be disarmed from Alarm");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(14, 14, 6619299, 1);
+        addPrimaryCall(14, 14, 6619299, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 3A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 3A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 3A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 3A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(14);
+        deleteFromPrimary(14);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -608,28 +607,28 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will go into immediate alarm if a sensor in group 16 is opened in Arm Away");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(16, 16, 6619300, 1);
+        addPrimaryCall(16, 16, 6619300, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 4A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 4A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 4A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 4A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(16);
+        deleteFromPrimary(16);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -639,27 +638,27 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will go into immediate alarm if a sensor in group 35 is Activated in Arm Away");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(35, 35, 5570631, 2);
+        addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("55 00 74", SensorsActivity.ACTIVATE);
-        sensors.primary_call("55 00 74", idle);
+        sensors.primaryCall("55 00 74", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 74", idle);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(35);
+        deleteFromPrimary(35);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -670,29 +669,29 @@ public class ArmAway extends Setup {
         logger.info("Verify the system goes into immediate pending alarm but can be disarmed from Alrm");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(15, 15, 5570628, 2);
+        addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("55 00 44", SensorsActivity.ACTIVATE);
-        sensors.primary_call("55 00 44", idle);
+        sensors.primaryCall("55 00 44", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 44", idle);
         Thread.sleep(1000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        delete_from_primary(15);
+        deleteFromPrimary(15);
         Thread.sleep(2000);
         System.out.println("Pass");
     }
@@ -702,21 +701,21 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will report alarm on both sensors at the end of the entry delay");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -724,23 +723,23 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Open")) {
                 logger.info("Pass: Correct status is open");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 2 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
-        delete_from_primary(12);
+        deleteFromPrimary(10);
+        deleteFromPrimary(12);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -751,21 +750,21 @@ public class ArmAway extends Setup {
                 "and will report alarm on both sensors ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(13, 13, 6619298, 1);
+        addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 2A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 2A", SensorsActivity.OPEN);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -773,23 +772,23 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Open")) {
                 logger.info("Pass: Correct status is open");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 2 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
-        delete_from_primary(13);
+        deleteFromPrimary(10);
+        deleteFromPrimary(13);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -799,21 +798,21 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(14, 14, 6619299, 1);
+        addPrimaryCall(14, 14, 6619299, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 3A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 3A", SensorsActivity.OPEN);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -821,23 +820,23 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Open")) {
                 logger.info("Pass: Correct status is open");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 2 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
-        delete_from_primary(14);
+        deleteFromPrimary(10);
+        deleteFromPrimary(14);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -847,21 +846,21 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(16, 16, 6619300, 1);
+        addPrimaryCall(16, 16, 6619300, 1);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 4A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 4A", SensorsActivity.OPEN);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -869,23 +868,23 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Open")) {
                 logger.info("Pass: Correct status is open");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 2 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
-        delete_from_primary(16);
+        deleteFromPrimary(10);
+        deleteFromPrimary(16);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -895,21 +894,21 @@ public class ArmAway extends Setup {
         logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(1000);
-        add_primary_call(15, 15, 5570628, 2);
+        addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("55 00 44", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("55 00 44", SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -917,23 +916,23 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Activated")) {
                 logger.info("Pass: Correct status is activated");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 2 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(10);
-        delete_from_primary(15);
+        deleteFromPrimary(10);
+        deleteFromPrimary(15);
         Thread.sleep(4000);
         System.out.println("Pass");
     }
@@ -941,25 +940,25 @@ public class ArmAway extends Setup {
     @Test(priority = 25)
     public void AA_31() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (8 group). ");
-        add_primary_call(8, 8, 6619302, 1);
+        addPrimaryCall(8, 8, 6619302, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 6A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 6A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(8);
+        deleteFromPrimary(8);
         Thread.sleep(6000);
         //     tamper_alarm_ver(8);
     }
@@ -993,25 +992,25 @@ public class ArmAway extends Setup {
     @Test(priority = 26)
     public void AA_32() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (9 group). ");
-        add_primary_call(9, 9, 6619303, 1);
+        addPrimaryCall(9, 9, 6619303, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 7A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 7A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(9);
+        deleteFromPrimary(9);
         Thread.sleep(6000);
         //   tamper_alarm_ver(9);
     }
@@ -1019,25 +1018,25 @@ public class ArmAway extends Setup {
     @Test(priority = 27)
     public void AA_33() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (10 group). ");
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 0A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(6000);
         //       tamper_alarm_ver(10);
     }
@@ -1045,25 +1044,25 @@ public class ArmAway extends Setup {
     @Test(priority = 28)
     public void AA_34() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (12 group). ");
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 1A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(6000);
         //       tamper_alarm_ver(12);
     }
@@ -1071,25 +1070,25 @@ public class ArmAway extends Setup {
     @Test(priority = 29)
     public void AA_35() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (12 group). ");
-        add_primary_call(13, 13, 6619298, 1);
+        addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 2A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 2A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(13);
+        deleteFromPrimary(13);
         Thread.sleep(6000);
         //       tamper_alarm_ver(13);
     }
@@ -1097,25 +1096,25 @@ public class ArmAway extends Setup {
     @Test(priority = 30)
     public void AA_36() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (14 group). ");
-        add_primary_call(14, 14, 6619299, 1);
+        addPrimaryCall(14, 14, 6619299, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 3A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 3A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(14);
+        deleteFromPrimary(14);
         Thread.sleep(6000);
         //      tamper_alarm_ver(14);
     }
@@ -1123,25 +1122,25 @@ public class ArmAway extends Setup {
     @Test(priority = 31)
     public void AA_37() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (16 group). ");
-        add_primary_call(16, 16, 6619300, 1);
+        addPrimaryCall(16, 16, 6619300, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 4A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 4A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(16);
+        deleteFromPrimary(16);
         Thread.sleep(6000);
         //       tamper_alarm_ver(16);
     }
@@ -1149,25 +1148,25 @@ public class ArmAway extends Setup {
     @Test(priority = 32)
     public void AA_38() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (15 group). ");
-        add_primary_call(15, 15, 5570628, 2);
+        addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("55 00 44", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 44", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(15);
+        deleteFromPrimary(15);
         Thread.sleep(6000);
         //       tamper_alarm_ver(15);
     }
@@ -1175,25 +1174,25 @@ public class ArmAway extends Setup {
     @Test(priority = 33)
     public void AA_39() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (17 group). ");
-        add_primary_call(17, 17, 5570629, 2);
+        addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("55 00 54", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 54", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(17);
+        deleteFromPrimary(17);
         Thread.sleep(6000);
         //       tamper_alarm_ver(17);
     }
@@ -1201,25 +1200,25 @@ public class ArmAway extends Setup {
     @Test(priority = 34)
     public void AA_40() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (20 group). ");
-        add_primary_call(20, 20, 5570630, 2);
+        addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("55 00 64", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 64", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(20);
+        deleteFromPrimary(20);
         Thread.sleep(6000);
         //       tamper_alarm_ver(20);
     }
@@ -1227,25 +1226,25 @@ public class ArmAway extends Setup {
     @Test(priority = 35)
     public void AA_41() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (35 group). ");
-        add_primary_call(35, 35, 5570631, 2);
+        addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("55 00 74", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 74", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(35);
+        deleteFromPrimary(35);
         Thread.sleep(6000);
         //    tamper_alarm_ver(35);
     }
@@ -1253,25 +1252,25 @@ public class ArmAway extends Setup {
     @Test(priority = 36)
     public void AA_42() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (26 group). ");
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("67 00 22", SensorsActivity.TAMPER);
+        sensors.primaryCall("67 00 22", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(26);
+        deleteFromPrimary(26);
         Thread.sleep(6000);
         //     tamper_alarm_ver(26);
     }
@@ -1279,25 +1278,25 @@ public class ArmAway extends Setup {
     @Test(priority = 37)
     public void AA_43() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (34 group). ");
-        add_primary_call(34, 34, 7667882, 6);
+        addPrimaryCall(34, 34, 7667882, 6);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("75 00 AA", SensorsActivity.TAMPER);
+        sensors.primaryCall("75 00 AA", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(6000);
         //       tamper_alarm_ver(34);
     }
@@ -1305,25 +1304,25 @@ public class ArmAway extends Setup {
     @Test(priority = 38)
     public void AA_44() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (38 group). ");
-        add_primary_call(38, 38, 7672224, 22);
+        addPrimaryCall(38, 38, 7672224, 22);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("75 11 0A", SensorsActivity.TAMPER);
+        sensors.primaryCall("75 11 0A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(38);
+        deleteFromPrimary(38);
         Thread.sleep(6000);
 //        tamper_alarm_ver(38);
     }
@@ -1331,25 +1330,25 @@ public class ArmAway extends Setup {
     @Test(priority = 39)
     public void AA_45() throws Exception {
         logger.info("Verify the panel will report an immediate tamper alarm (52 group). ");
-        add_primary_call(52, 52, 7536801, 17);
+        addPrimaryCall(52, 52, 7536801, 17);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        sensors.primary_call("73 00 1A", SensorsActivity.TAMPER);
+        sensors.primaryCall("73 00 1A", SensorsActivity.TAMPER);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(52);
+        deleteFromPrimary(52);
         Thread.sleep(6000);
 //        tamper_alarm_ver(52);
     }
@@ -1363,7 +1362,7 @@ public class ArmAway extends Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM_from_away.click();
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         // System.out.println((driver.findElementById("com.qolsys:id/tv_name").getText()));
         if (driver.findElementById("com.qolsys:id/tv_name").getText().equals("Invalid User Code")) {
@@ -1371,7 +1370,7 @@ public class ArmAway extends Setup {
         } else {
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(6000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(2000);
@@ -1391,7 +1390,7 @@ public class ArmAway extends Setup {
     @Test(priority = 41)
     public void AA_48() throws Exception {
         logger.info("Verify the panel will Disarm instantly if Disarm button is pressed by 1-group keyfob");
-        add_primary_call(38, 1, 6619386, 102);
+        addPrimaryCall(38, 1, 6619386, 102);
         Thread.sleep(2000);
         servcall.set_KEYFOB_DISARMING(01);
         Thread.sleep(2000);
@@ -1399,11 +1398,11 @@ public class ArmAway extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(4000);
-        sensors.primary_call("65 00 AF", keyfobDisarm);
+        sensors.primaryCall("65 00 AF", keyfobDisarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(6000);
-        delete_from_primary(38);
+        deleteFromPrimary(38);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -1422,7 +1421,7 @@ public class ArmAway extends Setup {
     @Test(priority = 42)
     public void AA_50() throws Exception {
         logger.info("Verify the panel will Disarm instantly if Disarm button is pressed by 6-group keyfob");
-        add_primary_call(39, 6, 6619387, 102);
+        addPrimaryCall(39, 6, 6619387, 102);
         Thread.sleep(2000);
         servcall.set_KEYFOB_DISARMING(01);
         Thread.sleep(2000);
@@ -1430,11 +1429,11 @@ public class ArmAway extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(4000);
-        sensors.primary_call("65 00 BF", keyfobDisarm);
+        sensors.primaryCall("65 00 BF", keyfobDisarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(6000);
-        delete_from_primary(39);
+        deleteFromPrimary(39);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -1453,7 +1452,7 @@ public class ArmAway extends Setup {
     @Test(priority = 44)
     public void AA_53() throws Exception {
         logger.info("Verify the panel will Disarm instantly if Disarm button is pressed by 4-group keyfob");
-        add_primary_call(40, 4, 6619388, 102);
+        addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(2000);
         servcall.set_KEYFOB_DISARMING(01);
         Thread.sleep(2000);
@@ -1461,11 +1460,11 @@ public class ArmAway extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(4000);
-        sensors.primary_call("65 00 CF", keyfobDisarm);
+        sensors.primaryCall("65 00 CF", keyfobDisarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(6000);
-        delete_from_primary(40);
+        deleteFromPrimary(40);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -1484,28 +1483,28 @@ public class ArmAway extends Setup {
     @Test(priority = 39)
     public void AA_61() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered ");
-        add_primary_call(33, 13, 6684828, 107);
+        addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("66 00 C9", SensorsActivity.TAMPER);
+        sensors.primaryCall("66 00 C9", SensorsActivity.TAMPER);
         Thread.sleep(10000);
-        sensors.primary_call("66 00 C9", SensorsActivity.CLOSE);
-        verify_in_alarm();
+        sensors.primaryCall("66 00 C9", SensorsActivity.CLOSE);
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(33);
+        deleteFromPrimary(33);
         Thread.sleep(6000);
         //      tamper_alarm_ver(33);
     }
@@ -1513,19 +1512,19 @@ public class ArmAway extends Setup {
     @Test(priority = 54)
     public void AA_62() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
-        add_primary_call(33, 13, 6684828, 107);
+        addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 C9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -1533,20 +1532,20 @@ public class ArmAway extends Setup {
         if (events.get(1).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(0).getText().equals("Alarmed")) {
                 logger.info("Pass: Correct status is " + "Alarmed");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 33 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(60000);
@@ -1572,28 +1571,28 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(2000);
-        delete_from_primary(33);
+        deleteFromPrimary(33);
         Thread.sleep(4000);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(4000);
     }
 
     @Test(priority = 55)
     public void AA_63() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
-        add_primary_call(33, 13, 6684828, 107);
+        addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 C9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -1601,20 +1600,20 @@ public class ArmAway extends Setup {
         if (events.get(1).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(0).getText().equals("Alarmed")) {
                 logger.info("Pass: Correct status is " + "Alarmed");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 33 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //    adc.New_ADC_session_User(login,password);
 //    Thread.sleep(60000);
@@ -1629,24 +1628,24 @@ public class ArmAway extends Setup {
 //        System.out.println("No such element found!!!");
 //    }
         Thread.sleep(2000);
-        delete_from_primary(33);
+        deleteFromPrimary(33);
         Thread.sleep(4000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(4000);
     }
 
     @Test(priority = 56)
     public void AA_64() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
-        add_primary_call(33, 13, 6684828, 107);
+        addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("66 00 C9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
         Thread.sleep(4000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(4000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -1654,7 +1653,7 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is " + "Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
 
@@ -1671,36 +1670,36 @@ public class ArmAway extends Setup {
 //        } catch (Exception e) {
 //            System.out.println("No such element found!!!");
 //        }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(33);
+        deleteFromPrimary(33);
         Thread.sleep(4000);
     }
 
     @Test(priority = 57)
     public void AA_65() throws Exception {
         logger.info("Verify the panel will just create notification if a shock-detector in group 17 is tampered");
-        add_primary_call(29, 17, 6750355, 19);
+        addPrimaryCall(29, 17, 6750355, 19);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("67 00 39", SensorsActivity.TAMPER);
+        sensors.primaryCall("67 00 39", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(29);
+        deleteFromPrimary(29);
         Thread.sleep(6000);
         //   tamper_alarm_ver(29);
     }
@@ -1708,28 +1707,28 @@ public class ArmAway extends Setup {
     @Test(priority = 58)
     public void AA_66() throws Exception {
         logger.info("Verify the panel will go into immediate alarm is a Glass-break detector in group 13 is activated");
-        add_primary_call(28, 13, 6750361, 19);
+        addPrimaryCall(28, 13, 6750361, 19);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_DIALER_DELAY(6);
         Thread.sleep(5000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         home_page.Quick_exit.click();
         Thread.sleep(2000);
-        sensors.primary_call("67 00 99", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 99", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is " + "Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(6000);
@@ -1755,40 +1754,40 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(1000);
-        delete_from_primary(28);
+        deleteFromPrimary(28);
         Thread.sleep(4000);
     }
 
     @Test(priority = 60)
     public void AA_67() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 17 is activated");
-        add_primary_call(29, 17, 6750355, 19);
+        addPrimaryCall(29, 17, 6750355, 19);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(4000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("67 00 39", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 39", SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(1).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is " + "Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
 //        adc.New_ADC_session_User(login,password);
@@ -1812,35 +1811,35 @@ public class ArmAway extends Setup {
 //        } catch (Exception e) {
 //            System.out.println("No such element found!!!");
 //        }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
         Thread.sleep(2000);
-        delete_from_primary(29);
+        deleteFromPrimary(29);
         Thread.sleep(4000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(4000);
     }
 
     @Test(priority = 61)
     public void AA_68() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 17 is activated");
-        add_primary_call(29, 17, 6750355, 19);
+        addPrimaryCall(29, 17, 6750355, 19);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(4000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("67 00 39", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 39", SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is " + "Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
 //        adc.New_ADC_session_User(login,password);
@@ -1867,32 +1866,32 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(4000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(29);
+        deleteFromPrimary(29);
         Thread.sleep(4000);
     }
 
     @Test(priority = 74)
     public void AA_69() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if a Glass-break detector in group 13 is tampered");
-        add_primary_call(28, 13, 6750361, 19);
+        addPrimaryCall(28, 13, 6750361, 19);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("67 00 99", SensorsActivity.TAMPER);
+        sensors.primaryCall("67 00 99", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(4000);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         // for (int j = 0; j < events.size(); j++)
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is " + "Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         Thread.sleep(2000);
@@ -1920,28 +1919,28 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        delete_from_primary(28);
+        deleteFromPrimary(28);
         Thread.sleep(4000);
     }
 
     @Test(priority = 71)
     public void AA_71() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
-        add_primary_call(33, 13, 6684828, 107);
+        addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 C9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -1949,20 +1948,20 @@ public class ArmAway extends Setup {
         if (events.get(1).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(0).getText().equals("Alarmed")) {
                 logger.info("Pass: Correct status is " + "Alarmed");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 33 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(60000);
@@ -1977,36 +1976,36 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(2000);
-        delete_from_primary(33);
+        deleteFromPrimary(33);
         Thread.sleep(4000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(6000);
     }
 
     @Test(priority = 73)
     public void AA_73() throws Exception {
         logger.info("Verify the panel will go into immediate alarm if a Glass-break detector in group 17 is tampered");
-        add_primary_call(34, 17, 6684829, 107);
+        addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("66 00 D9", SensorsActivity.TAMPER);
+        sensors.primaryCall("66 00 D9", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(6000);
         //      tamper_alarm_ver(34);
         Thread.sleep(3000);
@@ -2015,27 +2014,27 @@ public class ArmAway extends Setup {
     @Test(priority = 74)
     public void AA_76() throws Exception {
         logger.info("Verify the panel will NOT go into immediate alarm if Glass-break detector in group 17 is activated");
-        add_primary_call(34, 17, 6684829, 107);
+        addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("66 00 D9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 D9", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
         if (events.get(0).getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(6000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(10000);
@@ -2053,19 +2052,19 @@ public class ArmAway extends Setup {
     @Test(priority = 75)
     public void AA_75() throws Exception {
         logger.info("Verify the panel will NOT go into immediate alarm if Glass-break detector in group 17 is activated");
-        add_primary_call(34, 17, 6684829, 107);
+        addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(4000);
-        add_primary_call(12, 12, 6619297, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 D9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 D9", SensorsActivity.ACTIVATE);
         Thread.sleep(13000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -2073,20 +2072,20 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Alarmed")) {
                 logger.info("Pass: Correct status is " + "Alarmed");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 33 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(60000);
@@ -2113,28 +2112,28 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(2000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(4000);
-        delete_from_primary(12);
+        deleteFromPrimary(12);
         Thread.sleep(6000);
     }
 
     @Test(priority = 76)
     public void AA_74() throws Exception {
         logger.info("Verify the panel will NOT go into immediate alarm if Glass-break detector in group 17 is activated");
-        add_primary_call(34, 17, 6684829, 107);
+        addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(4000);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 D9", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("66 00 D9", SensorsActivity.ACTIVATE);
         Thread.sleep(13000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> events = driver.findElements(By.id("com.qolsys:id/tv_status"));
@@ -2142,20 +2141,20 @@ public class ArmAway extends Setup {
         if (events.get(0).getText().equals("Open")) {
             logger.info("Pass: Correct status is " + "Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
         try {
             if (events.get(1).getText().equals("Alarmed")) {
                 logger.info("Pass: Correct status is " + "Alarmed");
             } else {
-                take_screenshot();
+                takeScreenshot();
                 logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
             }
         } catch (Exception e) {
             logger.info("Sensor 34 event is not present on Alarm page");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
 //        adc.New_ADC_session_User(login,password);
 //        Thread.sleep(60000);
@@ -2180,9 +2179,9 @@ public class ArmAway extends Setup {
 //            System.out.println("No such element found!!!");
 //        }
         Thread.sleep(2000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(4000);
-        delete_from_primary(10);
+        deleteFromPrimary(10);
         Thread.sleep(6000);
     }
 

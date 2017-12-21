@@ -84,14 +84,14 @@ public class SignalStrench extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name); }
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name); }
 
     @Test
     public void Check_all_Elements_in_Cellular_tap() throws InterruptedException {
         panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         Thread.sleep(4000);
         about.Cellular.click();

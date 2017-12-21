@@ -31,15 +31,15 @@ public class Smoke_Test_Motion extends Setup {
 
     @BeforeMethod
     public void capabilitiesSetup() throws Exception {
-        setup_driver("62964b68","http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver("62964b68","http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
     public void Test1() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
-        logger.info("Current software version: "+ Software_Version());
+        logger.info("Current software version: "+ softwareVersion());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");
         MySensors.addAllSensors();
@@ -50,7 +50,7 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 20,Activate);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 25,Activate);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 35,Activate);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -59,10 +59,10 @@ public class Smoke_Test_Motion extends Setup {
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 15,Activate);
         WebElement Motion10 = driver.findElementByXPath("//android.widget.TextView[@text='Motion 10']");
-        verify_sensor_is_displayed(Motion10);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion10);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -72,10 +72,10 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 17,Activate);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 20,Activate);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 25,Activate);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -85,10 +85,10 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 35,Activate);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
         WebElement Motion14 = driver.findElementByXPath("//android.widget.TextView[@text='Motion 14']");
-        verify_sensor_is_displayed(Motion14);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion14);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -96,10 +96,10 @@ public class Smoke_Test_Motion extends Setup {
         // autostayPref();
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 15,Activate);
-        verify_sensor_is_displayed(Motion10);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion10);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -107,10 +107,10 @@ public class Smoke_Test_Motion extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 17,Activate);
         WebElement Motion11 = driver.findElementByXPath("//android.widget.TextView[@text='Motion 11']");
-        verify_sensor_is_displayed(Motion11);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion11);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -120,10 +120,10 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 20,Activate);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
         WebElement Motion12 = driver.findElementByXPath("//android.widget.TextView[@text='Motion 12']");
-        verify_sensor_is_displayed(Motion12);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion12);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -132,9 +132,9 @@ public class Smoke_Test_Motion extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 25,Activate);
 
-        verify_armaway();
+        verifyArmaway();
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -143,10 +143,10 @@ public class Smoke_Test_Motion extends Setup {
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 35,Activate);
         TimeUnit.SECONDS.sleep(Normal_Entry_Delay);
-        verify_sensor_is_displayed(Motion14);
-        verify_status_activated();
-        verify_in_alarm();
-        enter_default_user_code();
+        verifySensorIsDisplayed(Motion14);
+        verifyStatusActivated();
+        verifyInAlarm();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************TAMPER********************");
@@ -157,13 +157,13 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 25);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 35);
         TimeUnit.SECONDS.sleep(3);
-        verify_disarm();
+        verifyDisarm();
         WebElement Motion13 = driver.findElementByXPath("//android.widget.TextView[@text='Motion 13']");
-        verify_sensor_is_tampered(Motion10);
-        verify_sensor_is_tampered(Motion11);
-        verify_sensor_is_tampered(Motion12);
-        verify_sensor_is_tampered(Motion13);
-        verify_sensor_is_tampered(Motion14);
+        verifySensorIsTampered(Motion10);
+        verifySensorIsTampered(Motion11);
+        verifySensorIsTampered(Motion12);
+        verifySensorIsTampered(Motion13);
+        verifySensorIsTampered(Motion14);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 15,Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 17,Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 20,Idle);
@@ -175,12 +175,12 @@ public class Smoke_Test_Motion extends Setup {
         logger.info("ArmStay mode tamper sensors group 15 -> Expected result = Instant Alarm");
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 15);
-        verify_sensor_is_tampered(Motion10);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(Motion10);
+        verifyStatusTampered();
+        verifyInAlarm();
         TimeUnit.SECONDS.sleep(3);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 15,Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -190,15 +190,15 @@ public class Smoke_Test_Motion extends Setup {
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 20);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 25);
         TimeUnit.SECONDS.sleep(5);
-        verify_sensor_is_tampered(Motion11);
-        verify_sensor_is_tampered(Motion12);
-        verify_sensor_is_tampered(Motion13);
-        verify_armstay();
+        verifySensorIsTampered(Motion11);
+        verifySensorIsTampered(Motion12);
+        verifySensorIsTampered(Motion13);
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 17,Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 20,Idle);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 25,Idle);
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -206,11 +206,11 @@ public class Smoke_Test_Motion extends Setup {
         ARM_STAY();
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 35);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(Motion14);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(Motion14);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 35,Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -218,11 +218,11 @@ public class Smoke_Test_Motion extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 15);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(Motion10);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(Motion10);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 15,Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -230,11 +230,11 @@ public class Smoke_Test_Motion extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 17);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(Motion11);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(Motion11);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 17,Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -242,10 +242,10 @@ public class Smoke_Test_Motion extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 25);
         TimeUnit.SECONDS.sleep(3);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 25,Idle);
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -253,11 +253,11 @@ public class Smoke_Test_Motion extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         MySensors.sendTamper_allSensors_selectedGroup(MySensors.motion_zones, 35);
         TimeUnit.SECONDS.sleep(3);
-        verify_sensor_is_tampered(Motion14);
-        verify_status_tampered();
-        verify_in_alarm();
+        verifySensorIsTampered(Motion14);
+        verifyStatusTampered();
+        verifyInAlarm();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.motion_zones, 35,Idle);
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         contact_us.acknowledge_all_alerts();

@@ -25,8 +25,8 @@ public class SystemTestWiFiCell extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     /*** WiFi is connected ***/
@@ -36,14 +36,14 @@ public class SystemTestWiFiCell extends Setup {
         Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.WIFI_TEST.click();
         sys.WiFiTest_Run_button.click();
         Thread.sleep(3000);
-        element_verification(sys.WiFiTest_result, "Test result");
-        element_verification(sys.WiFiTest_time, "Test time");
-        element_verification(sys.WiFiTest_status, "Test status");
+        elementVerification(sys.WiFiTest_result, "Test result");
+        elementVerification(sys.WiFiTest_time, "Test time");
+        elementVerification(sys.WiFiTest_status, "Test status");
         logger.info(" SASST_001, SASST_002 Pass: Wi-Fi test can be passed when connecting to a router/hotspot network");
         Thread.sleep(5000);
     }
@@ -55,17 +55,17 @@ public class SystemTestWiFiCell extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.CELLULAR_TEST.click();
         cell.start_button.click();
         Thread.sleep(3000);
-        element_verification(cell.Carrier_name, "Carrier name");
-        element_verification(cell.Cellular_status, "cellular Status");
-        element_verification(cell.IMEI, "IMEI");
-        element_verification(cell.signal_strength, "signal strength");
-        element_verification(cell.start_button, "start_button");
-        element_verification(cell.cancel_button, "cancel_button");
+        elementVerification(cell.Carrier_name, "Carrier name");
+        elementVerification(cell.Cellular_status, "cellular Status");
+        elementVerification(cell.IMEI, "IMEI");
+        elementVerification(cell.signal_strength, "signal strength");
+        elementVerification(cell.start_button, "start_button");
+        elementVerification(cell.cancel_button, "cancel_button");
         logger.info(" SASST_4 Pass: cellular test passed successfully when wifi is enabled");
         Thread.sleep(5000);
     }
@@ -81,28 +81,28 @@ public class SystemTestWiFiCell extends Setup {
         Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(1000);
         wifi.OK.click();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adv.SYSTEM_TESTS.click();
         sys.CELLULAR_TEST.click();
         cell.start_button.click();
         Thread.sleep(3000);
-        element_verification(cell.Carrier_name, "Carrier name");
-        element_verification(cell.Cellular_status, "cellular Status");
-        element_verification(cell.signal_strength, "signal strength");
-        element_verification(cell.test_result, "Test Result");
+        elementVerification(cell.Carrier_name, "Carrier name");
+        elementVerification(cell.Cellular_status, "cellular Status");
+        elementVerification(cell.signal_strength, "signal strength");
+        elementVerification(cell.test_result, "Test Result");
         System.out.println("updateProcess of the page");
         cell.Back_button.click();
         sys.CELLULAR_TEST.click();
         cell.start_button.click();
         Thread.sleep(2000);
-        element_verification(cell.Carrier_name, "Carrier name");
-        element_verification(cell.Cellular_status, "cellular Status");
-        element_verification(cell.signal_strength, "signal strength");
-        element_verification(cell.test_result, "Test Result");
+        elementVerification(cell.Carrier_name, "Carrier name");
+        elementVerification(cell.Cellular_status, "cellular Status");
+        elementVerification(cell.signal_strength, "signal strength");
+        elementVerification(cell.test_result, "Test Result");
         System.out.println(" SASST_4 Pass: cellular test passed successfully when wifi is disabled");
         servcall.data_verification();
         Thread.sleep(2000);

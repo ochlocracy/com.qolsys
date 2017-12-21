@@ -103,13 +103,13 @@ public class SetGridTest extends Setup {
         li.get(2).click();
         TimeUnit.SECONDS.sleep(5);
 
-        myADC.Rename_Sensor(0, myADC.new_dw_name);
+        myADC.renameSensor(0, myADC.new_dw_name);
         logger.info("Renaming motion sensor, new name: "+ myADC.new_motion_name);
-        myADC.Rename_Sensor(1, myADC.new_motion_name);
+        myADC.renameSensor(1, myADC.new_motion_name);
         logger.info("Renaming smoke detector, new name: "+ myADC.new_smoke_name);
-        myADC.Rename_Sensor(2, myADC.new_smoke_name);
+        myADC.renameSensor(2, myADC.new_smoke_name);
         logger.info("Renaming co_detector, new name: "+ myADC.new_co_name);
-        myADC.Rename_Sensor(3, myADC.new_co_name);
+        myADC.renameSensor(3, myADC.new_co_name);
     }
 
     @AfterMethod

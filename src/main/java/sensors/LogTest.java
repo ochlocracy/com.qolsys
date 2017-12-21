@@ -18,7 +18,7 @@ public class LogTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
     }
 
     @Test

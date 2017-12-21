@@ -48,8 +48,8 @@ public class PreUpdateUserManagement extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_ARM_STAY_NO_DELAY_enable();
     }
 
@@ -79,7 +79,7 @@ public class PreUpdateUserManagement extends Setup {
         home.Four.click();
         home.Three.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(1000);
     }
 
@@ -111,7 +111,7 @@ public class PreUpdateUserManagement extends Setup {
         home.Three.click();
         home.One.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(1000);
     }
 
@@ -143,11 +143,16 @@ public class PreUpdateUserManagement extends Setup {
         home.Zero.click();
         home.Zero.click();
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
     }
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
+        log.endTestCase(page_name);
+        System.out.println("*****Stop driver*****");
         driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

@@ -31,8 +31,8 @@ public class IQHUBadcSanityTests  extends Setup {
 
         @BeforeTest
         public void capabilities_setup() throws Exception {
-            setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-            setup_logger(page_name);
+            setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+            setupLogger(page_name);
             servcall.set_SIA_LIMITS_disable();
             Thread.sleep(2000);
             servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
@@ -54,11 +54,11 @@ public class IQHUBadcSanityTests  extends Setup {
         @Test
         public void addSensors() throws IOException, InterruptedException {
             Thread.sleep(2000);
-            add_primary_call(43, 6, 6361649, 21);
-            add_primary_call(44, 0, 6361650, 21);
-            add_primary_call(48, 1, 6361652, 21);
-            add_primary_call(49, 2, 6361653, 21);
-            add_primary_call(50, 4, 6361654, 21);
+            addPrimaryCall(43, 6, 6361649, 21);
+            addPrimaryCall(44, 0, 6361650, 21);
+            addPrimaryCall(48, 1, 6361652, 21);
+            addPrimaryCall(49, 2, 6361653, 21);
+            addPrimaryCall(50, 4, 6361654, 21);
             adc.New_ADC_session(adc.getAccountId());
             Thread.sleep(10000);
             adc.driver1.findElement(By.partialLinkText("Sensors")).click();
@@ -73,14 +73,14 @@ public class IQHUBadcSanityTests  extends Setup {
         Thread.sleep(1000);
        // verify_armaway();
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
         servcall.get_ARMING_LEVEL();//write arm level validation
         Thread.sleep(2000);
         servcall.EVENT_DISARM();
        // verify_armaway();
        // home.DISARM_from_away.click();
-        //enter_default_user_code();
+        //enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
@@ -95,15 +95,15 @@ public class IQHUBadcSanityTests  extends Setup {
         servcall.get_ARMING_LEVEL();
         //verify_armaway();
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        element_verification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
+        elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         Thread.sleep(35000);
         servcall.get_AUXILLARY_PANIC();
         logger.info("Cancel Emergency Alarm");
         servcall.EVENT_DISARM();
        // emg.Cancel_Emergency.click();
-       // enter_default_user_code();
+       // enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
 
@@ -118,16 +118,16 @@ public class IQHUBadcSanityTests  extends Setup {
         servcall.get_ARMING_LEVEL();
        // verify_armaway();
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        element_verification(emg.Police_Emergency_Alarmed, "Police Alarmed");
+        elementVerification(emg.Police_Emergency_Alarmed, "Police Alarmed");
         Thread.sleep(35000);
         servcall.get_POLICE_PANIC();
         logger.info("Cancel Emergency Alarm");
         Thread.sleep(2000);
         servcall.EVENT_DISARM();
        // emg.Cancel_Emergency.click();
-       // enter_default_user_code();
+       // enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
@@ -156,7 +156,7 @@ public class IQHUBadcSanityTests  extends Setup {
     public void ArmStayActivateSensor_0() throws Exception {
         ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), '(Sensor 44) Police Panic')]");
         for (int i = 50; i > 42; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }}
 
     @AfterTest

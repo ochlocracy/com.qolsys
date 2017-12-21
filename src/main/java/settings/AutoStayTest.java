@@ -23,8 +23,8 @@ public class AutoStayTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -41,28 +41,30 @@ public class AutoStayTest extends Setup {
         Thread.sleep(3000);
         logger.info("Arm Away the system");
         ARM_AWAY(delay);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         logger.info("Verify that Auto Stay does not works when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Stay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         logger.info("Arm Away the system");
         ARM_AWAY(delay);
-        verify_armaway();
+        verifyArmaway();
         home.ArwAway_State.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Stay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -73,6 +75,10 @@ public class AutoStayTest extends Setup {
     @AfterMethod
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
+        System.out.println("*****Stop driver*****");
         driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

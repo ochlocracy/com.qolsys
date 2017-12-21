@@ -23,8 +23,8 @@ public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -35,45 +35,45 @@ public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
         logger.info("Navigate to the setting page to enable the access to the Camera settings page using Master Code");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         if (inst.CAMERA_SETTINGS.isDisplayed()) {
             logger.info("Pass: Camera settings icon is present");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Camera settings icon is NOT present");
         }
         Thread.sleep(2000);
         settings.Home_button.click();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
         set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         logger.info("Verify Camera settings icon disappears after disabling the setting");
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.CAMERA_SETTINGS.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Camera settings icon is present");
         } catch (Exception e) {
             logger.info("Pass: Camera settings icon is NOT present");

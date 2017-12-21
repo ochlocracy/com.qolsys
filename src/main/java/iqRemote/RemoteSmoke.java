@@ -41,7 +41,7 @@ public class RemoteSmoke extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
 
     @Test
@@ -67,7 +67,7 @@ public class RemoteSmoke extends Setup {
             ARM_AWAY(15);
             Thread.sleep(5000);
             home_page.ArwAway_State.click();
-            enter_default_user_code();
+            enterDefaultUserCode();
             Thread.sleep(5000);
 
             /*** EMERGENCY ***/
@@ -77,7 +77,7 @@ public class RemoteSmoke extends Setup {
             emergency_page.Police_icon.click();
             Thread.sleep(5000);
             emergency_page.Cancel_Emergency.click();
-            enter_default_user_code();
+            enterDefaultUserCode();
             Thread.sleep(5000);
 
             emergency_page.Emergency_Button.click();
@@ -85,7 +85,7 @@ public class RemoteSmoke extends Setup {
             emergency_page.Fire_icon.click();
             Thread.sleep(5000);
             emergency_page.Cancel_Emergency.click();
-            enter_default_user_code();
+            enterDefaultUserCode();
             Thread.sleep(5000);
 
             emergency_page.Emergency_Button.click();
@@ -93,7 +93,7 @@ public class RemoteSmoke extends Setup {
             emergency_page.Auxiliary_icon.click();
             Thread.sleep(5000);
             emergency_page.Cancel_Emergency.click();
-            enter_default_user_code();
+            enterDefaultUserCode();
             Thread.sleep(5000);
         }
     }

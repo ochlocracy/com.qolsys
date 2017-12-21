@@ -56,7 +56,7 @@ public class Android_settings {
     @BeforeMethod
     public void setUp() throws Exception {
         setup_driver_and(a.get_UDID(), "http://127.0.1.1", "4723");
-        a.setup_logger(page_name);
+        a.setupLogger(page_name);
 
         // setup_driver_and(s.get_UDID(),"http://127.0.1.1", "4723");
     }

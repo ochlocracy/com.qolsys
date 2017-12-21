@@ -34,7 +34,7 @@ public class SanitySettings extends Setup {
 
     @BeforeClass
     public void setUp() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class SanitySettings extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Settings.Alarm_Photos");
 
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -57,13 +57,13 @@ public class SanitySettings extends Setup {
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is taken when setting in enabled...");
         serv.set_ALARM_VIDEOS(00);
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
@@ -76,11 +76,11 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         System.out.println("Verifying Alarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is NOT taken when setting in disabled...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Thread.sleep(1000);
         inst.CAMERA_SETTINGS.click();
@@ -93,7 +93,7 @@ public class SanitySettings extends Setup {
         emergency.Police_icon.click();
         Thread.sleep(1000);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
@@ -107,7 +107,7 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Alarm_Photos.click();
@@ -128,19 +128,19 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Navigate to the setting page to enable the access to the Camera settings page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Camera settings page using Master Code");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.CAMERA_SETTINGS.isDisplayed()) {
@@ -154,20 +154,20 @@ public class SanitySettings extends Setup {
         }
         Thread.sleep(2000);
         settings.Home_button.click();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
         set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         System.out.println("Verify Camera settings icon disappears after disabling the setting");
         log.log(LogStatus.INFO, "Verify Camera settings icon disappears after disabling the setting");
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.CAMERA_SETTINGS.isDisplayed())
@@ -195,23 +195,23 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         if (inst.SECURITY_AND_ARMING.isDisplayed()) {
             System.out.println("Pass: Security and Arming icon is present");
@@ -222,24 +222,24 @@ public class SanitySettings extends Setup {
         }
         Thread.sleep(2000);
         settings.Home_button.click();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         logger.info("Verify Security and Arming icon disappears after disabling the setting");
         log.log(LogStatus.INFO, "Verify Security and Arming icon disappears after disabling the setting");
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.SECURITY_AND_ARMING.isDisplayed())
@@ -266,22 +266,22 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         if (inst.SIREN_AND_ALARMS.isDisplayed()) {
             System.out.println("Pass: Siren and Alarms icon is present");
@@ -292,23 +292,23 @@ public class SanitySettings extends Setup {
         }
         Thread.sleep(2000);
         settings.Home_button.click();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         System.out.println("Verify Siren and Alarms icon disappears after disabling the setting");
         log.log(LogStatus.INFO, "Verify Siren and Alarms icon disappears after disabling the setting");
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         try {
             if (inst.SIREN_AND_ALARMS.isDisplayed())
@@ -337,19 +337,19 @@ public class SanitySettings extends Setup {
         System.out.println("Verify that Arm Stay - No Delay works when enabled");
         log.log(LogStatus.INFO, "Verify that Arm Stay - No Delay works when enabled");
         ARM_STAY();
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "System is in Arm Stay Mode");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Verify that Arm Stay - No Delay does not work when disabled");
         log.log(LogStatus.INFO, "Verify that Arm Stay - No Delay does not work when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Arm_Stay_No_Delay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -364,16 +364,16 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(15000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Arm_Stay_No_Delay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -396,33 +396,33 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Verify that Auto Bypass works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Bypass works when enabled");
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(3000);
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(3000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "Pass: sensors bypassed, system is in Arm Stay mode");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(3000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(1000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();
         Thread.sleep(3000);
@@ -430,37 +430,37 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Verify that Auto Bypass does not work when disabled");
         log.log(LogStatus.INFO, "Verify that Auto Bypass does not work when disabled");
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         home.DISARM.click();
         Thread.sleep(2000);
         home.ARM_STAY.click();
         Thread.sleep(2000);
-        element_verification(home.Bypass_message, "Bypass pop-up message");
+        elementVerification(home.Bypass_message, "Bypass pop-up message");
         log.log(LogStatus.PASS, "Pass: Bypass message is displayed");
         Thread.sleep(2000);
         home.Bypass_OK.click();
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(1000);
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "Pass: sensors bypassed, system is in Arm Stay mode");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();
         Thread.sleep(1000);
@@ -477,7 +477,7 @@ public class SanitySettings extends Setup {
         report.loadConfig(new File(file));
         report
                 .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", Software_Version());
+                .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Settings.Auto_Exit_Time_Extention");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -492,13 +492,13 @@ public class SanitySettings extends Setup {
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
         try {
             if (home.ArwAway_State.isDisplayed())
@@ -510,48 +510,48 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(60000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Verify that Auto Exit Time Extension does not works when disabled");
         log.log(LogStatus.INFO, "Verify that Auto Exit Time Extension does not works when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         ARM_AWAY(3);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(10000);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: system is ARMED AWAY, Auto Exit Time Extension does not work");
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Exit_Time_Extension.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -577,33 +577,33 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Arm Away the system");
         ARM_AWAY(delay);
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "Pass: System is in ARMED STAY mode");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         System.out.println("Verify that Auto Stay does not works when disabled");
         log.log(LogStatus.INFO, "Verify that Auto Stay does not works when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Stay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         System.out.println("Arm Away the system");
         ARM_AWAY(delay);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: System is in ARMED AWAY mode");
         home.ArwAway_State.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Auto_Stay.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -620,7 +620,7 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         log.log(LogStatus.INFO, "Verify a Dealer code can be changed");
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -688,7 +688,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 9)
+ //   @Test(priority = 9)
     public void Settings_Test10() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Disarm_Photos");
@@ -700,11 +700,11 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is taken when setting in enabled");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
@@ -717,11 +717,11 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         System.out.println("Verifying Disarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is NOT taken when setting in disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(1000);
@@ -731,7 +731,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
@@ -745,7 +745,7 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Disarm_Photos.click();
@@ -779,8 +779,8 @@ public class SanitySettings extends Setup {
             log.log(LogStatus.PASS, "Pass: Duress code does not work");
         }
         Thread.sleep(1000);
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Duress_Authentication.click();
@@ -807,10 +807,10 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Eight.click();
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: system is Disarmed");
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Duress_Authentication.click();
@@ -830,7 +830,7 @@ public class SanitySettings extends Setup {
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         System.out.println("Verify Installer Code can be modified");
         log.log(LogStatus.INFO, "Verify Installer Code can be modified");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Installer_Code.click();
@@ -917,7 +917,7 @@ public class SanitySettings extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         if (emergency.Emergency_sent_text.isDisplayed()) {
             System.out.println("Pass: Police Emergency is displayed");
@@ -927,18 +927,18 @@ public class SanitySettings extends Setup {
             log.log(LogStatus.FAIL, "Failed: Police Emergency is NOT displayed");
         }
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Verify that Keyfod Alarm Disarm  works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfod Alarm Disarm  works when enabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Alarm_Disarm.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -946,19 +946,19 @@ public class SanitySettings extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: System is disarmed by a keyfob");
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Alarm_Disarm.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -986,58 +986,58 @@ public class SanitySettings extends Setup {
         log.log(LogStatus.INFO, "Verify that Keyfob Disarming works when enabled");
         ARM_STAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: system is disarmed by a keyfob from Arm Stay");
         Thread.sleep(2000);
         ARM_AWAY(delay);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         log.log(LogStatus.PASS, "Pass: system is disarmed by a keyfob from Arm Away");
         Thread.sleep(2000);
         System.out.println("Verify that Keyfob Disarming does not work when disabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Disarming does not work when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         ARM_STAY();
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "Pass: system is NOT disarmed by a keyfob from Arm Stay");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         ARM_AWAY(delay);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 AF", disarm);
+        sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: system is NOT disarmed by a keyfob from Arm Away");
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
         sensors.delete_from_primary(3);
@@ -1064,37 +1064,37 @@ public class SanitySettings extends Setup {
         sensors.add_primary_call(3, 4, 6619386, 102);
         System.out.println("Arm Stay the system");
         Thread.sleep(3000);
-        sensors.primary_call("65 00 AF", armstay);
+        sensors.primaryCall("65 00 AF", armstay);
         Thread.sleep(5000);
         log.log(LogStatus.PASS, "Pass: System is in Arm Stay mode, no exit delay");
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Arm Away the system");
-        sensors.primary_call("65 00 AF", armaway);
+        sensors.primaryCall("65 00 AF", armaway);
         Thread.sleep(4000);
-        verify_armaway();
+        verifyArmaway();
         log.log(LogStatus.PASS, "Pass: System is in Arm Away mode, no exit delay");
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Verify that Keyfob Instant Arming does not work when disabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Instant Arming does not work when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         System.out.println("Arm Stay the system");
-        sensors.primary_call("65 00 AF", armstay);
+        sensors.primaryCall("65 00 AF", armstay);
         Thread.sleep(4000);
         try {
             if (home.Disarmed_text.getText().equals("ARMED STAY"))
@@ -1106,12 +1106,12 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(10000);
-        verify_armstay();
+        verifyArmstay();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Arm Away the system");
-        sensors.primary_call("65 00 AF", armaway);
+        sensors.primaryCall("65 00 AF", armaway);
         Thread.sleep(4000);
         try {
             if (home.ArwAway_State.isDisplayed())
@@ -1123,18 +1123,18 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(10000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(2000);
-        swipe_vertical();
-        swipe_vertical();
+        swipeVertical();
+        swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -1154,13 +1154,13 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         System.out.println("Verify panic disappears from the Emergency page when disabled");
         log.log(LogStatus.INFO, "Verify panic disappears from the Emergency page when disabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         log.log(LogStatus.INFO, "Disable Police Panic");
         siren.Police_Panic.click();
@@ -1178,13 +1178,13 @@ public class SanitySettings extends Setup {
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         log.log(LogStatus.INFO, "Disable Fire Panic");
         siren.Fire_Panic.click();
@@ -1202,13 +1202,13 @@ public class SanitySettings extends Setup {
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         log.log(LogStatus.INFO, "Disable Auxiliary Panic");
         siren.Auxiliary_Panic.click();
@@ -1226,13 +1226,13 @@ public class SanitySettings extends Setup {
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         siren.Police_Panic.click();
         siren.Fire_Panic.click();
@@ -1257,16 +1257,16 @@ public class SanitySettings extends Setup {
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         log.log(LogStatus.PASS, "Pass: System is in Arm Stay mode, no password was required");
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         arming.Secure_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -1279,16 +1279,16 @@ public class SanitySettings extends Setup {
             logger.info("Pass: code is requires to Arm the system");
             log.log(LogStatus.PASS, "Pass: code is requires to Arm the system");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         arming.Secure_Arming.click();
         Thread.sleep(1000);
         settings.Home_button.click();
@@ -1307,11 +1307,11 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying deleting panel images requires valid code...");
         log.log(LogStatus.INFO, "Verifying deleting panel images requires valid code");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Camera_delete.click();
@@ -1327,12 +1327,12 @@ public class SanitySettings extends Setup {
             System.out.println("Failed: Password is NOT required to delete the image");
             log.log(LogStatus.FAIL, "Fail: password is NOT required to delete images");
         }
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Secure_Delete_Images.click();
@@ -1343,7 +1343,7 @@ public class SanitySettings extends Setup {
         log.log(LogStatus.INFO, "Verifying deleting panel images does not require a valid code");
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Camera_delete.click();
@@ -1363,7 +1363,7 @@ public class SanitySettings extends Setup {
         }
         swipeFromLefttoRight();
         swipeFromLefttoRight();
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Secure_Delete_Images.click();
@@ -1383,11 +1383,11 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying settings photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying settings photo is NOT taken when setting in disabled");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();
         swipeFromLefttoRight();
@@ -1404,15 +1404,15 @@ public class SanitySettings extends Setup {
         }
         System.out.println("Verifying settings photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying settings photo is taken when setting in enabled");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();
         swipeFromLefttoRight();
@@ -1427,8 +1427,8 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Settings_Photos.click();
@@ -1451,7 +1451,11 @@ public class SanitySettings extends Setup {
     }
 
     @AfterClass
-    public void driver_quit() {
+    public void driver_quit() throws InterruptedException {
+        System.out.println("*****Stop driver*****");
         driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

@@ -43,8 +43,8 @@ public class DoorLockTest extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test(priority = 0)
@@ -53,13 +53,13 @@ public class DoorLockTest extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         swipeFromRighttoLeft();
         Thread.sleep(2000);
-        element_verification(door.Key_icon, "Key icon");
-        element_verification(door.DoorLock_Name, "Door Lock name");
-        element_verification(door.DoorLock_Status, "Door Lock status");
-        element_verification(door.Refresh_Status, "Refresh status");
-        element_verification(door.Door_battery, "Door lock battery level");
-        element_verification(door.Unlock_ALL, "Unlock All Doors");
-        element_verification(door.Lock_ALL, "Lock All Doors");
+        elementVerification(door.Key_icon, "Key icon");
+        elementVerification(door.DoorLock_Name, "Door Lock name");
+        elementVerification(door.DoorLock_Status, "Door Lock status");
+        elementVerification(door.Refresh_Status, "Refresh status");
+        elementVerification(door.Door_battery, "Door lock battery level");
+        elementVerification(door.Unlock_ALL, "Unlock All Doors");
+        elementVerification(door.Lock_ALL, "Lock All Doors");
         home.Home_button.click();
     }
 

@@ -19,8 +19,8 @@ public class EmergencyPageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -30,14 +30,14 @@ public class EmergencyPageTest extends Setup {
         Thread.sleep(1000);
 
         emergency_page.Emergency_Button.click();
-        element_verification(emergency_page.Police_icon, "Police emergency icon");
-        element_verification(emergency_page.Police_title, "Police title");
-        element_verification(emergency_page.Police_Silent, "Police silent Alarm");
-        element_verification(emergency_page.Fire_icon, "Fire emergency icon");
-        element_verification(emergency_page.Fire_title, "Fire title");
-        element_verification(emergency_page.Auxiliary_icon, "Auxiliary emergency icon");
-        element_verification(emergency_page.Auxiliary_title, "Auxiliary title");
-        element_verification(emergency_page.Auxiliary_Silent, "Auxiliary silent Alarm");
+        elementVerification(emergency_page.Police_icon, "Police emergency icon");
+        elementVerification(emergency_page.Police_title, "Police title");
+        elementVerification(emergency_page.Police_Silent, "Police silent Alarm");
+        elementVerification(emergency_page.Fire_icon, "Fire emergency icon");
+        elementVerification(emergency_page.Fire_title, "Fire title");
+        elementVerification(emergency_page.Auxiliary_icon, "Auxiliary emergency icon");
+        elementVerification(emergency_page.Auxiliary_title, "Auxiliary title");
+        elementVerification(emergency_page.Auxiliary_Silent, "Auxiliary silent Alarm");
         swipeFromLefttoRight();
     }
 

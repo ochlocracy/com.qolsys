@@ -36,8 +36,8 @@ public class ArmedStayAuxiliary extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -57,11 +57,11 @@ public class ArmedStayAuxiliary extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(11, 6, 6361649, 21);
-        add_primary_call(12, 0, 6361650, 21);
-        add_primary_call(13, 1, 6361652, 21);
-        add_primary_call(14, 2, 6361653, 21);
-        add_primary_call(15, 4, 6361654, 21);
+        addPrimaryCall(11, 6, 6361649, 21);
+        addPrimaryCall(12, 0, 6361650, 21);
+        addPrimaryCall(13, 1, 6361652, 21);
+        addPrimaryCall(14, 2, 6361653, 21);
+        addPrimaryCall(15, 4, 6361654, 21);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -75,9 +75,9 @@ public class ArmedStayAuxiliary extends Setup {
         ARM_STAY();
         Thread.sleep(13000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         DISARM();
         Thread.sleep(15000);
         // adc website verification
@@ -90,13 +90,13 @@ public class ArmedStayAuxiliary extends Setup {
         ARM_STAY();
         Thread.sleep(13000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        element_verification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
+        elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         Thread.sleep(35000);
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
@@ -107,13 +107,13 @@ public class ArmedStayAuxiliary extends Setup {
         ARM_STAY();
         Thread.sleep(13000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        element_verification(emg.Police_Emergency_Alarmed, "Police Alarmed");
+        elementVerification(emg.Police_Emergency_Alarmed, "Police Alarmed");
         Thread.sleep(35000);
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
@@ -147,7 +147,7 @@ public class ArmedStayAuxiliary extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 15; i > 10; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

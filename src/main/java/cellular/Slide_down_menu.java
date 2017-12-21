@@ -26,8 +26,8 @@ public class Slide_down_menu extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -37,10 +37,10 @@ public class Slide_down_menu extends Setup {
         Thread.sleep(1000);
         Thread.sleep(1000);
         menu.Slide_menu_open.click();
-        element_verification(menu.Cell_bar, "cellular");
+        elementVerification(menu.Cell_bar, "cellular");
         menu.Cell_bar.click();
         Thread.sleep(1000);
-        element_verification(menu.Cell_info, "cellular info");
+        elementVerification(menu.Cell_info, "cellular info");
 
         String Carrier_name = (menu.Cell_info.getText()).split(":")[0];
         System.out.println("Carrier name: " + Carrier_name);
@@ -49,7 +49,7 @@ public class Slide_down_menu extends Setup {
         // int Cellular_Signal_Strength_in_bars = Integer.parseInt(Cellular_Signal_Strength);
 
 
-        element_verification(menu.Slide_menu_close, "Slide menu close");
+        elementVerification(menu.Slide_menu_close, "Slide menu close");
         menu.Slide_menu_close.click();
 
     }

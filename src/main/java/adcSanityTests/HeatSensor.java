@@ -34,9 +34,9 @@ public class HeatSensor extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
-        setArmStay_NoDelay("Disable");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
+        setArmStayNoDelay("Disable");
         setAutoStay("Disable");
     }
 
@@ -48,7 +48,7 @@ public class HeatSensor extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(27, 26, 7667810, 111);
+        addPrimaryCall(27, 26, 7667810, 111);
         Thread.sleep(2000);
         servcall.set_ARM_STAY_NO_DELAY_disable();
         Thread.sleep(2000);
@@ -74,14 +74,14 @@ public class HeatSensor extends Setup {
         ARM_STAY();
         Thread.sleep(5000);
         logger.info("Activate/Restore a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());
@@ -114,14 +114,14 @@ public class HeatSensor extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(33000);
-        verify_armstay();
+        verifyArmstay();
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_armstay();
-        element_verification(home.Tamper_Status, "Tampered");
+        verifyArmstay();
+        elementVerification(home.Tamper_Status, "Tampered");
         Thread.sleep(5000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(15000);
@@ -167,14 +167,14 @@ public class HeatSensor extends Setup {
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(5);
         logger.info("Activate/Restore a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());
@@ -206,16 +206,16 @@ public class HeatSensor extends Setup {
         logger.info("ArmAway -Tamper Group " + group + " Heat sensor during Arm Away");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(33);
-        verify_armaway();
+        verifyArmaway();
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         logger.info("Disarm the system");
-        enter_default_user_code();
-        element_verification(home.Tamper_Status, "Tampered");
+        enterDefaultUserCode();
+        elementVerification(home.Tamper_Status, "Tampered");
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());
@@ -257,7 +257,7 @@ public class HeatSensor extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(27);
+        deleteFromPrimary(27);
     }
 
     @AfterMethod

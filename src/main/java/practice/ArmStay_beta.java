@@ -37,15 +37,15 @@
 //    }
 //
 //    }
-//    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+//    public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
 //        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
 //        rt.exec(adbPath + add_primary);
 //    }
 //
 //    @BeforeTest
 //    public void capabilities_setup() throws Exception {
-//        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-//        setup_logger(page_name);
+//        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+//        setupLogger(page_name);
 //    }
 //
 //    @BeforeMethod
@@ -59,7 +59,7 @@
 //        adv.INSTALLATION.click();
 //        inst.SECURITY_AND_ARMING.click();
 //        Thread.sleep(3000);
-//        swipe_vertical();
+//        swipeVertical();
 //        arming.Arm_Stay_No_Delay.click();
 //        Thread.sleep(2000);
 //        }
@@ -67,14 +67,14 @@
 //    @Test
 //    public void addContactSensors() throws IOException, InterruptedException {
 //        Thread.sleep(2000);
-//        add_primary_call(1, 10, 6619296, 1);
-//        add_primary_call(2, 12, 6619297, 1);
-//        add_primary_call(3, 13, 6619298, 1);
-//        add_primary_call(4, 14, 6619299, 1);
-//        add_primary_call(5, 16, 6619300, 1);
-//        add_primary_call(6, 8, 6619301, 1);
-//        add_primary_call(7, 9, 6619302, 1);
-//        add_primary_call(8, 25, 6619303, 1);
+//        addPrimaryCall(1, 10, 6619296, 1);
+//        addPrimaryCall(2, 12, 6619297, 1);
+//        addPrimaryCall(3, 13, 6619298, 1);
+//        addPrimaryCall(4, 14, 6619299, 1);
+//        addPrimaryCall(5, 16, 6619300, 1);
+//        addPrimaryCall(6, 8, 6619301, 1);
+//        addPrimaryCall(7, 9, 6619302, 1);
+//        addPrimaryCall(8, 25, 6619303, 1);
 //
 //        adc.New_ADC_session(adc.getAccountId());
 //        Thread.sleep(2000);

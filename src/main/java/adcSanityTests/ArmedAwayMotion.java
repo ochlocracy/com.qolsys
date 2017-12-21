@@ -42,14 +42,14 @@ public class ArmedAwayMotion extends Setup {
         logger.info("ArmAway During Delay Activate Group " + group + " motion sensor");
         ARM_AWAY(ConfigProps.longExitDelay / 3);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        verify_armaway();
+        verifyArmaway();
         driver.findElement(By.id("com.qolsys:id/main")).click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -57,13 +57,13 @@ public class ArmedAwayMotion extends Setup {
         logger.info("ArmAway After Delay Activate Group " + group + " motion sensor");
         ARM_AWAY(ConfigProps.longExitDelay);
         logger.info("Activate a sensor");
-        verify_armaway();
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        verifyArmaway();
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 3);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -72,15 +72,15 @@ public class ArmedAwayMotion extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         logger.info("Activate a sensor");
         Thread.sleep(2000);
-        verify_armaway();
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        verifyArmaway();
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(15000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        enterDefaultUserCode();
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
     }
 
@@ -88,24 +88,24 @@ public class ArmedAwayMotion extends Setup {
         logger.info("ArmAway After Delay Tamper Group " + group + " motion sensor");
         ARM_AWAY(ConfigProps.longExitDelay);
         logger.info("Tamper a sensor");
-        verify_armaway();
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        verifyArmaway();
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         if (group == 25)
-            verify_armaway();
+            verifyArmaway();
         else
-            verify_in_alarm();
+            verifyInAlarm();
         adc.ADC_verification(element_to_verify, element_to_verify2);
         if (group == 25)
             driver.findElement(By.id("com.qolsys:id/main")).click();
-        enter_default_user_code();
+        enterDefaultUserCode();
     }
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalEntryDelay);
@@ -125,11 +125,11 @@ public class ArmedAwayMotion extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(11, 15, 5570628, 2);
-        add_primary_call(12, 17, 5570629, 2);
-        add_primary_call(3, 20, 5570630, 2);
-        add_primary_call(4, 25, 5570631, 2);
-        add_primary_call(5, 35, 5570632, 2);
+        addPrimaryCall(11, 15, 5570628, 2);
+        addPrimaryCall(12, 17, 5570629, 2);
+        addPrimaryCall(3, 20, 5570630, 2);
+        addPrimaryCall(4, 25, 5570631, 2);
+        addPrimaryCall(5, 35, 5570632, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -207,7 +207,7 @@ public class ArmedAwayMotion extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 12; i > 2; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

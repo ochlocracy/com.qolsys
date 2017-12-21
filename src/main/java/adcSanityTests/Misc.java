@@ -43,8 +43,8 @@ public class Misc extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @BeforeMethod
@@ -66,9 +66,9 @@ public class Misc extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         servcall.set_KEYFOB_DISARMING(1);
         servcall.set_KEYFOB_NO_DELAY_enable();
-        add_primary_call(38, 1, 6619386, 102);
-        add_primary_call(39, 6, 6619387, 102);
-        add_primary_call(40, 4, 6619388, 102);
+        addPrimaryCall(38, 1, 6619386, 102);
+        addPrimaryCall(39, 6, 6619387, 102);
+        addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(2000);
 
         adc.New_ADC_session(adc.getAccountId());
@@ -86,12 +86,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 AF", SensorsActivity.KAWAY);
+        sensors.primaryCall("65 00 AF", SensorsActivity.KAWAY);
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -115,12 +115,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 BF",SensorsActivity.KAWAY);
+        sensors.primaryCall("65 00 BF",SensorsActivity.KAWAY);
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -144,12 +144,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 4: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Away by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 CF", SensorsActivity.KAWAY);
+        sensors.primaryCall("65 00 CF", SensorsActivity.KAWAY);
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -174,12 +174,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 AF", SensorsActivity.KSTAY);
+        sensors.primaryCall("65 00 AF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -203,12 +203,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Mobile Auxiliary");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 BF", SensorsActivity.KSTAY);
+        sensors.primaryCall("65 00 BF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -232,12 +232,12 @@ public class Misc extends Setup {
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
         logger.info("Arm Stay by keyfob");
         Thread.sleep(10000);
-        sensors.primary_call("65 00 CF", SensorsActivity.KSTAY);
+        sensors.primaryCall("65 00 CF", SensorsActivity.KSTAY);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
@@ -266,10 +266,10 @@ public class Misc extends Setup {
         Thread.sleep(2000);
         home.ARM_AWAY.click();
         Thread.sleep(33000);
-        verify_armaway();
-        sensors.primary_call("65 00 AF", SensorsActivity.KDISARM);
+        verifyArmaway();
+        sensors.primaryCall("65 00 AF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
-        verify_disarm();
+        verifyDisarm();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
@@ -282,7 +282,7 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
-        delete_from_primary(38);
+        deleteFromPrimary(38);
           Thread.sleep(2000);
     }
 
@@ -297,10 +297,10 @@ public class Misc extends Setup {
         Thread.sleep(2000);
         home.ARM_AWAY.click();
         Thread.sleep(33000);
-        verify_armaway();
-        sensors.primary_call("65 00 BF", SensorsActivity.KDISARM);
+        verifyArmaway();
+        sensors.primaryCall("65 00 BF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
-        verify_disarm();
+        verifyDisarm();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
@@ -313,7 +313,7 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
-        delete_from_primary(40);
+        deleteFromPrimary(40);
         Thread.sleep(2000);
     }
 
@@ -328,10 +328,10 @@ public class Misc extends Setup {
         Thread.sleep(2000);
         home.ARM_AWAY.click();
         Thread.sleep(33000);
-        verify_armaway();
-        sensors.primary_call("65 00 CF", SensorsActivity.KDISARM);
+        verifyArmaway();
+        sensors.primaryCall("65 00 CF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
-        verify_disarm();
+        verifyDisarm();
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
@@ -344,7 +344,7 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
-        delete_from_primary(39);
+        deleteFromPrimary(39);
         Thread.sleep(2000);
     }
 
@@ -394,10 +394,10 @@ public class Misc extends Setup {
             logger.info("***No such element found!***");
         }
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", D_Tamper);
+        sensors.primaryCall("65 00 0A", D_Tamper);
         logger.info("sensor1 Tampered");
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", D_Restore);
+        sensors.primaryCall("65 00 0A", D_Restore);
         logger.info("sensor1 Restored");
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_dgEvents_ctl103_refreshButton"))).click();
@@ -677,14 +677,14 @@ public class Misc extends Setup {
     public void Panel_history() throws IOException, InterruptedException {
 
        /* Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", D_Tamper);
+        sensors.primaryCall("65 00 0A", D_Tamper);
         logger.info("sensor1 Tampered");
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", D_Restore);
+        sensors.primaryCall("65 00 0A", D_Restore);
         logger.info("sensor1 Restored");
-        sensors.primary_call("65 00 0A", D_Open);
+        sensors.primaryCall("65 00 0A", D_Open);
         logger.info("sensor1 Opened");
-        sensors.primary_call("65 00 0A", D_Restore);
+        sensors.primaryCall("65 00 0A", D_Restore);
         logger.info("sensor1 Closed");
         Thread.sleep(2000);*/
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
@@ -730,7 +730,7 @@ public class Misc extends Setup {
            log.endTestCase(page_name);
            driver.quit();
            //for (int i= 40; i>37; i--) {
-          // delete_from_primary(i);
+          // deleteFromPrimary(i);
           // }
        }
 
