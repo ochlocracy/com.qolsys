@@ -12,7 +12,7 @@ import utils.Setup;
 import java.io.IOException;
 import java.util.List;
 
-public class AboutPage extends Setup {
+public class SignalStrench extends Setup {
 
     public static final int SIGNAL_STRENGTH_NONE_OR_UNKNOWN_ZERO = 0;
     public static final int GSM_SIGNAL_STRENGTH_NONE_OR_UNKNOWN_99 = 99;
@@ -26,7 +26,7 @@ public class AboutPage extends Setup {
     private static final String TAG = "CellSignalStrengthUtil";
     String page_name = "cellular on the About page";
 
-    public AboutPage() throws Exception {
+    public SignalStrench() throws Exception {
     }
 
     /* Steven.N, Added method to convert LTE DBm to a 6 level representation */
@@ -84,15 +84,14 @@ public class AboutPage extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
-    }
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name); }
 
     @Test
     public void Check_all_Elements_in_Cellular_tap() throws InterruptedException {
         panel.AboutPage about = PageFactory.initElements(driver, panel.AboutPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         Thread.sleep(4000);
         about.Cellular.click();
@@ -104,7 +103,7 @@ public class AboutPage extends Setup {
         String convertDbmToLevel = (Cellular_Info.get(2).getText()).split("\\s")[0];
         System.out.println("The value " + convertDbmToLevel + " is used for conversion");
         int dBm = Integer.parseInt(convertDbmToLevel);
-        // Cellular_Info.get(dBm);
+//        Cellular_Info.get(dBm);
         convertDbmToLevel(dBm);
         //System.out.println(Carrier_Name.get(3).getText()); /* IMEI */
         swipe_vertical1();

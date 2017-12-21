@@ -31,8 +31,8 @@ public class ArmedStayContact extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -53,16 +53,16 @@ public class ArmedStayContact extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(11, 10, 6619296, 1);
-        add_primary_call(12, 12, 6619297, 1);
-        add_primary_call(13, 13, 6619298, 1);
-        add_primary_call(14, 14, 6619299, 1);
-        add_primary_call(15, 16, 6619300, 1);
-        add_primary_call(16, 8, 6619301, 1);
-        add_primary_call(17, 9, 6619302, 1);
-        add_primary_call(18, 25, 6619303, 1);
-        add_primary_call(19, 15, 5570628, 2);
-        add_primary_call(10, 35, 5570629, 2);
+        addPrimaryCall(11, 10, 6619296, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
+        addPrimaryCall(13, 13, 6619298, 1);
+        addPrimaryCall(14, 14, 6619299, 1);
+        addPrimaryCall(15, 16, 6619300, 1);
+        addPrimaryCall(16, 8, 6619301, 1);
+        addPrimaryCall(17, 9, 6619302, 1);
+        addPrimaryCall(18, 25, 6619303, 1);
+        addPrimaryCall(19, 15, 5570628, 2);
+        addPrimaryCall(10, 35, 5570629, 2);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -76,11 +76,11 @@ public class ArmedStayContact extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalEntryDelay);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
         DISARM();
         Thread.sleep(2000);
@@ -93,13 +93,13 @@ public class ArmedStayContact extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -111,12 +111,12 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        enter_default_user_code();
-        verify_disarm();
+        enterDefaultUserCode();
+        verifyDisarm();
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
     }
@@ -127,11 +127,11 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         DISARM();
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -143,13 +143,13 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -161,11 +161,11 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(4000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         DISARM();
         Thread.sleep(2000);
 
@@ -263,17 +263,17 @@ public class ArmedStayContact extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(4000);
-        sensors.primary_call(DLID2, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID2, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID2, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID2, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -284,17 +284,17 @@ public class ArmedStayContact extends Setup {
         servcall.EVENT_ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID2, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID2, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID2, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID2, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -366,7 +366,7 @@ public class ArmedStayContact extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 19; i > 9; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

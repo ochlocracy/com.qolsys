@@ -33,15 +33,15 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
 
     @BeforeMethod
     public void capabilitiesSetup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     public void verify_police_emergency() throws Exception {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Police Emergency Sent")){
             logger.info("Pass: Police Emergency is Sent");
-        } else { take_screenshot();
+        } else { takeScreenshot();
             logger.info("Failed: Police Emergency is NOT Sent");}
     }
 
@@ -49,7 +49,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         if (emergency.Emergency_sent_text.getText().equals("Auxiliary Emergency Sent")) {
             logger.info("Pass: Auxiliary Emergency is Sent");
-        } else { take_screenshot();
+        } else { takeScreenshot();
             logger.info("Failed: Auxiliary Emergency is NOT Sent");}
     }
 
@@ -57,7 +57,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
     public void Test1() throws Exception {
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
-        logger.info("Current software version: " + Software_Version());
+        logger.info("Current software version: " + softwareVersion());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");
         MySensors.addAllSensors();
@@ -68,205 +68,205 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
 
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
         logger.info("Keyfob group 4: can ArmStay-ArmAway-Disarm, panic = Auxiliary");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
         logger.info("Keyfob group 6: can ArmStay-ArmAway-Disarm, panic = Auxiliary");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-       enter_default_user_code();
+       enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("****************************KEYPAD****************************");
         logger.info("Keypad group 0: can ArmStay-ArmAway-Disarm, panic = Police");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
         logger.info("Keypad group 2: can ArmStay-ArmAway-Disarm, panic = Police");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 2,Disarm_state);
 
@@ -274,44 +274,44 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         logger.info("Keypad group 1: can ArmStay-ArmAway-Disarm, panic = Police");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,Disarm_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_disarm();
+        verifyDisarm();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmStay_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armstay();
+        verifyArmstay();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmAway_state);
         TimeUnit.SECONDS.sleep(5);
-        verify_armaway();
+        verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("****************************AUXILIARY PENDANT****************************");
@@ -320,7 +320,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -329,7 +329,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -339,7 +339,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -349,7 +349,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -359,7 +359,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -369,7 +369,7 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
         emergency.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
        contact_us.acknowledge_all_alerts();

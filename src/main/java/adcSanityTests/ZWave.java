@@ -52,8 +52,8 @@ public class ZWave extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(ConfigProps.primary, "http://127.0.1.1", "4723");
-////        setup_logger(page_name);
+        setupDriver(ConfigProps.primary, "http://127.0.1.1", "4723");
+////        setupLogger(page_name);
     }
 
 

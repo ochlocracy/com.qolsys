@@ -19,8 +19,8 @@ public class HomePageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -31,49 +31,49 @@ public class HomePageTest extends Setup {
 
         /*Checking elements on the Header of the page*/
 
-        element_verification(home_page.Weather_img, "Weather");
-        element_verification(home_page.High_temp, "High Temp");
-        element_verification(home_page.Low_temp, "Low Temp");
-        element_verification(home_page.Time, "Time");
-        element_verification(home_page.Date, "Date");
+        elementVerification(home_page.Weather_img, "Weather");
+        elementVerification(home_page.High_temp, "High Temp");
+        elementVerification(home_page.Low_temp, "Low Temp");
+        elementVerification(home_page.Time, "Time");
+        elementVerification(home_page.Date, "Date");
 
         /*Checking Contact Us*/
 
-        element_verification(home_page.Contact_Us, "Contact us");
+        elementVerification(home_page.Contact_Us, "Contact us");
 
         /*Checking System State page*/
 
-        element_verification(home_page.DISARM, "Disarm");
-        element_verification(home_page.Disarmed_text, "Disarmed text");
-        element_verification(home_page.Active_Tab, "Active Tab");
-        element_verification(home_page.All_Tab, "All Tab");
+        elementVerification(home_page.DISARM, "Disarm");
+        elementVerification(home_page.Disarmed_text, "Disarmed text");
+        elementVerification(home_page.Active_Tab, "Active Tab");
+        elementVerification(home_page.All_Tab, "All Tab");
         home_page.DISARM.click();
 
-        element_verification(home_page.System_status, "System Status");
-        element_verification(home_page.ARM_STAY_text, "ArmStay text");
-        element_verification(home_page.ARM_AWAY_text, "ArmAway text");
-        element_verification(home_page.System_state_expand, "Window expand");
+        elementVerification(home_page.System_status, "System Status");
+        elementVerification(home_page.ARM_STAY_text, "ArmStay text");
+        elementVerification(home_page.ARM_AWAY_text, "ArmAway text");
+        elementVerification(home_page.System_state_expand, "Window expand");
         home_page.System_state_expand.click();
-        element_verification(home_page.System_status, "System Status");
-        element_verification(home_page.ARM_STAY_text, "ArmStay text");
-        element_verification(home_page.ARM_AWAY_text, "ArmAway text");
-        element_verification(home_page.Bypass_Tab, "Bypass Tab");
-        element_verification(home_page.Active_Tab_expand, "Active Tab");
-        element_verification(home_page.All_Tab_expand, "All Tab");
-        element_verification(home_page.Exit_Sounds_title, "Exit Sounds Title");
-        element_verification(home_page.Exit_Sounds, "Exit Sounds");
-        element_verification(home_page.Exit_Sounds_value, "Exit Sounds value");
-        element_verification(home_page.Entry_Delay_title, "Entry Delay Title");
-        element_verification(home_page.Entry_Delay, "Entry Delay");
-        element_verification(home_page.Entry_Delay_value, "Entry Delay value");
-        element_verification(home_page.System_state_collapse, "Window collapse");
+        elementVerification(home_page.System_status, "System Status");
+        elementVerification(home_page.ARM_STAY_text, "ArmStay text");
+        elementVerification(home_page.ARM_AWAY_text, "ArmAway text");
+        elementVerification(home_page.Bypass_Tab, "Bypass Tab");
+        elementVerification(home_page.Active_Tab_expand, "Active Tab");
+        elementVerification(home_page.All_Tab_expand, "All Tab");
+        elementVerification(home_page.Exit_Sounds_title, "Exit Sounds Title");
+        elementVerification(home_page.Exit_Sounds, "Exit Sounds");
+        elementVerification(home_page.Exit_Sounds_value, "Exit Sounds value");
+        elementVerification(home_page.Entry_Delay_title, "Entry Delay Title");
+        elementVerification(home_page.Entry_Delay, "Entry Delay");
+        elementVerification(home_page.Entry_Delay_value, "Entry Delay value");
+        elementVerification(home_page.System_state_collapse, "Window collapse");
         home_page.System_state_collapse.click();
         swipeFromLefttoRight();
         Thread.sleep(1000);
 
         /*Checking Emergency page*/
 //
-        element_verification(home_page.Emergency_Button, "Emergency button");
+        elementVerification(home_page.Emergency_Button, "Emergency button");
     }
 
     @AfterMethod

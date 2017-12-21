@@ -19,25 +19,25 @@ public class InstallationPageTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
     public void Check_all_elements_on_Installation_page() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         logger.info("Verifying elements on the page...");
         Thread.sleep(1000);
-        element_verification(instal.DEVICES, "Devices");
-        element_verification(instal.DEALER_SETTINGS, "Dealer settings");
-        element_verification(instal.SYSTEM_LOGS, "System Logs");
-        element_verification(instal.SIREN_AND_ALARMS, "Siren and Alarms");
-        element_verification(instal.SECURITY_AND_ARMING, "Security and Arming");
-        element_verification(instal.CAMERA_SETTINGS, "Camera settings");
-        element_verification(instal.LOAD_HELP_VIDEOS, "Load Help Videos");
+        elementVerification(instal.DEVICES, "Devices");
+        elementVerification(instal.DEALER_SETTINGS, "Dealer settings");
+        elementVerification(instal.SYSTEM_LOGS, "System Logs");
+        elementVerification(instal.SIREN_AND_ALARMS, "Siren and Alarms");
+        elementVerification(instal.SECURITY_AND_ARMING, "Security and Arming");
+        elementVerification(instal.CAMERA_SETTINGS, "Camera settings");
+        elementVerification(instal.LOAD_HELP_VIDEOS, "Load Help Videos");
     }
 
     @AfterMethod

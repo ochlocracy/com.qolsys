@@ -21,8 +21,8 @@ public class DuressAuthenticationTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -46,8 +46,8 @@ public class DuressAuthenticationTest extends Setup {
             logger.info("Pass: Duress code does not work");
         }
         Thread.sleep(1000);
-        enter_default_user_code();
-        navigate_to_Advanced_Settings_page();
+        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Duress_Authentication.click();
@@ -71,9 +71,9 @@ public class DuressAuthenticationTest extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Eight.click();
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Duress_Authentication.click();

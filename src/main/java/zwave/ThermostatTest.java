@@ -33,8 +33,8 @@ public class ThermostatTest extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -42,41 +42,41 @@ public class ThermostatTest extends Setup {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
 
         swipeFromRighttoLeft();
-        element_verification(therm.Target_Temp, "Target temperature");
-        element_verification(therm.Temp_Up, "Set target temperature Up");
-        element_verification(therm.Temp_Down, "Set target temperature Down");
-        element_verification(therm.Thermostat_Name, "Thermostat name");
-        element_verification(therm.Current_Mode, "Current Mode");
-        element_verification(therm.Fan_Mode, "Fan Mode");
-        element_verification(therm.Set_Mode, "Set thermostat mode");
-        element_verification(therm.Therm_Battery, "Thermostat battery");
-        element_verification(therm.Current_Temp, "Current temperature");
-        element_verification(therm.Current_Temp_Txt, "Current temperature text");
+        elementVerification(therm.Target_Temp, "Target temperature");
+        elementVerification(therm.Temp_Up, "Set target temperature Up");
+        elementVerification(therm.Temp_Down, "Set target temperature Down");
+        elementVerification(therm.Thermostat_Name, "Thermostat name");
+        elementVerification(therm.Current_Mode, "Current Mode");
+        elementVerification(therm.Fan_Mode, "Fan Mode");
+        elementVerification(therm.Set_Mode, "Set thermostat mode");
+        elementVerification(therm.Therm_Battery, "Thermostat battery");
+        elementVerification(therm.Current_Temp, "Current temperature");
+        elementVerification(therm.Current_Temp_Txt, "Current temperature text");
 
         therm.Fan_Mode.click();
         Thread.sleep(2000);
-        element_verification(therm.Fan_On_Icon, "Fan On icon");
-        element_verification(therm.Fan_On_Txt, "Fan On text");
-        element_verification(therm.Fan_On_Message, "Fan On Message");
-        element_verification(therm.Fan_Auto_Icon, "Fan Auto icon");
-        element_verification(therm.Fan_Auto_Txt, "Fan Auto text");
-        element_verification(therm.Fan_Auto_Message, "Fan Auto message");
+        elementVerification(therm.Fan_On_Icon, "Fan On icon");
+        elementVerification(therm.Fan_On_Txt, "Fan On text");
+        elementVerification(therm.Fan_On_Message, "Fan On Message");
+        elementVerification(therm.Fan_Auto_Icon, "Fan Auto icon");
+        elementVerification(therm.Fan_Auto_Txt, "Fan Auto text");
+        elementVerification(therm.Fan_Auto_Message, "Fan Auto message");
         tap(1111, 405);
 
         therm.Set_Mode.click();
         Thread.sleep(2000);
-        element_verification(therm.Off_Mode_Icon, "Off Mode icon");
-        element_verification(therm.Off_Mode_Txt, "Off Mode text");
-        element_verification(therm.Off_Mode_Message, "Off Mode message");
-        element_verification(therm.Heat_Icon, "Heat Mode icon");
-        element_verification(therm.Heat_Mode_Txt, "Heat Mode text");
-        element_verification(therm.Heat_Mode_Message, "Heat Mode message");
-        element_verification(therm.Cool_Icon, "Cool Mode icon");
-        element_verification(therm.Cool_Mode_Txt, "Cool Mode text");
-        element_verification(therm.Cool_Mode_Message, "Cool Mode message");
-        element_verification(therm.Auto_Icon, "Auto Mode icon");
-        element_verification(therm.Auto_Mode_Txt, "Auto Mode text");
-        element_verification(therm.Auto_Mode_Message, "Auto Mode message");
+        elementVerification(therm.Off_Mode_Icon, "Off Mode icon");
+        elementVerification(therm.Off_Mode_Txt, "Off Mode text");
+        elementVerification(therm.Off_Mode_Message, "Off Mode message");
+        elementVerification(therm.Heat_Icon, "Heat Mode icon");
+        elementVerification(therm.Heat_Mode_Txt, "Heat Mode text");
+        elementVerification(therm.Heat_Mode_Message, "Heat Mode message");
+        elementVerification(therm.Cool_Icon, "Cool Mode icon");
+        elementVerification(therm.Cool_Mode_Txt, "Cool Mode text");
+        elementVerification(therm.Cool_Mode_Message, "Cool Mode message");
+        elementVerification(therm.Auto_Icon, "Auto Mode icon");
+        elementVerification(therm.Auto_Mode_Txt, "Auto Mode text");
+        elementVerification(therm.Auto_Mode_Message, "Auto Mode message");
         swipeFromLefttoRight();
         Thread.sleep(2000);
     }

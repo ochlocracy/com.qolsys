@@ -39,13 +39,13 @@ public class IQShock extends Setup {
     public IQShock() throws Exception {
         ConfigProps.init();}
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+    public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
+    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
@@ -77,8 +77,8 @@ public class IQShock extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(Normal_Exit_Delay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(Normal_Entry_Delay);
@@ -100,8 +100,8 @@ public class IQShock extends Setup {
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding a list of sensors");
-        add_primary_call(1, 13, 6684828, 107);
-        add_primary_call(2, 17, 6684829, 107);
+        addPrimaryCall(1, 13, 6684828, 107);
+        addPrimaryCall(2, 17, 6684829, 107);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -114,9 +114,9 @@ public class IQShock extends Setup {
     @Test(dependsOnMethods = {"addSensors"})
     public void Disarm_Activate_13() throws IOException, InterruptedException {
         logger.info("Activate a sensor");
-        sensors.primary_call("66 00 C9", activate);
+        sensors.primaryCall("66 00 C9", activate);
         Thread.sleep(2000);
-        sensors.primary_call("66 00 C9", close);
+        sensors.primaryCall("66 00 C9", close);
         ADC_verification("//*[contains(text(), ' Activated')]", "//*[contains(text(), ' Normal')]");
     }
 
@@ -128,12 +128,12 @@ public class IQShock extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(Long_Exit_Delay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -144,11 +144,11 @@ public class IQShock extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(Long_Exit_Delay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         TimeUnit.SECONDS.sleep(Long_Exit_Delay / 2);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(2000);
@@ -174,13 +174,13 @@ public class IQShock extends Setup {
         TimeUnit.SECONDS.sleep(Long_Exit_Delay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primaryCall(DLID, tamper);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -192,11 +192,11 @@ public class IQShock extends Setup {
         TimeUnit.SECONDS.sleep(Long_Exit_Delay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primaryCall(DLID, tamper);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(2000);
@@ -220,12 +220,12 @@ public class IQShock extends Setup {
         logger.info("ArmStay -Activate " + group + " IQ Shock during exit delay");
         ARM_AWAY(Long_Exit_Delay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -248,13 +248,13 @@ public class IQShock extends Setup {
         ARM_AWAY(Long_Exit_Delay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primaryCall(DLID, tamper);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, close);
+        sensors.primaryCall(DLID, close);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         ADC_verification(element_to_verify, element_to_verify1);
@@ -278,7 +278,7 @@ public class IQShock extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 2; i > 0; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 }

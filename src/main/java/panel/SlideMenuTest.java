@@ -20,8 +20,8 @@ public class SlideMenuTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -32,26 +32,26 @@ public class SlideMenuTest extends Setup {
         Thread.sleep(1000);
 
         menu.Slide_menu_open.click();
-        element_verification(menu.System_state_icon, "System state");
-        element_verification(menu.Battery, "Battery");
-        element_verification(menu.WiFi, "Wi-Fi");
-        element_verification(menu.Bluetooth, "Bluetooth");
-        element_verification(menu.Cell_bar, "cellular");
+        elementVerification(menu.System_state_icon, "System state");
+        elementVerification(menu.Battery, "Battery");
+        elementVerification(menu.WiFi, "Wi-Fi");
+        elementVerification(menu.Bluetooth, "Bluetooth");
+        elementVerification(menu.Cell_bar, "cellular");
         menu.Cell_bar.click();
         Thread.sleep(1000);
-        element_verification(menu.Cell_info, "cellular info");
-        element_verification(menu.Volume_down, "Volume Down");
-        element_verification(menu.Volume_up, "Volume UP");
-        element_verification(menu.Volume_adjuster, "Volume adjuster");
-        element_verification(menu.Brightness_down, "Brightness Down");
-        element_verification(menu.Brightness_up, "Brightness UP");
-        element_verification(menu.Brightness_adjuster, "Brightness adjuster");
-        element_verification(menu.Settings, "settings");
-        element_verification(menu.Messages_Alerts, "Messages Alerts");
-        element_verification(menu.Photo_Frame, "Photo Frame");
-        element_verification(menu.Clean_Screen, "Clean Screen");
-        element_verification(menu.Espanol, "Espanol");
-        element_verification(menu.Slide_menu_close, "Slide menu close");
+        elementVerification(menu.Cell_info, "cellular info");
+        elementVerification(menu.Volume_down, "Volume Down");
+        elementVerification(menu.Volume_up, "Volume UP");
+        elementVerification(menu.Volume_adjuster, "Volume adjuster");
+        elementVerification(menu.Brightness_down, "Brightness Down");
+        elementVerification(menu.Brightness_up, "Brightness UP");
+        elementVerification(menu.Brightness_adjuster, "Brightness adjuster");
+        elementVerification(menu.Settings, "settings");
+        elementVerification(menu.Messages_Alerts, "Messages Alerts");
+        elementVerification(menu.Photo_Frame, "Photo Frame");
+        elementVerification(menu.Clean_Screen, "Clean Screen");
+        elementVerification(menu.Espanol, "Espanol");
+        elementVerification(menu.Slide_menu_close, "Slide menu close");
         menu.Slide_menu_close.click();
     }
 

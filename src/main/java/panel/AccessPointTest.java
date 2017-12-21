@@ -21,8 +21,8 @@ public class AccessPointTest extends Setup {
     //////2.1.0rc15.1 version AccessPoint is Disabled by default////////////////////
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test(priority = 1)
@@ -31,25 +31,25 @@ public class AccessPointTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         DevicesPage devices = PageFactory.initElements(driver, DevicesPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.DEVICES.click();
         devices.WiFi_Devices.click();
         Thread.sleep(1000);
         access.Access_Point_Settings.click();
-        element_verification(access.Wifi_Access_Point_summery,"Access Point default summery");
+        elementVerification(access.Wifi_Access_Point_summery,"Access Point default summery");
         access.Wifi_Access_Point.click();
         TimeUnit.SECONDS.sleep(10);
         logger.info("Verifying elements on the page...");
         System.out.println(driver.findElement(By.id("android:id/summary")).getText());
-        element_verification(access.SSID, "SSID");
-        element_verification(access.DHCP_Range_summery, "DHCP Range default summery");
-        element_verification(access.Change_Password, "Change Password");
+        elementVerification(access.SSID, "SSID");
+        elementVerification(access.DHCP_Range_summery, "DHCP Range default summery");
+        elementVerification(access.Change_Password, "Change Password");
         TimeUnit.SECONDS.sleep(1);
-        swipe_vertical();
-        element_verification(access.ActiveWPS, "Active WPS");
-        element_verification(access.AccessPointPassword, "Access Point Password");
-        swipe_vertical_up();
+        swipeVertical();
+        elementVerification(access.ActiveWPS, "Active WPS");
+        elementVerification(access.AccessPointPassword, "Access Point Password");
+        swipeVerticalUp();
         access.Wifi_Access_Point.click();
     }
 

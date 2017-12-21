@@ -46,8 +46,8 @@ public class ActivityMonitorPageTest extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test(priority = 1)
@@ -59,44 +59,44 @@ public class ActivityMonitorPageTest extends Setup {
         logger.info("Adding sensors...");
         sensors.add_primary_call(3, 25, 6619814, 1);
         Thread.sleep(2000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         Thread.sleep(2000);
         settings.ACTIVITY_MONITOR.click();
-        element_verification(activity.Quick_Access, "Quick Access");
-        element_verification(activity.Quick_Access_img, "Quick Access image");
-        element_verification(activity.Safty_State, "Safety State icon");
-        element_verification(activity.Safety_State_txt, "Safety State text");
+        elementVerification(activity.Quick_Access, "Quick Access");
+        elementVerification(activity.Quick_Access_img, "Quick Access image");
+        elementVerification(activity.Safty_State, "Safety State icon");
+        elementVerification(activity.Safety_State_txt, "Safety State text");
         if (activity.Safety_State_txt.getText().equals("Press to Deactivate")) {
             logger.info("Pass: Correct Safety state text: " + activity.Safety_State_txt.getText());
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect Safety state text: " + activity.Safety_State_txt.getText());
         }
-        element_verification(activity.Safety_Active, "Safety Active tab");
-        element_verification(activity.Safety_All, "Safety All tab");
+        elementVerification(activity.Safety_Active, "Safety Active tab");
+        elementVerification(activity.Safety_All, "Safety All tab");
         activity.Quick_Access_img.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
-        element_verification(activity.Quick_Access_CountDown, "Quick Access countdown window");
+        elementVerification(activity.Quick_Access_CountDown, "Quick Access countdown window");
         tap(110, 620);
         Thread.sleep(1000);
         activity.Safty_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        element_verification(activity.Safty_State, "Safety State icon");
-        element_verification(activity.Safety_State_txt, "Safety State text");
+        elementVerification(activity.Safty_State, "Safety State icon");
+        elementVerification(activity.Safety_State_txt, "Safety State text");
         if (activity.Safety_State_txt.getText().equals("Press to Activate")) {
             logger.info("Pass: Correct Safety state text: " + activity.Safety_State_txt.getText());
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect Safety state text: " + activity.Safety_State_txt.getText());
         }
-        element_verification(activity.Safety_Active, "Safety Active tab");
-        element_verification(activity.Safety_All, "Safety All tab");
-        element_verification(activity.Safety_Bypass, "Safety Bypass tab");
+        elementVerification(activity.Safety_Active, "Safety Active tab");
+        elementVerification(activity.Safety_All, "Safety All tab");
+        elementVerification(activity.Safety_Bypass, "Safety Bypass tab");
         Thread.sleep(1000);
         activity.Safty_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         sensors.delete_from_primary(3);
         Thread.sleep(1000);
@@ -118,93 +118,93 @@ public class ActivityMonitorPageTest extends Setup {
         sensors.add_primary_call(8, 25, 6405546, 109);
         sensors.add_primary_call(9, 25, 8716449, 114);
         Thread.sleep(4000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ACTIVITY_MONITOR.click();
         activity.Safety_All.click();
         Thread.sleep(1000);
         WebElement dw1 = driver.findElement(By.xpath("//android.widget.TextView[@text='Door/Window 3']"));
-        verify_sensor_is_displayed(dw1);
+        verifySensorIsDisplayed(dw1);
         WebElement dw2 = driver.findElement(By.xpath("//android.widget.TextView[@text='Door/Window 4']"));
-        verify_sensor_is_displayed(dw2);
+        verifySensorIsDisplayed(dw2);
         WebElement dw3 = driver.findElement(By.xpath("//android.widget.TextView[@text='Door/Window 5']"));
-        verify_sensor_is_displayed(dw3);
+        verifySensorIsDisplayed(dw3);
         WebElement motion4 = driver.findElement(By.xpath("//android.widget.TextView[@text='Motion 6']"));
-        verify_sensor_is_displayed(motion4);
+        verifySensorIsDisplayed(motion4);
         WebElement auxil5 = driver.findElement(By.xpath("//android.widget.TextView[@text='Auxiliary Pendant 7']"));
-        verify_sensor_is_displayed(auxil5);
+        verifySensorIsDisplayed(auxil5);
         WebElement doorbell6 = driver.findElement(By.xpath("//android.widget.TextView[@text='Door Bell 8']"));
-        verify_sensor_is_displayed(doorbell6);
+        verifySensorIsDisplayed(doorbell6);
         swipe_vertical1();
         Thread.sleep(1000);
         WebElement occupancy7 = driver.findElement(By.xpath("//android.widget.TextView[@text='Occupancy Sensor 9']"));
-        verify_sensor_is_displayed(occupancy7);
+        verifySensorIsDisplayed(occupancy7);
         Thread.sleep(2000);
-        sensors.primary_call("65 02 7A", SensorsActivity.OPEN); //open  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.OPEN); //open  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.OPEN); //open  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.OPEN); //open  DW3
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(1000);
-        verify_sensor_is_displayed(dw2);
-        verify_sensor_is_displayed(dw3);
+        verifySensorIsDisplayed(dw2);
+        verifySensorIsDisplayed(dw3);
         Thread.sleep(1000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.CLOSE); //close  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.CLOSE); //close  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.CLOSE); //close  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.CLOSE); //close  DW3
         Thread.sleep(2000);
-        navigate_to_Settings_page();
+        navigateToSettingsPage();
         settings.ACTIVITY_MONITOR.click();
         activity.Safety_All.click();
         activity.Safty_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         activity.Safety_All.click();
         tap(815, 335);
         Thread.sleep(1000);
         tap(815, 420);
         activity.Safty_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.OPEN); //open  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.OPEN); //open  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.OPEN); //open  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.OPEN); //open  DW3
         Thread.sleep(1000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.CLOSE); //close  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.CLOSE); //close  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.CLOSE); //close  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.CLOSE); //close  DW3
         Thread.sleep(2000);
         ARM_STAY();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.OPEN); //open  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.OPEN); //open  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.OPEN); //open  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.OPEN); //open  DW3
         Thread.sleep(1000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.CLOSE); //close  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.CLOSE); //close  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.CLOSE); //close  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.CLOSE); //close  DW3
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         ARM_AWAY(15);
-        sensors.primary_call("65 02 7A", SensorsActivity.OPEN); //open  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.OPEN); //open  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.OPEN); //open  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.OPEN); //open  DW3
         Thread.sleep(1000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(1000);
-        sensors.primary_call("65 02 7A", SensorsActivity.CLOSE); //close  DW2
+        sensors.primaryCall("65 02 7A", SensorsActivity.CLOSE); //close  DW2
         Thread.sleep(1000);
-        sensors.primary_call("65 02 8A", SensorsActivity.CLOSE); //close  DW3
+        sensors.primaryCall("65 02 8A", SensorsActivity.CLOSE); //close  DW3
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         delete_all();
         Thread.sleep(2000);

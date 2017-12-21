@@ -2,6 +2,8 @@ package utils;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -17,7 +19,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 import java.io.*;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -35,6 +36,7 @@ public class Setup {
     public Log log = new Log();
     public Logger logger = Logger.getLogger(this.getClass().getName());
     public Runtime rt = Runtime.getRuntime();
+    public AppiumDriverLocalService service;
 
     public Setup() throws Exception {
         ConfigProps.init();
@@ -71,7 +73,7 @@ public class Setup {
         wait = new WebDriverWait(driver1, 40);
     }
 
-    public String split_method(String str) {
+    public String splitMethod(String str) {
         // import splitter, pass the string, convert into a list of words, add to getUDID
         String a = str.split("\\n")[1];
         return a.split("\\s")[0];
@@ -80,23 +82,47 @@ public class Setup {
     public String get_UDID() throws IOException {
         String command = ConfigProps.adbPath + " devices";
         rt.exec(command);
-        String panel_UDID = split_method(execCmd(command));
+        String panel_UDID = splitMethod(execCmd(command));
         return panel_UDID;
     }
 
-    public void setup_driver(String getUdid, String url_, String port_) throws Exception {
+    public void setupDriver(String getUdid, String url_, String port_) throws Exception {
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("deviceName", "IQPanel2");
+//        cap.setCapability("BROWSER_NAME", "Android");
+//        cap.setCapability("udid", getUdid);
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+//        cap.setCapability("newCommandTimeout", "1000");
+//        cap.setCapability("clearSystemFiles", true);
+//        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+
+        service = AppiumDriverLocalService
+                .buildService(new AppiumServiceBuilder()
+                        .usingDriverExecutable(new File("/home/qolsys/Application/node-v6.10.3-linux-x64/bin/node"))
+                        .withAppiumJS(
+                                new File(
+                                        "/home/qolsys/Application/node-v6.10.3-linux-x64/bin/appium"))
+                        .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
         cap.setCapability("BROWSER_NAME", "Android");
-        cap.setCapability("udid", getUdid);
+        cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         cap.setCapability("newCommandTimeout", "1000");
-        cap.setCapability("clearSystemFiles", true);
-        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+        service.stop();
+        Thread.sleep(2000);
+        service.start();
+        System.out.println("\n*****Start Appium*****\n");
+        Thread.sleep(2000);
+
+        driver = new AndroidDriver<>(service.getUrl(), cap);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
-    public void setup_logger(String test_case_name) throws Exception {
+
+    public void setupLogger(String test_case_name) throws Exception {
         PropertyConfigurator.configure(new File(appDir, "/main/resources/log4j.properties").getAbsolutePath());
         log.clearLog();
         log.startTestCase(" " + test_case_name + " ");
@@ -120,13 +146,13 @@ public class Setup {
         Thread.sleep(2000);
     }
 
-    public WebElement element_verification(WebElement element, String element_name) throws Exception {
+    public WebElement elementVerification(WebElement element, String element_name) throws Exception {
         try {
             if (element.isDisplayed()) {
                 logger.info("Pass: " + element_name + " is present, value = " + element.getText());
             }
         } catch (Exception e) {
-            take_screenshot();
+            takeScreenshot();
             Log.error("*" + element_name + "* - Element is not found!");
             e.printStackTrace();
         } finally {
@@ -134,7 +160,7 @@ public class Setup {
         }
     }
 
-    public void swipe_vertical() throws InterruptedException {
+    public void swipeVertical() throws InterruptedException {
         int starty = 660;
         int endy = 260;
         int startx = 502;
@@ -142,7 +168,7 @@ public class Setup {
         Thread.sleep(2000);
     }
 
-    public void swipe_vertical_up() throws InterruptedException {
+    public void swipeVerticalUp() throws InterruptedException {
         int starty = 260;
         int endy = 660;
         int startx = 502;
@@ -155,13 +181,13 @@ public class Setup {
         touch.tap(x, y).perform();
     }
 
-    public void navigate_to_Settings_page() {
+    public void navigateToSettingsPage() {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         menu.Slide_menu_open.click();
         menu.Settings.click();
     }
 
-    public void navigate_to_Advanced_Settings_page() throws InterruptedException {
+    public void navigateToAdvancedSettingsPage() throws InterruptedException {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
@@ -169,15 +195,15 @@ public class Setup {
         Thread.sleep(1000);
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
-        enter_default_dealer_code();
+        enterDefaultDealerCode();
     }
 
-    public void Navigate_To_Edit_Sensor_Page() throws IOException, InterruptedException {
+    public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         instal.DEVICES.click();
         dev.Security_Sensors.click();
@@ -186,7 +212,7 @@ public class Setup {
 
     public void navigateToUserManagementPage() throws InterruptedException {
         AdvancedSettingsPage advanced = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
     }
@@ -195,7 +221,7 @@ public class Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Disarm");
         home_page.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
     }
 
     public void ARM_STAY() {
@@ -213,7 +239,7 @@ public class Setup {
         TimeUnit.SECONDS.sleep(delay);
     }
 
-    public void enter_default_DURESS_code() {
+    public void enterDefaultDuressCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.Nine.click();
         home_page.Nine.click();
@@ -221,7 +247,7 @@ public class Setup {
         home_page.Eight.click();
     }
 
-    public void enter_default_user_code() {
+    public void enterDefaultUserCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
@@ -229,7 +255,7 @@ public class Setup {
         home_page.Four.click();
     }
 
-    public void enter_guest_code() {
+    public void enterGuestCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();
         home_page.Two.click();
@@ -237,7 +263,7 @@ public class Setup {
         home_page.Three.click();
     }
 
-    public void enter_default_dealer_code() {
+    public void enterDefaultDealerCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.Two.click();
         home_page.Two.click();
@@ -245,139 +271,140 @@ public class Setup {
         home_page.Two.click();
     }
 
-    public void verify_disarm() throws Exception {
+    public void verifyDisarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("DISARMED")) {
             logger.info("Pass: System is DISARMED");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
         }
     }
 
-    public void verify_armstay() throws Exception {
+    public void verifyArmstay() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Disarmed_text.getText().equals("ARMED STAY")) {
             logger.info("Pass: System is ARMED STAY");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: System is NOT ARMED STAY");
         }
     }
 
-    public void verify_armaway() throws Exception {
+    public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ArwAway_State.isDisplayed()) {
+            //home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
             logger.info("Pass: panel is in Arm Away mode");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: panel is not in Arm Away mode");
         }
     }
 
-    public void verify_photoframe_mode() throws Exception {
+    public void verifyPhotoframeMode() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.PhotoFrame_Mode.isDisplayed()) {
             logger.info("Pass: panel is in Photo Frame mode");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: panel is not in Photo Frame mode");
         }
     }
 
-    public void verify_in_alarm() throws Exception {
+    public void verifyInAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: System is NOT in ALARM");
         }
     }
 
-    public void verify_panel_alarm() throws Exception {
+    public void verifyPanelAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.panel_Alarm.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: System is NOT in ALARM");
         }
     }
 
-    public void verify_sensor_is_displayed(WebElement sensor_name) throws Exception {
+    public void verifySensorIsDisplayed(WebElement sensor_name) throws Exception {
         if (sensor_name.isDisplayed()) {
             logger.info(sensor_name.getText() + " is successfully opened/activated");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info(sensor_name + " is NOT opened/activated");
         }
     }
 
-    public void verify_sensor_is_tampered(WebElement sensor_name) throws Exception {
+    public void verifySensorIsTampered(WebElement sensor_name) throws Exception {
         if (sensor_name.isDisplayed()) {
             logger.info(sensor_name.getText() + " is successfully tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info(sensor_name + " is NOT tampered");
         }
     }
 
-    public void verify_status_open() throws Exception {
+    public void verifyStatusOpen() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Open")) {
             logger.info("Pass: Correct status is Open");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
     }
 
-    public void verify_status_activated() throws Exception {
+    public void verifyStatusActivated() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Activated")) {
             logger.info("Pass: Correct status is Activated");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
     }
 
-    public void verify_status_tampered() throws Exception {
+    public void verifyStatusTampered() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Tampered")) {
             logger.info("Pass: Correct status is Tampered");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
     }
 
-    public void verify_status_alarmed() throws Exception {
+    public void verifyStatusAlarmed() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals("Alarmed")) {
             logger.info("Pass: Correct status is Alarmed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
     }
 
-    public void verify_sensorstatus_inAlarm(String Al_status) throws Exception {
+    public void verifySensorstatusInAlarm(String Al_status) throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (home_page.Red_banner_sensor_status.getText().equals(Al_status)) {
             logger.info("Pass: Correct status is " + Al_status);
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
         }
     }
 
-    public String Software_Version() throws InterruptedException {
+    public String softwareVersion() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         about.Software.click();
         WebElement soft_version = driver.findElement(By.id("com.qolsys:id/summary"));
@@ -386,7 +413,7 @@ public class Setup {
         return current_version;
     }
 
-    public void Rename_Sensor(int number, String new_name) {
+    public void renameSensor(int number, String new_name) {
         WebElement b = driver.findElement(By.className("android.widget.LinearLayout"));
         List<WebElement> li1 = b.findElements(By.id("com.qolsys:id/imageView1"));
         li1.get(number).click();
@@ -396,7 +423,7 @@ public class Setup {
         driver.findElement(By.id("com.qolsys:id/addsensor")).click();
     }
 
-    public void delete_all_camera_photos() throws Exception {
+    public void deleteAllCameraPhotos() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -405,7 +432,7 @@ public class Setup {
             while (camera.Photo_lable.isDisplayed()) {
                 camera.Camera_delete.click();
                 camera.Camera_delete_yes.click();
-                enter_default_user_code();
+                enterDefaultUserCode();
             }
         } catch (Exception e) {
             System.out.println("No photos to delete...");
@@ -416,7 +443,7 @@ public class Setup {
         swipeFromRighttoLeft();
     }
 
-    public void take_screenshot() throws Exception {
+    public void takeScreenshot() throws Exception {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try {
@@ -462,18 +489,18 @@ public class Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(1000);
-        swipe_vertical();
+        swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Stay.click();
         Thread.sleep(1000);
         home.Home_button.click();
     }
 
-    public void swipe_right() throws InterruptedException {
+    public void swipeRight() throws InterruptedException {
         int startY = 400;
         int endX = 660;
         int startX = 360;
@@ -481,7 +508,7 @@ public class Setup {
         Thread.sleep(2000);
     }
 
-    public void swipe_left() throws InterruptedException {
+    public void swipeLeft() throws InterruptedException {
         int startY = 400;
         int endX = 360;
         int startX = 660;
@@ -489,7 +516,7 @@ public class Setup {
         Thread.sleep(2000);
     }
 
-    public void swipe_up() throws InterruptedException {
+    public void swipeUp() throws InterruptedException {
         int startY = 616;
         int endY = 227;
         int startX = 314;
@@ -621,7 +648,7 @@ public class Setup {
     }
 
     //State is "Enable" or "Disable"
-    public void setArmStay_NoDelay(String state) throws IOException, InterruptedException {
+    public void setArmStayNoDelay(String state) throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 21 i32 0 i32 0";
         rt.exec(command);
         String value = (execCmd(command)).toString();
@@ -670,7 +697,7 @@ public class Setup {
         Thread.sleep(1000);
     }
 
-    public void verify_setting(String setting, String call, String expected) throws IOException {
+    public void verifySetting(String setting, String call, String expected) throws IOException {
         String result = execCmd(ConfigProps.adbPath + " shell service call qservice " + call).split(" ")[2];
         if (result.equals(expected))
             logger.info("[Pass] " + setting + " has value: " + expected);
@@ -679,14 +706,14 @@ public class Setup {
 
     }
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+    public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
 
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
+    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);

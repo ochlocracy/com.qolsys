@@ -19,8 +19,8 @@ public class ContactUsTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -30,10 +30,10 @@ public class ContactUsTest extends Setup {
         Thread.sleep(1000);
 
         contact_us.Contact_Us.click();
-        element_verification(contact_us.Contact_us_tab, "Contact Us tab");
-        element_verification(contact_us.Dealer_website, "Dealer website");
-        element_verification(contact_us.Video_Tutorials_tab, "Video Tutorials tab");
-        element_verification(contact_us.Messages_Alerts_Alarms_tab, "Messages/Alerts/Alarms tab");
+        elementVerification(contact_us.Contact_us_tab, "Contact Us tab");
+        elementVerification(contact_us.Dealer_website, "Dealer website");
+        elementVerification(contact_us.Video_Tutorials_tab, "Video Tutorials tab");
+        elementVerification(contact_us.Messages_Alerts_Alarms_tab, "Messages/Alerts/Alarms tab");
         swipeFromLefttoRight();
         Thread.sleep(1000);
     }

@@ -29,8 +29,8 @@ public class CarbonMonoxide extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -51,7 +51,7 @@ public class CarbonMonoxide extends Setup {
     public void addSensor() throws IOException, InterruptedException {
         Thread.sleep(2000);
         logger.info("Adding Sensor");
-        add_primary_call(27, 34, 7667882, 6);
+        addPrimaryCall(27, 34, 7667882, 6);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
@@ -68,12 +68,12 @@ public class CarbonMonoxide extends Setup {
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        verifyInAlarm();
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(5000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify1);
     }
@@ -84,10 +84,10 @@ public class CarbonMonoxide extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify1);
     }
@@ -110,10 +110,10 @@ public class CarbonMonoxide extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
-        verify_armstay();
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
+        verifyArmstay();
         DISARM();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -130,10 +130,10 @@ public class CarbonMonoxide extends Setup {
         logger.info("ArmStay -Activate " + group + " Carbon Monoxide during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify1);
     }
@@ -148,10 +148,10 @@ public class CarbonMonoxide extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
-        enter_default_user_code();
+        verifyInAlarm();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify2);
     }
@@ -168,13 +168,13 @@ public class CarbonMonoxide extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
         adc.ADC_verification(element_to_verify, element_to_verify1);
     }
@@ -192,6 +192,6 @@ public class CarbonMonoxide extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(27);
+        deleteFromPrimary(27);
     }
 }

@@ -31,8 +31,8 @@ public class DisarmAuxiliary extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
         servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
@@ -52,12 +52,12 @@ public class DisarmAuxiliary extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(43, 6, 6361649, 21);
-        add_primary_call(44, 0, 6361650, 21);
-        add_primary_call(48, 1, 6361652, 21);
-        add_primary_call(49, 2, 6361653, 21);
-        add_primary_call(50, 4, 6361654, 21);
-        add_primary_call(47, 25, 6361665, 21);
+        addPrimaryCall(43, 6, 6361649, 21);
+        addPrimaryCall(44, 0, 6361650, 21);
+        addPrimaryCall(48, 1, 6361652, 21);
+        addPrimaryCall(49, 2, 6361653, 21);
+        addPrimaryCall(50, 4, 6361654, 21);
+        addPrimaryCall(47, 25, 6361665, 21);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -69,12 +69,12 @@ public class DisarmAuxiliary extends Setup {
 
     public void Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Silent Auxiliary Police Pendant during Disarm");
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(20000);
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
@@ -83,16 +83,16 @@ public class DisarmAuxiliary extends Setup {
     public void Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Auxiliary Medical Pendant during Disarm");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        element_verification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
+        elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         Thread.sleep(35000);
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
 
@@ -101,28 +101,28 @@ public class DisarmAuxiliary extends Setup {
     public void Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Auxiliary Police Pendant during Disarm");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        element_verification(emg.Police_Emergency_Alarmed, "Police Alarmed");
+        elementVerification(emg.Police_Emergency_Alarmed, "Police Alarmed");
         Thread.sleep(35000);
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
     public void Activate_Safety_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmStay -Activate Group " + group + " Safety Sensor during Disarm");
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(2000);
         logger.info("Activate a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        verify_disarm();
+        verifyDisarm();
         Thread.sleep(20000);
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
@@ -163,7 +163,7 @@ public class DisarmAuxiliary extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 42; i > 51; i++) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

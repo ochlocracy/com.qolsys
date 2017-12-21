@@ -31,13 +31,13 @@ public class ArmedAwaySmokeSensor extends Setup {
         ConfigProps.init();
     }
 
-    public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+    public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
-    public void delete_from_primary(int zone) throws IOException, InterruptedException {
+    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
@@ -45,9 +45,9 @@ public class ArmedAwaySmokeSensor extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
-        setArmStay_NoDelay("Disable");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
+        setArmStayNoDelay("Disable");
         setAutoStay("Disable");
     }
 
@@ -59,7 +59,7 @@ public class ArmedAwaySmokeSensor extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
@@ -73,14 +73,14 @@ public class ArmedAwaySmokeSensor extends Setup {
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(5);
         logger.info("Activate/Restore a sensor");
-        sensors.primary_call(DLID, activate);
+        sensors.primaryCall(DLID, activate);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, restore);
+        sensors.primaryCall(DLID, restore);
         Thread.sleep(2000);
-        element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(AccountID);
@@ -112,16 +112,16 @@ public class ArmedAwaySmokeSensor extends Setup {
         logger.info("ArmAway -Tamper Group " + group + " smoke sensor during Arm Away");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(33);
-        verify_armaway();
+        verifyArmaway();
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, tamper);
+        sensors.primaryCall(DLID, tamper);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         logger.info("Disarm the system");
-        enter_default_user_code();
-        element_verification(home.Tamper_Status, "Tampered");
+        enterDefaultUserCode();
+        elementVerification(home.Tamper_Status, "Tampered");
         Thread.sleep(2000);
-        sensors.primary_call(DLID, restore);
+        sensors.primaryCall(DLID, restore);
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(AccountID);
@@ -163,7 +163,7 @@ public class ArmedAwaySmokeSensor extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(26);
+        deleteFromPrimary(26);
     }
 
     @AfterMethod

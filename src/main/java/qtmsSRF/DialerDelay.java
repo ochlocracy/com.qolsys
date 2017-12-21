@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.HomePage;
@@ -35,8 +34,8 @@ public class DialerDelay extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         //servcall.set_ARM_STAY_NO_DELAY_enable();
         //servcall.set_AUTO_STAY(0);
     }
@@ -51,17 +50,17 @@ public class DialerDelay extends Setup {
         Thread.sleep(3000);
         servcall.set_DIALER_DELAY(0);
         Thread.sleep(3000);
-        // add_primary_call(10, 10,6619296, 1);
-        add_primary_call(9, 9, 6619303, 1);
+        // addPrimaryCall(10, 10,6619296, 1);
+        addPrimaryCall(9, 9, 6619303, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(4000);
-        sensors.primary_call("65 00 7A", SensorsActivity.TAMPER);
-        // sensors.primary_call("65 00 0A", open);
+        sensors.primaryCall("65 00 7A", SensorsActivity.TAMPER);
+        // sensors.primaryCall("65 00 0A", open);
         Thread.sleep(12000);
-        // verify_in_alarm();
+        // verifyInAlarm();
         Thread.sleep(2000);
         // Thread.sleep(40000);
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
@@ -77,8 +76,8 @@ public class DialerDelay extends Setup {
             System.out.println("No such element found!!!");
         }
         Thread.sleep(4000);
-        enter_default_user_code();
-        delete_from_primary(9);
+        enterDefaultUserCode();
+        deleteFromPrimary(9);
         Thread.sleep(4000);
     }
 
@@ -86,15 +85,15 @@ public class DialerDelay extends Setup {
     public void alarm_08aa() throws Exception {
         Thread.sleep(3000);
         servcall.set_DIALER_DELAY(0);
-        add_primary_call(10, 10, 6619296, 1);
+        addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(4000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(12000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
@@ -109,8 +108,8 @@ public class DialerDelay extends Setup {
             System.out.println("No such element found!!!");
         }
         Thread.sleep(4000);
-        enter_default_user_code();
-        delete_from_primary(10);
+        enterDefaultUserCode();
+        deleteFromPrimary(10);
         Thread.sleep(4000);
     }
 
@@ -122,13 +121,13 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         home.Emergency_Button.click();
         Thread.sleep(2000);
         home.police_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -154,7 +153,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -168,7 +167,7 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         home.police_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -194,7 +193,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -206,13 +205,13 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         home.Emergency_Button.click();
         Thread.sleep(2000);
         home.Aux_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -238,7 +237,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -252,7 +251,7 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         home.Aux_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -278,7 +277,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -290,13 +289,13 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(2000);
         home.Emergency_Button.click();
         Thread.sleep(2000);
         home.Fire_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -322,7 +321,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -336,7 +335,7 @@ public class DialerDelay extends Setup {
         Thread.sleep(2000);
         home.Fire_Alarm.click();
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -362,7 +361,7 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
     }
 
@@ -371,14 +370,14 @@ public class DialerDelay extends Setup {
         Thread.sleep(3000);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
-        verify_armstay();
-        sensors.primary_call("67 00 22", SensorsActivity.ACTIVATE);
+        verifyArmstay();
+        sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -404,9 +403,9 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(26);
+        deleteFromPrimary(26);
         Thread.sleep(4000);
     }
 
@@ -415,14 +414,14 @@ public class DialerDelay extends Setup {
         Thread.sleep(3000);
         servcall.set_DIALER_DELAY(10);
         Thread.sleep(2000);
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(2000);
-        verify_armaway();
-        sensors.primary_call("67 00 22", SensorsActivity.ACTIVATE);
+        verifyArmaway();
+        sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -448,20 +447,20 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(26);
+        deleteFromPrimary(26);
         Thread.sleep(4000);
     }
 
     @Test(priority = 13)
     public void alarm_04_05d() throws Exception {
         Thread.sleep(3000);
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
         Thread.sleep(3000);
-        sensors.primary_call("67 00 22", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_panel_alarm();
+        verifyPanelAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -487,20 +486,20 @@ public class DialerDelay extends Setup {
         }
         Thread.sleep(4000);
         driver.findElementById("com.qolsys:id/tv_emg_cancel").click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(26);
+        deleteFromPrimary(26);
         Thread.sleep(4000);
     }
 
     @Test(priority = 1)
     public void alarm_06d() throws Exception {
         Thread.sleep(3000);
-        add_primary_call(34, 34, 7667882, 6);
+        addPrimaryCall(34, 34, 7667882, 6);
         Thread.sleep(3000);
-        sensors.primary_call("75 00 AA", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("75 00 AA", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -525,24 +524,24 @@ public class DialerDelay extends Setup {
             System.out.println("No such element found!!!");
         }
         Thread.sleep(4000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(4000);
     }
 
     @Test(priority = 2)
     public void alarm_06as() throws Exception {
         Thread.sleep(3000);
-        add_primary_call(34, 34, 7667882, 6);
+        addPrimaryCall(34, 34, 7667882, 6);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(3000);
-        verify_armstay();
+        verifyArmstay();
         Thread.sleep(3000);
-        sensors.primary_call("75 00 AA", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("75 00 AA", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -567,24 +566,24 @@ public class DialerDelay extends Setup {
             System.out.println("No such element found!!!");
         }
         Thread.sleep(4000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(4000);
     }
 
     @Test(priority = 3)
     public void alarm_06aa() throws Exception {
         Thread.sleep(3000);
-        add_primary_call(34, 34, 7667882, 6);
+        addPrimaryCall(34, 34, 7667882, 6);
         Thread.sleep(3000);
         servcall.EVENT_ARM_AWAY();
         Thread.sleep(3000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(3000);
-        sensors.primary_call("75 00 AA", SensorsActivity.ACTIVATE);
+        sensors.primaryCall("75 00 AA", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        verify_in_alarm();
+        verifyInAlarm();
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(6000);
         adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
@@ -609,9 +608,9 @@ public class DialerDelay extends Setup {
             System.out.println("No such element found!!!");
         }
         Thread.sleep(4000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(34);
+        deleteFromPrimary(34);
         Thread.sleep(4000);
     }
 

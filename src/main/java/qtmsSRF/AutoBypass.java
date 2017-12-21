@@ -40,8 +40,8 @@ public class AutoBypass extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         Thread.sleep(1000);
     }
 
@@ -52,7 +52,7 @@ public class AutoBypass extends Setup {
         adc.webDriverSetUp();
         servcall.set_AUTO_BYPASS(1);
         Thread.sleep(two_sec);
-        add_primary_call(1, 10, 6619296, 1);
+        addPrimaryCall(1, 10, 6619296, 1);
         Thread.sleep(two_sec);
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(two_sec);
@@ -65,21 +65,21 @@ public class AutoBypass extends Setup {
     }*/
     // @Test  /*** Disarm mode/1)a sensor must be paired 2)Auto Bypass Enabled ***/
     public void addSensors() throws Exception {
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
-        add_primary_call(4, 12, 6619297, 1);
+        addPrimaryCall(4, 12, 6619297, 1);
         Thread.sleep(2000);
-        add_primary_call(5, 13, 6619298, 1);
+        addPrimaryCall(5, 13, 6619298, 1);
         Thread.sleep(2000);
-        add_primary_call(6, 14, 6619299, 1);
+        addPrimaryCall(6, 14, 6619299, 1);
         Thread.sleep(2000);
-        add_primary_call(7, 16, 6619300, 1);
+        addPrimaryCall(7, 16, 6619300, 1);
         Thread.sleep(2000);
-        add_primary_call(20, 15, 5570628, 2);
+        addPrimaryCall(20, 15, 5570628, 2);
         Thread.sleep(2000);
-        add_primary_call(22, 17, 5570629, 2);
+        addPrimaryCall(22, 17, 5570629, 2);
         Thread.sleep(2000);
-        add_primary_call(23, 20, 5570630, 2);
+        addPrimaryCall(23, 20, 5570630, 2);
         Thread.sleep(8000);
     }
 
@@ -87,12 +87,12 @@ public class AutoBypass extends Setup {
 /*** Disarm mode/1)a sensor must be paired 2)Auto Bypass Enabled ***/
     public void AB319_02_AB319_04() throws Exception {
         Thread.sleep(4000);
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         servcall.set_AUTO_BYPASS(01);
         Thread.sleep(2000);
         logger.info("Verify that open sensor will be selected for bypass and at top of sensor list when pushing arm button.");
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
         servcall.get_AUTO_BYPASS();
         Thread.sleep(2000);
@@ -111,20 +111,20 @@ public class AutoBypass extends Setup {
         // driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(13000);
         logger.info("Verify that bypassed sensors are really bypassed after panel is armed");
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(8000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_4 Pass: Sensor is bypassed");
         home_page.ArwAway_State.click();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -133,12 +133,12 @@ public class AutoBypass extends Setup {
         Thread.sleep(2000);
         logger.info("Verify that TTS will announce bypassed sensors during arming & ");
         logger.info("Verify that TTS will not announce opening and closing of bypassed sensor while armed");
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("open before ARM AWAY");
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(2000);
         servcall.set_AUTO_BYPASS(01);
@@ -152,14 +152,14 @@ public class AutoBypass extends Setup {
         eventLogsGenerating(log_path, new String[]{
                 "TtsUtil:: TTS processing:Door/Window 3, ByPassed"}, 1);
         Thread.sleep(4000);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(two_sec);
         //home.ArwAway_State.click();
-        //  enter_default_user_code();
+        //  enterDefaultUserCode();
         logger.info("Verify that TTS will not announce opening and closing of bypassed sensor while armed away");
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(two_sec);
         deleteLogFile(log_path);
         Thread.sleep(two_sec);
@@ -169,11 +169,11 @@ public class AutoBypass extends Setup {
         Thread.sleep(2000);
         home.ArwAway_State.click();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(two_sec);
         logger.info("open before ARM STAY");
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(two_sec);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(two_sec);
@@ -182,12 +182,12 @@ public class AutoBypass extends Setup {
         eventLogsGenerating(log_path, new String[]{
                 "TtsUtil:: TTS processing:Door/Window 3, ByPassed"}, 1);
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(two_sec);
         logger.info("Verify that TTS will not announce opening and closing of bypassed sensor while armed stay");
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(two_sec);
         deleteLogFile(log_path);
         Thread.sleep(two_sec);
@@ -197,7 +197,7 @@ public class AutoBypass extends Setup {
         Thread.sleep(two_sec);
         DISARM();
         Thread.sleep(2000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -207,14 +207,14 @@ public class AutoBypass extends Setup {
         logger.info("Verify that Open Sensor Protest appears when Auto Bypass is dissabled, sensor is opened, and arm is attempted.");
         logger.info("Verify that panel will arm once 'Arming protest' message appears and selected 'ok' ");
         Thread.sleep(10000);
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
         servcall.set_AUTO_BYPASS(0);
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(10000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(two_sec);
         home_page.DISARM.click();
         Thread.sleep(two_sec);
@@ -229,13 +229,13 @@ public class AutoBypass extends Setup {
             home_page.ARM_AWAY.click();
         }
         Thread.sleep(15000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         home_page.ArwAway_State.click();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -243,12 +243,12 @@ public class AutoBypass extends Setup {
     public void AB319_06() throws Exception {
         logger.info("Verify that panel will arm once sensor is closed from step AB319_05");
         Thread.sleep(2000);
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         //servcall.set_AUTO_BYPASS(0);
         //  servcall.set_AUTO_STAY(0);
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(4000);
         home_page.DISARM.click();
         Thread.sleep(two_sec);
@@ -256,7 +256,7 @@ public class AutoBypass extends Setup {
         Thread.sleep(two_sec);
         if (driver.findElements(By.id("com.qolsys:id/message")).size() == 1) {
             logger.info("Pass: Open Sensor Pop-up Message Received");
-            sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+            sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
             Thread.sleep(5000);
             driver.findElement(By.id("com.qolsys:id/cancel")).click();
             home_page.ARM_AWAY.click();
@@ -266,13 +266,13 @@ public class AutoBypass extends Setup {
             home_page.ARM_AWAY.click();
         }
         Thread.sleep(14000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_06 Pass: Verified that panel will arm once sensor is closed from step AB319_05");
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -280,7 +280,7 @@ public class AutoBypass extends Setup {
     public void AB319_07() throws Exception {
         logger.info("Verify that sensor will not Auto Bypass if sensor is opened after selecting arm button.");
         Thread.sleep(2000);
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
         servcall.set_AUTO_BYPASS(1);
         Thread.sleep(2000);
@@ -291,14 +291,14 @@ public class AutoBypass extends Setup {
         Thread.sleep(two_sec);
         home_page.ARM_AWAY.click();
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(13000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(500);
         logger.info("AB319_07 Pass: Verified that sensor will not Auto Bypass if sensor is opened after selecting arm button.");
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -306,14 +306,14 @@ public class AutoBypass extends Setup {
     public void AB319_08() throws Exception {
         logger.info("Verify that sensor can be unselected from bypass and system can be armed as normal");
         Thread.sleep(2000);
-        add_primary_call(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_AUTO_BYPASS(1);
         Thread.sleep(2000);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(4000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
         Thread.sleep(2000);
@@ -326,18 +326,18 @@ public class AutoBypass extends Setup {
         else
             logger.info("Fail: Sensor is not selected for bypass");
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 0A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(two_sec);
         driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(15000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_08 Pass: System armed.");
         home_page.ArwAway_State.click();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(8000);
     }
 
@@ -354,17 +354,17 @@ public class AutoBypass extends Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(6000);
-        sensors.primary_call("65 00 0A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 1A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 1A", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call("65 00 2A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 2A", SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call("55 00 44", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 44", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call("55 00 54", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 54", SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call("55 00 64", SensorsActivity.TAMPER);
+        sensors.primaryCall("55 00 64", SensorsActivity.TAMPER);
         Thread.sleep(8000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
 //        home_page.DISARM.click();
@@ -416,28 +416,28 @@ public class AutoBypass extends Setup {
         Thread.sleep(two_sec);
         driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(15000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_12 Pass: System armed.");
         home_page.ArwAway_State.click();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(2000);
-        delete_from_primary(4);
+        deleteFromPrimary(4);
         Thread.sleep(2000);
-        delete_from_primary(5);
+        deleteFromPrimary(5);
         Thread.sleep(2000);
-        delete_from_primary(6);
+        deleteFromPrimary(6);
         Thread.sleep(2000);
-        delete_from_primary(7);
+        deleteFromPrimary(7);
         Thread.sleep(2000);
-        delete_from_primary(20);
+        deleteFromPrimary(20);
         Thread.sleep(2000);
-        delete_from_primary(22);
+        deleteFromPrimary(22);
         Thread.sleep(2000);
-        delete_from_primary(23);
+        deleteFromPrimary(23);
         Thread.sleep(8000);
     }
 
@@ -482,26 +482,26 @@ public class AutoBypass extends Setup {
         Thread.sleep(4000);
         driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(15000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_13 Pass: System armed.");
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
-        delete_from_primary(4);
+        deleteFromPrimary(3);
+        deleteFromPrimary(4);
         Thread.sleep(2000);
-        delete_from_primary(5);
+        deleteFromPrimary(5);
         Thread.sleep(2000);
-        delete_from_primary(6);
+        deleteFromPrimary(6);
         Thread.sleep(2000);
-        delete_from_primary(7);
+        deleteFromPrimary(7);
         Thread.sleep(2000);
-        delete_from_primary(20);
+        deleteFromPrimary(20);
         Thread.sleep(2000);
-        delete_from_primary(22);
+        deleteFromPrimary(22);
         Thread.sleep(2000);
-        delete_from_primary(23);
+        deleteFromPrimary(23);
         Thread.sleep(8000);
     }
 
@@ -516,7 +516,7 @@ public class AutoBypass extends Setup {
         servcall.set_AUTO_STAY(1);
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        sensors.primary_call("65 00 1A", SensorsActivity.OPEN);
+        sensors.primaryCall("65 00 1A", SensorsActivity.OPEN);
         Thread.sleep(6000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
         // home_page.DISARM.click();
@@ -534,29 +534,29 @@ public class AutoBypass extends Setup {
         Thread.sleep(4000);
         home_page.ARM_AWAY.click();
         Thread.sleep(two_sec);
-        sensors.primary_call("65 00 1A", SensorsActivity.CLOSE);
+        sensors.primaryCall("65 00 1A", SensorsActivity.CLOSE);
         Thread.sleep(15000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(two_sec);
         logger.info("AB319_06 Pass: Verified that panel will arm once sensor is closed from step AB319_05");
         home_page.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(4000);
-        delete_from_primary(3);
+        deleteFromPrimary(3);
         Thread.sleep(2000);
-        delete_from_primary(4);
+        deleteFromPrimary(4);
         Thread.sleep(2000);
-        delete_from_primary(5);
+        deleteFromPrimary(5);
         Thread.sleep(2000);
-        delete_from_primary(6);
+        deleteFromPrimary(6);
         Thread.sleep(2000);
-        delete_from_primary(7);
+        deleteFromPrimary(7);
         Thread.sleep(2000);
-        delete_from_primary(20);
+        deleteFromPrimary(20);
         Thread.sleep(2000);
-        delete_from_primary(22);
+        deleteFromPrimary(22);
         Thread.sleep(2000);
-        delete_from_primary(23);
+        deleteFromPrimary(23);
         Thread.sleep(8000);
     }
 

@@ -35,8 +35,8 @@ public class ArmedAwayContact extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
         servcall.set_SIA_LIMITS_disable();
         Thread.sleep(2000);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
@@ -58,16 +58,16 @@ public class ArmedAwayContact extends Setup {
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(11, 10, 6619296, 1);
-        add_primary_call(12, 12, 6619297, 1);
-        add_primary_call(3, 13, 6619298, 1);
-        add_primary_call(4, 14, 6619299, 1);
-        add_primary_call(5, 16, 6619300, 1);
-        add_primary_call(6, 8, 6619301, 1);
-        add_primary_call(7, 9, 6619302, 1);
-        add_primary_call(8, 25, 6619303, 1);
-        add_primary_call(9, 17, 5570628, 2);
-        add_primary_call(10, 20, 5570629, 2);
+        addPrimaryCall(11, 10, 6619296, 1);
+        addPrimaryCall(12, 12, 6619297, 1);
+        addPrimaryCall(3, 13, 6619298, 1);
+        addPrimaryCall(4, 14, 6619299, 1);
+        addPrimaryCall(5, 16, 6619300, 1);
+        addPrimaryCall(6, 8, 6619301, 1);
+        addPrimaryCall(7, 9, 6619302, 1);
+        addPrimaryCall(8, 25, 6619303, 1);
+        addPrimaryCall(9, 17, 5570628, 2);
+        addPrimaryCall(10, 20, 5570629, 2);
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
@@ -80,14 +80,14 @@ public class ArmedAwayContact extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(5000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -98,13 +98,13 @@ public class ArmedAwayContact extends Setup {
         logger.info("ArmAway - Open/Close Group " + group + " contact sensor during exit delay");
         ARM_AWAY(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -158,13 +158,13 @@ public class ArmedAwayContact extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -175,14 +175,14 @@ public class ArmedAwayContact extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_AWAY(ConfigProps.longExitDelay);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -235,17 +235,17 @@ public class ArmedAwayContact extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(4000);
-        sensors.primary_call(DLID2, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID2, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID2, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID2, SensorsActivity.RESTORE);
         Thread.sleep(5000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -256,17 +256,17 @@ public class ArmedAwayContact extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(1000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(4000);
-        sensors.primary_call(DLID2, SensorsActivity.OPEN);
+        sensors.primaryCall(DLID2, SensorsActivity.OPEN);
         Thread.sleep(2000);
-        sensors.primary_call(DLID2, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID2, SensorsActivity.CLOSE);
         Thread.sleep(5000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -299,13 +299,13 @@ public class ArmedAwayContact extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_in_alarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -318,14 +318,14 @@ public class ArmedAwayContact extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         logger.info("Trip a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.CLOSE);
+        sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(17000);
-        verify_armaway();
+        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -376,7 +376,7 @@ public class ArmedAwayContact extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         for (int i = 13; i > 2; i--) {
-            delete_from_primary(i);
+            deleteFromPrimary(i);
         }
     }
 

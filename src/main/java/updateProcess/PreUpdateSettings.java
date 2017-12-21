@@ -18,8 +18,8 @@ public class PreUpdateSettings extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -181,6 +181,11 @@ public class PreUpdateSettings extends Setup {
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
+        log.endTestCase(page_name);
+        System.out.println("*****Stop driver*****");
         driver.quit();
+        Thread.sleep(1000);
+        System.out.println("\n\n*****Stop appium service*****" + "\n\n");
+        service.stop();
     }
 }

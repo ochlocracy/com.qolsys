@@ -35,9 +35,9 @@ public class ArmedStaySmokeSensor extends Setup{
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(),"http://127.0.1.1", "4723");
-        setup_logger(page_name);
-        setArmStay_NoDelay("Disable");
+        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+        setupLogger(page_name);
+        setArmStayNoDelay("Disable");
         setAutoStay("Disable");
     }
     @BeforeMethod
@@ -48,7 +48,7 @@ public class ArmedStaySmokeSensor extends Setup{
     @Test
     public void addSensors() throws IOException, InterruptedException {
         Thread.sleep(2000);
-        add_primary_call(26, 26, 6750242, 5);
+        addPrimaryCall(26, 26, 6750242, 5);
 
 
         adc.New_ADC_session(adc.getAccountId());
@@ -64,14 +64,14 @@ public class ArmedStaySmokeSensor extends Setup{
         ARM_STAY();
         Thread.sleep(5000);
         logger.info("Activate/Restore a sensor");
-        sensors.primary_call(DLID, SensorsActivity.ACTIVATE);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        element_verification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
         emg.Cancel_Emergency.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(AccountID);
@@ -103,14 +103,14 @@ public class ArmedStaySmokeSensor extends Setup{
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(33000);
-        verify_armstay();
+        verifyArmstay();
         logger.info("Tamper a sensor");
-        sensors.primary_call(DLID, SensorsActivity.TAMPER);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
-        verify_armstay();
-        element_verification(home.Tamper_Status, "Tampered");
+        verifyArmstay();
+        elementVerification(home.Tamper_Status, "Tampered");
         Thread.sleep(5000);
-        sensors.primary_call(DLID, SensorsActivity.RESTORE);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         DISARM();
         Thread.sleep(15000);
@@ -150,7 +150,7 @@ public class ArmedStaySmokeSensor extends Setup{
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        delete_from_primary(26);
+        deleteFromPrimary(26);
     }
     @AfterMethod
     public void webDriverQuit(){

@@ -36,7 +36,7 @@ public class Smoke_Test_CO_Grid {
         ContactUs contact_us = PageFactory.initElements(s.getDriver(), ContactUs.class);
         SensorsList list = PageFactory.initElements(s.getDriver(), SensorsList.class);
 
-//        logger.info("Current software version: " + s.Software_Version());
+//        logger.info("Current software version: " + s.softwareVersion());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");
         MySensors.addAllSensors1(UDID_);

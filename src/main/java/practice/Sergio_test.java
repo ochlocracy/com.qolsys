@@ -20,8 +20,8 @@ public class Sergio_test extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception{
-    setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-    setup_logger(page_name);
+    setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+    setupLogger(page_name);
     }
 
     @Test
@@ -29,10 +29,10 @@ public class Sergio_test extends Setup {
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         Thread.sleep(1000);
-        element_verification(about.ZWave_About, "Z-Wave");
+        elementVerification(about.ZWave_About, "Z-Wave");
         about.ZWave_About.click();
         Thread.sleep(5000);
     }

@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Sensors {
 
-    public String primary = "8ebdbc76";  //c.getudid_();
-    public static final String transmitter = "8ec2bc5d ";
+    public String primary = "8ebdbc39";  //c.getudid_();
+    public static final String transmitter = "8f03bc79 ";
 
     public Runtime rt = Runtime.getRuntime();
 
@@ -233,7 +233,7 @@ public class Sensors {
         rt.exec(ConfigProps.adbPath + " -s " + transmitter + add_transmitter);
     }
 
-    public void primary_call(String DLID, String State) throws IOException {
+    public void primaryCall(String DLID, String State) throws IOException {
         String primary_send =" shell rfinjector 02 "+DLID+" "+State;
         rt.exec(ConfigProps.adbPath + primary_send);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1

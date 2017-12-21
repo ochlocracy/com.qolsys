@@ -19,8 +19,8 @@ public class DisarmPhotosTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver(get_UDID(), "http://127.0.1.1", "4723");
-        setup_logger(page_name);
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupLogger(page_name);
     }
 
     @Test
@@ -32,25 +32,25 @@ public class DisarmPhotosTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying Disarm photo is taken when setting in enabled...");
-        delete_all_camera_photos();
+        deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
         if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: Disarm photo is displayed");
         } else {
-            take_screenshot();
+            takeScreenshot();
             logger.info("Failed: Disarm photo is NOT displayed");
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         logger.info("Verifying Disarm photo is NOT taken when setting in disabled...");
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(1000);
@@ -60,19 +60,19 @@ public class DisarmPhotosTest extends Setup {
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
-        enter_default_user_code();
+        enterDefaultUserCode();
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
         try {
             if (camera.Photo_lable.isDisplayed())
-                take_screenshot();
+                takeScreenshot();
             logger.info("Failed: Disarm photo is displayed");
         } catch (Exception e) {
             logger.info("Pass: Disarm photo is NOT displayed");
         } finally {
         }
         Thread.sleep(1000);
-        navigate_to_Advanced_Settings_page();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         set_cam.Disarm_Photos.click();
