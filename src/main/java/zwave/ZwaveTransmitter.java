@@ -73,6 +73,7 @@ public class ZwaveTransmitter extends Setup {
         logger.info("Aborting remote Add");
         rt.exec(adbPath + " -s " + primary + remoteClearAbort);
         System.out.println(adbPath + " -s " + primary + remoteClearAbort);
+
     }
 
     public void remoteClearStart() throws IOException, InterruptedException {
