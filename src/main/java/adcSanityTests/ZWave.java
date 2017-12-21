@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static utils.ConfigProps.transmitter;
+
 public class ZWave extends Setup {
 
     String remoteNodeAdd = " shell service call qservice 1 i32 0 i32 1560 i32 0 i32 0 i32 0 i32 0 i32 0 i32 0 i32 0";
@@ -14,6 +16,7 @@ public class ZWave extends Setup {
 
     public ZWave() throws Exception {
         ConfigProps.init();
+
     }
 
     // bridge will be included to the Gen2 an nodeID 2
@@ -23,7 +26,7 @@ public class ZWave extends Setup {
         System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAdd);
         Thread.sleep(3000);
 
-        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 2");
+        rt.exec(ConfigProps.adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 2");
         Thread.sleep(50000);
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
         System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
@@ -35,8 +38,8 @@ public class ZWave extends Setup {
         Thread.sleep(3000);
 
         for (int i = Lights_number; i>0; i--){
-        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
-        System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        rt.exec(ConfigProps.adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        System.out.println(ConfigProps.adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
         Thread.sleep(20000);
         }
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + remoteNodeAbort);
@@ -44,7 +47,7 @@ public class ZWave extends Setup {
 
     }
     public void addThermostat() throws IOException {
-        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + " shell service call zwavetransmitservice 3 i32 3");
+        rt.exec(ConfigProps.adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 3");
     }
 
     @BeforeMethod
