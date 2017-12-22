@@ -29,7 +29,7 @@ public class ZWavePage {
 
     //Add Device Page
     @FindBy(id = "com.qolsys:id/button")
-    public WebElement Pair_Device_Z_Wave_Add_Device_Page;
+    public WebElement Include_Device_Z_Wave_Add_Device_Page;
     @FindBy(id = "com.qolsys:id/negative_button")
     public WebElement Add_Device_Cancel_Button_Z_Wave_Add_Device_Page;
     @FindBy(id = "com.qolsys:id/ok")
