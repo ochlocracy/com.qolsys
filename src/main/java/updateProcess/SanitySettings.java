@@ -98,7 +98,7 @@ public class SanitySettings extends Setup {
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
         try {
-            if (camera.Video_icon.isDisplayed())
+            if (camera.Photo_lable.isDisplayed() && camera.Video_icon.isDisplayed())
                 System.out.println("Pass: Alarm photo is not displayed");
             log.log(LogStatus.PASS, "Pass: Alarm photo is not displayed");
         } catch (Exception e) {
