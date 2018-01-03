@@ -52,8 +52,7 @@ public class ZTransmitter extends ConfigPropsBase {
         deviceType.put("DoorLock","service call zwavetransmitservice 7 i32 ");
         deviceType.put("GDC","service call zwavetransmitservice 8 i32 ");
         deviceType.put("SmartSocket","service call zwavetransmitservice 5 i32 ");
-//        deviceType.put("","");
-//        deviceType.put("","");
+
 
     }
     public void nodeID(){
