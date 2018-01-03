@@ -61,6 +61,8 @@ public class Smoke_Test_DW extends Setup {
         rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >>  /sdcard/cpuinfo.txt");
         rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
 
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+
         logger.info("Disarm mode tripping sensors group 10, 12, 13, 14, 16, 25 -> Expected result= system stays in Disarm mode");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10, Open);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 12, Open);
@@ -160,6 +162,8 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
+
         rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
         rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
         rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
@@ -207,6 +211,8 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping sensors group 12 -> Expected result = 100 sec delay -> Alarm");
         ARM_STAY();
@@ -249,6 +255,8 @@ public class Smoke_Test_DW extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 14, Close);
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
+
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
 
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping sensors group 16, 25 -> Expected result = ArmStay");
@@ -433,6 +441,8 @@ public class Smoke_Test_DW extends Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
 
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+
         logger.info("********************************************************");
         logger.info("ArmAway mode tripping sensors group 10 -> Expected result = 30 sec delay -> Alarm");
         // autostayPref();
@@ -501,6 +511,8 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0 ");
+
         logger.info("********************************************************");
         logger.info("ArmAway mode tripping sensors group 8 -> Expected result = Instant Alarm");
         ARM_AWAY(Long_Exit_Delay);
@@ -552,6 +564,8 @@ public class Smoke_Test_DW extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10,Close);
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
+
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0");
 
         logger.info("********************************************************");
         logger.info("ArmAway mode tampering sensors group 12 -> Expected result = Instant Alarm");
@@ -650,6 +664,8 @@ public class Smoke_Test_DW extends Setup {
         contact_us.acknowledge_all_alerts();
         logger.info("Deleting all sensors...");
         MySensors.deleteAllSensors();
+
+        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
 
     }
 

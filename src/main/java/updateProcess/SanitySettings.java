@@ -98,12 +98,12 @@ public class SanitySettings extends Setup {
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
         try {
-            if (camera.Photo_lable.isDisplayed())
-                System.out.println("Failed: Alarm photo is displayed");
-            log.log(LogStatus.FAIL, "Failed: Alarm photo is displayed");
+            if (camera.Video_icon.isDisplayed())
+                System.out.println("Pass: Alarm photo is not displayed");
+            log.log(LogStatus.PASS, "Pass: Alarm photo is not displayed");
         } catch (Exception e) {
-            log.log(LogStatus.PASS, "Pass: Alarm photo is NOT displayed");
-            System.out.println("Pass: Alarm photo is NOT displayed");
+            log.log(LogStatus.FAIL, "Fail: Alarm photo is displayed");
+            System.out.println("Fail: Alarm photo is displayed");
         } finally {
         }
         Thread.sleep(1000);
@@ -688,7 +688,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
- //   @Test(priority = 9)
+    @Test(priority = 9)
     public void Settings_Test10() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Disarm_Photos");
@@ -1095,15 +1095,13 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Arm Stay the system");
         sensors.primaryCall("65 00 AF", armstay);
-        Thread.sleep(4000);
-        try {
-            if (home.Disarmed_text.getText().equals("ARMED STAY"))
-                System.out.println("Failed: System is ARMED STAY");
-            log.log(LogStatus.FAIL, "Failed: System is ARMED STAY");
-        } catch (Exception e) {
-            System.out.println("Pass: System is NOT ARMED STAY");
-            log.log(LogStatus.PASS, "Pass: System is NOT ARMED STAY, exit count down is displayed");
-        } finally {
+        Thread.sleep(1000);
+        if (home.Countdown.isDisplayed()) {
+            System.out.println("Pass: System is not ARMED STAY, countdown is displayed");
+            log.log(LogStatus.PASS, "Pass: System is not ARMED STAY, countdown is displayed");
+        }else{
+            System.out.println("Fail: System is ARMED STAY");
+            log.log(LogStatus.FAIL, "Fail: System is ARMED STAY, exit count down is not displayed");
         }
         Thread.sleep(10000);
         verifyArmstay();
@@ -1112,15 +1110,13 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Arm Away the system");
         sensors.primaryCall("65 00 AF", armaway);
-        Thread.sleep(4000);
-        try {
-            if (home.ArwAway_State.isDisplayed())
-                System.out.println("Failed: System is ARMED AWAY");
-            log.log(LogStatus.FAIL, "Failed: System is ARMED AWAY");
-        } catch (Exception e) {
-            System.out.println("Pass: System is NOT ARMED AWAY");
-            log.log(LogStatus.PASS, "Pass: System is NOT ARMED AWAY, exit count down is displayed");
-        } finally {
+        Thread.sleep(1000);
+        if (home.Countdown.isDisplayed()) {
+            System.out.println("Pass: System is not ARMED AWAY, countdown is displayed");
+            log.log(LogStatus.PASS, "Pass: System is not ARMED AWAY, countdown is displayed");
+        }else{
+            System.out.println("Fail: System is ARMED AWAY");
+            log.log(LogStatus.FAIL, "Fail: System is NOT ARMED AWAY, exit count down is displayed");
         }
         Thread.sleep(10000);
         verifyArmaway();

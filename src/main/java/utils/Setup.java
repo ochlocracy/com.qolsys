@@ -99,10 +99,8 @@ public class Setup {
 
         service = AppiumDriverLocalService
                 .buildService(new AppiumServiceBuilder()
-                        .usingDriverExecutable(new File("/home/qolsys/Application/node-v6.10.3-linux-x64/bin/node"))
-                        .withAppiumJS(
-                                new File(
-                                        "/home/qolsys/Application/node-v6.10.3-linux-x64/bin/appium"))
+                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+                        .withAppiumJS(new File(ConfigProps.appiumPath))
                         .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
@@ -293,8 +291,8 @@ public class Setup {
 
     public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        if (home_page.ArwAway_State.isDisplayed()) {
-            //home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
+        if (//home_page.ArwAway_State.isDisplayed()) {
+            home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
             logger.info("Pass: panel is in Arm Away mode");
         } else {
             takeScreenshot();

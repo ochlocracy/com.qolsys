@@ -399,7 +399,7 @@ public class Sensors {
     public void deleteAllSensors() throws IOException, InterruptedException {
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
             int zone = i;
-            String deleteFromPrimary = "shell service call qservice 51 i32 " + zone;
+            String deleteFromPrimary = "  shell service call qservice 51 i32 " + zone;
             rt.exec(ConfigProps.adbPath + " -s " + primary + deleteFromPrimary);
             //System.out.println(adbPath + " -s " + primary + deleteFromPrimary);
         }
@@ -407,7 +407,7 @@ public class Sensors {
             SensorObject temp_sensor = null;
             temp_sensor = SensorObject_ArrayList.get(i);
             String DLID = temp_sensor.getDLID();
-            String deleteFromTransmitter = "shell service call srftransmitservice 4 s16 " + DLID;
+            String deleteFromTransmitter = " shell service call srftransmitservice 4 s16 " + DLID;
             rt.exec(ConfigProps.adbPath + " -s " + transmitter + deleteFromTransmitter);
            // System.out.println(deleteFromTransmitter);
             TimeUnit.SECONDS.sleep(1);

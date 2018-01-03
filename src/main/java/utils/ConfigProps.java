@@ -3,6 +3,8 @@ package utils;
 public class ConfigProps extends ConfigPropsBase {
 
     public static String adbPath;
+    public static String appiumPath;
+    public static String nodePath;
     public static String transmitter;
     public static String primary;
     public static String url;
@@ -18,6 +20,8 @@ public class ConfigProps extends ConfigPropsBase {
         super("config.properties");
 
         adbPath = getString("adb.path");
+        appiumPath = getString("appium.path");
+        nodePath = getString("node.path");
         transmitter = getString("transmitter");
         primary = getString("primary");
         url = getString("url");
