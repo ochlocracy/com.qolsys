@@ -1403,6 +1403,9 @@ public class SanitySettings extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
+        Thread.sleep(1000);
+        swipeVertical();
+        Thread.sleep(1000);
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
@@ -1427,6 +1430,9 @@ public class SanitySettings extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
+        Thread.sleep(1000);
+        swipeVertical();
+        Thread.sleep(1000);
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
