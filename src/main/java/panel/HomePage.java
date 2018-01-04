@@ -18,6 +18,8 @@ public class HomePage {
     public WebElement ARM_AWAY;
     @FindBy(xpath = "//android.widget.TextView[@text='ARM AWAY']")
     public WebElement ARM_AWAY_text;
+    @FindBy(xpath = "//android.widget.TextView[@text='Arming...']")
+    public WebElement Countdown;
     @FindBy(id = "com.qolsys:id/img_weather")
     public WebElement Weather_img;
     @FindBy(id = "com.qolsys:id/text_high_temp")
@@ -64,7 +66,8 @@ public class HomePage {
     public WebElement Bypass_Tab;
     @FindBy(id = "com.qolsys:id/viewFlipper")
     public WebElement PhotoFrame_Mode;
-    @FindBy(id = "com.qolsys:id/main")
+    //@FindBy(id = "com.qolsys:id/main")
+    @FindBy(id = "com.qolsys:id/t3_img_disarm")
     public WebElement ArwAway_State;
     @FindBy(id = "com.qolsys:id/txt_title")
     public WebElement ALARM;

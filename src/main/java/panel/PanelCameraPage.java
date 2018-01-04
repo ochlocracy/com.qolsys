@@ -14,6 +14,8 @@ public class PanelCameraPage {
     public WebElement Alarms_photo;
     @FindBy(id = "com.qolsys:id/camera_all_filter")
     public WebElement All_photos;
+    @FindBy(id ="com.qolsys:id/playIcon")
+    public WebElement Video_icon;
     @FindBy(id = "com.qolsys:id/relativeLy")
     public WebElement Photo_lable;
     @FindBy(id = "com.qolsys:id/delete_img")
