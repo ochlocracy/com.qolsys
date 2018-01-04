@@ -1,6 +1,7 @@
 package sensors;
 
 import utils.ConfigProps;
+import utils.Setup;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,9 +13,6 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Sensors {
-
-    public String primary = "8ebdbc39";  //c.getudid_();
-    public static final String transmitter = "8f03bc79 ";
 
     public Runtime rt = Runtime.getRuntime();
 
@@ -230,7 +228,7 @@ public class Sensors {
 
     public void add_transmitter_call(String DLID, int sensor_type, int supervisory_time) throws IOException {
         String add_transmitter = "shell service call srftransmitservice 2 s16 " + DLID + " i32 0 i32 " + sensor_type + " i32 0 i32 " + supervisory_time;
-        rt.exec(ConfigProps.adbPath + " -s " + transmitter + add_transmitter);
+        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + add_transmitter);
     }
 
     public void primaryCall(String DLID, String State) throws IOException {
@@ -254,12 +252,12 @@ public class Sensors {
 //            System.out.println(temp_sensor.getDLID());
 //            inicialize_primary_sensor_int_map();
 //            initialize_transmitter_sensor_int_map();
-            String add_primary = "shell service call qservice 50 i32 " + zone + " i32 " + newGroup + " i32 " + newDLID_dec + " i32 " + primary_sensor_int_map.get(sensor_type);
-            rt.exec(ConfigProps.adbPath + " -s " + primary + " " + add_primary);
+            String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + newGroup + " i32 " + newDLID_dec + " i32 " + primary_sensor_int_map.get(sensor_type);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + " " + add_primary);
             System.out.println(add_primary);
             TimeUnit.SECONDS.sleep(1);
-            String add_transmitter = "shell service call srftransmitservice 2 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 " + supervisory_time;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + add_transmitter);
+            String add_transmitter = " shell service call srftransmitservice 2 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 " + supervisory_time;
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + add_transmitter);
             System.out.println(add_transmitter);
             //   TimeUnit.SECONDS.sleep(1);
         }
@@ -282,8 +280,8 @@ public class Sensors {
             rt.exec(ConfigProps.adbPath + " -s " + UDID_ + add_primary);
             System.out.println(add_primary);
             TimeUnit.SECONDS.sleep(1);
-            String add_transmitter = "shell service call srftransmitservice 2 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 " + supervisory_time;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + add_transmitter);
+            String add_transmitter = " shell service call srftransmitservice 2 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 " + supervisory_time;
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + add_transmitter);
             System.out.println(add_transmitter);
             //   TimeUnit.SECONDS.sleep(1);
         }
@@ -303,8 +301,8 @@ public class Sensors {
             String newDLID = temp_sensor.getDLID();
             String sensor_type = temp_sensor.getSensorType();
 //            initialize_transmitter_sensor_int_map();
-            String send_packet = "shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + x;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + send_packet);
+            String send_packet = " shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + x;
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
             System.out.println(send_packet);
         }
     }
@@ -317,8 +315,8 @@ public class Sensors {
             String newDLID = temp_sensor.getDLID();
             String sensor_type = temp_sensor.getSensorType();
 //            initialize_transmitter_sensor_int_map();
-            String send_packet = "shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + z;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + send_packet);
+            String send_packet = " shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + z;
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
             System.out.println(send_packet);
         }
     }
@@ -341,8 +339,8 @@ public class Sensors {
             //       System.out.println(newDLID);
             String sensor_type = temp_sensor.getSensorType();
 //            initialize_transmitter_sensor_int_map();
-            String send_packet = "shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + z;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + send_packet);
+            String send_packet = " shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + z;
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
        //     System.out.println(send_packet);
             TimeUnit.SECONDS.sleep(2);
         }
@@ -366,8 +364,8 @@ public class Sensors {
             //       System.out.println(newDLID);
             String sensor_type = temp_sensor.getSensorType();
 //            initialize_transmitter_sensor_int_map();
-            String send_packet = "shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 1 i32 0";
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + send_packet);
+            String send_packet = " shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 1 i32 0";
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
       //      System.out.println(send_packet);
             TimeUnit.SECONDS.sleep(2);
         }
@@ -391,7 +389,7 @@ public class Sensors {
             String sensor_type = temp_sensor.getSensorType();
 //            initialize_transmitter_sensor_int_map();
             String send_packet = "shell service call srftransmitservice 1 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 "+z;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + send_packet);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
             System.out.println(send_packet);
             TimeUnit.SECONDS.sleep(2);}
     }
@@ -400,7 +398,7 @@ public class Sensors {
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
             int zone = i;
             String deleteFromPrimary = "  shell service call qservice 51 i32 " + zone;
-            rt.exec(ConfigProps.adbPath + " -s " + primary + deleteFromPrimary);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + deleteFromPrimary);
             //System.out.println(adbPath + " -s " + primary + deleteFromPrimary);
         }
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
@@ -408,7 +406,7 @@ public class Sensors {
             temp_sensor = SensorObject_ArrayList.get(i);
             String DLID = temp_sensor.getDLID();
             String deleteFromTransmitter = " shell service call srftransmitservice 4 s16 " + DLID;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + deleteFromTransmitter);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + deleteFromTransmitter);
            // System.out.println(deleteFromTransmitter);
             TimeUnit.SECONDS.sleep(1);
         }
@@ -417,15 +415,15 @@ public class Sensors {
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
             int zone = i;
             String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-            rt.exec(ConfigProps.adbPath + " -s " + primary + deleteFromPrimary);
-            System.out.println(ConfigProps.adbPath + " -s " + primary + deleteFromPrimary);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + deleteFromPrimary);
+            System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + deleteFromPrimary);
         }
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
             SensorObject temp_sensor = null;
             temp_sensor = SensorObject_ArrayList.get(i);
             String DLID = temp_sensor.getDLID();
             String deleteFromTransmitter = "shell service call srftransmitservice 4 s16 " + DLID;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + deleteFromTransmitter);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + deleteFromTransmitter);
             System.out.println(deleteFromTransmitter);
             TimeUnit.SECONDS.sleep(1);
         }
@@ -443,7 +441,7 @@ public class Sensors {
             temp_sensor = SensorObject_ArrayList.get(i);
             String DLID = temp_sensor.getDLID();
             String deleteFromTransmitter = "shell service call srftransmitservice 4 s16 " + DLID;
-            rt.exec(ConfigProps.adbPath + " -s " + transmitter + deleteFromTransmitter);
+            rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + deleteFromTransmitter);
      //       System.out.println(deleteFromTransmitter);
             TimeUnit.SECONDS.sleep(1);
         }

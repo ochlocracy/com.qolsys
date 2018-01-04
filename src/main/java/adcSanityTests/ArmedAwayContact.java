@@ -86,12 +86,10 @@ public class ArmedAwayContact extends Setup {
         Thread.sleep(17000);
         verifyArmaway();
         Thread.sleep(5000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
-
     }
 
     public void ArmAway_Open_Close_during_Exit_Delay_Alarm(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {
@@ -181,8 +179,7 @@ public class ArmedAwayContact extends Setup {
         Thread.sleep(17000);
         verifyArmaway();
         Thread.sleep(2000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -195,7 +192,7 @@ public class ArmedAwayContact extends Setup {
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void ArmAway_12() throws Exception {
-        ArmAway_Open_Close(12, "65 00 1A", "//*[contains(text(), '(Sensor 12) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 2')]");
+        ArmAway_Open_Close(12, "65 00 1A", "//*[contains(text(), '(Sensor 12) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 1')]");
     }
 
     @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
@@ -324,8 +321,7 @@ public class ArmedAwayContact extends Setup {
         Thread.sleep(17000);
         verifyArmaway();
         Thread.sleep(2000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -378,6 +374,7 @@ public class ArmedAwayContact extends Setup {
         for (int i = 13; i > 2; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod

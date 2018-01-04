@@ -109,6 +109,7 @@ public class Setup {
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         cap.setCapability("newCommandTimeout", "1000");
+        //in case previous session was not stopped
         service.stop();
         Thread.sleep(2000);
         service.start();
