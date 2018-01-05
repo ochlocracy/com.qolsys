@@ -59,7 +59,6 @@ public class ADC extends Setup {
     private int med_pendant = 21;
     private int doorbell = 109;
     private int occupancy = 114;
-
     public ADC() throws Exception {
         ConfigProps.init();
     }
@@ -169,13 +168,17 @@ public class ADC extends Setup {
         return accountId;
     }
 
+
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
         if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
+            Thread.sleep(7000);
+            driver1.navigate().refresh();
+            Thread.sleep(7000);
             for (int i = 0; i < message.length; i++) {
+                driver1.navigate().refresh();
                 try {
                     WebElement history_message = driver1.findElement(By.xpath(message[i]));
                     Assert.assertTrue(history_message.isDisplayed());
@@ -189,13 +192,13 @@ public class ADC extends Setup {
         } else {
             System.out.println("Set execute to TRUE to run ADC verification part");
         }
-        Thread.sleep(2000);
+        Thread.sleep(7000);
     }
 
     public void add_sensor(int zone, int group, int DLID, int sensor_type) throws IOException {
         String add_sensor = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + DLID + " i32 " + sensor_type;
-        mySensors.rt.exec(ConfigProps.adbPath + " -s " + mySensors.primary + add_sensor);
-        System.out.println(ConfigProps.adbPath + " -s " + mySensors.primary + add_sensor);
+        mySensors.rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + add_sensor);
+        System.out.println(ConfigProps.adbPath + " -s " + ConfigProps.primary + add_sensor);
     }
 
     public void add_sensor_grid(int zone, int group, int DLID, int sensor_type, String UDID_) throws IOException {

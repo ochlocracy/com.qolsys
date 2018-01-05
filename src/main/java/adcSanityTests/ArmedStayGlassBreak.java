@@ -166,14 +166,6 @@ public class ArmedStayGlassBreak extends Setup {
         } catch (Exception e) {
             logger.info("***No such element found!***");
         }
-
-    }
-
-
-    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
     }
 
     @BeforeTest
@@ -229,6 +221,7 @@ public class ArmedStayGlassBreak extends Setup {
         for (int i = 12; i > 10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod
