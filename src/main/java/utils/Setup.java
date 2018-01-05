@@ -1,6 +1,5 @@
 package utils;
 
-import cellular.Cellular_test_page_elements;
 import cellular.System_Tests_page;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -296,7 +295,7 @@ public class Setup {
     public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (//home_page.ArwAway_State.isDisplayed()) {
-            home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
+                home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
             logger.info("Pass: panel is in Arm Away mode");
         } else {
             takeScreenshot();
@@ -722,6 +721,9 @@ public class Setup {
     }
 
     //Start Z-Wave Paths and Actions
+    //All Actions Stat From Home Page**
+    //Start Z-Wave Paths and Actions
+    //All Actions Stat From Home Page**
 
     public void localZwaveAddPath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
@@ -736,7 +738,7 @@ public class Setup {
         zwave.Include_Device_Z_Wave_Add_Device_Page.click();
     }
 
-    public void localZWaveClearPath() throws IOException, InterruptedException{
+    public void localZWaveClearPath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -747,7 +749,8 @@ public class Setup {
         dev.Zwave_Devices.click();
         zwave.Clear_Device_Z_Wave_Page.click();
     }
-    public void localZWaveRemoveAllDevicesPath() throws IOException, InterruptedException{
+
+    public void localZWaveRemoveAllDevicesPath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -758,7 +761,8 @@ public class Setup {
         dev.Zwave_Devices.click();
         zwave.Remove_All_Devices_Z_Wave_Page.click();
     }
-    public void localZWaveEditDevicePath() throws IOException, InterruptedException{
+
+    public void localZWaveEditDevicePath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -769,7 +773,8 @@ public class Setup {
         dev.Zwave_Devices.click();
         zwave.Edit_Device_Z_Wave_Page.click();
     }
-    public void localZWaveDeleteFailedDevicePath() throws IOException, InterruptedException{
+
+    public void localZWaveDeleteFailedDevicePath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -780,7 +785,8 @@ public class Setup {
         dev.Zwave_Devices.click();
         zwave.Delete_Failed_Device_Z_Wave_Page.click();
     }
-    public void localZWaveAssociationPath() throws IOException, InterruptedException{
+
+    public void localZWaveAssociationPath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -791,13 +797,15 @@ public class Setup {
         dev.Zwave_Devices.click();
         zwave.Association_Z_Wave_Page.click();
     }
+
     public void navigateToZWaveTests() throws IOException, InterruptedException {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        System_Tests_page syst = PageFactory.initElements(driver , System_Tests_page.class);
+        System_Tests_page syst = PageFactory.initElements(driver, System_Tests_page.class);
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         syst.ZWAVE_TEST.click();
     }
+
     public void localZWaveDeviceLimitPath() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
@@ -810,6 +818,9 @@ public class Setup {
         zwave.Z_Wave_Settings_Z_Wave_Page.click();
     }
 
+    //End Z-Wave Paths and Actions
+    //End Z-Wave Paths and Actions
+    //End Z-Wave Paths and Actions
     //End Z-Wave Paths and Actions
 
     public void deleteReport() {
