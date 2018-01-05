@@ -120,12 +120,12 @@ public class ArmedStayAuxiliary extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_2() throws Exception {
-        ArmStay_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 14) Police Panic')]", "//*[contains(text(), 'Sensor 14 Alarm')]");
+        ArmStay_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 14) Police Panic')]", "//*[contains(text(), 'Sensor 14 Alarm**')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_4() throws Exception {
-        ArmStay_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 15) Pending Alarm')]", "//*[contains(text(), 'Sensor 15 Alarm')]");
+        ArmStay_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 15) Pending Alarm')]", "//*[contains(text(), 'Sensor 15 Alarm**')]");
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
@@ -149,6 +149,7 @@ public class ArmedStayAuxiliary extends Setup {
         for (int i = 15; i > 10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod

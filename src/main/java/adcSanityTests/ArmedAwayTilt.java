@@ -32,7 +32,6 @@ public class ArmedAwayTilt extends Setup {
         adc.setADCexecute("true");
     }
 
-
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
@@ -80,8 +79,7 @@ public class ArmedAwayTilt extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.normalExitDelay);
         verifyArmaway();
         Thread.sleep(3000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -131,8 +129,7 @@ public class ArmedAwayTilt extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         verifyArmaway();
         Thread.sleep(2000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify2);
@@ -183,8 +180,7 @@ public class ArmedAwayTilt extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         verifyArmaway();
         Thread.sleep(2000);
-        home.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         Thread.sleep(2000);
 
         adc.ADC_verification(element_to_verify, element_to_verify1);
@@ -211,6 +207,7 @@ public class ArmedAwayTilt extends Setup {
         for (int i = 13; i > 10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod

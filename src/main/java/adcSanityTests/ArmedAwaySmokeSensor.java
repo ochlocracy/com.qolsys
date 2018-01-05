@@ -12,6 +12,7 @@ import panel.EmergencyPage;
 import panel.HomePage;
 import sensors.Sensors;
 import utils.ConfigProps;
+import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
@@ -23,24 +24,12 @@ public class ArmedAwaySmokeSensor extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     String AccountID = adc.getAccountId();
-    private String activate = "02 01";
-    private String restore = "00 01";
-    private String tamper = "01 01";
 
     public ArmedAwaySmokeSensor() throws Exception {
         ConfigProps.init();
-    }
-
-    public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
-        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
-    }
-
-    public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
-        String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
+        SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest
@@ -73,9 +62,9 @@ public class ArmedAwaySmokeSensor extends Setup {
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(5);
         logger.info("Activate/Restore a sensor");
-        sensors.primaryCall(DLID, activate);
+        sensors.primaryCall(DLID, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        sensors.primaryCall(DLID, restore);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
         elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
         logger.info("Cancel Emergency Alarm");
@@ -86,7 +75,7 @@ public class ArmedAwaySmokeSensor extends Setup {
         adc.New_ADC_session(AccountID);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         try {
             WebElement history_message = adc.driver1.findElement(By.xpath(element_to_verify1));
             Assert.assertTrue(history_message.isDisplayed());
@@ -114,20 +103,20 @@ public class ArmedAwaySmokeSensor extends Setup {
         ARM_AWAY(33);
         verifyArmaway();
         logger.info("Tamper a sensor");
-        sensors.primaryCall(DLID, tamper);
+        sensors.primaryCall(DLID, SensorsActivity.TAMPER);
         Thread.sleep(2000);
         verifyInAlarm();
         logger.info("Disarm the system");
         enterDefaultUserCode();
         elementVerification(home.Tamper_Status, "Tampered");
         Thread.sleep(2000);
-        sensors.primaryCall(DLID, restore);
+        sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(AccountID);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         try {
             WebElement history_message = adc.driver1.findElement(By.xpath(element_to_verify1));
             Assert.assertTrue(history_message.isDisplayed());
@@ -164,6 +153,7 @@ public class ArmedAwaySmokeSensor extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         deleteFromPrimary(26);
+        service.stop();
     }
 
     @AfterMethod

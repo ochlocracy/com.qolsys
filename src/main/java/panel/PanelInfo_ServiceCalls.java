@@ -192,7 +192,7 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
         rt.exec(command);}
     public void set_ARM_STAY_NO_DELAY_enable_Transmitter() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " -s "+ sens.primary + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
+        String command = ConfigProps.adbPath + " -s " + ConfigProps.primary + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
         rt.exec(command);}
 
     public void get_KEYFOB_NO_DELAY() throws IOException, InterruptedException {
@@ -1128,7 +1128,7 @@ adc can restart the QolSys apps: */
         String command = ConfigProps.adbPath + " shell service call qservice 1 i32 0 i32 1 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
         rt.exec(command);}
     public void EVENT_ARM_STAY_Transmitter () throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " -s "+ sens.primary + " shell service call qservice 1 i32 0 i32 1 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
+        String command = ConfigProps.adbPath + " -s "+ ConfigProps.primary + " shell service call qservice 1 i32 0 i32 1 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
         rt.exec(command);}
     public void EVENT_ARM_AWAY () throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 1 i32 0 i32 2 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";

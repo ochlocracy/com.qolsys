@@ -222,6 +222,7 @@ public class ArmedAwayGlassBreak extends Setup {
         for (int i = 12; i > 10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod

@@ -33,7 +33,7 @@ public class Smoke_Test_DW extends Setup {
 
     @BeforeMethod
     public void capabilitiesSetup() throws Exception {
-        setupDriver(MySensors.primary,"http://127.0.1.1", "4723");
+        setupDriver(ConfigProps.primary,"http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
 
@@ -46,22 +46,22 @@ public class Smoke_Test_DW extends Setup {
         MySensors.addAllSensors();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell logcat -v time -s valgrind >> /sdcard/Valgrindlog.txt");
-        TimeUnit.SECONDS.sleep(5);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
-        Thread.sleep(1000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
-        Thread.sleep(2000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
-        Thread.sleep(2000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >>  /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
-
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell logcat -v time -s valgrind >> /sdcard/Valgrindlog.txt");
+//        TimeUnit.SECONDS.sleep(5);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
+//        Thread.sleep(1000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
+//        Thread.sleep(2000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
+//        Thread.sleep(2000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >>  /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
+//
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
 
         logger.info("Disarm mode tripping sensors group 10, 12, 13, 14, 16, 25 -> Expected result= system stays in Disarm mode");
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 10, Open);
@@ -162,35 +162,35 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
-
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
+//
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
 
     }
 
     @Test
     public void b_Armed_Stay_Mode () throws Exception {
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
-        Thread.sleep(1000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
-        Thread.sleep(2000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
-        Thread.sleep(2000);
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >>  /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
+//        Thread.sleep(1000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
+//        Thread.sleep(2000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
+//        Thread.sleep(2000);
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******Sensors*BEGINNING***** >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >>  /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
 
 
         MySensors.read_sensors_from_csv();
@@ -211,7 +211,7 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
 
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping sensors group 12 -> Expected result = 100 sec delay -> Alarm");
@@ -256,7 +256,7 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
+ //       rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0");
 
         logger.info("********************************************************");
         logger.info("ArmStay mode tripping sensors group 16, 25 -> Expected result = ArmStay");
@@ -409,15 +409,15 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
     }
 
     @Test
@@ -441,7 +441,7 @@ public class Smoke_Test_DW extends Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0 ");
 
         logger.info("********************************************************");
         logger.info("ArmAway mode tripping sensors group 10 -> Expected result = 30 sec delay -> Alarm");
@@ -511,7 +511,7 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0 ");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 0 i32 0 ");
 
         logger.info("********************************************************");
         logger.info("ArmAway mode tripping sensors group 8 -> Expected result = Instant Alarm");
@@ -548,8 +548,7 @@ public class Smoke_Test_DW extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 25,Close);
-        home_page.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         TimeUnit.SECONDS.sleep(3);
         //    autostayPref();
 
@@ -565,7 +564,7 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0");
+ //       rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell service call qzwaveservice 19 i32 30000 i32 1 i32 2 i32 2 i32 0 i32 1 i32 0");
 
         logger.info("********************************************************");
         logger.info("ArmAway mode tampering sensors group 12 -> Expected result = Instant Alarm");
@@ -622,8 +621,7 @@ public class Smoke_Test_DW extends Setup {
         TimeUnit.SECONDS.sleep(3);
         verifyArmaway();
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.door_window_zones, 25,Close);
-       home_page.ArwAway_State.click();
-        enterDefaultUserCode();
+        DISARM();
         TimeUnit.SECONDS.sleep(5);
 
         logger.info("********************************************************");
@@ -651,15 +649,15 @@ public class Smoke_Test_DW extends Setup {
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
-        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys meminfo >> /sdcard/meminfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys batterystats >> /sdcard/batteryinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell echo ******SENSORS*END***** >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell date >> /sdcard/cpuinfo.txt");
+//        rt.exec(ConfigProps.adbPath +" -s 8ebdbc39 shell dumpsys cpuinfo >> /sdcard/cpuinfo.txt");
 
         contact_us.acknowledge_all_alerts();
         logger.info("Deleting all sensors...");

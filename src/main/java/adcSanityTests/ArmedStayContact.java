@@ -22,6 +22,7 @@ public class ArmedStayContact extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+
     public ArmedStayContact() throws Exception {
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
         adc.setADCexecute("true");
@@ -77,7 +78,7 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalEntryDelay);
         verifyArmstay();
@@ -94,7 +95,7 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         Thread.sleep(2000);
@@ -112,7 +113,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
         enterDefaultUserCode();
@@ -128,7 +129,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         verifyArmstay();
@@ -144,7 +145,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
         sensors.primaryCall(DLID, SensorsActivity.TAMPER);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         verifyInAlarm();
@@ -162,7 +163,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Tamper a sensor");
         sensors.primaryCall(DLID, SensorsActivity.TAMPER);
-        Thread.sleep(4000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         verifyArmstay();
@@ -176,7 +177,7 @@ public class ArmedStayContact extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayExitDelay_10() throws Exception {
-        ArmStay_Open_Close_sensor_during_Exit_Delay(10, "65 00 0A", "//*[contains(text(), 'Door/Window 10  (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Armed Stay')]");
+        ArmStay_Open_Close_sensor_during_Exit_Delay(10, "65 00 0A", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Armed Stay')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
@@ -218,7 +219,7 @@ public class ArmedStayContact extends Setup {
 
     @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_Open_Close_sensor_10() throws Exception {
-        ArmStay_Open_Close_sensor(10, "65 00 0A", "//*[contains(text(), 'Door/Window 10  (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Armed Stay')]");
+        ArmStay_Open_Close_sensor(10, "65 00 0A", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Armed Stay')]");
     }
 
     @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
@@ -264,11 +265,11 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(4000);
         sensors.primaryCall(DLID2, SensorsActivity.ACTIVATE);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID2, SensorsActivity.RESTORE);
         Thread.sleep(5000);
         verifyInAlarm();
@@ -285,11 +286,11 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID2, SensorsActivity.OPEN);
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         sensors.primaryCall(DLID2, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         verifyInAlarm();
@@ -302,29 +303,29 @@ public class ArmedStayContact extends Setup {
 
     @Test(priority = 16, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_10_follower_motion15() throws Exception {
-        ArmStay_Open_Close_Follower_Motion(10, 15, "65 00 0A", "55 00 44", "//*[contains(text(), 'Door/Window 10 (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmStay_Open_Close_Follower_Motion(10, 15, "65 00 0A", "55 00 44", "//*[contains(text(), 'Door/Window 11 (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 17, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_10_follower_motion35() throws Exception {
-        ArmStay_Open_Close_Follower_Motion(10, 35, "65 00 0A", "55 00 54", "//*[contains(text(), 'Door/Window 10 (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
+        ArmStay_Open_Close_Follower_Motion(10, 35, "65 00 0A", "55 00 54", "//*[contains(text(), 'Door/Window 11 (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm')]");
     }
 
     @Test(priority = 18, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_10_follower_contact12() throws Exception {
-        ArmStay_Open_Close_Follower_Contact(10, 12, "65 00 0A", "65 00 1A", "//*[contains(text(), 'Door/Window 10  (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 1')]");
+        ArmStay_Open_Close_Follower_Contact(10, 12, "65 00 0A", "65 00 1A", "//*[contains(text(), 'Door/Window 11 (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Delayed alarm on sensor 12 in partition 1')]");
     }
 
     @Test(priority = 19, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_10_follower_contact14() throws Exception {
-        ArmStay_Open_Close_Follower_Contact(10, 14, "65 00 0A", "65 00 3A", "//*[contains(text(), 'Door/Window 10  (Sensor 10) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm ')]");
+        ArmStay_Open_Close_Follower_Contact(10, 14, "65 00 0A", "65 00 3A", "//*[contains(text(), 'Door/Window 11  (Sensor 11) Opened/Closed')]", "//*[contains(text(), 'Pending Alarm ')]");
     }
 
     /*** Tamper sensor in Arm Stay mode ***/
 
     @Test(priority = 20, retryAnalyzer = RetryAnalizer.class)
     public void ArmStay_Tamper_sensor_10() throws Exception {
-        ArmStay_Tamper_sensor(10, "65 00 0A", "//*[contains(text(), 'Sensor 10 Tamper**')]", "//*[contains(text(), 'Sensor 10 End of tamper')]");
+        ArmStay_Tamper_sensor(10, "65 00 0A", "//*[contains(text(), 'Sensor 11 Tamper**')]", "//*[contains(text(), 'Sensor 11 End of tamper')]");
     }
 
     @Test(priority = 21, retryAnalyzer = RetryAnalizer.class)
@@ -368,6 +369,7 @@ public class ArmedStayContact extends Setup {
         for (int i = 19; i > 9; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod
