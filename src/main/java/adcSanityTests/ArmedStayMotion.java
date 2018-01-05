@@ -24,13 +24,14 @@ public class ArmedStayMotion extends Setup{
     ADC adc = new ADC();
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/
-    String ADCexecute = "true";
+
 
     public ArmedStayMotion() throws Exception {
         ConfigProps.init();
+        SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
         adc.setADCexecute("true");
-        SensorsActivity.init();}
+       }
 
     private String DLID_15 = "55 00 44";
     private String DLID_17 = "55 00 54";
@@ -221,6 +222,7 @@ public class ArmedStayMotion extends Setup{
         for (int i= 15; i>10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod
