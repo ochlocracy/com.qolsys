@@ -45,24 +45,6 @@ public class AutoBypass extends Setup {
         Thread.sleep(1000);
     }
 
-    /* @Test
-   public void AB_01() throws IOException, InterruptedException {
-        logger.info("Enabling auto bypass and adding sensor");
-
-        adc.webDriverSetUp();
-        servcall.set_AUTO_BYPASS(1);
-        Thread.sleep(two_sec);
-        addPrimaryCall(1, 10, 6619296, 1);
-        Thread.sleep(two_sec);
-        adc.New_ADC_session(adc.getAccountId());
-        Thread.sleep(two_sec);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
-        Thread.sleep(two_sec);
-        adc.Request_equipment_list();
-        Thread.sleep(two_sec);
-
-       adc.driver1.quit();
-    }*/
     // @Test  /*** Disarm mode/1)a sensor must be paired 2)Auto Bypass Enabled ***/
     public void addSensors() throws Exception {
         addPrimaryCall(3, 10, 6619296, 1);
@@ -106,6 +88,8 @@ public class AutoBypass extends Setup {
             logger.info("AB319_2 Pass: Sensor is bypassed");
         else
             logger.info("Fail: Sensor is not selected for bypass");
+        Thread.sleep(two_sec);
+        driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
         Thread.sleep(two_sec);
         home_page.ARM_AWAY.click();
         // driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
@@ -259,10 +243,15 @@ public class AutoBypass extends Setup {
             sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
             Thread.sleep(5000);
             driver.findElement(By.id("com.qolsys:id/cancel")).click();
+            Thread.sleep(1000);
+            driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
+            Thread.sleep(2000);
             home_page.ARM_AWAY.click();
         } else {
             logger.info("Fail: Open Sensor Pop-up Message Not Received");
             Thread.sleep(two_sec);
+            driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
+            Thread.sleep(2000);
             home_page.ARM_AWAY.click();
         }
         Thread.sleep(14000);
@@ -317,8 +306,7 @@ public class AutoBypass extends Setup {
         Thread.sleep(4000);
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
         Thread.sleep(2000);
-        //  driver.findElement(By.id("com.qolsys:id/img_expand")).click();
-        driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
+        driver.findElement(By.id("com.qolsys:id/img_expand")).click();
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/t3_open_tv_active")).click();
         if (driver.findElement(By.id("com.qolsys:id/uiTVName")).getText().equals("Door/Window 1"))
@@ -327,6 +315,8 @@ public class AutoBypass extends Setup {
             logger.info("Fail: Sensor is not selected for bypass");
         Thread.sleep(two_sec);
         sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
+        Thread.sleep(two_sec);
+        driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
         Thread.sleep(two_sec);
         driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(15000);
@@ -480,6 +470,8 @@ public class AutoBypass extends Setup {
         } else
             logger.info("Fail: Motion 23 is not selected for bypass");
         Thread.sleep(4000);
+        driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
+        Thread.sleep(4000);
         driver.findElement(By.id("com.qolsys:id/img_arm_away")).click();
         Thread.sleep(15000);
         verifyArmaway();
@@ -509,10 +501,10 @@ public class AutoBypass extends Setup {
     public void AB319_14() throws Exception {
         addSensors();
         Thread.sleep(10000);
-        logger.info("Verify that panel can arm away when a entry delay(group10,12) sensor  is unselected from bypassed sensor list");
+        logger.info("Verify that panel can arm away when a entry delay(group10,12) sensor is unselected from bypassed sensor list");
         Thread.sleep(8000);
-        servcall.set_AUTO_BYPASS(1);
-        Thread.sleep(2000);
+        //servcall.set_AUTO_BYPASS(1);
+        //Thread.sleep(2000);
         servcall.set_AUTO_STAY(1);
         Thread.sleep(2000);
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
