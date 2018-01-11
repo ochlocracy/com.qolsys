@@ -51,6 +51,7 @@ public class DisarmPhotos extends SetupRemote {
         setup.execCmd(process);
     }
 
+
     @Test(priority = 2)
     public void addDisarmPhotos() throws Exception {
         System.out.println("Add_All_Photos Begin");
