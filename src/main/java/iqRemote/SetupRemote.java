@@ -140,18 +140,6 @@ public class SetupRemote {
         swipeFromRighttoLeft();
     }
 
-    @Test
-    public void Test1() throws Exception {
-        deleteLogFile(logcat);
-        setup.ARM_STAY();
-        eventLogsGenerating(logcat, new String[]{
-                EventConstants.EVENT_TO_ADC_STAY,
-                "*******  ArmingLevelChange: Level: 2, adc_device_class: 14, User: 0, normal_closing_ack: 1"}, 2); // arm stay
-        //ArmingLevelChange: Level: 1, adc_device_class: 14, User: 1, normal_closing_ack: 0  // disarm
-        Thread.sleep(2000);
-        setup.DISARM();
-    }
-
     public String number_of_photos() throws IOException {
         String command = ConfigProps.adbPath + " ls -l /storage/sdcard0/DisarmPhotos | busybox1.11  wc -l";
         rt.exec(command);
