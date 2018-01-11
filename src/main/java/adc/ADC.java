@@ -374,20 +374,20 @@ public class ADC extends Setup {
             alert.accept();
         } catch (Exception e) {
         }
-        TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(5);
+        driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
+        TimeUnit.SECONDS.sleep(10);
         driver1.findElement(By.xpath("//input[@value='Request Sensor Names']")).click();
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(5);
         try {
             Alert alert = driver1.switchTo().alert();
             driver1.switchTo().alert();
             alert.accept();
         } catch (Exception e) {
         }
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(5);
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(5);
     }
 
     public void Sensor_verification(String name, String group, String sensor_type, int number) {

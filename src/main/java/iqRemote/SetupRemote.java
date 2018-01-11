@@ -12,10 +12,7 @@ import sensors.EventConstants;
 import utils.ConfigProps;
 import utils.Setup;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 
@@ -153,5 +150,12 @@ public class SetupRemote {
         //ArmingLevelChange: Level: 1, adc_device_class: 14, User: 1, normal_closing_ack: 0  // disarm
         Thread.sleep(2000);
         setup.DISARM();
+    }
+
+    public String number_of_photos() throws IOException {
+        String command = ConfigProps.adbPath + " ls -l /storage/sdcard0/DisarmPhotos | busybox1.11  wc -l";
+        rt.exec(command);
+        String number = setup.execCmd(command);
+        return number;
     }
 }

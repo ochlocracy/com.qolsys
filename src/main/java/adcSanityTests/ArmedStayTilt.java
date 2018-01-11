@@ -194,6 +194,7 @@ public class ArmedStayTilt extends Setup{
         for (int i= 13; i>10; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
     @AfterMethod
     public void webDriverQuit(){

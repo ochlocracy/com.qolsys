@@ -258,6 +258,7 @@ public class HeatSensor extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         deleteFromPrimary(27);
+        service.stop();
     }
 
     @AfterMethod

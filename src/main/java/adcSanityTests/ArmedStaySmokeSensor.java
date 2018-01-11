@@ -157,8 +157,8 @@ public class ArmedStaySmokeSensor extends Setup {
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
-        driver.quit();
         deleteFromPrimary(26);
+        driver.quit();
         service.stop();
     }
 

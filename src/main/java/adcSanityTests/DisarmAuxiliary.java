@@ -162,9 +162,10 @@ public class DisarmAuxiliary extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        for (int i = 42; i > 51; i++) {
+        for (int i = 51; i > 42; i--) {
             deleteFromPrimary(i);
         }
+        service.stop();
     }
 
     @AfterMethod
