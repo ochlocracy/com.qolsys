@@ -156,7 +156,7 @@ public class LightsTest extends Setup {
         instal.DEVICES.click();
         dev.Zwave_Devices.click();
         zwave.Add_Device_Z_Wave_Page.click();
-        zwave.Pair_Device_Z_Wave_Add_Device_Page.click();
+        zwave.Include_Device_Z_Wave_Add_Device_Page.click();
         // Transmitter_addZWaveDevice();
         logger.info("Adding sensors...");
         // wait.until();

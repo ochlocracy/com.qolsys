@@ -29,35 +29,16 @@ public class ZWavePage {
 
     //Add Device Page
     @FindBy(id = "com.qolsys:id/button")
-    public WebElement Include_Z_Wave_Device_Button;
+    public WebElement Include_Device_Z_Wave_Add_Device_Page;
     @FindBy(id = "com.qolsys:id/negative_button")
-    public WebElement Add_Device_Cancel_Button_Z_Wave_Add_Device_Page; //Cancel pairing process button
+    public WebElement Add_Device_Cancel_Button_Z_Wave_Add_Device_Page;
     @FindBy(id = "com.qolsys:id/ok")
     public WebElement Add_Device_OK_Button_Z_Wave_Add_Device_Page;
-    @FindBy(xpath = "//android.widget.TextView[@text='Add']")
-    public WebElement NewDevicePageAddBtn;// Add button in the new device page
-    @FindBy(xpath = "//android.widget.Button[@text='Automation']")
-    public WebElement PanelLightAutomation; //Automation button for panel selection
-    @FindBy(id = "com.qolsys:id/deviceName1")
-    public WebElement DeviceNameListMenu;//Device name Selection
-    @FindBy(xpath = "//android.widget.CheckedTextView[@text='Custome Name'")
-    public WebElement CustomeNameOption;
-    @FindBy(id = "com.qolsys:id/customDesc1")
-    public WebElement CustomeDeviceName;
 
-    //Lights Stock Names
-    @FindBy(xpath = "android:id/text1[@text='Light']")
-    public WebElement StockNameLight;
-
-    // DoorLock Stock Names
-
-    // Thermostat Stock Names
-
-    //GDC Stock Names
 
     //Edit Device Page
     @FindBy(id = "com.qolsys:id/edit")
-    public WebElement Edit_Device_Icon_Z_Wave_Edit_Device_Page; //Update button
+    public WebElement Edit_Device_Icon_Z_Wave_Edit_Device_Page;
     @FindBy(id = "com.qolsys:id/editButton")
     public WebElement Update_Device_Button_Z_Wave_Add_Device_Page;
 
