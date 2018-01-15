@@ -1377,7 +1377,7 @@ public class Disarm extends Setup {
         sensors.primaryCall("67 00 22", "02 01");
         Thread.sleep(1000);
         elementVerification(emg.Fire_icon_Alarmed, "Fire Emergency Sent");
-        adc.New_ADC_session_User("4216551", "qolsys123");
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
@@ -1405,7 +1405,7 @@ public class Disarm extends Setup {
         verifyInAlarm();
         log.log(LogStatus.PASS, ("Pass: system is in ALARM"));
         Thread.sleep(30000);
-        adc.New_ADC_session_User("4216551", "qolsys123");
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
@@ -1433,7 +1433,7 @@ public class Disarm extends Setup {
         verifyInAlarm();
         log.log(LogStatus.PASS, ("Pass: system is in ALARM"));
         Thread.sleep(2000);
-        adc.New_ADC_session_User("4216551", "qolsys123");
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
