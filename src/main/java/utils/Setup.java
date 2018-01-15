@@ -119,7 +119,7 @@ public class Setup {
         Thread.sleep(2000);
 
         driver = new AndroidDriver<>(service.getUrl(), cap);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
 

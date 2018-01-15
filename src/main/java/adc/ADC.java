@@ -546,6 +546,15 @@ public class ADC extends Setup {
         driver1.findElement(By.partialLinkText("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
     }
 
+    public void update_sensors_list() throws InterruptedException, IOException {
+        New_ADC_session(getAccountId());
+        Thread.sleep(1000);
+        driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(10000);
+        Request_equipment_list();
+        Thread.sleep(1000);
+    }
+
     //End ADC Z-Wave Dealer Paths and Actions
     //End ADC Z-Wave Dealer Paths and Actions
     //End ADC Z-Wave Dealer Paths and Actions
