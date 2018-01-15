@@ -44,6 +44,7 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         swipeVertical();
         Thread.sleep(1000);
         swipeVertical();
+        swipeVertical();
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -68,6 +69,7 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
+        swipeVertical();
         swipeVertical();
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);

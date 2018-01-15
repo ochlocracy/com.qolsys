@@ -181,6 +181,7 @@ public class Freeze extends Setup {
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         deleteFromPrimary(52);
+        service.stop();
     }
 
     @AfterMethod

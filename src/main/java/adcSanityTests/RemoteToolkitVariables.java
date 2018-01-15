@@ -25,7 +25,8 @@ public class RemoteToolkitVariables {
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_ddlNewValue']")
     public WebElement New_Value;
 
-    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl00_lblCategoryName']")
+    @FindBy(how = How.XPATH, xpath = "//*[@id='remote-toolkit-command-catalog']/div[2]/div[2]/h2/i']")
+         //   ='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl00_lblCategoryName']")
     public WebElement Advanced_Panel_Settings_Dropdown;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl00_rptSettingsCommands_ctl00_lbtnCommandSetting']")
