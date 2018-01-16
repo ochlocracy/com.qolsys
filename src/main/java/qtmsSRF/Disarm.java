@@ -276,21 +276,190 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-
     @Test(priority = 9)
+    public void Disb_14_DW10() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Disb319_14");
+        log.log(LogStatus.INFO, ("*Disb_14* Verify the sensor is being monitored, dw sensor group 10"));
+        logger.info("Verify the sensor is being monitored, dw sensor group 10");
+        addPrimaryCall(3, 10, 6619296, 1);
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window10, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window10, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+    @Test(priority = 10)
+    public void Disb_15_DW12() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Disb319_15");
+        log.log(LogStatus.INFO, ("*Disb_15* Verify the sensor is being monitored, dw sensor group 12"));
+        logger.info("*Disb_15* Verify the sensor is being monitored, dw sensor group 12");
+        addPrimaryCall(3, 12, 6619297, 1);
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window12, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window12, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+    @Test(priority = 11)
+    public void Disb_16_DW13() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Disb319_16");
+        log.log(LogStatus.INFO, ("*Disb_16* Verify the sensor is being monitored, dw sensor group 13"));
+        logger.info("*Disb_16* Verify the sensor is being monitored, dw sensor group 13");
+        addPrimaryCall(3, 13, 6619298, 1);
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window13, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window13, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+    @Test(priority = 12)
+    public void Disb_17_DW14() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Disb319_17");
+        log.log(LogStatus.INFO, ("*Disb_17* Verify the sensor is being monitored, dw sensor group 14"));
+        logger.info("*Disb_17* Verify the sensor is being monitored, dw sensor group 14");
+        addPrimaryCall(3, 14, 6619299, 1);
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window14, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window14, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+    @Test(priority = 13)
+    public void Disb_18_DW16() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Disb319_18");
+        log.log(LogStatus.INFO, ("*Disb_18* Verify the sensor is being monitored, dw sensor group 16"));
+        logger.info("*Disb_18* Verify the sensor is being monitored, dw sensor group 16");
+        addPrimaryCall(3, 16, 6619300, 1);
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window16, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window16, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 14)
     public void Disb_19_DW25() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         add_to_report("Disb319_19");
         log.log(LogStatus.INFO, ("*Disb_19* Open/Close event is displayed in panel history for sensor group 25"));
         logger.info("*Disb_19* Open/Close event is displayed in panel history for sensor group 25");
         addPrimaryCall(3, 25, 6619301, 1);
         Thread.sleep(1000);
-        sensor_status_check(door_window25, "Open", "Closed");
+        Thread.sleep(1000);
+        sensors.primaryCall(door_window25, SensorsActivity.OPEN);
+        Thread.sleep(21000);
+        sensors.primaryCall(door_window25, SensorsActivity.CLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
         Thread.sleep(2000);
+        li_status1.clear();
+
+        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
 
-    @Test(priority = 10)
+    @Test(priority = 15)
     public void Disb_21_DW8() throws Exception {
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -324,25 +493,34 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    //    @Test(priority = 11)
-//    public void Disb_22_DW8() throws Exception {
-//        logger.info("*Disb_22* system will disarm from Police Alarm from the User Site, dw 8");
-//        addPrimaryCall(1, 8, 6619302, 1);
-//        Thread.sleep(1000);
-//        sensors.primaryCall(door_window8, open);
-//        Thread.sleep(15000);
-//        verifyInAlarm();
-////        adc.New_ADC_session_User("mypanel01", "qolsys123");
-////        try{
-////            adc.driver1.findElement(By.id("ctl00_phBody_ArmingStateWidget_btnDisarm")).click();
-////        }catch ( org.openqa.selenium.NoSuchElementException e){}
-//
-//        Thread.sleep(5000);
-//        verifyDisarm();
-//        deleteFromPrimary(1);
-//        Thread.sleep(2000);
-//    }
-    @Test(priority = 12)
+       @Test(priority = 16)
+    public void Disb_22_DW8() throws Exception {
+        add_to_report("Disb319_22");
+        log.log(LogStatus.INFO, ("*Disb_22* system will disarm from Police Alarm from the User Site, dw 8"));
+        logger.info("*Disb_22* system will disarm from Police Alarm from the User Site, dw 8");
+        addPrimaryCall(3, 8, 6619302, 1);
+        Thread.sleep(1000);
+        adc.update_sensors_list();
+        sensors.primaryCall(door_window8,  SensorsActivity.OPEN);
+        Thread.sleep(15000);
+        verifyInAlarm();
+           log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+        Thread.sleep(5000);
+        adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
+        Thread.sleep(5000);
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarms']"))).click();
+        Thread.sleep(4000);
+        adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
+        Thread.sleep(10000);
+        verifyDisarm();
+        log.log(LogStatus.PASS, ("Pass: system is successfully Disarmed from user site"));
+        Thread.sleep(1000);
+        deleteFromPrimary(3);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 17)
     public void Disb_23_DW9() throws Exception {
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         add_to_report("Disb319_23");
@@ -363,7 +541,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 13)
+    @Test(priority = 18)
     public void Disb_24_DW8() throws Exception {
         add_to_report("Disb319_24");
         log.log(LogStatus.INFO, ("*Disb_24* system goes into alarm after sensor tamper, dw8"));
@@ -381,7 +559,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 14)
+    @Test(priority = 19)
     public void Disb_25_DW9() throws Exception {
         add_to_report("Disb319_25");
         log.log(LogStatus.INFO, ("*Disb_25* system goes into alarm after sensor tamper, dw9"));
@@ -399,7 +577,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 15)
+    @Test(priority = 20)
     public void Disb_26_DW10() throws Exception {
         add_to_report("Disb319_26");
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
@@ -438,7 +616,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(dependsOnMethods = {"Disb_26_DW10"}, priority = 16)
+    @Test(dependsOnMethods = {"Disb_26_DW10"}, priority = 21)
     public void Disb_27_DW10() throws Exception {
         add_to_report("Disb319_27");
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
@@ -463,7 +641,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 17)
+    @Test(priority = 22)
     public void Disb_28_DW10() throws Exception {
         add_to_report("Disb319_28");
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
@@ -526,7 +704,7 @@ public class Disarm extends Setup {
         Thread.sleep(3000);
     }
 
-    //    @Test (priority = 18)
+    //    @Test (priority = 23)
 //    public void Disb_33_DW10() throws Exception {
 //        logger.info("*Disb-33* System does not allow entry delay. Immediate alarm after triggering a sensor");
 //        addPrimaryCall(1, 10, 6619296, 1);
@@ -556,7 +734,7 @@ public class Disarm extends Setup {
 //        deleteFromPrimary(1);
 //        Thread.sleep(1000);
 //    }
-//    @Test(priority =19 )
+//    @Test(priority =24 )
 //    public void Disb_34_DW12() throws Exception {
 //        logger.info("*Disb-34* System does not allow entry delay. Immediate alarm after triggering a sensor");
 //        addPrimaryCall(1, 12, 6619297, 1);
@@ -586,7 +764,7 @@ public class Disarm extends Setup {
 //        deleteFromPrimary(1);
 //        Thread.sleep(1000);
 //    }
-    @Test(priority = 20)
+    @Test(priority = 25)
     public void Disb_38_DW14_DW16() throws Exception {
         add_to_report("Disb319_38");
         log.log(LogStatus.INFO, ("*Disb-38* System will ArmStay at the end of delay if DW sensors in 16 and 14 group are tampered"));
@@ -611,7 +789,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 21)
+    @Test(priority = 26)
     public void Disb_40_KF1() throws Exception {
         add_to_report("Disb319_40");
         log.log(LogStatus.INFO, ("*Disb-40* System will ArmStay at the end of exit delay from feyfob group 1"));
@@ -631,7 +809,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 22)
+    @Test(priority = 27)
     public void Disb_41_KF1() throws Exception {
         add_to_report("Disb319_41");
         log.log(LogStatus.INFO, ("*Disb-41* System will Disarm while count down by keyfob group 1, while armed from keyfob"));
@@ -651,7 +829,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 23)
+    @Test(priority = 28)
     public void Disb_42_KF1() throws Exception {
         add_to_report("Disb319_42");
         log.log(LogStatus.INFO, ("*Disb-42* System will ArmStay after count down disarmed by keyfob group 1 while armed from panel"));
@@ -670,7 +848,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 24)
+    @Test(priority = 29)
     public void Disb_44_KF4() throws Exception {
         add_to_report("Disb319_44");
         log.log(LogStatus.INFO, ("*Disb-44* System will Disarm while count down by keyfob group 4, while armed from keyfob"));
@@ -690,7 +868,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 25)
+    @Test(priority = 30)
     public void Disb_45_KF4() throws Exception {
         add_to_report("Disb319_45");
         log.log(LogStatus.INFO, ("*Disb-45* System will ArmStay after count down disarmed by keyfob group 4 while armed from panel"));
@@ -709,7 +887,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 26)
+    @Test(priority = 31)
     public void Disb_46_KF6() throws Exception {
         add_to_report("Disb319_46");
         log.log(LogStatus.INFO, ("*Disb-46* System will ArmStay instantly armed by keyfob 6"));
@@ -727,7 +905,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 27)
+    @Test(priority = 32)
     public void Disb_47_KF6() throws Exception {
         add_to_report("Disb319_47");
         log.log(LogStatus.INFO, ("*Disb-47* System will ArmStay after exit delay armed by keyfob 6"));
@@ -748,7 +926,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 28)
+    @Test(priority = 33)
     public void Disb_48_KF6() throws Exception {
         add_to_report("Disb319_48");
         log.log(LogStatus.INFO, ("*Disb-48* System will Disarm while count down by keyfob group 6, while armed from keyfob"));
@@ -768,7 +946,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 29)
+    @Test(priority = 34)
     public void Disb_49_KF6() throws Exception {
         add_to_report("Disb319_49");
         log.log(LogStatus.INFO, ("*Disb-49* System will ArmStay after count down disarmed by keyfob group 6 while armed from panel"));
@@ -788,7 +966,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 30)
+    @Test(priority = 35)
     public void Disb_50_DW10() throws Exception {
         add_to_report("Disb319_50");
         log.log(LogStatus.INFO, ("*Disb-50* System will go into immediate alarm at the end of exit delay after tampering contact sensor group 10"));
@@ -807,7 +985,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 31)
+    @Test(priority = 36)
     public void Disb_51_DW12() throws Exception {
         add_to_report("Disb319_51");
         log.log(LogStatus.INFO, ("*Disb-51* System will go into immediate alarm at the end of exit delay after tampering contact sensor group 12"));
@@ -825,7 +1003,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 32)
+    @Test(priority = 37)
     public void Disb_52_DW13() throws Exception {
         add_to_report("Disb319_52");
         log.log(LogStatus.INFO, ("*Disb-52* System will go into immediate alarm after tampering contact sensor group 13"));
@@ -843,7 +1021,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 33)
+    @Test(priority = 38)
     public void Disb_53_DW14() throws Exception {
         add_to_report("Disb319_53");
         log.log(LogStatus.INFO, ("*Disb-53* System will go into alarm at the end of exit delay after tampering contact sensor group 14"));
@@ -861,7 +1039,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 34)
+    @Test(priority = 39)
     public void Disb_54_DW16() throws Exception {
         add_to_report("Disb319_54");
         log.log(LogStatus.INFO, ("*Disb-54* System will ArmStay after contact sensor group 16 tamper while exit delay"));
@@ -879,7 +1057,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    //    @Test(priority =35 )
+    //    @Test(priority =40 )
 //    public void Disb_61_DW10() throws Exception {
 //        logger.info("*Disb-61* Arm Away from User website, select No Entry Delay");
 //        addPrimaryCall(1, 10, 6619296, 1);
@@ -909,7 +1087,7 @@ public class Disarm extends Setup {
 //        deleteFromPrimary(1);
 //        Thread.sleep(1000);
 //    }
-    @Test(priority = 36)
+    @Test(priority = 41)
     public void Disb_59_DW10() throws Exception {
         add_to_report("Disb319_59");
         log.log(LogStatus.INFO, ("*Disb-59* System will go into alarm when Arm Away from panel, select Entry Delay Off, activate a sensor group 10"));
@@ -934,7 +1112,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 37)
+    @Test(priority = 42)
     ///??? verify test case
     public void Disb_60_DW10() throws Exception {
         add_to_report("Disb319_60");
@@ -973,7 +1151,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 38)
+    @Test(priority = 43)
     public void Disb_61_DW10() throws Exception {
         add_to_report("Disb319_61");
         log.log(LogStatus.INFO, ("*Disb-61* Verify the system will going to alarm at the end of the exit delay when a sensor is left open"));
@@ -1002,7 +1180,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 39)
+    @Test(priority = 44)
     public void Disb_69_KF1() throws Exception {
         add_to_report("Disb319_69");
         log.log(LogStatus.INFO, ("*Disb-69* System ArmAway instantly from keyfob group 1"));
@@ -1019,7 +1197,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 40)
+    @Test(priority = 45)
     public void Disb_70_KF1() throws Exception {
         add_to_report("Disb319_70");
         log.log(LogStatus.INFO, ("*Disb-70* System ArmAway at the end of exit delay from keyfob group 1"));
@@ -1040,7 +1218,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 41)
+    @Test(priority = 46)
     public void Disb_71_KF1() throws Exception {
         add_to_report("Disb319_71");
         log.log(LogStatus.INFO, ("*Disb-71* System will Disarm while count down by keyfob group 1, while armed from keyfob"));
@@ -1060,7 +1238,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 42)
+    @Test(priority = 47)
     public void Disb_72_KF1() throws Exception {
         add_to_report("Disb319_72");
         log.log(LogStatus.INFO, ("*Disb-72* System will ArmAway after count down armed from panel, press disarm on keyfob 1"));
@@ -1080,7 +1258,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 43)
+    @Test(priority = 48)
     public void Disb_73_KF4() throws Exception {
         add_to_report("Disb319_73");
         log.log(LogStatus.INFO, ("*Disb-73* System ArmAway instantly from keyfob group 4"));
@@ -1098,7 +1276,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 44)
+    @Test(priority = 49)
     public void Disb_74_KF4() throws Exception {
         add_to_report("Disb319_74");
         log.log(LogStatus.INFO, ("*Disb-74* System ArmStay at the end of exit delay from keyfob group 4"));
@@ -1118,7 +1296,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 45)
+    @Test(priority = 50)
     public void Disb_75_KF4() throws Exception {
         add_to_report("Disb319_75");
         log.log(LogStatus.INFO, ("*Disb-75* System ArmAway at the end of exit delay from keyfob group 4"));
@@ -1138,7 +1316,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 46)
+    @Test(priority = 51)
     public void Disb_76_KF4() throws Exception {
         add_to_report("Disb319_76");
         log.log(LogStatus.INFO, ("*Disb-76* System will Disarm while countdown by keyfob group 4"));
@@ -1159,7 +1337,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 47)
+    @Test(priority = 52)
     public void Disb_77_KF4() throws Exception {
         add_to_report("Disb319_77");
         log.log(LogStatus.INFO, ("*Disb-77* System will ArmAway after count down armed from panel, press disarm on keyfob 4"));
@@ -1180,7 +1358,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 48)
+    @Test(priority = 53)
     public void Disb_78_KF6() throws Exception {
         add_to_report("Disb319_78");
         log.log(LogStatus.INFO, ("*Disb-78* System will ArmAway instantly from keyfob 6"));
@@ -1197,7 +1375,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 49)
+    @Test(priority = 54)
     public void Disb_79_KF6() throws Exception {
         add_to_report("Disb319_79");
         log.log(LogStatus.INFO, ("*Disb-79* System will ArmAway at the end of countdowm from keyfob 6"));
@@ -1217,7 +1395,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 50)
+    @Test(priority = 55)
     public void Disb_80_KF6() throws Exception {
         add_to_report("Disb319_80");
         log.log(LogStatus.INFO, ("*Disb-80* System will Disarm while count down by keyfob group 6, while armed from keyfob"));
@@ -1238,7 +1416,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 51)
+    @Test(priority = 56)
     public void Disb_81_KF6() throws Exception {
         add_to_report("Disb319_81");
         log.log(LogStatus.INFO, ("*Disb-81* System will ArmAway after count down armed from panel, press disarm on keyfob 6"));
@@ -1260,7 +1438,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 52)
+    @Test(priority = 57)
     public void Disb_83_DW10() throws Exception {
         add_to_report("Disb319_83");
         log.log(LogStatus.INFO, ("*Disb_83* System will go into pending tamper alarm at the end of exit delay"));
@@ -1281,7 +1459,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 53)
+    @Test(priority = 58)
     public void Disb_84_DW12() throws Exception {
         add_to_report("Disb319_84");
         log.log(LogStatus.INFO, ("*Disb_84* System will go into pending tamper alarm at the end of exit delay"));
@@ -1302,7 +1480,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 54)
+    @Test(priority = 59)
     public void Disb_85_DW13() throws Exception {
         add_to_report("Disb319_85");
         log.log(LogStatus.INFO, ("*Disb_85* System will go into pending tamper alarm at the end of exit delay"));
@@ -1323,7 +1501,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 55)
+    @Test(priority = 60)
     public void Disb_86_DW14() throws Exception {
         add_to_report("Disb319_86");
         log.log(LogStatus.INFO, ("*Disb_86* System will go into pending tamper alarm at the end of exit delay"));
@@ -1344,7 +1522,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 56)
+    @Test(priority = 61)
     public void Disb_87_DW16() throws Exception {
         add_to_report("Disb319_87");
         log.log(LogStatus.INFO, ("*Disb_87* System will go into immediate tamper alarm"));
@@ -1365,7 +1543,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 57)
+    @Test(priority = 62)
     public void Disb_104_SM() throws Exception {
         add_to_report("Disb319_104");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1392,7 +1570,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 58)
+    @Test(priority = 63)
     public void Disb_109_WAT() throws Exception {
         add_to_report("Disb319_109");
         log.log(LogStatus.INFO, ("*Disb_109* System will disarm from water sensor alarm from user website"));
@@ -1420,7 +1598,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 59)
+    @Test(priority = 64)
     public void Disb_117_CO() throws Exception {
         add_to_report("Disb319_117");
         log.log(LogStatus.INFO, ("*Disb_117* System will disarm from CO sensor alarm from user website"));
@@ -1448,7 +1626,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 60)
+    @Test(priority = 65)
     public void Disb_118_KF1() throws Exception {
         add_to_report("Disb319_118");
         log.log(LogStatus.INFO, ("*Disb_118* System stays in Alarm triggered by keyfob disarming from keyfob 1"));
@@ -1475,7 +1653,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 61)
+    @Test(priority = 66)
     public void Disb_121_KF1() throws Exception {
         add_to_report("Disb319_121");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1496,7 +1674,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 62)
+    @Test(priority = 67)
     public void Disb_122_SM_AUX_DW8_C0() throws Exception {
         add_to_report("Disb319_122");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1538,7 +1716,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 63)
+    @Test(priority = 68)
     public void Disb_123_KF6() throws Exception {
         add_to_report("Disb319_123");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1565,7 +1743,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 64)
+    @Test(priority = 69)
     public void Disb_126_KF1() throws Exception {
         add_to_report("Disb319_126");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1591,7 +1769,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 65)
+    @Test(priority = 70)
     public void Disb_125_KF6() throws Exception {
         add_to_report("Disb319_125");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
@@ -1611,7 +1789,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-//    @Test(priority = 66)
+//    @Test(priority = 71)
 //    public void Disb_131_KF6() throws Exception {
 //        EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
 //        HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -1629,7 +1807,7 @@ public class Disarm extends Setup {
 //        Thread.sleep(2000);
 //    }
 
-    @Test(priority = 67)
+    @Test(priority = 72)
     public void Disb_141_GB() throws Exception {
         add_to_report("Disb319_141");
         log.log(LogStatus.INFO, ("*Disb_141* System restors status for glass-break from Alarmed to Normal"));
@@ -1641,7 +1819,6 @@ public class Disarm extends Setup {
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
-
 
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {

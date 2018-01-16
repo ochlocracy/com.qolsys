@@ -176,6 +176,9 @@ public class ADC extends Setup {
         String[] message = {string, string1};
         if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
+            driver1.findElement(By.partialLinkText("Sensors")).click();
+            Thread.sleep(2000);
+            Request_equipment_list();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
