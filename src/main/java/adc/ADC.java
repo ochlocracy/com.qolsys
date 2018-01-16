@@ -176,6 +176,9 @@ public class ADC extends Setup {
         String[] message = {string, string1};
         if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
+            driver1.findElement(By.partialLinkText("Sensors")).click();
+            Thread.sleep(2000);
+            Request_equipment_list();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
@@ -544,6 +547,15 @@ public class ADC extends Setup {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ucsPanelManagement_spZWave_imgExpandCollapse")).click();
         driver1.findElement(By.partialLinkText("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
+    }
+
+    public void update_sensors_list() throws InterruptedException, IOException {
+        New_ADC_session(getAccountId());
+        Thread.sleep(1000);
+        driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(10000);
+        Request_equipment_list();
+        Thread.sleep(1000);
     }
 
     //End ADC Z-Wave Dealer Paths and Actions
