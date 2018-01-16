@@ -107,7 +107,6 @@ public class Disarm extends Setup {
         }
     }
 
-
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
