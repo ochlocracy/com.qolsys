@@ -78,7 +78,7 @@ public class DoorLockTest extends Setup {
     }
 
 
-    public void Z_Wave_Door_Locks_Disarm_Mode(String UDID_) throws Exception {
+    public void Z_Wave_Door_Locks_Disarm_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
@@ -176,7 +176,7 @@ public class DoorLockTest extends Setup {
         logger.info("Disarm mode: Verify that a Door Lock can be deleted from the ADC website");
     }
 
-    public void Z_Wave_Door_Locks_Arm_Stay_Mode(String UDID_) throws Exception {
+    public void Z_Wave_Door_Locks_Arm_Stay_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
@@ -200,7 +200,7 @@ public class DoorLockTest extends Setup {
 
     }
 
-    public void Z_Wave_Door_Locks_Arm_Away_Mode(String UDID_) throws Exception {
+    public void Z_Wave_Door_Locks_Arm_Away_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
