@@ -1,6 +1,5 @@
 package utils;
 
-import cellular.System_Tests_page;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -15,7 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import panel.*;
-import zwave.ZWavePage;
+import org.openqa.selenium.support.ui.Select;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -117,6 +116,7 @@ public class Setup {
         service.start();
         System.out.println("\n*****Start Appium*****\n");
         Thread.sleep(2000);
+
 
         driver = new AndroidDriver<>(service.getUrl(), cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -295,7 +295,7 @@ public class Setup {
     public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (//home_page.ArwAway_State.isDisplayed()) {
-                home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
+            home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
             logger.info("Pass: panel is in Arm Away mode");
         } else {
             takeScreenshot();
@@ -717,112 +717,66 @@ public class Setup {
     public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);
-    }
-
-    //Start Z-Wave Paths and Actions
-    //All Actions Stat From Home Page**
-    //Start Z-Wave Paths and Actions
-    //All Actions Stat From Home Page**
-
-    public void localZwaveAddPath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        System.out.println(deleteFromPrimary);}
+    public void addPGSensors (int Type, int Id, int gn) throws IOException, InterruptedException {
+        Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Add_Device_Z_Wave_Page.click();
-        zwave.Include_Device_Z_Wave_Add_Device_Page.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        ss.Auto_Learn_Sensor.click();
+        Thread.sleep(1000);
+        powerGregistrator(Type,Id);
+        Thread.sleep(3000);
+        driver.findElementById("com.qolsys:id/ok").click();
+        Thread.sleep(1000);
+        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
+        li.get(0).click();
+        Thread.sleep(1000);
+        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
+        nli.get(1).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//android.widget.EditText[@index='3']")).sendKeys("sensor "+ Type + "-"+ Id);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Thread.sleep(2000);
+        li.get(2).click();
+        Thread.sleep(1000);
+        List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
+        gli.get(gn).click();
+        Thread.sleep(1000);
+        driver.findElementById("com.qolsys:id/addsensor").click();
+        Thread.sleep(1000);
+        powerGactivator(Type,Id);
     }
-
-    public void localZWaveClearPath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Clear_Device_Z_Wave_Page.click();
+    public void powerGregistrator(int type, int id) throws IOException {
+        String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
+        rt.exec(ConfigProps.adbPath + add_pg);
+        //shell powerg_simulator_registrator 101-0001
     }
-
-    public void localZWaveRemoveAllDevicesPath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Remove_All_Devices_Z_Wave_Page.click();
+    public void powerGactivator(int type, int id) throws IOException {
+        String activate_pg = " shell powerg_simulator_activator " + type + "-" +id;
+        rt.exec(ConfigProps.adbPath + activate_pg);
+        //shell powerg_simulator_activatortor 101-0001
     }
-
-    public void localZWaveEditDevicePath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Edit_Device_Z_Wave_Page.click();
-    }
-
-    public void localZWaveDeleteFailedDevicePath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Delete_Failed_Device_Z_Wave_Page.click();
-    }
-
-    public void localZWaveAssociationPath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Association_Z_Wave_Page.click();
-    }
-
-    public void navigateToZWaveTests() throws IOException, InterruptedException {
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        System_Tests_page syst = PageFactory.initElements(driver, System_Tests_page.class);
-        navigateToAdvancedSettingsPage();
-        adv.SYSTEM_TESTS.click();
-        syst.ZWAVE_TEST.click();
-    }
-
-    public void localZWaveDeviceLimitPath() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Z_Wave_Settings_Z_Wave_Page.click();
-    }
-
-    //End Z-Wave Paths and Actions
-    //End Z-Wave Paths and Actions
-    //End Z-Wave Paths and Actions
-    //End Z-Wave Paths and Actions
-
+    public void setSensor() throws InterruptedException {
+        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
+        li.get(0).click();
+        Select droplist = new Select(driver.findElement(By.id("android:id/text1")));
+        droplist.selectByVisibleText("Front Window");
+        Thread.sleep(2000);
+        li.get(2).click();
+        Select droplist2 = new Select(driver.findElement(By.id("android:id/text1")));
+        droplist2.selectByVisibleText("12-Entry-Exit-Long Delay");
+        Thread.sleep(1000);
+       }
     public void deleteReport() {
         try {
             File file = new File(projectPath + "Report/SanityReport.html");
