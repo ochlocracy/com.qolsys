@@ -10,6 +10,7 @@ import utils.ConfigProps;
 import utils.Setup;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class ADC extends Setup {
@@ -176,6 +177,9 @@ public class ADC extends Setup {
         String[] message = {string, string1};
         if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
+            driver1.findElement(By.partialLinkText("Sensors")).click();
+            Thread.sleep(2000);
+            Request_equipment_list();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
@@ -486,64 +490,75 @@ public class ADC extends Setup {
         TimeUnit.SECONDS.sleep(2);
     }
     //Must be on emPower Devices page!
-    public void ADC_Rediscover_ZWave_Network(String accountID) throws InterruptedException {
+    //Has service call
+    public void ADC_Rediscover_ZWave_Network() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_nonwipingRediscovery2")).click();
         TimeUnit.SECONDS.sleep(2);
     }
     //Must be on emPower Devices page!
-    public void ADC_Dealer_Edit_ZWave_Device_Name(String accountID) throws InterruptedException {
+    public void ADC_Dealer_Edit_ZWave_Device_Name() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_EditDeviceNames")).click();
         TimeUnit.SECONDS.sleep(2);
     }
     //Must be on emPower Devices page!
-    public void ADC_Get_ZWave_Device_Name(String accountID) throws InterruptedException {
+    public void ADC_Get_ZWave_Device_Name() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_GetDeviceNames")).click();
         TimeUnit.SECONDS.sleep(15);
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
     }
     //Must be on emPower Devices page!
-    public void ADC_Get_ZWave_Equipment_List(String accountID) throws InterruptedException {
+    public void ADC_Get_ZWave_Equipment_List() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
         TimeUnit.SECONDS.sleep(15);
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
     }
     //Must be on emPower Devices page!
-    public void ADC_Add_ZWave_Device(String accountID) throws InterruptedException {
+    //Has service call
+    public void ADC_Add_ZWave_Device() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteAdd")).click();
     }
     //Must be on emPower Devices page!
-    public void ADC_Delete_ZWave_Device(String accountID) throws InterruptedException {
+    //Has service call
+    public void ADC_Delete_ZWave_Device() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
     }
     //Use "New_ADC_session" prior to this class
-    public void ADC_Service_Plan_ZWave_Energy_Monitoring(String accountID) throws InterruptedException {
+    public void ADC_Service_Plan_ZWave_Energy_Monitoring() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Service Plan")).click();
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Change Service")).click();
         TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.className("service panel-heading")).click();
         driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_ucsAddons_chkSmartEnergyPlus")).click();
         driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
     }
     //Use "New_ADC_session" prior to this class
-    public void ADC_Turn_OFF_ZWave(String accountID) throws InterruptedException {
+    //Has service call
+    public void ADC_Turn_OFF_ZWave() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.partialLinkText("Remote Toolkit NEW")).click();
-        TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.className("sys-check-header-fields category-arrow-link")).click();
+        driver1.findElement(By.partialLinkText("Panel"));
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ucsPanelManagement_spZWave_imgExpandCollapse")).click();
+        driver1.findElement(By.tagName("'ctl00$phBody$ucsPanelManagement$udListZWave$gvSettings','Select$43'")).click();
         driver1.findElement(By.partialLinkText("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
+    }
+    public void ADC_Set_Garage_Door_Limit() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("Panel"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ucsPanelManagement_spZWave_imgExpandCollapse")).click();
+        driver1.findElement(By.partialLinkText("Select$52")).click();
     }
 
     public void update_sensors_list() throws InterruptedException, IOException {
@@ -558,4 +573,29 @@ public class ADC extends Setup {
     //End ADC Z-Wave Dealer Paths and Actions
     //End ADC Z-Wave Dealer Paths and Actions
     //End ADC Z-Wave Dealer Paths and Actions
+
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+
+    public void ADC_User_Navigate_Energy_Usage() throws InterruptedException{
+        driver1.findElement(By.id("ember637"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember3831"));
+    }
+    public void ADC_User_Navigate_Schedules() throws InterruptedException {
+        driver1.findElement(By.id("ember629"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember4097"));
+    }
+    public void ADC_User_Navigate_Scenes() throws InterruptedException {
+        driver1.findElement(By.id("ember629"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember4099"));
+    }
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
 }
