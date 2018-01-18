@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import panel.HomePage;
@@ -16,7 +17,7 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class DialerDelay extends Setup {
+public class AlarmDialerDelay extends Setup {
     String page_name = "Arm Stay Arm Away KeyFob sensor testing";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
@@ -27,9 +28,13 @@ public class DialerDelay extends Setup {
     String element_to_verify = "//*[contains(text(), 'panel armed-stay ')]";
     String element_to_verify1 = "//*[contains(text(), 'panel armed-away ')]";
     String element_to_verify3 = "//*[contains(text(), 'panel disarmed ')]";
-    public DialerDelay() throws Exception {
+    String element_to_verify4 = "//*[contains(text(), ' Alarm')]";
+
+    public AlarmDialerDelay() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+        /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
+        adc.setADCexecute("true");
     }
 
     @BeforeTest
@@ -48,24 +53,27 @@ public class DialerDelay extends Setup {
     @Test
     public void alarm_08as() throws Exception {
         Thread.sleep(3000);
-        servcall.set_DIALER_DELAY(0);
+        System.out.println("ALARM_08: Verify all the other sensors will trigger immediately alarm on ADC if dialer delay is set to 0");
+     /*   servcall.set_DIALER_DELAY(0);
         Thread.sleep(3000);
-        // addPrimaryCall(10, 10,6619296, 1);
-        addPrimaryCall(9, 9, 6619303, 1);
+        addPrimaryCall(10, 10,6619296, 1);
+       // addPrimaryCall(9, 9, 6619303, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_STAY();
         Thread.sleep(2000);
         verifyArmstay();
         Thread.sleep(4000);
-        sensors.primaryCall("65 00 7A", SensorsActivity.TAMPER);
-        // sensors.primaryCall("65 00 0A", open);
+       // sensors.primaryCall("65 00 7A", SensorsActivity.TAMPER);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(12000);
-        // verifyInAlarm();
+        verifyInAlarm();
         Thread.sleep(2000);
-        // Thread.sleep(40000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(6000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+      */  Thread.sleep(40000);
+       // adc.ADC_verification(element_to_verify, element_to_verify4);
+        adc.search_ADC_history(element_to_verify,element_to_verify4, "Alarm");
+        //adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+       // Thread.sleep(6000);
+/*        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
         try {
             WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Alarm')]"));
             Assert.assertTrue(history_message_alarm.isDisplayed());
@@ -73,12 +81,14 @@ public class DialerDelay extends Setup {
                 System.out.println("User website history -> " + history_message_alarm.getText());
             }
         } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+            System.out.println("No such element found!!!");}
+     */
         Thread.sleep(4000);
-        enterDefaultUserCode();
-        deleteFromPrimary(9);
-        Thread.sleep(4000);
+    /*    enterDefaultUserCode();
+       // deleteFromPrimary(9);
+        deleteFromPrimary(10);
+        Thread.sleep(4000);*/
+        System.out.println("O_-)");
     }
 
     @Test(priority = 4)

@@ -718,7 +718,7 @@ public class Setup {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);}
-    public void addPGSensors (int Type, int Id, int gn) throws IOException, InterruptedException {
+    public void navigate_to_autolearn_page () throws InterruptedException {
         Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
@@ -729,6 +729,10 @@ public class Setup {
         instal.DEVICES.click();
         dev.Security_Sensors.click();
         ss.Auto_Learn_Sensor.click();
+        Thread.sleep(1000);
+    }
+
+    public void addPGSensors (int Type, int Id, int gn) throws IOException, InterruptedException {
         Thread.sleep(1000);
         powerGregistrator(Type,Id);
         Thread.sleep(3000);
@@ -755,17 +759,25 @@ public class Setup {
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);
         powerGactivator(Type,Id);
+        Thread.sleep(2000);
     }
     public void powerGregistrator(int type, int id) throws IOException {
         String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
         rt.exec(ConfigProps.adbPath + add_pg);
         //shell powerg_simulator_registrator 101-0001
     }
-    public void powerGactivator(int type, int id) throws IOException {
+    public void powerGactivator(int type, int id) throws IOException, InterruptedException {
+        Thread.sleep(2000);
         String activate_pg = " shell powerg_simulator_activator " + type + "-" +id;
         rt.exec(ConfigProps.adbPath + activate_pg);
+        Thread.sleep(2000);
         //shell powerg_simulator_activatortor 101-0001
     }
+    public void pgprimaryCall(int type, int id, String status) throws IOException {
+        String status_send =" shell powerg_simulator_status "+ type+"-"+id +" "+ status;
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send); }
+
     public void setSensor() throws InterruptedException {
         List<WebElement> li = driver.findElements(By.id("android:id/text1"));
         li.get(0).click();
