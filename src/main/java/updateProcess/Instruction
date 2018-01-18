@@ -4,11 +4,29 @@ Please run the following tests before the panel update in the following order:
 PreUpdateSensors
 PreUpdateUserManagement
 PreUpdateSettings
+Pair one light
 
 After software update, please run tests in the following order:
 
-SanityZwave
 SanityUpdate
 SanitySettings
 SanitySensors
+SanityZwave
 
+
+
+
+***** FOR PowerG panel *****
+Please run the following tests before the panel update in the following order:
+
+PreUpdatePGSensors
+PreUpdateUserManagement
+PreUpdateSettings
+Pair one light
+
+After software update, please run tests in the following order:
+
+SanityUpdatePG
+SanitySettings
+SanityPGSensors
+SanityZwave

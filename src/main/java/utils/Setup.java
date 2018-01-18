@@ -4,6 +4,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -14,7 +15,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import panel.*;
-import org.openqa.selenium.support.ui.Select;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -102,6 +102,7 @@ public class Setup {
                 .buildService(new AppiumServiceBuilder()
                         .usingDriverExecutable(new File(ConfigProps.nodePath))
                         .withAppiumJS(new File(ConfigProps.appiumPath))
+                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
                         .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
@@ -295,7 +296,7 @@ public class Setup {
     public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         if (//home_page.ArwAway_State.isDisplayed()) {
-            home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
+                home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
             logger.info("Pass: panel is in Arm Away mode");
         } else {
             takeScreenshot();
@@ -717,8 +718,10 @@ public class Setup {
     public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
-        System.out.println(deleteFromPrimary);}
-    public void navigate_to_autolearn_page () throws InterruptedException {
+        System.out.println(deleteFromPrimary);
+    }
+
+    public void navigate_to_autolearn_page() throws InterruptedException {
         Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
@@ -732,9 +735,29 @@ public class Setup {
         Thread.sleep(1000);
     }
 
-    public void addPGSensors (int Type, int Id, int gn) throws IOException, InterruptedException {
+    public void DeleteAllPGsesors() throws Exception {
+        Thread.sleep(2000);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        ss.Remove_All_Powerg_Sensors.click();
         Thread.sleep(1000);
-        powerGregistrator(Type,Id);
+        driver.findElement(By.xpath("//android.widget.TextView[@index='2']")).click();
+        Thread.sleep(5000);
+        // ss.OK.click();
+        // driver.findElement(By.xpath("//android.widget.TextView[@text='OK']")).click();
+        swipeFromLefttoRight();
+        //driver.findElementById("com.qolsys:id/ok").click();
+    }
+
+    public void addPGSensors(int Type, int Id, int gn) throws IOException, InterruptedException {
+        Thread.sleep(1000);
+        powerGregistrator(Type, Id);
         Thread.sleep(3000);
         driver.findElementById("com.qolsys:id/ok").click();
         Thread.sleep(1000);
@@ -744,7 +767,7 @@ public class Setup {
         List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
         nli.get(1).click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//android.widget.EditText[@index='3']")).sendKeys("sensor "+ Type + "-"+ Id);
+        driver.findElement(By.xpath("//android.widget.EditText[@index='3']")).sendKeys("sensor " + Type + "-" + Id);
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
@@ -758,37 +781,37 @@ public class Setup {
         Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);
-        powerGactivator(Type,Id);
+        powerGactivator(Type, Id);
         Thread.sleep(2000);
     }
+
     public void powerGregistrator(int type, int id) throws IOException {
         String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
         rt.exec(ConfigProps.adbPath + add_pg);
         //shell powerg_simulator_registrator 101-0001
     }
+
     public void powerGactivator(int type, int id) throws IOException, InterruptedException {
         Thread.sleep(2000);
-        String activate_pg = " shell powerg_simulator_activator " + type + "-" +id;
+        String activate_pg = " shell powerg_simulator_activator " + type + "-" + id;
         rt.exec(ConfigProps.adbPath + activate_pg);
         Thread.sleep(2000);
         //shell powerg_simulator_activatortor 101-0001
     }
-    public void pgprimaryCall(int type, int id, String status) throws IOException {
-        String status_send =" shell powerg_simulator_status "+ type+"-"+id +" "+ status;
-        rt.exec(ConfigProps.adbPath + status_send);
-        System.out.println(status_send); }
 
-    public void setSensor() throws InterruptedException {
-        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-        li.get(0).click();
-        Select droplist = new Select(driver.findElement(By.id("android:id/text1")));
-        droplist.selectByVisibleText("Front Window");
+    public void pgprimaryCall(int type, int id, String status) throws IOException {
+        String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
+        pgprimaryCall(type, id, status1);
         Thread.sleep(2000);
-        li.get(2).click();
-        Select droplist2 = new Select(driver.findElement(By.id("android:id/text1")));
-        droplist2.selectByVisibleText("12-Entry-Exit-Long Delay");
+        pgprimaryCall(type, id, status2);
         Thread.sleep(1000);
-       }
+    }
+
     public void deleteReport() {
         try {
             File file = new File(projectPath + "Report/SanityReport.html");
