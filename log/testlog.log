@@ -1,76 +1,169 @@
 
-2017-12-05 11:39:27,056 - utils.Log -INFO - ********************************************************************
-2017-12-05 11:39:27,058 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   About page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2017-12-05 11:39:27,058 - utils.Log -INFO - ********************************************************************
-2017-12-05 11:39:27,080 - About page testing -INFO - Verifying elements on the page...
-2017-12-05 11:39:41,870 - panel.AboutPageTest -INFO - Pass: Battery is present, value = Battery
-2017-12-05 11:39:44,322 - panel.AboutPageTest -INFO - Pass: Battery Status is present, value = Battery Status
-2017-12-05 11:39:44,872 - panel.AboutPageTest -INFO - Pass: Battery Level is present, value = Battery Level
-2017-12-05 11:39:46,840 - panel.AboutPageTest -INFO - Pass: Software is present, value = Software
-2017-12-05 11:39:48,476 - panel.AboutPageTest -INFO - Pass: Software Version is present, value = Software Version
-2017-12-05 11:39:49,046 - panel.AboutPageTest -INFO - Pass: Build Number is present, value = Build Number
-2017-12-05 11:39:49,567 - panel.AboutPageTest -INFO - Pass: Linux Version is present, value = Linux Version
-2017-12-05 11:39:50,134 - panel.AboutPageTest -INFO - Pass: Android OS Version is present, value = Android OS Version
-2017-12-05 11:39:52,287 - panel.AboutPageTest -INFO - Pass: Hardware is present, value = Hardware
-2017-12-05 11:39:54,310 - panel.AboutPageTest -INFO - Pass: Manufacturer is present, value = Manufacturer
-2017-12-05 11:40:00,433 - panel.AboutPageTest -INFO - Pass: PCA Serial Number is present, value = PCA Serial Number
-2017-12-05 11:40:01,105 - panel.AboutPageTest -INFO - Pass: Part Number is present, value = Part Number
-2017-12-05 11:40:01,709 - panel.AboutPageTest -INFO - Pass: System Configuration is present, value = System Configuration
-2017-12-05 11:40:02,228 - panel.AboutPageTest -INFO - Pass: System Serial Number is present, value = System Serial Number
-2017-12-05 11:40:08,330 - panel.AboutPageTest -INFO - Pass: RF Pic Version is present, value = RF PIC Version
-2017-12-05 11:40:08,878 - panel.AboutPageTest -INFO - Pass: EEPROM Format Version is present, value = EEPROM Format Version
-2017-12-05 11:40:09,392 - panel.AboutPageTest -INFO - Pass: Image Sensor Version is present, value = Image Sensor Version
-2017-12-05 11:40:10,841 - panel.AboutPageTest -INFO - Pass: Patches is present, value = Patches
-2017-12-05 11:40:12,860 - panel.AboutPageTest -INFO - Pass: Patch Description is present, value = Patch Description
-2017-12-05 11:40:13,417 - panel.AboutPageTest -INFO - Pass: Last Upgrade Date is present, value = Last Upgrade Date
-2017-12-05 11:40:15,397 - panel.AboutPageTest -INFO - Pass: Panel is present, value = Panel
-2017-12-05 11:40:16,945 - panel.AboutPageTest -INFO - Pass: MAC Address is present, value = MAC Address
-2017-12-05 11:40:17,494 - panel.AboutPageTest -INFO - Pass: Panel Up Time is present, value = Panel Up Time(YY:MM:DD:HH:mm)
-2017-12-05 11:40:19,525 - panel.AboutPageTest -INFO - Pass: Cellular is present, value = Cellular
-2017-12-05 11:40:21,430 - panel.AboutPageTest -INFO - Pass: Carrier is present, value = Carrier
-2017-12-05 11:40:21,979 - panel.AboutPageTest -INFO - Pass: Cellular Connection is present, value = Cellular Connection
-2017-12-05 11:40:22,536 - panel.AboutPageTest -INFO - Pass: Cellular Signal Strength is present, value = Cellular Signal Strength
-2017-12-05 11:40:23,073 - panel.AboutPageTest -INFO - Pass: IMEI is present, value = IMEI
-2017-12-05 11:40:28,044 - panel.AboutPageTest -INFO - Pass: IMSI is present, value = IMSI
-2017-12-05 11:40:28,524 - panel.AboutPageTest -INFO - Pass: ICCID is present, value = ICCID
-2017-12-05 11:40:29,087 - panel.AboutPageTest -INFO - Pass: Baseband Version is present, value = Baseband Version
-2017-12-05 11:40:31,118 - panel.AboutPageTest -INFO - Pass: Z-Wave is present, value = Z-Wave
-2017-12-05 11:40:33,159 - panel.AboutPageTest -INFO - Pass: Home-ID is present, value = Home ID
-2017-12-05 11:40:33,736 - panel.AboutPageTest -INFO - Pass: Z-Wave Firmware Version is present, value = Z-Wave Firmware Version
-2017-12-05 11:40:34,289 - panel.AboutPageTest -INFO - Pass: Z-Wave Api Version is present, value = Z-Wave Api Version
-2017-12-05 11:40:39,383 - panel.AboutPageTest -INFO - Pass: Manufacturing ID is present, value = Manufacturing ID
-2017-12-05 11:40:39,891 - panel.AboutPageTest -INFO - Pass: Product Type is present, value = Product Type
-2017-12-05 11:40:40,379 - panel.AboutPageTest -INFO - Pass: Product ID is present, value = Product ID
-2017-12-05 11:40:41,803 - panel.AboutPageTest -INFO - Pass: Ethernet is present, value = Ethernet
-2017-12-05 11:40:42,290 - panel.AboutPageTest -INFO - Pass: Wi-Fi Info is present, value = WI-FI Information
-2017-12-05 11:40:44,453 - panel.AboutPageTest -INFO - Pass: Connection is present, value = Connection
-2017-12-05 11:40:44,969 - panel.AboutPageTest -INFO - Pass: IP Address is present, value = IP Address
-2017-12-05 11:40:49,993 - panel.AboutPageTest -INFO - Pass: SSID is present, value = SSID
-2017-12-05 11:40:50,548 - panel.AboutPageTest -INFO - Pass: Speed is present, value = Speed
-2017-12-05 11:40:51,594 - panel.AboutPageTest -INFO - Pass: Internet is present, value = Internet
-2017-12-05 11:40:53,044 - panel.AboutPageTest -INFO - Pass: Internal storage is present, value = Internal storage
-2017-12-05 11:40:54,941 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
-2017-12-05 11:41:00,283 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
-2017-12-05 11:41:00,831 - panel.AboutPageTest -INFO - Pass: Photos is present, value = Photos
-2017-12-05 11:41:01,315 - panel.AboutPageTest -INFO - Pass: Videos is present, value = Videos
-2017-12-05 11:41:01,840 - panel.AboutPageTest -INFO - Pass: Logs is present, value = Logs
-2017-12-05 11:41:02,288 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 14:23:22,438 - zwave.ZwaveTransmitter -INFO - Panel in remote clear mode with service call
-2017-12-05 14:23:28,494 - zwave.ZwaveTransmitter -INFO - Exclude/Clear transmitter to panel 
-2017-12-05 14:24:28,496 - zwave.ZwaveTransmitter -INFO - Aborting remote Add
-2017-12-05 14:26:18,350 - zwave.ZwaveTransmitter -INFO - Panel in remote add mode with service call
-2017-12-05 14:26:27,416 - zwave.ZwaveTransmitter -INFO - Including transmitter to panel 
-2017-12-05 14:58:23,043 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 15:01:26,703 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:15:51,794 - zwave -INFO - Adding door lock
-2017-12-05 16:15:51,847 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:18:07,219 - zwave -INFO - Adding door lock
-2017-12-05 16:18:07,268 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:18:37,158 - zwave -INFO - Adding door lock
-2017-12-05 16:18:37,209 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:19:09,969 - zwave -INFO - Adding door lock
-2017-12-05 16:19:10,019 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:19:41,924 - zwave -INFO - Adding door lock
-2017-12-05 16:19:41,974 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:20:16,746 - zwave -INFO - Adding door lock
-2017-12-05 16:20:16,796 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-05 10:54:33,349 - utils.Log -INFO - ********************************************************************
+2018-01-05 10:54:33,351 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   About page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-01-05 10:54:33,351 - utils.Log -INFO - ********************************************************************
+2018-01-05 10:54:33,369 - About page testing -INFO - Verifying elements on the page...
+2018-01-05 10:54:44,456 - panel.AboutPageTest -INFO - Pass: Battery is present, value = Battery
+2018-01-05 10:54:46,692 - panel.AboutPageTest -INFO - Pass: Battery Status is present, value = Battery Status
+2018-01-05 10:54:47,271 - panel.AboutPageTest -INFO - Pass: Battery Level is present, value = Battery Level
+2018-01-05 10:54:49,344 - panel.AboutPageTest -INFO - Pass: Software is present, value = Software
+2018-01-05 10:54:50,980 - panel.AboutPageTest -INFO - Pass: Software Version is present, value = Software Version
+2018-01-05 10:54:51,509 - panel.AboutPageTest -INFO - Pass: Build Number is present, value = Build Number
+2018-01-05 10:54:52,036 - panel.AboutPageTest -INFO - Pass: Linux Version is present, value = Linux Version
+2018-01-05 10:54:52,509 - panel.AboutPageTest -INFO - Pass: Android OS Version is present, value = Android OS Version
+2018-01-05 10:54:54,483 - panel.AboutPageTest -INFO - Pass: Hardware is present, value = Hardware
+2018-01-05 10:54:56,562 - panel.AboutPageTest -INFO - Pass: Manufacturer is present, value = Manufacturer
+2018-01-05 10:55:02,582 - panel.AboutPageTest -INFO - Pass: PCA Serial Number is present, value = PCA Serial Number
+2018-01-05 10:55:03,113 - panel.AboutPageTest -INFO - Pass: Part Number is present, value = Part Number
+2018-01-05 10:55:03,641 - panel.AboutPageTest -INFO - Pass: System Configuration is present, value = System Configuration
+2018-01-05 10:55:04,176 - panel.AboutPageTest -INFO - Pass: System Serial Number is present, value = System Serial Number
+2018-01-05 10:55:10,201 - panel.AboutPageTest -INFO - Pass: RF Pic Version is present, value = RF PIC Version
+2018-01-05 10:55:10,709 - panel.AboutPageTest -INFO - Pass: EEPROM Format Version is present, value = EEPROM Format Version
+2018-01-05 10:55:11,214 - panel.AboutPageTest -INFO - Pass: Image Sensor Version is present, value = Image Sensor Version
+2018-01-05 10:55:12,651 - panel.AboutPageTest -INFO - Pass: Patches is present, value = Patches
+2018-01-05 10:55:14,719 - panel.AboutPageTest -INFO - Pass: Patch Description is present, value = Patch Description
+2018-01-05 10:55:15,244 - panel.AboutPageTest -INFO - Pass: Last Upgrade Date is present, value = Last Upgrade Date
+2018-01-05 10:55:17,225 - panel.AboutPageTest -INFO - Pass: Panel is present, value = Panel
+2018-01-05 10:55:18,768 - panel.AboutPageTest -INFO - Pass: MAC Address is present, value = MAC Address
+2018-01-05 10:55:19,400 - panel.AboutPageTest -INFO - Pass: Panel Up Time is present, value = Panel Up Time(YY:MM:DD:HH:mm)
+2018-01-05 10:55:21,393 - panel.AboutPageTest -INFO - Pass: Cellular is present, value = Cellular
+2018-01-05 10:55:23,481 - panel.AboutPageTest -INFO - Pass: Carrier is present, value = Carrier
+2018-01-05 10:55:24,007 - panel.AboutPageTest -INFO - Pass: Cellular Connection is present, value = Cellular Connection
+2018-01-05 10:55:24,587 - panel.AboutPageTest -INFO - Pass: Cellular Signal Strength is present, value = Cellular Signal Strength
+2018-01-05 10:55:25,186 - panel.AboutPageTest -INFO - Pass: IMEI is present, value = IMEI
+2018-01-05 10:55:30,210 - panel.AboutPageTest -INFO - Pass: IMSI is present, value = IMSI
+2018-01-05 10:55:30,757 - panel.AboutPageTest -INFO - Pass: ICCID is present, value = ICCID
+2018-01-05 10:55:31,286 - panel.AboutPageTest -INFO - Pass: Baseband Version is present, value = Baseband Version
+2018-01-05 10:55:33,314 - panel.AboutPageTest -INFO - Pass: Z-Wave is present, value = Z-Wave
+2018-01-05 10:55:35,339 - panel.AboutPageTest -INFO - Pass: Home-ID is present, value = Home ID
+2018-01-05 10:55:35,830 - panel.AboutPageTest -INFO - Pass: Z-Wave Firmware Version is present, value = Z-Wave Firmware Version
+2018-01-05 10:55:36,358 - panel.AboutPageTest -INFO - Pass: Z-Wave Api Version is present, value = Z-Wave Api Version
+2018-01-05 10:55:41,308 - panel.AboutPageTest -INFO - Pass: Manufacturing ID is present, value = Manufacturing ID
+2018-01-05 10:55:42,310 - panel.AboutPageTest -INFO - Pass: Product Type is present, value = Product Type
+2018-01-05 10:55:42,901 - panel.AboutPageTest -INFO - Pass: Product ID is present, value = Product ID
+2018-01-05 10:55:44,280 - panel.AboutPageTest -INFO - Pass: Ethernet is present, value = Ethernet
+2018-01-05 10:55:44,819 - panel.AboutPageTest -INFO - Pass: Wi-Fi Info is present, value = WI-FI Information
+2018-01-05 10:55:46,740 - panel.AboutPageTest -INFO - Pass: Connection is present, value = Connection
+2018-01-05 10:55:47,272 - panel.AboutPageTest -INFO - Pass: IP Address is present, value = IP Address
+2018-01-05 10:55:52,337 - panel.AboutPageTest -INFO - Pass: SSID is present, value = SSID
+2018-01-05 10:55:52,892 - panel.AboutPageTest -INFO - Pass: Speed is present, value = Speed
+2018-01-05 10:55:53,387 - panel.AboutPageTest -INFO - Pass: Internet is present, value = Internet
+2018-01-05 10:55:54,766 - panel.AboutPageTest -INFO - Pass: Internal storage is present, value = Internal storage
+2018-01-05 10:55:56,748 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
+2018-01-05 10:56:01,879 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
+2018-01-05 10:56:02,385 - panel.AboutPageTest -INFO - Pass: Photos is present, value = Photos
+2018-01-05 10:56:02,908 - panel.AboutPageTest -INFO - Pass: Videos is present, value = Videos
+2018-01-05 10:56:03,416 - panel.AboutPageTest -INFO - Pass: Logs is present, value = Logs
+2018-01-05 10:56:03,835 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-08 11:51:33,395 - zwave -INFO - Panel in remote add mode with service call
+2018-01-08 11:51:42,400 - zwave -INFO - Including transmitter to panel 
+2018-01-08 11:52:42,403 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-08 11:52:48,419 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-09 14:34:28,485 - zwave -INFO - Testing Transmitter is operational 
+2018-01-09 14:34:30,496 - zwave -INFO - Including transmitter to panel 
+2018-01-09 14:40:24,559 - zwave -INFO - Testing Transmitter is operational 
+2018-01-09 14:40:26,568 - zwave -INFO - Including transmitter to panel 
+2018-01-09 14:41:26,571 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-09 14:41:32,585 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 10:17:46,371 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 10:18:00,824 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 10:18:00,828 - zwave -INFO - Including transmitter to panel 
+2018-01-11 10:37:43,609 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 10:37:58,361 - zwave -INFO - Including transmitter to panel 
+2018-01-11 10:43:46,504 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 10:44:01,288 - zwave -INFO - Including transmitter to panel 
+2018-01-11 11:18:47,591 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:19:39,791 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:19:42,794 - zwave -INFO - Adding door lock
+2018-01-11 11:19:42,798 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:20:49,026 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:20:52,029 - zwave -INFO - Adding door lock
+2018-01-11 11:20:52,042 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:22:23,669 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:22:26,674 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:23:34,449 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:23:39,455 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:26:00,146 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:26:05,152 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:30:38,701 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:34:12,809 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:38:49,936 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:39:08,289 - zwave -INFO - Adding door lock
+2018-01-11 11:39:08,304 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:40:42,163 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:49:58,489 - zwave -INFO - Setting panel in remote add mode for Z-Wave
+2018-01-11 11:50:23,836 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:50:31,552 - zwave -INFO - Adding door lock
+2018-01-11 11:50:31,558 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 11:51:43,047 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 11:51:57,898 - zwave -INFO - Including transmitter to panel 
+2018-01-11 12:04:00,872 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 12:04:08,631 - zwave -INFO - Adding door lock
+2018-01-11 12:04:08,644 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 15:27:52,798 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 15:28:00,680 - zwave -INFO - Adding door lock
+2018-01-11 15:28:00,685 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-11 15:28:50,652 - zwave -INFO - Testing Transmitter is operational 
+2018-01-11 15:28:58,466 - zwave -INFO - Adding door lock
+2018-01-11 15:28:58,478 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:34:48,607 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:35:03,248 - zwave -INFO - Including transmitter to panel 
+2018-01-15 14:40:01,388 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:40:08,922 - zwave -INFO - Adding door lock
+2018-01-15 14:40:08,935 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:42:33,079 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:42:40,668 - zwave -INFO - Adding door lock
+2018-01-15 14:42:42,955 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:46:39,690 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:47:10,408 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:48:57,574 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:49:43,448 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:52:00,827 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:52:46,672 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:54:02,072 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 14:54:48,687 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 14:59:59,838 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 15:00:28,742 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 15:01:22,820 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 15:01:58,959 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 15:05:29,173 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 15:14:17,581 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 15:14:37,210 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-15 15:18:09,585 - zwave -INFO - Testing Transmitter is operational 
+2018-01-15 15:18:40,798 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 08:53:13,231 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 08:54:24,551 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 08:56:13,956 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 10:42:52,251 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 10:42:55,394 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 10:44:26,336 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 10:44:47,902 - zwave -INFO - Adding door lock
+2018-01-17 10:50:30,742 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 10:50:58,032 - zwave -INFO - Adding door lock
+2018-01-17 10:52:23,053 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 10:52:45,485 - zwave -INFO - Adding door lock
+2018-01-17 10:53:09,566 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 10:53:14,849 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 10:58:50,574 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 10:59:13,522 - zwave -INFO - Adding door lock
+2018-01-17 10:59:42,374 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 10:59:46,970 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:00:28,244 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:00:36,019 - zwave -INFO - Adding door lock
+2018-01-17 11:00:51,183 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:00:56,637 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:03:35,056 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:03:55,283 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:03:59,921 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:18:32,174 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:19:07,108 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:20:26,314 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:21:08,239 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:21:32,861 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:43:58,486 - zwave -INFO - Testing Transmitter is operational 
+2018-01-17 11:44:24,006 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 11:45:41,095 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 12:02:53,698 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 12:10:08,333 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 12:32:39,437 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-01-17 14:57:08,474 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
