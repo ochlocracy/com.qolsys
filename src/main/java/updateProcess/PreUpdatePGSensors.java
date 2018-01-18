@@ -1,11 +1,15 @@
 package updateProcess;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import panel.ContactUs;
+import panel.EmergencyPage;
 import sensors.Sensors;
 import utils.ConfigProps;
+import utils.PGSensorsActivity;
 import utils.SensorsActivity;
 import utils.Setup;
 
@@ -19,8 +23,8 @@ public class PreUpdatePGSensors extends Setup{
 
     public PreUpdatePGSensors() throws Exception {
         ConfigProps.init();
-        SensorsActivity.init();
-    }
+        PGSensorsActivity.init();
+        }
     @BeforeTest
     public void setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
@@ -30,55 +34,194 @@ public class PreUpdatePGSensors extends Setup{
     @Test
     public void addSensors() throws IOException, InterruptedException {
         logger.info("Adding a list of sensors");
-
-        addPGSensors(101,1001,0);//gr10
-        addPGSensors(104,1011,1);//gr12
+        navigate_to_autolearn_page();
+        /*** DW ***/
+        addPGSensors(104,1101,0);//gr10
+        addPGSensors(104,1152,1);//gr12
         addPGSensors(104,1231,2);//gr13
-        addPGSensors(104,1211,3);//gr13
-        Thread.sleep(2000);
-        addPGSensors(104,1231,4);//gr16
-        addPGSensors(101,1022,6);//gr8
-        addPGSensors(101,1023,7);//gr9
-        addPGSensors(104,1211,5);//gr25
-        Thread.sleep(2000);
-
-        ///*
-        addPrimaryCall(7, 16, 6619300, 1); // 65 00 A4
-        addPrimaryCall(8, 8, 6619301, 1); // 65 00 A5
-        addPrimaryCall(9, 9, 6619302, 1); // 65 00 A6
-        addPrimaryCall(10, 25, 6619303, 1); // 65 00 A7
-        Thread.sleep(1000);
-        addPrimaryCall(11, 15, 5570628, 2); // 55 00 44
-        addPrimaryCall(12, 17, 5570629, 2); // 55 00 45
-        addPrimaryCall(13, 20, 5570630, 2); // 55 00 46
-        addPrimaryCall(14, 25, 5570631, 2); // 55 00 47
-        addPrimaryCall(15, 35, 5570632, 2); // 55 00 48
-        Thread.sleep(1000);
-        addPrimaryCall(16, 26, 6750242, 5); // 67 00 22
-        addPrimaryCall(17, 34, 7667882, 6); // 75 00 AA
-        addPrimaryCall(18, 13, 6750361, 19); // 67 00 99
-        addPrimaryCall(19, 17, 6750355, 19); // 67 00 93
-        Thread.sleep(1000);
-        addPrimaryCall(20, 10, 6488238, 16); // 63 00 AE
-        addPrimaryCall(21, 12, 6488239, 16); // 63 00 AF
-        addPrimaryCall(22, 25, 6488224, 16); // 63 00 A0
-        addPrimaryCall(23, 13, 6684828, 107); // 66 00 9C
-        addPrimaryCall(24, 17, 6684829, 107); // 66 00 9D
-        addPrimaryCall(25, 52, 7536801, 17); // 73 00 A1
-        Thread.sleep(1000);
-        addPrimaryCall(26, 26, 7667810, 111); // 75 00 62
-        addPrimaryCall(27, 38, 7672224, 22); // 75 11 A0
-        addPrimaryCall(28, 1, 6619386, 102); // 65 00 FA
-        addPrimaryCall(29, 6, 6619387, 102); // 65 00 FB
-        addPrimaryCall(30, 4, 6619388, 102); // 65 00 FC
-        addPrimaryCall(31, 0, 8716538, 104); // 85 00 FA
-        addPrimaryCall(32, 2, 8716539, 104); // 85 00 FB
-        Thread.sleep(1000);
-        addPrimaryCall(33, 25, 6405546, 109); // 61 BD AA
-        addPrimaryCall(34, 6, 6361649, 21); // 61 12 31
-        addPrimaryCall(35, 0, 6361650, 21); // 61 12 32*/
+        addPGSensors(104,1216,3);//gr14
+        addPGSensors(104,1331,4);//gr16
+        addPGSensors(104,1127,6);//gr8
+        addPGSensors(104,1123,7);//gr9
+        addPGSensors(104,1311,5);//gr25
+        /*** Motion ***/
+        addPGSensors(120,1411,1);//gr15
+        addPGSensors(123,1441,0);//gr17
+        addPGSensors(122,1423,3);//gr20
+        addPGSensors(120,1445,4);//gr25
+        addPGSensors(123,1446,2);//gr35
+        /*** Smoke ***/
+        addPGSensors(201,1541,0);//gr26 smoke-M
+        addPGSensors(200,1531,0);//gr26 smoke - not works for real sensor at 01/17/1
+        /*** CO ***/
+        addPGSensors(220,1661,0);//gr34
+        /*** Shock - not works for real sensor at 01/17/18***/
+        //  addPGSensors(171,1741,0);//gr13
+        // addPGSensors(171,1771,1);//gr17
+       // addPGSensors(171,1771,1);//gr17
+        /*** Glass-break ***/
+          addPGSensors(160,1874,0);//gr13
+          addPGSensors(160,1871,1);//gr17
+        /*** Temperature Detector - no plans to support that at 01/17/18***/
+        //  addPGSensors(250,1941,0);//gr52
+        /*** Water - not works for real sensor at 01/17/18***/
+        //  addPGSensors(241,1971,0);//gr38
+        /***Key-fob ***/
+        addPGSensors(300,1004,0);//gr1
+        addPGSensors(305,1009,1);//gr6
+        addPGSensors(306,1003,2);//gr4
+        /***Keypad ***/
+        addPGSensors(371,1005,0);//gr0
+        addPGSensors(371,1006,1);//gr1
+        addPGSensors(371,1008,2);//gr2
+        /***Aux pendant ***/
+        addPGSensors(320,1015,0);//gr6
+        addPGSensors(320,1016,4);//gr4
+        addPGSensors(320,1018,5);//gr25
+        /***Siren ***/
+        addPGSensors(400,1995,0);//gr33
+        addPGSensors(410,1998,1);//gr25
     }
-    @AfterTest
+    public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
+        pgprimaryCall(type, id, status1);
+        Thread.sleep(1000);
+        pgprimaryCall(type, id, status2);
+        Thread.sleep(1000);
+    }
+    @Test//(dependsOnMethods = {"addSensors"})
+    public void sensorsCheck() throws Exception {
+        logger.info("Open-Close contact sensors");
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        for (int i = 1; i > 0; i--) {
+            logger.info("Activate Contact sensors");
+
+            activation_restoration(104,1101, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr10
+            activation_restoration(104,1152, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr12
+            activation_restoration(104,1231, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr13
+            activation_restoration(104,1216, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr14
+            activation_restoration(104,1331, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr16
+            activation_restoration(104,1311, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr25
+            activation_restoration(104,1127, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr8
+            Thread.sleep(1000);
+            enterDefaultUserCode();
+            Thread.sleep(2000);
+            activation_restoration(104,1123, PGSensorsActivity.INOPEN,PGSensorsActivity.INCLOSE);//gr9
+            Thread.sleep(ConfigProps.longExitDelay);
+            enterDefaultUserCode();
+            Thread.sleep(2000);
+
+            logger.info("Activate motion sensors");
+            activation_restoration(120,1411, PGSensorsActivity.MOTIONACTIVE,PGSensorsActivity.MOTIONIDLE);//gr15
+            activation_restoration(123,1441, PGSensorsActivity.MOTIONACTIVE,PGSensorsActivity.MOTIONIDLE);//gr17
+            activation_restoration(120,1445, PGSensorsActivity.MOTIONACTIVE,PGSensorsActivity.MOTIONIDLE);//gr25
+            activation_restoration(122,1423, PGSensorsActivity.MOTIONACTIVE,PGSensorsActivity.MOTIONIDLE);//gr20
+            activation_restoration(123,1446, PGSensorsActivity.MOTIONACTIVE,PGSensorsActivity.MOTIONIDLE);//gr35
+
+            logger.info("Activate smoke sensors");
+            activation_restoration(201,1541, PGSensorsActivity.SMOKEM,PGSensorsActivity.SMOKEMREST);
+            Thread.sleep(1000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(200,1531, PGSensorsActivity.SMOKE,PGSensorsActivity.SMOKEREST);//smoke - not works for real sensor at 01/17/1
+            Thread.sleep(1000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(200,1531, PGSensorsActivity.GAS,PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
+            Thread.sleep(1000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(201,1541, PGSensorsActivity.GAS,PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
+            Thread.sleep(1000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+
+            logger.info("Activate CO sensors");
+            activation_restoration(220,1661, PGSensorsActivity.CO,PGSensorsActivity.COREST);
+            Thread.sleep(1000);
+            //emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(220,1661, PGSensorsActivity.GAS,PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
+            Thread.sleep(1000);
+            //emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+
+            /*** Shock - not works for real sensor at 01/17/18***/
+
+
+            logger.info("Activate Glass-break sensors");
+            activation_restoration(160,1874, PGSensorsActivity.GB,PGSensorsActivity.GBREST);//gr13
+            Thread.sleep(1000);
+            activation_restoration(160,1871, PGSensorsActivity.GB,PGSensorsActivity.GBREST);//gr17
+
+            /*** Water - not works for real sensor at 01/17/18***/
+            //  addPGSensors(241,1971,0);//gr38
+
+            logger.info("Activate Key-fob sensors");
+            activation_restoration(300,1004, PGSensorsActivity.POLICEPANIC,PGSensorsActivity.POLICEPANICREST);//gr1
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(305,1009, PGSensorsActivity.AUXPANIC,PGSensorsActivity.AUXPANICREST);//gr6
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(306,1003, PGSensorsActivity.AUXPANIC,PGSensorsActivity.AUXPANICREST);//gr4
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+
+            logger.info("Activate Keypad sensors");
+            activation_restoration(371,1005, PGSensorsActivity.POLICEPANIC,PGSensorsActivity.POLICEPANICREST);//gr0
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(371,1006, PGSensorsActivity.POLICEPANIC,PGSensorsActivity.POLICEPANICREST);//gr1
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(371,1008, PGSensorsActivity.POLICEPANIC,PGSensorsActivity.POLICEPANICREST);//gr2
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+
+            logger.info("Activate Aux pendant");
+            activation_restoration(320,1015,  PGSensorsActivity.AUXPANIC,PGSensorsActivity.AUXPANICREST);//gr6
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(320,1016, PGSensorsActivity.AUXPANIC,PGSensorsActivity.AUXPANICREST);//gr4
+            Thread.sleep(2000);
+            emergency.Cancel_Emergency.click();
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            activation_restoration(320,1018,  PGSensorsActivity.AUXPANIC,PGSensorsActivity.AUXPANICREST);//gr25
+            Thread.sleep(2000);
+            verifyDisarm();
+            Thread.sleep(1000);
+
+            contact.acknowledge_all_alerts();
+            swipeLeft();
+            Thread.sleep(1000);
+
+            System.out.println(i);
+        }
+    }
+
+            @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         System.out.println("*****Stop driver*****");
