@@ -14,9 +14,11 @@ public class ThermostatPage {
     public WebElement Thermostat_Name;
     @FindBy(id = "com.qolsys:id/uiThermoMode")
     public WebElement Current_Mode;
-    @FindBy(id = "com.qolsys:id/btFanMode")
-    public WebElement Fan_Mode;
     @FindBy(id = "com.qolsys:id/btThermoMode")
+    public WebElement thermostatMode;
+    @FindBy(id = "com.qolsys:id/btThermoMode")
+    public WebElement Fan_Mode;
+    @FindBy(id = "com.qolsys:id/btFanMode")
     public WebElement Set_Mode;
     @FindBy(id = "com.qolsys:id/uiThermoBattery")
     public WebElement Therm_Battery;

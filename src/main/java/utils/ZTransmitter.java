@@ -18,10 +18,21 @@ public class ZTransmitter extends ConfigPropsBase {
     public static String clearDoorlock;
     public static String addGDC;
     public static String clearGDC;
+    public static String ztransmitterExecute;
 
     HashMap<String, String> deviceType = new HashMap<String, String>();
     HashMap<String, String> deviceAction= new HashMap<String, String>();
     private static ZTransmitter instance;
+
+
+
+    public String getztransmitterExecute(){
+        return ztransmitterExecute;
+    }
+
+    public void setztransmitterExecute(String ztransmitterExecute){
+        this.ztransmitterExecute = ztransmitterExecute ;
+    }
 
 
     public ZTransmitter() throws Exception {
@@ -45,14 +56,13 @@ public class ZTransmitter extends ConfigPropsBase {
     }
 
     //service call for all device types
-    public void deviceType(){
+    public void deviceType() throws Exception{
         deviceType.put("Light", "service call zwavetransmitservice 5 i32 ");
         deviceType.put("Thermostat","service call zwavetransmitservice  6 i32 ");
         deviceType.put("Dimmer","service call zwavetransmitservice 5 i32 ");
         deviceType.put("DoorLock","service call zwavetransmitservice 7 i32 ");
         deviceType.put("GDC","service call zwavetransmitservice 8 i32 ");
         deviceType.put("SmartSocket","service call zwavetransmitservice 5 i32 ");
-
 
     }
     public void nodeID(){
@@ -65,7 +75,7 @@ public class ZTransmitter extends ConfigPropsBase {
 
 
     // Service call to perform a device action
-    public void lightsAction() {
+    public void lightsAction() throws Exception{
         //Lights
         deviceAction.put("lightON", "i32 0 i32 1 i32 2 i32 1");
         deviceAction.put("lightOff", "i32 0 i32 1 i32 2 i32 0");
@@ -73,12 +83,12 @@ public class ZTransmitter extends ConfigPropsBase {
         deviceAction.put("MeterignSetInfo", " i32 0 i32 2 i32 2 i32");//(value: 1000 = 1kwh)
     }
 
-    public void doorLockAction(){
+    public void doorLockAction() throws Exception{
         deviceAction.put("DoorLockOpen","i32 0 i32 1 i32 2 i32 0");
         deviceAction.put("DoorLockClose","i32 0 i32 1 i32 2 i32 1");
         deviceAction.put("DoorLockGet","i32 0 i32 1 i32 1");
     }
-    public void thermostatAction(){
+    public void thermostatAction() throws Exception{
         deviceAction.put("GetCurrentTemp","i32 0 i32 1 i32 1");
         deviceAction.put("SetCurrentTemp","i32 0 i32 0");// Values:000-1000. Ex: 70 degrees is 700
         deviceAction.put("GetTermostatMode","i32 0 i32 2 i32 1");
@@ -93,11 +103,11 @@ public class ZTransmitter extends ConfigPropsBase {
         deviceAction.put("GetBatteryLevel","");
         deviceAction.put("SetBatteryLevel","");//Values: 0-100 in HEX
     }
-    public void dimmerAction(){
+    public void dimmerAction() throws Exception{
         deviceAction.put("DimmingLevelSet","i32 0 i32 3 i32 2 i32");//Value 0-255
         deviceAction.put("DimmingLevelGet","i32 0 i32 3 i32 1");
     }
-    public void gdcActions(){
+    public void gdcActions() throws Exception{
         deviceAction.put("GarageDoorOpen","i32 0 i32 1 i32 2 i32 1");
         deviceAction.put("GarageDoorClose", "i32 0 i32 1 i32 2 i32 0 ");
         deviceAction.put("GarageDoorGet", "i32 0 i32 1 i32 1");
