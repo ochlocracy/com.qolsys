@@ -26,11 +26,11 @@ public class ZWaveDemoDevices extends Setup{
 
         //Lock should be Unlocked and light should be OFF to start
         @Test(priority = 0)
-        //@Test(invocationCount = 5)
+        //@Test(invocationCount = 10)
         public void locksLightsDemo() throws Exception{
             DoorLockPage door = PageFactory.initElements(driver, DoorLockPage.class);
             LightsPage lite = PageFactory.initElements(driver , LightsPage.class);
-            for(int i=0; i<=3; i++) {
+            for(int i=0; i<=5; i++) {
                 swipeFromRighttoLeft();
                 Thread.sleep(1000);
                 lite.Select_All.click();
@@ -38,9 +38,9 @@ public class ZWaveDemoDevices extends Setup{
                 lite.On_Button.click();
                 Thread.sleep(1000);
                 swipeFromRighttoLeft();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 door.Lock_ALL.click();
-                Thread.sleep(1000);
+                Thread.sleep(3000);
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
@@ -51,9 +51,9 @@ public class ZWaveDemoDevices extends Setup{
                 lite.Off_Button.click();
                 Thread.sleep(1000);
                 swipeFromRighttoLeft();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 door.Unlock_ALL.click();
-                Thread.sleep(1000);
+                Thread.sleep(3000);
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
