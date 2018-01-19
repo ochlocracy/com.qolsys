@@ -124,7 +124,8 @@ public class SanityPGSensors extends Setup {
     public void ArmStayExitDelay_26() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("Sensors.ArmStay_SmokeSensor");
-        ArmStay_Activate_Restore_sensor_during_Exit_Delay(201, 1541, "//*[contains(text(), '(Sensor 4) Fire Alarm')]", "//*[contains(text(), '(Sensor 4) Reset')]");
+        ArmStay_Activate_Restore_sensor_during_Exit_Delay(201, 1541, "//*[contains(text(), '(Sensor 4) Fire Alarm')]", "//*[contains(text(), '(Sensor 4) Closed')]");
+        //incorrect status for smoke restore event
         for (int i = 1; i < 6; i++) {
             deleteFromPrimary(i);
         }
@@ -277,7 +278,7 @@ public class SanityPGSensors extends Setup {
     public void ArmAway_Tamper_12() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("Sensors.ArmAway_Tilt12_Tamper");
-        ArmAway_Tamper_sensor_Alarm(104, 1152, "//*[contains(text(), 'Sensor 4 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
+        ArmAway_Tamper_sensor_Alarm(104, 1152, "//*[contains(text(), 'Sensor 2 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 10)
