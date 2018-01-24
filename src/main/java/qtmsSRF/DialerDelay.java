@@ -30,6 +30,7 @@ public class DialerDelay extends Setup {
     public DialerDelay() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+
     }
 
     @BeforeTest

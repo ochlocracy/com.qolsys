@@ -96,7 +96,6 @@ public class ArmedAwayAuxiliary extends Setup {
         enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
-
     }
 
     public void ArmStay_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {

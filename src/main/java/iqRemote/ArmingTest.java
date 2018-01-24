@@ -34,7 +34,7 @@ public class ArmingTest {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
         cap.setCapability("BROWSER_NAME", "Android");
-        cap.setCapability("udid", "6NJUM1CCZG");
+        cap.setCapability("udid", "6NJUM1H24Z");
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
         driver_remote = new AndroidDriver<WebElement>(new URL(url_ + ":" + port_ + "/wd/hub"), cap);

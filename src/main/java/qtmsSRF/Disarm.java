@@ -834,7 +834,7 @@ public class Disarm extends Setup {
         log.log(LogStatus.INFO, ("*Disb-42* System will ArmStay after count down disarmed by keyfob group 1 while armed from panel"));
         logger.info("*Disb-42* System will ArmStay after count down disarmed by keyfob group 1 while armed from panel");
         addPrimaryCall(3, 1, 6619386, 102);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         sensors.primaryCall(keyfob1, "08 01");
@@ -1743,7 +1743,7 @@ public class Disarm extends Setup {
     }
 
     @Test(priority = 69)
-    public void Disb_126_KF1() throws Exception {
+    public void Disb_126_KF6() throws Exception {
         add_to_report("Disb319_126");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -1809,8 +1809,8 @@ public class Disarm extends Setup {
     @Test(priority = 72)
     public void Disb_141_GB() throws Exception {
         add_to_report("Disb319_141");
-        log.log(LogStatus.INFO, ("*Disb_141* System restors status for glass-break from Alarmed to Normal"));
-        logger.info("*Disb_141* System restors status for glass-break from Alarmed to Normal");
+        log.log(LogStatus.INFO, ("*Disb_141* System restors status for glass-break from Activated to Normal"));
+        logger.info("*Disb_141* System restors status for glass-break from Activated to Normal");
         addPrimaryCall(3, 13, 6750361, 19);
         Thread.sleep(2000);
         sensor_status_check("67 00 99", "Activated", "Normal");

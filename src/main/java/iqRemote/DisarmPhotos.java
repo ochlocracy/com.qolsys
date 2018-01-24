@@ -22,7 +22,7 @@ public class DisarmPhotos extends SetupRemote {
 
     @BeforeMethod
     public void setupDriver() throws Exception {
-        setup_driver("6NJUM6KOWF", "http://127.0.1.1", "4723");
+        setup_driver("6NJUM1H24Z", "http://127.0.1.1", "4723");
         // deleteLogFile(logcat);
     }
 

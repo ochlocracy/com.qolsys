@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SetupRemote {
 
-    public AndroidDriver<WebElement> driver;
+    public AndroidDriver driver;
     public Runtime rt = Runtime.getRuntime();
     Setup setup = new Setup();
     String logcat = new String(System.getProperty("user.dir")) +"/log/test.txt";
@@ -34,7 +34,9 @@ public class SetupRemote {
         cap.setCapability("udid", udid_);
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
+        cap.setCapability("newCommandTimeout", "1000");
         driver = new AndroidDriver(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
+
     }
 
     public void ARM_STAY() {
