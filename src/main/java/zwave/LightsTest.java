@@ -154,7 +154,6 @@ public class LightsTest extends Setup {
         logger.info("*************************ZLS_DDD_001*******************************");
         logger.info("Disarm mode: Verify that a Light can be paired with a Panel");
         navigateToAdvancedSettingsPage();
-        localZwaveAddPath();
         logger.info("Adding lights...");
 
 

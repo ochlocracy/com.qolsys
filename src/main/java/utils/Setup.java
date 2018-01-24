@@ -745,7 +745,7 @@ public class Setup {
         adv.INSTALLATION.click();
         instal.DEVICES.click();
         dev.Security_Sensors.click();
-        ss.Remove_All_Powerg_Sensors.click();
+  //      ss.Remove_All_Powerg_Sensors.click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.TextView[@index='2']")).click();
         Thread.sleep(5000);
