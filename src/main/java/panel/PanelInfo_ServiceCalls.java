@@ -158,9 +158,9 @@ public class PanelInfo_ServiceCalls extends Setup {
         String value = (execCmd(command)).toString();
         //System.out.println(value);
         if (value.contains("00000000 00000000 ")) {
-            System.out.println("Auto ByPass is Disabled");
+            logger.info("Auto ByPass is Disabled");
         } else if (value.contains("00000000 00000001 ")){
-            System.out.println("Auto ByPass is Enabled");
+            logger.info("Auto ByPass is Enabled");
         }
     }
 

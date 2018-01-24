@@ -149,22 +149,14 @@ public class LightsTest extends Setup {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+        logger.info("Test software version: " + softwareVersion());
+
         logger.info("*************************ZLS_DDD_001*******************************");
         logger.info("Disarm mode: Verify that a Light can be paired with a Panel");
         navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        instal.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Add_Device_Z_Wave_Page.click();
-        zwave.Include_Device_Z_Wave_Add_Device_Page.click();
-        // Transmitter_addZWaveDevice();
-        logger.info("Adding sensors...");
-        // wait.until();
-        zwave.Add_Device_OK_Button_Z_Wave_Add_Device_Page.click();
-        home.Home_button.click();
-        swipeRight();
-        swipeRight();
-        // elementVerification();
+        localZwaveAddPath();
+        logger.info("Adding lights...");
+
 
         logger.info("****************************ZLS_DDD_003****************************");
         logger.info("Disarm mode: Verify that multiple Lights can be paired with a Panel");
@@ -279,6 +271,8 @@ public class LightsTest extends Setup {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+        logger.info("Test software version: " + softwareVersion());
+
         logger.info("*****************************ZLSD_AS_005***************************");
         logger.info("Arm Stay: Verify that a light can be turned ON from a panel");
 
@@ -378,6 +372,8 @@ public class LightsTest extends Setup {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+        logger.info("Test software version: " + softwareVersion());
+
         logger.info("**********************************ZLSDD_AW_005**********************");
         logger.info("Arm Away: Verify that the Light can be turned On from the User website");
 
@@ -445,6 +441,7 @@ public class LightsTest extends Setup {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+        logger.info("Test software version: " + softwareVersion());
 
         logger.info("********************************************************");
         logger.info("Schedules: Add a schedule: On these days: select; Perform these scheduled actions: Turn On based on: Time of day at -select");
