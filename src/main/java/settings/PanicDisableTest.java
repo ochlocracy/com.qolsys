@@ -24,7 +24,7 @@ public class PanicDisableTest extends Setup {
     }
 
     @Test
-    public void Verify_Keyfob_Alarm_Disarm_works() throws Exception {
+    public void Verify_Panic_Disable_works() throws Exception {
         SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);

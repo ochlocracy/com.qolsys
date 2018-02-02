@@ -18,7 +18,6 @@ public class PreUpdatePGSensors extends Setup {
     String page_name = "Add PG sensors + sensors activity";
     Logger logger = Logger.getLogger(page_name);
 
-
     public PreUpdatePGSensors() throws Exception {
         ConfigProps.init();
         PGSensorsActivity.init();
@@ -35,58 +34,56 @@ public class PreUpdatePGSensors extends Setup {
         logger.info("Adding a list of sensors");
         navigate_to_autolearn_page();
         /*** DW ***/
-        addPGSensors(104, 1101, 0);//gr10
-        addPGSensors(104, 1152, 1);//gr12
-        addPGSensors(104, 1231, 2);//gr13
-        addPGSensors(104, 1216, 3);//gr14
-        addPGSensors(104, 1331, 4);//gr16
-        addPGSensors(104, 1127, 6);//gr8
-        addPGSensors(104, 1123, 7);//gr9
-        addPGSensors(104, 1311, 5);//gr25
+        addPGSensors("DW", 104, 1101, 0);//gr10
+        addPGSensors("DW", 104, 1152, 1);//gr12
+        addPGSensors("DW", 104, 1231, 2);//gr13
+        addPGSensors("DW", 104, 1216, 3);//gr14
+        addPGSensors("DW", 104, 1331, 4);//gr16
+        addPGSensors("DW", 104, 1127, 6);//gr8
+        addPGSensors("DW", 104, 1123, 7);//gr9
+        addPGSensors("DW", 104, 1311, 5);//gr25
         /*** Motion ***/
-        addPGSensors(120, 1411, 1);//gr15
-        addPGSensors(123, 1441, 0);//gr17
-        addPGSensors(122, 1423, 3);//gr20
-        addPGSensors(120, 1445, 4);//gr25
-        addPGSensors(123, 1446, 2);//gr35
+        addPGSensors("Motion", 120, 1411, 1);//gr15
+        addPGSensors("Motion", 123, 1441, 0);//gr17
+        addPGSensors("Motion", 122, 1423, 3);//gr20
+        addPGSensors("Motion", 120, 1445, 4);//gr25
+        addPGSensors("Motion", 123, 1446, 2);//gr35
         /*** Smoke ***/
-        addPGSensors(201, 1541, 0);//gr26 smoke-M
-        addPGSensors(200, 1531, 0);//gr26 smoke - not works for real sensor at 01/17/1
+        addPGSensors("Smoke", 201, 1541, 0);//gr26 smoke-M
+        addPGSensors("Smoke", 200, 1531, 0);//gr26 smoke - not works for real sensor at 01/17/1
         /*** CO ***/
-        addPGSensors(220, 1661, 0);//gr34
+        addPGSensors("CO", 220, 1661, 0);//gr34
         /*** Shock - not works for real sensor at 01/17/18***/
-        //  addPGSensors(171,1741,0);//gr13
-        // addPGSensors(171,1771,1);//gr17
-        // addPGSensors(171,1771,1);//gr17
+        addPGSensors("Shock", 171, 1741, 0);//gr13
+        addPGSensors("Shock", 171, 1771, 1);//gr17
         /*** Glass-break ***/
-        addPGSensors(160, 1874, 0);//gr13
-        addPGSensors(160, 1871, 1);//gr17
-        /*** Temperature Detector - no plans to support that at 01/17/18***/
-        //  addPGSensors(250,1941,0);//gr52
+        addPGSensors("GBreak", 160, 1874, 0);//gr13
+        addPGSensors("GBreak", 160, 1871, 1);//gr17
+
         /*** Water - not works for real sensor at 01/17/18***/
-        //  addPGSensors(241,1971,0);//gr38
+        addPGSensors("Water", 241, 1971, 0);//gr38
         /***Key-fob ***/
-        addPGSensors(300, 1004, 0);//gr1
-        addPGSensors(305, 1009, 1);//gr6
-        addPGSensors(306, 1003, 2);//gr4
+        addPGSensors("Keyfob", 300, 1004, 0);//gr1
+        addPGSensors("Keyfob", 305, 1009, 1);//gr6
+        addPGSensors("Keyfob", 306, 1003, 2);//gr4
         /***Keypad ***/
-        addPGSensors(371, 1005, 0);//gr0
-        addPGSensors(371, 1006, 1);//gr1
-        addPGSensors(371, 1008, 2);//gr2
+        addPGSensors("Keypad", 371, 1005, 0);//gr0
+        addPGSensors("Keypad", 371, 1006, 1);//gr1
+        addPGSensors("Keypad", 371, 1008, 2);//gr2
         /***Aux pendant ***/
-        addPGSensors(320, 1015, 0);//gr6
-        addPGSensors(320, 1016, 4);//gr4
-        addPGSensors(320, 1018, 5);//gr25
+        addPGSensors("AuxPendant", 320, 1015, 0);//gr6
+        addPGSensors("AuxPendant", 320, 1016, 4);//gr4
+        addPGSensors("AuxPendant", 320, 1018, 5);//gr25
         /***Siren ***/
-        addPGSensors(400, 1995, 0);//gr33
-        addPGSensors(410, 1998, 1);//gr25
+        addPGSensors("Siren", 400, 1995, 0);//gr33
+        addPGSensors("Siren", 410, 1998, 1);//gr25
     }
 
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
-        Thread.sleep(1000);
+        Thread.sleep(9000);
         pgprimaryCall(type, id, status2);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @Test//(dependsOnMethods = {"addSensors"})
@@ -153,12 +150,30 @@ public class PreUpdatePGSensors extends Setup {
             enterDefaultUserCode();
             Thread.sleep(1000);
 
-            /*** Shock - not works for real sensor at 01/17/18***/
+            logger.info("Activate Shock sensors");
+            ARM_STAY();
+            activation_restoration(171, 1741, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST);//gr13
+            Thread.sleep(1000);
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            ARM_AWAY(ConfigProps.longExitDelay);
+            activation_restoration(171, 1771, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST);//gr17
+            Thread.sleep(1000);
+            enterDefaultUserCode();
+            Thread.sleep(1000);
 
             logger.info("Activate Glass-break sensors");
+            ARM_STAY();
+            Thread.sleep(1000);
             activation_restoration(160, 1874, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr13
             Thread.sleep(1000);
+            enterDefaultUserCode();
+            Thread.sleep(1000);
+            ARM_AWAY(ConfigProps.longExitDelay);
             activation_restoration(160, 1871, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr17
+            Thread.sleep(1000);
+            enterDefaultUserCode();
+            Thread.sleep(1000);
 
             /*** Water - not works for real sensor at 01/17/18***/
             //  addPGSensors(241,1971,0);//gr38

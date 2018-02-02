@@ -15,6 +15,7 @@ import utils.Setup;
 import java.io.*;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SetupRemote {
 
@@ -36,14 +37,37 @@ public class SetupRemote {
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
         cap.setCapability("newCommandTimeout", "1000");
         driver = new AndroidDriver(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-
-    public void ARM_STAY() {
+    public void DISARM() throws InterruptedException {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        System.out.println("Disarm");
+        home_page.DISARM.click();
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+    }
+    public void ARM_STAY() throws InterruptedException {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
         home_page.DISARM.click();
+        Thread.sleep(2000);
         home_page.ARM_STAY.click();
+    }
+    public void ARM_AWAY(int delay) throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.DISARM.click();
+        System.out.println("Arm Away");
+        Thread.sleep(2000);
+        home_page.ARM_AWAY.click();
+        TimeUnit.SECONDS.sleep(delay);
+    }
+    public void enterDefaultUserCode() throws InterruptedException {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.One.click();
+        home_page.Two.click();
+        home_page.Three.click();
+        home_page.Four.click();
+        Thread.sleep(2000);
     }
 
     public void eventLogsGenerating(String fileName, String[] findEvent, int length) throws Exception {

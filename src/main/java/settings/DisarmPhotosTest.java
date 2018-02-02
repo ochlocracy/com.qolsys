@@ -38,6 +38,7 @@ public class DisarmPhotosTest extends Setup {
         home.DISARM.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
+        swipeFromLefttoRight();
         camera.Disarm_photos.click();
         if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: Disarm photo is displayed");
@@ -61,6 +62,7 @@ public class DisarmPhotosTest extends Setup {
         ARM_STAY();
         home.DISARM.click();
         enterDefaultUserCode();
+        swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
         try {

@@ -133,7 +133,7 @@ public class ArmedAwayAuxiliary extends Setup {
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_1() throws Exception {
-        ArmStay_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 48) Pending Alarm')]", "//*[contains(text(), ' (Sensor 48) Police Panic ')]");
+        ArmStay_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 48) Pending Alarm')]", "//*[contains(text(), ' Sensor 48 Alarm**')]");
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)

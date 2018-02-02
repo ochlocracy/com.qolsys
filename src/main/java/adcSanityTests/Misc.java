@@ -387,7 +387,7 @@ public class Misc extends Setup {
         logger.info("Checking for the notification in the Event History of Dealer Site ");
         Thread.sleep(2000);
         try {
-            WebElement history_message = adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), ' WirelessSensor #1 ')]")));
+            WebElement history_message = adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), ' Add WirelessSensor #10 ')]")));
             Assert.assertTrue(history_message.isDisplayed());
             logger.info("Dealer website history: " + history_message.getText());
         } catch (Exception e) {
@@ -639,7 +639,7 @@ public class Misc extends Setup {
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_dgEvents_ctl103_refreshButton"))).click();
         Thread.sleep(3000);
         try {
-            WebElement history_message = adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Delete WirelessSensor #1 ')]")));
+            WebElement history_message = adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Delete WirelessSensor #10 ')]")));
             Assert.assertTrue(history_message.isDisplayed());
             logger.info("Dealer website history: " + history_message.getText());
         } catch (Exception e) {

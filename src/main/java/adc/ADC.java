@@ -186,6 +186,7 @@ public class ADC extends Setup {
             Thread.sleep(7000);
             for (int i = 0; i < message.length; i++) {
                 driver1.navigate().refresh();
+                Thread.sleep(2000);
                 try {
                     WebElement history_message = driver1.findElement(By.xpath(message[i]));
                     Assert.assertTrue(history_message.isDisplayed());

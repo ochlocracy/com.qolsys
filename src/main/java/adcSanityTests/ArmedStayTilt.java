@@ -177,15 +177,15 @@ public class ArmedStayTilt extends Setup{
 
     @Test(dependsOnMethods = {"addSensors"}, priority = 6)
     public void ArmStay_Tamper_10() throws Exception {
-        ArmStay_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 1 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
+        ArmStay_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 11 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
     }
     @Test(dependsOnMethods = {"addSensors"}, priority = 7)
     public void ArmStay_Tamper_12() throws Exception {
-        ArmStay_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 2 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
+        ArmStay_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 12 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
     }
     @Test(dependsOnMethods = {"addSensors"},priority = 8)
     public void ArmStay_Tamper_25() throws Exception {
-        ArmStay_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 3 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
+        ArmStay_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 13 Tamper**')]","//*[contains(text(), 'End of Tamper')]");
     }
 
     @AfterTest

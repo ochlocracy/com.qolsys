@@ -42,6 +42,7 @@ public class SecureArmingTest extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
+        swipeVertical();
         arming.Secure_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -60,6 +61,8 @@ public class SecureArmingTest extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
+        swipeVertical();
+        Thread.sleep(2000);
         arming.Secure_Arming.click();
         Thread.sleep(2000);
     }

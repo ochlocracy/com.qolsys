@@ -68,10 +68,10 @@ public class SanityPGSensors extends Setup {
         Thread.sleep(2000);
         log.log(LogStatus.INFO, "Adding sensors");
         navigate_to_autolearn_page();
-        addPGSensors(104, 1101, 0);//gr10
-        addPGSensors(104, 1152, 1);//gr12
-        addPGSensors(104, 1311, 5);//gr25
-        addPGSensors(201, 1541, 0);//gr26 smoke-M
+//        addPGSensors(104, 1101, 0);//gr10
+//        addPGSensors(104, 1152, 1);//gr12
+//        addPGSensors(104, 1311, 5);//gr25
+//        addPGSensors(201, 1541, 0);//gr26 smoke-M
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);

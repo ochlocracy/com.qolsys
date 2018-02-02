@@ -87,17 +87,17 @@ public class ArmedAwayTilt extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"})
     public void ArmAwayExitDelay_10() throws Exception {
-        ArmAway_Open_Close_sensor_during_Exit_Delay(10, "63 00 EA", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_sensor_during_Exit_Delay(10, "63 00 EA", "//*[contains(text(), ' Sensor 11 Open/Close')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 1)
     public void ArmAwayExitDelay_12() throws Exception {
-        ArmAway_Open_Close_sensor_during_Exit_Delay(12, "63 00 FA", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_sensor_during_Exit_Delay(12, "63 00 FA", "//*[contains(text(), ' Sensor 12 Open/Close')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 2)
     public void ArmAwayExitDelay_25() throws Exception {
-        ArmAway_Open_Close_sensor_during_Exit_Delay(25, "63 00 0A", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
+        ArmAway_Open_Close_sensor_during_Exit_Delay(25, "63 00 0A", "//*[contains(text(), ' Sensor 13 Open/Close')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     /*** Open-Close sensor, disarm during Dialer Delay ***/

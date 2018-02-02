@@ -230,7 +230,18 @@ public class Disarm extends Setup {
         logger.info("*Disb_06* Activate event is displayed in panel history for motion sensor group 15");
         addPrimaryCall(3, 15, 5570628, 2);
         Thread.sleep(1000);
-        sensor_status_check(motion15, "Activated", "Idle");
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Idle"));
+        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
         Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
@@ -299,7 +310,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         li_status1.clear();
 
-        adc.ADC_verification("//*[contains(text(), ' (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        adc.ADC_verification("//*[contains(text(), '  (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
 
         deleteFromPrimary(3);
@@ -607,7 +618,7 @@ public class Disarm extends Setup {
         adc.update_sensors_list();
         Thread.sleep(4000);
 
-        WebElement webname = adc.driver1.findElement(By.xpath("/html/body/form/table/tbody/tr/td[2]/div/div[2]/div[7]/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
+        WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
         Thread.sleep(4000);
         Assert.assertTrue(webname.getText().equals(newName));
         log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()));

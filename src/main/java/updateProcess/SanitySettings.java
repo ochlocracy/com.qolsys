@@ -327,6 +327,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test5() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Arm_Stay_No_Delay");
+        serv.set_ARM_STAY_NO_DELAY_enable();
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);

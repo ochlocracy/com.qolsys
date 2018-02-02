@@ -1,5 +1,6 @@
 package utils;
 
+import com.thoughtworks.selenium.webdriven.commands.WaitForCondition;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -106,11 +107,11 @@ public class Setup {
                         .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
-        cap.setCapability("BROWSER_NAME", "Android");
+        cap.setCapability("platformName", "Android");
         cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-        cap.setCapability("newCommandTimeout", "1000");
+        cap.setCapability("newCommandTimeout", 1000);
         //in case previous session was not stopped
         service.stop();
         Thread.sleep(2000);
@@ -120,7 +121,7 @@ public class Setup {
 
 
         driver = new AndroidDriver<>(service.getUrl(), cap);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
 
@@ -755,27 +756,26 @@ public class Setup {
         //driver.findElementById("com.qolsys:id/ok").click();
     }
 
-    public void addPGSensors(int Type, int Id, int gn) throws IOException, InterruptedException {
+    public void addPGSensors(String sensor, int Type, int Id, int gn) throws IOException, InterruptedException {
         Thread.sleep(1000);
         powerGregistrator(Type, Id);
         Thread.sleep(3000);
         driver.findElementById("com.qolsys:id/ok").click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-        li.get(0).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
         nli.get(1).click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//android.widget.EditText[@index='3']")).sendKeys("sensor " + Type + "-" + Id);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@index='1']")).click();
+        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
-            e.printStackTrace();
+     //       e.printStackTrace();
         }
         Thread.sleep(2000);
-        li.get(2).click();
-        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
         List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
         gli.get(gn).click();
         Thread.sleep(1000);
