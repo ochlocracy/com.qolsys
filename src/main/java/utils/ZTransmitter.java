@@ -30,6 +30,7 @@ public class ZTransmitter extends ConfigPropsBase {
         return ztransmitterExecute;
     }
 
+
     public void setztransmitterExecute(String ztransmitterExecute){
         this.ztransmitterExecute = ztransmitterExecute ;
     }
