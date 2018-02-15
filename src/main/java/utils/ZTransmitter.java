@@ -8,23 +8,23 @@ import java.util.HashMap;
 public class ZTransmitter extends ConfigPropsBase {
 
 
+    public static String transmitterInfo;
     public static String includeTransmitter;
     public static String excludeTransmitter;
     public static String addLight;
     public static String clearLight;
     public static String addThermostat;
     public static String clearThermostat;
-    public static String addDoorlock;
-    public static String clearDoorlock;
+    public static String doorLockInclusion;
+    public static String doorLockExclude;
     public static String addGDC;
     public static String clearGDC;
     public static String ztransmitterExecute;
 
-    HashMap<String, String> deviceType = new HashMap<String, String>();
-    HashMap<String, String> deviceAction= new HashMap<String, String>();
     private static ZTransmitter instance;
 
-
+    HashMap<String, String> deviceType = new HashMap<String, String>();
+    HashMap<String, String> deviceAction= new HashMap<String, String>();
 
     public String getztransmitterExecute(){
         return ztransmitterExecute;
@@ -37,16 +37,18 @@ public class ZTransmitter extends ConfigPropsBase {
 
     public ZTransmitter() throws Exception {
         super("transmitter.properties");
+
         includeTransmitter = getString("transmitterInclusion");
         excludeTransmitter = getString("transmitterExclude");
         addLight = getString("ligthInclusion");
         clearLight = getString("ligthExclude");
         addThermostat = getString("thermostatInclude");
         clearThermostat = getString("thermostatExclude");
-        addDoorlock = getString("doorlockInclusion");
-        clearDoorlock = getString("doorlockExclude");
+        doorLockInclusion = getString("doorLockInclusion");
+        doorLockExclude = getString("doorLockExclude");
         addGDC = getString("gdcInclude");
         clearGDC = getString("gdcExclude");
+        transmitterInfo = getString("transmitterInfo");
     }
 
     public static void init() throws Exception {
@@ -54,6 +56,9 @@ public class ZTransmitter extends ConfigPropsBase {
             instance = new ZTransmitter();
         }
     }
+
+
+
 
     //service call for all device types
     public void deviceType() throws Exception{
