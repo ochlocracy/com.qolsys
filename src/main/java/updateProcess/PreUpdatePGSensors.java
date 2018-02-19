@@ -2,9 +2,7 @@ package updateProcess;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import panel.ContactUs;
 import panel.EmergencyPage;
 import utils.ConfigProps;
@@ -27,6 +25,10 @@ public class PreUpdatePGSensors extends Setup {
     public void setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
+    }
+    @BeforeMethod
+    public void webdriver(){
+
     }
 
     @Test
@@ -86,12 +88,12 @@ public class PreUpdatePGSensors extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test//(dependsOnMethods = {"addSensors"})
+    @Test(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
-        for (int i = 1; i > 0; i--) {
+
             logger.info("Activate Contact sensors");
 
             activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
@@ -231,9 +233,6 @@ public class PreUpdatePGSensors extends Setup {
             contact.acknowledge_all_alerts();
             swipeLeft();
             Thread.sleep(1000);
-
-            System.out.println(i);
-        }
     }
 
     @AfterTest

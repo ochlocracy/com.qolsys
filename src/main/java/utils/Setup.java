@@ -1,6 +1,6 @@
 package utils;
 
-import com.thoughtworks.selenium.webdriven.commands.WaitForCondition;
+import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -320,10 +320,10 @@ public class Setup {
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {
-            takeScreenshot();
-            logger.info("Failed: System is NOT in ALARM");
+            System.out.println("FAIL: System is not in ALARM");
         }
     }
+
 
     public void verifyPanelAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
@@ -714,7 +714,11 @@ public class Setup {
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
-
+    public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
+        rt.exec(ConfigProps.adbPath + add_primary);
+        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+    }
 
     public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
@@ -807,7 +811,7 @@ public class Setup {
 
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         pgprimaryCall(type, id, status2);
         Thread.sleep(1000);
     }

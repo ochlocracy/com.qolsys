@@ -21,6 +21,7 @@ public class ArmedAwayAuxiliary extends Setup {
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
     private String activate = "03 01";
+    private String protocol = "";
 
     public ArmedAwayAuxiliary() throws Exception {
         ConfigProps.init();
@@ -52,17 +53,22 @@ public class ArmedAwayAuxiliary extends Setup {
 
     @Test
     public void addSensors() throws IOException, InterruptedException {
-        Thread.sleep(2000);
-        addPrimaryCall(43, 6, 6361649, 21);
-        addPrimaryCall(44, 0, 6361650, 21);
-        addPrimaryCall(48, 1, 6361652, 21);
-        addPrimaryCall(49, 2, 6361653, 21);
-        addPrimaryCall(50, 4, 6361654, 21);
-        adc.New_ADC_session(adc.getAccountId());
-        Thread.sleep(10000);
-        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-        Thread.sleep(10000);
-        adc.Request_equipment_list();
+        if (protocol=="PowerG"){
+
+
+        }else {
+            Thread.sleep(2000);
+            addPrimaryCall(43, 6, 6361649, 21);
+            addPrimaryCall(44, 0, 6361650, 21);
+            addPrimaryCall(48, 1, 6361652, 21);
+            addPrimaryCall(49, 2, 6361653, 21);
+            addPrimaryCall(50, 4, 6361654, 21);
+            adc.New_ADC_session(adc.getAccountId());
+            Thread.sleep(10000);
+            adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+            Thread.sleep(10000);
+            adc.Request_equipment_list();
+        }
     }
 
     public void ArmStay_Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {

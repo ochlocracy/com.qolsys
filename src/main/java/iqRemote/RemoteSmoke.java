@@ -10,26 +10,19 @@ import org.testng.annotations.Test;
 import panel.EmergencyPage;
 import panel.HomePage;
 import utils.ConfigProps;
-import utils.Setup;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 public class RemoteSmoke extends SetupRemote {
 
-    Setup s = new Setup();
     public Runtime rt = Runtime.getRuntime();
     SimpleDateFormat time_formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-    String currentTime = time_formatter.format(System.currentTimeMillis());
+
     public RemoteSmoke() throws Exception {
         ConfigProps.init();
     }
 
-    public void AppiumStart() throws IOException, InterruptedException {
-        rt.exec(ConfigProps.adbPath + " /usr/local/bin/appium");
-        System.out.println("Appium session is started successfully");
-        Thread.sleep(4000);
-    }
 
     public void setSliderValue(WebElement elem, int intToSlideValue) {
         WebElement slider = elem;
@@ -59,9 +52,12 @@ public class RemoteSmoke extends SetupRemote {
     public void TestMain() throws Exception {
         /*** PANEL ARMING ***/
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-    //    rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
+        //    rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
         Thread.sleep(20000);
-        for (int i = 20; i > 0; i--) {
+
+        for (int i = 100; i > 0; i--) {
+            rt.exec(ConfigProps.adbPath + " shell date >> /sdcard/meminfo.txt");
+            rt.exec(ConfigProps.adbPath + " shell dumpsys meminfo >> /sdcard/meminfo.txt");
             ARM_STAY();
             Thread.sleep(10000);
             DISARM();
@@ -99,7 +95,10 @@ public class RemoteSmoke extends SetupRemote {
             emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(10000);
-            System.out.println("***Loop #"+i+"***");
+            rt.exec(ConfigProps.adbPath + " shell echo ***END*** >> /sdcard/meminfo.txt");
+            rt.exec(ConfigProps.adbPath + " shell dumpsys meminfo >> /sdcard/meminfo.txt");
+            System.out.println(String.format("***Loop #%d", i));
+            Thread.sleep(10000);
         }
     }
 

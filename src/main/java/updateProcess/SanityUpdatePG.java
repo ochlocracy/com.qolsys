@@ -1,5 +1,6 @@
 package updateProcess;
 
+import adc.ADC;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -7,21 +8,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import panel.*;
 import utils.ConfigProps;
 import utils.PGSensorsActivity;
 import utils.Setup;
+import utils.Timer;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 
 public class SanityUpdatePG extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+    ADC adc = new ADC();
+    Timer timer = new Timer();
 
     ExtentReports report;
     ExtentTest log;
@@ -35,6 +38,7 @@ public class SanityUpdatePG extends Setup {
         ConfigProps.init();
         PGSensorsActivity.init();
     }
+
 
     public void setDefaultSettings() throws IOException, InterruptedException {
         int ON = 1;
@@ -147,6 +151,11 @@ public class SanityUpdatePG extends Setup {
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         deleteReport();
+    }
+
+    @BeforeMethod
+    public void webDriver() {
+        adc.webDriverSetUp();
     }
 
     @Test
@@ -262,150 +271,352 @@ public class SanityUpdatePG extends Setup {
     }
 
     @Test(priority = 1)
-    public void sensorsCheck() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Sensors");
+    public void contactSensorChek() throws Exception {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html");
+        log = report.startTest("UpdateProcess.Contact_Sensors");
         System.out.println("Open-Close contact sensors");
-        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
-        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(2000);
-        log.log(LogStatus.INFO, "Verify sensors activity");
-        log.log(LogStatus.INFO, "Activate DW sensors");
+        log.log(LogStatus.INFO, "Activate DW sensors in DISARM mode");
         activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
+        Thread.sleep(10000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1101 ')]", "//*[contains(text(), ' Sensor 1 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr10 works as expected");
         activation_restoration(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr12
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1152 ')]", "//*[contains(text(), ' Sensor 2 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr12 works as expected");
         activation_restoration(104, 1231, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr13
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1231 ')]", "//*[contains(text(), ' Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr13 works as expected");
         activation_restoration(104, 1216, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr14
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1216 ')]", "//*[contains(text(), ' Sensor 4 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr14 works as expected");
         activation_restoration(104, 1331, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr16
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1331 ')]", "//*[contains(text(), ' Sensor 5 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr16 works as expected");
         activation_restoration(104, 1311, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr25
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1311 ')]", "//*[contains(text(), ' Sensor 8 Open/Close')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr25 works as expected");
         activation_restoration(104, 1127, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr8
-        Thread.sleep(1000);
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1127 ')]", "//*[contains(text(), ' Alarm ')]");
+        Thread.sleep(2000);
+        verifyInAlarm();
         enterDefaultUserCode();
         Thread.sleep(2000);
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr8 works as expected");
         activation_restoration(104, 1123, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr9
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123 ')]", "//*[contains(text(), 'Sensor 7 Alarm**')]");
         Thread.sleep(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        verifyInAlarm();
         enterDefaultUserCode();
         Thread.sleep(2000);
-        log.log(LogStatus.PASS, "Pass: DW sensors behavior is as expected");
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr9 works as expected");
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+
+    @Test
+    public void motionSensorCheck() throws Exception {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Motion_Sensors");
         System.out.println("Activate motion sensors");
-        log.log(LogStatus.INFO, "Activate motion sensors");
-        activation_restoration(120, 1411, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr15
-        activation_restoration(123, 1441, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr17
-        activation_restoration(120, 1445, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr25
-        activation_restoration(122, 1423, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr20
-        activation_restoration(123, 1446, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr35
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: Motion sensors behavior is as expected");
+        log.log(LogStatus.INFO, "Activate motion sensors in ARM AWAY mode");
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(120, 1411, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr15 Sensor9
+        Thread.sleep(10000);
+        verifyInAlarm();
+        Thread.sleep(10000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), ' Alarm ')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr15 works as expected");
+        Thread.sleep(2000);
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(123, 1441, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr17 Sensor10
+        Thread.sleep(7000);
+        verifyInAlarm();
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Motion 123-1441')]", "//*[contains(text(), ' Alarm ')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr17 works as expected");
+        Thread.sleep(2000);
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(120, 1445, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr25 Sensor12
+        Thread.sleep(10000);
+        verifyArmaway();
+        adc.ADC_verification_PG("//*[contains(text(), 'Motion 120-1445')]", "//*[contains(text(), 'Armed Away')]");
+        Thread.sleep(2000);
+        DISARM();
+        log.log(LogStatus.PASS, "System is ARMED AWAY, ADC events are displayed correctly, motion gr25 works as expected");
+        Thread.sleep(2000);
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(122, 1423, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr20 Sensor11
+        Thread.sleep(7000);
+        verifyInAlarm();
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Motion 122-1423')]", "//*[contains(text(), ' Alarm ')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr20 works as expected");
+        Thread.sleep(2000);
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(123, 1446, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr35 Sensor13
+        Thread.sleep(7000);
+        verifyInAlarm();
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Motion 123-1446')]", "//*[contains(text(), ' Alarm ')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr35 works as expected");
+        Thread.sleep(2000);
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+
+    @Test
+    public void smokeCOSensorCheck() throws IOException, InterruptedException {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Smoke_SmokeM_CO_Sensors");
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         System.out.println("Activate smoke and smokeM sensors");
         log.log(LogStatus.INFO, "Activate smoke and smokeM sensors");
-        activation_restoration(201, 1541, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST);
-        Thread.sleep(1000);
+        activation_restoration(201, 1541, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST); //Sensor14
+        Thread.sleep(5000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        activation_restoration(200, 1531, PGSensorsActivity.SMOKE, PGSensorsActivity.SMOKEREST);//smoke - not works for real sensor at 01/17/1
-        Thread.sleep(1000);
+        Thread.sleep(10000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
+        log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smokeM works as expected");
+        activation_restoration(200, 1531, PGSensorsActivity.SMOKE, PGSensorsActivity.SMOKEREST); //Sensor15
+        Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        activation_restoration(200, 1531, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
-        Thread.sleep(1000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Sensor 15 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
+        log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smoke works as expected");
+//        activation_restoration(200, 1531, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
+//        Thread.sleep(3000);
+//        emergency.Cancel_Emergency.click();
+//        enterDefaultUserCode();
+//        Thread.sleep(5000);
+        activation_restoration(201, 1541, PGSensorsActivity.GAS, PGSensorsActivity.GASREST); //Sensor14
+        Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        activation_restoration(201, 1541, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
-        Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
-        enterDefaultUserCode();
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: smoke sensor behavior is as expected");
-        System.out.println("Activate CO sensors");
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
+        log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smokeM works as expected");
+
         log.log(LogStatus.INFO, "Activate CO sensor");
-        activation_restoration(220, 1661, PGSensorsActivity.CO, PGSensorsActivity.COREST);
-        Thread.sleep(1000);
+        activation_restoration(220, 1661, PGSensorsActivity.CO, PGSensorsActivity.COREST); //Sensor16
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        activation_restoration(220, 1661, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
-        Thread.sleep(1000);
-        enterDefaultUserCode();
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: CO sensor behavior is as expected");
-        /*** Shock - not works for real sensor at 01/17/18***/
+        Thread.sleep(5000);
+        log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
 
-        System.out.println("Activate glassbreak sensors");
-        log.log(LogStatus.INFO, "Activate glassbreak sensors");
-        activation_restoration(160, 1874, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr13
-        Thread.sleep(1000);
-        activation_restoration(160, 1871, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr17
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: GB sensor behavior is as expected");
-        System.out.println("Activate water sensors");
+        activation_restoration(220, 1661, PGSensorsActivity.GAS, PGSensorsActivity.GASREST); //Sensor16
+        Thread.sleep(10000);
+        enterDefaultUserCode();
+        Thread.sleep(5000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
+        log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+    @Test
+    public void waterSensorCheck() throws Exception {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Water_Sensors");
         log.log(LogStatus.INFO, "Activate water sensor");
-        /*** Water - not works for real sensor at 01/17/18***/
+        activation_restoration(241, 1971, PGSensorsActivity.FLOOD, PGSensorsActivity.FLOODREST); //Sensor21
+        Thread.sleep(5000);
+        try{
+        verifyInAlarm();
+        } finally {
+            log.log(LogStatus.FAIL, "Failed: System is NOT in ALARM");
+        }
 
-        //  Thread.sleep(1000);
-        //  enterDefaultUserCode();
-        //  Thread.sleep(1000);
-        //  log.log(LogStatus.PASS, "Pass: water sensor behavior is as expected");
+        Thread.sleep(5000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'Water 241-1971')]", "//*[contains(text(), ' Alarm')]");
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, water sensor works as expected");
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+    @Test
+    public void shockSensorCheck() throws Exception {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Shock_Sensors");
+        log.log(LogStatus.INFO, "Activate shock sensor in ARM AWAY mode");
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(171, 1741, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST); //Sensor17
+        Thread.sleep(10000);
+        verifyInAlarm();
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'Shock 171-1741')]", "//*[contains(text(), 'Sensor 17 Alarm**')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, shock sensor gr13 works as expected");
 
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(171, 1771, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST); //Sensor18
+        Thread.sleep(10000);
+        verifyInAlarm();
+        adc.ADC_verification_PG("//*[contains(text(), 'Shock 171-1771')]", "//*[contains(text(), 'Sensor 18 Alarm**')]");
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, shock sensor gr17 works as expected");
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+    @Test
+    public void glassbreakSensorCheck() throws Exception {
+        timer.start();
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Glassbreak_Sensors");
+        System.out.println("Activate glassbreak sensors");
+        log.log(LogStatus.INFO, "Activate glassbreak sensor in ARM AWAY mode");
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(160, 1874, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr13
+        Thread.sleep(10000);
+        verifyInAlarm();
+        Thread.sleep(2000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'GBreak 160-1874')]", "//*[contains(text(), 'Sensor 19 Alarm**')]");
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, glassbreak sensor gr13 works as expected");
+
+        ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        activation_restoration(160, 1871, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr17
+        Thread.sleep(10000);
+        verifyInAlarm();
+        Thread.sleep(2000);
+        adc.ADC_verification_PG("//*[contains(text(), 'GBreak 160-1871')]", "//*[contains(text(), 'Sensor 20 Alarm**')]");
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, glassbreak sensor gr17 works as expected");
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+    }
+
+    @Test
+    public void keyfobKeypadPendantCheck() throws Exception {
+        timer.start();
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         System.out.println("Activate keyfobs");
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Keyfob_Keypad_AuxPendant");
         log.log(LogStatus.INFO, "Activate keyfobs");
+        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         activation_restoration(300, 1004, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.New_ADC_session(adc.getAccountId());
+        adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 300-1004')]", "//*[contains(text(), 'Police Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keyfob gr1 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(305, 1009, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 305-1009')]", "//*[contains(text(), 'Aux Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Aux Panic), ADC events are displayed correctly, keyfob gr6 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(306, 1003, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 306-1003')]", "//*[contains(text(), 'Aux Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Aux Panic), ADC events are displayed correctly, keyfob gr4 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: keyfobs behavior is as expected");
+        Thread.sleep(5000);
 
         System.out.println("Activate keypad sensors");
+        log.log(LogStatus.INFO, "Activate keypad");
         activation_restoration(371, 1005, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr0
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(25)')]", "//*[contains(text(), 'Police Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr0 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(371, 1006, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(26)')]", "//*[contains(text(), 'Police Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr1 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(371, 1008, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr2
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(27)')]", "//*[contains(text(), 'Police Panic')]");
+        log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr2 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: keypads behavior is as expected");
+        Thread.sleep(5000);
 
         System.out.println("Activate medical pendants");
         log.log(LogStatus.INFO, "Activate aux pendants");
         activation_restoration(320, 1015, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1015')]", "//*[contains(text(), 'Delayed alarm')]");
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, aux pendant gr6 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(320, 1016, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1016')]", "//*[contains(text(), 'Delayed alarm')]");
+        log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, aux pendant gr4 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         activation_restoration(320, 1018, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr25
-        Thread.sleep(2000);
+        Thread.sleep(10000);
+        adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1018')]", "//*[contains(text(), 'Inactivated')]");
+        log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, aux pendant gr25 works as expected");
         verifyDisarm();
         Thread.sleep(1000);
-        log.log(LogStatus.PASS, "Pass: aux pendant behavior is as expected");
-
         contact.acknowledge_all_alerts();
         swipeLeft();
         Thread.sleep(1000);
+        timer.end();
+        long totalTime = timer.getTotalTime();
+        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
+        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
 
     @Test(priority = 2)
@@ -494,9 +705,9 @@ public class SanityUpdatePG extends Setup {
 
     @AfterClass
     public void driver_quit() throws IOException, InterruptedException {
-        for (int i = 1; i < 36; i++) {
-            deleteFromPrimary(i);
-        }
+//        for (int i = 1; i < 36; i++) {
+//            deleteFromPrimary(i);
+//        }
         System.out.println("*****Stop driver*****");
         driver.quit();
         Thread.sleep(1000);
@@ -504,5 +715,8 @@ public class SanityUpdatePG extends Setup {
         service.stop();
     }
 
-
+    @AfterMethod
+    public void teardown() {
+        adc.driver1.close();
+    }
 }

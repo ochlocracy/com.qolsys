@@ -1,14 +1,19 @@
 package zwave;
 
 import adc.ADC;
+import adc.UIRepo;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utils.ConfigProps;
 import utils.Setup;
 
 import java.io.File;
@@ -38,6 +43,7 @@ public class LightsADC extends Setup {
     //String turn_off = "Turn OFF";
 
     public LightsADC() throws Exception {
+        ConfigProps.init();
     }
 
     //compares each light icon on the page to a given state
@@ -200,11 +206,49 @@ public class LightsADC extends Setup {
         Thread.sleep(6000);
     }
 
+    @Test
+    public void Tets1() throws InterruptedException {
+        //Light Off before testing
+        UIRepo web = PageFactory.initElements(adc.driver1, UIRepo.class);
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+        adc.driver1.get("https://www.alarm.com/web/system/home/lights");
+        Thread.sleep(5000);
+        web.Light_Off.click();
+        Thread.sleep(2000);
+        web.Light_On.click();
+        Thread.sleep(5000);
+        Assert.assertTrue(web.Light_Status.getText().equals("ON"));
+        Thread.sleep(5000);
+        System.out.println(web.Light_Name.getText());
+        System.out.println(web.Light_Time_Stamp.getText());
+        web.Light_On.click();
+        Thread.sleep(3000);
+        web.Light_Off.click();
+        Thread.sleep(5000);
+        Assert.assertTrue(web.Light_Status.getText().equals("OFF"));
+        System.out.println(web.Light_Time_Stamp.getText());
+    }
+    @Test
+    public void test2() throws InterruptedException {
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+        adc.driver1.get("https://www.alarm.com/web/History/EventHistory.aspx");
+        Thread.sleep(10000);
+
+        WebElement mytable = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_acdgEventHistory']/tbody"));
+        List<WebElement> rows_table = mytable.findElements(By.tagName("tr"));
+
+        int rows_count = rows_table.size();
+
+        System.out.println(rows_count);
+
+
+    }
+
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();
         adc.driver1.quit();
+        service.stop();
     }
-
 }

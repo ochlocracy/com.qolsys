@@ -70,7 +70,7 @@ public class AutoBypass extends Setup {
 
     // @Test  /*** Disarm mode/1)a sensor must be paired 2)Auto Bypass Enabled ***/
     public void addSensors() throws Exception {
-        addPrimaryCall(3, 10, 6619296, 1);
+        addPrimaryCall(3, 10, 6619296, 1); // 65 00 A0
         Thread.sleep(2000);
         addPrimaryCall(4, 12, 6619297, 1);
         Thread.sleep(2000);
@@ -84,7 +84,7 @@ public class AutoBypass extends Setup {
         Thread.sleep(2000);
         addPrimaryCall(22, 17, 5570629, 2);
         Thread.sleep(2000);
-        addPrimaryCall(23, 20, 5570630, 2);
+        addPrimaryCall(23, 20, 5570630, 2); // 55 00 46
         Thread.sleep(8000);
     }
 
@@ -234,10 +234,10 @@ public class AutoBypass extends Setup {
         Thread.sleep(10000);
         addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);
-        log.log(LogStatus.PASS, "Pass: Sensor is added ***");
-        servcall.set_AUTO_BYPASS(01);
-        Thread.sleep(2000);
-        log.log(LogStatus.PASS, "Pass: Auto Bypass setting is disabled ***");
+//        log.log(LogStatus.PASS, "Pass: Sensor is added ***");
+      servcall.set_AUTO_BYPASS(00);
+//        Thread.sleep(2000);
+//        log.log(LogStatus.PASS, "Pass: Auto Bypass setting is enabled ***");
         servcall.set_AUTO_STAY(0);
         log.log(LogStatus.PASS, "Pass: Auto Stay setting is disabled ***");
         Thread.sleep(10000);
@@ -280,11 +280,11 @@ public class AutoBypass extends Setup {
         addPrimaryCall(3, 10, 6619296, 1);
         log.log(LogStatus.PASS, "Pass: Sensor is added ***");
         Thread.sleep(2000);
-        servcall.set_AUTO_BYPASS(01);
-        Thread.sleep(2000);
-        log.log(LogStatus.PASS, "Pass: Auto Bypass is enabled ***");
-        servcall.set_AUTO_STAY(0);
-        Thread.sleep(2000);
+//        servcall.set_AUTO_BYPASS(01);
+//        Thread.sleep(2000);
+//        log.log(LogStatus.PASS, "Pass: Auto Bypass is enabled ***");
+//        servcall.set_AUTO_STAY(0);
+//        Thread.sleep(2000);
         log.log(LogStatus.PASS, "Pass: Auto Stay setting is disabled ***");
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
@@ -301,9 +301,9 @@ public class AutoBypass extends Setup {
             Thread.sleep(5000);
             log.log(LogStatus.PASS, "Pass: Sensor is closed ***");
             driver.findElement(By.id("com.qolsys:id/cancel")).click();
-            Thread.sleep(1000);
-            driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
             Thread.sleep(2000);
+//            driver.findElement(By.id("com.qolsys:id/img_collapse")).click();
+ //           Thread.sleep(2000);
             home_page.ARM_AWAY.click();
         } else {
             log.log(LogStatus.FAIL, "Fail: Open Sensor Pop-up Message Not Received ***");
@@ -556,6 +556,12 @@ public class AutoBypass extends Setup {
         Thread.sleep(15000);
         verifyArmaway();
         Thread.sleep(2000);
+        sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
+        Thread.sleep(2000);
+        sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
+        Thread.sleep(2000);
+        sensors.primaryCall("55 00 64", SensorsActivity.ACTIVATE);
+
         logger.info("AB319_13 Pass: System armed.");
         home_page.ArwAway_State.click();
         enterDefaultUserCode();
