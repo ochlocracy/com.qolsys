@@ -78,7 +78,7 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.normalEntryDelay);
         verifyArmstay();
@@ -95,7 +95,7 @@ public class ArmedStayContact extends Setup {
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
         Thread.sleep(2000);
@@ -113,7 +113,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
         enterDefaultUserCode();
@@ -129,7 +129,7 @@ public class ArmedStayContact extends Setup {
         Thread.sleep(2000);
         logger.info("Open/Close a sensor");
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(3000);
         verifyArmstay();

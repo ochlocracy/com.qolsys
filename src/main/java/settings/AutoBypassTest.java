@@ -66,6 +66,7 @@ public class AutoBypassTest extends Setup {
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(1000);
         swipeVertical();
+        swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();
         Thread.sleep(3000);
@@ -99,6 +100,7 @@ public class AutoBypassTest extends Setup {
         Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
+        swipeVertical();
         swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();

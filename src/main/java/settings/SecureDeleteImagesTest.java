@@ -38,6 +38,7 @@ public class SecureDeleteImagesTest extends Setup {
         home.DISARM.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
+        swipeFromLefttoRight();
         camera.Camera_delete.click();
         Thread.sleep(2000);
         if (camera.Camera_delete_title.isDisplayed()) {
@@ -65,6 +66,7 @@ public class SecureDeleteImagesTest extends Setup {
         ARM_STAY();
         home.DISARM.click();
         enterDefaultUserCode();
+        swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Camera_delete.click();
         Thread.sleep(2000);

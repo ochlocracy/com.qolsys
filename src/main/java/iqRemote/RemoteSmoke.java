@@ -10,25 +10,19 @@ import org.testng.annotations.Test;
 import panel.EmergencyPage;
 import panel.HomePage;
 import utils.ConfigProps;
-import utils.Setup;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-public class RemoteSmoke extends Setup {
+public class RemoteSmoke extends SetupRemote {
 
     public Runtime rt = Runtime.getRuntime();
     SimpleDateFormat time_formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-    String currentTime = time_formatter.format(System.currentTimeMillis());
+
     public RemoteSmoke() throws Exception {
         ConfigProps.init();
     }
 
-    public void AppiumStart() throws IOException, InterruptedException {
-        rt.exec(ConfigProps.adbPath + " /usr/local/bin/appium");
-        System.out.println("Appium session is started successfully");
-        Thread.sleep(4000);
-    }
 
     public void setSliderValue(WebElement elem, int intToSlideValue) {
         WebElement slider = elem;
@@ -41,7 +35,7 @@ public class RemoteSmoke extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setup_driver("6NJUM1H24Z", "http://127.0.1.1", "4723");
     }
 
     @Test
@@ -58,43 +52,53 @@ public class RemoteSmoke extends Setup {
     public void TestMain() throws Exception {
         /*** PANEL ARMING ***/
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
-        for (int i = 1000; i > 0; i--) {
+        //    rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
+        Thread.sleep(20000);
+
+        for (int i = 100; i > 0; i--) {
+            rt.exec(ConfigProps.adbPath + " shell date >> /sdcard/meminfo.txt");
+            rt.exec(ConfigProps.adbPath + " shell dumpsys meminfo >> /sdcard/meminfo.txt");
             ARM_STAY();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             DISARM();
-            Thread.sleep(5000);
-            ARM_AWAY(15);
-            Thread.sleep(5000);
+            Thread.sleep(10000);
+            ARM_AWAY(25);
             home_page.ArwAway_State.click();
             enterDefaultUserCode();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
 
             /*** EMERGENCY ***/
             EmergencyPage emergency_page = PageFactory.initElements(driver, EmergencyPage.class);
             emergency_page.Emergency_Button.click();
-            Thread.sleep(2000);
+            Thread.sleep(10000);
+            System.out.println("Police Emergency");
             emergency_page.Police_icon.click();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
 
             emergency_page.Emergency_Button.click();
-            Thread.sleep(2000);
+            Thread.sleep(10000);
+            System.out.println("Fire Emergency");
             emergency_page.Fire_icon.click();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
 
             emergency_page.Emergency_Button.click();
-            Thread.sleep(2000);
+            Thread.sleep(10000);
+            System.out.println("Auxiliary Emergency");
             emergency_page.Auxiliary_icon.click();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
+            rt.exec(ConfigProps.adbPath + " shell echo ***END*** >> /sdcard/meminfo.txt");
+            rt.exec(ConfigProps.adbPath + " shell dumpsys meminfo >> /sdcard/meminfo.txt");
+            System.out.println(String.format("***Loop #%d", i));
+            Thread.sleep(10000);
         }
     }
 

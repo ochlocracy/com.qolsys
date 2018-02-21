@@ -1,8 +1,10 @@
 package adcSanityTests;
 
 import adc.ADC;
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
@@ -14,7 +16,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class IQShock extends Setup {
-
     String page_name = "ArmedStay_IQShock";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
@@ -233,8 +234,8 @@ public class IQShock extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
-        deleteFromPrimary(2);
         deleteFromPrimary(3);
+        deleteFromPrimary(4);
         service.stop();
     }
 }

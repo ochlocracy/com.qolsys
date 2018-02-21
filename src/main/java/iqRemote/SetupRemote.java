@@ -1,27 +1,25 @@
 package iqRemote;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 import panel.HomePage;
 import panel.PanelCameraPage;
-import sensors.EventConstants;
 import utils.ConfigProps;
 import utils.Setup;
 
 import java.io.*;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SetupRemote {
 
-    public AndroidDriver<WebElement> driver;
+    public AndroidDriver driver;
     public Runtime rt = Runtime.getRuntime();
     Setup setup = new Setup();
-    String logcat = new String(System.getProperty("user.dir")) +"/log/test.txt";
+    String logcat = new String(System.getProperty("user.dir")) + "/log/test.txt";
 
     public SetupRemote() throws Exception {
         ConfigProps.init();
@@ -34,14 +32,43 @@ public class SetupRemote {
         cap.setCapability("udid", udid_);
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
-        driver = new AndroidDriver(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
+        cap.setCapability("newCommandTimeout", "1000");
+        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    public void ARM_STAY() {
+    public void DISARM() throws InterruptedException {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        System.out.println("Disarm");
+        home_page.DISARM.click();
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+    }
+
+    public void ARM_STAY() throws InterruptedException {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
         home_page.DISARM.click();
+        Thread.sleep(2000);
         home_page.ARM_STAY.click();
+    }
+
+    public void ARM_AWAY(int delay) throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.DISARM.click();
+        System.out.println("Arm Away");
+        Thread.sleep(2000);
+        home_page.ARM_AWAY.click();
+        TimeUnit.SECONDS.sleep(delay);
+    }
+
+    public void enterDefaultUserCode() throws InterruptedException {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.One.click();
+        home_page.Two.click();
+        home_page.Three.click();
+        home_page.Four.click();
+        Thread.sleep(2000);
     }
 
     public void eventLogsGenerating(String fileName, String[] findEvent, int length) throws Exception {

@@ -32,10 +32,15 @@ public class Dual_path_page extends Setup {
         menu.Slide_menu_open.click();
         menu.Settings.click();
         Thread.sleep(2000);
+        try {
         if (driver.findElementById("com.qolsys:id/ok").isDisplayed()) ;
         {
             driver.findElementById("com.qolsys:id/ok").click();
+        }}
+        catch (Exception e) {
+            logger.info("Failed: No WiFi network connected");
         }
+
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
         enterDefaultDealerCode();
@@ -124,9 +129,9 @@ public class Dual_path_page extends Setup {
     @Test(priority = 2)
     public void Dual_path_test_when_mobile_data_disabled() throws Exception {
         servcall.APN_enable();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         servcall.Wifi_enable();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         accessDual_path_page();
         Dual_path_page_elements d_test = PageFactory.initElements(driver, Dual_path_page_elements.class);
         logger.info("Dual path control check-box is Enabled");
@@ -141,7 +146,7 @@ public class Dual_path_page extends Setup {
         elementVerification(d_test.chkbox_result_text, "Dual_path_Control_chkbox_result_text");
         elementVerification(d_test.Test_result, "Dual_path_Test_result_text");
         servcall.APN_disable();// turning on cell
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     }
 
     @Test(priority = 3)

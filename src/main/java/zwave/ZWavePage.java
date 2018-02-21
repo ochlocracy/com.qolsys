@@ -29,12 +29,12 @@ public class ZWavePage {
 
     //Add Device Page
     @FindBy(id = "com.qolsys:id/button")
-    public WebElement Include_Z_Wave_Device_Button;
+    public WebElement Include_Z_Wave_Device_Button; // start the paring process
     @FindBy(id = "com.qolsys:id/negative_button")
     public WebElement Add_Device_Cancel_Button_Z_Wave_Add_Device_Page; //Cancel pairing process button
     @FindBy(id = "com.qolsys:id/ok")
     public WebElement Add_Device_OK_Button_Z_Wave_Add_Device_Page;
-    @FindBy(xpath = "//android.widget.TextView[@text='Add']")
+    @FindBy(id = "com.qolsys:id/button")
     public WebElement NewDevicePageAddBtn;// Add button in the new device page
     @FindBy(xpath = "//android.widget.Button[@text='Automation']")
     public WebElement PanelLightAutomation; //Automation button for panel selection

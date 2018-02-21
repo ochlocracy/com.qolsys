@@ -61,13 +61,14 @@ public class KeyfobInstantArmingTest extends Setup {
         swipeVertical();
         Thread.sleep(2000);
         swipeVertical();
+        swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
         logger.info("Arm Stay the system");
         sensors.primaryCall("65 00 AF", armstay);
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         try {
             if (home.Disarmed_text.getText().equals("ARMED STAY"))
                 takeScreenshot();
@@ -83,7 +84,7 @@ public class KeyfobInstantArmingTest extends Setup {
         Thread.sleep(2000);
         logger.info("Arm Away the system");
         sensors.primaryCall("65 00 AF", armaway);
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         try {
             if (home.ArwAway_State.isDisplayed())
                 takeScreenshot();
@@ -103,6 +104,7 @@ public class KeyfobInstantArmingTest extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
+        swipeVertical();
         swipeVertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);

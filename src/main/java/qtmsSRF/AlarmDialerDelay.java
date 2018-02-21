@@ -16,7 +16,7 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class DialerDelay extends Setup {
+public class AlarmDialerDelay extends Setup {
     String page_name = "Arm Stay Arm Away KeyFob sensor testing";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
@@ -27,9 +27,11 @@ public class DialerDelay extends Setup {
     String element_to_verify = "//*[contains(text(), 'panel armed-stay ')]";
     String element_to_verify1 = "//*[contains(text(), 'panel armed-away ')]";
     String element_to_verify3 = "//*[contains(text(), 'panel disarmed ')]";
-    public DialerDelay() throws Exception {
+
+    public AlarmDialerDelay() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
+
     }
 
     @BeforeTest

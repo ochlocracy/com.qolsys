@@ -327,6 +327,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test5() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Arm_Stay_No_Delay");
+        serv.set_ARM_STAY_NO_DELAY_enable();
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -337,6 +338,7 @@ public class SanitySettings extends Setup {
         System.out.println("Verify that Arm Stay - No Delay works when enabled");
         log.log(LogStatus.INFO, "Verify that Arm Stay - No Delay works when enabled");
         ARM_STAY();
+        Thread.sleep(2000);
         verifyArmstay();
         log.log(LogStatus.PASS, "System is in Arm Stay Mode");
         home.DISARM.click();
@@ -845,7 +847,7 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
         user.User_Management_Save.click();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         driver.findElement(By.id("com.qolsys:id/ft_back")).click();
         Thread.sleep(5000);
         driver.findElement(By.id("com.qolsys:id/ft_back")).click();

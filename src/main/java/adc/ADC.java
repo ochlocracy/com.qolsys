@@ -10,6 +10,7 @@ import utils.ConfigProps;
 import utils.Setup;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class ADC extends Setup {
@@ -149,8 +150,11 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("8ebdbcf1")) {    //Zach
             accountId = "5434890";
             return accountId;
-        } else if (get_UDID().equals("8ebdbcb3")) {    //Jeff
+        } else if (get_UDID().equals("8ebdbcb3")) {    //Jeff EGGZ
             accountId = "4283420";
+            return accountId;
+        } else if (get_UDID().equals("8f03bcd3")) {    //Jeff FIGZ
+            accountId = "4311031";
             return accountId;
         } else if (get_UDID().equals("62e9f0df")) {
             accountId = "5222397";
@@ -173,12 +177,16 @@ public class ADC extends Setup {
         String[] message = {string, string1};
         if (getADCexecute().equals("true")) {
             New_ADC_session(getAccountId());
+            driver1.findElement(By.partialLinkText("Sensors")).click();
+            Thread.sleep(2000);
+            Request_equipment_list();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
             Thread.sleep(7000);
             for (int i = 0; i < message.length; i++) {
                 driver1.navigate().refresh();
+                Thread.sleep(2000);
                 try {
                     WebElement history_message = driver1.findElement(By.xpath(message[i]));
                     Assert.assertTrue(history_message.isDisplayed());
@@ -193,6 +201,26 @@ public class ADC extends Setup {
             System.out.println("Set execute to TRUE to run ADC verification part");
         }
         Thread.sleep(7000);
+    }
+    public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
+        String[] message = {string, string1};
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
+            Thread.sleep(10000);
+            driver1.navigate().refresh();
+            Thread.sleep(10000);
+            for (int i = 0; i < message.length; i++) {
+                driver1.navigate().refresh();
+                Thread.sleep(2000);
+                try {
+                    WebElement history_message = driver1.findElement(By.xpath(message[i]));
+                    Assert.assertTrue(history_message.isDisplayed());
+                    {
+                        System.out.println("Pass: message is displayed " + history_message.getText());
+                    }
+                } catch (Exception e) {
+                    System.out.println("***No such element found!***");
+                }
+            }
     }
 
     public void add_sensor(int zone, int group, int DLID, int sensor_type) throws IOException {
@@ -310,21 +338,6 @@ public class ADC extends Setup {
         } catch (NoSuchElementException e) {
         }
         Thread.sleep(10000);
-    }
-
-    public void New_ADC_session_emPower_Page(String accountID) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
-        driver1.manage().window().maximize();
-        String ADC_URL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx" + accountID;
-        driver1.get(ADC_URL);
-        String login = "qautomation";
-        String password = "Qolsys123";
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUsername")));
-        driver1.findElement(By.id("txtUsername")).sendKeys(login);
-        driver1.findElement(By.id("txtPassword")).sendKeys(password);
-        driver1.findElement(By.id("butLogin")).click();
-        TimeUnit.SECONDS.sleep(2);
     }
 
     //must be on the Equipment page
@@ -478,4 +491,132 @@ public class ADC extends Setup {
 
         return ele;
     }
+    //Start ADC Z-Wave Dealer Paths and Actions
+    //Start ADC Z-Wave Dealer Paths and Actions
+    //Start ADC Z-Wave Dealer Paths and Actions
+    public void New_ADC_session_emPower_Page(String accountID) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.manage().window().maximize();
+        String ADC_URL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx" + accountID;
+        driver1.get(ADC_URL);
+        String login = "qautomation";
+        String password = "Qolsys123";
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUsername")));
+        driver1.findElement(By.id("txtUsername")).sendKeys(login);
+        driver1.findElement(By.id("txtPassword")).sendKeys(password);
+        driver1.findElement(By.id("butLogin")).click();
+        driver1.findElement(By.partialLinkText("Equipment")).click();
+        driver1.findElement(By.partialLinkText("emPower")).click();
+        TimeUnit.SECONDS.sleep(2);
+    }
+    //Must be on emPower Devices page!
+    //Has service call
+    public void ADC_Rediscover_ZWave_Network() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_nonwipingRediscovery2")).click();
+        TimeUnit.SECONDS.sleep(2);
+    }
+    //Must be on emPower Devices page!
+    public void ADC_Dealer_Edit_ZWave_Device_Name() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_EditDeviceNames")).click();
+        TimeUnit.SECONDS.sleep(2);
+    }
+    //Must be on emPower Devices page!
+    public void ADC_Get_ZWave_Device_Name() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_GetDeviceNames")).click();
+        TimeUnit.SECONDS.sleep(15);
+        driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
+    }
+    //Must be on emPower Devices page!
+    public void ADC_Get_ZWave_Equipment_List() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
+        TimeUnit.SECONDS.sleep(15);
+        driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
+    }
+    //Must be on emPower Devices page!
+    //Has service call
+    public void ADC_Add_ZWave_Device() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteAdd")).click();
+    }
+    //Must be on emPower Devices page!
+    //Has service call
+    public void ADC_Delete_ZWave_Device() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
+    }
+    //Use "New_ADC_session" prior to this class
+    public void ADC_Service_Plan_ZWave_Energy_Monitoring() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("Service Plan")).click();
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("Change Service")).click();
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.className("service panel-heading")).click();
+        driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_ucsAddons_chkSmartEnergyPlus")).click();
+        driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
+    }
+    //Use "New_ADC_session" prior to this class
+    //Has service call
+    public void ADC_Turn_OFF_ZWave() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("Panel"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ucsPanelManagement_spZWave_imgExpandCollapse")).click();
+        driver1.findElement(By.tagName("'ctl00$phBody$ucsPanelManagement$udListZWave$gvSettings','Select$43'")).click();
+        driver1.findElement(By.partialLinkText("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
+    }
+    public void ADC_Set_Garage_Door_Limit() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("Panel"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_phBody_ucsPanelManagement_spZWave_imgExpandCollapse")).click();
+        driver1.findElement(By.partialLinkText("Select$52")).click();
+    }
+
+    public void update_sensors_list() throws InterruptedException, IOException {
+        New_ADC_session(getAccountId());
+        Thread.sleep(1000);
+        driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(10000);
+        Request_equipment_list();
+        Thread.sleep(1000);
+    }
+
+    //End ADC Z-Wave Dealer Paths and Actions
+    //End ADC Z-Wave Dealer Paths and Actions
+    //End ADC Z-Wave Dealer Paths and Actions
+
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+    //Start ADC Z-Wave User Paths and Actions All From Home Page
+
+    public void ADC_User_Navigate_Energy_Usage() throws InterruptedException{
+        driver1.findElement(By.id("ember637"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember3831"));
+    }
+    public void ADC_User_Navigate_Schedules() throws InterruptedException {
+        driver1.findElement(By.id("ember629"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember4097"));
+    }
+    public void ADC_User_Navigate_Scenes() throws InterruptedException {
+        driver1.findElement(By.id("ember629"));
+        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ember4099"));
+    }
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
+    //End ADC Z-Wave User Paths and Actions
 }

@@ -860,7 +860,7 @@
             <groupId>com.github.genium-framework</groupId>
             <artifactId>Appium-Support</artifactId>
             <version>1.0.5</version>
-
         </dependency>
+
     </dependencies>
 </project>

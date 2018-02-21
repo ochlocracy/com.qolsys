@@ -35,7 +35,7 @@ public class ArmedAwayContact extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4724");
         setupLogger(page_name);
         servcall.set_SIA_LIMITS_disable();
         Thread.sleep(2000);

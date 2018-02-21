@@ -14,9 +14,6 @@ import utils.Setup;
 
 import java.io.IOException;
 
-/**
- * Created by qolsysauto (Jeff) on 8/7/17.
- */
 public class ArmedStayAuxiliary extends Setup {
     // PRECONDITIONS: Disable SIA limits, set Entry-Exit Delay time to 30, 31, 32, 33 sec; Disable ArmStay No-Delay setting
     /*** If you want to run tests only on the panel, please set ADCexecute value to false ***/

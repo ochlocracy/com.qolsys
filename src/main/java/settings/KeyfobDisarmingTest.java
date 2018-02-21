@@ -60,6 +60,7 @@ public class KeyfobDisarmingTest extends Setup {
         swipeVertical();
         Thread.sleep(2000);
         swipeVertical();
+        swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -86,6 +87,7 @@ public class KeyfobDisarmingTest extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
+        swipeVertical();
         swipeVertical();
         arming.Keyfob_Disarming.click();
         Thread.sleep(2000);
