@@ -13,7 +13,7 @@ import panel.*;
 import utils.ConfigProps;
 import utils.PGSensorsActivity;
 import utils.Setup;
-import utils.Timer;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class SanityUpdatePG extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     ADC adc = new ADC();
-    Timer timer = new Timer();
+
 
     ExtentReports report;
     ExtentTest log;
@@ -272,7 +272,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 1)
     public void contactSensorChek() throws Exception {
-        timer.start();
+
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html");
         log = report.startTest("UpdateProcess.Contact_Sensors");
         System.out.println("Open-Close contact sensors");
@@ -313,15 +313,10 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         Thread.sleep(2000);
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr9 works as expected");
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
 
     @Test
     public void motionSensorCheck() throws Exception {
-        timer.start();
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Motion_Sensors");
         System.out.println("Activate motion sensors");
@@ -381,15 +376,10 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr35 works as expected");
         Thread.sleep(2000);
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
 
     @Test
     public void smokeCOSensorCheck() throws IOException, InterruptedException {
-        timer.start();
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Smoke_SmokeM_CO_Sensors");
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
@@ -437,21 +427,16 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
         log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
     @Test
     public void waterSensorCheck() throws Exception {
-        timer.start();
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Water_Sensors");
         log.log(LogStatus.INFO, "Activate water sensor");
         activation_restoration(241, 1971, PGSensorsActivity.FLOOD, PGSensorsActivity.FLOODREST); //Sensor21
         Thread.sleep(5000);
-        try{
-        verifyInAlarm();
+        try {
+            verifyInAlarm();
         } finally {
             log.log(LogStatus.FAIL, "Failed: System is NOT in ALARM");
         }
@@ -461,14 +446,9 @@ public class SanityUpdatePG extends Setup {
         adc.ADC_verification_PG("//*[contains(text(), 'Water 241-1971')]", "//*[contains(text(), ' Alarm')]");
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, water sensor works as expected");
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
     @Test
     public void shockSensorCheck() throws Exception {
-        timer.start();
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Shock_Sensors");
         log.log(LogStatus.INFO, "Activate shock sensor in ARM AWAY mode");
@@ -492,14 +472,9 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(2000);
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, shock sensor gr17 works as expected");
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
     @Test
     public void glassbreakSensorCheck() throws Exception {
-        timer.start();
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Glassbreak_Sensors");
         System.out.println("Activate glassbreak sensors");
@@ -526,15 +501,10 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         Thread.sleep(2000);
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, glassbreak sensor gr17 works as expected");
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
 
     @Test
     public void keyfobKeypadPendantCheck() throws Exception {
-        timer.start();
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         System.out.println("Activate keyfobs");
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
@@ -613,10 +583,6 @@ public class SanityUpdatePG extends Setup {
         contact.acknowledge_all_alerts();
         swipeLeft();
         Thread.sleep(1000);
-        timer.end();
-        long totalTime = timer.getTotalTime();
-        System.out.println("Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
-        log.log(LogStatus.INFO, "Total execution time: "+  TimeUnit.MILLISECONDS.toMinutes(totalTime) + " min");
     }
 
     @Test(priority = 2)
