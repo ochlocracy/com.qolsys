@@ -202,6 +202,26 @@ public class ADC extends Setup {
         }
         Thread.sleep(7000);
     }
+    public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
+        String[] message = {string, string1};
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
+            Thread.sleep(10000);
+            driver1.navigate().refresh();
+            Thread.sleep(10000);
+            for (int i = 0; i < message.length; i++) {
+                driver1.navigate().refresh();
+                Thread.sleep(2000);
+                try {
+                    WebElement history_message = driver1.findElement(By.xpath(message[i]));
+                    Assert.assertTrue(history_message.isDisplayed());
+                    {
+                        System.out.println("Pass: message is displayed " + history_message.getText());
+                    }
+                } catch (Exception e) {
+                    System.out.println("***No such element found!***");
+                }
+            }
+    }
 
     public void add_sensor(int zone, int group, int DLID, int sensor_type) throws IOException {
         String add_sensor = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + DLID + " i32 " + sensor_type;

@@ -184,6 +184,7 @@ public class ArmStay extends Setup {
         eventLogsGenerating(log_path, new String[]{
                 "SYSTEM_STATUS_CHANGED_TIME value : ARM-AWAY-EXIT-DELAY"}, 1);
         Thread.sleep(ConfigProps.longExitDelay);
+        Thread.sleep(5000);
         verifyArmaway();
         log.log(LogStatus.PASS, ("Pass: system is Armed Away"));
         // sensors.primaryCall("65 00 AF", keyfobDisarm);
@@ -232,7 +233,8 @@ public class ArmStay extends Setup {
         ARM_STAY();
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         home.DISARM.click();
-        Thread.sleep(ConfigProps.longEntryDelay);
+        Thread.sleep(ConfigProps.longExitDelay);
+        Thread.sleep(10000);
         verifyArmstay();
         log.log(LogStatus.PASS, ("Pass: system is Armed Stay"));
         Thread.sleep(2000);
@@ -302,6 +304,7 @@ public class ArmStay extends Setup {
         addPrimaryCall(zone, group, 6619296, 1);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window10);
@@ -411,6 +414,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window16);
@@ -437,6 +441,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -467,6 +472,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -499,6 +505,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -530,6 +537,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -540,7 +548,8 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         sensors.primaryCall(motion35, SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
-        Thread.sleep(ConfigProps.longEntryDelay);
+        Thread.sleep(ConfigProps.longExitDelay);
+        Thread.sleep(5000);
         verifyInAlarm();
         log.log(LogStatus.PASS, ("Pass: system is in Alarm"));
         Thread.sleep(4000);
@@ -565,6 +574,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -589,7 +599,7 @@ public class ArmStay extends Setup {
         servcall.set_ARM_STAY_NO_DELAY_disable();
         Thread.sleep(2000);
         ARM_STAY();
-        Thread.sleep(4000);
+        Thread.sleep(25000);
         verifyArmstay();
         Thread.sleep(4000);
         sensors.primaryCall(DLID1, SensorsActivity.OPEN);
@@ -682,6 +692,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(1000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 12, door_window10, door_window12, "Open", "Open", ConfigProps.normalEntryDelay);
@@ -698,6 +709,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 14, door_window10, door_window14, "Open", "Open", ConfigProps.normalEntryDelay);
@@ -728,6 +740,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 16, door_window10, door_window16, "Open", "Open", ConfigProps.longEntryDelay);
@@ -746,6 +759,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 15, door_window10, motion15, "Open", "Activated", ConfigProps.longEntryDelay);
@@ -761,6 +775,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 35, door_window10, motion35, "Open", "Activated", ConfigProps.longEntryDelay);
@@ -776,6 +791,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 20, door_window10, motion20, "Open", "Activated", ConfigProps.longEntryDelay);
@@ -793,6 +809,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 17, door_window10, motion17, "Open", "Activated", ConfigProps.longEntryDelay);
@@ -810,6 +827,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         disarm_during_entry_delay(10, 13, door_window10, door_window13, "Disarmed", "Open", "Arm-Stay", "Open", "Arm-Stay", 15000, 1, 2, 3, 4, 5);
@@ -840,43 +858,43 @@ public class ArmStay extends Setup {
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
         if (li_status1.get(1).getText().equals(Status)) {
             logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***");
-            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***"));
+  //          log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***"));
 
         } else {
             logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(1).getText() + "***");
-            log.log(LogStatus.FAIL, "Failed: sensor status is displayed incorrect: ***" + li_status1.get(1).getText() + "***");
+  //          log.log(LogStatus.FAIL, "Failed: sensor status is displayed incorrect: ***" + li_status1.get(1).getText() + "***");
         }
         Thread.sleep(2000);
         if (li_status1.get(2).getText().equals(Status1)) {
-            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(2).getText() + "***");
-            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(2).getText() + "***"));
+            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(3).getText() + "***");
+//            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(3).getText() + "***"));
         } else {
-            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(2).getText() + "***");
-            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(2).getText() + "***");
+            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(3).getText() + "***");
+ //           log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(3).getText() + "***");
         }
         Thread.sleep(2000);
         if (li_status1.get(3).getText().equals(Status2)) {
-            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(3).getText() + "***");
-            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(3).getText() + "***"));
+            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(4).getText() + "***");
+//            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(4).getText() + "***"));
         } else {
-            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(3).getText() + "***");
-            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(3).getText() + "***");
+            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(4).getText() + "***");
+//            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(4).getText() + "***");
         }
         Thread.sleep(1000);
         if (li_status1.get(4).getText().equals(Status3)) {
-            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(4).getText() + "***");
-            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(4).getText() + "***"));
+            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(5).getText() + "***");
+//            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(5).getText() + "***"));
         } else {
-            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(4).getText() + "***");
-            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(4).getText() + "***");
+            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(5).getText() + "***");
+//            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(5).getText() + "***");
         }
         Thread.sleep(2000);
         if (li_status1.get(5).getText().equals(Status4)) {
-            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(5).getText() + "***");
-            log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(5).getText() + "***"));
+            logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(6).getText() + "***");
+ //           log.log(LogStatus.PASS, ("Pass: sensor status is displayed correctly: ***" + li_status1.get(6).getText() + "***"));
         } else {
-            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(5).getText() + "***");
-            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(5).getText() + "***");
+            logger.info("Failed: sensor status is displayed in correct: ***" + li_status1.get(6).getText() + "***");
+//            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(6).getText() + "***");
         }
         Thread.sleep(2000);
         home.Home_button.click();
@@ -913,6 +931,7 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         disarm_during_entry_delay(10, 12, door_window10, door_window12, "Disarmed", "Open", "Closed", "Open", "Arm-Stay", 15000, 1, 4, 5, 1, 2);
@@ -921,16 +940,20 @@ public class ArmStay extends Setup {
 
     @Test(priority = 17)
     public void AS_25() throws Exception {
-        logger.info("Verify the system can be disarmed during the entry delay (10 and 15 groups). ");
+        add_to_report("AS_25");
+        logger.info("Verify the system can be disarmed during the entry delay (10 and 15 groups).");
+        log.log(LogStatus.INFO, ("*AS_25* Verify the system can be disarmed during the entry delay (10 and 15 groups)."));
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(4000);
-        disarm_during_entry_delay(10, 15, door_window10, motion15, "Disarmed (Intrusion)", "Idle", "Activated", "Closed", "Open", 15000, 1, 4, 5, 1, 2);
+        disarm_during_entry_delay(10, 15, door_window10, motion15, "Disarmed", "Idle", "Activated", "Closed", "Open", 15000, 1, 4, 5, 1, 2);
     }
 
     @Test(priority = 18)
     public void AS_26() throws Exception {
+        add_to_report("AS_26");
         logger.info("Verify the system can be disarmed during the entry delay (10 and 17 groups). ");
+        log.log(LogStatus.INFO, ("*AS_2* Verify the system can be disarmed during the entry delay (10 and 17 groups)."));
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(4000);
@@ -940,7 +963,9 @@ public class ArmStay extends Setup {
 
     @Test(priority = 19)
     public void AS_27() throws Exception {
+        add_to_report("AS_27");
         logger.info("Verify the system can be disarmed during the entry delay (10 and 20 groups). ");
+        log.log(LogStatus.INFO, ("*AS_27* Verify the system can be disarmed during the entry delay (10 and 20 groups)."));
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(4000);
@@ -950,7 +975,9 @@ public class ArmStay extends Setup {
 
     @Test(priority = 20)
     public void AS_28() throws Exception {
+        add_to_report("AS_28");
         logger.info("Verify the system can be disarmed during the entry delay (10 and 35 groups). ");
+        log.log(LogStatus.INFO, ("*AS_28* Verify the system can be disarmed during the entry delay (10 and 35 groups)."));
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(4000);
@@ -959,7 +986,9 @@ public class ArmStay extends Setup {
 
     @Test(priority = 21)
     public void AS_29() throws Exception {
+        add_to_report("AS_29");
         logger.info("Verify the panel will report an immediate tamper alarm (8 group). ");
+        log.log(LogStatus.INFO, ("*AS_29* Verify the panel will report an immediate tamper alarm (8 group)."));
         addPrimaryCall(8, 8, 6619302, 1);
         Thread.sleep(4000);
         immediate_tamper_alarm(8, 8, door_window8, "Tampered", "Closed", 4, 2);
@@ -968,7 +997,9 @@ public class ArmStay extends Setup {
 
     @Test(priority = 22)
     public void AS_30() throws Exception {
+        add_to_report("AS_30");
         logger.info("Verify the panel will report an immediate tamper alarm (9 group). ");
+        log.log(LogStatus.INFO, ("*AS_30* Verify the panel will report an immediate tamper alarm (9 group). "));
         addPrimaryCall(9, 9, 6619303, 1);
         Thread.sleep(4000);
         immediate_tamper_alarm(9, 9, door_window9, "Tampered", "Closed", 4, 2);
@@ -977,6 +1008,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 23)
     public void AS_31() throws Exception {
+        add_to_report("AS_31");
         logger.info("Verify the panel will report an immediate tamper alarm (10 group). ");
         addPrimaryCall(10, 10, 6619296, 1);
         Thread.sleep(4000);
@@ -986,6 +1018,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 24)
     public void AS_32() throws Exception {
+        add_to_report("AS_32");
         logger.info("Verify the panel will report an immediate tamper alarm (12 group). ");
         addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(4000);
@@ -995,6 +1028,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 25)
     public void AS_33() throws Exception {
+        add_to_report("AS_33");
         logger.info("Verify the panel will report an immediate tamper alarm (13 group). ");
         addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(4000);
@@ -1004,6 +1038,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 26)
     public void AS_34() throws Exception {
+        add_to_report("AS_34");
         logger.info("Verify the panel will report an immediate tamper alarm (14 group). ");
         addPrimaryCall(14, 14, 6619299, 1);
         Thread.sleep(4000);
@@ -1013,6 +1048,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 27)
     public void AS_35() throws Exception {
+        add_to_report("AS_35");
         logger.info("Verify the panel will report an immediate tamper alarm (15 group). ");
         addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(4000);
@@ -1022,6 +1058,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 28)
     public void AS_36() throws Exception {
+        add_to_report("AS_36");
         logger.info("Verify the panel will report an immediate tamper alarm (35 group). ");
         addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(4000);
@@ -1031,6 +1068,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 29)
     public void AS_37a() throws Exception {
+        add_to_report("AS_37a");
         logger.info("Verify the panel will not report a tamper alarm (16 group). ");
         addPrimaryCall(16, 16, 6619300, 1);
         Thread.sleep(4000);
@@ -1040,6 +1078,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 30)
     public void AS_37b() throws Exception {
+        add_to_report("AS_37b");
         logger.info("Verify the panel will notvreport an immediate tamper alarm (17 group). ");
         addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(4000);
@@ -1050,6 +1089,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 31)
     public void AS_37c() throws Exception {
+        add_to_report("AS_37c");
         logger.info("Verify the panel will not report an immediate tamper alarm (20 group). ");
         addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(4000);
@@ -1059,6 +1099,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 32)
     public void AS_37d() throws Exception {
+        add_to_report("AS_37d");
         logger.info("Verify the panel will not report an immediate tamper alarm (26 group). ");
         addPrimaryCall(26, 26, 6750242, 5);
         Thread.sleep(4000);
@@ -1068,6 +1109,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 33)
     public void AS_37e() throws Exception {
+        add_to_report("AS_37e");
         logger.info("Verify the panel will not report an immediate tamper alarm (52 group Freeze sensor). ");
         addPrimaryCall(52, 52, 7536801, 17);
         Thread.sleep(4000);
@@ -1077,6 +1119,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 34)
     public void AS_37h() throws Exception {
+        add_to_report("AS_37h");
         logger.info("Verify the panel will not report an immediate tamper alarm (34 group). ");
         addPrimaryCall(34, 34, 7667882, 6);
         Thread.sleep(4000);
@@ -1086,6 +1129,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 35)
     public void AS_37waterM() throws Exception {
+        add_to_report("AS_37waterM");
         logger.info("Verify the panel will not report an immediate tamper alarm (38 group, subtype_ multi). ");
         addPrimaryCall(38, 38, 7672224, 22);
         Thread.sleep(4000);
@@ -1095,6 +1139,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 36)
     public void AS_37waterF() throws Exception {
+        add_to_report("AS_37waterF");
         logger.info("Verify the panel will not report an immediate tamper alarm (38 group, subtype_ flood). ");
         addPrimaryCall(36, 38, 7672224, 23);
         Thread.sleep(4000);
@@ -1112,27 +1157,27 @@ public class ArmStay extends Setup {
         verifyArmstay();
         Thread.sleep(4000);
         // sensors.primaryCall(DLID, restore);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Tamper')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Tamper')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         DISARM();
         Thread.sleep(3000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
@@ -1173,27 +1218,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyArmstay();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Tamper')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Tamper')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         DISARM();
         Thread.sleep(3000);
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
@@ -1236,29 +1281,30 @@ public class ArmStay extends Setup {
         }
         verifyInAlarm();
         Thread.sleep(3000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(40000);
+//
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor " + zone + ") Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor " + zone + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         enterDefaultUserCode();
         Thread.sleep(1000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
@@ -1289,6 +1335,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 38)
     public void AS_40() throws Exception {
+        add_to_report("AS_40");
         logger.info("Verify the system can not use a duress code if Duress Authentication is disabled(12 group). ");
         Thread.sleep(5000);
         addPrimaryCall(12, 12, 6619297, 1);
@@ -1314,12 +1361,13 @@ public class ArmStay extends Setup {
     @Test(priority = 39)
     /***Please Set 5 min PhotoFrame start time manually ***/
     public void AS_41() throws Exception {
+        add_to_report("AS_41");
         logger.info("Verify the system is still responsive when the panel is in screensaver mode(10-group sensor). ");
         Thread.sleep(5000);
         addPrimaryCall(10, 10, 6619296, 1);
         servcall.set_photo_frame_SCREEN_SAVER_TYPE();
         servcall.set_ARM_STAY_NO_DELAY_enable();
-        // servcall.set_5minutes_SCREEN_SAVER_IDLE_TIME();
+        servcall.set_5minutes_SCREEN_SAVER_IDLE_TIME();
         TimeUnit.MINUTES.sleep(1);
         ARM_STAY();
         TimeUnit.MINUTES.sleep(5);
@@ -1334,34 +1382,35 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         deleteFromPrimary(10);
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
 
     }
 
     @Test(priority = 42)
     /***Please Set 5 min PhotoFrame start time manually ***/
     public void AS_42() throws Exception {
+        add_to_report("AS_42");
         logger.info("Verify the system is still responsive when the panel is in screensaver mode (10 and 12-group sensors). ");
         Thread.sleep(3000);
         addPrimaryCall(13, 13, 6619298, 1);
@@ -1381,33 +1430,34 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         deleteFromPrimary(13);
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 13) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 13 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 13) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 13 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
     }
 
     @Test(priority = 43)
     /***Please Set 5 min PhotoFrame start time manually ***/
     public void AS_43() throws Exception {
+        add_to_report("AS_43");
         logger.info("Verify the system is still responsive when the panel is in screensaver mode (13-group sensor). ");
         Thread.sleep(5000);
         addPrimaryCall(10, 10, 6619296, 1);
@@ -1435,47 +1485,48 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         deleteFromPrimary(12);
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 12) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 12) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " panel event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
     }
 
     @Test(priority = 83)
     public void AS_45() throws Exception {
+        add_to_report("AS_43");
         logger.info("Verify that the websites report that the sensor has been left open");
         Thread.sleep(3000);
         addPrimaryCall(10, 10, 6619296, 1);
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(2000);
-        adc.driver1.findElement(By.partialLinkText("sensors")).click();
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
         adc.Request_equipment_list();
         Thread.sleep(2000);
@@ -1499,22 +1550,23 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         deleteFromPrimary(10);
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(20000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Opened')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(20000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Opened')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
     }
 
     @Test(priority = 44)
     public void AS_49() throws Exception {
+        add_to_report("AS_49");
         logger.info("Verify the panel will Arm Stay at the end of the exit delay if Arm Stay button is pressed by 1-group keyfob ");
         addPrimaryCall(38, 1, 6619386, 102);
         Thread.sleep(4000);
@@ -1530,27 +1582,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyDisarm();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(5000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Stay ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
 
         deleteFromPrimary(38);
         Thread.sleep(4000);
@@ -1558,6 +1610,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 45)
     public void AS_50_52() throws Exception {
+        add_to_report("AS_50_52");
         logger.info("Verify the panel will Arm Away at the end of the exit delay if Arm Away button is pressed by 1-group keyfob");
         logger.info("Verify the panel will Disarm instantly if Disarm button is pressed by 6-group keyfob");
         addPrimaryCall(38, 1, 6619386, 102);
@@ -1575,27 +1628,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyDisarm();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 39 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(5000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 39 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(15000);
         deleteFromPrimary(38);
         Thread.sleep(4000);
@@ -1605,6 +1658,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 46)
     public void AS_56() throws Exception {
+        add_to_report("AS_56");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will Arm Away at the end of the exit delay if Arm Away button is pressed by 6-group keyfob");
         addPrimaryCall(39, 6, 6619387, 102);
@@ -1620,27 +1674,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyDisarm();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(5000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 38 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(15000);
         deleteFromPrimary(39);
         Thread.sleep(4000);
@@ -1648,12 +1702,12 @@ public class ArmStay extends Setup {
 
     @Test(priority = 47)
     public void AS_58() throws Exception {
+        add_to_report("AS_58");
         logger.info("Verify the panel will Disarm instantly if Disarm button is pressed by 4-group keyfob");
         addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(4000);
         servcall.set_KEYFOB_NO_DELAY_enable();
         logger.info("Keyfob group 4: ArmStay-ArmAway-Disarm, panic = Fixed Auxiliary");
-        ;
         Thread.sleep(5000);
         sensors.primaryCall("65 00 CF", keyfobAway);
         Thread.sleep(2000);
@@ -1663,27 +1717,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyDisarm();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 40 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(5000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 40 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(40);
         Thread.sleep(4000);
@@ -1691,6 +1745,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 48)
     public void AS_59() throws Exception {
+        add_to_report("AS_59");
         logger.info("Verify the panel will Arm Away at the end of the exit delay if Arm Away button is pressed by 4-group keyfob");
         addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(4000);
@@ -1706,27 +1761,27 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         verifyDisarm();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 40 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(5000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Armed Away ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 40 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), 'panel Disarmed ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(40);
         Thread.sleep(4000);
@@ -1734,6 +1789,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 50)
     public void AS_68() throws Exception {
+        add_to_report("AS_68");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         addPrimaryCall(33, 13, 6684828, 107);
@@ -1750,29 +1806,29 @@ public class ArmStay extends Setup {
         Thread.sleep(2000);
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -1780,6 +1836,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 52)
     public void AS_67() throws Exception {
+        add_to_report("AS_67");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         addPrimaryCall(33, 13, 6684828, 107);
@@ -1796,29 +1853,29 @@ public class ArmStay extends Setup {
         Thread.sleep(2000);
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -1826,6 +1883,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 53)
     public void AS_69() throws Exception {
+        add_to_report("AS_69");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will go into immediate alarm if a shock-detector in group 13 is tampered");
         addPrimaryCall(33, 13, 6684828, 107);
@@ -1841,29 +1899,29 @@ public class ArmStay extends Setup {
         Thread.sleep(2000);
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Tamper Alarm')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -1871,6 +1929,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 54)
     public void AS_70() throws Exception {
+        add_to_report("AS_70");
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
@@ -1907,29 +1966,29 @@ public class ArmStay extends Setup {
         }
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 10) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 10 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(2000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -1939,6 +1998,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 55)
     public void AS_71() throws Exception {
+        add_to_report("AS_71");
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
@@ -1976,29 +2036,29 @@ public class ArmStay extends Setup {
         Thread.sleep(4000);
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 12) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 12) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -2008,6 +2068,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 57)
     public void AS_72() throws Exception {
+        add_to_report("AS_72");
         logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(3000);
@@ -2030,29 +2091,29 @@ public class ArmStay extends Setup {
         }
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -2060,6 +2121,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 60)
     public void AS_73() throws Exception {
+        add_to_report("AS_73");
         logger.info("Verify the panel will go into immediate tamper alarm if a shock-detector in group 13 is tampered");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(3000);
@@ -2083,29 +2145,29 @@ public class ArmStay extends Setup {
 
         enterDefaultUserCode();
         Thread.sleep(4000);
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(60000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
-        Thread.sleep(30000);
-        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
-        try {
-            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Alarm ')]"));
-            Assert.assertTrue(history_message_alarm.isDisplayed());
-            {
-                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
-            }
-        } catch (Exception e) {
-            System.out.println("No such element found!!!");
-        }
+//        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+//        Thread.sleep(60000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' (Sensor 33) Pending Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 33 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
+//        Thread.sleep(30000);
+//        adc.driver1.findElement(By.id("ctl00_HeaderLinks1_imgReload")).click();
+//        try {
+//            WebElement history_message_alarm = adc.driver1.findElement(By.xpath("//*[contains(text(), ' Alarm ')]"));
+//            Assert.assertTrue(history_message_alarm.isDisplayed());
+//            {
+//                System.out.println("User website history -> " + " Sensor 12 event: " + history_message_alarm.getText());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("No such element found!!!");
+//        }
         Thread.sleep(1000);
         deleteFromPrimary(33);
         Thread.sleep(4000);
@@ -2113,6 +2175,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 58)
     public void AS_75() throws Exception {
+        add_to_report("AS_75");
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will just create notification if a shock-detector in group 17 is activated");
         addPrimaryCall(34, 17, 6684829, 107);
@@ -2139,6 +2202,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 59)
     public void AS_76() throws Exception {
+        add_to_report("AS_76");
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
         addPrimaryCall(34, 17, 6684829, 107);

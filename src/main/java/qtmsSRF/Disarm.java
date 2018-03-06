@@ -230,15 +230,18 @@ public class Disarm extends Setup {
         logger.info("*Disb_06* Activate event is displayed in panel history for motion sensor group 15");
         addPrimaryCall(3, 15, 5570628, 2);
         Thread.sleep(1000);
+        sensors.primaryCall(motion15, SensorsActivity.OPEN);
         navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
         Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
 
-        Assert.assertTrue(li_status1.get(1).getText().equals("Activated"));
-        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-        Assert.assertTrue(li_status1.get(2).getText().equals("Idle"));
+        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
         log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
         Thread.sleep(2000);
         li_status1.clear();
 

@@ -1,14 +1,11 @@
 package iqRemote;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 import panel.HomePage;
 import panel.PanelCameraPage;
-import sensors.EventConstants;
 import utils.ConfigProps;
 import utils.Setup;
 
@@ -22,7 +19,7 @@ public class SetupRemote {
     public AndroidDriver driver;
     public Runtime rt = Runtime.getRuntime();
     Setup setup = new Setup();
-    String logcat = new String(System.getProperty("user.dir")) +"/log/test.txt";
+    String logcat = new String(System.getProperty("user.dir")) + "/log/test.txt";
 
     public SetupRemote() throws Exception {
         ConfigProps.init();
@@ -36,9 +33,10 @@ public class SetupRemote {
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
         cap.setCapability("newCommandTimeout", "1000");
-        driver = new AndroidDriver(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
+        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
     public void DISARM() throws InterruptedException {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Disarm");
@@ -46,6 +44,7 @@ public class SetupRemote {
         Thread.sleep(2000);
         enterDefaultUserCode();
     }
+
     public void ARM_STAY() throws InterruptedException {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
@@ -53,6 +52,7 @@ public class SetupRemote {
         Thread.sleep(2000);
         home_page.ARM_STAY.click();
     }
+
     public void ARM_AWAY(int delay) throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.DISARM.click();
@@ -61,6 +61,7 @@ public class SetupRemote {
         home_page.ARM_AWAY.click();
         TimeUnit.SECONDS.sleep(delay);
     }
+
     public void enterDefaultUserCode() throws InterruptedException {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();

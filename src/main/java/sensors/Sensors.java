@@ -69,10 +69,8 @@ public class Sensors {
 
         SensorObject sensor = new SensorObject();
         SensorObject_ArrayList.add(sensor);
-        sensor = new SensorObject();
-        SensorObject_ArrayList.add(sensor);
-        String heat = "/home/qolsys/Desktop/heat.csv";
-        String main = "scr/test.csv";
+//        String heat = "/home/qolsys/Desktop/heat.csv";
+        String main = "scr/testPG.csv";
         BufferedReader reader = new BufferedReader(new FileReader(main));
         String line = null;
         Scanner scanner = null;
@@ -225,12 +223,15 @@ public class Sensors {
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
-
+    public void add_primary_call_PG(int zone, int group, int sensor_dec, int sensor_type, int protocol) throws IOException {
+        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 " + protocol;
+        rt.exec(ConfigProps.adbPath + add_primary);
+        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+    }
     public void add_transmitter_call(String DLID, int sensor_type, int supervisory_time) throws IOException {
         String add_transmitter = "shell service call srftransmitservice 2 s16 " + DLID + " i32 0 i32 " + sensor_type + " i32 0 i32 " + supervisory_time;
         rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + add_transmitter);
     }
-
     public void primaryCall(String DLID, String State) throws IOException {
         String primary_send =" shell rfinjector 02 "+DLID+" "+State;
         rt.exec(ConfigProps.adbPath + primary_send);
@@ -249,6 +250,42 @@ public class Sensors {
             int newDLID_dec = Integer.parseInt(newDLID, 16);
             String sensor_type = temp_sensor.getSensorType();
             int supervisory_time = -1;
+            int protocol = temp_sensor.Protocol_Int;
+//            System.out.println(temp_sensor.getDLID());
+//            inicialize_primary_sensor_int_map();
+//            initialize_transmitter_sensor_int_map();
+            if (temp_sensor.Protocol_Int == 8)
+            {
+                String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + newGroup + " i32 " + newDLID + " i32 " + primary_sensor_int_map.get(sensor_type) +" i32 " + protocol;
+                rt.exec(ConfigProps.adbPath + " -s 62864b84"  + add_primary);
+                System.out.println(add_primary);
+                TimeUnit.SECONDS.sleep(1);
+            }
+            else {
+                String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + newGroup + " i32 " + newDLID_dec + " i32 " + primary_sensor_int_map.get(sensor_type);
+                rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.primary + " " + add_primary);
+                System.out.println(add_primary);
+                TimeUnit.SECONDS.sleep(1);
+                String add_transmitter = " shell service call srftransmitservice 2 s16 " + newDLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 " + supervisory_time;
+                rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + add_transmitter);
+                System.out.println(add_transmitter);
+                //   TimeUnit.SECONDS.sleep(1);
+            }
+        }
+    }
+
+    public void addAllSensors_new() throws IOException, InterruptedException {
+        for (int i = 2; i < SensorObject_ArrayList.size(); i++) {
+            SensorObject temp_sensor = null;
+            temp_sensor = SensorObject_ArrayList.get(i);
+
+            int zone = i;
+            int newGroup = temp_sensor.getSensorGroup();
+            String newDLID = temp_sensor.getDLID();
+            int newDLID_dec = Integer.parseInt(newDLID, 16);
+            String sensor_type = temp_sensor.getSensorType();
+            int supervisory_time = -1;
+            int protocol = temp_sensor.Protocol_Int;
 //            System.out.println(temp_sensor.getDLID());
 //            inicialize_primary_sensor_int_map();
 //            initialize_transmitter_sensor_int_map();
