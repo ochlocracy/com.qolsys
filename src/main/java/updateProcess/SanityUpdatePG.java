@@ -266,6 +266,7 @@ public class SanityUpdatePG extends Setup {
         System.out.println("Done, setting default settings");
         setDefaultSettings();
         Thread.sleep(5000);
+
     }
 
     @Test(priority = 1)
