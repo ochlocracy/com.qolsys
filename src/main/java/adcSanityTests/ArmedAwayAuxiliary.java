@@ -107,8 +107,7 @@ public class ArmedAwayAuxiliary extends Setup {
     public void ArmStay_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Auxiliary Police Pendant during Arm Away");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
-        ARM_AWAY(ConfigProps.longExitDelay);
-        Thread.sleep(1000);
+        ARM_AWAY(ConfigProps.longExitDelay + 2);
         verifyArmaway();
         logger.info("Activate a sensor");
         sensors.primaryCall(DLID, activate);

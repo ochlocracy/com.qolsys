@@ -17,9 +17,6 @@ import utils.Setup;
 
 import java.io.IOException;
 
-/**
- * Created by qolsys on 7/27/17. Edited 7/27/17 by Jeff Maus
- */
 public class ArmedStaySmokeSensor extends Setup {
     // PRECONDITIONS: Disable SIA limits, set Entry-Exit Delay time to 30, 31, 32, 33 sec; Disable ArmStay No-Delay setting
 

@@ -90,5 +90,6 @@
     <orderEntry type="library" name="Maven: com.github.genium-framework:Appium-Support:1.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-exec:1.3" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="powerGRadioController-0.6" level="project" />
   </component>
 </module>
