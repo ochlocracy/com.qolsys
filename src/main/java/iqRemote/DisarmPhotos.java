@@ -22,7 +22,7 @@ public class DisarmPhotos extends SetupRemote {
 
     @BeforeMethod
     public void setupDriver() throws Exception {
-        setup_driver("6NJUM1H24Z", "http://127.0.1.1", "4723");
+        setup_driver("6NJUM6KOWF", "http://127.0.1.1", "4723");
         // deleteLogFile(logcat);
     }
 
@@ -30,7 +30,7 @@ public class DisarmPhotos extends SetupRemote {
     public void deleteAllPhotos() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         System.out.println("Delete_All_Photos Begin");
-        Thread.sleep(15000);
+        Thread.sleep(13000);
 
         swipeFromLefttoRight(); //check
 
@@ -57,6 +57,7 @@ public class DisarmPhotos extends SetupRemote {
         System.out.println("Add_All_Photos Begin");
 
         Thread.sleep(15000);
+        driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
         driver.findElement(By.id("com.qolsys:id/img_arm_stay")).click();
         driver.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
         Thread.sleep(5000);
@@ -66,9 +67,15 @@ public class DisarmPhotos extends SetupRemote {
         driver.findElement(By.id("com.qolsys:id/tv_keyFour")).click();
         Thread.sleep(5000);
 
-        //do a stop when it hits 21
-        //would i have to check image count, compare variables then do a stop when its 21
-        //maybe do a verify that it overwrites the last pic
+
+        //get number value of how many pics, make it = "pic"
+
+        for(int pic = 1; pic <=21; pic ++);
+
+        //as long as pic < 21 take pic
+
+        //when pic == 21 exit the loop
+
     }
 
     @Test(priority = 3)
@@ -76,18 +83,8 @@ public class DisarmPhotos extends SetupRemote {
         System.out.println("Verify Added Photos Begin");
 
         Process exec = rt.exec(ConfigProps.adbPath + " ls -l /storage/sdcard0/DisarmPhotos | busybox1.11  wc -l");
-        System.out.println(exec.getOutputStream().toString());
+        System.out.println(exec.toString());
         System.out.println("Verify Added Photos Finished");
-
-
-        //File dir = new File(Environment.getExternalStorageDirectory()
-        //+ "/images");
-        //File[] files = dir.listFiles();
-        //int numberOfImages=files.length;
-
-
-        //on main panel
-        //on ADC
     }
 
     @AfterMethod
