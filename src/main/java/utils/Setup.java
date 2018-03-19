@@ -1,6 +1,5 @@
 package utils;
 
-import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -809,6 +808,12 @@ public class Setup {
         System.out.println(status_send);
     }
 
+    public void pgarmer(int type, int id, String status) throws IOException {
+        String status_send = " shell powerg_simulator_armer " + type + "-" + id + " " + status;
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
         Thread.sleep(5000);
@@ -828,4 +833,5 @@ public class Setup {
             e.printStackTrace();
         }
     }
+
 }

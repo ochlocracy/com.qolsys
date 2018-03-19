@@ -33,7 +33,6 @@ public class AutoBypass extends Setup {
     ExtentTest log;
     ExtentTest test;
 
-
     public AutoBypass() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();

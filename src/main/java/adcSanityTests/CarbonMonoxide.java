@@ -184,6 +184,8 @@ public class CarbonMonoxide extends Setup {
         ArmAway_Tamper_Sensor(34, "75 00 AA", "//*[contains(text(), 'Sensor 27 Tamper')]", "//*[contains(text(), 'Sensor 27 Tamper alarm')]");
     }
 
+
+
     @AfterMethod
     public void webDriverQuit() {
         adc.driver1.quit();

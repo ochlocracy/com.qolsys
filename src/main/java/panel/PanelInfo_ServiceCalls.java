@@ -191,6 +191,7 @@ public class PanelInfo_ServiceCalls extends Setup {
     public void set_ARM_STAY_NO_DELAY_enable() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
         rt.exec(command);}
+
     public void set_ARM_STAY_NO_DELAY_enable_Transmitter() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " -s " + ConfigProps.primary + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
         rt.exec(command);}
@@ -255,6 +256,7 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 31 i32 0 i32 0";
         rt.exec(command);}
 
+        //non emergency
     public void set_LOSS_OF_SUPERVISORY_TIMEOUTY_12h() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 31 i32 12 i32 0 i32 0";
         rt.exec(command);}
@@ -395,7 +397,6 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 140 i32 0 i32 0";
         rt.exec(command);}
 
-    //****not working****
     public void set_TOUCH_SOUND(int value) throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 140 i32 " + value + " i32 0 i32 0";
         rt.exec(command);}
@@ -413,24 +414,24 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 43 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_SENSOR_VOICE_PROMPTS() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 43 i32 1 i32 0 i32 0";
+    public void set_SENSOR_VOICE_PROMPTS(int value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 43 i32 "+ value+" i32 0 i32 0";
         rt.exec(command);}
 
     public void get_PANEL_VOICE_PROMPTS() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 44 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_PANEL_VOICE_PROMPTS() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 44 i32 1 i32 0 i32 0";
+    public void set_PANEL_VOICE_PROMPTS(int value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 44 i32 "+value+" i32 0 i32 0";
         rt.exec(command);}
 
     public void get_SAFETY_SENSORS_VOICE_PROMPTS() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 45 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_SAFETY_SENSORS_VOICE_PROMPTS() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 45 i32 1 i32 0 i32 0";
+    public void set_SAFETY_SENSORS_VOICE_PROMPTS(int value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 45 i32 "+value+" i32 0 i32 0";
         rt.exec(command);}
 
     public void get_ALL_CHIMES() throws IOException, InterruptedException {
@@ -505,8 +506,8 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 71 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_ZWAVE_ON_OFF() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 71 i32 1 i32 0 i32 0";
+    public void set_ZWAVE_ON_OFF(int value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 71 i32 "+value+" i32 0 i32 0";
         rt.exec(command);}
 
     public void get_POWER_MANAGEMENT_ON_OFF() throws IOException, InterruptedException {
@@ -568,6 +569,7 @@ public class PanelInfo_ServiceCalls extends Setup {
     public void set_AUTO_UPLOAD_LOGS(int Value) throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 90 i32 " + Value + " i32 0 i32 0";
         rt.exec(command);}
+
     public void get_FIRE_VERIFICATION() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 100 i32 0 i32 0";
         rt.exec(command);}
@@ -659,7 +661,7 @@ public class PanelInfo_ServiceCalls extends Setup {
         rt.exec(command);}
 
     public void set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 118 i32 12 i32 0 i32 0";
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 118 i32 4 i32 0 i32 0";
         rt.exec(command);}
 
     public void get_ZWAVE_REMOTE_VOICE_PROMPTS () throws IOException, InterruptedException {
@@ -926,6 +928,7 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 109 i32 0 i32 0";
         rt.exec(command);}
 
+        //works for Alarm_Photos
     public void set_ALARM_VIDEOS (int value) throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 109 i32 " + value + " i32 0 i32 0";
         rt.exec(command);}

@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
 public class SanityUpdatePG extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     ADC adc = new ADC();
@@ -38,7 +37,6 @@ public class SanityUpdatePG extends Setup {
         ConfigProps.init();
         PGSensorsActivity.init();
     }
-
 
     public void setDefaultSettings() throws IOException, InterruptedException {
         int ON = 1;
@@ -268,6 +266,7 @@ public class SanityUpdatePG extends Setup {
         System.out.println("Done, setting default settings");
         setDefaultSettings();
         Thread.sleep(5000);
+
     }
 
     @Test(priority = 1)
