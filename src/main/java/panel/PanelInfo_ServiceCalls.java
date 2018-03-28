@@ -652,24 +652,29 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 120 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_SIREN_ANNUNCIATION(boolean Value) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 120 i32 1 " + Value + " i32 0 i32 0";
+    public void set_SIREN_ANNUNCIATION(int Value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 120 i32 " + Value + " i32 0 i32 0";
         rt.exec(command);}
 
     public void get_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT () throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 118 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT() throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 118 i32 4 i32 0 i32 0";
+    public void set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT(int time) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 118 i32 "+ time +" i32 0 i32 0";
         rt.exec(command);}
+
+    public void set_ZWAVE_REMOTE_PROMPTS(int value) throws IOException {
+        String command = ConfigProps.adbPath + " service call qservice 40 i32 0 i32 0 i32 117 i32 "+value+" i32 0 i32 0 ";
+        rt.exec(command);
+        }
 
     public void get_ZWAVE_REMOTE_VOICE_PROMPTS () throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 117 i32 0 i32 0";
         rt.exec(command);}
 
     public void set_ZWAVE_REMOTE_VOICE_PROMPTS(boolean Value) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 117  i32 0 " + Value + " i32 0 i32 0";
+        String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 117  i32 " + Value + " i32 0 i32 0";
         rt.exec(command);}
 
     public void get_ZWAVE_DEVICE_VOICE_PROMPTS () throws IOException, InterruptedException {

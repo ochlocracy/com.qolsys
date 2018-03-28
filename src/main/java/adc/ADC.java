@@ -138,10 +138,7 @@ public class ADC extends Setup {
 
     public String getAccountId() throws IOException {
         String accountId = null;
-        if (get_UDID().equals("4216551")) {      //Anya
-            accountId = "4910737";
-            return accountId;
-        } else if (get_UDID().equals("8ebdbcf6")) {    //Olga
+        if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
         } else if (get_UDID().equals("ac82129c")) {    //Sergio
@@ -167,7 +164,13 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("62864b84")) { //Olga AT&T
             accountId = "5434143";
         } else if (get_UDID().equals("f003b8cb")) { //iqhub6
-        accountId = " 5765486";
+            accountId = " 5765486";
+        } else if (get_UDID().equals("4316483")) {
+            accountId = "6045889";
+        } else if (get_UDID().equals("2c63bc4a")) {
+            accountId = "6045616";
+        } else if (get_UDID().equals("ac8312d3")) {
+            accountId = "6074610";
     }
         return accountId;
     }
@@ -307,7 +310,7 @@ public class ADC extends Setup {
 
     public void New_ADC_session(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-        driver1.manage().window().maximize();
+  //      driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID;
         driver1.get(ADC_URL);
         String login = "qautomation";
@@ -323,7 +326,7 @@ public class ADC extends Setup {
 
     public void New_ADC_session_User(String User, String Password) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-        driver1.manage().window().maximize();
+  //      driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         driver1.get(ADC_URL);
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(User);
