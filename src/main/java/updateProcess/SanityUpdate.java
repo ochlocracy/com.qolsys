@@ -38,6 +38,7 @@ public class SanityUpdate extends Setup {
         SensorsActivity.init();
     }
 
+
     public void setDefaultSettings() throws IOException, InterruptedException {
         int ON = 1;
         int OFF = 0;
