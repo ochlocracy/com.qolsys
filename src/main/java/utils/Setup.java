@@ -814,6 +814,18 @@ public class Setup {
         System.out.println(status_send);
     }
 
+    public void powerGsupervisory(int type, int id) throws IOException {
+        String status_send = " shell powerg_simulator_supervisory " + type + "-" + id + " 1 0 0 0";
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void powerGjamer(int state) throws IOException {
+        String status_send = " shell powerg_simulator_jamer " +state;
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
         Thread.sleep(5000);
