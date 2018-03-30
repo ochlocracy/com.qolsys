@@ -17,6 +17,7 @@ import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -324,7 +325,7 @@ public class SanityUpdatePG extends Setup {
 
     }
 
-    @Test(priority = 3)
+    @Test (priority = 3)
     public void Delete_Sensor() throws InterruptedException, IOException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Contact_Sensors");
@@ -672,7 +673,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 11)
+    @Test (priority =11)
     public void Tamper() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Tamper");
@@ -695,7 +696,7 @@ public class SanityUpdatePG extends Setup {
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 31 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
-    @Test(priority = 12)
+    @Test (priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Supervisory");
@@ -711,7 +712,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status1.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(201, 1541, "06 0");
+        pgprimaryCall(201,1541, "06 0");
         Thread.sleep(1000);
         List<WebElement> li_status2 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status2.get(1).getText());
@@ -726,7 +727,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status3.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(220, 1661, "08 0");
+        pgprimaryCall(220,1661, "08 0");
         Thread.sleep(1000);
         List<WebElement> li_status4 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status4.get(1).getText());
@@ -741,7 +742,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status5.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(410, 1998, "82 0");
+        pgprimaryCall(410,1998, "82 0");
         Thread.sleep(1000);
         List<WebElement> li_status6 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status6.get(1).getText());
@@ -749,7 +750,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test(priority = 13)
+    @Test (priority = 13)
     public void Jam() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
@@ -765,23 +766,33 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(string.getText().contains("PowerG receiver jammed"));
         powerGjamer(0);
         Thread.sleep(2000);
-        try {
-            if (string.isDisplayed()) {
+        try{
+            if (string.isDisplayed()){
                 System.out.println("Fail: jammed message is displayed");
             } else {
                 System.out.println("Pass: jammed message is not dispalyed");
             }
-        } finally {
+        }finally {
         }
 
         servcall.set_RF_JAM_DETECT_disable();
     }
 
-    @Test(priority = 14)
-    public void Low_Battery() {
+    @Test (priority = 14)
+    public void Low_Battery () throws InterruptedException, IOException {
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Low_battery");
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1101, "80 1");
+        home.Contact_Us.click();
+        contact.Messages_Alerts_Alarms_tab.click();
+        WebElement string = driver.findElement(By.id("com.qolsys:id/ui_msg_text"));
+        Assert.assertTrue(string.getText().contains("DW 104-1101 (1) - Low Battery"));
+        pgprimaryCall(104, 1101, "80 0");
 
     }
-
 
     @Test(priority = 10)
     public void verifyNewUserCodeWorks() throws Exception {
