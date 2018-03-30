@@ -27,7 +27,7 @@ public class PreUpdateSensors extends Setup {
 
     @BeforeTest
     public void setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver("2c63bc4a", "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
 
