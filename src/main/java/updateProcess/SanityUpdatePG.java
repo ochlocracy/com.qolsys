@@ -779,11 +779,20 @@ public class SanityUpdatePG extends Setup {
     }
 
     @Test (priority = 14)
-    public void Low_Battery (){
+    public void Low_Battery () throws InterruptedException, IOException {
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        log = report.startTest("UpdateProcess.Low_battery");
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1101, "80 1");
+        home.Contact_Us.click();
+        contact.Messages_Alerts_Alarms_tab.click();
+        WebElement string = driver.findElement(By.id("com.qolsys:id/ui_msg_text"));
+        Assert.assertTrue(string.getText().contains("DW 104-1101 (1) - Low Battery"));
+        pgprimaryCall(104, 1101, "80 0");
 
     }
-
-
 
     @Test(priority = 10)
     public void verifyNewUserCodeWorks() throws Exception {
