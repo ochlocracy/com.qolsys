@@ -343,7 +343,7 @@ public class SanityUpdatePG extends Setup {
     }
 
     @Test(priority = 4)
-    public void contactSensorChek() throws Exception {
+    public void contactSensorCheck() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Contact_Sensors");
         System.out.println("Open-Close contact sensors");
@@ -377,6 +377,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(2000);
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr8 works as expected");
         activation_restoration(104, 1123, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr9
+        Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123 ')]", "//*[contains(text(), 'Sensor 7 Alarm**')]");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
@@ -515,7 +516,7 @@ public class SanityUpdatePG extends Setup {
 
         Thread.sleep(5000);
         adc.New_ADC_session(adc.getAccountId());
-        adc.ADC_verification_PG("//*[contains(text(), 'Water 241-1971')]", "//*[contains(text(), ' Alarm')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'Water Alarm')]", "//*[contains(text(), 'Sensor 21 Alarm**')]");
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, water sensor works as expected");
     }
