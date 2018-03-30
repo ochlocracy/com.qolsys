@@ -36,7 +36,7 @@ public class PreUpdatePGSensors extends Setup {
         logger.info("Adding a list of sensors");
         navigate_to_autolearn_page();
         /*** DW ***/
-        addPGSensors("DW", 104, 1101, 0);//gr10
+        addPGSensors("DW", 104, 1101, 0); //gr10
         addPGSensors("DW", 104, 1152, 1);//gr12
         addPGSensors("DW", 104, 1231, 2);//gr13
         addPGSensors("DW", 104, 1216, 3);//gr14
