@@ -1,10 +1,12 @@
 package updateProcess;
 
 import adc.ADC;
+import adcSanityTests.RetryAnalizer;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -17,7 +19,6 @@ import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -166,7 +167,7 @@ public class SanityUpdatePG extends Setup {
         adc.webDriverSetUp();
     }
 
-    @Test
+    @Test(enabled = false)
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html");
@@ -325,7 +326,7 @@ public class SanityUpdatePG extends Setup {
 
     }
 
-    @Test (priority = 3)
+    @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Delete_Sensor() throws InterruptedException, IOException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Contact_Sensors");
@@ -333,13 +334,18 @@ public class SanityUpdatePG extends Setup {
         deleteFromPrimary(1);
         Thread.sleep(2000);
         adc.update_sensors_list();
+        adc.Request_equipment_list();
         Thread.sleep(4000);
         WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
         Thread.sleep(5000);
-        Assert.assertTrue(webname.getText().equals("DW 104-1152"));
+        try {
+            Assert.assertTrue(webname.getText().equals("DW 104-1152"));
+        } catch (NoSuchElementException ignored) {
+        } finally {
+            navigate_to_autolearn_page();
+            addPGSensors("DW", 104, 1101, 0);//gr10
+        }
         Thread.sleep(2000);
-        navigate_to_autolearn_page();
-        addPGSensors("DW", 104, 1101, 0);//gr10
     }
 
     @Test(priority = 4)
@@ -352,6 +358,8 @@ public class SanityUpdatePG extends Setup {
         activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
         Thread.sleep(10000);
         adc.New_ADC_session(adc.getAccountId());
+        adc.Request_equipment_list();
+        Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1101 ')]", "//*[contains(text(), ' Sensor 1 Open/Close')]");
         log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr10 works as expected");
         activation_restoration(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr12
@@ -378,7 +386,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr8 works as expected");
         activation_restoration(104, 1123, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr9
         Thread.sleep(2000);
-        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123 ')]", "//*[contains(text(), 'Sensor 7 Alarm**')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123')]", "//*[contains(text(), 'Sensor 7 Alarm**')]");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         verifyInAlarm();
@@ -458,10 +466,10 @@ public class SanityUpdatePG extends Setup {
         System.out.println("Activate smoke and smokeM sensors");
         log.log(LogStatus.INFO, "Activate smoke and smokeM sensors");
         activation_restoration(201, 1541, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST); //Sensor14
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.New_ADC_session(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smokeM works as expected");
@@ -469,7 +477,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 15 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smoke works as expected");
 //        activation_restoration(200, 1531, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
@@ -481,22 +489,22 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smokeM works as expected");
 
         log.log(LogStatus.INFO, "Activate CO sensor");
         activation_restoration(220, 1661, PGSensorsActivity.CO, PGSensorsActivity.COREST); //Sensor16
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
         enterDefaultUserCode();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
 
         activation_restoration(220, 1661, PGSensorsActivity.GAS, PGSensorsActivity.GASREST); //Sensor16
-        Thread.sleep(10000);
-        enterDefaultUserCode();
         Thread.sleep(5000);
+        enterDefaultUserCode();
+        Thread.sleep(3000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
         log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
     }
@@ -526,7 +534,10 @@ public class SanityUpdatePG extends Setup {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Shock_Sensors");
         log.log(LogStatus.INFO, "Activate shock sensor in ARM AWAY mode");
+        servcall.set_AUTO_STAY(0);
         ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        verifyArmaway();
         Thread.sleep(2000);
         activation_restoration(171, 1741, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST); //Sensor17
         Thread.sleep(10000);
@@ -538,6 +549,8 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, shock sensor gr13 works as expected");
 
         ARM_AWAY(ConfigProps.longExitDelay);
+        Thread.sleep(2000);
+        verifyArmaway();
         Thread.sleep(2000);
         activation_restoration(171, 1771, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST); //Sensor18
         Thread.sleep(10000);
@@ -554,10 +567,13 @@ public class SanityUpdatePG extends Setup {
         log = report.startTest("UpdateProcess.Glassbreak_Sensors");
         System.out.println("Activate glassbreak sensors");
         log.log(LogStatus.INFO, "Activate glassbreak sensor in ARM AWAY mode");
+        servcall.set_AUTO_STAY(0);
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
+        verifyArmaway();
+        Thread.sleep(2000);
         activation_restoration(160, 1874, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr13
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         verifyInAlarm();
         Thread.sleep(2000);
         adc.New_ADC_session(adc.getAccountId());
@@ -569,7 +585,7 @@ public class SanityUpdatePG extends Setup {
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         activation_restoration(160, 1871, PGSensorsActivity.GB, PGSensorsActivity.GBREST);//gr17
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         verifyInAlarm();
         Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'GBreak 160-1871')]", "//*[contains(text(), 'Sensor 20 Alarm**')]");
@@ -587,7 +603,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.INFO, "Activate keyfobs");
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         activation_restoration(300, 1004, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.New_ADC_session(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 300-1004')]", "//*[contains(text(), 'Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keyfob gr1 works as expected");
@@ -595,14 +611,14 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(305, 1009, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 305-1009')]", "//*[contains(text(), 'Aux Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Aux Panic), ADC events are displayed correctly, keyfob gr6 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(306, 1003, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 306-1003')]", "//*[contains(text(), 'Aux Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Aux Panic), ADC events are displayed correctly, keyfob gr4 works as expected");
         emergency.Cancel_Emergency.click();
@@ -611,60 +627,72 @@ public class SanityUpdatePG extends Setup {
 
         //test this part!
         pgarmer(306, 1003, "2");
+        Thread.sleep(2000);
         verifyArmstay();
         Thread.sleep(3000);
         pgarmer(306, 1003, "1");
+        Thread.sleep(2000);
         verifyDisarm();
         Thread.sleep(3000);
         pgarmer(306, 1003, "3");
+        Thread.sleep(2000);
         verifyArmaway();
         Thread.sleep(3000);
         pgarmer(306, 1003, "1");
+        Thread.sleep(2000);
         verifyDisarm();
         Thread.sleep(3000);
 
         System.out.println("Activate keypad sensors");
         log.log(LogStatus.INFO, "Activate keypad");
         activation_restoration(371, 1005, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr0
-        Thread.sleep(10000);
-        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(25)')]", "//*[contains(text(), 'Police Panic')]");
+        Thread.sleep(5000);
+        adc.ADC_verification_PG("//*[contains(text(), 'KeypadTouchscreen 25')]", "//*[contains(text(), 'Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr0 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(371, 1006, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
-        Thread.sleep(10000);
-        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(26)')]", "//*[contains(text(), 'Police Panic')]");
+        Thread.sleep(7000);
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(26)')]", "//*[contains(text(), 'Delayed Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr1 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(371, 1008, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr2
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(27)')]", "//*[contains(text(), 'Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr2 works as expected");
-        emergency.Cancel_Emergency.click();
-        enterDefaultUserCode();
+        try {
+            if (emergency.Cancel_Emergency.isDisplayed()) {
+                System.out.println("***Failed*** Emergency icon is displayed");
+                emergency.Cancel_Emergency.click();
+                enterDefaultUserCode();
+            } else {
+                System.out.println("***Pass*** Emergency is silent");
+            }
+        } catch (NoSuchElementException ignored) {
+        }
         Thread.sleep(5000);
 
         System.out.println("Activate medical pendants");
         log.log(LogStatus.INFO, "Activate aux pendants");
         activation_restoration(320, 1015, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1015')]", "//*[contains(text(), 'Delayed alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, aux pendant gr6 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(320, 1016, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1016')]", "//*[contains(text(), 'Delayed alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, aux pendant gr4 works as expected");
         emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(320, 1018, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr25
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'AuxPendant 320-1018')]", "//*[contains(text(), 'Inactivated')]");
         log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, aux pendant gr25 works as expected");
         verifyDisarm();
@@ -674,7 +702,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test (priority =11)
+    @Test(priority = 11)
     public void Tamper() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Tamper");
@@ -697,7 +725,7 @@ public class SanityUpdatePG extends Setup {
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 31 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
-    @Test (priority = 12)
+    @Test(priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Supervisory");
@@ -713,7 +741,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status1.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(201,1541, "06 0");
+        pgprimaryCall(201, 1541, "06 0");
         Thread.sleep(1000);
         List<WebElement> li_status2 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status2.get(1).getText());
@@ -728,7 +756,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status3.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(220,1661, "08 0");
+        pgprimaryCall(220, 1661, "08 0");
         Thread.sleep(1000);
         List<WebElement> li_status4 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status4.get(1).getText());
@@ -743,7 +771,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(li_status5.get(1).getText().contains("Failure"));
         log.log(LogStatus.PASS, ("Pass: Failure event is displayed"));
         Thread.sleep(1000);
-        pgprimaryCall(410,1998, "82 0");
+        pgprimaryCall(410, 1998, "82 0");
         Thread.sleep(1000);
         List<WebElement> li_status6 = driver.findElements(By.id("com.qolsys:id/textView3"));
         System.out.println(li_status6.get(1).getText());
@@ -751,7 +779,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
     }
 
-    @Test (priority = 13)
+    @Test(priority = 13)
     public void Jam() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
@@ -767,20 +795,20 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(string.getText().contains("PowerG receiver jammed"));
         powerGjamer(0);
         Thread.sleep(2000);
-        try{
-            if (string.isDisplayed()){
+        try {
+            if (string.isDisplayed()) {
                 System.out.println("Fail: jammed message is displayed");
             } else {
                 System.out.println("Pass: jammed message is not dispalyed");
             }
-        }finally {
+        } finally {
         }
 
         servcall.set_RF_JAM_DETECT_disable();
     }
 
-    @Test (priority = 14)
-    public void Low_Battery () throws InterruptedException, IOException {
+    @Test(priority = 14)
+    public void Low_Battery() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
@@ -795,7 +823,7 @@ public class SanityUpdatePG extends Setup {
 
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, enabled = false)
     public void verifyNewUserCodeWorks() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.UserCode");
@@ -814,7 +842,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "Pass: new user code is working correctly");
     }
 
-    @Test(priority = 11)
+    @Test(priority = 11, enabled = false)
     public void verifyNewMasterCodeWorks() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.MasterCode");
@@ -833,7 +861,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "Pass: new master code is working correctly");
     }
 
-    @Test(priority = 12)
+    @Test(priority = 12, enabled = false)
     public void verifyNewGuestCodeWorks() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.GuestCode");
@@ -852,7 +880,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "Pass: new guest code is working correctly");
     }
 
-    @Test(priority = 13)
+    @Test(priority = 13, enabled = false)
     public void deleteNewUsers() throws Exception {
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);

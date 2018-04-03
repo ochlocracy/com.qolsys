@@ -147,8 +147,8 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("acf112e3")) {    //Zach
             accountId = "5635456";
             return accountId;
-        } else if (get_UDID().equals("8ebdbcb3")) {    //Jeff EGGZ
-            accountId = "4283420";
+        } else if (get_UDID().equals("a994132a")) {
+            accountId = "5635550";
             return accountId;
         } else if (get_UDID().equals("8f03bcd3")) {    //Jeff FIGZ
             accountId = "4311031";
@@ -208,9 +208,9 @@ public class ADC extends Setup {
     public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
+            Thread.sleep(7000);
             driver1.navigate().refresh();
-            Thread.sleep(10000);
+            Thread.sleep(7000);
             for (int i = 0; i < message.length; i++) {
                 driver1.navigate().refresh();
                 Thread.sleep(2000);
@@ -310,7 +310,7 @@ public class ADC extends Setup {
 
     public void New_ADC_session(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-  //      driver1.manage().window().maximize();
+        driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID;
         driver1.get(ADC_URL);
         String login = "qautomation";
