@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/* Estimate execution time: 60m */
+
 public class SanityUpdatePG extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     ADC adc = new ADC();
@@ -288,7 +290,7 @@ public class SanityUpdatePG extends Setup {
         navigate_to_autolearn_page();
         addPGSensors("DW", 104, 1101, 0);//gr10
         home.Home_button.click();
-    }
+    } //48sec
 
     @Test(priority = 2)
     public void Edit_Name() throws InterruptedException, IOException {
@@ -324,10 +326,11 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()) + " on ADC web page");
         Thread.sleep(2000);
 
-    }
+    } //2m 20sec
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Delete_Sensor() throws InterruptedException, IOException {
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Contact_Sensors");
         Thread.sleep(2000);
@@ -346,7 +349,8 @@ public class SanityUpdatePG extends Setup {
             addPGSensors("DW", 104, 1101, 0);//gr10
         }
         Thread.sleep(2000);
-    }
+        home.Home_button.click();
+    } //3m 25sec
 
     @Test(priority = 4)
     public void contactSensorCheck() throws Exception {
@@ -358,7 +362,12 @@ public class SanityUpdatePG extends Setup {
         activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
         Thread.sleep(10000);
         adc.New_ADC_session(adc.getAccountId());
+        Thread.sleep(1000);
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(1000);
         adc.Request_equipment_list();
+        Thread.sleep(2000);
+        adc.driver1.navigate().refresh();
         Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1101 ')]", "//*[contains(text(), ' Sensor 1 Open/Close')]");
         log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr10 works as expected");
@@ -386,14 +395,14 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr8 works as expected");
         activation_restoration(104, 1123, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr9
         Thread.sleep(2000);
-        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123')]", "//*[contains(text(), 'Sensor 7 Alarm**')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1123')]", "//*[contains(text(), 'Delayed alarm')]");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(2000);
         verifyInAlarm();
         enterDefaultUserCode();
         Thread.sleep(2000);
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, DW sensor gr9 works as expected");
-    }
+    } //9m 25sec
 
     @Test(priority = 5)
     public void motionSensorCheck() throws Exception {
@@ -456,7 +465,7 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, motion gr35 works as expected");
         Thread.sleep(2000);
-    }
+    } //8m 20sec
 
     @Test(priority = 6)
     public void smokeCOSensorCheck() throws IOException, InterruptedException {
@@ -480,11 +489,6 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 15 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
         log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smoke works as expected");
-//        activation_restoration(200, 1531, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
-//        Thread.sleep(3000);
-//        emergency.Cancel_Emergency.click();
-//        enterDefaultUserCode();
-//        Thread.sleep(5000);
         activation_restoration(201, 1541, PGSensorsActivity.GAS, PGSensorsActivity.GASREST); //Sensor14
         Thread.sleep(3000);
         emergency.Cancel_Emergency.click();
@@ -507,7 +511,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Alarm**')]", "//*[contains(text(), 'Carbon Monoxide')]");
         log.log(LogStatus.PASS, "System is in ALARM (Carbon Monoxide), ADC events are displayed correctly, CO works as expected");
-    }
+    } //5m 50sec
 
     @Test(priority = 7)
     public void waterSensorCheck() throws Exception {
@@ -527,7 +531,7 @@ public class SanityUpdatePG extends Setup {
         adc.ADC_verification_PG("//*[contains(text(), 'Water Alarm')]", "//*[contains(text(), 'Sensor 21 Alarm**')]");
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, water sensor works as expected");
-    }
+    } //1m 25sec
 
     @Test(priority = 8)
     public void shockSensorCheck() throws Exception {
@@ -559,7 +563,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(2000);
         enterDefaultUserCode();
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, shock sensor gr17 works as expected");
-    }
+    } //3m 11sec
 
     @Test(priority = 9)
     public void glassbreakSensorCheck() throws Exception {
@@ -592,7 +596,7 @@ public class SanityUpdatePG extends Setup {
         enterDefaultUserCode();
         Thread.sleep(2000);
         log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, glassbreak sensor gr17 works as expected");
-    }
+    } //3m
 
     @Test(priority = 10)
     public void keyfobKeypadPendantCheck() throws Exception {
@@ -668,10 +672,10 @@ public class SanityUpdatePG extends Setup {
                 System.out.println("***Failed*** Emergency icon is displayed");
                 emergency.Cancel_Emergency.click();
                 enterDefaultUserCode();
-            } else {
-                System.out.println("***Pass*** Emergency is silent");
             }
         } catch (NoSuchElementException ignored) {
+        } finally {
+            System.out.println("***Pass*** Emergency is Silent, no emergency icon is displayed");
         }
         Thread.sleep(5000);
 
@@ -700,7 +704,7 @@ public class SanityUpdatePG extends Setup {
         contact.acknowledge_all_alerts();
         swipeLeft();
         Thread.sleep(1000);
-    }
+    } //11m 20 sec
 
     @Test(priority = 11)
     public void Tamper() throws IOException, InterruptedException {
@@ -723,12 +727,13 @@ public class SanityUpdatePG extends Setup {
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 21 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
         activation_restoration(400, 1995, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 31 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
-    }
+    } //7m 43
 
     @Test(priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Supervisory");
+        tap(5,6);
         powerGsupervisory(201, 1541);
         navigateToSettingsPage();
         Thread.sleep(1000);
@@ -777,7 +782,7 @@ public class SanityUpdatePG extends Setup {
         System.out.println(li_status6.get(1).getText());
         Assert.assertTrue(li_status6.get(1).getText().contains("Normal"));
         Thread.sleep(3000);
-    }
+    } //1m
 
     @Test(priority = 13)
     public void Jam() throws InterruptedException, IOException {
@@ -805,7 +810,7 @@ public class SanityUpdatePG extends Setup {
         }
 
         servcall.set_RF_JAM_DETECT_disable();
-    }
+    } //48sec
 
     @Test(priority = 14)
     public void Low_Battery() throws InterruptedException, IOException {
@@ -821,7 +826,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(string.getText().contains("DW 104-1101 (1) - Low Battery"));
         pgprimaryCall(104, 1101, "80 0");
 
-    }
+    } //
 
     @Test(priority = 10, enabled = false)
     public void verifyNewUserCodeWorks() throws Exception {
