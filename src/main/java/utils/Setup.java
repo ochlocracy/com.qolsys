@@ -87,6 +87,13 @@ public class Setup {
         return panel_UDID;
     }
 
+    public void killnode() throws IOException {
+        String command = " killall node";
+        for(int i =3; i>0; i--) {
+            rt.exec(ConfigProps.adbPath + command);
+        }
+    }
+
     public void setupDriver(String getUdid, String url_, String port_) throws Exception {
 //        DesiredCapabilities cap = new DesiredCapabilities();
 //        cap.setCapability("deviceName", "IQPanel2");
@@ -112,6 +119,7 @@ public class Setup {
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         cap.setCapability("newCommandTimeout", 1000);
         //in case previous session was not stopped
+        killnode();
         service.stop();
         Thread.sleep(2000);
         service.start();
