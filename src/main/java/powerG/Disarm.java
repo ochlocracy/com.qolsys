@@ -92,6 +92,20 @@ public class Disarm extends Setup {
 
     @BeforeTest
     public void capabilities_setup() throws Exception {
+//        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+//        servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
+//        Thread.sleep(1000);
+//        servcall.set_NORMAL_EXIT_DELAY(ConfigProps.normalExitDelay);
+//        Thread.sleep(1000);
+//        servcall.set_LONG_ENTRY_DELAY(ConfigProps.longEntryDelay);
+//        Thread.sleep(1000);
+//        servcall.set_LONG_EXIT_DELAY(ConfigProps.longExitDelay);
+//        servcall.set_AUTO_STAY(0);
+//        servcall.set_ARM_STAY_NO_DELAY_disable();
+    }
+
+    @BeforeMethod
+    public void webDriver() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalEntryDelay);
         Thread.sleep(1000);
@@ -102,10 +116,6 @@ public class Disarm extends Setup {
         servcall.set_LONG_EXIT_DELAY(ConfigProps.longExitDelay);
         servcall.set_AUTO_STAY(0);
         servcall.set_ARM_STAY_NO_DELAY_disable();
-    }
-
-    @BeforeMethod
-    public void webDriver() {
         adc.webDriverSetUp();
     }
 
@@ -472,11 +482,11 @@ public class Disarm extends Setup {
         Thread.sleep(15000);
         verifyInAlarm();
         log.log(LogStatus.PASS, "Pass: system is in ALARM");
-        adc.New_ADC_session_User("powerG_prod", "qolsys123");
+        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
-        Thread.sleep(5000);
-        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarms']"))).click();
+        Thread.sleep(7000);
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarm']"))).click();
         Thread.sleep(4000);
         adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
         Thread.sleep(10000);
@@ -2692,11 +2702,10 @@ public class Disarm extends Setup {
         log.log(LogStatus.PASS, ("Pass: The system changes mode from Tampered to Normal"));
     }
 
-
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
-        driver.quit();
-        service.stop();
+//        driver.quit();
+//        service.stop();
     }
 
     @AfterMethod
@@ -2710,6 +2719,8 @@ public class Disarm extends Setup {
         }
         report.endTest(log);
         report.flush();
+        driver.quit();
+        service.stop();
         adc.driver1.quit();
     }
 }
