@@ -54,7 +54,7 @@ public class Setup1 {
 
     public void webDriverSetUp () {
         driver1 = new FirefoxDriver();
-        wait1 = new WebDriverWait(driver1, 40);
+        wait1 = new WebDriverWait(driver1, 60);
     }
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
@@ -68,7 +68,7 @@ public class Setup1 {
         capabilities.setCapability("appPackage", "com.qolsys");
         capabilities.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         capabilities.setCapability("PORT", "PORT_");
-        capabilities.setCapability("newCommandTimeout", "500");
+        capabilities.setCapability("newCommandTimeout", "5000");
         this.driver = new AndroidDriver<WebElement>(new URL(URL_), getCapabilities());
     }
 //    WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -446,7 +446,7 @@ public class Setup1 {
     public void pgprimaryCall(String UDID_, int type, int id, String status) throws IOException {
         String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
         rt.exec(ConfigProps.adbPath +" -s " + UDID_ + status_send);
-        System.out.println(status_send);
+        System.out.println(" -s " + UDID_ + status_send);
     }
 
     public void navigateToAdvancedSettingsPage() throws InterruptedException {
