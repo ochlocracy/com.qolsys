@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+/* Estimate run time:  */
+
 public class MotionSensor extends Setup {
 
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
@@ -134,43 +136,43 @@ public class MotionSensor extends Setup {
 
     /*** ARM STAY ***/
 
-    @Test
-    public void ArmStayDelay_15() throws Exception {
-        create_report("Arm Stay Motion sensor group15");
-        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group15"));
-        ArmStay_Activate(120, 1411,15/2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay, events are displayed correctly on the ADC dealer website"));
-    }
-    @Test(priority = 1)
-    public void ArmStay_15() throws Exception {
-        add_to_report("Arm Stay Motion sensor group15");
-        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15"));
-        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]","//*[contains(text(), 'Delayed alarm')]" , PGSensorsActivity.MOTIONACTIVE);
-        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
-    }
-    @Test(priority = 2)
-    public void ArmStay_15_Tamper() throws Exception {
-        add_to_report("Arm Stay Motion sensor group15 tamper");
-        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15 tamper"));
-        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Tamper')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
-        pgprimaryCall(120, 1411, PGSensorsActivity.TAMPERREST);
-        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
-    }
-
-    @Test(priority = 3)
-    public void ArmStayDelay_17() throws Exception {
-        add_to_report("Arm Stay Motion sensor group17");
-        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group17"));
-        ArmStay_Activate(123, 1441, 15 / 2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
-    }
-    @Test(priority = 4)
-    public void ArmStay_17() throws Exception {
-        add_to_report("Arm Stay Motion sensor group17");
-        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group17"));
-        ArmStay_Activate(123, 1441, 15, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
-    }
+//    @Test
+//    public void ArmStayDelay_15() throws Exception {
+//        create_report("Arm Stay Motion sensor group15");
+//        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group15"));
+//        ArmStay_Activate(120, 1411,15/2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay, events are displayed correctly on the ADC dealer website"));
+//    }
+//    @Test(priority = 1)
+//    public void ArmStay_15() throws Exception {
+//        add_to_report("Arm Stay Motion sensor group15");
+//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15"));
+//        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]","//*[contains(text(), 'Delayed alarm')]" , PGSensorsActivity.MOTIONACTIVE);
+//        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
+//    }
+//    @Test(priority = 2)
+//    public void ArmStay_15_Tamper() throws Exception {
+//        add_to_report("Arm Stay Motion sensor group15 tamper");
+//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15 tamper"));
+//        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Tamper')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
+//        pgprimaryCall(120, 1411, PGSensorsActivity.TAMPERREST);
+//        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
+//    }
+//
+//    @Test(priority = 3)
+//    public void ArmStayDelay_17() throws Exception {
+//        add_to_report("Arm Stay Motion sensor group17");
+//        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group17"));
+//        ArmStay_Activate(123, 1441, 15 / 2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
+//    }
+//    @Test(priority = 4)
+//    public void ArmStay_17() throws Exception {
+//        add_to_report("Arm Stay Motion sensor group17");
+//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group17"));
+//        ArmStay_Activate(123, 1441, 15, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
+//    }
     @Test(priority = 5)
     public void ArmStay_17_Tamper() throws Exception {
         add_to_report("Arm Stay Motion sensor group17 tamper");

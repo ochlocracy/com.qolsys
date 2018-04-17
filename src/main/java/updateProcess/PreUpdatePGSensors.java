@@ -36,14 +36,14 @@ public class PreUpdatePGSensors extends Setup {
         logger.info("Adding a list of sensors");
         navigate_to_autolearn_page();
         /*** DW ***/
-        addPGSensors("DW", 104, 1101, 0);//gr10
-        addPGSensors("DW", 104, 1152, 1);//gr12
-        addPGSensors("DW", 104, 1231, 2);//gr13
-        addPGSensors("DW", 104, 1216, 3);//gr14
-        addPGSensors("DW", 104, 1331, 4);//gr16
-        addPGSensors("DW", 104, 1127, 6);//gr8
-        addPGSensors("DW", 104, 1123, 7);//gr9
-        addPGSensors("DW", 104, 1311, 5);//gr25
+//        addPGSensors("DW", 104, 1101, 0);//gr10
+//        addPGSensors("DW", 104, 1152, 1);//gr12
+//        addPGSensors("DW", 104, 1231, 2);//gr13
+//        addPGSensors("DW", 104, 1216, 3);//gr14
+//        addPGSensors("DW", 104, 1331, 4);//gr16
+//        addPGSensors("DW", 104, 1127, 6);//gr8
+//        addPGSensors("DW", 104, 1123, 7);//gr9
+//        addPGSensors("DW", 104, 1311, 5);//gr25
         /*** Motion ***/
         addPGSensors("Motion", 120, 1411, 1);//gr15
         addPGSensors("Motion", 123, 1441, 0);//gr17
@@ -88,7 +88,7 @@ public class PreUpdatePGSensors extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"})
+    @Test//(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
@@ -159,6 +159,7 @@ public class PreUpdatePGSensors extends Setup {
             enterDefaultUserCode();
             Thread.sleep(1000);
             ARM_AWAY(ConfigProps.longExitDelay);
+            Thread.sleep(2000);
             activation_restoration(171, 1771, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST);//gr17
             Thread.sleep(1000);
             enterDefaultUserCode();

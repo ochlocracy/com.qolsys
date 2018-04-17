@@ -528,7 +528,7 @@ public class DisarmGrid {
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", ""})
     @Test(priority = 19)
     public void Dis_24_DW9(String UDID_) throws Exception {
         add_to_report("Dis_24");

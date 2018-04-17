@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+/* Estimate run time: 10min 12 sec */
+
 public class CarbonMonoxide extends Setup {
 
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();

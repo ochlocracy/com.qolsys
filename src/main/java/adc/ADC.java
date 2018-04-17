@@ -207,6 +207,7 @@ public class ADC extends Setup {
     }
     public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
+            Thread.sleep(4000);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
@@ -326,7 +327,7 @@ public class ADC extends Setup {
 
     public void New_ADC_session_User(String User, String Password) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-  //      driver1.manage().window().maximize();
+        driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         driver1.get(ADC_URL);
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(User);

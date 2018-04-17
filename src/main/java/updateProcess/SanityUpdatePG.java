@@ -292,7 +292,7 @@ public class SanityUpdatePG extends Setup {
         home.Home_button.click();
     } //48sec
 
-    @Test(priority = 2)
+    @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Edit_Name() throws InterruptedException, IOException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Motion_Sensors");
@@ -366,8 +366,6 @@ public class SanityUpdatePG extends Setup {
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(1000);
         adc.Request_equipment_list();
-        Thread.sleep(2000);
-        adc.driver1.navigate().refresh();
         Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1101 ')]", "//*[contains(text(), ' Sensor 1 Open/Close')]");
         log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr10 works as expected");
@@ -785,13 +783,15 @@ public class SanityUpdatePG extends Setup {
     } //1m
 
     @Test(priority = 13)
-    public void Jam() throws InterruptedException, IOException {
+    public void Jam() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Jam");
         Thread.sleep(1000);
         servcall.set_RF_JAM_DETECT_enable();
+        contact.acknowledge_all_alerts();
+        swipeFromLefttoRight();
         Thread.sleep(2000);
         powerGjamer(1);
         home.Contact_Us.click();
@@ -826,7 +826,7 @@ public class SanityUpdatePG extends Setup {
         Assert.assertTrue(string.getText().contains("DW 104-1101 (1) - Low Battery"));
         pgprimaryCall(104, 1101, "80 0");
 
-    } //
+    } //40sec
 
     @Test(priority = 10, enabled = false)
     public void verifyNewUserCodeWorks() throws Exception {

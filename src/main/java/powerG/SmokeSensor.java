@@ -18,6 +18,8 @@ import utils.Setup;
 import java.io.File;
 import java.io.IOException;
 
+/* Estimate run time: 11m 15sec */
+
 public class SmokeSensor extends Setup {
 
     ADC adc = new ADC();
