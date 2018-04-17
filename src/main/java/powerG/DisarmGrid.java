@@ -55,8 +55,8 @@ public class DisarmGrid {
         log = report.startTest(test_case_name);
     }
 
-    public void ADC_verification(String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(adc.getAccountId());
+    public void ADC_verification(String account, String string, String string1) throws InterruptedException, IOException {
+        adc.New_ADC_session(account);
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);
@@ -87,7 +87,6 @@ public class DisarmGrid {
         inst.DEVICES.click();
         dev.Security_Sensors.click();
     }
-
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass
@@ -269,9 +268,9 @@ public class DisarmGrid {
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 9)
-    public void Dis_14_DW10(String UDID_) throws IOException, InterruptedException {
+    public void Dis_14_DW10(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_14");
         log.log(LogStatus.INFO, ("*Dis_14* Verify the sensor is being monitored, dw sensor group 10"));
@@ -292,14 +291,14 @@ public class DisarmGrid {
         Thread.sleep(2000);
         li_status1.clear();
 
-        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 1 Open/Close')]");
+        ADC_verification(account,"//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 1 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 1) Opened/Closed and Sensor 1 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 10)
-    public void Dis_15_DW12(String UDID_) throws IOException, InterruptedException {
+    public void Dis_15_DW12(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_15");
         log.log(LogStatus.INFO, ("*Dis_15* Verify the sensor is being monitored, dw sensor group 12"));
@@ -319,15 +318,15 @@ public class DisarmGrid {
         log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
         Thread.sleep(2000);
         li_status1.clear();
-
-        ADC_verification("//*[contains(text(), 'DW 104-1152')]", "//*[contains(text(), 'Sensor 2 Open/Close')]");
+        Thread.sleep(2000);
+        ADC_verification(account, "//*[contains(text(), 'DW 104-1152')]", "//*[contains(text(), 'Sensor 2 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 2) Opened/Closed and Sensor 2 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 11)
-    public void Dis_16_DW13(String UDID_) throws IOException, InterruptedException {
+    public void Dis_16_DW13(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_16");
         log.log(LogStatus.INFO, ("*Dis_16* Verify the sensor is being monitored, dw sensor group 13"));
@@ -348,14 +347,14 @@ public class DisarmGrid {
         Thread.sleep(2000);
         li_status1.clear();
 
-        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        ADC_verification(account, "//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 12)
-    public void Dis_17_DW14(String UDID_) throws IOException, InterruptedException {
+    public void Dis_17_DW14(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_17");
         log.log(LogStatus.INFO, ("*Dis_17* Verify the sensor is being monitored, dw sensor group 14"));
@@ -377,14 +376,14 @@ public class DisarmGrid {
         Thread.sleep(2000);
         li_status1.clear();
 
-        ADC_verification("//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Sensor 4 Open/Close')]");
+        ADC_verification(account, "//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Sensor 4 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 4) Opened/Closed and Sensor 4 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 13)
-    public void Dis_18_DW16(String UDID_) throws IOException, InterruptedException {
+    public void Dis_18_DW16(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_18");
         log.log(LogStatus.INFO, ("*Dis_18* Verify the sensor is being monitored, dw sensor group 16"));
@@ -406,14 +405,14 @@ public class DisarmGrid {
         Thread.sleep(2000);
         li_status1.clear();
 
-        ADC_verification("//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Sensor 5 Open/Close')]");
+        ADC_verification(account, "//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Sensor 5 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 5) Opened/Closed and Sensor 5 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
+    @Parameters({"UDID_", "account"})
     @Test(priority = 14)
-    public void Dis_19_DW25(String UDID_) throws IOException, InterruptedException {
+    public void Dis_19_DW25(String UDID_, String account) throws IOException, InterruptedException {
         SettingsPage sett = PageFactory.initElements(s.driver, SettingsPage.class);
         add_to_report("Dis_19");
         log.log(LogStatus.INFO, ("*Dis_19* Open/Close event is displayed in panel history for sensor group 25"));
@@ -435,7 +434,7 @@ public class DisarmGrid {
         Thread.sleep(2000);
         li_status1.clear();
 
-        ADC_verification("//*[contains(text(), 'DW 104-1311')]", "//*[contains(text(), 'Sensor 8 Open/Close')]");
+        ADC_verification(account, "//*[contains(text(), 'DW 104-1311')]", "//*[contains(text(), 'Sensor 8 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 8) Opened/Closed and Sensor 8 Open/Close messages are displayed"));
         Thread.sleep(2000);
     }
@@ -451,6 +450,7 @@ public class DisarmGrid {
         s.pgprimaryCall(UDID_, 104, 1127, PGSensorsActivity.INOPEN);
         Thread.sleep(2000);
         s.verifyInAlarm();
+        Thread.sleep(1000);
         s.pgprimaryCall(UDID_, 104, 1127, PGSensorsActivity.INCLOSE);
         log.log(LogStatus.PASS, "Pass: system is in ALARM");
         s.enterDefaultUserCode();
@@ -477,14 +477,14 @@ public class DisarmGrid {
         log.log(LogStatus.INFO, ("*Dis_21* system will disarm from Police Alarm from the User Site, dw 8"));
         Thread.sleep(1000);
         s.pgprimaryCall(UDID_, 104, 1127, PGSensorsActivity.INOPEN);
-        Thread.sleep(15000);
+        Thread.sleep(20000);
         s.verifyInAlarm();
         log.log(LogStatus.PASS, "Pass: system is in ALARM");
-        adc.New_ADC_session_User( User, Password);
+        adc.New_ADC_session_User(User, Password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
-        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarms']"))).click();
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarm']"))).click();
         Thread.sleep(4000);
         adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
         Thread.sleep(10000);
@@ -543,101 +543,101 @@ public class DisarmGrid {
         Thread.sleep(2000);
     }
 
-    @Parameters({"UDID_"})
-    @Test(priority = 20)
-    public void Dis_25_DW10(String UDID_) throws Exception {
-        add_to_report("Dis_25");
-        SecuritySensorsPage sen = PageFactory.initElements(s.driver, SecuritySensorsPage.class);
-        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
-        log.log(LogStatus.INFO, ("*Dis_25* sensor name can be edited and changes will be reflected on the panel and website"));
-        navigate_to_Security_Sensors_page();
-        sen.Edit_Sensor.click();
-        sen.Edit_Img.click();
-        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
-        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101NEW");
-        try {
-            s.driver.hideKeyboard();
-        } catch (Exception e) {
-        }
-        sen.Save.click();
-        home.Home_button.click();
-        Thread.sleep(2000);
-        home.All_Tab.click();
-        Thread.sleep(2000);
-        log.log(LogStatus.INFO, ("Verify new name is displayed"));
-        WebElement newSensorName = s.driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101NEW']"));
-        Assert.assertTrue(newSensorName.isDisplayed());
-        log.log(LogStatus.PASS, ("Pass: new name is displayed on panel"));
-        Thread.sleep(10000);
-        adc.update_sensors_list();
-        Thread.sleep(4000);
-
-        WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
-        Thread.sleep(5000);
-        Assert.assertTrue(webname.getText().equals("DW 104-1101NEW"));
-        log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()) + " on ADC web page");
-        Thread.sleep(2000);
-    }
-
-    @Parameters({"UDID_"})
-    @Test(priority = 21)
-    public void Dis_26_All(String UDID_) throws InterruptedException, IOException {
-        add_to_report("Dis_26");
-        log.log(LogStatus.INFO, ("*Dis_26* Verify a sensor can be deleted from the panel and will reflect on the websites"));
-        Thread.sleep(1000);
-        s.delete_from_primary(UDID_, 1);
-        Thread.sleep(5000);
-        adc.New_ADC_session(adc.getAccountId());
-        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-        Thread.sleep(2000);
-        adc.Request_equipment_list();
-        Thread.sleep(1000);
-        WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
-        if (ispresent.getText().contains("DW 104-1101")) {
-            log.log(LogStatus.FAIL, ("Fail: Sensor is displayed on the ADC dealer website"));
-            System.out.println(ispresent.getText() + " fail");
-        } else {
-            log.log(LogStatus.PASS, ("Pass: Sensor is deleted successfully"));
-            System.out.println(ispresent.getText() + " pass");
-        }
-        s.addPrimaryCallPG(UDID_, 1, 10, 1041101, 1);
-        Thread.sleep(2000);
-    }
-
-    @Parameters({"UDID_"})
-    @Test(priority = 22)
-    public void Dis_27_DW10(String UDID_) throws Exception {
-        add_to_report("Dis_27");
-        SecuritySensorsPage sen = PageFactory.initElements(s.driver, SecuritySensorsPage.class);
-        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
-        log.log(LogStatus.INFO, ("*Dis_27* readd same sensor from panel"));
-        s.delete_from_primary(UDID_, 1);
-        navigate_to_Security_Sensors_page();
-        sen.Add_Sensor.click();
-        Thread.sleep(1000);
-        s.driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
-        s.driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PowerG']")).click();
-
-        s.driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("104");
-        s.driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("1101");
-        try {
-            s.driver.hideKeyboard();
-        } catch (WebDriverException e) {
-        }
-        s.driver.findElement(By.id("com.qolsys:id/powerg_sensor_desc")).click();
-        s.driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
-        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101");
-        try {
-            s.driver.hideKeyboard();
-        } catch (WebDriverException e) {
-        }
-        sen.Save.click();
-        Thread.sleep(2000);
-        home.Home_button.click();
-        Thread.sleep(3000);
-        s.pgprimaryCall(UDID_,104, 1101, PGSensorsActivity.INCLOSE);
-        Thread.sleep(2000);
-    }
+//    @Parameters({"UDID_"})
+//    @Test(priority = 20)
+//    public void Dis_25_DW10(String UDID_) throws Exception {
+//        add_to_report("Dis_25");
+//        SecuritySensorsPage sen = PageFactory.initElements(s.driver, SecuritySensorsPage.class);
+//        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
+//        log.log(LogStatus.INFO, ("*Dis_25* sensor name can be edited and changes will be reflected on the panel and website"));
+//        navigate_to_Security_Sensors_page();
+//        sen.Edit_Sensor.click();
+//        sen.Edit_Img.click();
+//        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
+//        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101NEW");
+//        try {
+//            s.driver.hideKeyboard();
+//        } catch (Exception e) {
+//        }
+//        sen.Save.click();
+//        home.Home_button.click();
+//        Thread.sleep(2000);
+//        home.All_Tab.click();
+//        Thread.sleep(2000);
+//        log.log(LogStatus.INFO, ("Verify new name is displayed"));
+//        WebElement newSensorName = s.driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101NEW']"));
+//        Assert.assertTrue(newSensorName.isDisplayed());
+//        log.log(LogStatus.PASS, ("Pass: new name is displayed on panel"));
+//        Thread.sleep(10000);
+//        adc.update_sensors_list();
+//        Thread.sleep(4000);
+//
+//        WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
+//        Thread.sleep(5000);
+//        Assert.assertTrue(webname.getText().equals("DW 104-1101NEW"));
+//        log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()) + " on ADC web page");
+//        Thread.sleep(2000);
+//    }
+//
+//    @Parameters({"UDID_"})
+//    @Test(priority = 21)
+//    public void Dis_26_All(String UDID_) throws InterruptedException, IOException {
+//        add_to_report("Dis_26");
+//        log.log(LogStatus.INFO, ("*Dis_26* Verify a sensor can be deleted from the panel and will reflect on the websites"));
+//        Thread.sleep(1000);
+//        s.delete_from_primary(UDID_, 1);
+//        Thread.sleep(5000);
+//        adc.New_ADC_session(adc.getAccountId());
+//        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+//        Thread.sleep(2000);
+//        adc.Request_equipment_list();
+//        Thread.sleep(1000);
+//        WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
+//        if (ispresent.getText().contains("DW 104-1101")) {
+//            log.log(LogStatus.FAIL, ("Fail: Sensor is displayed on the ADC dealer website"));
+//            System.out.println(ispresent.getText() + " fail");
+//        } else {
+//            log.log(LogStatus.PASS, ("Pass: Sensor is deleted successfully"));
+//            System.out.println(ispresent.getText() + " pass");
+//        }
+//        s.addPrimaryCallPG(UDID_, 1, 10, 1041101, 1);
+//        Thread.sleep(2000);
+//    }
+//
+//    @Parameters({"UDID_"})
+//    @Test(priority = 22)
+//    public void Dis_27_DW10(String UDID_) throws Exception {
+//        add_to_report("Dis_27");
+//        SecuritySensorsPage sen = PageFactory.initElements(s.driver, SecuritySensorsPage.class);
+//        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
+//        log.log(LogStatus.INFO, ("*Dis_27* readd same sensor from panel"));
+//        s.delete_from_primary(UDID_, 1);
+//        navigate_to_Security_Sensors_page();
+//        sen.Add_Sensor.click();
+//        Thread.sleep(1000);
+//        s.driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
+//        s.driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PowerG']")).click();
+//
+//        s.driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("104");
+//        s.driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("1101");
+//        try {
+//            s.driver.hideKeyboard();
+//        } catch (WebDriverException e) {
+//        }
+//        s.driver.findElement(By.id("com.qolsys:id/powerg_sensor_desc")).click();
+//        s.driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+//        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101");
+//        try {
+//            s.driver.hideKeyboard();
+//        } catch (WebDriverException e) {
+//        }
+//        sen.Save.click();
+//        Thread.sleep(2000);
+//        home.Home_button.click();
+//        Thread.sleep(3000);
+//        s.pgprimaryCall(UDID_,104, 1101, PGSensorsActivity.INCLOSE);
+//        Thread.sleep(2000);
+//    }
 
 //    @Test(priority = 23)
 //    public void Dis_31_DW10() throws Exception {

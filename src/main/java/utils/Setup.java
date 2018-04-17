@@ -71,7 +71,7 @@ public class Setup {
 
     public void webDriverSetUp() {
         driver1 = new FirefoxDriver();
-        wait = new WebDriverWait(driver1, 40);
+        wait = new WebDriverWait(driver1, 60);
     }
 
     public String splitMethod(String str) {
@@ -330,7 +330,6 @@ public class Setup {
             System.out.println("FAIL: System is not in ALARM");
         }
     }
-
 
     public void verifyPanelAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
