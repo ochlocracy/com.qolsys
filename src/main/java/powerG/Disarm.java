@@ -146,496 +146,496 @@ public class Disarm extends Setup {
         home.Home_button.click();
     }
 
-//    @Test
-//    public void Dis_01_DW10() throws IOException, InterruptedException {
-//        create_report("Dis_01");
-//        log.log(LogStatus.INFO, ("*Dis_01* Open/Close event is displayed in panel history for sensor group 10"));
-//        Thread.sleep(1000);
-//        sensor_status_check(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 1);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 1)
-//    public void Dis_02_DW12() throws IOException, InterruptedException {
-//        add_to_report("Dis_02");
-//        log.log(LogStatus.INFO, ("*Dis_02* Open/Close event is displayed in panel history for sensor group 12"));
-//        Thread.sleep(1000);
-//        sensor_status_check(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 2);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 2)
-//    public void Dis_03_DW13() throws IOException, InterruptedException {
-//        add_to_report("Dis_03");
-//        log.log(LogStatus.INFO, ("*Dis_03* Open/Close event is displayed in panel history for sensor group 13"));
-//        Thread.sleep(1000);
-//        sensor_status_check(104, 1231, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 3);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 3)
-//    public void Dis_04_DW14() throws IOException, InterruptedException {
-//        add_to_report("Dis_04");
-//        log.log(LogStatus.INFO, ("*Dis_04* Open/Close event is displayed in panel history for sensor group 14"));
-//        Thread.sleep(1000);
-//        sensor_status_check(104, 1216, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 4);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 4)
-//    public void Dis_05_DW16() throws IOException, InterruptedException {
-//        add_to_report("Dis_05");
-//        log.log(LogStatus.INFO, ("*Dis_05* Open/Close event is displayed in panel history for sensor group 16"));
-//        Thread.sleep(1000);
-//        sensor_status_check(104, 1331, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 5);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 5)
-//    public void Dis_06_M15() throws IOException, InterruptedException {
-//        add_to_report("Dis_06");
-//        log.log(LogStatus.INFO, ("*Dis_06* Activate event is displayed in panel history for motion sensor group 15"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(120, 1411, PGSensorsActivity.MOTIONACTIVE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
-//        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
-//        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 6)
-//    public void Dis_07_M17() throws IOException, InterruptedException {
-//        add_to_report("Dis_07");
-//        log.log(LogStatus.INFO, ("*Dis_07* Activate event is displayed in panel history for motion sensor group 17"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(123, 1441, PGSensorsActivity.MOTIONACTIVE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
-//        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
-//        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 7)
-//    public void Dis_08_M20() throws IOException, InterruptedException {
-//        add_to_report("Dis_08");
-//        log.log(LogStatus.INFO, ("*Dis_08* Activate event is displayed in panel history for motion sensor group 20"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(122, 1423, PGSensorsActivity.MOTIONACTIVE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
-//        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
-//        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 8)
-//    public void Dis_09_M35() throws IOException, InterruptedException {
-//        add_to_report("Dis_09");
-//        log.log(LogStatus.INFO, ("*Dis_09* Activate event is displayed in panel history for motion sensor group 35"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(123, 1446, PGSensorsActivity.MOTIONACTIVE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
-//        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
-//        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 9)
-//    public void Dis_14_DW10() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_14");
-//        log.log(LogStatus.INFO, ("*Dis_14* Verify the sensor is being monitored, dw sensor group 10"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1101, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 1 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 1) Opened/Closed and Sensor 1 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 10)
-//    public void Dis_15_DW12() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_15");
-//        log.log(LogStatus.INFO, ("*Dis_15* Verify the sensor is being monitored, dw sensor group 12"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1152, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1152, PGSensorsActivity.INCLOSE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1152')]", "//*[contains(text(), 'Sensor 2 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 2) Opened/Closed and Sensor 2 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 11)
-//    public void Dis_16_DW13() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_16");
-//        log.log(LogStatus.INFO, ("*Dis_16* Verify the sensor is being monitored, dw sensor group 13"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1231, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1231, PGSensorsActivity.INCLOSE);
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 12)
-//    public void Dis_17_DW14() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_17");
-//        log.log(LogStatus.INFO, ("*Dis_17* Verify the sensor is being monitored, dw sensor group 14"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1216, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1216, PGSensorsActivity.INCLOSE);
-//
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Sensor 4 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 4) Opened/Closed and Sensor 4 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 13)
-//    public void Dis_18_DW16() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_18");
-//        log.log(LogStatus.INFO, ("*Dis_18* Verify the sensor is being monitored, dw sensor group 16"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1331, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1331, PGSensorsActivity.INCLOSE);
-//
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Sensor 5 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 5) Opened/Closed and Sensor 5 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 14)
-//    public void Dis_19_DW25() throws IOException, InterruptedException {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_19");
-//        log.log(LogStatus.INFO, ("*Dis_19* Open/Close event is displayed in panel history for sensor group 25"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1311, PGSensorsActivity.INOPEN);
-//        Thread.sleep(21000);
-//        pgprimaryCall(104, 1311, PGSensorsActivity.INCLOSE);
-//
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        driver.findElement(By.id("com.qolsys:id/tab4")).click();
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//
-//        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
-//        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
-//        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
-//        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
-//        Thread.sleep(2000);
-//        li_status1.clear();
-//
-//        ADC_verification("//*[contains(text(), 'DW 104-1311')]", "//*[contains(text(), 'Sensor 8 Open/Close')]");
-//        log.log(LogStatus.PASS, ("Pass: (Sensor 8) Opened/Closed and Sensor 8 Open/Close messages are displayed"));
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 15)
-//    public void Dis_20_DW8() throws Exception {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        HomePage home = PageFactory.initElements(driver, HomePage.class);
-//        add_to_report("Dis_20");
-//        log.log(LogStatus.INFO, ("*Dis_20* Open/Close event is displayed in panel history for sensor group 8"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1127, PGSensorsActivity.INOPEN);
-//        Thread.sleep(2000);
-//        verifyInAlarm();
-//        pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
-//        log.log(LogStatus.PASS, "Pass: system is in ALARM");
-//        enterDefaultUserCode();
-//
-//        navigateToSettingsPage();
-//        Thread.sleep(1000);
-//        sett.STATUS.click();
-//        Thread.sleep(2000);
-//        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-//        if (li_status1.get(1).getText().equals("Closed")) {
-//            log.log(LogStatus.PASS, "Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***");
-//        } else {
-//            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(1).getText() + "***");
-//        }
-//        Thread.sleep(1000);
-//        home.Home_button.click();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 16)
-//    public void Dis_21_DW8() throws Exception {
-//        add_to_report("Dis_21");
-//        log.log(LogStatus.INFO, ("*Dis_21* system will disarm from Police Alarm from the User Site, dw 8"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1127, PGSensorsActivity.INOPEN);
-//        Thread.sleep(15000);
-//        verifyInAlarm();
-//        log.log(LogStatus.PASS, "Pass: system is in ALARM");
-//        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
-//        Thread.sleep(5000);
-//        adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
-//        Thread.sleep(7000);
-//        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarm']"))).click();
-//        Thread.sleep(4000);
-//        adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
-//        Thread.sleep(10000);
-//        verifyDisarm();
-//        log.log(LogStatus.PASS, ("Pass: system is successfully Disarmed from user site"));
-//        Thread.sleep(1000);
-//        pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 17)
-//    public void Dis_22_DW9() throws Exception {
-//        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
-//        add_to_report("Dis_22");
-//        log.log(LogStatus.INFO, ("*Dis_22* Open/Close event is displayed in panel history for sensor group 9, system goes into alarm at the end of entry delay"));
-//        navigateToSettingsPage();
-//        sett.STATUS.click();
-//        pgprimaryCall(104, 1123, PGSensorsActivity.INOPEN);
-//        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-//        Thread.sleep(2);
-//        pgprimaryCall(104, 1123, PGSensorsActivity.INCLOSE);
-//        verifyInAlarm();
-//        log.log(LogStatus.PASS, "Pass: system is in ALARM");
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 18)
-//    public void Dis_23_DW8() throws Exception {
-//        add_to_report("Dis_23");
-//        log.log(LogStatus.INFO, ("*Dis_23* system goes into alarm after sensor tamper, dw8"));
-//        Thread.sleep(2000);
-//        pgprimaryCall(104, 1127, PGSensorsActivity.TAMPER);
-//        Thread.sleep(5000);
-//        pgprimaryCall(104, 1127, PGSensorsActivity.TAMPERREST);
-//        verifyInAlarm();
-//        log.log(LogStatus.PASS, "Pass: system is in ALARM");
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 19)
-//    public void Dis_24_DW9() throws Exception {
-//        add_to_report("Dis_24");
-//        log.log(LogStatus.INFO, ("*Disb_24* system goes into alarm after sensor tamper, dw9"));
-//        Thread.sleep(2000);
-//        pgprimaryCall(104, 1123, PGSensorsActivity.TAMPER);
-//        Thread.sleep(4000);
-//        pgprimaryCall(104, 1123, PGSensorsActivity.TAMPERREST);
-//        verifyInAlarm();
-//        log.log(LogStatus.PASS, "Pass: system is in ALARM");
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 20, retryAnalyzer = RetryAnalizer.class)
-//    public void Dis_25_DW10() throws Exception {
-//        add_to_report("Dis_25");
-//        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
-//        HomePage home = PageFactory.initElements(driver, HomePage.class);
-//        log.log(LogStatus.INFO, ("*Dis_25* sensor name can be edited and changes will be reflected on the panel and website"));
-//        navigate_to_Security_Sensors_page();
-//        sen.Edit_Sensor.click();
-//        sen.Edit_Img.click();
-//        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
-//        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101NEW");
-//        try {
-//            driver.hideKeyboard();
-//        } catch (Exception e) {
-//        }
-//        sen.Save.click();
-//        home.Home_button.click();
-//        Thread.sleep(2000);
-//        home.All_Tab.click();
-//        Thread.sleep(2000);
-//        log.log(LogStatus.INFO, ("Verify new name is displayed"));
-//        WebElement newSensorName = driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101NEW']"));
-//        Assert.assertTrue(newSensorName.isDisplayed());
-//        log.log(LogStatus.PASS, ("Pass: new name is displayed on panel"));
-//        Thread.sleep(10000);
-//        adc.update_sensors_list();
-//        Thread.sleep(4000);
-//
-//        WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
-//        Thread.sleep(5000);
-//        Assert.assertTrue(webname.getText().equals("DW 104-1101NEW"));
-//        log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()) + " on ADC web page");
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 21, retryAnalyzer = RetryAnalizer.class)
-//    public void Dis_26_All() throws InterruptedException, IOException {
-//        add_to_report("Dis_26");
-//        log.log(LogStatus.INFO, ("*Dis_26* Verify a sensor can be deleted from the panel and will reflect on the websites"));
-//        Thread.sleep(1000);
-//        deleteFromPrimary(1);
-//        Thread.sleep(5000);
-//        adc.New_ADC_session(adc.getAccountId());
-//        Thread.sleep(1000);
-//        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-//        Thread.sleep(2000);
-//        adc.Request_equipment_list();
-//        Thread.sleep(1000);
-//        WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
-//        if (ispresent.getText().contains("DW 104-1101")) {
-//            log.log(LogStatus.FAIL, ("Fail: Sensor is displayed on the ADC dealer website"));
-//            System.out.println(ispresent.getText() + " fail");
-//        } else {
-//            log.log(LogStatus.PASS, ("Pass: Sensor is deleted successfully"));
-//            System.out.println(ispresent.getText() + " pass");
-//        }
-//        sensors.add_primary_call_PG(1, 10, 1041101, 1, 8);
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 22)
-//    public void Dis_27_DW10() throws Exception {
-//        add_to_report("Dis_27");
-//        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
-//        HomePage home = PageFactory.initElements(driver, HomePage.class);
-//        log.log(LogStatus.INFO, ("*Dis_27* readd same sensor from panel"));
-//        deleteFromPrimary(1);
-//        navigate_to_Security_Sensors_page();
-//        sen.Add_Sensor.click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
-//        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PowerG']")).click();
-//
-//        driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("104");
-//        driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("1101");
-//        try {
-//            driver.hideKeyboard();
-//        } catch (WebDriverException e) {
-//        }
-//        driver.findElement(By.id("com.qolsys:id/powerg_sensor_desc")).click();
-//        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
-//        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101");
-//        try {
-//            driver.hideKeyboard();
-//        } catch (WebDriverException e) {
-//        }
-//        sen.Save.click();
-//        Thread.sleep(2000);
-//        home.Home_button.click();
-//        Thread.sleep(3000);
-//        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
-//        Thread.sleep(2000);
-//        log.log(LogStatus.PASS, ("Pass: sensor is readded successfully"));
-//    }
+    @Test
+    public void Dis_01_DW10() throws IOException, InterruptedException {
+        create_report("Dis_01");
+        log.log(LogStatus.INFO, ("*Dis_01* Open/Close event is displayed in panel history for sensor group 10"));
+        Thread.sleep(1000);
+        sensor_status_check(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 1);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 1)
+    public void Dis_02_DW12() throws IOException, InterruptedException {
+        add_to_report("Dis_02");
+        log.log(LogStatus.INFO, ("*Dis_02* Open/Close event is displayed in panel history for sensor group 12"));
+        Thread.sleep(1000);
+        sensor_status_check(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 2);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 2)
+    public void Dis_03_DW13() throws IOException, InterruptedException {
+        add_to_report("Dis_03");
+        log.log(LogStatus.INFO, ("*Dis_03* Open/Close event is displayed in panel history for sensor group 13"));
+        Thread.sleep(1000);
+        sensor_status_check(104, 1231, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 3);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 3)
+    public void Dis_04_DW14() throws IOException, InterruptedException {
+        add_to_report("Dis_04");
+        log.log(LogStatus.INFO, ("*Dis_04* Open/Close event is displayed in panel history for sensor group 14"));
+        Thread.sleep(1000);
+        sensor_status_check(104, 1216, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 4);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 4)
+    public void Dis_05_DW16() throws IOException, InterruptedException {
+        add_to_report("Dis_05");
+        log.log(LogStatus.INFO, ("*Dis_05* Open/Close event is displayed in panel history for sensor group 16"));
+        Thread.sleep(1000);
+        sensor_status_check(104, 1331, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE, "Open", "Closed", 5);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 5)
+    public void Dis_06_M15() throws IOException, InterruptedException {
+        add_to_report("Dis_06");
+        log.log(LogStatus.INFO, ("*Dis_06* Activate event is displayed in panel history for motion sensor group 15"));
+        Thread.sleep(1000);
+        pgprimaryCall(120, 1411, PGSensorsActivity.MOTIONACTIVE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
+        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 6)
+    public void Dis_07_M17() throws IOException, InterruptedException {
+        add_to_report("Dis_07");
+        log.log(LogStatus.INFO, ("*Dis_07* Activate event is displayed in panel history for motion sensor group 17"));
+        Thread.sleep(1000);
+        pgprimaryCall(123, 1441, PGSensorsActivity.MOTIONACTIVE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
+        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 7)
+    public void Dis_08_M20() throws IOException, InterruptedException {
+        add_to_report("Dis_08");
+        log.log(LogStatus.INFO, ("*Dis_08* Activate event is displayed in panel history for motion sensor group 20"));
+        Thread.sleep(1000);
+        pgprimaryCall(122, 1423, PGSensorsActivity.MOTIONACTIVE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
+        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 8)
+    public void Dis_09_M35() throws IOException, InterruptedException {
+        add_to_report("Dis_09");
+        log.log(LogStatus.INFO, ("*Dis_09* Activate event is displayed in panel history for motion sensor group 35"));
+        Thread.sleep(1000);
+        pgprimaryCall(123, 1446, PGSensorsActivity.MOTIONACTIVE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='STATUS']")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Idle"));
+        log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
+        log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 9)
+    public void Dis_14_DW10() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_14");
+        log.log(LogStatus.INFO, ("*Dis_14* Verify the sensor is being monitored, dw sensor group 10"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1101, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 1 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 1) Opened/Closed and Sensor 1 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 10)
+    public void Dis_15_DW12() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_15");
+        log.log(LogStatus.INFO, ("*Dis_15* Verify the sensor is being monitored, dw sensor group 12"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INCLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1152')]", "//*[contains(text(), 'Sensor 2 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 2) Opened/Closed and Sensor 2 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 11)
+    public void Dis_16_DW13() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_16");
+        log.log(LogStatus.INFO, ("*Dis_16* Verify the sensor is being monitored, dw sensor group 13"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1231, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1231, PGSensorsActivity.INCLOSE);
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 12)
+    public void Dis_17_DW14() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_17");
+        log.log(LogStatus.INFO, ("*Dis_17* Verify the sensor is being monitored, dw sensor group 14"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1216, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1216, PGSensorsActivity.INCLOSE);
+
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Sensor 4 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 4) Opened/Closed and Sensor 4 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 13)
+    public void Dis_18_DW16() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_18");
+        log.log(LogStatus.INFO, ("*Dis_18* Verify the sensor is being monitored, dw sensor group 16"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1331, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1331, PGSensorsActivity.INCLOSE);
+
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Sensor 5 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 5) Opened/Closed and Sensor 5 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 14)
+    public void Dis_19_DW25() throws IOException, InterruptedException {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_19");
+        log.log(LogStatus.INFO, ("*Dis_19* Open/Close event is displayed in panel history for sensor group 25"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1311, PGSensorsActivity.INOPEN);
+        Thread.sleep(21000);
+        pgprimaryCall(104, 1311, PGSensorsActivity.INCLOSE);
+
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        driver.findElement(By.id("com.qolsys:id/tab4")).click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+
+        Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
+        log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
+        Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
+        log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
+        Thread.sleep(2000);
+        li_status1.clear();
+
+        ADC_verification("//*[contains(text(), 'DW 104-1311')]", "//*[contains(text(), 'Sensor 8 Open/Close')]");
+        log.log(LogStatus.PASS, ("Pass: (Sensor 8) Opened/Closed and Sensor 8 Open/Close messages are displayed"));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 15)
+    public void Dis_20_DW8() throws Exception {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        add_to_report("Dis_20");
+        log.log(LogStatus.INFO, ("*Dis_20* Open/Close event is displayed in panel history for sensor group 8"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1127, PGSensorsActivity.INOPEN);
+        Thread.sleep(2000);
+        verifyInAlarm();
+        pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
+        log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        enterDefaultUserCode();
+
+        navigateToSettingsPage();
+        Thread.sleep(1000);
+        sett.STATUS.click();
+        Thread.sleep(2000);
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
+        if (li_status1.get(1).getText().equals("Closed")) {
+            log.log(LogStatus.PASS, "Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***");
+        } else {
+            log.log(LogStatus.FAIL, "Failed: sensor status is displayed in correct: ***" + li_status1.get(1).getText() + "***");
+        }
+        Thread.sleep(1000);
+        home.Home_button.click();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 16)
+    public void Dis_21_DW8() throws Exception {
+        add_to_report("Dis_21");
+        log.log(LogStatus.INFO, ("*Dis_21* system will disarm from Police Alarm from the User Site, dw 8"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1127, PGSensorsActivity.INOPEN);
+        Thread.sleep(15000);
+        verifyInAlarm();
+        log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
+        Thread.sleep(5000);
+        adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
+        Thread.sleep(7000);
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarm']"))).click();
+        Thread.sleep(4000);
+        adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
+        Thread.sleep(10000);
+        verifyDisarm();
+        log.log(LogStatus.PASS, ("Pass: system is successfully Disarmed from user site"));
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 17)
+    public void Dis_22_DW9() throws Exception {
+        SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        add_to_report("Dis_22");
+        log.log(LogStatus.INFO, ("*Dis_22* Open/Close event is displayed in panel history for sensor group 9, system goes into alarm at the end of entry delay"));
+        navigateToSettingsPage();
+        sett.STATUS.click();
+        pgprimaryCall(104, 1123, PGSensorsActivity.INOPEN);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
+        Thread.sleep(2);
+        pgprimaryCall(104, 1123, PGSensorsActivity.INCLOSE);
+        verifyInAlarm();
+        log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 18)
+    public void Dis_23_DW8() throws Exception {
+        add_to_report("Dis_23");
+        log.log(LogStatus.INFO, ("*Dis_23* system goes into alarm after sensor tamper, dw8"));
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1127, PGSensorsActivity.TAMPER);
+        Thread.sleep(5000);
+        pgprimaryCall(104, 1127, PGSensorsActivity.TAMPERREST);
+        verifyInAlarm();
+        log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 19)
+    public void Dis_24_DW9() throws Exception {
+        add_to_report("Dis_24");
+        log.log(LogStatus.INFO, ("*Disb_24* system goes into alarm after sensor tamper, dw9"));
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1123, PGSensorsActivity.TAMPER);
+        Thread.sleep(4000);
+        pgprimaryCall(104, 1123, PGSensorsActivity.TAMPERREST);
+        verifyInAlarm();
+        log.log(LogStatus.PASS, "Pass: system is in ALARM");
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 20, retryAnalyzer = RetryAnalizer.class)
+    public void Dis_25_DW10() throws Exception {
+        add_to_report("Dis_25");
+        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        log.log(LogStatus.INFO, ("*Dis_25* sensor name can be edited and changes will be reflected on the panel and website"));
+        navigate_to_Security_Sensors_page();
+        sen.Edit_Sensor.click();
+        sen.Edit_Img.click();
+        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
+        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101NEW");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
+        sen.Save.click();
+        home.Home_button.click();
+        Thread.sleep(2000);
+        home.All_Tab.click();
+        Thread.sleep(2000);
+        log.log(LogStatus.INFO, ("Verify new name is displayed"));
+        WebElement newSensorName = driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101NEW']"));
+        Assert.assertTrue(newSensorName.isDisplayed());
+        log.log(LogStatus.PASS, ("Pass: new name is displayed on panel"));
+        Thread.sleep(10000);
+        adc.update_sensors_list();
+        Thread.sleep(4000);
+
+        WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
+        Thread.sleep(5000);
+        Assert.assertTrue(webname.getText().equals("DW 104-1101NEW"));
+        log.log(LogStatus.PASS, ("Pass: The name is displayed correctly " + webname.getText()) + " on ADC web page");
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 21, retryAnalyzer = RetryAnalizer.class)
+    public void Dis_26_All() throws InterruptedException, IOException {
+        add_to_report("Dis_26");
+        log.log(LogStatus.INFO, ("*Dis_26* Verify a sensor can be deleted from the panel and will reflect on the websites"));
+        Thread.sleep(1000);
+        deleteFromPrimary(1);
+        Thread.sleep(5000);
+        adc.New_ADC_session(adc.getAccountId());
+        Thread.sleep(1000);
+        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(2000);
+        adc.Request_equipment_list();
+        Thread.sleep(1000);
+        WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
+        if (ispresent.getText().contains("DW 104-1101")) {
+            log.log(LogStatus.FAIL, ("Fail: Sensor is displayed on the ADC dealer website"));
+            System.out.println(ispresent.getText() + " fail");
+        } else {
+            log.log(LogStatus.PASS, ("Pass: Sensor is deleted successfully"));
+            System.out.println(ispresent.getText() + " pass");
+        }
+        sensors.add_primary_call_PG(1, 10, 1041101, 1, 8);
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 22)
+    public void Dis_27_DW10() throws Exception {
+        add_to_report("Dis_27");
+        SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        log.log(LogStatus.INFO, ("*Dis_27* readd same sensor from panel"));
+        deleteFromPrimary(1);
+        navigate_to_Security_Sensors_page();
+        sen.Add_Sensor.click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PowerG']")).click();
+
+        driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("104");
+        driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("1101");
+        try {
+            driver.hideKeyboard();
+        } catch (WebDriverException e) {
+        }
+        driver.findElement(By.id("com.qolsys:id/powerg_sensor_desc")).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101");
+        try {
+            driver.hideKeyboard();
+        } catch (WebDriverException e) {
+        }
+        sen.Save.click();
+        Thread.sleep(2000);
+        home.Home_button.click();
+        Thread.sleep(3000);
+        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
+        Thread.sleep(2000);
+        log.log(LogStatus.PASS, ("Pass: sensor is readded successfully"));
+    }
 
     @Test(priority = 23)
     public void Dis_31_DW10() throws Exception {
@@ -1909,7 +1909,7 @@ public class Disarm extends Setup {
         pgprimaryCall(241, 1971, "82 1");
         Thread.sleep(3000);
         verifyDisarm();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         pgprimaryCall(241, 1971, "82 0");
         navigateToSettingsPage();
         Thread.sleep(1000);
@@ -1931,7 +1931,7 @@ public class Disarm extends Setup {
         log.log(LogStatus.INFO, ("*Dis-108* Verify that the system restores the Water Detector status  from 'Tampered' to 'Normal'"));
         Thread.sleep(3000);
         pgprimaryCall(241, 1971, "82 1");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         verifyDisarm();
         pgprimaryCall(241, 1971, "82 0");
 

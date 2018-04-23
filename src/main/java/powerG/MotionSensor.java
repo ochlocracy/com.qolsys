@@ -136,43 +136,43 @@ public class MotionSensor extends Setup {
 
     /*** ARM STAY ***/
 
-//    @Test
-//    public void ArmStayDelay_15() throws Exception {
-//        create_report("Arm Stay Motion sensor group15");
-//        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group15"));
-//        ArmStay_Activate(120, 1411,15/2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay, events are displayed correctly on the ADC dealer website"));
-//    }
-//    @Test(priority = 1)
-//    public void ArmStay_15() throws Exception {
-//        add_to_report("Arm Stay Motion sensor group15");
-//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15"));
-//        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]","//*[contains(text(), 'Delayed alarm')]" , PGSensorsActivity.MOTIONACTIVE);
-//        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
-//    }
-//    @Test(priority = 2)
-//    public void ArmStay_15_Tamper() throws Exception {
-//        add_to_report("Arm Stay Motion sensor group15 tamper");
-//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15 tamper"));
-//        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Tamper')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
-//        pgprimaryCall(120, 1411, PGSensorsActivity.TAMPERREST);
-//        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
-//    }
-//
-//    @Test(priority = 3)
-//    public void ArmStayDelay_17() throws Exception {
-//        add_to_report("Arm Stay Motion sensor group17");
-//        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group17"));
-//        ArmStay_Activate(123, 1441, 15 / 2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
-//    }
-//    @Test(priority = 4)
-//    public void ArmStay_17() throws Exception {
-//        add_to_report("Arm Stay Motion sensor group17");
-//        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group17"));
-//        ArmStay_Activate(123, 1441, 15, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
-//        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
-//    }
+    @Test
+    public void ArmStayDelay_15() throws Exception {
+        create_report("Arm Stay Motion sensor group15");
+        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group15"));
+        ArmStay_Activate(120, 1411,15/2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay, events are displayed correctly on the ADC dealer website"));
+    }
+    @Test(priority = 1)
+    public void ArmStay_15() throws Exception {
+        add_to_report("Arm Stay Motion sensor group15");
+        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15"));
+        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]","//*[contains(text(), 'Delayed alarm')]" , PGSensorsActivity.MOTIONACTIVE);
+        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
+    }
+    @Test(priority = 2)
+    public void ArmStay_15_Tamper() throws Exception {
+        add_to_report("Arm Stay Motion sensor group15 tamper");
+        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group15 tamper"));
+        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Tamper')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
+        pgprimaryCall(120, 1411, PGSensorsActivity.TAMPERREST);
+        log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
+    }
+
+    @Test(priority = 3)
+    public void ArmStayDelay_17() throws Exception {
+        add_to_report("Arm Stay Motion sensor group17");
+        log.log(LogStatus.INFO, ("ArmStay during delay Activate motion sensor group17"));
+        ArmStay_Activate(123, 1441, 15 / 2, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
+    }
+    @Test(priority = 4)
+    public void ArmStay_17() throws Exception {
+        add_to_report("Arm Stay Motion sensor group17");
+        log.log(LogStatus.INFO, ("ArmStay Activate motion sensor group17"));
+        ArmStay_Activate(123, 1441, 15, "//*[contains(text(), 'Activated')]", Armed_Stay, PGSensorsActivity.MOTIONACTIVE);
+        log.log(LogStatus.PASS, ("Pass: System is in Arm Stay mode, events are displayed correctly on the ADC dealer website"));
+    }
     @Test(priority = 5)
     public void ArmStay_17_Tamper() throws Exception {
         add_to_report("Arm Stay Motion sensor group17 tamper");
@@ -255,6 +255,7 @@ public class MotionSensor extends Setup {
 
     @Test(priority = 15)
     public void ArmAwayDelay_15() throws Exception {
+        servcall.set_AUTO_STAY(0);
         add_to_report("Arm Away Motion sensor group15");
         log.log(LogStatus.INFO, ("ArmAway during delay Activate motion sensor group15"));
         ArmAway_Activate(120, 1411,15/2, "//*[contains(text(), 'Activated')]", Armed_Away, PGSensorsActivity.MOTIONACTIVE);
@@ -262,6 +263,7 @@ public class MotionSensor extends Setup {
     }
     @Test(priority = 16)
     public void ArmAway_15() throws Exception {
+        servcall.set_AUTO_STAY(0);
         add_to_report("Arm Away Motion sensor group15");
         log.log(LogStatus.INFO, ("ArmAway Activate motion sensor group15"));
         ArmAway_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]","//*[contains(text(), 'Delayed alarm')]" , PGSensorsActivity.MOTIONACTIVE);
@@ -269,9 +271,10 @@ public class MotionSensor extends Setup {
     }
     @Test(priority = 17)
     public void ArmAway_15_Tamper() throws Exception {
+        servcall.set_AUTO_STAY(0);
         add_to_report("Arm Away Motion sensor group15 tamper");
         log.log(LogStatus.INFO, ("ArmAway Activate motion sensor group15 tamper"));
-        ArmStay_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
+        ArmAway_Activate_Alarm(120, 1411, 15, "//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), 'Sensor 9 Tamper**')]", PGSensorsActivity.TAMPER);
         pgprimaryCall(120, 1411, PGSensorsActivity.TAMPERREST);
         log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
     }
@@ -373,7 +376,6 @@ public class MotionSensor extends Setup {
         driver.quit();
         service.stop();
     }
-
     @AfterMethod
     public void webDriverQuit(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -387,5 +389,4 @@ public class MotionSensor extends Setup {
         report.flush();
         adc.driver1.quit();
     }
-
 }
