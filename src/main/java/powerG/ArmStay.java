@@ -1319,7 +1319,7 @@ public class ArmStay extends Setup{
     //Miscellaneous
 
     @Test
-    public void AS_65_DW10() throws InterruptedException, IOException {
+    public void AS_65_DW10() throws Exception {
         add_to_report("AS_65");
         log.log(LogStatus.INFO, ("*AS_65* Verify the system is still responsive when the panel is in screensaver mode"));
         ARM_STAY();
@@ -1329,15 +1329,16 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1101, PGSensorsActivity.INOPEN);
         Thread.sleep(2000);
         pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
-        Thread.sleep(2000);
+        Thread.sleep(ConfigProps.longEntryDelay);
+        verifyInAlarm();
         enterDefaultUserCode();
         Thread.sleep(2000);
-        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Panel Disarmed')]");
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: system is responsive after the screensaver mode"));
     }
 
     @Test
-    public void AS_66_DW13() throws InterruptedException, IOException {
+    public void AS_66_DW13() throws Exception {
         add_to_report("AS_66");
         log.log(LogStatus.INFO, ("*AS_66* Verify the system is still responsive when the panel is in screensaver mode"));
         ARM_STAY();
@@ -1347,12 +1348,40 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1231, PGSensorsActivity.INOPEN);
         Thread.sleep(2000);
         pgprimaryCall(104, 1231, PGSensorsActivity.INCLOSE);
+        Thread.sleep(ConfigProps.longEntryDelay);
+        verifyInAlarm();
         Thread.sleep(2000);
         enterDefaultUserCode();
-        Thread.sleep(2000);
-        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Panel Disarmed')]");
+        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: system is responsive after the screensaver mode"));
     }
+
+    @Test
+    public void AS_67_DW10_DW12() throws Exception {
+        add_to_report("AS_67");
+        log.log(LogStatus.INFO, ("*AS_67* Verify the system is still responsive when the panel is in screensaver mode"));
+        ARM_STAY();
+        TimeUnit.MINUTES.sleep(6);
+        Assert.assertTrue(driver.findElement(By.id("android:id/content")).isDisplayed());
+        log.log(LogStatus.PASS, ("Pass: photo frame is displayed"));
+        pgprimaryCall(104, 1101, PGSensorsActivity.INOPEN);
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INOPEN);
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INCLOSE);
+        TimeUnit.SECONDS.sleep(ConfigProps.longEntryDelay);
+        verifyInAlarm();
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'DW 104-1152')]");
+        log.log(LogStatus.PASS, ("Pass: system is responsive after the screensaver mode"));
+    }
+
+
+
+
 
 
 
