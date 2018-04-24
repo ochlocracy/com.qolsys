@@ -860,7 +860,7 @@ public class Setup {
         driver.findElement(By.xpath("//android.widget.TextView[@text='ALARMS']")).click();
         Thread.sleep(1000);
         WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + sensor_name + "']"));
-        List<WebElement> date_time = driver.findElements(By.id("android:id/text1"));
+        List<WebElement> date_time = driver.findElements(By.id("com.qolsys:id/type"));
         try {
             if (element.isDisplayed()) {
                 System.out.println("Pass: sensor alarm is displayed " + sensor_name);
