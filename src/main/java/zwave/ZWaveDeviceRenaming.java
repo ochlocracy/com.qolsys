@@ -118,7 +118,7 @@ public class ZWaveDeviceRenaming extends Setup {
         else
             logger.info("Pass: Name change successfully reflected in panel UI (Lights Page)");
 
-        adc.navigate_to_user_site_lights(login, password);
+        adc.navigateToUserSiteLights(login, password);
 
         for (j = 0; j < 3; j++) {
             if (adc.driver1.findElement(By.id("ctl00_phBody_ucLightDeviceRepeaterControl_SwitchesAndDimmers" +
@@ -137,7 +137,7 @@ public class ZWaveDeviceRenaming extends Setup {
     public void renameFromUserSite() throws Exception {
         int i, j, size;
 
-        adc.navigate_to_user_site_lights(login, password);
+        adc.navigateToUserSiteLights(login, password);
         renameLightFromUserSite(rename1);
 
         if (driver.findElements(By.id("com.qolsys:id/allOn")).size() == 0)

@@ -26,8 +26,8 @@ public class LightsADC extends Setup {
     ADC adc = new ADC();
 
     //adc Credentials
-    String login = "Gen2-8334";
-    String password = "qolsys1234";
+    String login = "automation7274";
+    String password = "qolsys123";
 
     //light states
     String light_on = "light_on";
@@ -79,11 +79,71 @@ public class LightsADC extends Setup {
     }
 
     @Test
+    public void test() throws Exception{
+        String ADC_URL = "https://alarm.com";
+        String ligthsPage = "https://www.alarm.com/web/system/home/lights";
+        System.out.println("tring to go to lights page");
+//        driver1.navigate().to(ligthsPage);
+        adc.navigateToUserSite(login, password);
+        Thread.sleep(5000);
+//        driver1.get(ADC_URL);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("LOGIN")));
+//        driver1.findElement(By.partialLinkText("LOGIN")).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_ContentPlaceHolder1_loginform_" +
+//                "txtUserName")));
+//        driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(login);
+//        driver1.findElement(By.className("password")).sendKeys(password);
+//        driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_signInButton")).click();
+//        driver1.navigate().to("https://www.alarm.com/web/system/home/lights");
+        adc.driver1.navigate().to(ligthsPage);
+    }
+
+    @Test
+    public void UserSiteTest() throws Exception{
+        String ligthsPage = "https://www.alarm.com/web/system/home/lights";
+        System.out.println("Logging in to User site");
+        adc.navigateToUserSite(login, password);
+//        Thread.sleep(5000);
+        System.out.println("finding lights cards");
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='app-content']/div/div[@class='ember-view']/div[@class='card-container ember-view']/div[6]//div[@class='icons']/div[1]/div[2]")));
+        System.out.println("clicking on lights");
+        Thread.sleep(4000);
+        System.out.println("going to lights page");
+        adc.driver1.get(ligthsPage);
+        System.out.println("waitign for light icon");
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='app-content']/div/section/div[1]/div[1]//div[@class='edit-state ember-view']//button[@role='button']/div")));
+        System.out.println("clicking on light");
+        adc.driver1.findElement(By.xpath("//div[@id='app-content']/div/section/div[1]/div[1]//div[@class='edit-state ember-view']//button[@role='button']/div")).click();
+        System.out.println("waiting for light change");
+//        adc.driver1.findElement();
+        //add get text and print text
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='app-content']/div/div[@class='ember-view']/div[@class='card-container ember-view']/div[6]/div[1]//button[@role='button']")));
+        adc.driver1.findElement(By.xpath("//div[@id='app-content']/div/div[@class='ember-view']/div[@class='card-container ember-view']/div[6]//div[@class='icons']/div[1]/div[2]")).click();
+        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='app-content']/div/div[@class='ember-view']/div[@class='card-container ember-view']/div[6]/div[1]//button[@role='button']")));
+        Thread.sleep(3000);
+        adc.driver.findElement(By.xpath("//div[@id='app-content']/div/div[@class='ember-view']/div[@class='card-container ember-view']/div[6]/div[1]//button[@role='button']")).click();
+
+
+
+      adc.driver1.get(ligthsPage);
+      adc.driver1.findElement(By.xpath("//div[@id='app-content']/div/section/div[1]/div[1]//div[@class='ember-view']/div[@class='icons']/div/div[2]")).click();
+
+        Thread.sleep(5000);
+
+
+// light on "item-action on"
+        //  light off "item-action off"
+//        adc.driver1.findElement(By.id("ember1143")).click();
+//        adc.driver1.findElement(By.id("ember1505")).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Lights")));
+    }
+
+    @Test
     public void turnOnLights() throws Exception {
         logger.info("individually turning lights on from adc");
-
+//icon-circle icon-light-status off ember-view
         //navigate to user site
-        adc.navigate_to_user_site(login, password);
+        adc.navigateToUserSite(login, password);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("emPower")));
         adc.driver1.findElement(By.partialLinkText("emPower")).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Lights")));

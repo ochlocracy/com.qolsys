@@ -23,8 +23,12 @@ public class ZTransmitter extends ConfigPropsBase {
 
     private static ZTransmitter instance;
 
-    HashMap<String, String> deviceType = new HashMap<String, String>();
-    HashMap<String, String> deviceAction= new HashMap<String, String>();
+
+    HashMap<String, String> lightAction= new HashMap<String, String>();
+    HashMap<String, String> doorLockAction= new HashMap<String, String>();
+    HashMap<String, String> thermostatAction= new HashMap<String, String>();
+    HashMap<String, String> dimmerAction= new HashMap<String, String>();
+    HashMap<String, String> gdcActions= new HashMap<String, String>();
 
     public String getztransmitterExecute(){
         return ztransmitterExecute;
@@ -50,6 +54,7 @@ public class ZTransmitter extends ConfigPropsBase {
         addGDC = getString("gdcInclude");
         clearGDC = getString("gdcExclude");
         transmitterInfo = getString("transmitterInfo");
+
     }
 
     public static void init() throws Exception {
@@ -63,6 +68,7 @@ public class ZTransmitter extends ConfigPropsBase {
 
     //service call for all device types
     public void deviceType() throws Exception{
+        HashMap<String, String> deviceType = new HashMap<String, String>();
         deviceType.put("Light", "service call zwavetransmitservice 5 i32 ");
         deviceType.put("Thermostat","service call zwavetransmitservice  6 i32 ");
         deviceType.put("Dimmer","service call zwavetransmitservice 5 i32 ");
@@ -83,40 +89,40 @@ public class ZTransmitter extends ConfigPropsBase {
     // Service call to perform a device action
     public void lightsAction() throws Exception{
         //Lights
-        deviceAction.put("lightON", "i32 0 i32 1 i32 2 i32 1");
-        deviceAction.put("lightOff", "i32 0 i32 1 i32 2 i32 0");
-        deviceAction.put("MeteringGetInfo", "i32 0 i32 2 i32 1 i32");
-        deviceAction.put("MeterignSetInfo", " i32 0 i32 2 i32 2 i32");//(value: 1000 = 1kwh)
+        lightAction.put("lightON", "i32 0 i32 1 i32 2 i32 1");
+        lightAction.put("lightOff", "i32 0 i32 1 i32 2 i32 0");
+        lightAction.put("MeteringGetInfo", "i32 0 i32 2 i32 1 i32");
+        lightAction.put("MeterignSetInfo", " i32 0 i32 2 i32 2 i32");//(value: 1000 = 1kwh)
     }
 
     public void doorLockAction() throws Exception{
-        deviceAction.put("DoorLockOpen","i32 0 i32 1 i32 2 i32 0");
-        deviceAction.put("DoorLockClose","i32 0 i32 1 i32 2 i32 1");
-        deviceAction.put("DoorLockGet","i32 0 i32 1 i32 1");
+        doorLockAction.put("DoorLockOpen","i32 0 i32 1 i32 2 i32 0");
+        doorLockAction.put("DoorLockClose","i32 0 i32 1 i32 2 i32 1");
+        doorLockAction.put("DoorLockGet","i32 0 i32 1 i32 1");
     }
     public void thermostatAction() throws Exception{
-        deviceAction.put("GetCurrentTemp","i32 0 i32 1 i32 1");
-        deviceAction.put("SetCurrentTemp","i32 0 i32 0");// Values:000-1000. Ex: 70 degrees is 700
-        deviceAction.put("GetTermostatMode","i32 0 i32 2 i32 1");
-        deviceAction.put("SetThermostatModeOff","i32 0 i32 2 i32 2 i32 0");
-        deviceAction.put("SetThermostatModeHeat","i32 0 i32 2 i32 2 i32 1");
-        deviceAction.put("SetThermostatModeCool","i32 0 i32 2 i32 2 i32 2");
-        deviceAction.put("SetThermostatModeAuto","i32 0 i32 2 i32 2 i32 3");
-        deviceAction.put("GetSetPointHeat","i32");
-        deviceAction.put("GetSetPointCool","");
-        deviceAction.put("SetSetPointHeating","");
-        deviceAction.put("SetSetPointCooling","");
-        deviceAction.put("GetBatteryLevel","");
-        deviceAction.put("SetBatteryLevel","");//Values: 0-100 in HEX
+        thermostatAction.put("GetCurrentTemp","i32 0 i32 1 i32 1");
+        thermostatAction.put("SetCurrentTemp","i32 0 i32 0");// Values:000-1000. Ex: 70 degrees is 700
+        thermostatAction.put("GetTermostatMode","i32 0 i32 2 i32 1");
+        thermostatAction.put("SetThermostatModeOff","i32 0 i32 2 i32 2 i32 0");
+        thermostatAction.put("SetThermostatModeHeat","i32 0 i32 2 i32 2 i32 1");
+        thermostatAction.put("SetThermostatModeCool","i32 0 i32 2 i32 2 i32 2");
+        thermostatAction.put("SetThermostatModeAuto","i32 0 i32 2 i32 2 i32 3");
+        thermostatAction.put("GetSetPointHeat","i32");
+        thermostatAction.put("GetSetPointCool","");
+        thermostatAction.put("SetSetPointHeating","");
+        thermostatAction.put("SetSetPointCooling","");
+        thermostatAction.put("GetBatteryLevel","");
+        thermostatAction.put("SetBatteryLevel","");//Values: 0-100 in HEX
     }
     public void dimmerAction() throws Exception{
-        deviceAction.put("DimmingLevelSet","i32 0 i32 3 i32 2 i32");//Value 0-255
-        deviceAction.put("DimmingLevelGet","i32 0 i32 3 i32 1");
+        dimmerAction.put("DimmingLevelSet","i32 0 i32 3 i32 2 i32");//Value 0-255
+        dimmerAction.put("DimmingLevelGet","i32 0 i32 3 i32 1");
     }
     public void gdcActions() throws Exception{
-        deviceAction.put("GarageDoorOpen","i32 0 i32 1 i32 2 i32 1");
-        deviceAction.put("GarageDoorClose", "i32 0 i32 1 i32 2 i32 0 ");
-        deviceAction.put("GarageDoorGet", "i32 0 i32 1 i32 1");
+        gdcActions.put("GarageDoorOpen","i32 0 i32 1 i32 2 i32 1");
+        gdcActions.put("GarageDoorClose", "i32 0 i32 1 i32 2 i32 0 ");
+        gdcActions.put("GarageDoorGet", "i32 0 i32 1 i32 1");
     }
 
 

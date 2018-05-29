@@ -1,6 +1,7 @@
 package zwave;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -14,6 +15,8 @@ import utils.Setup;
 
 import java.io.IOException;
 
+import static utils.ConfigProps.primary;
+
 /* One door lock, default name, status unlocked */
 
 public class DoorLockTest extends Setup {
@@ -23,6 +26,7 @@ public class DoorLockTest extends Setup {
 
     public DoorLockTest() throws Exception {
     }
+
 
     public void status_verification(WebElement element, String text) {
         if (element.getText().equals(text)) {
@@ -41,25 +45,30 @@ public class DoorLockTest extends Setup {
         }
     }
 
+
+// Add method to change transmitter or real devices
+
+
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver(primary , "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
 
     @Test(priority = 0)
     public void Check_all_elements_on_DoorLock_page() throws Exception {
-        DoorLockPage door = PageFactory.initElements(driver, DoorLockPage.class);
+        DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        swipeFromRighttoLeft();
+//        swipeFromRighttoLeft();
+        swipeToDoorLockPage(lockPage);
         Thread.sleep(2000);
-        elementVerification(door.Key_icon, "Key icon");
-        elementVerification(door.DoorLock_Name, "Door Lock name");
-        elementVerification(door.DoorLock_Status, "Door Lock status");
-        elementVerification(door.Refresh_Status, "Refresh status");
-        elementVerification(door.Door_battery, "Door lock battery level");
-        elementVerification(door.Unlock_ALL, "Unlock All Doors");
-        elementVerification(door.Lock_ALL, "Lock All Doors");
+        elementVerification(lockPage.Key_icon, "Key icon");
+        elementVerification(lockPage.DoorLock_Name, "Door Lock name");
+        elementVerification(lockPage.DoorLock_Status, "Door Lock status");
+        elementVerification(lockPage.Refresh_Status, "Refresh status");
+        elementVerification(lockPage.Door_battery, "Door lock battery level");
+        elementVerification(lockPage.unlockAll, "Unlock All Doors");
+        elementVerification(lockPage.Lock_ALL, "Lock All Doors");
         home.Home_button.click();
     }
 
@@ -67,16 +76,49 @@ public class DoorLockTest extends Setup {
     public void Door_Lock_events() throws Exception {
         DoorLockPage door = PageFactory.initElements(driver, DoorLockPage.class);
         swipeFromRighttoLeft();
-        smart_click(door.DoorLock_Status, door.Lock_ALL, "UNLOCKED", "Locked");
+//        timer.start();
+        for(int i=0; i<=5; i++) {
+        smart_click(door.DoorLock_Status, door.Lock_ALL, "UNLOCKED", "LockedTxt");
         Thread.sleep(7000);
         status_verification(door.DoorLock_Status, "LOCKED");
         Thread.sleep(5000);
-        smart_click(door.DoorLock_Status, door.Unlock_ALL, "LOCKED", "Unlocked");
+        smart_click(door.DoorLock_Status, door.unlockAll, "LOCKED", "Unlocked");
         Thread.sleep(7000);
         status_verification(door.DoorLock_Status, "UNLOCKED");
         Thread.sleep(5000);
+        }
+        System.out.println("Ending Timer");
+//        timer.end();
     }
 
+//    public void smart_click(WebElement element, WebElement element2, String status, String message) {
+//        if (element.getText().equals(status)) {
+//            element2.click();
+//            System.out.println("Door lock is successfully " + message);
+//        } else {
+//
+//            System.out.println("Status is not as expected");
+//        }
+//    }
+
+
+
+//****************************************************************************************************
+
+    //add a method to select real device or simulator test
+
+
+    /*Before Test Run
+        *Set Default Settings
+        *Manually Pair 3 Locks
+        *Try pairing the 4th lock. This  should fail
+        *Change max to 6 look locks
+        *Pair max number of locks
+    */
+
+    public void realDevicePreSetup() {
+        System.out.println("Running Real Device Test");
+    }
 
     public void Z_Wave_Door_Locks_Disarm_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -99,15 +141,16 @@ public class DoorLockTest extends Setup {
 
         logger.info("*************************ZD_D_005*******************************");
         logger.info("Disarm mode: Verify that the set number of Door Locks allowed won't go under the number of Door Locks paired");
-
+        // pair door lock with front door stock name
+        //pair another door lock with a custom name. DoorLock1
         logger.info("*************************ZD_D_002*******************************");
         logger.info("Disarm mode: Verify that a new Door Lock appears on the ADC websites");
 
         logger.info("*************************ZD_D_011*******************************");
-        logger.info("Disarm mode: Verify that a Single Door Lock can be Unlocked / Locked from a panel");
+        logger.info("Disarm mode: Verify that a Single Door Lock can be Unlocked / LockedTxt from a panel");
 
-        logger.info("*************************ZD_D_013*******************************");
-        logger.info("Disarm mode: Verify that a Panel UI changes when the Door Lock is manually Unlocked / Locked");
+//        logger.info("*************************ZD_D_013*******************************");
+//        logger.info("Disarm mode: Verify that a Panel UI changes when the Door Lock is manually Unlocked / LockedTxt");
 
         logger.info("*************************ZD_D_012*******************************");
         logger.info("Disarm mode: Verify that a Single Door Lock can be Unlocked / Locked from a panel at 5 meters");
@@ -116,19 +159,19 @@ public class DoorLockTest extends Setup {
         logger.info("Disarm mode: Verify that multiple door locks can be Locked / Unlocked from a panel");
 
         logger.info("*************************ZD_D_015*******************************");
-        logger.info("Disarm mode: Verify that multiple door locks can be Locked / Unlocked from a panel at 5 meters");
+        logger.info("Disarm mode: Verify that multiple door locks can be LockedTxt / Unlocked from a panel at 5 meters");
 
         logger.info("*************************ZD_D_016*******************************");
-        logger.info("Disarm mode: Verify that the Door Locks can be Locked / Unlocked from ADC User site");
+        logger.info("Disarm mode: Verify that the Door Locks can be LockedTxt / Unlocked from ADC User site");
 
         logger.info("*************************ZD_D_026*******************************");
         logger.info("Disarm mode: Verify that the battery status is displayed");
 
-        logger.info("*************************ZD_D_027*******************************");
-        logger.info("Disarm mode: Verify that the battery is low alert message will appear");
+//        logger.info("*************************ZD_D_027*******************************");
+//        logger.info("Disarm mode: Verify that the battery is low alert message will appear");
 
-        logger.info("*************************ZD_D_017*******************************");
-        logger.info("Disarm mode: Verify both panel and ADC recognize Door Lock Jam Alarm");
+//        logger.info("*************************ZD_D_017*******************************");
+//        logger.info("Disarm mode: Verify both panel and ADC recognize Door Lock Jam Alarm");
 
         logger.info("*************************ZD_D_006*******************************");
         logger.info("Disarm mode: Verify that changing device name from preset to a custom name changes the UI name");

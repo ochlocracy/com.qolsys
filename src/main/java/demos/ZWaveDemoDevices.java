@@ -52,7 +52,7 @@ public class ZWaveDemoDevices extends Setup{
                 Thread.sleep(1000);
                 swipeFromRighttoLeft();
                 Thread.sleep(2000);
-                door.Unlock_ALL.click();
+                door.unlockAll.click();
                 Thread.sleep(3000);
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
