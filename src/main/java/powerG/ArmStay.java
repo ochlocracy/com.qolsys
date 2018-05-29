@@ -449,6 +449,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(120, 1411, PGSensorsActivity.MOTIONACTIVE);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         verifyInAlarm();
+        Thread.sleep(1000);
         WebElement door1 = driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101']"));
         WebElement motion1 = driver.findElement(By.xpath("//android.widget.TextView[@text='Motion 120-1411']"));
         elementVerification(door1, "DW 104-1101");

@@ -284,25 +284,27 @@ public class SanityUpdatePG extends Setup {
     @Test(priority = 1)
     public void Add_Sensor() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html");
-        log = report.startTest("UpdateProcess.Motion_Sensors");
+        log = report.startTest("UpdateProcess.Add a sensor");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         deleteFromPrimary(1);
         navigate_to_autolearn_page();
+        log.log(LogStatus.INFO, ("Adding a new sensor"));
         addPGSensors("DW", 104, 1101, 0);//gr10
+        log.log(LogStatus.PASS, ("Pass: sensor is added successfully"));
         home.Home_button.click();
     } //48sec
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Edit_Name() throws InterruptedException, IOException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Motion_Sensors");
+        log = report.startTest("UpdateProcess.Edit Name");
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         navigate_to_Security_Sensors_page();
         sen.Edit_Sensor.click();
         sen.Edit_Img.click();
-        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
-        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys("DW 104-1101NEW");
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).clear();
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys("DW 104-1101NEW");
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
@@ -332,10 +334,11 @@ public class SanityUpdatePG extends Setup {
     public void Delete_Sensor() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Contact_Sensors");
+        log = report.startTest("UpdateProcess.Delete_Sensor");
         Thread.sleep(2000);
         deleteFromPrimary(1);
         Thread.sleep(2000);
+        log.log(LogStatus.INFO, ("Verify sensor is deleted"));
         adc.update_sensors_list();
         adc.Request_equipment_list();
         Thread.sleep(4000);
@@ -349,6 +352,7 @@ public class SanityUpdatePG extends Setup {
             addPGSensors("DW", 104, 1101, 0);//gr10
         }
         Thread.sleep(2000);
+        log.log(LogStatus.PASS, ("Pass: sensor is deleted successfully and not displayed both on panel and ADC"));
         home.Home_button.click();
     } //3m 25sec
 
@@ -405,7 +409,7 @@ public class SanityUpdatePG extends Setup {
     @Test(priority = 5)
     public void motionSensorCheck() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Motion_Sensors");
+        log = report.startTest("UpdateProcess.Motion Sensors");
         System.out.println("Activate motion sensors");
         log.log(LogStatus.INFO, "Activate motion sensors in ARM AWAY mode");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -518,12 +522,7 @@ public class SanityUpdatePG extends Setup {
         log.log(LogStatus.INFO, "Activate water sensor");
         activation_restoration(241, 1971, PGSensorsActivity.FLOOD, PGSensorsActivity.FLOODREST); //Sensor21
         Thread.sleep(5000);
-        try {
-            verifyInAlarm();
-        } finally {
-            log.log(LogStatus.FAIL, "Failed: System is NOT in ALARM");
-        }
-
+        verifyInAlarm();
         Thread.sleep(5000);
         adc.New_ADC_session(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Water Alarm')]", "//*[contains(text(), 'Sensor 21 Alarm**')]");
@@ -534,7 +533,7 @@ public class SanityUpdatePG extends Setup {
     @Test(priority = 8)
     public void shockSensorCheck() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Shock_Sensors");
+        log = report.startTest("UpdateProcess.Shock Sensors");
         log.log(LogStatus.INFO, "Activate shock sensor in ARM AWAY mode");
         servcall.set_AUTO_STAY(0);
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -566,7 +565,7 @@ public class SanityUpdatePG extends Setup {
     @Test(priority = 9)
     public void glassbreakSensorCheck() throws Exception {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.Glassbreak_Sensors");
+        log = report.startTest("UpdateProcess.Glassbreak Sensors");
         System.out.println("Activate glassbreak sensors");
         log.log(LogStatus.INFO, "Activate glassbreak sensor in ARM AWAY mode");
         servcall.set_AUTO_STAY(0);
@@ -708,29 +707,39 @@ public class SanityUpdatePG extends Setup {
     public void Tamper() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Tamper");
+        log.log(LogStatus.INFO, "Tamper events verification");
         activation_restoration(104, 1101, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);//gr10
         adc.New_ADC_session(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 1 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 1 is displayed correctly");
         activation_restoration(120, 1411, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 9 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 9 is displayed correctly");
         activation_restoration(201, 1541, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 14 is displayed correctly");
         activation_restoration(220, 1661, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 16 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 16 is displayed correctly");
         activation_restoration(171, 1741, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 17 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 17 is displayed correctly");
         activation_restoration(160, 1874, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 19 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 19 is displayed correctly");
         activation_restoration(241, 1971, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 21 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 21 is displayed correctly");
         activation_restoration(400, 1995, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 31 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
+        log.log(LogStatus.PASS, "Tamper event for Sensor 31 is displayed correctly");
     } //7m 43
 
     @Test(priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Supervisory");
+        log.log(LogStatus.INFO, "Supervisory verification");
         tap(5,6);
         powerGsupervisory(201, 1541);
         navigateToSettingsPage();
@@ -788,6 +797,7 @@ public class SanityUpdatePG extends Setup {
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         log = report.startTest("UpdateProcess.Jam");
+        log.log(LogStatus.INFO, "Jam event verification");
         Thread.sleep(1000);
         servcall.set_RF_JAM_DETECT_enable();
         contact.acknowledge_all_alerts();
@@ -798,13 +808,16 @@ public class SanityUpdatePG extends Setup {
         contact.Messages_Alerts_Alarms_tab.click();
         WebElement string = driver.findElement(By.id("com.qolsys:id/ui_msg_text"));
         Assert.assertTrue(string.getText().contains("PowerG receiver jammed"));
+        log.log(LogStatus.PASS, ("Pass: PowerG receiver jammed message is displayed"));
         powerGjamer(0);
         Thread.sleep(2000);
         try {
             if (string.isDisplayed()) {
                 System.out.println("Fail: jammed message is displayed");
+                log.log(LogStatus.FAIL, ("Fail: jammed message is displayed after canceling jam"));
             } else {
-                System.out.println("Pass: jammed message is not dispalyed");
+                System.out.println("Pass: jammed message is not displayed");
+                log.log(LogStatus.PASS, ("Pass: jammed message is not displayed after canceling jam"));
             }
         } finally {
         }
@@ -816,14 +829,21 @@ public class SanityUpdatePG extends Setup {
     public void Low_Battery() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("Software Version", softwareVersion());
+
         log = report.startTest("UpdateProcess.Low_battery");
+        log.log(LogStatus.INFO, ("Low battery events verification"));
         Thread.sleep(2000);
         pgprimaryCall(104, 1101, "80 1");
         home.Contact_Us.click();
         contact.Messages_Alerts_Alarms_tab.click();
         WebElement string = driver.findElement(By.id("com.qolsys:id/ui_msg_text"));
         Assert.assertTrue(string.getText().contains("DW 104-1101 (1) - Low Battery"));
+        log.log(LogStatus.PASS, ("Pass: low battery event is successfully displayed for DW 104-1101 sensor"));
         pgprimaryCall(104, 1101, "80 0");
 
     } //40sec

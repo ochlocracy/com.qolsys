@@ -76,7 +76,12 @@ public class Setup {
 
     public String splitMethod(String str) {
         // import splitter, pass the string, convert into a list of words, add to getUDID
-        String a = str.split("\\n")[1];
+        String a = null;
+        try{
+            a = str.split("\\n")[1];
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Please check panel USB connection");
+        }
         return a.split("\\s")[0];
     }
 
@@ -724,7 +729,7 @@ public class Setup {
     public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
         rt.exec(ConfigProps.adbPath + add_primary);
-        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+        // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
     }
 
     public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
@@ -773,13 +778,21 @@ public class Setup {
         Thread.sleep(3000);
         driver.findElementById("com.qolsys:id/ok").click();
         Thread.sleep(2000);
-        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
+//        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
+//        Thread.sleep(2000);
+//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
+//        nli.get(1).click();
+//        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+////        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
+////        Thread.sleep(2000);
+//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
+//        nli.get(0).click();
+
         Thread.sleep(2000);
-        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
-        nli.get(1).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[@index='1']")).click();
-        driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
+        driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
