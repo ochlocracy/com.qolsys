@@ -138,10 +138,7 @@ public class ADC extends Setup {
 
     public String getAccountId() throws IOException {
         String accountId = null;
-        if (get_UDID().equals("4216551")) {      //Anya
-            accountId = "4910737";
-            return accountId;
-        } else if (get_UDID().equals("8ebdbcf6")) {    //Olga
+        if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
         } else if (get_UDID().equals("ac82129c")) {    //Sergio
@@ -150,8 +147,8 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("acf112e3")) {    //Zach
             accountId = "5635456";
             return accountId;
-        } else if (get_UDID().equals("8ebdbcb3")) {    //Jeff EGGZ
-            accountId = "4283420";
+        } else if (get_UDID().equals("a994132a")) {
+            accountId = "5635550";
             return accountId;
         } else if (get_UDID().equals("8f03bcd3")) {    //Jeff FIGZ
             accountId = "4311031";
@@ -167,7 +164,13 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("62864b84")) { //Olga AT&T
             accountId = "5434143";
         } else if (get_UDID().equals("f003b8cb")) { //iqhub6
-        accountId = " 5765486";
+            accountId = " 5765486";
+        } else if (get_UDID().equals("4316483")) {
+            accountId = "6045889";
+        } else if (get_UDID().equals("2c63bc4a")) {
+            accountId = "6045616";
+        } else if (get_UDID().equals("ac8312d3")) {
+            accountId = "6074610";
     }
         return accountId;
     }
@@ -204,10 +207,11 @@ public class ADC extends Setup {
     }
     public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
+            Thread.sleep(4000);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
-            Thread.sleep(10000);
+            Thread.sleep(7000);
             driver1.navigate().refresh();
-            Thread.sleep(10000);
+            Thread.sleep(7000);
             for (int i = 0; i < message.length; i++) {
                 driver1.navigate().refresh();
                 Thread.sleep(2000);

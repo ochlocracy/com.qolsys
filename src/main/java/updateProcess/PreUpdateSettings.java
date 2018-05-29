@@ -148,7 +148,7 @@ public class PreUpdateSettings extends Setup {
         servcall.set_LOSS_OF_SUPERVISORY_TIMEOUTY_12h();
         Thread.sleep(one_sec);
         logger.info("Loss of Supervisory Signals for Emergency sensors: 12 hours");
-        servcall.set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT();
+        servcall.set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT(12);
         Thread.sleep(one_sec);
         logger.info("Cell Signal Timeout: 25 seconds");
         servcall.set_Cell_Signal_Timeout(25);

@@ -360,6 +360,7 @@ public class ArmStay extends Setup {
         Thread.sleep(1000);
         adc.New_ADC_session(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(1000);
         adc.Request_equipment_list();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window14);

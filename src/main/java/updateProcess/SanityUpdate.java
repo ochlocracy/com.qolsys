@@ -116,7 +116,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_LOSS_OF_SUPERVISORY_TIMEOUTY_24h();
         Thread.sleep(one_sec);
-        servcall.set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT();
+        servcall.set_LOSS_OF_SUPERVISORY_EMERGENCY_TIMEOUT(4);
         Thread.sleep(one_sec);
         servcall.set_Cell_Signal_Timeout(30);
         Thread.sleep(one_sec);

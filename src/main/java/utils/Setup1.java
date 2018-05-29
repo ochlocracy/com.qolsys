@@ -54,7 +54,7 @@ public class Setup1 {
 
     public void webDriverSetUp () {
         driver1 = new FirefoxDriver();
-        wait1 = new WebDriverWait(driver1, 40);
+        wait1 = new WebDriverWait(driver1, 60);
     }
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
@@ -68,7 +68,7 @@ public class Setup1 {
         capabilities.setCapability("appPackage", "com.qolsys");
         capabilities.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         capabilities.setCapability("PORT", "PORT_");
-        capabilities.setCapability("newCommandTimeout", "500");
+        capabilities.setCapability("newCommandTimeout", "5000");
         this.driver = new AndroidDriver<WebElement>(new URL(URL_), getCapabilities());
     }
 //    WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -397,6 +397,29 @@ public class Setup1 {
         rt.exec(ConfigProps.adbPath + " -s " +UDID_+ deleteFromPrimary);
         System.out.println(deleteFromPrimary);
     }
+    public void enterDefaultUserCode() {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.One.click();
+        home_page.Two.click();
+        home_page.Three.click();
+        home_page.Four.click();
+    }
+
+    public void enterGuestCode() {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.One.click();
+        home_page.Two.click();
+        home_page.Three.click();
+        home_page.Three.click();
+    }
+
+    public void enterDefaultDealerCode() {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page.Two.click();
+        home_page.Two.click();
+        home_page.Two.click();
+        home_page.Two.click();
+    }
     public void autoStaySetting () throws InterruptedException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -412,5 +435,49 @@ public class Setup1 {
         arming.Auto_Stay.click();
         Thread.sleep(1000);
         home.Home_button.click();
+    }
+
+    public void navigateToSettingsPage() {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+    }
+
+    public void pgprimaryCall(String UDID_, int type, int id, String status) throws IOException {
+        String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
+        rt.exec(ConfigProps.adbPath +" -s " + UDID_ + status_send);
+        System.out.println(" -s " + UDID_ + status_send);
+    }
+
+    public void navigateToAdvancedSettingsPage() throws InterruptedException {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        Thread.sleep(1000);
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
+        enterDefaultDealerCode();
+    }
+    public void verifyInAlarm() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        if (home_page.ALARM.isDisplayed()) {
+            logger.info("Pass: System is in ALARM");
+        } else {
+            System.out.println("FAIL: System is not in ALARM");
+        }
+    }
+    public void verifyDisarm() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        if (home_page.Disarmed_text.getText().equals("DISARMED")) {
+            logger.info("Pass: System is DISARMED");
+        } else {
+            logger.info("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
+        }
+    }
+    public void addPrimaryCallPG(String UDID_, int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
+        rt.exec(ConfigProps.adbPath + " -s " +UDID_ + add_primary);
+        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 }

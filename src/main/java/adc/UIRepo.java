@@ -13,6 +13,10 @@ public class UIRepo {
     public WebElement Disarm_state;
     @FindBy(xpath = "//button[contains(@id, 'ember') and contains(@class, 'armed-stay btn ember-view')]")
     public WebElement Arm_Stay;
+    @FindBy(xpath = "//button[contains(@id, 'ember') and contains(@class, 'armed-away btn ember-view')]")
+    public WebElement Arm_Away;
+
+
     @FindBy(xpath = "//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay ')]")
     public WebElement Arm_Stay_state;
     @FindBy(xpath = "//button[contains(@id, 'ember') and contains(@class, 'disarmed btn ember-view')]")

@@ -71,7 +71,7 @@ public class Setup {
 
     public void webDriverSetUp() {
         driver1 = new FirefoxDriver();
-        wait = new WebDriverWait(driver1, 40);
+        wait = new WebDriverWait(driver1, 60);
     }
 
     public String splitMethod(String str) {
@@ -85,6 +85,13 @@ public class Setup {
         rt.exec(command);
         String panel_UDID = splitMethod(execCmd(command));
         return panel_UDID;
+    }
+
+    public void killnode() throws IOException {
+        String command = " killall node";
+        for (int i = 3; i > 0; i--) {
+            rt.exec(ConfigProps.adbPath + command);
+        }
     }
 
     public void setupDriver(String getUdid, String url_, String port_) throws Exception {
@@ -112,6 +119,7 @@ public class Setup {
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         cap.setCapability("newCommandTimeout", 1000);
         //in case previous session was not stopped
+        killnode();
         service.stop();
         Thread.sleep(2000);
         service.start();
@@ -322,7 +330,6 @@ public class Setup {
             System.out.println("FAIL: System is not in ALARM");
         }
     }
-
 
     public void verifyPanelAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
@@ -713,6 +720,7 @@ public class Setup {
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
+
     public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
         rt.exec(ConfigProps.adbPath + add_primary);
@@ -749,7 +757,7 @@ public class Setup {
         adv.INSTALLATION.click();
         instal.DEVICES.click();
         dev.Security_Sensors.click();
-  //      ss.Remove_All_Powerg_Sensors.click();
+        //      ss.Remove_All_Powerg_Sensors.click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.TextView[@index='2']")).click();
         Thread.sleep(5000);
@@ -775,7 +783,7 @@ public class Setup {
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
-     //       e.printStackTrace();
+            //       e.printStackTrace();
         }
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/grouptype")).click();
@@ -814,6 +822,18 @@ public class Setup {
         System.out.println(status_send);
     }
 
+    public void powerGsupervisory(int type, int id) throws IOException {
+        String status_send = " shell powerg_simulator_supervisory " + type + "-" + id + " 1 0 0 0";
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void powerGjamer(int state) throws IOException {
+        String status_send = " shell powerg_simulator_jamer " + state;
+        rt.exec(ConfigProps.adbPath + status_send);
+        System.out.println(status_send);
+    }
+
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
         Thread.sleep(5000);
@@ -834,4 +854,22 @@ public class Setup {
         }
     }
 
+    public boolean alarmVerification(String sensor_name) throws Exception {
+        swipeFromRighttoLeft();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='ALARMS']")).click();
+        Thread.sleep(1000);
+        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + sensor_name + "']"));
+        List<WebElement> date_time = driver.findElements(By.id("com.qolsys:id/type"));
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Pass: sensor alarm is displayed " + sensor_name);
+                System.out.println(date_time.get(1).getText());
+                swipeFromLefttoRight();
+            }
+            return true;
+        } catch (NoSuchElementException e) {}
+        return false;
+
+    }
 }
