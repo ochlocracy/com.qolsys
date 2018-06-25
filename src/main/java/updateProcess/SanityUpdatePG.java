@@ -426,7 +426,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(2000);
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(2000);
-        activation_restoration(123, 1441, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr17 Sensor10
+        activation_restoration(120, 1441, PGSensorsActivity.MOTIONACTIVE, PGSensorsActivity.MOTIONIDLE);//gr17 Sensor10
         Thread.sleep(7000);
         verifyInAlarm();
         Thread.sleep(10000);
@@ -932,7 +932,7 @@ public class SanityUpdatePG extends Setup {
         report.flush();
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void driver_quit() throws IOException, InterruptedException {
         System.out.println("*****Stop driver*****");
         driver.quit();
@@ -941,7 +941,7 @@ public class SanityUpdatePG extends Setup {
         service.stop();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void teardown() {
         adc.driver1.close();
     }

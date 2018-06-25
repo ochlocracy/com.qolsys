@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class Transmitter {
 
-    PowergDeviceHandler powergDevice =PowergDeviceHandler.getPowergDeviceHandler();
+    PowergDeviceHandler powergDevice = PowergDeviceHandler.getPowergDeviceHandler();
     Socket MyClient;
 
 

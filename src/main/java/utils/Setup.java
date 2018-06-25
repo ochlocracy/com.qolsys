@@ -26,18 +26,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Setup {
+public class Setup extends Driver{
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM.dd_HH.mm.ss");
     public String projectPath = new String(System.getProperty("user.dir"));
     public File appDir = new File("src");
-    public AndroidDriver<WebElement> driver;
-    public WebDriver driver1;
-    public WebDriverWait wait;
     public Log log = new Log();
     public Logger logger = Logger.getLogger(this.getClass().getName());
     public Runtime rt = Runtime.getRuntime();
-    public AppiumDriverLocalService service;
 
     public Setup() throws Exception {
         ConfigProps.init();
@@ -68,74 +64,6 @@ public class Setup {
             return e.getMessage();
         }
     }
-
-    public void webDriverSetUp() {
-        driver1 = new FirefoxDriver();
-        wait = new WebDriverWait(driver1, 60);
-    }
-
-    public String splitMethod(String str) {
-        // import splitter, pass the string, convert into a list of words, add to getUDID
-        String a = null;
-        try{
-            a = str.split("\\n")[1];
-        } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Please check panel USB connection");
-        }
-        return a.split("\\s")[0];
-    }
-
-    public String get_UDID() throws IOException {
-        String command = ConfigProps.adbPath + " devices";
-        rt.exec(command);
-        String panel_UDID = splitMethod(execCmd(command));
-        return panel_UDID;
-    }
-
-    public void killnode() throws IOException {
-        String command = " killall node";
-        for (int i = 3; i > 0; i--) {
-            rt.exec(ConfigProps.adbPath + command);
-        }
-    }
-
-    public void setupDriver(String getUdid, String url_, String port_) throws Exception {
-//        DesiredCapabilities cap = new DesiredCapabilities();
-//        cap.setCapability("deviceName", "IQPanel2");
-//        cap.setCapability("BROWSER_NAME", "Android");
-//        cap.setCapability("udid", getUdid);
-//        cap.setCapability("appPackage", "com.qolsys");
-//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-//        cap.setCapability("newCommandTimeout", "1000");
-//        cap.setCapability("clearSystemFiles", true);
-//        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
-
-        service = AppiumDriverLocalService
-                .buildService(new AppiumServiceBuilder()
-                        .usingDriverExecutable(new File(ConfigProps.nodePath))
-                        .withAppiumJS(new File(ConfigProps.appiumPath))
-                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
-                        .withIPAddress("127.0.0.1").usingPort(4723));
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "IQPanel2");
-        cap.setCapability("platformName", "Android");
-        cap.setCapability("udid", get_UDID());
-        cap.setCapability("appPackage", "com.qolsys");
-        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-        cap.setCapability("newCommandTimeout", 1000);
-        //in case previous session was not stopped
-        killnode();
-        service.stop();
-        Thread.sleep(2000);
-        service.start();
-        System.out.println("\n*****Start Appium*****\n");
-        Thread.sleep(2000);
-
-
-        driver = new AndroidDriver<>(service.getUrl(), cap);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    }
-
 
     public void setupLogger(String test_case_name) throws Exception {
         PropertyConfigurator.configure(new File(appDir, "/main/resources/log4j.properties").getAbsolutePath());
@@ -328,7 +256,7 @@ public class Setup {
     }
 
     public void verifyInAlarm() throws Exception {
-        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        HomePage home_page = PageFactory.initElements(this.driver, HomePage.class);
         if (home_page.ALARM.isDisplayed()) {
             logger.info("Pass: System is in ALARM");
         } else {

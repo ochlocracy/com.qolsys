@@ -12,7 +12,6 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import panel.*;
-import sensors.Sensors;
 import utils.ConfigProps;
 import utils.PGSensorsActivity;
 import utils.Setup;
@@ -383,6 +382,7 @@ public class ArmStay extends Setup{
         WebElement door1 = driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1101']"));
         WebElement door2 = driver.findElement(By.xpath("//android.widget.TextView[@text='DW 104-1216']"));
         elementVerification(door1, "DW 104-1101");
+        Thread.sleep(2000);
         elementVerification(door2, "DW 104-1216");
         enterDefaultUserCode();
         Thread.sleep(1000);
