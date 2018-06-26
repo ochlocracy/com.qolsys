@@ -1,14 +1,10 @@
 package zwave;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
-import panel.AdvancedSettingsPage;
-import panel.DevicesPage;
-import panel.HomePage;
-import panel.InstallationPage;
+import panel.*;
 import utils.ConfigProps;
 import utils.Setup;
 import utils.ZTransmitter;
@@ -36,29 +32,14 @@ public class ZwaveTransmitter extends Setup {
 
 
 
+
     public ZwaveTransmitter() throws Exception {
         ZTransmitter.init();
         ConfigProps.init();
     }
 
-    public void removeAllDevices() throws Exception{
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Remove_All_Devices_Z_Wave_Page.click();
-        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
-        Thread.sleep(1000);
-        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
-        Thread.sleep(1000);
-        transmit.deviceType();
-    }
+
     // bridge will be included to the Gen2 an nodeID 2
     public void localIncludeBridge() throws Exception {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
@@ -158,18 +139,8 @@ public class ZwaveTransmitter extends Setup {
     }
 
 
-    public void localZwaveAdd() throws IOException, InterruptedException {
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.Zwave_Devices.click();
-        zwave.Add_Device_Z_Wave_Page.click();
-    }
+
+
 
 
     public void localAddLights() throws Exception {
@@ -196,7 +167,8 @@ public class ZwaveTransmitter extends Setup {
             homePage.Back_button.click();
             Thread.sleep(5000);
     }
-    public void localAddDimmer() throws Exception {
+    public void localTransmitAddDimmer(int numLights) throws Exception {
+
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(1000);

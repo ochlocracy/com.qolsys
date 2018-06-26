@@ -47,6 +47,9 @@ public class ZWavePage {
     @FindBy(id = "com.qolsys:id/ok")
     public WebElement UnsupportedDeviceAcknowledgement;
 
+
+    //Zwave setting Page
+
     //Lights Stock Names
     @FindBy(xpath = "android:id/text1[@text='Light']")
     public WebElement StockNameLight;

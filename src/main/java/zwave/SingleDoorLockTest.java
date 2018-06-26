@@ -6,10 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import panel.*;
-import utils.ConfigProps;
+import panel.AdvancedSettingsPage;
+import panel.DevicesPage;
+import panel.HomePage;
+import panel.InstallationPage;
 import utils.Setup;
-import utils.ZTransmitter;
 
 import java.io.IOException;
 
@@ -17,14 +18,12 @@ import static utils.ConfigProps.primary;
 
 /* One door lock, default name, status unlocked */
 
-public class DoorLockTest extends Setup {
+public class SingleDoorLockTest extends Setup {
 
     String page_name = "Door Lock Testing";
     Logger logger = Logger.getLogger(page_name);
 
-    public DoorLockTest() throws Exception {
-        ZTransmitter.init();
-        ConfigProps.init();
+    public SingleDoorLockTest() throws Exception {
     }
 
 
@@ -51,12 +50,12 @@ public class DoorLockTest extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setupDriver("ac82129c" , "http://127.0.1.1", "4723");
+        setupDriver(primary , "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
 
     @Test(priority = 0)
-    public void CheckAllElementsOnDoorLockPage() throws Exception {
+    public void Check_all_elements_on_DoorLock_page() throws Exception {
         DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 //        swipeFromRighttoLeft();
@@ -115,23 +114,11 @@ public class DoorLockTest extends Setup {
         *Pair max number of locks
     */
 
-
-    @Test
-    public void preDoorLockTestSetup() throws Exception {
-        //Add 3 door window sensor and call it Front Door, back door, bathroom window
-        //remove all zwave devices
-        removeAllDevices();
-        //change all zwave settings to default
-//        zwaveSettingReset();
+    public void realDevicePreSetup() {
+        System.out.println("Running Real Device Test");
     }
-
     @Test
-    public void pairingTransmitter() throws Exception {
-        localIncludeBridge();
-    }
-
-    @Test
-    public void disArmParingDeviceTest(){
+    public void dParingDeviceTest(){
         //Pair 2 door lock locally( name it stock "Front Door" and "Back Door")
         //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
         //pair 1 door lock locally and expect max number failure
@@ -142,8 +129,8 @@ public class DoorLockTest extends Setup {
 
     }
     @Test
-    public void disArmNameChangeTest(){
-        // Change stock name Front Door to custom name "Door Lock and Node ID" locally
+    public void dNameChangeTest(){
+        //Change stock name Front Door to custom name "Door Lock and Node ID" locally
         //change 3rd door lock with custom named to stock name "Side Door" locally
         // verify change on panel
         // verify change on ADC Dealer site
@@ -152,59 +139,12 @@ public class DoorLockTest extends Setup {
         // verify side door lock changed to srg door on the panel
     }
     @Test
-    public void disArmUserCodeTest(){
-        //add longterm user code
-        //verify user code work on door lock
-        //add a user code with an expiration time
-        //verify user code works when active and doesn't work when deactivated
-    }
-
-    @Test
-    public void disArmLockActionTest() throws Exception{
+    public void dLockActionTest() throws Exception{
         DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
         swipeToDoorLockPage(lockPage);
         System.out.println("At Door Lock Page");
-        //panel test
-        //lock all door locks one at a time and verify each change one at a time
-        //unlock all door locks one at a time and verify each change one at a time
-        //lock all door lock function and verify all
-        //unlock all door locks
-        //*ADC user site test
-        //lock all door locks one at a time
-        //verify each status change one at a time on user site
-        //*(transmitter only)
-        // unlock lock all door lock devices and verify the panel changes status.
-        //verify the user site reflects the new device status
-        //verify history events appear on panel event page
-    }
-    @Test
-    public void disArmRulesTest(){
-        //create rules for Front door lock to
-    }
-    @Test
-    public void armStayLockActionTest() throws Exception{
-        DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
-        swipeToDoorLockPage(lockPage);
-        System.out.println("At Door Lock Page");
-        //panel test in arm stay
-        //lock all door locks one at a time and verify each change one at a time
-        //unlock all door locks one at a time and verify each change one at a time
-        //lock all door lock function and verify all locked
-        //unlock all door locks and verify all unlocked
-        //*ADC user site test
-        //lock all door locks one at a time
-        //verify each status change one at a time on user site
-        //*(transmitter only)
-        // unlock lock all door lock devices and verify the panel changes status.
-        //verify the user site reflects the new device status
-        //verify history events appear on panel event page
-    }
-    @Test
-    public void armStayRulesTest(){
-        //same rules as disArmRuleTest
-        //verify panel is in armStay
-    }
 
+    }
     public void Z_Wave_Door_Locks_Disarm_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);

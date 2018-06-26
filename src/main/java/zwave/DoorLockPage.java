@@ -27,4 +27,25 @@ public class DoorLockPage {
     public final By LockedTxt = By.xpath("//android.widget.TextView[@text='LOCKED']");
     public final By UnlockedTxt = By.xpath("//android.widget.TextView[@text='UNLOCKED']");
 
+
+
+
+    //********************************ADC User site Door Lock Elements**************************************
+
+    @FindBy (xpath = "//div[@id='app-content']/div/div[1]/div[1]//div[@class='icons']/div/div[2]")
+    public WebElement UsitelockUnlock;
+    @FindBy (xpath = "")
+    public WebElement UsiteLocking;
+    @FindBy ()
+    public WebElement UsiteUnlocking;
+    @FindBy ()
+    public WebElement DoorLock4;
+    @FindBy ()
+    public WebElement DoorLock5;
+    @FindBy ()
+    public WebElement DoorLock6;
+    @FindBy ()
+    public WebElement DoorLock7;
+
+
 }

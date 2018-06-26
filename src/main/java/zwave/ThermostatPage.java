@@ -79,4 +79,11 @@ public class ThermostatPage {
     @FindBy(id = "com.qolsys:id/automodetxt")
     public WebElement Auto_Mode_Message;
 
+//    public final By uHeatMode = By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[2]");
+//    @FindBy(xpath = "//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[2]")
+//    public WebElement heatModeUserSite;
+
+
+
+
 }

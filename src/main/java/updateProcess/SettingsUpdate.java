@@ -160,17 +160,17 @@ public class SettingsUpdate extends Setup {
         Thread.sleep(one_sec);
 
         //Zwave
-        servcall.set_ZWAVE_ON_OFF(1);
+        servcall.setZwaveOnOff(1);
         Thread.sleep(one_sec);
-        servcall.set_DEVICE_LIMIT_SMART_SOCKET(0);
+        servcall.setDeviceLimitSmartSocket(0);
         Thread.sleep(one_sec);
-        servcall.set_DEVICE_LIMIT_THERMOSTAT(3);
+        servcall.setDeviceLimitThermostat(3);
         Thread.sleep(one_sec);
-        servcall.set_DEVICE_LIMIT_DIMMER(5);
+        servcall.setDeviceLimitLights(5);
         Thread.sleep(one_sec);
-        servcall.set_DEVICE_LIMIT_DOORLOCK(3);
+        servcall.setDeviceLimitDoorLock(3);
         Thread.sleep(one_sec);
-        servcall.set_DEVICE_LIMIT_OTHERDEVICES(3);
+        servcall.setDeviceLimitOtherDevices(3);
         Thread.sleep(one_sec);
 
         servcall.set_PANEL_AUTO_UPDATE(false);
@@ -395,7 +395,7 @@ public class SettingsUpdate extends Setup {
         Thread.sleep(one_sec);
 
         //Zwave
-        servcall.set_ZWAVE_ON_OFF(0);
+        servcall.setZwaveOnOff(0);
         Thread.sleep(one_sec);
 
         servcall.set_PANEL_AUTO_UPDATE(false);

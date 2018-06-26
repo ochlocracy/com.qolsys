@@ -1,11 +1,13 @@
 package zwave;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.AdvancedSettingsPage;
 import panel.DevicesPage;
@@ -15,21 +17,95 @@ import utils.Setup;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /* Pair 1 thermostat prior to testing, set the Mode to OFF */
 
 public class ThermostatTest extends Setup {
-
+    ThermostatPage thermPage = new ThermostatPage();
     ArrayList<WebElement> elem = new ArrayList<>();
-
-
+    HashMap<String, String> thermostatDiv;
     String page_name = "Thermostat_Testing";
     Logger logger = Logger.getLogger(page_name);
+    public String thermostat1 = "Thermostat 1";
+    public String thermostat2 = "Thermostat 2";
+    public String thermostat3 = "Thermostat 3";
+    public String thermostat4 = "Thermostat 4";
+    public String thermostat5 = "Thermostat 5";
+    public String thermostat6 = "Thermostat 6";
 
     public ThermostatTest() throws Exception {
+        thermostatDiv = new HashMap<>();
+        thermostatDiv.put(thermostat1, "1");
+        thermostatDiv.put(thermostat2, "2");
+        thermostatDiv.put(thermostat3, "3");
+        thermostatDiv.put(thermostat4, "4");
+        thermostatDiv.put(thermostat5, "5");
+        thermostatDiv.put(thermostat6, "6");
+    }
+// add a way to select panel only test, panel and user site test, and transmitter or real devices
 
+
+//************************************User Site Methods************************************************************************************
+
+    public String getThermDiv(String thermName){
+        return thermostatDiv.get(thermName);
+    }
+    public void setThermModeUserSite(String thermName, String thermMode) {
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Changing Thermostat Mode");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[2]")).click();
+        System.out.println("Selecting " + thermMode + " Mode");
+        driver.findElement(By.xpath(thermMode)).click();
+        System.out.println(thermMode + " Has Been Selected");
+        System.out.println(thermMode + " Mode Verified");
     }
 
+    public void getThermSetTempUserSiteText(String thermName){
+        String thermDiv = getThermDiv(thermName);
+        System.out.println(thermName + "'s Div is "+ thermDiv);
+        System.out.println("Getting current set Temp for " + thermName);
+        String currentTemp = driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv+ "]/div[1]/div/div/div[@class='row temps']/div[1]")).getText();
+        System.out.println(thermName +"'s new current thermostat temp is " + currentTemp);
+        System.out.println("");
+    }
+    public void userThermTempUp(String thermName, int x) throws InterruptedException{
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Going to temp selection");
+        getThermSetTempUserSiteText(thermName);
+        System.out.println("Selecting Temp");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[1]")).click();
+        System.out.println("changing temp down " + x + " degrees");
+        for (int i=0; i<x; i++){
+            driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div/div[@class='row temps']/div[1]/div[2]/button[2]/div")).click();
+        }
+        Thread.sleep(10000);
+        getThermSetTempUserSiteText(thermName);
+    }
+
+    public void userThermTempDown(String thermName, int x) throws InterruptedException{
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Going to temp selection");
+        getThermSetTempUserSiteText(thermName);
+        System.out.println("Selecting Temp");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[1]")).click();
+        System.out.println("changing temp down " + x + " degrees");
+        for (int i=0; i<x; i++){
+            driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div/div[@class='row temps']/div[1]/div[2]/button[1]/div")).click();
+        }
+        Thread.sleep(10000);
+        getThermSetTempUserSiteText(thermName);
+    }
+
+    public void getCurrentRoomTempUserSite(String thermName){
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Getting current room temp for " + thermName);
+        String currentTemp = driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div//p[@class='temp']")).getText();
+        System.out.println(thermName +"'s current room thermostat temp is " + currentTemp);
+        System.out.println("");
+    }
+
+//*************************************************************************************************************************************************************
     public String method(String str) {
         return str.split("°")[0];
     } /**/
@@ -55,6 +131,10 @@ public class ThermostatTest extends Setup {
         }
     }
 
+    @Test
+    public void PracticeTest(){
+
+    }
     @Test
     public void Check_elements_on_page() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
@@ -97,7 +177,12 @@ public class ThermostatTest extends Setup {
         swipeFromLefttoRight();
         Thread.sleep(2000);
     }
+    @BeforeMethod
+    public void onThermostatPage() throws Exception{
+        ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
+        swipeToThermostatPage(therm);
 
+    }
     @Test
     public void Thermostat_test() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
@@ -243,6 +328,31 @@ public class ThermostatTest extends Setup {
         therm.offModeIcon.click();
         Thread.sleep(7000);
     }
+
+
+    public void preTestSetup(){
+        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+        //remove all devices
+        //change all zwave settings to default
+    }
+    public void disArmParingDeviceTest(){
+        //Pair 2 light switches locally( name it stock "Front Door" and "Back Door")
+        //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
+        //pair 1 door lock locally and expect max number failure
+        //change max number setting with setters service call
+        //pair other 3 lock with custom name with node id
+        //verify all name are correct on the panel
+        //verify all names are correct on ADC Dealer
+    }
+    public void disArmNameChangeTest(){}
+    public void disArmActionTest(){}
+    public void disArmRulesTest(){}
+    public void armStayActionTest(){}
+    public void armStayRulesTest(){}
+    public void armAwayRulesTest(){}
+    public void armAwayActionTest(){}
+
+
 
     public void Z_Wave_Thermostat_Disarm_Mode(String UDID_) throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);

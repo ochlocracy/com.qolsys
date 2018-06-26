@@ -13,8 +13,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import panel.*;
+import zwave.DoorLockPage;
+import zwave.LightsPage;
+import zwave.ThermostatPage;
+import zwave.ZWavePage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -25,6 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import static utils.ConfigProps.adbPath;
+import static utils.ConfigProps.transmitter;
 
 public class Setup {
 
@@ -71,7 +79,7 @@ public class Setup {
 
     public void webDriverSetUp() {
         driver1 = new FirefoxDriver();
-        wait = new WebDriverWait(driver1, 60);
+        wait = new WebDriverWait(driver1, 40);
     }
 
     public String splitMethod(String str) {
@@ -87,13 +95,6 @@ public class Setup {
         return panel_UDID;
     }
 
-    public void killnode() throws IOException {
-        String command = " killall node";
-        for (int i = 3; i > 0; i--) {
-            rt.exec(ConfigProps.adbPath + command);
-        }
-    }
-
     public void setupDriver(String getUdid, String url_, String port_) throws Exception {
 //        DesiredCapabilities cap = new DesiredCapabilities();
 //        cap.setCapability("deviceName", "IQPanel2");
@@ -104,13 +105,14 @@ public class Setup {
 //        cap.setCapability("newCommandTimeout", "1000");
 //        cap.setCapability("clearSystemFiles", true);
 //        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
-
+        System.out.println("\n*****killing all nodes*****\n");
+        rt.exec("killall node");
         service = AppiumDriverLocalService
                 .buildService(new AppiumServiceBuilder()
                         .usingDriverExecutable(new File(ConfigProps.nodePath))
                         .withAppiumJS(new File(ConfigProps.appiumPath))
                         .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
-                        .withIPAddress("127.0.0.1").usingPort(4723));
+                        .withIPAddress("127.0.1.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
         cap.setCapability("platformName", "Android");
@@ -119,7 +121,7 @@ public class Setup {
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         cap.setCapability("newCommandTimeout", 1000);
         //in case previous session was not stopped
-        killnode();
+
         service.stop();
         Thread.sleep(2000);
         service.start();
@@ -148,12 +150,12 @@ public class Setup {
     }
 
     public void swipeFromRighttoLeft() throws Exception {
-        Thread.sleep(2000);
+        Thread.sleep(500);
         int sx = (int) (driver.manage().window().getSize().width * 0.90);
         int ex = (int) (driver.manage().window().getSize().width * 0.10);
         int sy = driver.manage().window().getSize().height / 2;
         driver.swipe(sx, sy, ex, sy, 3000);
-        Thread.sleep(2000);
+        Thread.sleep(500);
     }
 
     public WebElement elementVerification(WebElement element, String element_name) throws Exception {
@@ -330,6 +332,7 @@ public class Setup {
             System.out.println("FAIL: System is not in ALARM");
         }
     }
+
 
     public void verifyPanelAlarm() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
@@ -624,13 +627,14 @@ public class Setup {
         File tmp = takeScreenshot(ele, projectPath + "/scr/tmp");
         Thread.sleep(2000);
         if (compareImage(tmp, cmp)) {
-            logger.info("Pass: light icon is the expected color");
+//            logger.info("Pass: light icon is the expected color");
             java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
             return true;
         } else {
-            logger.info("Fail: light icon is not the expected color");
+//            logger.info("Fail: light icon is not the expected color");
             java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
             return false;
+
         }
     }
 
@@ -720,7 +724,6 @@ public class Setup {
         rt.exec(ConfigProps.adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
-
     public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
         rt.exec(ConfigProps.adbPath + add_primary);
@@ -757,7 +760,7 @@ public class Setup {
         adv.INSTALLATION.click();
         instal.DEVICES.click();
         dev.Security_Sensors.click();
-        //      ss.Remove_All_Powerg_Sensors.click();
+  //      ss.Remove_All_Powerg_Sensors.click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.TextView[@index='2']")).click();
         Thread.sleep(5000);
@@ -783,7 +786,7 @@ public class Setup {
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
-            //       e.printStackTrace();
+     //       e.printStackTrace();
         }
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/grouptype")).click();
@@ -822,18 +825,6 @@ public class Setup {
         System.out.println(status_send);
     }
 
-    public void powerGsupervisory(int type, int id) throws IOException {
-        String status_send = " shell powerg_simulator_supervisory " + type + "-" + id + " 1 0 0 0";
-        rt.exec(ConfigProps.adbPath + status_send);
-        System.out.println(status_send);
-    }
-
-    public void powerGjamer(int state) throws IOException {
-        String status_send = " shell powerg_simulator_jamer " + state;
-        rt.exec(ConfigProps.adbPath + status_send);
-        System.out.println(status_send);
-    }
-
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
         pgprimaryCall(type, id, status1);
         Thread.sleep(5000);
@@ -853,23 +844,157 @@ public class Setup {
             e.printStackTrace();
         }
     }
+    //**************************************Z-Wave Methods*******************************************************
 
-    public boolean alarmVerification(String sensor_name) throws Exception {
-        swipeFromRighttoLeft();
+    // bridge will be included to the Gen2 an nodeID 2
+    public void localIncludeBridge() throws Exception {
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        dev.Zwave_Devices.click();
+        //clear transmitter
+        logger.info("clearing Transmitter");
+        zwave.Clear_Device_Z_Wave_Page.click();
+        Thread.sleep(4000);
+        rt.exec(adbPath + " -s " + transmitter + " " + ZTransmitter.excludeTransmitter);
+        System.out.println(adbPath + " -s " + transmitter + " " + ZTransmitter.excludeTransmitter);
+        Thread.sleep(6000);
+        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
+        logger.info("Removing all device");
+        zwave.Remove_All_Devices_Z_Wave_Page.click();
+        Thread.sleep(4000);
+        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
+        Thread.sleep(4000);
+        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='ALARMS']")).click();
-        Thread.sleep(1000);
-        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + sensor_name + "']"));
-        List<WebElement> date_time = driver.findElements(By.id("com.qolsys:id/type"));
+        logger.info("Including transmitter");
+        zwave.Add_Device_Z_Wave_Page.click();
+        Thread.sleep(2000);
+        zwave.Include_Z_Wave_Device_Button.click();
+        Thread.sleep(8000);
+        rt.exec(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
+        System.out.println(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
+        Thread.sleep(60000);
+
+        // add name to transmitter
+        zwave.NewDevicePageAddBtn.click();
+        Thread.sleep(5000);
+        zwave.UnsupportedDeviceAcknowledgement.click();
+    }
+
+    public void thermostatDown5 () {
+        ThermostatPage therm = PageFactory.initElements(driver,ThermostatPage.class);
+        System.out.println("Changing Thermostat Temp Down By 5 ");
+        for (int i = 0; i <= 4; i++) {
+            therm.tempDown.click();
+        }
+    }
+
+    public void thermostatUp5 () {
+        ThermostatPage therm = PageFactory.initElements(driver,ThermostatPage.class);
+        System.out.println("Changing Thermostat Temp Down By 5 ");
+        for (int i = 0; i <= 4; i++) {
+            therm.tempUp.click();
+        }
+    }
+
+    public void swipeLightsPage(LightsPage lights) throws Exception {
+        while (!isOnLightsPage(lights)){
+            swipeFromRighttoLeft();
+        }
+    }
+
+    private boolean isOnLightsPage (LightsPage lights) {
         try {
-            if (element.isDisplayed()) {
-                System.out.println("Pass: sensor alarm is displayed " + sensor_name);
-                System.out.println(date_time.get(1).getText());
-                swipeFromLefttoRight();
-            }
-            return true;
-        } catch (NoSuchElementException e) {}
-        return false;
+            System.out.println("Checking For Lights Page ");
+            return lights.allOnBtn.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("Handling NoSuchElementException");
+            return false;
+        }
+    }
+    //have to crate an instances of the DoorLockPage with the name locksPage to use this method
+    public void swipeToDoorLockPage(DoorLockPage locksPage) throws Exception {
+        while (!isOnDoorLockPage(locksPage))
+            swipeFromRighttoLeft();
+    }
+
+    private boolean isOnDoorLockPage (DoorLockPage locksPage) {
+        try {
+            System.out.println("Checking For Door Lock Page ");
+            return locksPage.unloackAllTxt.isDisplayed();
+
+        } catch (NoSuchElementException e) {
+            System.out.println("This is not the Door Lock  Page");
+            System.out.println("Handling NoSuchElementException");
+            return false;
+        }
 
     }
+    public void zwaveSettingReset() throws Exception {
+        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+        servcall.setDeviceLimitThermostat(3);
+        servcall.setDeviceLimitSmartSocket(0);
+        servcall.setDeviceLimitLights(5);
+        servcall.setDeviceLimitDoorLock(3);
+        servcall.setDeviceLimitOtherDevices(3);
+        servcall.setDeviceLimitGarageDoor(3);
+    }
+    public void localZwaveAdd() throws IOException, InterruptedException {
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        dev.Zwave_Devices.click();
+        zwave.Add_Device_Z_Wave_Page.click();
+    }
+    public void removeAllDevices() throws Exception{
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        dev.Zwave_Devices.click();
+        zwave.Remove_All_Devices_Z_Wave_Page.click();
+        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
+        Thread.sleep(1000);
+        zwave.OK_Z_Wave_Remove_All_Devices_Page.click();
+        Thread.sleep(1000);
+    }
+
+    //have to crate an instances of the ThermostatPage with the name locksPage to use this method
+    public void swipeToThermostatPage(ThermostatPage therm) throws Exception {
+        while (!isOnThermostatPage(therm)){
+            swipeFromRighttoLeft();
+        }
+    }
+
+    private boolean isOnThermostatPage (ThermostatPage therm) {
+        try {
+            System.out.println("Checking For Thermostat Page ");
+            return therm.Current_Temp_Txt.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("This is not the Thermostat Page");
+            System.out.println("Handling the exception");
+            return false;
+        }
+    }
+
+    public void waitForText(WebDriver driver,By element, int seconds){
+
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
+
 }

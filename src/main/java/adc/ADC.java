@@ -345,7 +345,7 @@ public class ADC extends Setup {
     }
 
     //must be on the Equipment page
-    public void get_image_sensors() throws InterruptedException {
+    public void getImageSensors() throws InterruptedException {
         driver1.findElement(By.xpath("/html/body/form/table/tbody/tr/td[2]/div/div[2]/div[3]/div/div/ul/li[4]/a")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_btnRequestInfo"))).click();
         TimeUnit.MINUTES.sleep(2);
@@ -353,9 +353,12 @@ public class ADC extends Setup {
         TimeUnit.SECONDS.sleep(2);
     }
 
-    public void navigate_to_user_site(String login, String password) {
+    public void navigateToUserSite(String login, String password) {
         driver1.manage().window().maximize();
         String ADC_URL = "https://alarm.com";
+        String ligthsPage = "https://www.alarm.com/web/system/home/lights";
+
+//        driver1.navigate().to(ADC_URL);
         driver1.get(ADC_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("LOGIN")));
         driver1.findElement(By.partialLinkText("LOGIN")).click();
@@ -364,10 +367,13 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(login);
         driver1.findElement(By.className("password")).sendKeys(password);
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_signInButton")).click();
+
+
+
     }
 
-    public void navigate_to_user_site_lights(String login, String password) {
-        navigate_to_user_site(login, password);
+    public void navigateToUserSiteLights(String login, String password) {
+        navigateToUserSite(login, password);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("emPower")));
         driver1.findElement(By.partialLinkText("emPower")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Lights")));
@@ -379,6 +385,7 @@ public class ADC extends Setup {
     public void Request_equipment_list() throws InterruptedException {
         logger.info("Request sensor list and Sensor names");
         driver1.findElement(By.id("ctl00_phBody_sensorList_butRequest")).click();
+        //ctl00_phBody_sensorList_butRequest
         TimeUnit.SECONDS.sleep(10);
         logger.info("Request equipment list");
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();

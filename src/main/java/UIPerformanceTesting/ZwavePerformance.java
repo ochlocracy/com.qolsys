@@ -94,10 +94,10 @@ public class ZwavePerformance extends Setup{
             System.out.println("starting Timer");
             stopWatch.start();
             for (int i = 0; i <= 4; i++) {
-                lights.Light_Select.click();
-                lights.On_Button.click();
-                lights.Light_Select.click();
-                lights.Off_Button.click();
+                lights.lightSelectionBox.click();
+                lights.allOnBtn.click();
+                lights.lightSelectionBox.click();
+                lights.allOffBtn.click();
             }
             stopWatch.stop();
             System.out.println("Ending Timer");

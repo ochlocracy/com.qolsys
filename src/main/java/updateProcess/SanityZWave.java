@@ -5,10 +5,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.Setup;
 
 import java.io.File;
@@ -24,7 +21,10 @@ public class SanityZWave extends Setup {
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
+    @BeforeMethod
+    public void transmitterPair() throws Exception {
 
+    }
     @Test
     public void verifyLight() throws Exception {
         String file = projectPath + "/extent-config.xml";
@@ -45,6 +45,7 @@ public class SanityZWave extends Setup {
         Thread.sleep(2000);
     }
 
+
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -60,6 +61,7 @@ public class SanityZWave extends Setup {
 
     @AfterClass
     public void tearDown() {
+
         driver.quit();
     }
 }
