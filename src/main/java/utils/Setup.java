@@ -2,6 +2,7 @@ package utils;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
@@ -13,18 +14,27 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import panel.*;
+import zwave.DoorLockPage;
+import zwave.LightsPage;
+import zwave.ThermostatPage;
+import zwave.ZWavePage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 import java.io.*;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import static utils.ConfigProps.adbPath;
+import static utils.ConfigProps.transmitter;
 
 public class Setup extends Driver{
 
@@ -64,6 +74,71 @@ public class Setup extends Driver{
             return e.getMessage();
         }
     }
+
+
+    public void webDriverSetUp() {
+        driver1 = new FirefoxDriver();
+        wait = new WebDriverWait(driver1, 40);
+    }
+
+    public String splitMethod(String str) {
+        // import splitter, pass the string, convert into a list of words, add to getUDID
+        String a = str.split("\\n")[1];
+        return a.split("\\s")[0];
+    }
+
+    public String get_UDID() throws IOException {
+        String command = adbPath + " devices";
+        rt.exec(command);
+        String panel_UDID = splitMethod(execCmd(command));
+        return panel_UDID;
+    }
+
+    public void setupDriver(String getUdid, String url_, String port_) throws Exception {
+//        DesiredCapabilities cap = new DesiredCapabilities();
+
+//        System.out.println("\n*****killing all nodes*****\n");
+//        rt.exec("killall node");
+//        cap.setCapability("deviceName", "IQPanel2");
+//        cap.setCapability("BROWSER_NAME", "Android");
+//        cap.setCapability("udid", getUdid);
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+//        cap.setCapability("newCommandTimeout", "1000");
+//        cap.setCapability("clearSystemFiles", true);
+//        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+
+        System.out.println("\n*****killing all nodes*****\n");
+        rt.exec("killall node");
+        service = AppiumDriverLocalService
+                .buildService(new AppiumServiceBuilder()
+                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+                        .withAppiumJS(new File(ConfigProps.appiumPath))
+                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
+                        .withIPAddress("127.0.1.1").usingPort(4723));
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability("deviceName", "IQPanel2");
+        cap.setCapability("platformName", "Android");
+        cap.setCapability("udid", get_UDID());
+        cap.setCapability("appPackage", "com.qolsys");
+        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+        cap.setCapability("newCommandTimeout", 1000);
+        //in case previous session was not stopped
+
+
+
+        service.stop();
+        Thread.sleep(2000);
+        service.start();
+        System.out.println("\n*****Start Appium*****\n");
+        Thread.sleep(2000);
+
+
+        driver = new AndroidDriver<>(service.getUrl(), cap);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
+
 
     public void setupLogger(String test_case_name) throws Exception {
         PropertyConfigurator.configure(new File(appDir, "/main/resources/log4j.properties").getAbsolutePath());
@@ -423,7 +498,7 @@ public class Setup extends Driver{
     }
 
     public void killLogcat() throws Exception {
-        rt.exec(ConfigProps.adbPath + " shell busybox pkill logcat");
+        rt.exec(adbPath + " shell busybox pkill logcat");
     }
 
     public void autoStaySetting() throws InterruptedException {
@@ -591,7 +666,7 @@ public class Setup extends Driver{
 
     //State is "Enable" or "Disable"
     public void setArmStayNoDelay(String state) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 21 i32 0 i32 0";
+        String command = adbPath + " shell service call qservice 37 i32 0 i32 0 i32 21 i32 0 i32 0";
         rt.exec(command);
         String value = (execCmd(command)).toString();
         System.out.println(value);
@@ -601,12 +676,12 @@ public class Setup extends Driver{
                 System.out.println("Setting is already Enabled");
             } else if (value.contains("00000000")) {
                 System.out.println("Setting is Disabled, Enabling the setting");
-                rt.exec(ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0");
+                rt.exec(adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0");
             }
         } else if (state.equals("Disable")) {
             if (value.contains("00000001")) {
                 System.out.println("Setting is Enabled, Disabling the setting");
-                rt.exec(ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 0 i32 0 i32 0");
+                rt.exec(adbPath + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 0 i32 0 i32 0");
             } else if (value.contains("00000000")) {
                 System.out.println("Setting is already Disabled");
             }
@@ -616,7 +691,7 @@ public class Setup extends Driver{
 
     //State is "Enable" or "Disable"
     public void setAutoStay(String state) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 20 i32 0 i32 0";
+        String command = adbPath + " shell service call qservice 37 i32 0 i32 0 i32 20 i32 0 i32 0";
         rt.exec(command);
         String value = (execCmd(command)).toString();
         System.out.println(value);
@@ -626,12 +701,12 @@ public class Setup extends Driver{
                 System.out.println("Setting is already Enabled");
             } else if (value.contains("00000000")) {
                 System.out.println("Setting is Disabled, Enabling the setting");
-                rt.exec(ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 20 i32 1 i32 0 i32 0");
+                rt.exec(adbPath + " shell service call qservice 40 i32 0 i32 0 i32 20 i32 1 i32 0 i32 0");
             }
         } else if (state.equals("Disable")) {
             if (value.contains("00000001")) {
                 System.out.println("Setting is Enabled, Disabling the setting");
-                rt.exec(ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 20 i32 0 i32 0 i32 0");
+                rt.exec(adbPath + " shell service call qservice 40 i32 0 i32 0 i32 20 i32 0 i32 0 i32 0");
             } else if (value.contains("00000000")) {
                 System.out.println("Setting is already Disabled");
             }
@@ -640,7 +715,7 @@ public class Setup extends Driver{
     }
 
     public void verifySetting(String setting, String call, String expected) throws IOException {
-        String result = execCmd(ConfigProps.adbPath + " shell service call qservice " + call).split(" ")[2];
+        String result = execCmd(adbPath + " shell service call qservice " + call).split(" ")[2];
         if (result.equals(expected))
             logger.info("[Pass] " + setting + " has value: " + expected);
         else
@@ -650,19 +725,19 @@ public class Setup extends Driver{
 
     public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
-        rt.exec(ConfigProps.adbPath + add_primary);
+        rt.exec(adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
     public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
-        rt.exec(ConfigProps.adbPath + add_primary);
+        rt.exec(adbPath + add_primary);
         // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
     }
 
     public void deleteFromPrimary(int zone) throws IOException, InterruptedException {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
-        rt.exec(ConfigProps.adbPath + deleteFromPrimary);
+        rt.exec(adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
     }
 
@@ -739,39 +814,39 @@ public class Setup extends Driver{
 
     public void powerGregistrator(int type, int id) throws IOException {
         String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
-        rt.exec(ConfigProps.adbPath + add_pg);
+        rt.exec(adbPath + add_pg);
         //shell powerg_simulator_registrator 101-0001
     }
 
     public void powerGactivator(int type, int id) throws IOException, InterruptedException {
         Thread.sleep(2000);
         String activate_pg = " shell powerg_simulator_activator " + type + "-" + id;
-        rt.exec(ConfigProps.adbPath + activate_pg);
+        rt.exec(adbPath + activate_pg);
         Thread.sleep(2000);
         //shell powerg_simulator_activatortor 101-0001
     }
 
     public void pgprimaryCall(int type, int id, String status) throws IOException {
         String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
-        rt.exec(ConfigProps.adbPath + status_send);
+        rt.exec(adbPath + status_send);
         System.out.println(status_send);
     }
 
     public void pgarmer(int type, int id, String status) throws IOException {
         String status_send = " shell powerg_simulator_armer " + type + "-" + id + " " + status;
-        rt.exec(ConfigProps.adbPath + status_send);
+        rt.exec(adbPath + status_send);
         System.out.println(status_send);
     }
 
     public void powerGsupervisory(int type, int id) throws IOException {
         String status_send = " shell powerg_simulator_supervisory " + type + "-" + id + " 1 0 0 0";
-        rt.exec(ConfigProps.adbPath + status_send);
+        rt.exec(adbPath + status_send);
         System.out.println(status_send);
     }
 
     public void powerGjamer(int state) throws IOException {
         String status_send = " shell powerg_simulator_jamer " + state;
-        rt.exec(ConfigProps.adbPath + status_send);
+        rt.exec(adbPath + status_send);
         System.out.println(status_send);
     }
 
@@ -795,6 +870,7 @@ public class Setup extends Driver{
         }
     }
 
+
     public boolean alarmVerification(String sensor_name) throws Exception {
         swipeFromRighttoLeft();
         Thread.sleep(1000);
@@ -813,4 +889,483 @@ public class Setup extends Driver{
         return false;
 
     }
+
+
+    //**************************************Z-Wave Methods*******************************************************
+
+    // bridge will be included to the Gen2 an nodeID 2
+    public void localIncludeBridge() throws Exception {
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        dev.zwaveDevices.click();
+        logger.info("Clearing Transmitter");
+        System.out.println("Clearing Transmitter");
+        zwave.clearDeviceZwavePage.click();
+        Thread.sleep(4000);
+        rt.exec(adbPath + " -s " + transmitter + " " + ZTransmitter.excludeTransmitter);
+        System.out.println(adbPath + " -s " + transmitter + " " + ZTransmitter.excludeTransmitter);
+        Thread.sleep(6000);
+        zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        logger.info("Removing all devices");
+        System.out.println("Removing all devices");
+        zwave.removeAllDevicesZwavePage.click();
+        Thread.sleep(4000);
+        zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        Thread.sleep(4000);
+        zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        Thread.sleep(1000);
+        logger.info("Including transmitter");
+        System.out.println("Including Transmitter");
+        zwave.addDeviceZwavePage.click();
+        Thread.sleep(2000);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(7000);
+        rt.exec(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
+        System.out.println(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
+        System.out.println("waiting for Element Button");
+        waitForElement(driver, zwave.newDevicePageAddBtn, 90); //test of wait
+        zwave.nameSelectionDropDown.click();
+        zwave.customDeviceName.click();
+        Thread.sleep(2000);
+        zwave.customNameField.sendKeys("Transmitter");
+        try {
+            driver.hideKeyboard();
+            logger.info("Hidding Keyboard");
+        } catch (Exception e) {
+            logger.info("Keyboard was Present");
+        }
+        zwave.newDevicePageAddBtn.click();
+        Thread.sleep(2000);
+        zwave.UnsupportedDeviceAcknowledgement.click();
+        Thread.sleep(2000);
+        home.Home_button.click();
+        Thread.sleep(2000);
+    }
+
+    public void thermostatDown5() {
+        ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
+        System.out.println("Changing Thermostat Temp Down By 5 ");
+        for (int i = 0; i <= 4; i++) {
+            therm.tempDown.click();
+        }
+    }
+
+    public void thermostatUp5() {
+        ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
+        System.out.println("Changing Thermostat Temp Down By 5 ");
+        for (int i = 0; i <= 4; i++) {
+            therm.tempUp.click();
+        }
+    }
+
+    //****************************swiping to devices page********************
+    //have to crate an instances of the DoorLockPage with the name locksPage to use this method
+    public void swipeLightsPage(LightsPage lights) throws Exception {
+        while (!isOnLightsPage(lights)) {
+            swipeFromRighttoLeft();
+        }
+    }
+
+    private boolean isOnLightsPage(LightsPage lights) {
+        try {
+            System.out.println("Checking For Lights Page ");
+            return lights.allOnBtn.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("Handling NoSuchElementException");
+            return false;
+        }
+    }
+
+    //have to crate an instances of the DoorLockPage with the name locksPage to use this method
+    public void swipeToDoorLockPage(DoorLockPage locksPage) throws Exception {
+        while (!isOnDoorLockPage(locksPage))
+            swipeFromRighttoLeft();
+    }
+
+    private boolean isOnDoorLockPage(DoorLockPage locksPage) {
+        try {
+            System.out.println("Checking For Door Lock Page ");
+            return locksPage.unloackAllTxt.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("This is not the Door Lock  Page");
+            System.out.println("Handling NoSuchElementException");
+            return false;
+        }
+    }
+
+    //have to crate an instances of the ThermostatPage with the name locksPage to use this method
+    public void swipeToThermostatPage(ThermostatPage therm) throws Exception {
+        while (!isOnThermostatPage(therm)) {
+            swipeFromRighttoLeft();
+        }
+    }
+
+    private boolean isOnThermostatPage(ThermostatPage therm) {
+        try {
+            System.out.println("Checking For Thermostat Page ");
+            return therm.Current_Temp_Txt.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("This is not the Thermostat Page");
+            System.out.println("Handling the exception");
+            return false;
+        }
+    }
+    // *******need to add swipe to GDC******
+
+    public void zwaveSettingReset() throws Exception {
+        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+        logger.info("Setting thermostat limit to 3");
+        System.out.println("Setting Thermostat limit to 3");
+        servcall.setDeviceLimitThermostat(3);
+        logger.info("Setting smartsocket limit to 0");
+        System.out.println("Setting SmartSocket Limit to 0");
+        servcall.setDeviceLimitSmartSocket(0);
+        System.out.println("Setting Lihgts limit to 5");
+        servcall.setDeviceLimitLights(5);
+        System.out.println("Setting Door Lock Limit to 3");
+        servcall.setDeviceLimitDoorLock(3);
+        System.out.println("Setting Other Device Limit to 3");
+        servcall.setDeviceLimitOtherDevices(3);
+        System.out.println("Setting Garage Door Limit to 3");
+        servcall.setDeviceLimitGarageDoor(3);
+    }
+
+    public void localZwaveAdd() throws IOException, InterruptedException {
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        logger.info("adding new device");
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        dev.zwaveDevices.click();
+        zwave.addDeviceZwavePage.click();
+        Thread.sleep(4000);
+        logger.info("ready to add new device");
+    }
+
+    public void removeAllDevices() throws Exception {
+        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        logger.info("Removing All Devices");
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        Install.DEVICES.click();
+        Thread.sleep(2000);
+        dev.zwaveDevices.click();
+        zwave.removeAllDevicesZwavePage.click();
+        zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        Thread.sleep(1000);
+        zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        Thread.sleep(1000);
+        logger.info("All devices have been removed");
+    }
+
+
+//***************"Wait for" methods***************
+
+    public void waitForText(WebDriver driver, By element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        logger.info("wating for" + element + "text");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
+
+    public void waitForElementText(WebDriver driver, WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        logger.info("waiting for " + element + "text");
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElement(WebDriver driver, WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        logger.info("waiting for " + element + " for next action");
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+    }
+
+    public void waitForElementnClick(WebDriver driver, WebElement element, WebElement clickElement, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        logger.info("waiting for " + element + " for next action");
+        wait.until(ExpectedConditions.visibilityOf(element));
+        logger.info(element + " is present. Clicking on " + element);
+        clickElement.click();
+    }
+
+    //*************Adding Custom Devices *************
+    public void addCustomZwaveLight(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            logger.info("Adding " + deviceName);
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+            logger.info("wating for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            zwave.nameSelectionDropDown.click();
+            logger.info("Selecting custom name");
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hidding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceName);
+            System.out.println("add complete for " + deviceName);
+        }
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addCustomZwaveDimmer(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 4");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 4");
+            logger.info("wating for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            zwave.nameSelectionDropDown.click();
+            logger.info("Selecting custom name");
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hidding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceName);
+            System.out.println("add complete for " + deviceName);
+        }
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addCustomZwaveDoorLock(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            logger.info("wating for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            zwave.nameSelectionDropDown.click();
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hidding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceNames);
+            System.out.println("add complete for " + deviceNames);
+        }
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+
+
+    public void addCustomZwaveThermostat(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 3");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 3");
+            logger.info("wating for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            zwave.nameSelectionDropDown.click();
+            logger.info("Selecting custom name");
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hidding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceName);
+            System.out.println("add complete for " + deviceName);
+        }
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+
+    public void addCustomZwaveGdc(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 6");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 6");
+            logger.info("waiting for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            zwave.nameSelectionDropDown.click();
+            logger.info("Selecting custom name");
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hiding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceName);
+            System.out.println("add complete for " + deviceName);
+        }
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    //***************Add Stock Devices***********************
+
+    public void addStockNameLight()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Light");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Light as a stock name");
+        zwave.lightStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Light has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addStockNameBedroomLight()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Bedroom Light");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Bedroom Light as a name");
+        zwave.bedroomLightStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Bedroom Light has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addStockNameFrontDoor()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Front Door");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Front Door as a name");
+        zwave.frontDoorStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Front Door has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addStockNameBackDoor()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Back Door");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Back Door as a name");
+        zwave.backDoorStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Back Door has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addStockNameGarageDoor()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Garage Door");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Garage Door as a name");
+        zwave.garageDoorStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Garage Door has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+    public void addStockNameSideDoor()throws Exception{
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        zwave.includeZwaveDeviceButton.click();
+        Thread.sleep(2000);
+        logger.info("Adding Stock Side Door");
+        rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+        logger.info("waiting for ADD button to appear" );
+        waitForElement(driver,zwave.newDevicePageAddBtn, 60);
+        zwave.nameSelectionDropDown.click();
+        logger.info("Selecting Side Door as a name");
+        zwave.sideDoorStockName.click();
+        Thread.sleep(2000);
+        zwave.newDevicePageAddBtn.click();
+        logger.info("Side Door has been added");
+        Thread.sleep(2000);
+        //Add assertion and logger message
+        //add a retry if add process fails
+    }
+
+
 }
+
