@@ -602,7 +602,7 @@ public class ADC extends Setup {
         driver1.findElement(By.partialLinkText("Select$52")).click();
     }
 
-    public void updateSensorsList() throws InterruptedException, IOException {
+    public void update_sensors_list() throws InterruptedException, IOException {
         New_ADC_session(getAccountId());
         Thread.sleep(1000);
         driver1.findElement(By.partialLinkText("Sensors")).click();
