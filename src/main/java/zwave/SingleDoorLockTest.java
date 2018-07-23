@@ -61,10 +61,10 @@ public class SingleDoorLockTest extends Setup {
 //        swipeFromRighttoLeft();
         swipeToDoorLockPage(lockPage);
         Thread.sleep(2000);
-        elementVerification(lockPage.Key_icon, "Key icon");
-        elementVerification(lockPage.DoorLock_Name, "Door Lock name");
-        elementVerification(lockPage.DoorLock_Status, "Door Lock status");
-        elementVerification(lockPage.Refresh_Status, "Refresh status");
+        elementVerification(lockPage.keyIcon, "Key icon");
+        elementVerification(lockPage.doorLockName, "Door Lock name");
+        elementVerification(lockPage.doorLockStatus, "Door Lock status");
+        elementVerification(lockPage.refreshStatus, "Refresh status");
         elementVerification(lockPage.Door_battery, "Door lock battery level");
         elementVerification(lockPage.unlockAll, "Unlock All Doors");
         elementVerification(lockPage.Lock_ALL, "Lock All Doors");
@@ -76,13 +76,13 @@ public class SingleDoorLockTest extends Setup {
         DoorLockPage locksPage = PageFactory.initElements(driver, DoorLockPage.class);
         swipeToDoorLockPage(locksPage);
         for(int i=0; i<=5; i++) {
-        smart_click(locksPage.DoorLock_Status, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
+        smart_click(locksPage.doorLockStatus, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
         Thread.sleep(7000);
-        statusVerification(locksPage.DoorLock_Status, "LOCKED");
+        statusVerification(locksPage.doorLockStatus, "LOCKED");
         Thread.sleep(5000);
-        smart_click(locksPage.DoorLock_Status, locksPage.unlockAll, "LOCKED", "Unlocked");
+        smart_click(locksPage.doorLockStatus, locksPage.unlockAll, "LOCKED", "Unlocked");
         Thread.sleep(7000);
-        statusVerification(locksPage.DoorLock_Status, "UNLOCKED");
+        statusVerification(locksPage.doorLockStatus, "UNLOCKED");
         Thread.sleep(5000);
         }
         System.out.println("Ending Timer");

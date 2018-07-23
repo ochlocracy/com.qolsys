@@ -89,11 +89,11 @@ public class ZwavePerformance extends Setup{
     public void ligthPerformanceTest() throws Exception{
         LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
         swipeLightsPage(lights);
-        for (int n=0; n <=4; n++) {
+        for (int n=1; n <=4; n++) {
             System.out.println("Currently On Lights Page");
             System.out.println("starting Timer");
             stopWatch.start();
-            for (int i = 0; i <= 4; i++) {
+            for (int i = 1; i <= 4; i++) {
                 lights.lightSelectionBox.click();
                 lights.allOnBtn.click();
                 lights.lightSelectionBox.click();
@@ -115,18 +115,22 @@ public class ZwavePerformance extends Setup{
     public void DoorLockPerformanceTest() throws Exception {
         DoorLockPage doorlockPage = PageFactory.initElements(driver, DoorLockPage.class);
         swipeToDoorLockPage(doorlockPage);
-        for (int n=0; n<=4; n++) {
+        for (int n=1; n<=2; n++) {
             System.out.println("Currently On Doorlock Page");
             System.out.println("starting Timer");
             stopWatch.start();
-            for (int i = 0; i <= 4; i++) {
+            for (int i = 1; i <= 2; i++) {
                 System.out.println("Unlocking");
+                System.out.println("Current Lock Status " + doorlockPage.doorLockStatus);
                 doorlockPage.LocknUnlock.click();
-                System.out.println("wait for LockedTxt text");
-                waitForText(driver, doorlockPage.LockedTxt, 30);
-                System.out.println("wait test Unlocked");
+                System.out.println("wait for Locked text");
+//                waitForText(driver, doorlockPage.LockedTxt, 30);
+                waitForElementText(driver,doorlockPage.lockedText,30);
+                System.out.println("locking");
                 doorlockPage.LocknUnlock.click();
-                waitForText(driver, doorlockPage.UnlockedTxt, 30);
+//                waitForText(driver, doorlockPage.UnlockedTxt, 30);
+                System.out.println("wait for Unlocked");
+                waitForElementText(driver, doorlockPage.unlockedText,30);
                 System.out.println("done");
             }
             System.out.println("Ending Timer");
@@ -140,7 +144,7 @@ public class ZwavePerformance extends Setup{
     public void thermostatPerformance() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
         swipeToThermostatPage(therm);
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 1; i <= 4; i++) {
             System.out.println("Currently On Thermostat Page");
             System.out.println("starting Timer");
             stopWatch.start();
@@ -148,6 +152,7 @@ public class ZwavePerformance extends Setup{
             //-Heat mode
             System.out.println("Setting Mode to Heat");
             therm.heatMode.click();
+            //change to waitForElementTxt
             waitForText(driver, therm.heatCurrentModeText, 30);
             // Temp Change Down by 5
             System.out.println("Current Target Temp 80");

@@ -141,8 +141,8 @@ public class ADC extends Setup {
         if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
-        } else if (get_UDID().equals("ac82129c")) {    //Sergio
-            accountId = "5434757";
+        } else if (get_UDID().equals("ac8312fd")) {    //Sergio
+            accountId = "5390018";
             return accountId;
         } else if (get_UDID().equals("acf112e3")) {    //Zach
             accountId = "5635456";
@@ -312,7 +312,7 @@ public class ADC extends Setup {
     public void New_ADC_session(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
-        String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID;
+        String ADC_URL = "https://alarmadmin.alarm.com/";
         driver1.get(ADC_URL);
         String login = "qautomation";
         String password = "Qolsys123";
@@ -321,12 +321,15 @@ public class ADC extends Setup {
         driver1.findElement(By.id("txtUsername")).sendKeys(login);
         driver1.findElement(By.id("txtPassword")).sendKeys(password);
         driver1.findElement(By.id("butLogin")).click();
-        driver1.findElement(By.partialLinkText("Equipment")).click();
-        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.id("ctl00_txtNewCustomerId")).click();
+        driver1.findElement(By.id("ctl00_txtNewCustomerId")).sendKeys(accountID);
+        driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
+//        driver1.findElement(By.partialLinkText("Equipment")).click();
+        TimeUnit.SECONDS.sleep(3000);
     }
 
     public void New_ADC_session_User(String User, String Password) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(2000);
         driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         driver1.get(ADC_URL);
@@ -358,7 +361,7 @@ public class ADC extends Setup {
         String ADC_URL = "https://alarm.com";
         String ligthsPage = "https://www.alarm.com/web/system/home/lights";
 
-//        driver1.navigate().to(ADC_URL);
+        driver1.navigate().to(ADC_URL);
         driver1.get(ADC_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("LOGIN")));
         driver1.findElement(By.partialLinkText("LOGIN")).click();
@@ -505,44 +508,48 @@ public class ADC extends Setup {
     //Start ADC Z-Wave Dealer Paths and Actions
     //Start ADC Z-Wave Dealer Paths and Actions
     //Start ADC Z-Wave Dealer Paths and Actions
-    public void New_ADC_session_emPower_Page(String accountID) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
+
+
+    public void newADCSessionEmPowerPage(String accountID) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2000);
         driver1.manage().window().maximize();
-        String ADC_URL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx" + accountID;
+        String ADC_URL = "https://alarmadmin.alarm.com/";
         driver1.get(ADC_URL);
         String login = "qautomation";
         String password = "Qolsys123";
-        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUsername")));
         driver1.findElement(By.id("txtUsername")).sendKeys(login);
         driver1.findElement(By.id("txtPassword")).sendKeys(password);
         driver1.findElement(By.id("butLogin")).click();
+        driver1.findElement(By.id("ctl00_txtNewCustomerId")).click();
+        driver1.findElement(By.id("ctl00_txtNewCustomerId")).sendKeys(accountID);
+        driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
         driver1.findElement(By.partialLinkText("Equipment")).click();
-        driver1.findElement(By.partialLinkText("emPower")).click();
-        TimeUnit.SECONDS.sleep(2);
+        driver1.findElement(By.partialLinkText("DeviceAutomation.aspx")).click();
+        TimeUnit.SECONDS.sleep(3000);
     }
     //Must be on emPower Devices page!
     //Has service call
-    public void ADC_Rediscover_ZWave_Network() throws InterruptedException {
+    public void adcRediscoverZWaveNetwork() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_nonwipingRediscovery2")).click();
         TimeUnit.SECONDS.sleep(2);
     }
     //Must be on emPower Devices page!
-    public void ADC_Dealer_Edit_ZWave_Device_Name() throws InterruptedException {
+    public void adcDealerEditZWaveDeviceName() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_EditDeviceNames")).click();
         TimeUnit.SECONDS.sleep(2);
     }
     //Must be on emPower Devices page!
-    public void ADC_Get_ZWave_Device_Name() throws InterruptedException {
+    public void adcGetZWaveDeviceName() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_GetDeviceNames")).click();
         TimeUnit.SECONDS.sleep(15);
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
     }
     //Must be on emPower Devices page!
-    public void ADC_Get_ZWave_Equipment_List() throws InterruptedException {
+    public void adcGetZWaveEquipmentList() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
         TimeUnit.SECONDS.sleep(15);
@@ -550,7 +557,7 @@ public class ADC extends Setup {
     }
     //Must be on emPower Devices page!
     //Has service call
-    public void ADC_Add_ZWave_Device() throws InterruptedException {
+    public void adcAddZWaveDevice() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
         TimeUnit.SECONDS.sleep(2);
@@ -558,14 +565,14 @@ public class ADC extends Setup {
     }
     //Must be on emPower Devices page!
     //Has service call
-    public void ADC_Delete_ZWave_Device() throws InterruptedException {
+    public void adcDeleteZWaveDevice() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
     }
     //Use "New_ADC_session" prior to this class
-    public void ADC_Service_Plan_ZWave_Energy_Monitoring() throws InterruptedException {
+    public void adcServicePlanZWaveEnergyMonitoring() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Service Plan")).click();
         TimeUnit.SECONDS.sleep(2);
@@ -577,7 +584,7 @@ public class ADC extends Setup {
     }
     //Use "New_ADC_session" prior to this class
     //Has service call
-    public void ADC_Turn_OFF_ZWave() throws InterruptedException {
+    public void adcTurnOFFZWave() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Panel"));
         TimeUnit.SECONDS.sleep(2);
@@ -585,7 +592,7 @@ public class ADC extends Setup {
         driver1.findElement(By.tagName("'ctl00$phBody$ucsPanelManagement$udListZWave$gvSettings','Select$43'")).click();
         driver1.findElement(By.partialLinkText("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
     }
-    public void ADC_Set_Garage_Door_Limit() throws InterruptedException {
+    public void adcSetGarageDoorLimit() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Panel"));
         TimeUnit.SECONDS.sleep(2);
@@ -593,7 +600,7 @@ public class ADC extends Setup {
         driver1.findElement(By.partialLinkText("Select$52")).click();
     }
 
-    public void update_sensors_list() throws InterruptedException, IOException {
+    public void updateSensorsList() throws InterruptedException, IOException {
         New_ADC_session(getAccountId());
         Thread.sleep(1000);
         driver1.findElement(By.partialLinkText("Sensors")).click();

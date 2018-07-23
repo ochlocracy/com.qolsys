@@ -21,10 +21,12 @@ public class SanityZWave extends Setup {
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
+
     @BeforeMethod
     public void transmitterPair() throws Exception {
 
     }
+
     @Test
     public void verifyLight() throws Exception {
         String file = projectPath + "/extent-config.xml";
@@ -44,7 +46,6 @@ public class SanityZWave extends Setup {
         log.log(LogStatus.PASS, "Light is turned Off");
         Thread.sleep(2000);
     }
-
 
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {

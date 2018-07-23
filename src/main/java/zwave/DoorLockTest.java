@@ -1,6 +1,10 @@
 package zwave;
 
+import adc.ADC;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -11,6 +15,7 @@ import utils.ConfigProps;
 import utils.Setup;
 import utils.ZTransmitter;
 
+import java.io.File;
 import java.io.IOException;
 
 import static utils.ConfigProps.primary;
@@ -19,14 +24,35 @@ import static utils.ConfigProps.primary;
 
 public class DoorLockTest extends Setup {
 
-    String page_name = "Door Lock Testing";
-    Logger logger = Logger.getLogger(page_name);
+    String pageName = "Door Lock Testing";
+    Logger logger = Logger.getLogger(pageName);
+    ADC dealerADC = new ADC();
+    ExtentReports report;
+    ExtentTest log;
+    ExtentTest test;
+    public WebDriver driver1;
+
 
     public DoorLockTest() throws Exception {
         ZTransmitter.init();
         ConfigProps.init();
     }
 
+    public void create_report(String test_area_name) throws InterruptedException {
+        String file = projectPath + "/extent-config.xml";
+        report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_Disarm.html");
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("Software Version", softwareVersion());
+        log = report.startTest(test_area_name);
+    }
+
+
+    public void add_to_report(String test_case_name) {
+        report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_Disarm.html", false);
+        log = report.startTest(test_case_name);
+    }
 
     public void statusVerification(WebElement element, String text) {
         if (element.getText().equals(text)) {
@@ -51,8 +77,9 @@ public class DoorLockTest extends Setup {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setupDriver("ac82129c" , "http://127.0.1.1", "4723");
-        setupLogger(page_name);
+        setupDriver(primary , "http://127.0.1.1", "4723");
+        dealerADC.webDriverSetUp();
+        setupLogger(pageName);
     }
 
     @Test(priority = 0)
@@ -62,10 +89,10 @@ public class DoorLockTest extends Setup {
 //        swipeFromRighttoLeft();
         swipeToDoorLockPage(lockPage);
         Thread.sleep(2000);
-        elementVerification(lockPage.Key_icon, "Key icon");
-        elementVerification(lockPage.DoorLock_Name, "Door Lock name");
-        elementVerification(lockPage.DoorLock_Status, "Door Lock status");
-        elementVerification(lockPage.Refresh_Status, "Refresh status");
+        elementVerification(lockPage.keyIcon, "Key icon");
+        elementVerification(lockPage.doorLockName, "Door Lock name");
+        elementVerification(lockPage.doorLockStatus, "Door Lock status");
+        elementVerification(lockPage.refreshStatus, "Refresh status");
         elementVerification(lockPage.Door_battery, "Door lock battery level");
         elementVerification(lockPage.unlockAll, "Unlock All Doors");
         elementVerification(lockPage.Lock_ALL, "Lock All Doors");
@@ -77,13 +104,13 @@ public class DoorLockTest extends Setup {
         DoorLockPage locksPage = PageFactory.initElements(driver, DoorLockPage.class);
         swipeToDoorLockPage(locksPage);
         for(int i=0; i<=5; i++) {
-        smart_click(locksPage.DoorLock_Status, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
+        smart_click(locksPage.doorLockStatus, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
         Thread.sleep(7000);
-        statusVerification(locksPage.DoorLock_Status, "LOCKED");
+        statusVerification(locksPage.doorLockStatus, "LOCKED");
         Thread.sleep(5000);
-        smart_click(locksPage.DoorLock_Status, locksPage.unlockAll, "LOCKED", "Unlocked");
+        smart_click(locksPage.doorLockStatus, locksPage.unlockAll, "LOCKED", "Unlocked");
         Thread.sleep(7000);
-        statusVerification(locksPage.DoorLock_Status, "UNLOCKED");
+        statusVerification(locksPage.doorLockStatus, "UNLOCKED");
         Thread.sleep(5000);
         }
         System.out.println("Ending Timer");
@@ -99,8 +126,12 @@ public class DoorLockTest extends Setup {
 //            System.out.println("Status is not as expected");
 //        }
 //    }
+    @Test
+    public void testTest() throws Exception{
 
 
+        dealerADC.newADCSessionEmPowerPage("5390018");
+    }
 
 //****************************************************************************************************
 
@@ -118,29 +149,43 @@ public class DoorLockTest extends Setup {
 
     @Test
     public void preDoorLockTestSetup() throws Exception {
-        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+
         //remove all zwave devices
         removeAllDevices();
         //change all zwave settings to default
-//        zwaveSettingReset();
+        zwaveSettingReset();
+        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+
     }
 
     @Test
     public void pairingTransmitter() throws Exception {
+//        localZwaveAdd();
         localIncludeBridge();
     }
 
     @Test
-    public void disArmParingDeviceTest(){
+    public void disArmParingDeviceTest() throws Exception {
+        ADC adcSession = new ADC();
         //Pair 2 door lock locally( name it stock "Front Door" and "Back Door")
+        addStockNameFrontDoor();
+        addStockNameBackDoor();
+//        dealerADC.newADCSessionEmPowerPage("5390018");
+
         //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
+
         //pair 1 door lock locally and expect max number failure
         //change max number setting with setters service call
         //pair other 3 lock with custom name with node id
-        //verify all name are correct on the panel
-        //verify all names are correct on ADC Dealer
-
     }
+
+    @Test
+    public void disArmNameVerificationTest(){
+        //verify all name are correct on the panel
+
+        //verify all names are correct on ADC Dealer
+    }
+
     @Test
     public void disArmNameChangeTest(){
         // Change stock name Front Door to custom name "Door Lock and Node ID" locally
@@ -151,6 +196,7 @@ public class DoorLockTest extends Setup {
         // change side door lock name to "srg door" on user site
         // verify side door lock changed to srg door on the panel
     }
+
     @Test
     public void disArmUserCodeTest(){
         //add longterm user code
@@ -177,6 +223,7 @@ public class DoorLockTest extends Setup {
         //verify the user site reflects the new device status
         //verify history events appear on panel event page
     }
+
     @Test
     public void disArmRulesTest(){
         //create rules for Front door lock to
@@ -199,6 +246,7 @@ public class DoorLockTest extends Setup {
         //verify the user site reflects the new device status
         //verify history events appear on panel event page
     }
+
     @Test
     public void armStayRulesTest(){
         //same rules as disArmRuleTest
@@ -351,10 +399,11 @@ public class DoorLockTest extends Setup {
         logger.info("Arm Away mode: Verify that  a Door Lock can be deleted from the ADC website");
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+//        log.endTestCase(pageName);
         driver.quit();
+        service.stop();
     }
 }
 
