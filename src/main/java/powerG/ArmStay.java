@@ -125,7 +125,9 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
+
     }
 
     @Test
@@ -142,6 +144,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1152, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
@@ -159,6 +162,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1216, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
@@ -176,6 +180,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1231, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
@@ -193,6 +198,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1331, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         DISARM();
+        ADC_verification("//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Disarmed')]");
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
     }
 
@@ -210,6 +216,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+        ADC_verification("//*[contains(text(), 'DW 104-1127')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
@@ -227,6 +234,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1123, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
         enterDefaultUserCode();
+
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
@@ -809,7 +817,7 @@ public class ArmStay extends Setup{
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
     }
 
-    @Test
+
     public void AS_40_SMOKE() throws Exception {
         add_to_report("AS_40");
         log.log(LogStatus.INFO, ("*AS_40* Verify the panel will report tamper event for smoke sensor"));
@@ -839,6 +847,47 @@ public class ArmStay extends Setup{
         verifyArmstay();
         DISARM();
         log.log(LogStatus.PASS, ("Pass: panel reports tamper event, system stays in Arm Stay"));
+    }
+
+    @Test
+    public void AS_41_1_CO() throws Exception {
+        add_to_report("AS_41_1");
+        log.log(LogStatus.INFO, ("*AS_41_1* Verify the panel will report tamper event for CO sensor during exit delay"));
+        servcall.set_ARM_STAY_NO_DELAY_disable();
+        Thread.sleep(1000);
+        ARM_STAY();
+        Thread.sleep(3000);
+        pgprimaryCall(220, 1661, PGSensorsActivity.TAMPER);
+        Thread.sleep(10000);
+        verifyArmstay();
+        DISARM();
+        Thread.sleep(1000);
+        pgprimaryCall(220, 1661, PGSensorsActivity.TAMPERREST);
+        Thread.sleep(1000);
+        servcall.set_ARM_STAY_NO_DELAY_disable();
+        Thread.sleep(1000);
+        log.log(LogStatus.PASS, ("Pass: panel reports tamper event, system is in Arm Stay"));
+    }
+
+    @Test
+    public void AS_41_2_CO() throws Exception {
+        add_to_report("AS_41_1");
+        log.log(LogStatus.INFO, ("*AS_41_1* Verify the panel will report tamper event for CO sensor during entry delay"));
+        servcall.set_ARM_STAY_NO_DELAY_enable();
+        Thread.sleep(1000);
+        ARM_STAY();
+        Thread.sleep(2000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INOPEN);
+        Thread.sleep(2000);
+        pgprimaryCall(220, 1661, PGSensorsActivity.TAMPER);
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1152, PGSensorsActivity.INCLOSE);
+        Thread.sleep(1000);
+        pgprimaryCall(220, 1661, PGSensorsActivity.TAMPERREST);
+        Thread.sleep(1000);
+        log.log(LogStatus.PASS, ("Pass: panel reports tamper event, system is in Arm Stay"));
     }
 
     @Test
@@ -1185,7 +1234,7 @@ public class ArmStay extends Setup{
         log.log(LogStatus.PASS, ("Pass: panel reports Tampered, Closed events"));
     }
 
-    @Test
+
     public void AS_59_SMOKE() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         add_to_report("AS_59");

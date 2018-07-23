@@ -72,7 +72,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed from ADC user website"));
     }
     @Test
-    public void AA_03() throws Exception {
+    public void AA_03_dw10() throws Exception {
         rep.add_to_report("AA_03");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -86,7 +86,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_04() throws Exception {
+    public void AA_04_dw12() throws Exception {
         rep.add_to_report("AA_04");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW12"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -100,7 +100,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_05() throws Exception {
+    public void AA_05_dw12() throws Exception {
         rep.add_to_report("AA_05");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay using a Guest code DW12"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -114,7 +114,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_06() throws Exception {
+    public void AA_06_dw10_dw12() throws Exception {
         rep.add_to_report("AA_06");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10, DW12"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -132,7 +132,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_07() throws Exception {
+    public void AA_07_dw10_m15() throws Exception {
         rep.add_to_report("AA_07");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10, Motion15"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -148,7 +148,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_08() throws Exception {
+    public void AA_08_m20() throws Exception {
         rep.add_to_report("AA_08");
         rep.log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay Motion20"));
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -194,7 +194,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_13() throws Exception {
+    public void AA_13_dw10() throws Exception {
         rep.add_to_report("AA_13");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 10 is opened in Arm Away*"));
         Thread.sleep(2000);
@@ -211,7 +211,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_14() throws Exception {
+    public void AA_14_dw12() throws Exception {
         rep.add_to_report("AA_14");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 12 is opened in Arm Away*"));
         Thread.sleep(2000);
@@ -228,7 +228,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_15() throws Exception {
+    public void AA_15_dw13() throws Exception {
         rep.add_to_report("AA_15");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 13 is opened in Arm Away*"));
         Thread.sleep(2000);
@@ -244,7 +244,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_16() throws Exception {
+    public void AA_16_dw14() throws Exception {
         rep.add_to_report("AA_16");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 14 is opened in Arm Away*"));
         Thread.sleep(2000);
@@ -260,7 +260,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_17() throws Exception {
+    public void AA_17_dw16() throws Exception {
         rep.add_to_report("AA_17");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 16 is opened in Arm Away*"));
         Thread.sleep(2000);
@@ -276,7 +276,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_18() throws Exception {
+    public void AA_18_m35() throws Exception {
         rep.add_to_report("AA_18");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 35 is Activated in Arm Away*"));
         Thread.sleep(2000);
@@ -291,7 +291,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_19() throws Exception {
+    public void AA_19_m17() throws Exception {
         rep.add_to_report("AA_19");
         rep.log.log(LogStatus.INFO, ("*Verify the system goes into immediate pending alarm and then alarm after dialer delay*"));
         Thread.sleep(2000);
@@ -306,7 +306,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_20() throws Exception {
+    public void AA_20_dw10_dw12() throws Exception {
         rep.add_to_report("AA_20");
         rep.log.log(LogStatus.INFO, ("*Verify the system will report alarm on both sensors at the end of the entry delay*"));
         Thread.sleep(2000);
@@ -325,7 +325,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_21() throws Exception {
+    public void AA_21_dw10_dw13() throws Exception {
         rep.add_to_report("AA_21");
         rep.log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm when a group 13 sensor is opened and will report alarm on both sensors *"));
         Thread.sleep(2000);
@@ -344,7 +344,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_22() throws Exception {
+    public void AA_22_dw10_dw14() throws Exception {
         rep.add_to_report("AA_22");
         rep.log.log(LogStatus.INFO, ("*Verify the system will report alarm on both sensors at the end of the entry delay*"));
         Thread.sleep(2000);
@@ -363,7 +363,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_23() throws Exception {
+    public void AA_23_dw10_dw16() throws Exception {
         rep.add_to_report("AA_23");
         rep.log.log(LogStatus.INFO, ("*Verify the system will report alarm on both sensors at the end of the entry delay*"));
         Thread.sleep(2000);
@@ -382,7 +382,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_24() throws Exception {
+    public void AA_24_dw10_m35() throws Exception {
         rep.add_to_report("AA_24");
         rep.log.log(LogStatus.INFO, ("*Verify the system will report alarm on both sensors at the end of the entry delay*"));
         Thread.sleep(2000);
@@ -400,7 +400,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_31() throws Exception {
+    public void AA_31_dw8() throws Exception {
         rep.add_to_report("AA_31");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group8*"));
         Thread.sleep(2000);
@@ -416,7 +416,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_32() throws Exception {
+    public void AA_32_dw9() throws Exception {
         rep.add_to_report("AA_32");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group9*"));
         Thread.sleep(2000);
@@ -432,7 +432,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_33() throws Exception {
+    public void AA_33_dw10() throws Exception {
         rep.add_to_report("AA_33");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group10*"));
         Thread.sleep(2000);
@@ -448,7 +448,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_34() throws Exception {
+    public void AA_34_dw12() throws Exception {
         rep.add_to_report("AA_34");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group12*"));
         Thread.sleep(2000);
@@ -464,7 +464,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_35() throws Exception {
+    public void AA_35_dw13() throws Exception {
         rep.add_to_report("AA_35");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group13*"));
         Thread.sleep(2000);
@@ -480,7 +480,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_36() throws Exception {
+    public void AA_36_dw14() throws Exception {
         rep.add_to_report("AA_36");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group14*"));
         Thread.sleep(2000);
@@ -496,7 +496,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_37() throws Exception {
+    public void AA_37_dw16() throws Exception {
         rep.add_to_report("AA_37");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group16*"));
         Thread.sleep(2000);
@@ -512,7 +512,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_38() throws Exception {
+    public void AA_38_m15() throws Exception {
         rep.add_to_report("AA_38");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group15*"));
         Thread.sleep(2000);
@@ -529,7 +529,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_39() throws Exception {
+    public void AA_39_m17() throws Exception {
         rep.add_to_report("AA_39");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group17*"));
         Thread.sleep(2000);
@@ -546,7 +546,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_40() throws Exception {
+    public void AA_40_m20() throws Exception {
         rep.add_to_report("AA_40");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group20*"));
         Thread.sleep(2000);
@@ -563,7 +563,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_41() throws Exception {
+    public void AA_41_m35() throws Exception {
         rep.add_to_report("AA_41");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group35*"));
         Thread.sleep(2000);
@@ -580,7 +580,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_42() throws Exception {
+    public void AA_42_smoke() throws Exception {
         rep.add_to_report("AA_42");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group26*"));
         Thread.sleep(2000);
@@ -597,7 +597,7 @@ public class ArmAway extends Setup{
         rep.log.log(LogStatus.PASS, ("System is Disarmed"));
     }
     @Test
-    public void AA_43() throws Exception {
+    public void AA_43_co() throws Exception {
         rep.add_to_report("AA_43");
         rep.log.log(LogStatus.INFO, ("*Verify the panel will report an immediate tamper alarm group34*"));
         Thread.sleep(2000);

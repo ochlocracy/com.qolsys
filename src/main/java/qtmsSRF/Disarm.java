@@ -56,7 +56,7 @@ public class Disarm extends Setup {
         ConfigProps.init();
         SensorsActivity.init();
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
-        adc.setADCexecute("true");
+        adc.setADCexecute("false");
     }
 
     public void navigate_to_Security_Sensors_page() throws InterruptedException {
@@ -521,7 +521,7 @@ public class Disarm extends Setup {
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
-        Thread.sleep(5000);
+        Thread.sleep(30000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarms']"))).click();
         Thread.sleep(4000);
         adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
@@ -544,8 +544,9 @@ public class Disarm extends Setup {
         sett.STATUS.click();
         sensors.primaryCall(door_window9, SensorsActivity.OPEN);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        Thread.sleep(2);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window9, SensorsActivity.CLOSE);
+        Thread.sleep(2000);
         verifyInAlarm();
         log.log(LogStatus.PASS, "Pass: system is in ALARM");
         enterDefaultUserCode();
@@ -1534,6 +1535,7 @@ public class Disarm extends Setup {
         deleteFromPrimary(3);
         Thread.sleep(1000);
     }
+
     @Test(priority = 61)
     public void Disb_87_DW16() throws Exception {
         add_to_report("Disb319_87");
@@ -1555,8 +1557,6 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
     }
 
-
-
     @Test(priority = 62)
     public void Disb_104_SM() throws Exception {
         add_to_report("Disb319_104");
@@ -1570,16 +1570,20 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
         elementVerification(emg.Fire_icon_Alarmed, "Fire Emergency Sent");
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(5000);
+        Thread.sleep(30000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
+        adc.driver1.navigate().refresh();
+        Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Stop Alarm']"))).click();
         Thread.sleep(4000);
+        adc.driver1.navigate().refresh();
+        Thread.sleep(2000);
         adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
         Thread.sleep(10000);
         verifyDisarm();
         log.log(LogStatus.PASS, ("Pass: system is successfully Disarmed from user site"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }

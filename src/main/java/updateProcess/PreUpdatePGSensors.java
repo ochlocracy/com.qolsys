@@ -36,14 +36,14 @@ public class PreUpdatePGSensors extends Setup {
         logger.info("Adding a list of sensors");
         navigate_to_autolearn_page();
         /*** DW ***/
-        addPGSensors("DW", 104, 1101, 0);//gr10
-        addPGSensors("DW", 104, 1152, 1);//gr12
-        addPGSensors("DW", 104, 1231, 2);//gr13
-        addPGSensors("DW", 104, 1216, 3);//gr14
-        addPGSensors("DW", 104, 1331, 4);//gr16
-        addPGSensors("DW", 104, 1127, 6);//gr8
-        addPGSensors("DW", 104, 1123, 7);//gr9
-        addPGSensors("DW", 104, 1311, 5);//gr25
+//        addPGSensors("DW", 104, 1101, 0);//gr10
+//        addPGSensors("DW", 104, 1152, 1);//gr12
+//        addPGSensors("DW", 104, 1231, 2);//gr13
+//        addPGSensors("DW", 104, 1216, 3);//gr14
+//        addPGSensors("DW", 104, 1331, 4);//gr16
+//        addPGSensors("DW", 104, 1127, 6);//gr8
+//        addPGSensors("DW", 104, 1123, 7);//gr9
+//        addPGSensors("DW", 104, 1311, 5);//gr25
         /*** Motion ***/
         addPGSensors("Motion", 120, 1411, 1);//gr15
         addPGSensors("Motion", 123, 1441, 0);//gr17
@@ -79,6 +79,10 @@ public class PreUpdatePGSensors extends Setup {
         /***Siren ***/
         addPGSensors("Siren", 400, 1995, 0);//gr33
         addPGSensors("Siren", 410, 1998, 1);//gr25
+        /***Temperature ***/
+        addPGSensors("TempFreeze", 250, 3030, 0);//gr
+        addPGSensors("TempFreeze", 250, 3030, 0);//gr
+
     }
 
     public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {

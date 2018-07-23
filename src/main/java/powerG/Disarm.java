@@ -650,6 +650,10 @@ public class Disarm extends Setup {
         rep.add_to_report("Dis_31");
         rep.log.log(LogStatus.INFO, ("*Dis_31* Verify that the system does not allow an entry delay. The panel should go into immediate alarm if a sensor is triggered."));
         UIRepo adcUI = PageFactory.initElements(adc.driver1, UIRepo.class);
+        rt.exec(ConfigProps.adbPath + " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1");
+        Thread.sleep(1000);
+        pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
+        Thread.sleep(1000);
         adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
         Thread.sleep(5000);
         adcUI.Disarm_state.click();
@@ -735,7 +739,7 @@ public class Disarm extends Setup {
         rep.add_to_report("Dis_35");
         rep.log.log(LogStatus.INFO, ("*Dis-35* Verify the panel will go into immediate Alarm, open/close sensor gr13"));
         servcall.set_ARM_STAY_NO_DELAY_disable();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         ARM_STAY();
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(104, 1231, PGSensorsActivity.INOPEN);
@@ -1069,7 +1073,7 @@ public class Disarm extends Setup {
         UIRepo adcUI = PageFactory.initElements(adc.driver1, UIRepo.class);
         rep.log.log(LogStatus.INFO, ("*Dis-55* Verify  if the ADC No Entry Delay option is selected the panel does not have an entry delay and will go into immediate alarm is a sensor is activated. "));
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
-        Thread.sleep(3000);
+        Thread.sleep(10000);
         adcUI.Disarm_state.click();
         Thread.sleep(2000);
         adc.driver1.findElement(By.xpath("//*[contains(@id,'ember')]/div[1]/div/label")).click();
@@ -1697,7 +1701,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test
+
     public void addAux() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_Disarm.html", false);
         Thread.sleep(2000);
@@ -1804,7 +1808,7 @@ public class Disarm extends Setup {
         Thread.sleep(3000);
      //   emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-        ADC_verification("//*[contains(text(), 'Keypad/Touchscreen(25)')]", "//*[contains(text(), 'Police Panic')]");
+        ADC_verification("//*[contains(text(), 'KeypadTouchscreen 25')]", "//*[contains(text(), 'Police Panic')]");
         rep.log.log(LogStatus.PASS, ("Pass: Police Emergency is displayed, events are correctly displayed at the ADC dealer website"));
         Thread.sleep(5000);
     }
@@ -1951,7 +1955,7 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.INFO, ("*Dis-108* Verify that the system restores the Water Detector status  from 'Tampered' to 'Normal'"));
         Thread.sleep(3000);
         pgprimaryCall(241, 1971, "82 1");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         verifyDisarm();
         pgprimaryCall(241, 1971, "82 0");
 
