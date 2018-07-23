@@ -344,7 +344,9 @@ public class ADC extends Setup {
             }
         } catch (NoSuchElementException e) {
         }
-        Thread.sleep(10000);
+        Thread.sleep(2000);
+        driver1.get("https://www.alarm.com/web/system/home");
+        Thread.sleep(3000);
     }
 
     //must be on the Equipment page

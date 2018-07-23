@@ -19,6 +19,10 @@ public class UIRepo {
 
     @FindBy(xpath = "//div[contains(@class, 'icon ') and contains(@title, 'Armed Stay ')]")
     public WebElement Arm_Stay_state;
+
+    @FindBy(xpath = "//div[contains(@class, 'icon ') and contains(@title, 'Armed Away ')]")
+    public WebElement Arm_Away_state;
+
     @FindBy(xpath = "//button[contains(@id, 'ember') and contains(@class, 'disarmed btn ember-view')]")
     public WebElement Disarm;
 
