@@ -915,9 +915,11 @@ public class Setup extends Driver{
         logger.info("Removing all devices");
         System.out.println("Removing all devices");
         zwave.removeAllDevicesZwavePage.click();
-        Thread.sleep(4000);
+//        Thread.sleep(4000);
+        waitForElement(driver, zwave.oKBtnZwaveRemoveAllDevicesPage,30);
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
-        Thread.sleep(4000);
+        waitForElement(driver, zwave.oKBtnZwaveRemoveAllDevicesPage,30);
+//        Thread.sleep(4000);
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
         Thread.sleep(1000);
         logger.info("Including transmitter");

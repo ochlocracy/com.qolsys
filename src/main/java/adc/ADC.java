@@ -2,6 +2,7 @@ package adc;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
@@ -325,11 +326,11 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_txtNewCustomerId")).sendKeys(accountID);
         driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
 //        driver1.findElement(By.partialLinkText("Equipment")).click();
-        TimeUnit.SECONDS.sleep(3000);
+        TimeUnit.SECONDS.sleep(3);
     }
 
     public void New_ADC_session_User(String User, String Password) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2000);
+        TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
         String ADC_URL = "https://www.alarm.com/login.aspx";
         driver1.get(ADC_URL);
@@ -513,23 +514,30 @@ public class ADC extends Setup {
 
 
     public void newADCSessionEmPowerPage(String accountID) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2000);
+        TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/";
         driver1.get(ADC_URL);
+        logger.info("Logging in to qautomation");
         String login = "qautomation";
         String password = "Qolsys123";
+        logger.info("logging in to user dealer ");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUsername")));
         driver1.findElement(By.id("txtUsername")).sendKeys(login);
         driver1.findElement(By.id("txtPassword")).sendKeys(password);
         driver1.findElement(By.id("butLogin")).click();
+        logger.info("selecting Customer");
         driver1.findElement(By.id("ctl00_txtNewCustomerId")).click();
         driver1.findElement(By.id("ctl00_txtNewCustomerId")).sendKeys(accountID);
         driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
-        driver1.findElement(By.partialLinkText("Equipment")).click();
-        driver1.findElement(By.partialLinkText("DeviceAutomation.aspx")).click();
-        TimeUnit.SECONDS.sleep(3000);
+        logger.info("Entering Empower URL");
+        driver1.get("https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx");
+//        driver1.findElement(By.partialLinkText("emPower® Devices")).click();
+//        driver1.findElement(By.partialLinkText("emPower")).click();
+        logger.info("waiting for next action");
+        Thread.sleep(5000);
     }
+
     //Must be on emPower Devices page!
     //Has service call
     public void adcRediscoverZWaveNetwork() throws InterruptedException {
@@ -553,23 +561,30 @@ public class ADC extends Setup {
     //Must be on emPower Devices page!
     public void adcGetZWaveEquipmentList() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
+        logger.info("Requesting Equipment list ");
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
-        TimeUnit.SECONDS.sleep(15);
+        TimeUnit.SECONDS.sleep(5);
+        logger.info("Refreshing the page");
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
+        Thread.sleep(3000);
+        logger.info("Waiting for page to refresh");
     }
     //Must be on emPower Devices page!
     //Has service call
     public void adcAddZWaveDevice() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
-        TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteAdd")).click();
+        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+        logger.info("Adding device remotely");
+        Thread.sleep(2000);
+        logger.info("clicking Adc Remote Add");
+        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnRemoteAdd")).click();
+//        dealerPage.dealerAddZwaveDevice.click();
+
     }
     //Must be on emPower Devices page!
     //Has service call
     public void adcDeleteZWaveDevice() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
-        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();
+
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
     }

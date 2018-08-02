@@ -85,6 +85,7 @@ public class Lights extends Setup {
     public void driver_quit() throws InterruptedException {
         System.out.println("*****Stop driver*****");
         driver.quit();
+        adc.driver1.quit();
         Thread.sleep(1000);
         System.out.println("\n\n*****Stop appium service*****" + "\n\n");
         service.stop();
