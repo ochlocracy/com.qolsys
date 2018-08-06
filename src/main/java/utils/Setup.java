@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Setup extends Driver{
+public class Setup extends Driver {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM.dd_HH.mm.ss");
     public String projectPath = new String(System.getProperty("user.dir"));
@@ -208,13 +208,38 @@ public class Setup extends Driver{
         home_page.Two.click();
     }
 
-    public void verifyDisarm() throws Exception {
+    public String verifySystemState(String state) throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        if (home_page.Disarmed_text.getText().equals("DISARMED")) {
-            logger.info("Pass: System is DISARMED");
+        String panel_state = home_page.Disarmed_text.getText();
+        if (home_page.Disarmed_text.getText().equals(state.toUpperCase())) {
+            switch (state) {
+                case "DISARMED":
+                    break;
+                case "ARMED STAY":
+                    break;
+                case "ARMED AWAY":
+                    break;
+            }
+            return "System is: " + panel_state;
+
         } else {
             takeScreenshot();
-            logger.info("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
+            System.out.println("Failed: System is not in the expected state! Current state: " + home_page.Disarmed_text.getText());
+            System.exit(0);
+        }
+        return "System is: " + panel_state;
+    }
+
+    public void verifyDisarm() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        try {
+            if (home_page.Disarmed_text.getText().equals("DISARMED")) {
+                System.out.println("Pass: System is DISARMED");
+            } else {
+                takeScreenshot();
+                System.out.println("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
+            }
+        } catch (NoSuchElementException e) {
         }
     }
 
@@ -802,7 +827,8 @@ public class Setup extends Driver{
                 swipeFromLefttoRight();
             }
             return true;
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
         return false;
 
     }

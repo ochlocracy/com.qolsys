@@ -92,4 +92,6 @@ public class Driver {
         driver1 = new FirefoxDriver();
         wait = new WebDriverWait(driver1, 60);
     }
+
+
 }

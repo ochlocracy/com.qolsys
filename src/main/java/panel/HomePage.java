@@ -3,7 +3,9 @@ package panel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 public class HomePage {
+
     @FindBy(id = "com.qolsys:id/t3_home_iv_SensorStatus")
     public WebElement Sensor_status;
     @FindBy(id = "com.qolsys:id/t3_img_disarm")
@@ -119,5 +121,6 @@ public class HomePage {
     public WebElement Aux_Alarm;
     @FindBy(id = "com.qolsys:id/tv_img_action_text")
     public WebElement panel_Alarm;
+
 }
 

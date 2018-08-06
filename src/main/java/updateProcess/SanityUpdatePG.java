@@ -845,7 +845,7 @@ public class SanityUpdatePG extends Setup {
         servcall.set_RF_JAM_DETECT_disable();
     } //48sec
 
-    @Test(priority = 14)
+    @Test(priority = 14, retryAnalyzer = RetryAnalizer.class)
     public void Low_Battery() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
