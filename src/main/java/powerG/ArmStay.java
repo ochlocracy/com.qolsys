@@ -689,7 +689,7 @@ public class ArmStay extends Setup{
     }
 
     @Test
-    public void AS_32_DW13() throws Exception {
+    public void  AS_32_DW13() throws Exception {
         add_to_report("AS_32");
         log.log(LogStatus.INFO, ("*AS_32* Verify the panel will report an immediate tamper alarm for dw13"));
         servcall.set_ARM_STAY_NO_DELAY_enable();
@@ -711,7 +711,7 @@ public class ArmStay extends Setup{
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(1000);
         ARM_STAY();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         pgprimaryCall(104, 1216, PGSensorsActivity.TAMPER);
         Thread.sleep(2000);
         pgprimaryCall(104, 1216, PGSensorsActivity.TAMPERREST);

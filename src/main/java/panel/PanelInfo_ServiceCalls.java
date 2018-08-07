@@ -164,7 +164,6 @@ public class PanelInfo_ServiceCalls extends Setup {
         }
     }
 
-
     public void set_AUTO_BYPASS(int state) throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " + state + " i32 0 i32 0";
         rt.exec(command);

@@ -510,7 +510,7 @@ public class Disarm extends Setup {
         sett.STATUS.click();
         pgprimaryCall(104, 1123, PGSensorsActivity.INOPEN);
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
-        Thread.sleep(2);
+        Thread.sleep(2000);
         pgprimaryCall(104, 1123, PGSensorsActivity.INCLOSE);
         verifyInAlarm();
         rep.log.log(LogStatus.PASS, "Pass: system is in ALARM");
@@ -681,7 +681,7 @@ public class Disarm extends Setup {
         Thread.sleep(15000);
         verifyArmstay();
         pgprimaryCall(104, 1101, PGSensorsActivity.INOPEN);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         verifyInAlarm();
         rep.log.log(LogStatus.PASS, ("Pass: system is in immediate Alarm"));
         Thread.sleep(3000);
@@ -815,7 +815,7 @@ public class Disarm extends Setup {
         rep.add_to_report("Dis_38");
         rep.log.log(LogStatus.INFO, ("*Dis-38* Verify the panel will Arm Stay instantly if Arm Stay button is pressed by 1-group keyfob"));
         servcall.set_KEYFOB_NO_DELAY_enable();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         pgarmer(300, 1004, "02");
         verifyArmstay();
         rep.log.log(LogStatus.PASS, ("Pass: system is Armed Stay"));
@@ -941,7 +941,7 @@ public class Disarm extends Setup {
         rep.add_to_report("Dis_46");
         rep.log.log(LogStatus.INFO, ("*Dis-46* System will ArmStay after exit delay armed by keyfob 6"));
         servcall.set_KEYFOB_NO_DELAY_disable();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         pgarmer(305, 1009, "02");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         Thread.sleep(1000);
@@ -1719,21 +1719,21 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-
     public void addAux() throws IOException, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_Disarm.html", false);
         Thread.sleep(2000);
-        addPrimaryCallPG(42, 1, 3201105, 21);
+        addPrimaryCallPG(36, 1, 3201105, 21);
         Thread.sleep(5000);
-        addPrimaryCallPG(36, 0, 3201116, 21);
+        addPrimaryCallPG(37, 0, 3201116, 21);
         Thread.sleep(5000);
-        addPrimaryCallPG(41, 2, 3201207, 21);
-        adc.New_ADC_session(adc.getAccountId());
-        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sensors"))).click();
-        adc.Request_equipment_list();
+        addPrimaryCallPG(38, 2, 3201207, 21);
+//        adc.New_ADC_session(adc.getAccountId());
+//        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sensors"))).click();
+//        adc.Request_equipment_list();
+
     }
 
-    @Test(/*dependsOnMethods = {"addAux"},*/ priority = 81)
+//    @Test(/*dependsOnMethods = {"addAux"}, priority = 81*/)
     public void Dis_91_AUX1() throws Exception {
         rep.add_to_report("Dis_91");
         rep.log.log(LogStatus.INFO, ("*Dis-91* Verify the panel will go into an immediate Auxiliary Emergency Alarm if Alarm is sent by 4-group aux. pendant"));
@@ -2170,8 +2170,8 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         //    emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
-
         ADC_verification("//*[contains(text(), 'Carbon Monoxide')]", "//*[contains(text(), 'AuxPendant 320-1015')]");
+        log.log(LogStatus.PASS, ("Pass: different alarms are generated"));
     }
 
     @Test(priority = 105)
