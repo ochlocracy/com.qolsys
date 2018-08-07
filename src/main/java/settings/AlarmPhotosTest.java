@@ -38,7 +38,6 @@ public class AlarmPhotosTest extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -65,7 +64,6 @@ public class AlarmPhotosTest extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
