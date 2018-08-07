@@ -32,8 +32,8 @@ public class SanityUpdatePG extends Setup {
     ExtentTest log;
     ExtentTest test;
 
-    String ON = "00000001";
-    String OFF = "00000000";
+    final String ON = "00000001";
+    final String OFF = "00000000";
     int one_sec = 1000;
 
     public SanityUpdatePG() throws Exception {
@@ -868,76 +868,6 @@ public class SanityUpdatePG extends Setup {
 
     } //40sec
 
-    @Test(priority = 10, enabled = false)
-    public void verifyNewUserCodeWorks() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.UserCode");
-        System.out.println("Verifying a new user code is working correctly");
-        log.log(LogStatus.INFO, "Verifying a new user code is working correctly");
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        ARM_STAY();
-        Thread.sleep(3000);
-        home.DISARM.click();
-        home.Five.click();
-        home.Six.click();
-        home.Four.click();
-        home.Three.click();
-        Thread.sleep(1000);
-        verifyDisarm();
-        log.log(LogStatus.PASS, "Pass: new user code is working correctly");
-    }
-
-    @Test(priority = 11, enabled = false)
-    public void verifyNewMasterCodeWorks() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.MasterCode");
-        System.out.println("Verifying a new master code is working correctly");
-        log.log(LogStatus.INFO, "Verifying a new master code is working correctly");
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        ARM_STAY();
-        Thread.sleep(3000);
-        home.DISARM.click();
-        home.Three.click();
-        home.Three.click();
-        home.Three.click();
-        home.One.click();
-        Thread.sleep(1000);
-        verifyDisarm();
-        log.log(LogStatus.PASS, "Pass: new master code is working correctly");
-    }
-
-    @Test(priority = 12, enabled = false)
-    public void verifyNewGuestCodeWorks() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
-        log = report.startTest("UpdateProcess.GuestCode");
-        System.out.println("Verifying a new guest code is working correctly");
-        log.log(LogStatus.INFO, "Verifying a new guest code is working correctly");
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        ARM_STAY();
-        Thread.sleep(3000);
-        home.DISARM.click();
-        home.Eight.click();
-        home.Eight.click();
-        home.Zero.click();
-        home.Zero.click();
-        Thread.sleep(1000);
-        verifyDisarm();
-        log.log(LogStatus.PASS, "Pass: new guest code is working correctly");
-    }
-
-    @Test(priority = 13, enabled = false)
-    public void deleteNewUsers() throws Exception {
-        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        navigateToUserManagementPage();
-        List<WebElement> delete = driver.findElements(By.id("com.qolsys:id/deleteImg"));
-        for (int i = 3; i > 0; i--) {
-            delete.get(1).click();
-            user_m.User_Management_Delete_User_Ok.click();
-        }
-        Thread.sleep(1000);
-        home.Home_button.click();
-    }
 
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {

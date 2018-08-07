@@ -64,9 +64,7 @@ public class ADC extends Setup {
         ConfigProps.init();
     }
 
-    public String getADCexecute() {
-        return ADCexecute;
-    }
+    public String getADCexecute() {return ADCexecute;}
 
     public void setADCexecute(String ADCexecute) {
         this.ADCexecute = ADCexecute;
@@ -171,10 +169,13 @@ public class ADC extends Setup {
             accountId = "6045616";
         } else if (get_UDID().equals("ac8312d3")) {
             accountId = "6074610";
+        } else if (get_UDID().equals("6231f044")) {   // Denis
+            accountId = "6079262";
+        } else if (get_UDID().equals("2c68bc67")) {    // Denis
+            accountId = "5323198";
     }
         return accountId;
     }
-
 
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
@@ -313,6 +314,7 @@ public class ADC extends Setup {
         TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
         String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID;
+ //       System.out.println("https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID);
         driver1.get(ADC_URL);
         String login = "qautomation";
         String password = "Qolsys123";
