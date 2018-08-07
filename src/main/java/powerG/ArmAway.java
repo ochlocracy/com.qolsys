@@ -24,6 +24,7 @@ public class ArmAway extends Setup{
     ExtentReport rep = new ExtentReport("ArmAway");
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
+
     public ArmAway() throws Exception {
         ConfigProps.init();
         PGSensorsActivity.init();

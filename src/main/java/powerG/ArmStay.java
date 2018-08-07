@@ -81,7 +81,7 @@ public class ArmStay extends Setup{
         inst.DEVICES.click();
         dev.Security_Sensors.click();
     }
-    public void resetAlarm(String alarm) throws InterruptedException {
+    public void resetAlarm(String alarm) throws InterruptedException, IOException {
         adc.New_ADC_session_User("LeBron_James", "qolsys123");
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");

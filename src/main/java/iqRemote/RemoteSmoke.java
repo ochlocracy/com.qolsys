@@ -53,7 +53,7 @@ public class RemoteSmoke extends SetupRemote {
         /*** PANEL ARMING ***/
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         //    rt.exec(ConfigProps.adbPath + " shell logcat -T" + currentTime + " -v time -s QolsysProvider > /data/log.txt");
-        Thread.sleep(20000);
+        Thread.sleep(40000);
 
         for (int i = 100; i > 0; i--) {
             rt.exec(ConfigProps.adbPath + " shell date >> /sdcard/meminfo.txt");

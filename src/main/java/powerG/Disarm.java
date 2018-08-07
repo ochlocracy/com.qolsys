@@ -4,7 +4,6 @@ import adc.ADC;
 import adc.UIRepo;
 import adcSanityTests.RetryAnalizer;
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -22,15 +21,12 @@ import utils.ExtentReport;
 import utils.PGSensorsActivity;
 import utils.Setup;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Disarm extends Setup {
     ExtentReports report;
-    ExtentTest log;
-    ExtentTest test;
 
     ADC adc = new ADC();
     Sensors sensors = new Sensors();
@@ -65,6 +61,7 @@ public class Disarm extends Setup {
             Thread.sleep(7000);
         }
     }
+
     public void navigate_to_Security_Sensors_page() throws InterruptedException {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
@@ -74,6 +71,7 @@ public class Disarm extends Setup {
         inst.DEVICES.click();
         dev.Security_Sensors.click();
     }
+
     public void resetAlarm(String alarm) throws InterruptedException {
         adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
         Thread.sleep(5000);
@@ -115,7 +113,7 @@ public class Disarm extends Setup {
         if (li_status1.get(line).getText().equals(State)) {
             rep.log.log(LogStatus.PASS, "Pass: sensor status is displayed correctly: ***" + li_status1.get(line).getText() + "***");
         } else {
-            rep. log.log(LogStatus.FAIL, "Failed: sensor status is displayed incorrect: ***" + li_status1.get(line).getText() + "***");
+            rep.log.log(LogStatus.FAIL, "Failed: sensor status is displayed incorrect: ***" + li_status1.get(line).getText() + "***");
         }
         Thread.sleep(2000);
         li_status1.clear();
@@ -130,6 +128,25 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
         home.Home_button.click();
     }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            adc.driver1.findElement(locator);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public void assertElementIsDisplayed(By locator) {
+
+        if (!isElementPresent(locator)) {
+            Assert.fail();
+        }
+        Assert.assertTrue(adc.driver1.findElement(locator).isDisplayed());
+    }
+
+
 
     @Test
     public void Dis_01_DW10() throws IOException, InterruptedException {
@@ -467,7 +484,7 @@ public class Disarm extends Setup {
         Thread.sleep(15000);
         verifyInAlarm();
         rep.log.log(LogStatus.PASS, "Pass: system is in ALARM");
-        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
+        adc.New_ADC_session_User(ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(7000);
@@ -475,7 +492,9 @@ public class Disarm extends Setup {
         Thread.sleep(4000);
         adc.driver1.findElement(By.xpath("(//*[text()='Stop Alarms'])[last()]")).click();
         Thread.sleep(10000);
-        verifyDisarm();
+        System.out.println(verifySystemState("Disarmed"));
+
+        //verifyDisarm();
         rep.log.log(LogStatus.PASS, ("Pass: system is successfully Disarmed from user site"));
         Thread.sleep(1000);
         pgprimaryCall(104, 1127, PGSensorsActivity.INCLOSE);
@@ -626,7 +645,6 @@ public class Disarm extends Setup {
         } catch (Exception e) {
             //       e.printStackTrace();
         }
-
 
 
 //        driver.findElement(By.id("com.qolsys:id/powerg_sensor_desc")).click();
@@ -1628,11 +1646,11 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(300, 1004, "11 1");
         Thread.sleep(2000);
-      //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency"); from 7.1
+        //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency"); from 7.1
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Keyfob 300-1004')]", "//*[contains(text(), 'Delayed Police Panic')]");
         rep.log.log(LogStatus.PASS, ("Pass: Police Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-     //   emergency.Cancel_Emergency.click();
+        //   emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
@@ -1644,11 +1662,11 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(306, 1003, "11 1");
         Thread.sleep(2000);
-       // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Keyfob 306-1003')]", "//*[contains(text(), 'Keyfob 24 Delayed Aux')]");
         rep.log.log(LogStatus.PASS, ("Pass: Auxiliary Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
@@ -1660,11 +1678,11 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(305, 1009, "11 1");
         Thread.sleep(2000);
-     //   elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        //   elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Keyfob 305-1009')]", "//*[contains(text(), 'Keyfob 23 Delayed Aux')]");
         rep.log.log(LogStatus.PASS, ("Pass: Auxiliary Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-   //     emergency.Cancel_Emergency.click();
+        //     emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
@@ -1676,7 +1694,7 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(320, 1015, "11 1");
         Thread.sleep(2000);
-    //    elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        //    elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'AuxPendant 320-1015')]", "//*[contains(text(), 'Delayed alarm')]");
         rep.log.log(LogStatus.PASS, ("Pass: Auxiliary Emergency is displayed, events are correctly displayed at the ADC dealer website"));
@@ -1692,11 +1710,11 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(320, 1016, "11 1");
         Thread.sleep(2000);
-    //    elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
-       verifyInAlarm();
+        //    elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        verifyInAlarm();
         ADC_verification("//*[contains(text(), 'AuxPendant 320-1016')]", "//*[contains(text(), 'Delayed alarm')]");
         rep.log.log(LogStatus.PASS, ("Pass: Auxiliary Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
@@ -1712,6 +1730,7 @@ public class Disarm extends Setup {
 //        adc.New_ADC_session(adc.getAccountId());
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sensors"))).click();
 //        adc.Request_equipment_list();
+
     }
 
 //    @Test(/*dependsOnMethods = {"addAux"}, priority = 81*/)
@@ -1721,12 +1740,12 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(320, 1105, "11 1");
-        Thread.sleep(2000);
-     //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        Thread.sleep(4000);
+        //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Auxiliary Pendant 33')]", "//*[contains(text(), 'Sensor 33 Alarm**')]");
         rep.log.log(LogStatus.PASS, ("Pass: Police Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-  //      emergency.Cancel_Emergency.click();
+        //      emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
@@ -1739,14 +1758,15 @@ public class Disarm extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         pgprimaryCall(320, 1116, "11 1");
         Thread.sleep(2000);
-       // elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
-       verifyInAlarm();
+        // elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Auxiliary Pendant 34')]", "//*[contains(text(), 'Sensor 34 Alarm**')]");
         rep.log.log(LogStatus.PASS, ("Pass: Police Emergency is displayed, events are correctly displayed at the ADC dealer website"));
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
     }
+
     @Test(priority = 84)
     public void Dis_93_AUX2() throws Exception {
         rep.add_to_report("Dis_93");
@@ -1802,10 +1822,10 @@ public class Disarm extends Setup {
         //reset to idle
         pgprimaryCall(371, 1005, "80 0");
         Thread.sleep(3000);
-   //     elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
-       verifyInAlarm();
+        //     elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        verifyInAlarm();
         Thread.sleep(3000);
-     //   emergency.Cancel_Emergency.click();
+        //   emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         ADC_verification("//*[contains(text(), 'KeypadTouchscreen 25')]", "//*[contains(text(), 'Police Panic')]");
         rep.log.log(LogStatus.PASS, ("Pass: Police Emergency is displayed, events are correctly displayed at the ADC dealer website"));
@@ -1872,7 +1892,7 @@ public class Disarm extends Setup {
         pgprimaryCall(201, 1541, "06 1");
         Thread.sleep(3000);
         verifyInAlarm();
-     //   emergency.Cancel_Emergency.click();
+        //   emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(3000);
         navigateToSettingsPage();
@@ -2080,10 +2100,10 @@ public class Disarm extends Setup {
         Thread.sleep(3000);
         pgarmer(300, 1004, "01");
         Thread.sleep(3000);
-      //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
-    //    emergency.Cancel_Emergency.click();
+        //    emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         rep.log.log(LogStatus.PASS, ("Pass: system is in alarm mode if to press Disarm button by keyfob in 1-group"));
     }
@@ -2097,15 +2117,15 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         pgprimaryCall(300, 1004, "10 1");
         Thread.sleep(2000);
-      //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        //  elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
         verifyInAlarm();
         Thread.sleep(2000);
         pgarmer(300, 1004, "01");
         Thread.sleep(3000);
-     //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         rep.log.log(LogStatus.PASS, ("Pass: system is in alarm mode if to press Disarm button by keyfob in 1-group"));
         System.out.println();
@@ -2120,7 +2140,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         pgprimaryCall(300, 1004, "10 1");
         Thread.sleep(2000);
-     //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
+        //   elementVerification(emergency.Police_Emergency_Alarmed, "Police Emergency");
         verifyInAlarm();
         Thread.sleep(2000);
         pgarmer(300, 1004, "01");
@@ -2138,17 +2158,17 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.INFO, ("*Dis-118* Verify the system will generate different alarms if activate different sensors at the same time"));
         pgprimaryCall(320, 1015, "10 1");
         Thread.sleep(2000);
-       // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
         pgprimaryCall(200, 1531, "06 1");
         Thread.sleep(2000);
-      //  elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
+        //  elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
         pgprimaryCall(220, 1661, "08 1");
         Thread.sleep(2000);
-    //    emergency.Cancel_Emergency.click();
+        //    emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         ADC_verification("//*[contains(text(), 'Carbon Monoxide')]", "//*[contains(text(), 'AuxPendant 320-1015')]");
         log.log(LogStatus.PASS, ("Pass: different alarms are generated"));
@@ -2167,10 +2187,10 @@ public class Disarm extends Setup {
         Thread.sleep(3000);
         pgarmer(305, 1009, "01");
         Thread.sleep(3000);
-       // elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
+        // elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         rep.log.log(LogStatus.PASS, ("Pass: system is in alarm mode if to press Disarm button by keyfob in 6-group"));
     }
@@ -2184,7 +2204,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         pgprimaryCall(305, 1009, "10 1");
         Thread.sleep(2000);
-      //  elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        //  elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         Thread.sleep(2000);
         pgarmer(305, 1009, "01");
@@ -2192,7 +2212,7 @@ public class Disarm extends Setup {
         //elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         Thread.sleep(1000);
-      //  emergency.Cancel_Emergency.click();
+        //  emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         rep.log.log(LogStatus.PASS, ("Pass: system is in alarm mode if to press Disarm button by keyfob in 6-group"));
     }
@@ -2206,7 +2226,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         pgprimaryCall(305, 1009, "10 1");
         Thread.sleep(2000);
-       // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
+        // elementVerification(emergency.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency");
         verifyInAlarm();
         Thread.sleep(2000);
         pgarmer(305, 1009, "01");
@@ -2228,7 +2248,7 @@ public class Disarm extends Setup {
         home.Emergency_Button.click();
         emergency.Fire_icon.click();
         Thread.sleep(3000);
-       // elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
+        // elementVerification(emergency.Fire_Emergency_Alarmed, "Fire Emergency");
         verifyInAlarm();
         pgarmer(305, 1009, "01");
         Thread.sleep(3000);
@@ -2410,14 +2430,14 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode from Activated to Normal"));
     }
 
-    @Test(priority =118)
+    @Test(priority = 118)
     public void Dis_132_SH17() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         rep.add_to_report("Dis_132");
         rep.log.log(LogStatus.INFO, ("*Dis-132* Verify the panel will create just notification if a shock-detector in group 17 is activated while exit delay to AS"));
         servcall.set_ARM_STAY_NO_DELAY_disable();
         ARM_STAY();
-        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/2);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(171, 1771, "0C 1");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         verifyArmstay();
@@ -2442,8 +2462,8 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode from Activated to Normal"));
     }
 
-    @Test (priority = 119)
-     public void Dis_137_GB13() throws Exception {
+    @Test(priority = 119)
+    public void Dis_137_GB13() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         rep.add_to_report("Dis_137");
         rep.log.log(LogStatus.INFO, ("*Dis-137* Verify the glass-break detector in 13-group is being monitored"));
@@ -2469,13 +2489,13 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode from Activated to Normal"));
     }
 
-    @Test (priority= 120)
+    @Test(priority = 120)
     public void Dis_138_GB13() throws Exception {
         rep.add_to_report("Dis_138");
         rep.log.log(LogStatus.INFO, ("*Dis-138* Verify the panel will go into immediate alarm if a glass-break detector in group 13 is activated while exit delay to AS"));
         servcall.set_ARM_STAY_NO_DELAY_disable();
         ARM_STAY();
-        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/2);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1874, "0A 1");
         Thread.sleep(2000);
         verifyInAlarm();
@@ -2485,11 +2505,11 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system is going into immediate alarm"));
     }
 
-    @Test (priority = 121)
+    @Test(priority = 121)
     public void Dis_139_GB13() throws Exception {
         rep.add_to_report("Dis_139");
         rep.log.log(LogStatus.INFO, ("*Dis-139* Verify the panel will go into immediate alarm if a glass-break detector in group 13 is activated while exit delay to AA"));
-        ARM_AWAY(ConfigProps.longExitDelay/2);
+        ARM_AWAY(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1874, "0A 1");
         Thread.sleep(2000);
         verifyInAlarm();
@@ -2499,13 +2519,13 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system is going into immediate alarm"));
     }
 
-    @Test (priority = 122)
+    @Test(priority = 122)
     public void Dis_140_GB13() throws Exception {
         rep.add_to_report("Dis_140");
         rep.log.log(LogStatus.INFO, ("*Dis-140* Verify the panel will go into immediate alarm if a glass-break detector in group 13 is activated while exit delay to AS"));
         servcall.set_ARM_STAY_NO_DELAY_disable();
         ARM_STAY();
-        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/2);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1874, "82 1");
         Thread.sleep(2000);
         verifyInAlarm();
@@ -2517,11 +2537,11 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system is going into immediate alarm"));
     }
 
-    @Test (priority = 123)
+    @Test(priority = 123)
     public void Dis_141_GB13() throws Exception {
         rep.add_to_report("Dis_141");
         rep.log.log(LogStatus.INFO, ("*Dis-141* Verify the panel will go into immediate alarm if a glass-break detector in group 13 is tampered while exit delay to AA"));
-        ARM_AWAY(ConfigProps.longExitDelay/2);
+        ARM_AWAY(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1874, "82 1");
         Thread.sleep(2000);
         verifyInAlarm();
@@ -2533,7 +2553,7 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system is going into immediate alarm"));
     }
 
-    @Test (priority = 124)
+    @Test(priority = 124)
     public void Dis_142_GB13() throws Exception {
         rep.add_to_report("Dis_142");
         rep.log.log(LogStatus.INFO, ("*Dis-142* Verify that the panel sees when the glass-break detector in 13 group is tampered"));
@@ -2560,7 +2580,7 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode to Tampered"));
     }
 
-    @Test (priority = 125)
+    @Test(priority = 125)
     public void Dis_143_GB13() throws Exception {
         rep.add_to_report("Dis_143");
         rep.log.log(LogStatus.INFO, ("*Dis-143* Verify that the system restores the glass-break detector status  from 'Tampered' to 'Normal'"));
@@ -2588,7 +2608,7 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode from Tampered to Normal"));
     }
 
-    @Test (priority = 125)
+    @Test(priority = 125)
     public void Dis_144_GB13() throws Exception {
         rep.add_to_report("Dis_144");
         rep.log.log(LogStatus.INFO, ("*Dis-144* Verify that the system restores the glass-break detector status  from 'Alarmed' to 'Normal'"));
@@ -2614,7 +2634,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test (priority = 126)
+    @Test(priority = 126)
     public void Dis_145_GB17() throws Exception {
         rep.add_to_report("Dis_145");
         rep.log.log(LogStatus.INFO, ("*Dis-145* Verify the glass-break detector in 17-group is being monitored"));
@@ -2639,14 +2659,14 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: The system changes mode from Activated to Normal"));
     }
 
-    @Test (priority = 127)
+    @Test(priority = 127)
     public void Dis_146_GB17() throws Exception {
         rep.add_to_report("Dis_146");
         rep.log.log(LogStatus.INFO, ("*Dis-146* Verify the panel will create just notification if a glass-break detector in group 17 is activated while exit delay to AS"));
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_disable();
         ARM_STAY();
-        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/2);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1871, "0A 1");
         TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay);
         verifyArmstay();
@@ -2655,12 +2675,12 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: panel creates notification if a glass-break detector in group 17 is activated while exit delay"));
     }
 
-    @Test (priority = 128)
+    @Test(priority = 128)
     public void Dis_147_GB17() throws Exception {
         rep.add_to_report("Dis_147");
         rep.log.log(LogStatus.INFO, ("*Dis-147* Verify the panel will go into immediately alarm if a glass-break detector in group 17  is activated while exit delay to AA"));
         Thread.sleep(1000);
-        ARM_AWAY(ConfigProps.longExitDelay/2);
+        ARM_AWAY(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1871, "0A 1");
         Thread.sleep(1000);
         verifyInAlarm();
@@ -2671,14 +2691,14 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: panel goes into immediate alarm"));
     }
 
-    @Test (priority = 127)
+    @Test(priority = 127)
     public void Dis_148_GB17() throws Exception {
         rep.add_to_report("Dis_148");
         rep.log.log(LogStatus.INFO, ("*Dis-148* Verify the panel will create just notification if a glass-break detector in group 17 is tampered while exit delay to AS"));
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_disable();
         ARM_STAY();
-        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay/2);
+        TimeUnit.SECONDS.sleep(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1871, "82 1");
         Thread.sleep(3000);
         pgprimaryCall(160, 1871, "82 0");
@@ -2689,11 +2709,11 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: panel creates a notification if a glass-break detector in group 17 is tampered"));
     }
 
-    @Test (priority = 128)
+    @Test(priority = 128)
     public void Dis_149_GB17() throws Exception {
         rep.add_to_report("Dis_149");
         rep.log.log(LogStatus.INFO, ("*Dis-149* Verify the panel will go into immediate alarm if a glass-break detector in group 17 is tampered while exit delay to AA"));
-        ARM_AWAY(ConfigProps.longExitDelay/2);
+        ARM_AWAY(ConfigProps.longExitDelay / 2);
         pgprimaryCall(160, 1871, "82 1");
         Thread.sleep(5000);
         verifyInAlarm();
@@ -2706,7 +2726,7 @@ public class Disarm extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: panel goes into immediate alarm"));
     }
 
-    @Test (priority = 129)
+    @Test(priority = 129)
     public void Dis_150_GB17() throws Exception {
         rep.add_to_report("Dis_150");
         rep.log.log(LogStatus.INFO, ("*Dis-150* Verify that the panel sees when the glass-break detector in 17 group is tampered"));
@@ -2737,7 +2757,7 @@ public class Disarm extends Setup {
     public void add128() throws IOException, InterruptedException {
         int dlid = 12345;
         int new_dlid = ++dlid;
-        for(int i = 1; i < 128; i++){
+        for (int i = 1; i < 128; i++) {
             addPrimaryCall(i, 10, ++new_dlid, 1);
             System.out.println(i + " " + new_dlid);
             Thread.sleep(1000);

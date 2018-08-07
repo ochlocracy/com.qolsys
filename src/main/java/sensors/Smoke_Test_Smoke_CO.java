@@ -39,7 +39,7 @@ public class Smoke_Test_Smoke_CO extends Setup {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact_us = PageFactory.initElements(driver, ContactUs.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
-//        logger.info("Current software version: "+ softwareVersion());
+        logger.info("Current software version: "+ softwareVersion());
         MySensors.read_sensors_from_csv();
         logger.info("Adding sensors...");
         MySensors.addAllSensors();
@@ -49,6 +49,7 @@ public class Smoke_Test_Smoke_CO extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.smoke_detector_zones, 26,Alarm);
         TimeUnit.SECONDS.sleep(2);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.smoke_detector_zones, 26,Idle);
+        TimeUnit.SECONDS.sleep(2);
         if (emergency.Emergency_sent_text.getText().equals("Fire Emergency Sent")){
             logger.info("Pass: Fire emergency is sent in Disarm mode");
         }

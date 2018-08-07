@@ -1,6 +1,5 @@
 package sensors;
 
-import org.openqa.selenium.support.ui.Select;
 import utils.Log;
 import utils.Setup;
 import org.apache.log4j.Logger;
@@ -55,8 +54,6 @@ public class Sensors_Panel_Add extends Setup {
    //     driver.scrollTo("Garage Door").click();
         TimeUnit.SECONDS.sleep(10);
     }
-
-
 
     @AfterMethod
     public void tearDown () throws IOException, InterruptedException {
