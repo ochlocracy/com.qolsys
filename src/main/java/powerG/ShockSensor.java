@@ -82,7 +82,7 @@ public class ShockSensor extends Setup {
         adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_udList_gvSettings']/tbody/tr[18]/td[5]/a")).click();
         TimeUnit.SECONDS.sleep(3);
 
-        Select sensitivity_lvl = new Select (adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_udList_ddlNewValue']")));
+        Select sensitivity_lvl = new Select(adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_udList_ddlNewValue']")));
         sensitivity_lvl.selectByVisibleText("High");
         TimeUnit.SECONDS.sleep(2);
         adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_udList_butChange']")).click();
@@ -254,7 +254,7 @@ public class ShockSensor extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm"));
     }
 
-    @Test
+    @Test(priority = 12)
     public void Shock_12() throws IOException, InterruptedException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         rep.add_to_report("Shock_12");
@@ -274,7 +274,23 @@ public class ShockSensor extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: sensitivity lvl is set to \"High\""));
     }
 
+    @Test(priority = 13)
+    public void Shock_13() throws IOException, InterruptedException {
+        rep.add_to_report("Shock_13");
+        rep.log.log(LogStatus.INFO, ("*Shock_13* Set from panel sensitivity lvl to \"Medium\""));
+        navigateToEditSensorPage();
+        driver.scrollTo("171-1741");
+        TimeUnit.SECONDS.sleep(2);
+        WebElement b = driver.findElement(By.className("android.widget.LinearLayout"));
+        List<WebElement> li = b.findElements(By.id("com.qolsys:id/imageView1"));
+        li.get(5).click();
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.id("com.qolsys:id/pgsensitivitylevel")).click();
+       driver.findElement(By.xpath("//android.widget.TextView[@text='Medium']")).click();
+        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.id("com.qolsys:id/addsensor")).click();
 
+    }
 
 
     @AfterTest(alwaysRun = true)

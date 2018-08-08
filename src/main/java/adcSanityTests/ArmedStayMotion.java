@@ -3,6 +3,7 @@ package adcSanityTests;
 import adc.ADC;
 import utils.ConfigProps;
 import panel.PanelInfo_ServiceCalls;
+import utils.RetryAnalizer;
 import utils.SensorsActivity;
 import utils.Setup;
 import sensors.Sensors;

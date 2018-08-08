@@ -7,10 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import utils.ConfigProps;
-import utils.ExtentReport;
-import utils.PGSensorsActivity;
-import utils.Setup;
+import utils.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -63,6 +60,18 @@ public class WaterSensor extends Setup {
         adc.webDriverSetUp();
     }
 
+    public void disarmServiceCall() throws IOException {
+        String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
+        rt.exec(ConfigProps.adbPath + " " + servicecall);
+    }
+
+    public void default_state() throws IOException, InterruptedException {
+        disarmServiceCall();
+        TimeUnit.SECONDS.sleep(1);
+        pgprimaryCall(241, 1971, PGSensorsActivity.TAMPERREST);
+    }
+
+
     @Test
     public void Water_01() throws Exception {
         rep.create_report("Wat_01");
@@ -77,10 +86,14 @@ public class WaterSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void Water_02() throws Exception {
         rep.add_to_report("Wat_02");
         rep.log.log(LogStatus.INFO, ("*Wat_02* ArmStay mode tripping Water group 38 -> Expected result = Instant Alarm"));
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            TimeUnit.SECONDS.sleep(2);
+        }
         ARM_STAY();
         TimeUnit.SECONDS.sleep(2);
         pgprimaryCall(241, 1971, PGSensorsActivity.FLOOD);
@@ -92,10 +105,14 @@ public class WaterSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Water_03() throws Exception {
         rep.add_to_report("Wat_03");
         rep.log.log(LogStatus.INFO, ("*Wat_03* ArmAway mode tripping Water_flood group 38 -> Expected result = Instant Alarm"));
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            TimeUnit.SECONDS.sleep(2);
+        }
         ARM_AWAY(ConfigProps.longExitDelay + 2);
         pgprimaryCall(241, 1971, PGSensorsActivity.FLOOD);
         TimeUnit.SECONDS.sleep(2);
@@ -106,10 +123,14 @@ public class WaterSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Water_04() throws Exception {
         rep.add_to_report("Wat_04");
         rep.log.log(LogStatus.INFO, ("*Wat_04* Disarm mode tampering Water group 38 -> Expected result = Disarm"));
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            TimeUnit.SECONDS.sleep(2);
+        }
         pgprimaryCall(241, 1971, PGSensorsActivity.TAMPER);
         TimeUnit.SECONDS.sleep(5);
         verifySystemState("Disarmed");
@@ -119,10 +140,14 @@ public class WaterSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void Water_05() throws Exception {
         rep.add_to_report("Wat_05");
         rep.log.log(LogStatus.INFO, ("*Wat_05* ArmStay mode tampering Water group 38 -> Expected result = ArmStay"));
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            TimeUnit.SECONDS.sleep(2);
+        }
         ARM_STAY();
         pgprimaryCall(241, 1971, PGSensorsActivity.TAMPER);
         TimeUnit.SECONDS.sleep(3);
@@ -134,10 +159,14 @@ public class WaterSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void Water_06() throws Exception {
         rep.add_to_report("Wat_06");
         rep.log.log(LogStatus.INFO, ("*Wat_06* ArmAway mode tampering Water group 38 -> Expected result = Alarm"));
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            TimeUnit.SECONDS.sleep(2);
+        }
         ARM_AWAY(ConfigProps.longExitDelay + 2);
         pgprimaryCall(241, 1971, PGSensorsActivity.TAMPER);
         verifyInAlarm();
