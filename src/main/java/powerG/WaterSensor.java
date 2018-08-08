@@ -71,7 +71,6 @@ public class WaterSensor extends Setup {
         pgprimaryCall(241, 1971, PGSensorsActivity.TAMPERREST);
     }
 
-
     @Test
     public void Water_01() throws Exception {
         rep.create_report("Wat_01");
@@ -163,6 +162,8 @@ public class WaterSensor extends Setup {
     public void Water_06() throws Exception {
         rep.add_to_report("Wat_06");
         rep.log.log(LogStatus.INFO, ("*Wat_06* ArmAway mode tampering Water group 38 -> Expected result = Alarm"));
+
+
         if (RetryAnalizer.retry == true) {
             default_state();
             TimeUnit.SECONDS.sleep(2);
@@ -183,7 +184,7 @@ public class WaterSensor extends Setup {
         service.stop();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void webDriverQuit(ITestResult result) throws IOException {
         rep.report_tear_down(result);
         adc.driver1.quit();
