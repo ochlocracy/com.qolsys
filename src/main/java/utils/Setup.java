@@ -154,6 +154,11 @@ public class Setup extends Driver {
         Thread.sleep(1000);
     }
 
+    public void disarmServiceCall() throws IOException {
+        String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
+        rt.exec(ConfigProps.adbPath + " " + servicecall);
+    }
+
     public void DISARM() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         logger.info("Disarm");

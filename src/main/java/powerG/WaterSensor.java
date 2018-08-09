@@ -60,10 +60,6 @@ public class WaterSensor extends Setup {
         adc.webDriverSetUp();
     }
 
-    public void disarmServiceCall() throws IOException {
-        String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
-        rt.exec(ConfigProps.adbPath + " " + servicecall);
-    }
 
     public void default_state() throws IOException, InterruptedException {
         disarmServiceCall();

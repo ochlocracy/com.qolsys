@@ -10,10 +10,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import panel.HomePage;
-import utils.ConfigProps;
-import utils.ExtentReport;
-import utils.PGSensorsActivity;
-import utils.Setup;
+import utils.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ShockSensor extends Setup {
 
-    /* Estimate execution time:  */
+    /* Estimate execution time:  21m */
 
     ADC adc = new ADC();
     ExtentReport rep = new ExtentReport("Shock_Sensor");
@@ -54,6 +51,15 @@ public class ShockSensor extends Setup {
         }
     }
 
+    public void default_state() throws IOException, InterruptedException {
+        disarmServiceCall();
+        TimeUnit.SECONDS.sleep(1);
+        pgprimaryCall(171, 1741, PGSensorsActivity.TAMPERREST);
+        TimeUnit.SECONDS.sleep(1);
+        pgprimaryCall(171, 1771, PGSensorsActivity.TAMPERREST);
+
+    }
+
     @BeforeTest
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
@@ -68,7 +74,7 @@ public class ShockSensor extends Setup {
 
     @Test
     public void Shock() throws IOException, InterruptedException {
-        rep.add_to_report("Shock_0");
+        rep.create_report("Shock_0");
         rep.log.log(LogStatus.INFO, ("*Shock_0* Set sensitivity lvl from ADC dealer website"));
         adc.New_ADC_session(adc.getAccountId());
         TimeUnit.SECONDS.sleep(2);
@@ -92,9 +98,9 @@ public class ShockSensor extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: Sensitivity lvl is set to \"High\""));
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void Shock_01() throws Exception {
-        rep.create_report("Shock_01");
+        rep.add_to_report("Shock_01");
         rep.log.log(LogStatus.INFO, ("*Shock_01* Disarm mode tripping Shock group 13 -> Disarm"));
         TimeUnit.SECONDS.sleep(1);
         pgprimaryCall(171, 1741, PGSensorsActivity.SHOCK);
@@ -105,10 +111,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Shock_02() throws Exception {
         rep.add_to_report("Shock_02");
         rep.log.log(LogStatus.INFO, ("*Shock_02* ArmStay mode tripping Shock group 13 -> Instant Alarm"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         TimeUnit.SECONDS.sleep(1);
         ARM_STAY();
         pgprimaryCall(171, 1741, PGSensorsActivity.SHOCK);
@@ -120,10 +133,16 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Shock_03() throws Exception {
         rep.add_to_report("Shock_03");
         rep.log.log(LogStatus.INFO, ("*Shock_03* ArmAway mode tripping Shock group 13 -> Instant Alarm"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
         ARM_AWAY(ConfigProps.longExitDelay + 2);
         pgprimaryCall(171, 1741, PGSensorsActivity.SHOCK);
         TimeUnit.SECONDS.sleep(2);
@@ -134,7 +153,7 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void Shock_04() throws Exception {
         rep.add_to_report("Shock_04");
         rep.log.log(LogStatus.INFO, ("*Shock_04* Disarm mode tripping Shock group 17 -> Disarm"));
@@ -146,10 +165,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void Shock_05() throws Exception {
         rep.add_to_report("Shock_05");
         rep.log.log(LogStatus.INFO, ("*Shock_05* ArmStay mode tripping Shock group 17 -> ArmStay"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         ARM_STAY();
         pgprimaryCall(171, 1771, PGSensorsActivity.SHOCK);
         TimeUnit.SECONDS.sleep(2);
@@ -160,10 +186,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void Shock_06() throws Exception {
         rep.add_to_report("Shock_06");
         rep.log.log(LogStatus.INFO, ("*Shock_06* ArmAway mode tripping Shock group 17 -> Instant Alarm"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         ARM_AWAY(ConfigProps.longExitDelay + 2);
         pgprimaryCall(171, 1771, PGSensorsActivity.SHOCK);
         TimeUnit.SECONDS.sleep(2);
@@ -174,10 +207,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void Shock_07() throws Exception {
         rep.add_to_report("Shock_07");
         rep.log.log(LogStatus.INFO, ("*Shock_07* Disarm mode tamper Shock_other group 13, 17 -> Expected result = system stays in Disarm mode"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         pgprimaryCall(171, 1741, PGSensorsActivity.TAMPER);
         TimeUnit.SECONDS.sleep(2);
         pgprimaryCall(171, 1771, PGSensorsActivity.TAMPER);
@@ -190,10 +230,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void Shock_08() throws Exception {
         rep.add_to_report("Shock_08");
         rep.log.log(LogStatus.INFO, ("*Shock_08* ArmStay mode tamper Shock_other group 13 -> Instant Alarm"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         ARM_STAY();
         TimeUnit.SECONDS.sleep(2);
         pgprimaryCall(171, 1741, PGSensorsActivity.TAMPER);
@@ -206,10 +253,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void Shock_09() throws Exception {
         rep.add_to_report("Shock_09");
         rep.log.log(LogStatus.INFO, ("*Shock_09* ArmStay mode tamper Shock_other group 17 -> ArmStay"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         ARM_STAY();
         TimeUnit.SECONDS.sleep(2);
         pgprimaryCall(171, 1771, PGSensorsActivity.TAMPER);
@@ -223,13 +277,20 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
     public void Shock_10() throws Exception {
         rep.add_to_report("Shock_10");
         rep.log.log(LogStatus.INFO, ("*Shock_10* ArmAway mode tamper Shock_other group 13 -> Instant Alarm"));
-        ARM_AWAY(ConfigProps.longExitDelay);
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
+        ARM_AWAY(ConfigProps.longExitDelay+2);
         pgprimaryCall(171, 1741, PGSensorsActivity.TAMPER);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         verifyInAlarm();
         ADC_verification("//*[contains(text(), 'Shock 171-1741')]", "//*[contains(text(), 'sensor 17')]");
         enterDefaultUserCode();
@@ -239,10 +300,17 @@ public class ShockSensor extends Setup {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    @Test(priority = 11)
+    @Test(priority = 11, retryAnalyzer = RetryAnalizer.class)
     public void Shock_11() throws Exception {
         rep.add_to_report("Shock_11");
         rep.log.log(LogStatus.INFO, ("*Shock_11* ArmAway mode tamper Shock_other group 17 -> Instant Alarm"));
+
+        if (RetryAnalizer.retry == true) {
+            default_state();
+            rep.log.log(LogStatus.SKIP, ("Rerunning the test case"));
+            TimeUnit.SECONDS.sleep(2);
+        }
+
         ARM_AWAY(ConfigProps.longExitDelay);
         pgprimaryCall(171, 1771, PGSensorsActivity.TAMPER);
         TimeUnit.SECONDS.sleep(2);
@@ -254,7 +322,7 @@ public class ShockSensor extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm"));
     }
 
-    @Test(priority = 12)
+    @Test(priority = 12, retryAnalyzer = RetryAnalizer.class)
     public void Shock_12() throws IOException, InterruptedException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         rep.add_to_report("Shock_12");
@@ -286,10 +354,10 @@ public class ShockSensor extends Setup {
         li.get(5).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.qolsys:id/pgsensitivitylevel")).click();
-       driver.findElement(By.xpath("//android.widget.TextView[@text='Medium']")).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Medium']")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("com.qolsys:id/addsensor")).click();
-
+        rep.log.log(LogStatus.PASS, ("Pass: sensitivity lvl is set to \"Medium\""));
     }
 
 
@@ -299,7 +367,7 @@ public class ShockSensor extends Setup {
         service.stop();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void webDriverQuit(ITestResult result) throws IOException {
         rep.report_tear_down(result);
         adc.driver1.quit();
