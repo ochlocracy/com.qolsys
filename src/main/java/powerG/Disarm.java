@@ -2,7 +2,7 @@ package powerG;
 
 import adc.ADC;
 import adc.UIRepo;
-import adcSanityTests.RetryAnalizer;
+import utils.RetryAnalizer;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
@@ -484,7 +484,7 @@ public class Disarm extends Setup {
         Thread.sleep(15000);
         verifyInAlarm();
         rep.log.log(LogStatus.PASS, "Pass: system is in ALARM");
-        adc.New_ADC_session_User(ConfigProps.password);
+        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(7000);
@@ -2171,7 +2171,7 @@ public class Disarm extends Setup {
         //    emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         ADC_verification("//*[contains(text(), 'Carbon Monoxide')]", "//*[contains(text(), 'AuxPendant 320-1015')]");
-        log.log(LogStatus.PASS, ("Pass: different alarms are generated"));
+        rep.log.log(LogStatus.PASS, ("Pass: different alarms are generated"));
     }
 
     @Test(priority = 105)
