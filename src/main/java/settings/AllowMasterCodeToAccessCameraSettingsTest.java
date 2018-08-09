@@ -48,7 +48,8 @@ public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
         navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
         enterDefaultUserCode();
-        Thread.sleep(2000);
+        adv.INSTALLATION.click();
+        Thread.sleep(1000);
         if (inst.CAMERA_SETTINGS.isDisplayed()) {
             logger.info("Pass: Camera settings icon is present");
         } else {

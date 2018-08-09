@@ -1,5 +1,6 @@
 package settings;
 
+import io.appium.java_client.android.AndroidKeyCode;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
@@ -10,6 +11,8 @@ import panel.*;
 import utils.Setup;
 
 import java.io.IOException;
+import java.util.List;
+
 
 public class InstallerCodeTest extends Setup {
     String page_name = "Installer Code change";
@@ -45,6 +48,11 @@ public class InstallerCodeTest extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
+//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(5000);
         driver.findElement(By.id("com.qolsys:id/ft_back")).click();

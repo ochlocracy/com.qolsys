@@ -43,6 +43,7 @@ public class SecureArmingTest extends Setup {
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         swipeVertical();
+        Thread.sleep(2000);
         arming.Secure_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
