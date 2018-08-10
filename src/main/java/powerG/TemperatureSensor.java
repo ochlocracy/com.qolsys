@@ -51,6 +51,10 @@ public class TemperatureSensor extends Setup {
     public void default_state() throws IOException, InterruptedException {
         disarmServiceCall();
         TimeUnit.SECONDS.sleep(1);
+        pgprimaryCall(250,3030, PGSensorsActivity.TAMPERREST);
+        TimeUnit.SECONDS.sleep(1);
+        pgprimaryCall(250,3131, PGSensorsActivity.TAMPERREST);
+
     }
 
     @BeforeTest
@@ -86,6 +90,7 @@ public class TemperatureSensor extends Setup {
         ADC_verification("//*[contains(text(), 'Freeze Sensor')]", "//*[contains(text(), 'Delayed alarm')]");
         rep.log.log(LogStatus.PASS, ("Pass: system is in Alarm"));
     }
+
     @Test
     public void Temperature_03() throws Exception {
         rep.create_report("Temperature_03");
@@ -119,6 +124,7 @@ public class TemperatureSensor extends Setup {
         ADC_verification("//*[contains(text(), 'Heat Detector')]", "//*[contains(text(), 'Fire alarm')]");
         rep.log.log(LogStatus.PASS, ("Pass: system is in Alarm"));
     }
+
     @Test
     public void Temperature_06() throws Exception {
         rep.create_report("Temperature_06");
@@ -157,6 +163,7 @@ public class TemperatureSensor extends Setup {
         ADC_verification("//*[contains(text(), 'Heat Detector')]", "//*[contains(text(), 'Fire alarm')]");
         rep.log.log(LogStatus.PASS, ("Pass: system is in Alarm"));
     }
+
     @Test
     public void Temperature_09() throws Exception {
         rep.create_report("Temperature_09");
@@ -184,6 +191,7 @@ public class TemperatureSensor extends Setup {
         DISARM();
         rep.log.log(LogStatus.PASS, ("Pass: system is Armed Stay"));
     }
+
     @Test
     public void Temperature_11() throws Exception {
         rep.create_report("Temperature_11");
@@ -252,5 +260,4 @@ public class TemperatureSensor extends Setup {
         rep.report_tear_down(result);
         adc.driver1.quit();
     }
-
 }
