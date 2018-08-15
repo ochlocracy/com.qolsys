@@ -135,6 +135,25 @@ public class Setup extends Driver {
         enterDefaultDealerCode();
     }
 
+    public void navigateToAddSensorsPage() throws InterruptedException {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        Thread.sleep(1000);
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
+        enterDefaultDealerCode();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        sec.Add_Sensor.click();
+    }
+
     public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);

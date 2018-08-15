@@ -295,13 +295,13 @@ public class RemoteToolkitVariables {
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl00_lbtnCommandSetting']")
     public WebElement AFX_Change_Sensor_Name;
 
-    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl04_lbtnCommandSetting']")
+    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl01_lbtnCommandSetting']")
     public WebElement Request_Sensor_Names;
 
-    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl05_lbtnCommandSetting']")
+    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl02_lbtnCommandSetting']")
     public WebElement Update_System_And_Sensor_Status;
 
-    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl06_lbtnCommandSetting']")
+    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl16_rptSettingsCommands_ctl03_lbtnCommandSetting']")
     public WebElement Zones_Count;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl17_lblCategoryName']")
