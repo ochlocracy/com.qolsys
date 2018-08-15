@@ -183,6 +183,7 @@ public class ADC extends Setup {
     public String getLogin(String UDID){
         hmap.put("ac8312d3", "powerG_prod");
         hmap.put("62864b84", "LeBron_James");
+        hmap.put("623cf0f1", "qautozone");
         return hmap.get(UDID);
     }
 

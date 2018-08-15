@@ -1,18 +1,24 @@
 package powerG;
 
 import adc.ADC;
+import adcSanityTests.Freeze;
+import cellular.WiFi_setting_page_elements;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import panel.SecuritySensorsPage;
 import utils.ConfigProps;
 import utils.ExtentReport;
 import utils.PGSensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TemperatureSensor extends Setup {
@@ -69,7 +75,48 @@ public class TemperatureSensor extends Setup {
         adc.webDriverSetUp();
     }
 
-    @Test
+//   @Test (priority = 1)
+    public void Add_Temperature_Sensors() throws Exception {
+       SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+
+       rep.create_report("Add_Temperature_Sensors");
+       rep.log.log(LogStatus.INFO, ("*Run Once, comment out @Test after finished"));
+
+       System.out.println("Be sure to comment out this @Test once the sensors are added, then continue w full run.");
+       navigateToAddSensorsPage();
+
+//       System.out.println("select PG instead of SRF(if srf card is in the panel)");
+//       driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
+//       Thread.sleep(1000);
+//       List<WebElement> Source_list = driver.findElements(By.id("com.qolsys:id/sensorprotocaltype"));
+//       Source_list.get(2).click();
+//       driver.findElement(By.linkText("PowerG")).click();
+
+       System.out.println("Adding a Heat Sensor");
+       driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("250");
+       driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("3131");
+       driver.hideKeyboard();
+       driver.findElement(By.id("com.qolsys:id/addsensor")) .click();
+       Thread.sleep(5000);
+
+       driver.findElementById("com.qolsys:id/btnAdd").click();
+
+       System.out.println("Adding a Freeze Sensor");
+       driver.findElement(By.id("com.qolsys:id/sensor_id")).sendKeys("250");
+       driver.findElement(By.id("com.qolsys:id/sensor_powerg_id")).sendKeys("3030");
+       driver.hideKeyboard();
+
+       driver.findElement(By.id("com.qolsys:id/sensortype")).click();
+       TimeUnit.SECONDS.sleep(1);
+       driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Freeze']")).click();
+       TimeUnit.SECONDS.sleep(1);
+
+       driver.findElement(By.id("com.qolsys:id/addsensor")) .click();
+       Thread.sleep(6000);
+       rep.log.log(LogStatus.PASS, ("Pass: Sensors were added."));
+    }
+
+    @Test //(dependsOnMethods = {"Add_Temperature"})
     public void Temperature_01() throws Exception {
         rep.create_report("Temperature_01");
         rep.log.log(LogStatus.INFO, ("*Temperature_01* In Disarm mode send low_temperature event 5' Celsius --> Panel stays in Disarm mode"));
