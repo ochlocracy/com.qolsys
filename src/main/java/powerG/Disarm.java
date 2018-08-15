@@ -72,8 +72,8 @@ public class Disarm extends Setup {
         dev.Security_Sensors.click();
     }
 
-    public void resetAlarm(String alarm) throws InterruptedException {
-        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
+    public void resetAlarm(String alarm) throws InterruptedException, IOException {
+        adc.New_ADC_session_User(ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(5000);
@@ -484,7 +484,7 @@ public class Disarm extends Setup {
         Thread.sleep(15000);
         verifyInAlarm();
         rep.log.log(LogStatus.PASS, "Pass: system is in ALARM");
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+        adc.New_ADC_session_User(ConfigProps.password);
         Thread.sleep(5000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
         Thread.sleep(7000);
@@ -672,7 +672,7 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
         pgprimaryCall(104, 1101, PGSensorsActivity.INCLOSE);
         Thread.sleep(1000);
-        adc.New_ADC_session_User(ConfigProps.login, "qolsys123");
+        adc.New_ADC_session_User( ConfigProps.password);
         Thread.sleep(5000);
         adcUI.Disarm_state.click();
         Thread.sleep(2000);
@@ -1090,7 +1090,7 @@ public class Disarm extends Setup {
         rep.add_to_report("Dis_55");
         UIRepo adcUI = PageFactory.initElements(adc.driver1, UIRepo.class);
         rep.log.log(LogStatus.INFO, ("*Dis-55* Verify  if the ADC No Entry Delay option is selected the panel does not have an entry delay and will go into immediate alarm is a sensor is activated. "));
-        adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
+        adc.New_ADC_session_User(ConfigProps.password);
         Thread.sleep(10000);
         adcUI.Disarm_state.click();
         Thread.sleep(2000);
@@ -1733,7 +1733,7 @@ public class Disarm extends Setup {
 
     }
 
-//    @Test(/*dependsOnMethods = {"addAux"}, priority = 81*/)
+    @Test(/*dependsOnMethods = {"addAux"}, priority = 81*/)
     public void Dis_91_AUX1() throws Exception {
         rep.add_to_report("Dis_91");
         rep.log.log(LogStatus.INFO, ("*Dis-91* Verify the panel will go into an immediate Auxiliary Emergency Alarm if Alarm is sent by 4-group aux. pendant"));
@@ -1784,7 +1784,7 @@ public class Disarm extends Setup {
     }
 
     @Test(priority = 85)
-    public void Dis_94() throws InterruptedException {
+    public void Dis_94() throws InterruptedException, IOException {
         rep.add_to_report("Dis_94");
         rep.log.log(LogStatus.INFO, ("*Dis-94* Verify the panel will disarm silently from User site if Alarm is sent by 2-group aux. pendant"));
         resetAlarm("Alarm");
