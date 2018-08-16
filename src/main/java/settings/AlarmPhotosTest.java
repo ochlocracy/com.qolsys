@@ -1,18 +1,20 @@
 package settings;
 
-import org.apache.log4j.Logger;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class AlarmPhotosTest extends Setup {
-    String page_name = "Alarm Photos testing";
-    Logger logger = Logger.getLogger(page_name);
+
+    ExtentReport rep = new ExtentReport("PowerG_Alarm_Photos");
 
     public AlarmPhotosTest() throws Exception {
     }
@@ -20,7 +22,7 @@ public class AlarmPhotosTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
+
     }
 
     @Test
@@ -33,6 +35,8 @@ public class AlarmPhotosTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         logger.info("Verifying Alarm photo is taken when setting in enabled...");
+        rep.create_report("Wat_01");
+        rep.log.log(LogStatus.INFO, ("*Wat_01* Disarm mode tripping Water group 38 -> Expected result = Instant Alarm"));
         deleteAllCameraPhotos();
         Thread.sleep(1000);
         home.Emergency_Button.click();
@@ -44,15 +48,18 @@ public class AlarmPhotosTest extends Setup {
         camera.Alarms_photo.click();
         if (camera.Photo_lable.isDisplayed()) {
             logger.info("Pass: Alarm photo is displayed");
+            rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm"));
         } else {
             takeScreenshot();
             logger.info("Failed: Alarm photo is NOT displayed");
+            rep.log.log(LogStatus.FAIL, ("Pass: System is in Alarm"));
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         logger.info("Verifying Alarm photo is NOT taken when setting in disabled...");
+        rep.log.log(LogStatus.INFO, ("Pass: System is in Alarm"));
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
@@ -86,9 +93,9 @@ public class AlarmPhotosTest extends Setup {
         Thread.sleep(2000);
     }
 
-    @AfterMethod
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterMethod(alwaysRun = true)
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+        rep.report_tear_down(result);
         driver.quit();
     }
 }
