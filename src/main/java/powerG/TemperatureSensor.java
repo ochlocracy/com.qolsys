@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class TemperatureSensor extends Setup {
 
     ADC adc = new ADC();
-    ExtentReport rep = new ExtentReport("Temperature_Sensor");
+    ExtentReport rep = new ExtentReport("PowerG_Temperature_Sensor");
 
     public TemperatureSensor() throws Exception {
         ConfigProps.init();
@@ -80,7 +80,7 @@ public class TemperatureSensor extends Setup {
        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
 
        rep.create_report("Add_Temperature_Sensors");
-       rep.log.log(LogStatus.INFO, ("*Run Once, comment out @Test after finished"));
+       rep.log.log(LogStatus.INFO, ("*Run only if the panel hs no Temperature Sensor, comment out @Test after finished"));
 
        System.out.println("Be sure to comment out this @Test once the sensors are added, then continue w full run.");
        navigateToAddSensorsPage();

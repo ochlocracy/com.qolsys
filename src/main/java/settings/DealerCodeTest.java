@@ -1,19 +1,22 @@
 package settings;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class DealerCodeTest extends Setup {
-    String page_name = "Dealer Code change";
-    Logger logger = Logger.getLogger(page_name);
+
+    ExtentReport rep = new ExtentReport("Settings_Dealer_Code");
 
     public DealerCodeTest() throws Exception {
     }
@@ -21,7 +24,6 @@ public class DealerCodeTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
     }
 
     @Test
@@ -31,6 +33,10 @@ public class DealerCodeTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
+
+        rep.create_report("Dealer_Code_01");
+        rep.log.log(LogStatus.INFO, ("*Dealer_Code_01* Change Dealer Name and Dealer Pass -> Expected result = Old Dealer Code will not access the settings page"));
+        Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -52,29 +58,26 @@ public class DealerCodeTest extends Setup {
         driver.findElement(By.id("com.qolsys:id/ft_back")).click();
         Thread.sleep(5000);
         adv.USER_MANAGEMENT.click();
-        logger.info("Verify Dealer name changed");
         driver.findElement(By.xpath("//android.widget.TextView[@text='NewDealer']")).isDisplayed();
         Thread.sleep(2000);
         settings.Back_button.click();
         Thread.sleep(2000);
         settings.Back_button.click();
         Thread.sleep(2000);
-        logger.info("Verify old Dealer code does not work");
         settings.ADVANCED_SETTINGS.click();
         settings.Two.click();
         settings.Two.click();
         settings.Two.click();
         settings.Two.click();
         if (settings.Invalid_User_Code.isDisplayed()) {
-            logger.info("Pass: old Dealer code does not work");
+            rep.log.log(LogStatus.PASS, ("Pass: old Dealer code does not work"));
         }
         Thread.sleep(2000);
-        logger.info("Verify new Dealer code works");
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
-        logger.info("Pass: new Dealer code works as expected");
+        rep.log.log(LogStatus.PASS, ("Pass: New Dealer code works"));
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Dealer_Code.click();
@@ -91,9 +94,9 @@ public class DealerCodeTest extends Setup {
         Thread.sleep(2000);
     }
 
-    @AfterMethod
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterMethod (alwaysRun = true)
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+        rep.report_tear_down(result);
         driver.quit();
     }
 }

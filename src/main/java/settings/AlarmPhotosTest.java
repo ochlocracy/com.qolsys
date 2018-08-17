@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class AlarmPhotosTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("PowerG_Alarm_Photos");
+    ExtentReport rep = new ExtentReport("Settings_Alarm_Photos");
 
     public AlarmPhotosTest() throws Exception {
     }
@@ -34,9 +34,9 @@ public class AlarmPhotosTest extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        logger.info("Verifying Alarm photo is taken when setting in enabled...");
-        rep.create_report("Wat_01");
-        rep.log.log(LogStatus.INFO, ("*Wat_01* Disarm mode tripping Water group 38 -> Expected result = Instant Alarm"));
+
+        rep.create_report("AlarmPhotos_01");
+        rep.log.log(LogStatus.INFO, ("*AlarmPhotos_01* Arm and Disarm Panel -> Expected result = Alarm photo is taken"));
         deleteAllCameraPhotos();
         Thread.sleep(1000);
         home.Emergency_Button.click();
@@ -47,19 +47,17 @@ public class AlarmPhotosTest extends Setup {
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
         if (camera.Photo_lable.isDisplayed()) {
-            logger.info("Pass: Alarm photo is displayed");
-            rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm"));
+            rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm, Alarm photo is displayed"));
         } else {
             takeScreenshot();
-            logger.info("Failed: Alarm photo is NOT displayed");
-            rep.log.log(LogStatus.FAIL, ("Pass: System is in Alarm"));
+            rep.log.log(LogStatus.FAIL, ("Fail: System is not in Alarm, Alarm photo is not displayed"));
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
-        logger.info("Verifying Alarm photo is NOT taken when setting in disabled...");
-        rep.log.log(LogStatus.INFO, ("Pass: System is in Alarm"));
+        rep.create_report("AlarmPhotos_02");
+        rep.log.log(LogStatus.INFO, ("*AlarmPhotos_02* Disable Alarm Photo setting -> No photo is displayed"));
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
@@ -78,9 +76,9 @@ public class AlarmPhotosTest extends Setup {
         try {
             if (camera.Photo_lable.isDisplayed())
                 takeScreenshot();
-            logger.info("Failed: Alarm photo is displayed");
+            rep.log.log(LogStatus.FAIL, ("Failed: Alarm photo is displayed"));
         } catch (Exception e) {
-            logger.info("Pass: Alarm photo is NOT displayed");
+            rep.log.log(LogStatus.PASS, ("Pass: Alarm photo is NOT displayed"));
         } finally {
         }
         Thread.sleep(1000);

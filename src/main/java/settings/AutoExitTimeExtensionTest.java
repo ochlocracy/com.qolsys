@@ -1,20 +1,24 @@
 package settings;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
 import sensors.Sensors;
+import utils.ExtentReport;
 import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class AutoExitTimeExtensionTest extends Setup {
-    String page_name = "Auto Exit Time Extension testing";
-    Logger logger = Logger.getLogger(page_name);
+
+    ExtentReport rep = new ExtentReport("Settings_Auto_Exit_Time_Extension");
+
     Sensors sensors = new Sensors();
 
     public AutoExitTimeExtensionTest() throws Exception {
@@ -24,7 +28,6 @@ public class AutoExitTimeExtensionTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
     }
 
     @Test
@@ -35,8 +38,9 @@ public class AutoExitTimeExtensionTest extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(2000);
-        logger.info("Verify that Auto Exit Time Extension works when enabled");
-        logger.info("Adding sensors...");
+        rep.create_report("Auto_Exit_Time_Extension_01");
+        rep.log.log(LogStatus.INFO, ("*Auto_Exit_Time_Extension_01* Enable Auto Exit Time Extension -> Expected result = System extends timer 'til armed when sensor is opened"));
+        Thread.sleep(2000);
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         ARM_AWAY(3);
@@ -51,9 +55,9 @@ public class AutoExitTimeExtensionTest extends Setup {
         try {
             if (home.ArwAway_State.isDisplayed())
                 takeScreenshot();
-            logger.info("Failed: System is ARMED AWAY");
+            rep.log.log(LogStatus.FAIL, ("Failed: System is ARMED AWAY"));
         } catch (Exception e) {
-            logger.info("Pass: System is NOT ARMED AWAY");
+            rep.log.log(LogStatus.PASS, ("Pass: System is NOT ARMED AWAY"));
         } finally {
         }
         Thread.sleep(60000);
@@ -61,8 +65,9 @@ public class AutoExitTimeExtensionTest extends Setup {
         Thread.sleep(2000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
+        rep.create_report("Auto_Exit_Time_Extension_02");
+        rep.log.log(LogStatus.INFO, ("*Auto_Exit_Time_Extension_02* Enable Auto Exit Time Extension -> Expected result = System does not extend timer 'til armed when sensor is opened"));
         Thread.sleep(2000);
-        logger.info("Verify that Auto Exit Time Extension does not works when disabled");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -84,6 +89,14 @@ public class AutoExitTimeExtensionTest extends Setup {
         sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
         Thread.sleep(10000);
         verifyArmaway();
+        try {
+            if (home.ArwAway_State.isDisplayed())
+                takeScreenshot();
+            rep.log.log(LogStatus.PASS, ("Pass: System is ARMED AWAY"));
+        } catch (Exception e) {
+            rep.log.log(LogStatus.FAIL, ("Failed: System is NOT ARMED AWAY"));
+        } finally {
+        }
         Thread.sleep(2000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
@@ -102,9 +115,9 @@ public class AutoExitTimeExtensionTest extends Setup {
         Thread.sleep(2000);
     }
 
-    @AfterMethod
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterMethod (alwaysRun = true)
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+        rep.report_tear_down(result);
         driver.quit();
     }
 }
