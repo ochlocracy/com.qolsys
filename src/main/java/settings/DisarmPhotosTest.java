@@ -1,18 +1,21 @@
 package settings;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class DisarmPhotosTest extends Setup {
-    String page_name = "Disarm Photos testing";
-    Logger logger = Logger.getLogger(page_name);
+
+    ExtentReport rep = new ExtentReport("Settings_Disarm_Photos");
 
     public DisarmPhotosTest() throws Exception {
     }
@@ -20,7 +23,6 @@ public class DisarmPhotosTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
     }
 
     @Test
@@ -31,7 +33,10 @@ public class DisarmPhotosTest extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        logger.info("Verifying Disarm photo is taken when setting in enabled...");
+
+        rep.create_report("Disarm_Photo_01");
+        rep.log.log(LogStatus.INFO, ("*Disarm_Photo_01* Disarm Photos already enabled -> Expected result = a photo is taken"));
+        Thread.sleep(2000);
         deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
@@ -41,16 +46,17 @@ public class DisarmPhotosTest extends Setup {
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
         if (camera.Photo_lable.isDisplayed()) {
-            logger.info("Pass: Disarm photo is displayed");
+            rep.log.log(LogStatus.PASS, ("Pass: Disarm photo is displayed"));
         } else {
             takeScreenshot();
-            logger.info("Failed: Disarm photo is NOT displayed");
+            rep.log.log(LogStatus.FAIL, ("Failed: Disarm photo is NOT displayed"));
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
-        logger.info("Verifying Disarm photo is NOT taken when setting in disabled...");
+        rep.create_report("Disarm_Photo_02");
+        rep.log.log(LogStatus.INFO, ("*Disarm_Photo_02* Disable Disarm Photos  -> Expected result = a photo is not taken upon disarm"));
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
@@ -68,9 +74,9 @@ public class DisarmPhotosTest extends Setup {
         try {
             if (camera.Photo_lable.isDisplayed())
                 takeScreenshot();
-            logger.info("Failed: Disarm photo is displayed");
+            rep.log.log(LogStatus.FAIL, ("Failed: Disarm photo is displayed"));
         } catch (Exception e) {
-            logger.info("Pass: Disarm photo is NOT displayed");
+            rep.log.log(LogStatus.PASS, ("Pass: Disarm photo is NOT displayed"));
         } finally {
         }
         Thread.sleep(1000);
@@ -82,9 +88,9 @@ public class DisarmPhotosTest extends Setup {
         settings.Home_button.click();
     }
 
-    @AfterMethod
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterMethod (alwaysRun = true)
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+        rep.report_tear_down(result);
         driver.quit();
     }
 }

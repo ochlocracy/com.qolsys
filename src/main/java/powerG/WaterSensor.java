@@ -17,10 +17,9 @@ public class WaterSensor extends Setup {
     /* Estimate execution time: 9m 30sec */
 
     ADC adc = new ADC();
-    ExtentReport rep = new ExtentReport("Water_Sensor");
+    ExtentReport rep = new ExtentReport("PowerG_Water_Sensor");
 
     public WaterSensor() throws Exception {
-        System.out.println("Child constructor");
         ConfigProps.init();
         PGSensorsActivity.init();
     }

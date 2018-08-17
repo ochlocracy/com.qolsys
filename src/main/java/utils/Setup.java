@@ -747,16 +747,6 @@ public class Setup extends Driver {
         powerGregistrator(Type, Id);
         Thread.sleep(3000);
         driver.findElementById("com.qolsys:id/ok").click();
-        Thread.sleep(2000);
-//        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-//        Thread.sleep(2000);
-//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
-//        nli.get(1).click();
-//        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
-////        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-////        Thread.sleep(2000);
-//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
-//        nli.get(0).click();
 
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
@@ -778,6 +768,36 @@ public class Setup extends Driver {
         powerGactivator(Type, Id);
         Thread.sleep(2000);
     }
+
+    public void addPGSensors(String sensor, int Type, int Id, String gn, String text) throws IOException, InterruptedException {
+        Thread.sleep(1000);
+        powerGregistrator(Type, Id);
+        Thread.sleep(3000);
+        driver.findElementById("com.qolsys:id/ok").click();
+
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+            //       e.printStackTrace();
+        }
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+        driver.scrollTo(gn);
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ text+"']")).click();
+        Thread.sleep(1000);
+        driver.findElementById("com.qolsys:id/addsensor").click();
+        Thread.sleep(1000);
+        Thread.sleep(1000);
+        powerGactivator(Type, Id);
+        Thread.sleep(2000);
+    }
+
 
     public void powerGregistrator(int type, int id) throws IOException {
         String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;

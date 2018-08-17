@@ -72,7 +72,9 @@ public class ShockSensor extends Setup {
         adc.webDriverSetUp();
     }
 
-    @Test
+    //Must have PreUpdatePGSensors completed first.
+
+    @Test //must add the shock sensor first
     public void Shock() throws IOException, InterruptedException {
         rep.create_report("Shock_0");
         rep.log.log(LogStatus.INFO, ("*Shock_0* Set sensitivity lvl from ADC dealer website"));

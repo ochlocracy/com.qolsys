@@ -41,9 +41,9 @@ public class PreUpdatePGSensors extends Setup {
         addPGSensors("DW", 104, 1231, 2);//gr13
         addPGSensors("DW", 104, 1216, 3);//gr14
         addPGSensors("DW", 104, 1331, 4);//gr16
-        addPGSensors("DW", 104, 1127, 6);//gr8
-        addPGSensors("DW", 104, 1123, 7);//gr9
-        addPGSensors("DW", 104, 1311, 5);//gr25
+        addPGSensors("DW", 104, 1127, "8", "8-Reporting Safety Sensor");//gr8 //scrolls to
+        addPGSensors("DW", 104, 1123, "9", "9-Delayed Reporting Safety Sensor");//gr9 //scrolls to
+        addPGSensors("DW", 104, 1311, "25", "25-Local Safety Sensor");//gr25 //scrolls to
         /*** Motion ***/
         addPGSensors("Motion", 120, 1411, 1);//gr15
         addPGSensors("Motion", 123, 1441, 0);//gr17
@@ -80,8 +80,8 @@ public class PreUpdatePGSensors extends Setup {
         addPGSensors("Siren", 400, 1995, 0);//gr33
         addPGSensors("Siren", 410, 1998, 1);//gr25
         /***Temperature ***/
-        addPGSensors("TempFreeze", 250, 3030, 0);//gr
-        addPGSensors("TempFreeze", 250, 3030, 0);//gr
+        addPGSensors("Freeze", 250, 3030, 0);//gr
+        addPGSensors("Heat", 250, 3131, 0);//gr
 
     }
 
@@ -124,7 +124,7 @@ public class PreUpdatePGSensors extends Setup {
 
             logger.info("Activate smoke sensors");
             activation_restoration(201, 1541, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST);
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
