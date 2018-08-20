@@ -121,6 +121,8 @@ public class HomePage {
     public WebElement Aux_Alarm;
     @FindBy(id = "com.qolsys:id/tv_img_action_text")
     public WebElement panel_Alarm;
+    @FindBy(id = "com.qolsys:id/disarmFullView")
+    public WebElement System_Disarmed_State;
 
 }
 

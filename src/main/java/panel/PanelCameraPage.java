@@ -16,7 +16,7 @@ public class PanelCameraPage {
     public WebElement All_photos;
     @FindBy(id ="com.qolsys:id/playIcon")
     public WebElement Video_icon;
-    @FindBy(id = "com.qolsys:id/relativeLy")
+    @FindBy(id = "com.qolsys:id/rl")
     public WebElement Photo_lable;
     @FindBy(id = "com.qolsys:id/delete_img")
     public WebElement Camera_delete;

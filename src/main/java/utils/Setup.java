@@ -1,5 +1,6 @@
 package utils;
 
+import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
@@ -153,6 +154,19 @@ public class Setup extends Driver {
         dev.Security_Sensors.click();
         sec.Add_Sensor.click();
     }
+    public void navigate_to_autolearn_page() throws InterruptedException {
+        Thread.sleep(2000);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        ss.Auto_Learn_Sensor.click();
+        Thread.sleep(1000);
+    }
 
     public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
@@ -172,6 +186,17 @@ public class Setup extends Driver {
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
     }
+
+    public void navigateToHomePage() throws InterruptedException {
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
+        try {
+            if (set.Home_button.isDisplayed())
+                set.Home_button.click();
+        } catch (Exception e) {
+        }
+        Thread.sleep(1000);
+    }
+
 
     public void disarmServiceCall() throws IOException {
         String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
@@ -382,6 +407,49 @@ public class Setup extends Driver {
         } else {
             takeScreenshot();
             logger.info("Failed: Incorrect status: " + home_page.Red_banner_sensor_status.getText());
+        }
+    }
+
+    public void verifyOnHomePage(WebElement sensor_name) throws Exception {
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        if (home.System_Disarmed_State.isDisplayed()) {
+            logger.info("Panel is successfully on home page");
+        } else {
+            swipeFromLefttoRight();
+        }
+        if (home.System_Disarmed_State.isDisplayed()) {
+            logger.info("Panel is successfully on home page");
+        } else {
+            swipeFromLefttoRight();
+        }
+    }
+
+
+    public void verifyOnCameraHomepage(WebElement sensor_name) throws Exception {
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        if (camera.All_photos.isDisplayed()) {
+            logger.info("Panel is successfully on camera page");
+        } else {
+            swipeFromLefttoRight();
+        }
+        if (camera.All_photos.isDisplayed()) {
+            logger.info("Panel is successfully on camera page");
+        } else {
+            swipeFromLefttoRight();
+        }
+    }
+
+    public void verifyOnQuickSettingsHomepage(WebElement sensor_name) throws Exception {
+        QuickSettingsPage QS = PageFactory.initElements(driver, QuickSettingsPage.class);
+        if (QS.SoftwareUpdateDetailsParameter.isDisplayed()) {
+            logger.info("Panel is successfully on Quick Settings");
+        } else {
+            swipeFromLefttoRight();
+        }
+        if (QS.SoftwareUpdateDetailsParameter.isDisplayed()) {
+            logger.info("Panel is successfully on Quick Settings");
+        } else {
+            swipeFromLefttoRight();
         }
     }
 
@@ -706,20 +774,6 @@ public class Setup extends Driver {
         String deleteFromPrimary = " shell service call qservice 51 i32 " + zone;
         rt.exec(ConfigProps.adbPath + deleteFromPrimary);
         System.out.println(deleteFromPrimary);
-    }
-
-    public void navigate_to_autolearn_page() throws InterruptedException {
-        Thread.sleep(2000);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        instal.DEVICES.click();
-        dev.Security_Sensors.click();
-        ss.Auto_Learn_Sensor.click();
-        Thread.sleep(1000);
     }
 
     public void DeleteAllPGsesors() throws Exception {

@@ -1,5 +1,6 @@
 package qtmsSRF;
 
+import io.appium.java_client.android.AndroidDriver;
 import adc.ADC;
 import adcSanityTests.RemoteToolkitVariables;
 import jxl.read.biff.BiffException;
@@ -15,6 +16,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import panel.*;
 import sensors.Sensors;
 import utils.Setup;
 
@@ -30,6 +32,7 @@ public class AirFX extends Setup {
     String ADCexecute = "true";
     private int Long_Exit_Delay = 12;
     private String activate = "02 01";
+
     public AirFX() throws Exception {
     }
 
@@ -108,7 +111,7 @@ public class AirFX extends Setup {
         RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
 
         String SensorDL = "6500A1";
-        String SensorID = "1";
+        String SensorID = "2";
         String SensorName = "Door Window Sensor";
         logger.info("Upload Logs Test begin");
         Thread.sleep(2000);
@@ -122,9 +125,23 @@ public class AirFX extends Setup {
 
     @Test(dependsOnMethods = {"ADC_Add_A_Sensor"}, priority = 2)
     public void Check_Panel_For_Added_Sensor() throws InterruptedException, IOException, BiffException {
-        navigateToEditSensorPage();
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        inst.DEVICES.click();
+        dev.Security_Sensors.click();
+        sec.Edit_Sensor.click();
+        Thread.sleep(120000);
+
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView4")).getText().contains("Door/Window"));
-        Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Door/Window 1"));
+//        Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView5")).getText().contains("Door-Window 2"));
         Assert.assertTrue(driver.findElement(By.id("com.qolsys:id/textView6")).getText().contains("10-Entry-Exit-Normal Delay"));
     }
 
