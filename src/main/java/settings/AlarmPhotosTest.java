@@ -22,7 +22,6 @@ public class AlarmPhotosTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-
     }
 
     @Test
@@ -54,6 +53,7 @@ public class AlarmPhotosTest extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
+        Thread.sleep(1000);
         enterDefaultUserCode();
         Thread.sleep(1000);
         rep.create_report("AlarmPhotos_02");
