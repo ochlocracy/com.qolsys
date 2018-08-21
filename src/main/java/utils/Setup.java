@@ -1,5 +1,7 @@
 package utils;
 
+import adc.ADC;
+import adc.AdcDealerPage;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -892,6 +894,21 @@ public class Setup extends Driver{
 
 
     //**************************************Z-Wave Methods*******************************************************
+    //Transmitter methods
+
+    public void addRemoteZwaveDoorLock(int amount) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        AdcDealerPage adcPage = new AdcDealerPage();
+        for (int i=0; i<amount; i++) {
+            String deviceNames = "ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl0"+i+"_txtDeviceName";
+            Thread.sleep(2000);
+            logger.info("Adding door lock number " + i);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            driver.findElementById("ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl0"+i+"_txtDeviceName").wait(30);
+
+        }
+    }
 
     // bridge will be included to the Gen2 an nodeID 2
     public void localIncludeBridge() throws Exception {
@@ -900,6 +917,7 @@ public class Setup extends Driver{
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+        logger.info("Navigating to setting");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Install.DEVICES.click();
@@ -913,7 +931,6 @@ public class Setup extends Driver{
         Thread.sleep(6000);
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
         logger.info("Removing all devices");
-        System.out.println("Removing all devices");
         zwave.removeAllDevicesZwavePage.click();
 //        Thread.sleep(4000);
         waitForElement(driver, zwave.oKBtnZwaveRemoveAllDevicesPage,30);
@@ -921,19 +938,20 @@ public class Setup extends Driver{
         waitForElement(driver, zwave.oKBtnZwaveRemoveAllDevicesPage,30);
 //        Thread.sleep(4000);
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
+        logger.info("All Devices have been removed");
         Thread.sleep(1000);
         logger.info("Including transmitter");
-        System.out.println("Including Transmitter");
         zwave.addDeviceZwavePage.click();
         Thread.sleep(2000);
         zwave.includeZwaveDeviceButton.click();
         Thread.sleep(7000);
         rt.exec(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
         System.out.println(adbPath + " -s " + transmitter + " " + ZTransmitter.includeTransmitter);
-        System.out.println("waiting for Element Button");
+        logger.info("Waiting for Element");
         waitForElement(driver, zwave.newDevicePageAddBtn, 90); //test of wait
         zwave.nameSelectionDropDown.click();
         zwave.customDeviceName.click();
+        logger.info("Naming transmitter");
         Thread.sleep(2000);
         zwave.customNameField.sendKeys("Transmitter");
         try {
@@ -945,6 +963,7 @@ public class Setup extends Driver{
         zwave.newDevicePageAddBtn.click();
         Thread.sleep(2000);
         zwave.UnsupportedDeviceAcknowledgement.click();
+        logger.info("Transmitter has been added successfully");
         Thread.sleep(2000);
         home.Home_button.click();
         Thread.sleep(2000);
@@ -1018,6 +1037,23 @@ public class Setup extends Driver{
             return false;
         }
     }
+//
+//    public void swipeToGdcPage(GaragePage GdcPage) throws Exception {
+//        while (!isOnGdcPage(GdcPage)) {
+//            swipeFromRighttoLeft();
+//        }
+//    }
+//
+//    private boolean isOnGdcPage(GaragePage GdcPage) {
+//        try {
+//            System.out.println("Checking For GDC Page ");
+//            return GdcPage.Current_Temp_Txt.isDisplayed();
+//        } catch (NoSuchElementException e) {
+//            System.out.println("This is not the GDC Page");
+//            System.out.println("Handling the exception");
+//            return false;
+//        }
+//    }
     // *******need to add swipe to GDC******
 
     public void zwaveSettingReset() throws Exception {
@@ -1094,6 +1130,7 @@ public class Setup extends Driver{
         wait.until(ExpectedConditions.visibilityOf(element));
 
     }
+
 
     public void waitForElementnClick(WebDriver driver, WebElement element, WebElement clickElement, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
@@ -1186,7 +1223,6 @@ public class Setup extends Driver{
         //Add assertion and logger message
         //add a retry if add process fails
     }
-
 
 
     public void addCustomZwaveThermostat(String... deviceNames) throws Exception {
@@ -1302,7 +1338,7 @@ public class Setup extends Driver{
         zwave.frontDoorStockName.click();
         Thread.sleep(2000);
         zwave.newDevicePageAddBtn.click();
-        logger.info("Front Door has been added");
+        logger.info("Front Door has been added successfully");
         Thread.sleep(2000);
         //Add assertion and logger message
         //add a retry if add process fails
@@ -1322,7 +1358,7 @@ public class Setup extends Driver{
         zwave.backDoorStockName.click();
         Thread.sleep(2000);
         zwave.newDevicePageAddBtn.click();
-        logger.info("Back Door has been added");
+        logger.info("Back Door has been added successfully");
         Thread.sleep(2000);
         //Add assertion and logger message
         //add a retry if add process fails

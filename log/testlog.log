@@ -1,5 +1,9 @@
 
-2018-06-19 10:30:41,709 - utils.Log -INFO - ********************************************************************
-2018-06-19 10:30:41,713 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2018-06-19 10:30:41,714 - utils.Log -INFO - ********************************************************************
-2018-06-19 10:30:58,432 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-08-20 17:06:24,323 - utils.Log -INFO - ********************************************************************
+2018-08-20 17:06:24,326 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-20 17:06:24,327 - utils.Log -INFO - ********************************************************************
+2018-08-20 17:06:30,638 - adc.ADC -INFO - Logging in to qautomation
+2018-08-20 17:06:30,638 - adc.ADC -INFO - logging in to user dealer 
+2018-08-20 17:06:34,988 - adc.ADC -INFO - selecting Customer
+2018-08-20 17:06:37,739 - adc.ADC -INFO - Entering Empower URL
+2018-08-20 17:06:37,760 - adc.ADC -INFO - waiting for next action

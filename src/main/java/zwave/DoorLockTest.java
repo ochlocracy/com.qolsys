@@ -5,6 +5,7 @@ import adc.AdcDealerPage;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -16,8 +17,10 @@ import utils.ZTransmitter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static utils.ConfigProps.primary;
+import static utils.ConfigProps.transmitter;
 
 /* One door lock, default name, status unlocked */
 
@@ -88,7 +91,6 @@ public class DoorLockTest extends Setup {
     public void CheckAllElementsOnDoorLockPage() throws Exception {
         DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-//        swipeFromRighttoLeft();
         swipeToDoorLockPage(lockPage);
         Thread.sleep(2000);
         elementVerification(lockPage.keyIcon, "Key icon");
@@ -98,8 +100,8 @@ public class DoorLockTest extends Setup {
         elementVerification(lockPage.Door_battery, "Door lock battery level");
         elementVerification(lockPage.unlockAll, "Unlock All Doors");
         elementVerification(lockPage.Lock_ALL, "Lock All Doors");
-
     }
+
 
     @Test(priority = 1)
     public void Door_Lock_events() throws Exception {
@@ -119,6 +121,16 @@ public class DoorLockTest extends Setup {
 //        timer.end();
     }
 
+    @Test
+    public void adcTest() throws Exception {
+        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+        adc.newADCSessionEmPowerPage("5390018");
+        adc.adcGetZWaveEquipmentList();
+
+        Thread.sleep(5000);
+    }
+
+
 //    public void smart_click(WebElement element, WebElement element2, String status, String message) {
 //        if (element.getText().equals(status)) {
 //            element2.click();
@@ -134,62 +146,86 @@ public class DoorLockTest extends Setup {
 //
 //        adc.newADCSessionEmPowerPage("5390018");
 //    }
+    @Test
+    public void Test () throws Exception{
+        adc.newADCSessionEmPowerPage("5390018");
+        adc.adcAddZWaveDevice();
+//        addRemoteZwaveDoorLock(3);
+    }
+    @Test
+    public void remoteAddDeviceTest() throws Exception{
+        String addModeMessage = "ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus";
+        String exitAddMode = "ctl00_phBody_ZWaveRemoteAddDevices_btnSaveAndExit";//done
+        adc.newADCSessionEmPowerPage("5390018");
+        Thread.sleep(5000);
+        driver.get("https://alarmadmin.alarm.com/Support/RemoteAddZWaveDevice.aspx");
+        Thread.sleep(3000);
+        String modeMessage1 = driver.findElement(By.id(addModeMessage)).getText();
+        System.out.println(modeMessage1);
+        Thread.sleep(7000);
+        String modeMessage2 = driver.findElement(By.id(addModeMessage)).getText();
+        System.out.println(modeMessage2);
+        if (modeMessage2.contains("The panel is in Add Mode.")){
+            System.out.println("Panel is in add mode");
+        }else{
+            System.out.println("Failure to enter add mode");
+        }
+        TimeUnit.SECONDS.sleep(7);
+        driver.findElement(By.id(exitAddMode)).click();
+        System.out.println("exiting out of add mode");
+        Thread.sleep(4000);
+        driver.quit();
+    }
 
 //****************************************************************************************************
 
-    //add a method to select real device or simulator test
-
-
-    /*Before Test Run
-        *Set Default Settings
-        *Manually Pair 3 Locks
-        *Try pairing the 4th lock. This  should fail
-        *Change max to 6 look locks
-        *Pair max number of locks
-    */
 
 
     @Test
     public void preDoorLockTestSetup() throws Exception {
 
         //remove all zwave devices
+        logger.info("removing all device");
         removeAllDevices();
         //change all zwave settings to default
+        logger.info("reseting Zwave setting to factory");
         zwaveSettingReset();
         //Add 3 door window sensor and call it Front Door, back door, bathroom window
+
 
     }
 
     @Test
     public void pairingTransmitter() throws Exception {
-//        localZwaveAdd();
         localIncludeBridge();
     }
 
     @Test
     public void disArmParingDeviceTest() throws Exception {
-        ADC adcSession = new ADC();
+        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+        //* add a way to store node numbers to names of device
         //Pair 2 door lock locally( name it stock "Front Door" and "Back Door")
         localZwaveAdd();
+        logger.info("Paring Two Door locks with stock names, Front Door and Back Door");
         addStockNameFrontDoor();
         addStockNameBackDoor();
+        logger.info("Adding Zwave devices remotely");
         adc.newADCSessionEmPowerPage("5390018");
+        adc.adcAddZWaveDevice();
+        addRemoteZwaveDoorLock(3);
+
+
 
         //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
 
         //pair 1 door lock locally and expect max number failure
+
         //change max number setting with setters service call
+
         //pair other 3 lock with custom name with node id
     }
-    @Test
-    public void adcTest() throws Exception {
-        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
-        adc.newADCSessionEmPowerPage("5390018");
-        adc.adcGetZWaveEquipmentList();
-        adc.adcAddZWaveDevice();
-        Thread.sleep(10000);
-        dealerPage.remoteAddExitBtn.click();
-    }
+
+
 
     @Test
     public void disArmNameVerificationTest(){
@@ -200,7 +236,7 @@ public class DoorLockTest extends Setup {
 
     @Test
     public void disArmNameChangeTest(){
-        // Change stock name Front Door to custom name "Door Lock and Node ID" locally
+        // Change stock name Front Door to custom name "Door Lock with # and Node ID" locally
         //change 3rd door lock with custom named to stock name "Side Door" locally
         // verify change on panel
         // verify change on ADC Dealer site
@@ -417,9 +453,7 @@ public class DoorLockTest extends Setup {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {
-//        log.endTestCase(pageName);
         driver.quit();
-
         service.stop();
     }
 }

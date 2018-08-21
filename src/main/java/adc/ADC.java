@@ -508,9 +508,7 @@ public class ADC extends Setup {
 
         return ele;
     }
-    //Start ADC Z-Wave Dealer Paths and Actions
-    //Start ADC Z-Wave Dealer Paths and Actions
-    //Start ADC Z-Wave Dealer Paths and Actions
+
 
 
     public void newADCSessionEmPowerPage(String accountID) throws InterruptedException {
@@ -532,8 +530,6 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
         logger.info("Entering Empower URL");
         driver1.get("https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx");
-//        driver1.findElement(By.partialLinkText("emPower® Devices")).click();
-//        driver1.findElement(By.partialLinkText("emPower")).click();
         logger.info("waiting for next action");
         Thread.sleep(5000);
     }
@@ -560,25 +556,45 @@ public class ADC extends Setup {
     }
     //Must be on emPower Devices page!
     public void adcGetZWaveEquipmentList() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
+        Thread.sleep(3000);
         logger.info("Requesting Equipment list ");
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
-        TimeUnit.SECONDS.sleep(5);
+        Thread.sleep(3000);
         logger.info("Refreshing the page");
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         Thread.sleep(3000);
         logger.info("Waiting for page to refresh");
+        Thread.sleep(3000);
     }
     //Must be on emPower Devices page!
     //Has service call
     public void adcAddZWaveDevice() throws InterruptedException {
         AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+        String addmodeMessage = "ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus";
         logger.info("Adding device remotely");
         Thread.sleep(2000);
-        logger.info("clicking Adc Remote Add");
-        driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnRemoteAdd")).click();
-//        dealerPage.dealerAddZwaveDevice.click();
+        logger.info("Entering Remote zwave add page");
+        driver1.get("https://alarmadmin.alarm.com/Support/RemoteAddZWaveDevice.aspx");
+        logger.info("waiting for panel to be in Add mode");
+        logger.info("getting mode message");
+        Thread.sleep(9000);
+//        String modeMessage1 = driver.findElement(By.id("ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus")).getText();
+        driver.findElement(By.id("ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus")).getText();
+//        String addmodeMessageText = dealerPage.addModeMessage.getText();
 
+//        if (addmodeMessageText.contentEquals("The panel is in Add Mode")){
+//            logger.info("Panel is in add mode");
+//            Thread.sleep(1000);
+//        }
+        Thread.sleep(4000);
+    }
+
+    public void exitingAddMode() throws Exception{
+        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+        Thread.sleep(1500);
+        logger.info("Exiting out of add mode");
+        dealerPage.saveAndExitAddMode.click();
+        Thread.sleep(2000);
     }
     //Must be on emPower Devices page!
     //Has service call
@@ -588,6 +604,7 @@ public class ADC extends Setup {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
     }
+
     //Use "New_ADC_session" prior to this class
     public void adcServicePlanZWaveEnergyMonitoring() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);

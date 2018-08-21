@@ -74,6 +74,7 @@ public class Driver {
         cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+        cap.setCapability("noReset", "true");
         cap.setCapability("newCommandTimeout", 1000);
         //in case previous session was not stopped
         killnode();

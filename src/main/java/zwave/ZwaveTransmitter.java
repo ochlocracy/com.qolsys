@@ -29,6 +29,15 @@ public class ZwaveTransmitter extends Setup {
     String remoteClearAbort = " shell service call qservice 1 i32 0 i32 1563 i32 0 i32 0 i32 0 i32 0 i32 0 i32 0 i32 0";
     String brigeFirmware = " shell service call zwavetransmitservice 1";
     String page_name = " zwave";
+    String lightServiceCall = " service call zwavetransmitservice 3 i32 1";
+    String dimmerServiceCall = " service call zwavetransmitservice 3 i32 4";
+    String smartSocket = " service call zwavetransmitservice 3 i32 2";
+    String doorLockServiceCall = " service call zwavetransmitservice 3 i32 5";
+    String thermostatServiceCall = " service call zwavetransmitservice 3 i32 3";
+    String gdcServiceCall = "s ervice call zwavetransmitservice 3 i32 6";
+
+
+
     Logger logger = Logger.getLogger(page_name);
     int node;
     ZTransmitter transmit = new ZTransmitter();
@@ -98,10 +107,7 @@ public class ZwaveTransmitter extends Setup {
     }
 
     public void remoteAdd() throws IOException, InterruptedException {
-        logger.info("Setting panel in remote add mode for Z-Wave");
-        rt.exec(adbPath + " -s " + primary + remoteNodeAdd);
-        Thread.sleep(5000);
-        System.out.println(adbPath + " -s " + primary + remoteNodeAdd);
+
     }
 
 //    public void remoteAddAbort() throws IOException, InterruptedException {
