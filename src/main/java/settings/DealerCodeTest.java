@@ -42,15 +42,17 @@ public class DealerCodeTest extends Setup {
         inst.SECURITY_AND_ARMING.click();
         arming.Dealer_Code.click();
         user.Add_User_Name_field.clear();
-        logger.info("Changing Dealer name");
         user.Add_User_Name_field.sendKeys("NewDealer");
         user.Add_User_Code_field.clear();
-        logger.info("Changing Dealer password");
         user.Add_User_Code_field.sendKeys("5555");
         driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(5000);
         driver.findElement(By.id("com.qolsys:id/ft_back")).click();
@@ -90,6 +92,10 @@ public class DealerCodeTest extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("2222");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(2000);
     }

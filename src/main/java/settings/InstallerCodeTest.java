@@ -26,7 +26,7 @@ public class InstallerCodeTest extends Setup {
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
 
     @Test
@@ -61,9 +61,9 @@ public class InstallerCodeTest extends Setup {
         }
         user.User_Management_Save.click();
         Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
+        settings.Back_button.click();
         Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
+        settings.Back_button.click();
         Thread.sleep(5000);
         adv.USER_MANAGEMENT.click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='NewInstall']")).isDisplayed();
@@ -82,7 +82,8 @@ public class InstallerCodeTest extends Setup {
         }
         Thread.sleep(2000);
         rep.create_report("Install_Code_02");
-        rep.log.log(LogStatus.INFO, ("*Install_Code_02* Try out new Installer code -> Expected result = New Installer code works"));        settings.Five.click();
+        rep.log.log(LogStatus.INFO, ("*Install_Code_02* Try out new Installer code -> Expected result = New Installer code works"));
+        settings.Five.click();
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
@@ -100,6 +101,7 @@ public class InstallerCodeTest extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("1111");
+        driver.hideKeyboard();
         user.User_Management_Save.click();
         Thread.sleep(2000);
     }

@@ -7,7 +7,7 @@
         <classes>
             <class name="settings.PanicDisableTest" />
             <class name="settings.SecureArmingTest" />
-            <!--<class nasettingsings.Auto_Bypass_Test" />-->
+            <class name="settings.AutoBypassTest" />
             <class name="settings.AutoStayTest" />
             <class name="settings.ArmStayNoDelayTest" />
             <class name="settings.AutoExitTimeExtensionTest" />

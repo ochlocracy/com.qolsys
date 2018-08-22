@@ -2,6 +2,8 @@ package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +17,7 @@ import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
+import java.util.List;
 
 public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
 
@@ -34,6 +37,8 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        List<WebElement> checkbox = driver.findElements(By.id("com.qolsys:id/statusButton"));
+
         rep.create_report("MasterCodeAccessSec_and_Arming_01");
         rep.log.log(LogStatus.INFO, ("*MasterCodeAccessSec_and_Arming_01* Enable access to Security and Arming page using Master Code -> Expected result = Security and Arming icon is present"));
         Thread.sleep(3000);
@@ -47,6 +52,13 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         swipeVertical();
+//        if (!checkAttribute(checkbox.get(0), "checked", "false")) { //needs more work
+//            return;
+//
+//        }
+//        if (arming.Allow_Master_Code_To_Access_Security_and_Arming.()) {
+//            arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
+//        }
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();

@@ -48,9 +48,7 @@ public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
-        navigateToSettingsPage();
-        settings.ADVANCED_SETTINGS.click();
-        enterDefaultUserCode();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Thread.sleep(1000);
         if (inst.CAMERA_SETTINGS.isDisplayed()) {
