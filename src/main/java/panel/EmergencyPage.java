@@ -30,10 +30,10 @@ public class EmergencyPage {
     public WebElement Emergency_sent_text;
     @FindBy(id = "com.qolsys:id/tv_emg_cancel")
     public WebElement Cancel_Emergency;
-    @FindBy(xpath = "//android.widget.TextView[@text='Police Emergency Sent']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Police Emergency']")
     public WebElement Police_Emergency_Alarmed;
-    @FindBy(xpath = "//android.widget.TextView[@text='Auxiliary Emergency Sent']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Auxiliary Emergency']")
     public WebElement Auxiliary_Emergency_Alarmed;
-    @FindBy(xpath = "//android.widget.TextView[@text='Fire Emergency Sent']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Fire Emergency']")
     public WebElement Fire_Emergency_Alarmed;
 }
