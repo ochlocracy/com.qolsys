@@ -28,10 +28,12 @@ public class PanelCameraPage {
     public WebElement Camera_delete_no;
     @FindBy(xpath = "//android.widget.TextView[@text='DISARMED BY ADMIN']")
     public WebElement DISARMED_BY_ADMIN;
-    @FindBy(xpath = "//android.widget.TextView[@text='POLICE EMERGENCY (PANEL)']")
+    @FindBy(xpath = "//android.widget.TextView[@text='POLICE EMERGENCY - PANEL']")
     public WebElement POLICE_EMERGENCY_PANEL;
     @FindBy(id = "com.qolsys:id/alarm_videos_title")
     public WebElement Alarm_Videos_title;
     @FindBy(id = "com.qolsys:id/imageView")
     public WebElement Alarm_Video_img;
+    @FindBy(id = "com.qolsys:id/tv_no_photos")
+    public WebElement No_Alarm_Photos_to_display;
 }

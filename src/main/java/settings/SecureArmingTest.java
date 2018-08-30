@@ -39,7 +39,6 @@ public class SecureArmingTest extends Setup {
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(2000);
-        verifyArmstay();
         if (home.ARM_STAY_text.isDisplayed()) {
             rep.log.log(LogStatus.PASS, ("Pass: System armed without code"));
         }
@@ -49,6 +48,7 @@ public class SecureArmingTest extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
         swipeVertical();
         Thread.sleep(2000);
         arming.Secure_Arming.click();
@@ -70,6 +70,7 @@ public class SecureArmingTest extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
         swipeVertical();
         Thread.sleep(2000);
         arming.Secure_Arming.click();

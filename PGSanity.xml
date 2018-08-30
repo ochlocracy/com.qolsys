@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ExtentManager">
+    <test name="PostUpdate">
+
+        <classes>
+            <!--<class name="updateProcess.PreUpdatePGSensors"/>-->
+            <!--<class name="updateProcess.PreUpdateUserManagement"/>-->
+            <!--<class name="updateProcess.PreUpdateSettings"/>-->
+
+            <class name="updateProcess.SanityUpdatePG"/>
+            <class name="updateProcess.SanityPGSensors"/>
+            <class name="updateProcess.SanityZWave"/>
+
+        </classes>
+    </test>
+</suite>

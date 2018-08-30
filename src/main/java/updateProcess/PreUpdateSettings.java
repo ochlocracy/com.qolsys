@@ -1,9 +1,7 @@
 package updateProcess;
 
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import panel.PanelInfo_ServiceCalls;
 import utils.Setup;
 
@@ -16,7 +14,7 @@ public class PreUpdateSettings extends Setup {
 
     public PreUpdateSettings() throws Exception {}
 
-    @BeforeTest
+    @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
@@ -179,7 +177,7 @@ public class PreUpdateSettings extends Setup {
         Thread.sleep(one_sec);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         System.out.println("*****Stop driver*****");

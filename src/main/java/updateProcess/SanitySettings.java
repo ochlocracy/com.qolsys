@@ -54,15 +54,16 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is taken when setting in enabled...");
-        serv.set_ALARM_VIDEOS(00);
+        //serv.set_ALARM_VIDEOS(00); alarm videos are the same service call as alarm photos
         deleteAllCameraPhotos();
         Thread.sleep(1000);
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
+//        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -76,7 +77,7 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         System.out.println("Verifying Alarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is NOT taken when setting in disabled...");
@@ -92,7 +93,7 @@ public class SanitySettings extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
+//        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -212,7 +213,7 @@ public class SanitySettings extends Setup {
         navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
         enterDefaultUserCode();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         if (inst.SECURITY_AND_ARMING.isDisplayed()) {
             System.out.println("Pass: Security and Arming icon is present");
             log.log(LogStatus.PASS, "Pass: Security and Arming icon is present");

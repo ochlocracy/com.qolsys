@@ -5,9 +5,9 @@
 
     <test name="Settings_Testing1">
         <classes>
-            <class name="settings.KeyfobInstantArmingTest" />
-            <class name="settings.KeyfobAlarmDisarmTest" />
-            <class name="settings.KeyfobDisarmingTest" />
+            <!--<class name="settings.KeyfobInstantArmingTest" /> -->
+            <!--<class name="settings.KeyfobAlarmDisarmTest" />-->
+            <!--<class name="settings.KeyfobDisarmingTest" />-->
             <class name="settings.SecureDeleteImagesTest" />
             <class name="settings.DisarmPhotosTest" />
             <class name="settings.AlarmPhotosTest" />

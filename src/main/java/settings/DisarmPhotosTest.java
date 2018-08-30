@@ -86,6 +86,9 @@ public class DisarmPhotosTest extends Setup {
         set_cam.Disarm_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
+//        ARM_STAY();
+//        home.DISARM.click();
+//        enterDefaultUserCode();
     }
 
     @AfterMethod (alwaysRun = true)

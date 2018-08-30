@@ -45,11 +45,11 @@ public class AlarmPhotosTest extends Setup {
         swipeFromLefttoRight();
         swipeFromLefttoRight();
         camera.Alarms_photo.click();
-        if (camera.Photo_lable.isDisplayed()) {
-            rep.log.log(LogStatus.PASS, ("Pass: System is in Alarm, Alarm photo is displayed"));
+        if (camera.POLICE_EMERGENCY_PANEL.isDisplayed()) {
+            rep.log.log(LogStatus.PASS, ("Pass: Emergency Alarm photo is displayed"));
         } else {
             takeScreenshot();
-            rep.log.log(LogStatus.FAIL, ("Fail: System is not in Alarm, Alarm photo is not displayed"));
+            rep.log.log(LogStatus.FAIL, ("Fail: Emergency Alarm photo is not displayed"));
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();

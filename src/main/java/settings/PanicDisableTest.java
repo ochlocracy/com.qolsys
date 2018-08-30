@@ -84,6 +84,8 @@ public class PanicDisableTest extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         Thread.sleep(1000);
+        siren.Police_Panic.click();
+        Thread.sleep(1000);
         siren.Auxiliary_Panic.click();
         Thread.sleep(1000);
         settings.Emergency_button.click();
@@ -105,7 +107,6 @@ public class PanicDisableTest extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         Thread.sleep(1000);
-        siren.Police_Panic.click();
         siren.Fire_Panic.click();
         siren.Auxiliary_Panic.click();
         Thread.sleep(1000);

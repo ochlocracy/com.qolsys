@@ -14,11 +14,11 @@ public class HomePage {
     public WebElement DISARM_from_away;
     @FindBy(id = "com.qolsys:id/img_arm_stay")
     public WebElement ARM_STAY;
-    @FindBy(xpath = "//android.widget.TextView[@text='ARM STAY']")
+    @FindBy(xpath = "//android.widget.TextView[@text='ARMED STAY']")
     public WebElement ARM_STAY_text;
     @FindBy(id = "com.qolsys:id/img_arm_away")
     public WebElement ARM_AWAY;
-    @FindBy(xpath = "//android.widget.TextView[@text='ARM AWAY']")
+    @FindBy(xpath = "//android.widget.TextView[@text='ARMED AWAY']")
     public WebElement ARM_AWAY_text;
     @FindBy(xpath = "//android.widget.TextView[@text='Arming...']")
     public WebElement Countdown;

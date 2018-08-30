@@ -27,6 +27,6 @@ Pair one light
 After software update, please run tests in the following order:
 
 SanityUpdatePG
-SanitySettings
+SanitySettings // this needs srf card
 SanityPGSensors
 SanityZwave
