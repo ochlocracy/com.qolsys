@@ -4,9 +4,9 @@
     <test name="PostUpdate">
 
         <classes>
-            <class name="updateProcess.PostUpdate_Settings"/>
-            <class name="updateProcess.PreUpdateSensors"/>
-            <class name="updateProcess.PostUpdate_UserManagement"/>
+            <!--<class name="updateProcess.PostUpdate_Settings"/>-->
+            <!--<class name="updateProcess.PreUpdateSensors"/>-->
+            <!--<class name="updateProcess.PostUpdate_UserManagement"/>-->
 
             <class name="settings.AlarmPhotosTest"/>
             <class name="settings.AllowMasterCodeToAccessCameraSettingsTest"/>

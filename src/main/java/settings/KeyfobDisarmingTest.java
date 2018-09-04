@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
+import qtmsSRF.ArmAway;
 import sensors.Sensors;
 import utils.ExtentReport;
 import utils.Setup;
@@ -20,6 +21,8 @@ public class KeyfobDisarmingTest extends Setup {
     Sensors sensors = new Sensors();
     private int delay = 15;
     private String disarm = "08 01";
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+
 
     public KeyfobDisarmingTest() throws Exception {
     }
@@ -41,8 +44,8 @@ public class KeyfobDisarmingTest extends Setup {
         rep.create_report("Keyfob_Arm_Dis_01");
         rep.log.log(LogStatus.INFO, ("*Keyfob_Arm_Dis_01* Keyfob Disarm setting enabled -> Expected result = Keyfob will disarm system"));
         Thread.sleep(2000);
-        service.set_AUTO_STAY(00);
-        sensors.add_primary_call(3, 4, 6619386, 102);
+        //service.set_AUTO_STAY(00);
+        sensors.add_primary_call(3, 4, 6619386, 102); //sensor not added apparently. check rf injector or put daughter card in.
         Thread.sleep(2000);
         ARM_STAY();
         Thread.sleep(2000);
@@ -50,7 +53,8 @@ public class KeyfobDisarmingTest extends Setup {
         Thread.sleep(2000);
         verifyDisarm();
         Thread.sleep(2000);
-        ARM_AWAY(delay);
+        home.DISARM.click();
+        home.ARM_AWAY.click();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);

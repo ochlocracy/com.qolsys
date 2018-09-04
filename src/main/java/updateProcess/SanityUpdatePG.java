@@ -738,14 +738,15 @@ public class SanityUpdatePG extends Setup {
         activation_restoration(400, 1995, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 31 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
         rep.log.log(LogStatus.PASS, "Tamper event for Sensor 31 is displayed correctly");
-    } //7m 43
+    } // 12m 1
 
     @Test(priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
         rep.add_to_report("Sanity_12");
         rep.log.log(LogStatus.INFO, ("*Sanity_12* Supervisory Verification"));
         rep.log.log(LogStatus.INFO, "Supervisory verification");
-        tap(5,6);
+        driver.findElement(By.id("com.qolsys:id/tray_layout")).click();
+        //tap(5,6);
         powerGsupervisory(201, 1541);
         navigateToSettingsPage();
         Thread.sleep(1000);
@@ -807,7 +808,8 @@ public class SanityUpdatePG extends Setup {
         servcall.set_RF_JAM_DETECT_enable();
         try {
             contact.acknowledge_all_alerts();
-        }catch(NoSuchElementException e){}
+        } catch (NoSuchElementException e) {
+        }
         swipeFromLefttoRight();
         Thread.sleep(2000);
         powerGjamer(1);
@@ -826,11 +828,15 @@ public class SanityUpdatePG extends Setup {
                 System.out.println("Pass: jammed message is not displayed");
                 rep.log.log(LogStatus.PASS, ("Pass: jammed message is not displayed after canceling jam"));
             }
-        } catch (Exception e){}
+        } catch (Exception e) {
+        }
 
         servcall.set_RF_JAM_DETECT_disable();
-        home.Home_button.click();
-    } //48sec
+        try {
+            home.Home_button.click();
+        } catch (NoSuchElementException e) {
+        }
+        } //48sec
 
     @Test(priority = 14, retryAnalyzer = RetryAnalizer.class)
     public void Low_Battery() throws InterruptedException, IOException {

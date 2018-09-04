@@ -40,6 +40,7 @@ public class SecureDeleteImagesTest extends Setup {
         deleteAllCameraPhotos();
         Thread.sleep(1000);
         ARM_STAY();
+        Thread.sleep(1000);
         home.DISARM.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();

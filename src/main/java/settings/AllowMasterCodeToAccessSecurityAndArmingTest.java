@@ -51,7 +51,7 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         swipeVertical();
         Thread.sleep(1000);
         swipeVertical();
-        swipeVertical();
+//        swipeVertical();
 //        if (!checkAttribute(checkbox.get(0), "checked", "false")) { //needs more work
 //            return;
 //
@@ -84,7 +84,8 @@ public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
         swipeVertical();
         Thread.sleep(2000);
         swipeVertical();
-        swipeVertical();
+        Thread.sleep(2000);
+//        swipeVertical();
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();

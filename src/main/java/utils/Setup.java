@@ -425,9 +425,9 @@ public class Setup extends Driver {
     }
 
 
-    public void verifyOnCameraHomepage(WebElement sensor_name) throws Exception {
+    public void verifyOnCameraHomepage() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
-        if (camera.All_photos.isDisplayed()) {
+        if (!camera.All_photos.isDisplayed()) {
             logger.info("Panel is successfully on camera page");
         } else {
             swipeFromLefttoRight();
@@ -439,7 +439,7 @@ public class Setup extends Driver {
         }
     }
 
-    public void verifyOnQuickSettingsHomepage(WebElement sensor_name) throws Exception {
+    public void verifyOnQuickSettingsHomepage() throws Exception {
         QuickSettingsPage QS = PageFactory.initElements(driver, QuickSettingsPage.class);
         if (QS.SoftwareUpdateDetailsParameter.isDisplayed()) {
             logger.info("Panel is successfully on Quick Settings");
@@ -478,11 +478,10 @@ public class Setup extends Driver {
 
     public void deleteAllCameraPhotos() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
-        swipeFromLefttoRight();
-        swipeFromLefttoRight();
-        Thread.sleep(3000);
+        swipeFromRighttoLeft();
+        Thread.sleep(2000);
         try {
-            while (camera.Photo_lable.isDisplayed()) {
+            while (camera.Camera_delete.isDisplayed()) {
                 camera.Camera_delete.click();
                 camera.Camera_delete_yes.click();
                 enterDefaultUserCode();
@@ -490,9 +489,8 @@ public class Setup extends Driver {
         } catch (Exception e) {
             System.out.println("No photos to delete...");
         }
-        swipeFromRighttoLeft();
+        swipeFromLefttoRight();
         Thread.sleep(1000);
-        swipeFromRighttoLeft();
     }
 
     public void takeScreenshot() throws Exception {
@@ -602,6 +600,17 @@ public class Setup extends Driver {
     }
 
     public boolean checkAttribute(WebElement ele, String attribute, String state) {
+        if (ele.getAttribute(attribute).equals(state)) {
+            logger.info("Pass: the element's attribute [" + attribute + "] is " + state);
+            return true;
+        } else {
+            logger.info("Fail: the element's attribute [" + attribute + "] is " + ele.getAttribute(attribute));
+            return false;
+        }
+    }
+
+    //isnt checked, false base state
+    public boolean isntChecked(WebElement ele, String attribute, String state) {
         if (ele.getAttribute(attribute).equals(state)) {
             logger.info("Pass: the element's attribute [" + attribute + "] is " + state);
             return true;
