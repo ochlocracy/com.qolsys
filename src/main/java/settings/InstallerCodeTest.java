@@ -42,8 +42,11 @@ public class InstallerCodeTest extends Setup {
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
+        Thread.sleep(1000);
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
         arming.Installer_Code.click();
+        Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Installer name");
         user.Add_User_Name_field.sendKeys("NewInstall");

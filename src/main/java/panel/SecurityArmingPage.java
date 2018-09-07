@@ -14,8 +14,6 @@ public class SecurityArmingPage {
     public WebElement Installer_Code;
     @FindBy(xpath = "//android.widget.TextView[@text='Set Name and Code to access installer-level settings']")
     public WebElement Installer_Code_summery;
-    @FindBy(xpath = "//android.widget.TextView[@text='Duress Authentication']")
-    public WebElement Duress_Authentication;
     @FindBy(xpath = "//android.widget.TextView[@text='User cannot create a duress code to trigger silent alarms']")
     public WebElement Duress_Authentication_summery;
     @FindBy(xpath = "//android.widget.TextView[@text='User can create a duress code for triggering silent alarms']")

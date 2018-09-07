@@ -848,8 +848,13 @@ public class SanityUpdatePG extends Setup {
 
         rep.add_to_report("Sanity_14");
         rep.log.log(LogStatus.INFO, ("*Sanity_14* Low battery events verification"));
-        Thread.sleep(2000);
+        Thread.sleep(4000);
+//        try {
+//            home.Home_button.click();
+//        } catch (NoSuchElementException e) {
+//        }
         pgprimaryCall(104, 1101, "80 1");
+        Thread.sleep(15000);
         home.Contact_Us.click();
         contact.Messages_Alerts_Alarms_tab.click();
         Thread.sleep(1000);

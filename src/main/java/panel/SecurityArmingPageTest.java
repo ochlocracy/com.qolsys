@@ -35,10 +35,6 @@ public class SecurityArmingPageTest extends Setup {
         Thread.sleep(1000);
         elementVerification(arming.Dealer_Code_summery, "Dealer Code summery");
         elementVerification(arming.Installer_Code_summery, "Installer Code summery");
-        elementVerification(arming.Duress_Authentication_summery, "Duress Authentication summery"); //DISABLED by default
-        arming.Duress_Authentication.click();
-        elementVerification(arming.Duress_Authentication_summery_enabled, "Duress Authentication summery when enabled");
-        arming.Duress_Authentication.click();
         elementVerification(arming.SwingerShutdown, "Swinger Shutdown");
         elementVerification(arming.SwingerShutdownEnabled, "Swinger shutdown enabled");
         arming.SwingerShutdown.click();

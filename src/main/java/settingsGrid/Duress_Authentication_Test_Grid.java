@@ -1,5 +1,8 @@
 package settingsGrid;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
@@ -8,11 +11,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.Setup;
 import utils.Setup1;
 
 import java.io.IOException;
 
-public class Duress_Authentication_Test_Grid {
+public class Duress_Authentication_Test_Grid extends Setup {
+
+    ExtentReports report;
+    ExtentTest log;
+    ExtentTest test;
     Setup1 s = new Setup1();
     String page_name = "Duress Authentication testing";
     Logger logger = Logger.getLogger(page_name);
@@ -28,80 +36,106 @@ public class Duress_Authentication_Test_Grid {
     @Parameters({ "UDID_" })
     @Test
     public void Verify_Duress_Authentication_works(String UDID_) throws Exception {
-        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
-        ContactUs contact = PageFactory.initElements(s.getDriver(), ContactUs.class);
-        SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
-        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
-        HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
+        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+        log = report.startTest("Settings.Duress_Authentication");
+
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);
+        UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
+
         Thread.sleep(2000);
-        logger.info("Verify system can not be DISARMED with Duress code when the setting is disabled");
-        s.ARM_STAY();
+        System.out.println("Verify system can be DISARMED with Duress code");
+        log.log(LogStatus.INFO, "Verify system can be DISARMED with Duress code");
+        Thread.sleep(2000);
+        home.DISARM.click();
+        home.ARM_STAY.click();
         Thread.sleep(1000);
         home.DISARM.click();
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Eight.click();
-        if(settings.Invalid_User_Code.isDisplayed()){
-            logger.info(UDID_ +" Pass: Duress code does not work");}
-        Thread.sleep(10000);
-        home.DISARM.click();
-        s.enter_default_user_code();
-        Thread.sleep(2000);
-        s.navigate_to_Advanced_Settings_page();
-        Thread.sleep(2000);
-        adv.INSTALLATION.click();
+        home.Nine.click();
         Thread.sleep(1000);
-        inst.SECURITY_AND_ARMING.click();
+        swipeFromRighttoLeft();
+        if (cam.Duress_Disarm_Photo.isDisplayed()) {
+            log.log(LogStatus.PASS, ("Pass: Duress code does work"));
+        } else {
+            takeScreenshot();
+            log.log(LogStatus.FAIL, ("Failed: Duress code did not work"));
+        }
         Thread.sleep(1000);
-        arming.Duress_Authentication.click();
-        Thread.sleep(2000);
-        s.swipe_vertical();
-        Thread.sleep(1000);
-        arming.Auto_Stay.click();
-        Thread.sleep(3000);
-        home.Back_button.click();
-        Thread.sleep(3000);
-        home.Back_button.click();
-        Thread.sleep(3000);
+        navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
-        logger.info("Verify Duress User appeared");
-        s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed();
         Thread.sleep(2000);
+        settings.Back_button.click();
+        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
+        Thread.sleep(2000);
+        adv.USER_MANAGEMENT.click();
+        cam.Duress_Edit.click();
+        Thread.sleep(1000);
+        user.Add_User_Name_field.clear();
+        logger.info("Changing Duress name");
+        user.Add_User_Name_field.sendKeys("NewDuress");
+        user.Add_User_Code_field.clear();
+        logger.info("Changing Duress password");
+        user.Add_User_Code_field.sendKeys("9998");
+        driver.hideKeyboard();
+        user.Add_Confirm_User_Code_field.click();
+        user.Add_Confirm_User_Code.clear();
+        user.Add_Confirm_User_Code.sendKeys("9998");
+//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
+        user.User_Management_Save.click();
+        Thread.sleep(1000);
         settings.Home_button.click();
-        Thread.sleep(2000);
-        logger.info("Verify system can be DISARMED with Duress code when the setting is enabled");
-        logger.info("Arm Stay the system");
-        s.ARM_STAY();
+        Thread.sleep(1000);
+        home.DISARM.click();
+        home.ARM_STAY.click();
         Thread.sleep(2000);
         home.DISARM.click();
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
         home.Eight.click();
-        s.verify_disarm(UDID_);
         Thread.sleep(1000);
-        logger.info("Arm Away the system");
-        s.ARM_AWAY(delay);
-        home.ArwAway_State.click();
-        home.Nine.click();
-        home.Nine.click();
-        home.Nine.click();
-        home.Eight.click();
-        s.verify_disarm(UDID_);
+        swipeFromRighttoLeft();
+        if (cam.Duress_Disarm_Photo.isDisplayed()) {
+            log.log(LogStatus.PASS, ("Pass: new Duress code works"));
+        } else {
+            takeScreenshot();
+            log.log(LogStatus.FAIL, ("Failed: new Duress code did not worked"));
+        }
         Thread.sleep(2000);
-        s.navigate_to_Advanced_Settings_page();
-        adv.INSTALLATION.click();
-        Thread.sleep(2000);
-        inst.SECURITY_AND_ARMING.click();
-        Thread.sleep(2000);
-        arming.Duress_Authentication.click();
-        s.swipe_vertical();
+        navigateToAdvancedSettingsPage();
+        adv.USER_MANAGEMENT.click();
+        cam.Duress_Edit.click();
         Thread.sleep(1000);
-        arming.Auto_Stay.click();
-        contact.acknowledge_all_alerts();
-        Thread.sleep(2000);
+        user.Add_User_Name_field.clear();
+        logger.info("Changing Duress name");
+        user.Add_User_Name_field.sendKeys("NewDuress");
+        user.Add_User_Code_field.clear();
+        logger.info("Changing Duress password");
+        user.Add_User_Code_field.sendKeys("9998");
+        driver.hideKeyboard();
+        user.Add_Confirm_User_Code_field.click();
+        user.Add_Confirm_User_Code.clear();
+        user.Add_Confirm_User_Code.sendKeys("9998");
+//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
+        user.User_Management_Save.click();
+
     }
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {

@@ -766,9 +766,13 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+        PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);
+        UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
+
         Thread.sleep(2000);
-        System.out.println("Verify system can not be DISARMED with Duress code when the setting is disabled");
-        log.log(LogStatus.INFO, "Verify system can not be DISARMED with Duress code when the setting is disabled");
+        System.out.println("Verify system can be DISARMED with Duress code");
+        log.log(LogStatus.INFO, "Verify system can be DISARMED with Duress code");
+        Thread.sleep(2000);
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(1000);
@@ -776,32 +780,46 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Eight.click();
-        if (settings.Invalid_User_Code.isDisplayed()) {
-            System.out.println("Pass: Duress code does not work");
-            log.log(LogStatus.PASS, "Pass: Duress code does not work");
+        home.Nine.click();
+        Thread.sleep(1000);
+        swipeFromRighttoLeft();
+        if (cam.Duress_Disarm_Photo.isDisplayed()) {
+            log.log(LogStatus.PASS, ("Pass: Duress code does work"));
+        } else {
+            takeScreenshot();
+            log.log(LogStatus.FAIL, ("Failed: Duress code did not work"));
         }
         Thread.sleep(1000);
-        enterDefaultUserCode();
         navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        inst.SECURITY_AND_ARMING.click();
-        arming.Duress_Authentication.click();
-        Thread.sleep(3000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
         adv.USER_MANAGEMENT.click();
-        System.out.println("Verify Duress User appeared");
-        log.log(LogStatus.INFO, "Verify Duress User appeared");
-        Assert.assertTrue(driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed());
-        log.log(LogStatus.PASS, "Pass: Duress User is displayed");
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed();
         Thread.sleep(2000);
+        settings.Back_button.click();
+        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
+        Thread.sleep(2000);
+        adv.USER_MANAGEMENT.click();
+        cam.Duress_Edit.click();
+        Thread.sleep(1000);
+        user.Add_User_Name_field.clear();
+        logger.info("Changing Duress name");
+        user.Add_User_Name_field.sendKeys("NewDuress");
+        user.Add_User_Code_field.clear();
+        logger.info("Changing Duress password");
+        user.Add_User_Code_field.sendKeys("9998");
+        driver.hideKeyboard();
+        user.Add_Confirm_User_Code_field.click();
+        user.Add_Confirm_User_Code.clear();
+        user.Add_Confirm_User_Code.sendKeys("9998");
+//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
+        user.User_Management_Save.click();
+        Thread.sleep(1000);
         settings.Home_button.click();
-        Thread.sleep(2000);
-        System.out.println("Verify system can be DISARMED with Duress code when the setting is enabled");
-        log.log(LogStatus.INFO, "Verify system can be DISARMED with Duress code when the setting is enabled");
+        Thread.sleep(1000);
         home.DISARM.click();
         home.ARM_STAY.click();
         Thread.sleep(2000);
@@ -810,16 +828,36 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Eight.click();
-        verifyDisarm();
-        log.log(LogStatus.PASS, "Pass: system is Disarmed");
+        Thread.sleep(1000);
+        swipeFromRighttoLeft();
+        if (cam.Duress_Disarm_Photo.isDisplayed()) {
+            log.log(LogStatus.PASS, ("Pass: new Duress code works"));
+        } else {
+            takeScreenshot();
+            log.log(LogStatus.FAIL, ("Failed: new Duress code did not worked"));
+        }
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        inst.SECURITY_AND_ARMING.click();
-        arming.Duress_Authentication.click();
+        adv.USER_MANAGEMENT.click();
+        cam.Duress_Edit.click();
         Thread.sleep(1000);
-        settings.Home_button.click();
-        Thread.sleep(2000);
+        user.Add_User_Name_field.clear();
+        logger.info("Changing Duress name");
+        user.Add_User_Name_field.sendKeys("NewDuress");
+        user.Add_User_Code_field.clear();
+        logger.info("Changing Duress password");
+        user.Add_User_Code_field.sendKeys("9998");
+        driver.hideKeyboard();
+        user.Add_Confirm_User_Code_field.click();
+        user.Add_Confirm_User_Code.clear();
+        user.Add_Confirm_User_Code.sendKeys("9998");
+//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
+        user.User_Management_Save.click();
+
     }
 
     @Test(priority = 11)
