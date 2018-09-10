@@ -5,6 +5,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,6 +16,7 @@ import utils.Setup;
 import utils.Setup1;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Duress_Authentication_Test_Grid extends Setup {
 
@@ -77,7 +79,9 @@ public class Duress_Authentication_Test_Grid extends Setup {
         log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
         Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
-        cam.Duress_Edit.click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/editImg"));
+        Thread.sleep(2000);
+        li_status1.get(1).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
@@ -117,7 +121,9 @@ public class Duress_Authentication_Test_Grid extends Setup {
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
-        cam.Duress_Edit.click();
+        List<WebElement> li_status2 = driver.findElements(By.id("com.qolsys:id/editImg"));
+        Thread.sleep(2000);
+        li_status2.get(1).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");

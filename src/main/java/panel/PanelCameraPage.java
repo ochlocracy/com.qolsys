@@ -38,6 +38,4 @@ public class PanelCameraPage {
     public WebElement No_Alarm_Photos_to_display;
     @FindBy(xpath = "//android.widget.TextView[@text='DURESS DISARM']")
     public WebElement Duress_Disarm_Photo;
-    @FindBy(id = "com.qolsys:id/uiRL5")
-    public WebElement Duress_Edit;
 }

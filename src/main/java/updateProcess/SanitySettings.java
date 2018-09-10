@@ -4,6 +4,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -18,6 +19,7 @@ import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class SanitySettings extends Setup {
 
@@ -77,7 +79,7 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-//        enterDefaultUserCode();
+        enterDefaultUserCode();
         Thread.sleep(1000);
         System.out.println("Verifying Alarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is NOT taken when setting in disabled...");
@@ -758,7 +760,7 @@ public class SanitySettings extends Setup {
     }
 
     @Test(priority = 10)
-    public void Settings_Test11() throws Exception {
+    public void Settings_Test11 (int type, int id, String Status, String Status2, String State, String State1, int line) throws Exception, InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Duress_Authentication");
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -799,7 +801,9 @@ public class SanitySettings extends Setup {
         log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
         Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
-        cam.Duress_Edit.click();
+        List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/editImg"));
+        Thread.sleep(2000);
+        li_status1.get(1).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
@@ -839,7 +843,9 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
-        cam.Duress_Edit.click();
+        List<WebElement> li_status2 = driver.findElements(By.id("com.qolsys:id/editImg"));
+        Thread.sleep(2000);
+        li_status2.get(1).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");

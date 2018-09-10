@@ -483,6 +483,7 @@ public class Setup extends Driver {
         try {
             while (camera.Camera_delete.isDisplayed()) {
                 camera.Camera_delete.click();
+                Thread.sleep(2000);
                 camera.Camera_delete_yes.click();
                 enterDefaultUserCode();
             }
