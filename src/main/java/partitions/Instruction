@@ -1,0 +1,29 @@
+
+1) Add Sensors (PreupdatePGSensors + SRF add sensors //where is the srf add sensors page. which should be run?
+
+2) Create Partitions
+
+create partition 1 for srf / power g / z wave
+
+p 2 for srf / power g
+
+p 3 srf / power g
+
+p 4 srf / power g
+
+3) PartitionSensorTest
+
+open close tamper
+
+open close tamper with alarm
+
+4) Partition user Code
+
+1 has 1234
+2 has 2345
+3 has 3456
+4 has 4567
+
+5) partition settings test
+
+folow example of powerg test.

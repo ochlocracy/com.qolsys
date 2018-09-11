@@ -28,4 +28,9 @@ public class SecuritySensorsPage {
     public WebElement OK;
     @FindBy(id = "com.qolsys:id/sensor_id")
     public WebElement Sensor_DLID;
+    @FindBy(id = "com.qolsys:id/partition_name")
+    public WebElement Partition_Name;
+
+
+
 }
