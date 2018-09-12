@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.xpath.SourceTree;
 import org.openqa.selenium.*;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.PageFactory;
@@ -134,6 +135,16 @@ public class Setup extends Driver {
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
         enterDefaultDealerCode();
+    }
+
+    public void navigateToPartitionsAdvancedSettingsPage() throws InterruptedException {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        Thread.sleep(1000);
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
     }
 
     public void navigateToAddSensorsPage() throws InterruptedException {
@@ -494,6 +505,43 @@ public class Setup extends Driver {
         Thread.sleep(1000);
     }
 
+    public void deleteAllSensorsOnPanel() throws Exception {
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        DealerSettingsPage deal = PageFactory.initElements(driver, DealerSettingsPage.class);
+
+        System.out.println("Will delete all security sensors, not z wave, must have no partitions enabled.");
+
+        navigateToPartitionsAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEALER_SETTINGS.click();
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
+        deal.Delete_All_Sensors.click();
+        Thread.sleep(1000);
+
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+
+        deal.Home_Button.click();
+
+        Thread.sleep(1000);
+    }
+
+
     public void takeScreenshot() throws Exception {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -826,6 +874,7 @@ public class Setup extends Driver {
         driver.findElement(By.id("com.qolsys:id/grouptype")).click();
         List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
         gli.get(gn).click();
+
         Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);

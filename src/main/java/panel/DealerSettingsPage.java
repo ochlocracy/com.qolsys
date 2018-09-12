@@ -37,4 +37,9 @@ public class DealerSettingsPage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='SIA Limits']")
     public WebElement SIA_Limits;
+    @FindBy(id = "com.qolsys:id/ft_home_button")
+    public WebElement Home_Button;
+    @FindBy(xpath = "//android.widget.TextView[@text='Delete All Sensors']")
+    public WebElement Delete_All_Sensors;
+
 }

@@ -43,4 +43,6 @@ public class SlideMenu {
     public WebElement Espanol;
     @FindBy(id = "com.qolsys:id/ic_tray_close")
     public WebElement Slide_menu_close;
+    @FindBy(id = "com.qolsys:id/ui_icon_system_state")
+    public WebElement Lock_Screen;
 }

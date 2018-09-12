@@ -123,6 +123,9 @@ public class HomePage {
     public WebElement panel_Alarm;
     @FindBy(id = "com.qolsys:id/disarmFullView")
     public WebElement System_Disarmed_State;
+    @FindBy(id = "com.qolsys:id/partitionName")
+    public WebElement Partition_Name;
+
 
 }
 
