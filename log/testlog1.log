@@ -6083,3 +6083,582 @@
 2018-08-20 17:06:34,988 [main] INFO adc.ADC - selecting Customer
 2018-08-20 17:06:37,739 [main] INFO adc.ADC - Entering Empower URL
 2018-08-20 17:06:37,760 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:14:06,314 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:14:06,322 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:14:06,325 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:14:13,983 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:14:13,984 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:14:18,318 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:14:21,980 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:14:24,209 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:14:29,239 [main] INFO adc.ADC - Adding device remotely
+2018-08-22 10:14:31,240 [main] INFO adc.ADC - Entering Remote zwave add page
+2018-08-22 10:14:32,326 [main] INFO adc.ADC - waiting for panel to be in Add mode
+2018-08-22 10:14:32,326 [main] INFO adc.ADC - getting mode message
+2018-08-22 10:16:09,403 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:16:09,407 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:16:09,411 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:16:15,351 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:16:15,351 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:16:19,142 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:16:21,681 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:16:23,637 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:18:21,285 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:18:21,289 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:18:21,290 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:18:27,581 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:18:27,581 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:18:28,346 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:19:23,950 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:19:23,954 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:19:23,954 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:19:30,065 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:19:30,066 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:19:33,969 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:19:37,248 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:19:39,200 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:21:12,236 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:21:12,239 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:21:12,239 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:21:19,331 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:21:19,331 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:21:24,208 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:21:27,035 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:21:28,554 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:28:04,076 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:28:04,079 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:28:04,079 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:28:10,391 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:28:10,399 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:28:15,013 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:28:18,862 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:28:18,913 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:30:52,964 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:30:52,966 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:30:52,966 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:30:59,461 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:30:59,462 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:31:03,732 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:31:06,535 [main] INFO adc.ADC - Entering Empower URL
+2018-08-22 10:31:08,375 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:31:10,376 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 10:32:56,505 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:32:56,509 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 10:32:56,510 [main] INFO utils.Log - ********************************************************************
+2018-08-22 10:33:02,520 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 10:33:02,521 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 10:33:06,774 [main] INFO adc.ADC - selecting Customer
+2018-08-22 10:33:09,552 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 10:33:10,465 [main] INFO adc.ADC - waiting for next action
+2018-08-22 10:33:12,465 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 11:10:58,288 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:10:58,291 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 11:10:58,292 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:11:06,109 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 11:11:06,110 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 11:11:10,060 [main] INFO adc.ADC - selecting Customer
+2018-08-22 11:11:12,695 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 11:11:17,722 [main] INFO adc.ADC - getting message1
+2018-08-22 11:11:24,764 [main] INFO adc.ADC - getting message2
+2018-08-22 11:19:01,821 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:19:01,826 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 11:19:01,828 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:19:08,276 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 11:19:08,277 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 11:19:11,963 [main] INFO adc.ADC - selecting Customer
+2018-08-22 11:19:14,471 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 11:19:19,496 [main] INFO adc.ADC - getting message1
+2018-08-22 11:19:26,549 [main] INFO adc.ADC - getting message2
+2018-08-22 11:22:34,009 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:22:34,012 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 11:22:34,012 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:22:40,188 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 11:22:40,189 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 11:22:44,210 [main] INFO adc.ADC - selecting Customer
+2018-08-22 11:22:47,240 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 11:22:52,283 [main] INFO adc.ADC - getting message1
+2018-08-22 11:22:52,349 [main] INFO adc.ADC - getting message2
+2018-08-22 11:29:02,891 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:29:02,894 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 11:29:02,895 [main] INFO utils.Log - ********************************************************************
+2018-08-22 11:29:09,163 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 11:29:09,164 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 11:29:13,177 [main] INFO adc.ADC - selecting Customer
+2018-08-22 11:29:15,902 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 11:29:20,921 [main] INFO adc.ADC - getting message1
+2018-08-22 11:29:20,986 [main] INFO adc.ADC - getting message2
+2018-08-22 13:11:32,088 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:11:32,092 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 13:11:32,092 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:11:39,878 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 13:11:39,878 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 13:11:44,545 [main] INFO adc.ADC - selecting Customer
+2018-08-22 13:11:48,412 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 13:11:54,602 [main] INFO adc.ADC - getting message1
+2018-08-22 13:11:54,701 [main] INFO adc.ADC - getting message2
+2018-08-22 13:12:18,285 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-22 13:36:25,124 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:36:25,128 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 13:36:25,130 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:36:32,512 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 13:36:32,512 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 13:36:32,997 [main] INFO adc.ADC - using @FindBy
+2018-08-22 13:53:50,675 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:53:50,680 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 13:53:50,681 [main] INFO utils.Log - ********************************************************************
+2018-08-22 13:53:58,241 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 13:53:58,242 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 13:54:02,401 [main] INFO adc.ADC - selecting Customer
+2018-08-22 13:54:05,085 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 13:54:10,105 [main] INFO adc.ADC - getting message1
+2018-08-22 13:54:10,208 [main] INFO adc.ADC - getting message2
+2018-08-22 13:54:33,758 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-22 13:54:33,966 [main] INFO adc.ADC - out of add mode
+2018-08-22 15:06:11,369 [main] INFO utils.Log - ********************************************************************
+2018-08-22 15:06:11,374 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-22 15:06:11,374 [main] INFO utils.Log - ********************************************************************
+2018-08-22 15:06:19,000 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-22 15:06:19,000 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-22 15:06:23,349 [main] INFO adc.ADC - selecting Customer
+2018-08-22 15:06:26,796 [main] INFO adc.ADC - navigating to add mode
+2018-08-22 15:06:32,963 [main] INFO adc.ADC - getting message1
+2018-08-22 15:06:33,032 [main] INFO adc.ADC - getting message2
+2018-08-22 15:06:56,634 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-22 15:06:56,755 [main] INFO adc.ADC - out of add mode
+2018-08-23 11:20:16,119 [main] INFO utils.Log - ********************************************************************
+2018-08-23 11:20:16,123 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 11:20:16,123 [main] INFO utils.Log - ********************************************************************
+2018-08-23 11:20:23,734 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 11:20:23,734 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 11:20:27,443 [main] INFO adc.ADC - selecting Customer
+2018-08-23 11:20:30,089 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 11:20:36,158 [main] INFO adc.ADC - getting message1
+2018-08-23 11:20:36,226 [main] INFO adc.ADC - getting message2
+2018-08-23 11:20:59,786 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-23 11:20:59,926 [main] INFO adc.ADC - out of add mode
+2018-08-23 12:27:47,227 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:27:47,232 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 12:27:47,232 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:27:55,944 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 12:27:55,944 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 12:28:00,268 [main] INFO adc.ADC - selecting Customer
+2018-08-23 12:28:03,193 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 12:28:10,734 [main] INFO adc.ADC - getting message1
+2018-08-23 12:28:10,763 [main] INFO adc.ADC - getting message2
+2018-08-23 12:32:21,382 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:32:21,384 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 12:32:21,385 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:32:27,390 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 12:32:27,390 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 12:32:30,827 [main] INFO adc.ADC - selecting Customer
+2018-08-23 12:32:33,261 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 12:32:39,172 [main] INFO adc.ADC - getting message1
+2018-08-23 12:32:39,251 [main] INFO adc.ADC - getting message2
+2018-08-23 12:33:02,781 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-23 12:33:02,883 [main] INFO adc.ADC - out of add mode
+2018-08-23 12:34:30,115 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:34:30,118 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 12:34:30,119 [main] INFO utils.Log - ********************************************************************
+2018-08-23 12:34:36,122 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 12:34:36,123 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 12:34:39,452 [main] INFO adc.ADC - selecting Customer
+2018-08-23 12:34:41,867 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 12:34:46,896 [main] INFO adc.ADC - getting message1
+2018-08-23 12:34:46,971 [main] INFO adc.ADC - getting message2
+2018-08-23 12:35:10,512 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-23 12:35:10,613 [main] INFO adc.ADC - out of add mode
+2018-08-23 15:29:45,199 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:29:45,202 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 15:29:45,202 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:29:52,110 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 15:29:52,110 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 15:29:55,702 [main] INFO adc.ADC - selecting Customer
+2018-08-23 15:29:58,432 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 15:30:00,460 [main] INFO adc.ADC - Getting mode message
+2018-08-23 15:30:00,498 [main] INFO adc.ADC - Panel is not in add mode. Wating 5 seconds
+2018-08-23 15:30:05,544 [main] INFO adc.ADC - Panel is not in add mode. Wating 5 seconds
+2018-08-23 15:30:12,128 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-23 15:30:12,238 [main] INFO adc.ADC - out of add mode
+2018-08-23 15:45:41,709 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:45:41,715 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 15:45:41,716 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:45:48,747 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 15:45:48,748 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 15:45:53,355 [main] INFO adc.ADC - selecting Customer
+2018-08-23 15:45:56,648 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 15:46:00,463 [main] INFO adc.ADC - Getting mode message
+2018-08-23 15:46:00,590 [main] INFO adc.ADC - Panel is not in add mode. Wating 5 seconds
+2018-08-23 15:46:05,618 [main] INFO adc.ADC - Panel is in add mode
+2018-08-23 15:46:10,707 [main] INFO zwave.DoorLockTest - Adding door lock number 0
+2018-08-23 15:53:51,126 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:53:51,129 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-23 15:53:51,129 [main] INFO utils.Log - ********************************************************************
+2018-08-23 15:53:57,315 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-23 15:53:57,315 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-23 15:54:01,373 [main] INFO adc.ADC - selecting Customer
+2018-08-23 15:54:04,161 [main] INFO adc.ADC - navigating to add mode
+2018-08-23 15:54:07,163 [main] INFO adc.ADC - Getting mode message
+2018-08-23 15:54:07,219 [main] INFO adc.ADC - Panel is not in add mode. Wating 5 seconds
+2018-08-23 15:54:12,249 [main] INFO adc.ADC - Panel is in add mode
+2018-08-23 15:54:17,281 [main] INFO zwave.DoorLockTest - Adding door lock number 0
+2018-08-28 14:58:04,959 [main] INFO utils.Log - ********************************************************************
+2018-08-28 14:58:04,963 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 14:58:04,964 [main] INFO utils.Log - ********************************************************************
+2018-08-28 14:58:11,736 [main] INFO Door Lock Testing - removing all device
+2018-08-28 14:58:11,851 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 14:59:05,316 [main] INFO utils.Log - ********************************************************************
+2018-08-28 14:59:05,320 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 14:59:05,320 [main] INFO utils.Log - ********************************************************************
+2018-08-28 14:59:12,249 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-28 14:59:12,249 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-28 14:59:17,381 [main] INFO adc.ADC - selecting Customer
+2018-08-28 14:59:20,905 [main] INFO adc.ADC - navigating to add mode
+2018-08-28 14:59:25,220 [main] INFO adc.ADC - Getting mode message
+2018-08-28 14:59:25,290 [main] INFO adc.ADC - Panel is not in add mode. Wating 5 seconds
+2018-08-28 14:59:30,323 [main] INFO adc.ADC - Panel is in add mode
+2018-08-28 14:59:34,856 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-28 14:59:35,008 [main] INFO adc.ADC - out of add mode
+2018-08-28 15:24:19,974 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:24:19,977 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 15:24:19,978 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:27:16,285 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:27:16,288 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 15:27:16,288 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:36:07,386 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:36:07,396 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 15:36:07,396 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:37:33,124 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:37:33,127 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 15:37:33,127 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:39:11,193 [main] INFO utils.Log - ********************************************************************
+2018-08-28 15:39:11,197 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 15:39:11,197 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:10:49,129 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:10:49,133 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 16:10:49,134 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:10:51,839 [main] INFO Door Lock Testing - removing all device
+2018-08-28 16:10:51,872 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 16:18:09,701 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:18:09,704 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 16:18:09,705 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:18:12,121 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 16:18:12,454 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:18:14,985 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:18:20,690 [main] INFO zwave.DoorLockTest - entering Advance Installation
+2018-08-28 16:18:21,690 [main] INFO zwave.DoorLockTest - entering devices
+2018-08-28 16:22:15,305 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:22:15,307 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 16:22:15,308 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:22:18,772 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 16:22:19,232 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:22:21,846 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:22:27,497 [main] INFO zwave.DoorLockTest - entering Advance Installation
+2018-08-28 16:22:28,430 [main] INFO zwave.DoorLockTest - entering devices
+2018-08-28 16:22:29,276 [main] INFO zwave.DoorLockTest - selecting zwave devices
+2018-08-28 16:22:30,210 [main] INFO zwave.DoorLockTest - removing all devices
+2018-08-28 16:22:31,133 [main] INFO zwave.DoorLockTest - selecting ok button
+2018-08-28 16:22:40,507 [main] INFO zwave.DoorLockTest - All devices have been removed
+2018-08-28 16:22:40,510 [main] INFO Door Lock Testing - reseting Zwave setting to factory
+2018-08-28 16:22:40,522 [main] INFO zwave.DoorLockTest - Setting thermostat limit to 3
+2018-08-28 16:22:40,526 [main] INFO zwave.DoorLockTest - Setting smartsocket limit to 0
+2018-08-28 16:25:37,655 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:25:37,658 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 16:25:37,658 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:26:00,884 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 16:26:01,300 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:26:03,836 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:26:54,934 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:26:54,945 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 16:26:54,945 [main] INFO utils.Log - ********************************************************************
+2018-08-28 16:26:58,204 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-08-28 16:26:58,553 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:27:01,156 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:27:06,907 [main] INFO zwave.DoorLockTest - entering Advance Installation
+2018-08-28 16:27:07,924 [main] INFO zwave.DoorLockTest - entering devices
+2018-08-28 16:27:08,769 [main] INFO zwave.DoorLockTest - selecting zwave devices
+2018-08-28 16:27:09,724 [main] INFO zwave.DoorLockTest - removing all devices
+2018-08-28 16:27:10,802 [main] INFO zwave.DoorLockTest - selecting ok button
+2018-08-28 16:27:20,301 [main] INFO zwave.DoorLockTest - All devices have been removed
+2018-08-28 16:27:20,302 [main] INFO Door Lock Testing - reseting Zwave setting to factory
+2018-08-28 16:27:20,318 [main] INFO zwave.DoorLockTest - Setting thermostat limit to 3
+2018-08-28 16:27:20,320 [main] INFO zwave.DoorLockTest - Setting smartsocket limit to 0
+2018-08-28 16:27:20,330 [main] INFO zwave.DoorLockTest - Setting Lihgts limit to 5
+2018-08-28 16:27:20,337 [main] INFO zwave.DoorLockTest - Setting Door Lock Limit to 3
+2018-08-28 16:27:20,339 [main] INFO zwave.DoorLockTest - Setting Other Device Limit to 3
+2018-08-28 16:27:20,345 [main] INFO zwave.DoorLockTest - Setting Garage Door Limit to 3
+2018-08-28 16:27:23,695 [main] INFO zwave.DoorLockTest - Navigating to setting
+2018-08-28 16:27:25,085 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:27:27,531 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:27:35,519 [main] INFO zwave.DoorLockTest - Clearing Transmitter
+2018-08-28 16:27:49,879 [main] INFO zwave.DoorLockTest - Removing all devices
+2018-08-28 16:27:51,145 [main] INFO zwave.DoorLockTest - waiting for [[AndroidDriver:  on LINUX (d854c9f7-4a31-45c2-b1b1-50673af36e2c)] -> id: com.qolsys:id/ok] for next action
+2018-08-28 16:27:55,867 [main] INFO zwave.DoorLockTest - waiting for [[AndroidDriver:  on LINUX (d854c9f7-4a31-45c2-b1b1-50673af36e2c)] -> id: com.qolsys:id/ok] for next action
+2018-08-28 16:27:59,272 [main] INFO zwave.DoorLockTest - All Devices have been removed
+2018-08-28 16:28:00,274 [main] INFO zwave.DoorLockTest - Including transmitter
+2018-08-28 16:28:10,228 [main] INFO zwave.DoorLockTest - Waiting for Element
+2018-08-28 16:28:16,629 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-08-28 16:28:56,593 [main] INFO zwave.DoorLockTest - Naming transmitter
+2018-08-28 16:29:04,365 [main] INFO zwave.DoorLockTest - Keyboard was Present
+2018-08-28 16:29:07,655 [main] INFO zwave.DoorLockTest - Transmitter has been added successfully
+2018-08-28 16:29:11,901 [main] INFO zwave.DoorLockTest - adding new device
+2018-08-28 16:29:12,109 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-08-28 16:29:14,514 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-08-28 16:29:27,548 [main] INFO zwave.DoorLockTest - ready to add new device
+2018-08-28 16:29:27,548 [main] INFO Door Lock Testing - Paring Two Door locks with stock names, Front Door and Back Door
+2018-08-28 16:29:29,994 [main] INFO zwave.DoorLockTest - Adding Stock Front Door
+2018-08-28 16:29:29,999 [main] INFO zwave.DoorLockTest - waiting for ADD button to appear
+2018-08-28 16:29:35,693 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-08-28 16:30:08,486 [main] INFO zwave.DoorLockTest - Selecting Front Door as a name
+2018-08-28 16:30:11,692 [main] INFO zwave.DoorLockTest - Front Door has been added successfully
+2018-08-28 16:30:16,573 [main] INFO zwave.DoorLockTest - Adding Stock Back Door
+2018-08-28 16:30:16,577 [main] INFO zwave.DoorLockTest - waiting for ADD button to appear
+2018-08-28 16:30:21,806 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-08-28 16:30:33,925 [main] INFO zwave.DoorLockTest - Selecting Back Door as a name
+2018-08-28 16:30:37,066 [main] INFO zwave.DoorLockTest - Back Door has been added successfully
+2018-08-28 16:30:44,063 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-28 16:30:44,064 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-28 16:30:48,981 [main] INFO adc.ADC - selecting Customer
+2018-08-28 16:30:52,112 [main] INFO adc.ADC - navigating to add mode
+2018-08-28 16:30:54,135 [main] INFO adc.ADC - Getting mode message
+2018-08-28 16:30:54,178 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 16:30:56,225 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 16:30:58,280 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 16:31:00,359 [main] INFO adc.ADC - Panel is in add mode
+2018-08-28 16:31:05,361 [main] INFO zwave.DoorLockTest - Adding door lock number 0
+2018-08-28 17:04:52,261 [main] INFO utils.Log - ********************************************************************
+2018-08-28 17:04:52,264 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-08-28 17:04:52,264 [main] INFO utils.Log - ********************************************************************
+2018-08-28 17:04:59,292 [main] INFO adc.ADC - Logging in to qautomation
+2018-08-28 17:04:59,294 [main] INFO adc.ADC - logging in to user dealer 
+2018-08-28 17:05:05,221 [main] INFO adc.ADC - selecting Customer
+2018-08-28 17:05:08,431 [main] INFO adc.ADC - navigating to add mode
+2018-08-28 17:05:10,454 [main] INFO adc.ADC - Getting mode message
+2018-08-28 17:05:10,507 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 17:05:12,556 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 17:05:14,607 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-08-28 17:05:16,649 [main] INFO adc.ADC - Panel is in add mode
+2018-08-28 17:06:11,174 [main] INFO adc.ADC - Exiting out of add mode
+2018-08-28 17:06:11,294 [main] INFO adc.ADC - out of add mode
+2018-09-11 14:17:15,875 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:17:15,878 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:17:15,879 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:17:23,004 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:17:23,005 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:17:27,105 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:17:32,029 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:17:35,997 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:17:36,062 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:17:38,135 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:17:40,205 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:17:43,206 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:17:43,254 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:17:46,255 [main] INFO Door Lock Testing - waiting for element
+2018-09-11 14:17:51,924 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName' for next action
+2018-09-11 14:22:38,415 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:22:38,418 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:22:38,419 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:22:44,515 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:22:44,515 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:22:48,021 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:22:50,580 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:22:52,599 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:22:52,629 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:22:54,665 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:22:56,734 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:22:58,787 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:23:01,788 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:23:01,836 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:37:32,868 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:37:32,873 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:37:32,874 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:37:39,996 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:37:40,000 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:37:44,525 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:37:47,294 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:37:49,311 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:37:49,363 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:37:51,429 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:37:53,477 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:37:55,558 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:43:56,274 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:43:56,277 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:43:56,278 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:44:02,875 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:44:02,875 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:44:06,875 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:44:09,439 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:44:12,448 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:44:12,506 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:44:14,584 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:44:16,648 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:47:51,748 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:47:51,751 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:47:51,751 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:47:57,952 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:47:57,952 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:48:01,737 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:48:04,264 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:48:07,675 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:48:07,736 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:48:09,794 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:48:11,858 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:48:14,888 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName' for next action
+2018-09-11 14:53:55,781 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:53:55,785 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 14:53:55,786 [main] INFO utils.Log - ********************************************************************
+2018-09-11 14:54:01,462 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 14:54:01,463 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 14:54:05,657 [main] INFO adc.ADC - selecting Customer
+2018-09-11 14:54:09,184 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 14:54:11,211 [main] INFO adc.ADC - Getting mode message
+2018-09-11 14:54:11,284 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:54:13,351 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 14:54:15,457 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 14:54:18,479 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName' for next action
+2018-09-11 14:54:42,862 [main] INFO adc.ADC - Exiting out of add mode
+2018-09-11 14:54:42,950 [main] INFO adc.ADC - out of add mode
+2018-09-11 16:55:47,098 [main] INFO utils.Log - ********************************************************************
+2018-09-11 16:55:47,102 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 16:55:47,103 [main] INFO utils.Log - ********************************************************************
+2018-09-11 16:55:53,222 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 16:55:53,224 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 16:55:57,007 [main] INFO adc.ADC - selecting Customer
+2018-09-11 16:56:00,255 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 16:56:03,252 [main] INFO adc.ADC - Getting mode message
+2018-09-11 16:56:03,322 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 16:56:05,380 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 16:56:07,446 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 16:56:10,447 [main] INFO Door Lock Testing - waiting for new device name
+2018-09-11 16:56:10,476 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName' for next action
+2018-09-11 16:56:30,384 [main] INFO adc.ADC - Verifying new device is added
+2018-09-11 16:56:30,385 [main] INFO adc.ADC - Waiting for new device name to show
+2018-09-11 16:56:30,441 [main] INFO adc.ADC - device name is Light/Appliance (ID:2)
+2018-09-11 16:56:33,946 [main] INFO adc.ADC - Exiting out of add mode
+2018-09-11 16:56:34,194 [main] INFO adc.ADC - out of add mode
+2018-09-11 17:05:21,112 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:05:21,114 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 17:05:21,115 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:05:26,986 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 17:05:26,987 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 17:05:30,734 [main] INFO adc.ADC - selecting Customer
+2018-09-11 17:05:33,482 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 17:05:35,505 [main] INFO adc.ADC - Getting mode message
+2018-09-11 17:05:35,573 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:05:37,642 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:05:39,717 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 17:05:42,719 [main] INFO Door Lock Testing - waiting for new device name
+2018-09-11 17:05:42,757 [main] INFO zwave.DoorLockTest - wating forProxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName'text
+2018-09-11 17:06:06,154 [main] INFO adc.ADC - Verifying new device is added
+2018-09-11 17:06:06,156 [main] INFO adc.ADC - Waiting for new device name to show
+2018-09-11 17:06:06,236 [main] INFO adc.ADC - device name is Light Dimmer (ID:3)
+2018-09-11 17:06:09,739 [main] INFO adc.ADC - Exiting out of add mode
+2018-09-11 17:06:09,844 [main] INFO adc.ADC - out of add mode
+2018-09-11 17:20:39,663 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:20:39,667 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 17:20:39,668 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:20:45,384 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 17:20:45,384 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 17:20:49,042 [main] INFO adc.ADC - selecting Customer
+2018-09-11 17:20:51,937 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 17:20:53,956 [main] INFO adc.ADC - Getting mode message
+2018-09-11 17:20:53,990 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:20:56,025 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:20:58,095 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:21:00,149 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 17:21:03,150 [main] INFO Door Lock Testing - waiting for new device name
+2018-09-11 17:21:03,184 [main] INFO zwave.DoorLockTest - wating forProxy element for: DefaultElementLocator 'By.id: ctl00_phBody_ZWaveRemoteAddDevices_rptAddedDevicesStep2_ctl00_txtDeviceName'text
+2018-09-11 17:21:46,255 [main] INFO adc.ADC - Verifying new device is added
+2018-09-11 17:21:46,258 [main] INFO adc.ADC - Waiting for new device name to show
+2018-09-11 17:21:46,334 [main] INFO adc.ADC - device name is Light4
+2018-09-11 17:21:49,836 [main] INFO adc.ADC - Exiting out of add mode
+2018-09-11 17:21:49,970 [main] INFO adc.ADC - out of add mode
+2018-09-11 17:26:05,151 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:26:05,154 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 17:26:05,154 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:26:10,771 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 17:26:10,771 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 17:26:14,324 [main] INFO adc.ADC - selecting Customer
+2018-09-11 17:26:16,907 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 17:26:18,930 [main] INFO adc.ADC - Getting mode message
+2018-09-11 17:26:18,970 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:26:21,027 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:26:23,092 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:26:25,149 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 17:28:13,785 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:28:13,788 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 17:28:13,788 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:28:15,789 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-09-11 17:28:16,066 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-09-11 17:28:18,602 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-09-11 17:28:24,091 [main] INFO zwave.DoorLockTest - entering Advance Installation
+2018-09-11 17:28:25,088 [main] INFO zwave.DoorLockTest - entering devices
+2018-09-11 17:28:25,957 [main] INFO zwave.DoorLockTest - selecting zwave devices
+2018-09-11 17:28:26,923 [main] INFO zwave.DoorLockTest - removing all devices
+2018-09-11 17:28:27,926 [main] INFO zwave.DoorLockTest - selecting ok button
+2018-09-11 17:28:33,233 [main] INFO zwave.DoorLockTest - Navigating to setting
+2018-09-11 17:28:33,466 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-09-11 17:28:36,038 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-09-11 17:28:44,302 [main] INFO zwave.DoorLockTest - Clearing Transmitter
+2018-09-11 17:29:42,650 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:29:42,652 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-09-11 17:29:42,653 [main] INFO utils.Log - ********************************************************************
+2018-09-11 17:29:44,677 [main] INFO zwave.DoorLockTest - Removing All Devices
+2018-09-11 17:29:44,986 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-09-11 17:29:47,622 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-09-11 17:29:53,025 [main] INFO zwave.DoorLockTest - entering Advance Installation
+2018-09-11 17:29:53,979 [main] INFO zwave.DoorLockTest - entering devices
+2018-09-11 17:29:54,820 [main] INFO zwave.DoorLockTest - selecting zwave devices
+2018-09-11 17:29:55,723 [main] INFO zwave.DoorLockTest - removing all devices
+2018-09-11 17:29:56,645 [main] INFO zwave.DoorLockTest - selecting ok button
+2018-09-11 17:30:05,895 [main] INFO zwave.DoorLockTest - All devices have been removed
+2018-09-11 17:30:05,896 [main] INFO Door Lock Testing - reseting Zwave setting to factory
+2018-09-11 17:30:05,907 [main] INFO zwave.DoorLockTest - Setting thermostat limit to 3
+2018-09-11 17:30:05,912 [main] INFO zwave.DoorLockTest - Setting smartsocket limit to 0
+2018-09-11 17:30:05,917 [main] INFO zwave.DoorLockTest - Setting Lihgts limit to 5
+2018-09-11 17:30:05,924 [main] INFO zwave.DoorLockTest - Setting Door Lock Limit to 3
+2018-09-11 17:30:05,927 [main] INFO zwave.DoorLockTest - Setting Other Device Limit to 3
+2018-09-11 17:30:05,932 [main] INFO zwave.DoorLockTest - Setting Garage Door Limit to 3
+2018-09-11 17:30:09,198 [main] INFO zwave.DoorLockTest - Navigating to setting
+2018-09-11 17:30:10,852 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-09-11 17:30:13,347 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-09-11 17:30:21,421 [main] INFO zwave.DoorLockTest - Clearing Transmitter
+2018-09-11 17:30:35,581 [main] INFO zwave.DoorLockTest - Removing all devices
+2018-09-11 17:30:36,774 [main] INFO zwave.DoorLockTest - waiting for [[AndroidDriver:  on LINUX (ddc8a80c-2f6d-4de8-9f9c-fa670c77e0f3)] -> id: com.qolsys:id/ok] for next action
+2018-09-11 17:30:42,457 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/ok' for next action
+2018-09-11 17:30:54,555 [main] INFO zwave.DoorLockTest - All Devices have been removed
+2018-09-11 17:30:55,557 [main] INFO zwave.DoorLockTest - Including transmitter
+2018-09-11 17:31:05,435 [main] INFO zwave.DoorLockTest - Waiting for Element
+2018-09-11 17:31:10,568 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-09-11 17:31:55,888 [main] INFO zwave.DoorLockTest - Naming transmitter
+2018-09-11 17:32:03,508 [main] INFO zwave.DoorLockTest - Keyboard was Present
+2018-09-11 17:32:06,798 [main] INFO zwave.DoorLockTest - Transmitter has been added successfully
+2018-09-11 17:32:11,028 [main] INFO zwave.DoorLockTest - adding new device
+2018-09-11 17:32:11,258 [main] INFO zwave.DoorLockTest - Settings Menue
+2018-09-11 17:32:13,747 [main] INFO zwave.DoorLockTest - Advance Settings
+2018-09-11 17:32:26,570 [main] INFO zwave.DoorLockTest - ready to add new device
+2018-09-11 17:32:26,570 [main] INFO Door Lock Testing - Paring Two Door locks with stock names, Front Door and Back Door
+2018-09-11 17:32:28,882 [main] INFO zwave.DoorLockTest - Adding Stock Front Door
+2018-09-11 17:32:28,887 [main] INFO zwave.DoorLockTest - waiting for ADD button to appear
+2018-09-11 17:32:33,931 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-09-11 17:33:06,814 [main] INFO zwave.DoorLockTest - Selecting Front Door as a name
+2018-09-11 17:33:10,032 [main] INFO zwave.DoorLockTest - Front Door has been added successfully
+2018-09-11 17:33:14,847 [main] INFO zwave.DoorLockTest - Adding Stock Back Door
+2018-09-11 17:33:14,851 [main] INFO zwave.DoorLockTest - waiting for ADD button to appear
+2018-09-11 17:33:20,179 [main] INFO zwave.DoorLockTest - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
+2018-09-11 17:33:32,182 [main] INFO zwave.DoorLockTest - Selecting Back Door as a name
+2018-09-11 17:33:35,376 [main] INFO zwave.DoorLockTest - Back Door has been added successfully
+2018-09-11 17:33:41,657 [main] INFO adc.ADC - Logging in to qautomation
+2018-09-11 17:33:41,658 [main] INFO adc.ADC - logging in to user dealer 
+2018-09-11 17:33:46,049 [main] INFO adc.ADC - selecting Customer
+2018-09-11 17:33:48,296 [main] INFO adc.ADC - navigating to add mode
+2018-09-11 17:33:50,317 [main] INFO adc.ADC - Getting mode message
+2018-09-11 17:33:50,354 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:33:52,393 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:33:54,461 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:33:56,521 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:33:58,549 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:34:00,598 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:34:02,652 [main] INFO adc.ADC - Panel is not in add mode. Wating 2 seconds
+2018-09-11 17:34:04,681 [main] INFO adc.ADC - Panel is in add mode
+2018-09-11 17:34:07,682 [main] INFO Door Lock Testing - waiting for new device name
+2018-09-11 17:34:07,683 [main] INFO zwave.DoorLockTest - wating for text in the element

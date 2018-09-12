@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import panel.*;
 import zwave.DoorLockPage;
 import zwave.LightsPage;
@@ -121,6 +122,7 @@ public class Setup extends Driver{
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
         cap.setCapability("platformName", "Android");
+//        cap.setCapability("automationName", "UiAutomator2");//new
         cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
@@ -211,8 +213,10 @@ public class Setup extends Driver{
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
+        logger.info("Settings Menue");
         menu.Settings.click();
         Thread.sleep(1000);
+        logger.info("Advance Settings");
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
         enterDefaultDealerCode();
@@ -892,23 +896,89 @@ public class Setup extends Driver{
 
     }
 
+    public void addDwSensor(int numOfDw) throws IOException, InterruptedException {
+        int dlid = 12345;
+        int new_dlid = ++dlid;
+        for(int i = 1; i <= numOfDw; i++){
+            addPrimaryCall(i, 10, ++new_dlid, 1);
+            System.out.println(i + " " + new_dlid);
+            Thread.sleep(1000);
+        }
+    }
+
+
+
+
+
+
+
+
 
     //**************************************Z-Wave Methods*******************************************************
     //Transmitter methods
 
-    public void addRemoteZwaveDoorLock(int amount) throws Exception {
+    public void editRemoteName()throws Exception{
+        String editBtn = "ctl00_phBody_ZWaveDeviceList_btnEditDeviceNames";
+        String editTxtBox = "ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl00_txtDeviceName";
+    }
+
+    public void editRemoteDeviceName(String deviceName) throws Exception{
+        AdcDealerPage dealerPage = PageFactory.initElements(driver1, AdcDealerPage.class);
+        TimeUnit.SECONDS.sleep(3);
+        logger.info("editing name in empower page");
+        dealerPage.empowerEditNameBtn.click();
+//        driver.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnEditDeviceNames")).click();
+        logger.info("clicking 3rd device name");
+        driver.findElement(By.id("ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl02_txtDeviceName")).clear();
+        logger.info("editing device name to 3rd device");
+        driver.findElement(By.id("ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl02_txtDeviceName")).sendKeys(deviceName);
+        logger.info("saving new name ");
+        dealerPage.saveEditNameBtn.click();
+//        driver.findElement(By.id("ctl00_phBody_ZWaveDeviceList_EditDeviceNames_btn_SaveDeviceNames")).click();
+        TimeUnit.SECONDS.sleep(5);
+    }
+
+
+    // i might not need this method with the use of the waitForTextInElement method
+    public void verifyOneDeviceAdded() throws Exception{
+        AdcDealerPage dealerPage = PageFactory.initElements(driver1, AdcDealerPage.class);
+        TimeUnit.SECONDS.sleep(5);
+        logger.info("Verifying new device is added");
+        logger.info("Waiting for new device name to show");
+        while (!dealerPage.newlyAddDeviceName.isDisplayed()){
+            logger.info("device name not available. waiting 3 second");
+            TimeUnit.SECONDS.sleep(3);
+        }
+
+        String name = dealerPage.newlyAddDeviceName.getText();
+        logger.info("device name is " + name);
+        TimeUnit.SECONDS.sleep(2);
+    }
+
+    public void addRemoteZwaveDoorLock(int numOfDoorLocks, String deviceName) throws Exception {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         AdcDealerPage adcPage = new AdcDealerPage();
-        for (int i=0; i<amount; i++) {
+        for (int i=0; i<= numOfDoorLocks; i++) {
             String deviceNames = "ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl0"+i+"_txtDeviceName";
             Thread.sleep(2000);
             logger.info("Adding door lock number " + i);
             rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
             System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
-            driver.findElementById("ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl0"+i+"_txtDeviceName").wait(30);
-
         }
     }
+    public void getAddModeMessage() throws Exception{
+        String addModeMessage = "ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus";
+        logger.info("Getting mode message");
+        String modeMessage = driver1.findElement(By.id(addModeMessage)).getText();
+        while(!modeMessage.contains("The panel is in Add Mode")) {
+            logger.info("Panel is not in add mode. Wating 5 seconds");
+            Thread.sleep(5000);
+            modeMessage = driver1.findElement(By.id(addModeMessage)).getText();
+        }
+        logger.info("Panel is in add mode. Ready to add a new device");
+        TimeUnit.SECONDS.sleep(3);
+    }
+
 
     // bridge will be included to the Gen2 an nodeID 2
     public void localIncludeBridge() throws Exception {
@@ -1037,6 +1107,8 @@ public class Setup extends Driver{
             return false;
         }
     }
+
+    // *******need to finish swipe to GDC******
 //
 //    public void swipeToGdcPage(GaragePage GdcPage) throws Exception {
 //        while (!isOnGdcPage(GdcPage)) {
@@ -1054,7 +1126,7 @@ public class Setup extends Driver{
 //            return false;
 //        }
 //    }
-    // *******need to add swipe to GDC******
+
 
     public void zwaveSettingReset() throws Exception {
         PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
@@ -1064,13 +1136,13 @@ public class Setup extends Driver{
         logger.info("Setting smartsocket limit to 0");
         System.out.println("Setting SmartSocket Limit to 0");
         servcall.setDeviceLimitSmartSocket(0);
-        System.out.println("Setting Lihgts limit to 5");
+        logger.info("Setting Lihgts limit to 5");
         servcall.setDeviceLimitLights(5);
-        System.out.println("Setting Door Lock Limit to 3");
+        logger.info("Setting Door Lock Limit to 3");
         servcall.setDeviceLimitDoorLock(3);
-        System.out.println("Setting Other Device Limit to 3");
+        logger.info("Setting Other Device Limit to 3");
         servcall.setDeviceLimitOtherDevices(3);
-        System.out.println("Setting Garage Door Limit to 3");
+        logger.info("Setting Garage Door Limit to 3");
         servcall.setDeviceLimitGarageDoor(3);
     }
 
@@ -1097,11 +1169,15 @@ public class Setup extends Driver{
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         logger.info("Removing All Devices");
         navigateToAdvancedSettingsPage();
+        logger.info("entering Advance Installation");
         adv.INSTALLATION.click();
+        logger.info("entering devices");
         Install.DEVICES.click();
-        Thread.sleep(2000);
+        logger.info("selecting zwave devices");
         dev.zwaveDevices.click();
+        logger.info("removing all devices");
         zwave.removeAllDevicesZwavePage.click();
+        logger.info("selecting ok button");
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
         Thread.sleep(1000);
         zwave.oKBtnZwaveRemoveAllDevicesPage.click();
@@ -1114,22 +1190,30 @@ public class Setup extends Driver{
 
     public void waitForText(WebDriver driver, By element, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
-        logger.info("wating for" + element + "text");
+        logger.info("wating for text");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+
+    }
+
+    public void waitForTextInElement(WebDriver driver, WebElement element, String deviceType,int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        logger.info("wating for text in the element");
+        wait.until(ExpectedConditions.textToBePresentInElement(element,deviceType));
     }
 
     public void waitForElementText(WebDriver driver, WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
-        logger.info("waiting for " + element + "text");
+        logger.info("waiting for element text");
         wait.until(ExpectedConditions.visibilityOf(element));
+
     }
 
     public void waitForElement(WebDriver driver, WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, seconds);
-        logger.info("waiting for " + element + " for next action");
+        logger.info("waiting for element to perform next action");
         wait.until(ExpectedConditions.visibilityOf(element));
-
     }
+
 
 
     public void waitForElementnClick(WebDriver driver, WebElement element, WebElement clickElement, int seconds) {

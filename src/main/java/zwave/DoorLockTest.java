@@ -17,6 +17,7 @@ import utils.ZTransmitter;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static utils.ConfigProps.primary;
@@ -82,53 +83,53 @@ public class DoorLockTest extends Setup {
 //        adc.webDriverSetUp();
         setupLogger(pageName);
     }
-    @BeforeMethod
+    @BeforeClass
     public void webDriver() {
         adc.webDriverSetUp();
     }
 
-    @Test(priority = 0)
-    public void CheckAllElementsOnDoorLockPage() throws Exception {
-        DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        swipeToDoorLockPage(lockPage);
-        Thread.sleep(2000);
-        elementVerification(lockPage.keyIcon, "Key icon");
-        elementVerification(lockPage.doorLockName, "Door Lock name");
-        elementVerification(lockPage.doorLockStatus, "Door Lock status");
-        elementVerification(lockPage.refreshStatus, "Refresh status");
-        elementVerification(lockPage.Door_battery, "Door lock battery level");
-        elementVerification(lockPage.unlockAll, "Unlock All Doors");
-        elementVerification(lockPage.Lock_ALL, "Lock All Doors");
-    }
+//    @Test(priority = 0)
+//    public void CheckAllElementsOnDoorLockPage() throws Exception {
+//        DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//        swipeToDoorLockPage(lockPage);
+//        Thread.sleep(2000);
+//        elementVerification(lockPage.keyIcon, "Key icon");
+//        elementVerification(lockPage.doorLockName, "Door Lock name");
+//        elementVerification(lockPage.doorLockStatus, "Door Lock status");
+//        elementVerification(lockPage.refreshStatus, "Refresh status");
+//        elementVerification(lockPage.Door_battery, "Door lock battery level");
+//        elementVerification(lockPage.unlockAll, "Unlock All Doors");
+//        elementVerification(lockPage.Lock_ALL, "Lock All Doors");
+//    }
+//
+//
+//    @Test(priority = 1)
+//    public void Door_Lock_events() throws Exception {
+//        DoorLockPage locksPage = PageFactory.initElements(driver, DoorLockPage.class);
+//        swipeToDoorLockPage(locksPage);
+//        for(int i=0; i<=5; i++) {
+//        smart_click(locksPage.doorLockStatus, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
+//        Thread.sleep(7000);
+//        statusVerification(locksPage.doorLockStatus, "LOCKED");
+//        Thread.sleep(5000);
+//        smart_click(locksPage.doorLockStatus, locksPage.unlockAll, "LOCKED", "Unlocked");
+//        Thread.sleep(7000);
+//        statusVerification(locksPage.doorLockStatus, "UNLOCKED");
+//        Thread.sleep(5000);
+//        }
+//        System.out.println("Ending Timer");
+////        timer.end();
+//    }
 
-
-    @Test(priority = 1)
-    public void Door_Lock_events() throws Exception {
-        DoorLockPage locksPage = PageFactory.initElements(driver, DoorLockPage.class);
-        swipeToDoorLockPage(locksPage);
-        for(int i=0; i<=5; i++) {
-        smart_click(locksPage.doorLockStatus, locksPage.Lock_ALL, "UNLOCKED", "LockedTxt");
-        Thread.sleep(7000);
-        statusVerification(locksPage.doorLockStatus, "LOCKED");
-        Thread.sleep(5000);
-        smart_click(locksPage.doorLockStatus, locksPage.unlockAll, "LOCKED", "Unlocked");
-        Thread.sleep(7000);
-        statusVerification(locksPage.doorLockStatus, "UNLOCKED");
-        Thread.sleep(5000);
-        }
-        System.out.println("Ending Timer");
-//        timer.end();
-    }
-
-    @Test
-    public void adcTest() throws Exception {
-        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
-        adc.newADCSessionEmPowerPage("5390018");
-        adc.adcGetZWaveEquipmentList();
-
-        Thread.sleep(5000);
-    }
+//    @Test
+//    public void adcTest() throws Exception {
+//        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+//        adc.newADCSessionEmPowerPage("5390018");
+//        adc.adcGetZWaveEquipmentList();
+//
+//        Thread.sleep(5000);
+//    }
 
 
 //    public void smart_click(WebElement element, WebElement element2, String status, String message) {
@@ -146,160 +147,154 @@ public class DoorLockTest extends Setup {
 //
 //        adc.newADCSessionEmPowerPage("5390018");
 //    }
-    @Test
-    public void Test () throws Exception{
-        adc.newADCSessionEmPowerPage("5390018");
-        adc.adcAddZWaveDevice();
-//        addRemoteZwaveDoorLock(3);
-    }
-    @Test
-    public void remoteAddDeviceTest() throws Exception{
-        String addModeMessage = "ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus";
-        String exitAddMode = "ctl00_phBody_ZWaveRemoteAddDevices_btnSaveAndExit";//done
-        adc.newADCSessionEmPowerPage("5390018");
-        Thread.sleep(5000);
-        driver.get("https://alarmadmin.alarm.com/Support/RemoteAddZWaveDevice.aspx");
-        Thread.sleep(3000);
-        String modeMessage1 = driver.findElement(By.id(addModeMessage)).getText();
-        System.out.println(modeMessage1);
-        Thread.sleep(7000);
-        String modeMessage2 = driver.findElement(By.id(addModeMessage)).getText();
-        System.out.println(modeMessage2);
-        if (modeMessage2.contains("The panel is in Add Mode.")){
-            System.out.println("Panel is in add mode");
-        }else{
-            System.out.println("Failure to enter add mode");
-        }
-        TimeUnit.SECONDS.sleep(7);
-        driver.findElement(By.id(exitAddMode)).click();
-        System.out.println("exiting out of add mode");
-        Thread.sleep(4000);
-        driver.quit();
-    }
-
-//****************************************************************************************************
+//    @Test
+//    public void Test () throws Exception{
+//        adc.remoteAddMode("5390018");
+//        TimeUnit.SECONDS.sleep(50);
+//        adc.exitRemoteAddMode();
+//    }
 
 
 
-    @Test
+
+
+
+
+//************************Test Suite****************************************************************************
+
+
+
+    @Test(priority = 1)
     public void preDoorLockTestSetup() throws Exception {
-
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
         //remove all zwave devices
-        logger.info("removing all device");
         removeAllDevices();
         //change all zwave settings to default
         logger.info("reseting Zwave setting to factory");
         zwaveSettingReset();
         //Add 3 door window sensor and call it Front Door, back door, bathroom window
-
-
+        addDwSensor(3);
+        home.Home_button.click();
     }
 
-    @Test
+
+    @Test(priority = 2)
     public void pairingTransmitter() throws Exception {
         localIncludeBridge();
     }
 
-    @Test
-    public void disArmParingDeviceTest() throws Exception {
-        AdcDealerPage dealerPage = PageFactory.initElements(driver, AdcDealerPage.class);
+    @Test(priority = 3)
+    public void disarmLocalDeviceParingTest() throws Exception {
+        AdcDealerPage dealerPage = PageFactory.initElements(driver1, AdcDealerPage.class);
         //* add a way to store node numbers to names of device
         //Pair 2 door lock locally( name it stock "Front Door" and "Back Door")
         localZwaveAdd();
         logger.info("Paring Two Door locks with stock names, Front Door and Back Door");
         addStockNameFrontDoor();
         addStockNameBackDoor();
-        logger.info("Adding Zwave devices remotely");
-        adc.newADCSessionEmPowerPage("5390018");
-        adc.adcAddZWaveDevice();
-        addRemoteZwaveDoorLock(3);
+    }
 
-
-
+    @Test(priority = 4)
+    public void remoteAddParingTest() throws Exception{
         //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
+        AdcDealerPage dealerPage = PageFactory.initElements(adc.driver1, AdcDealerPage.class);
+        adc.remoteAddMode("5390018");
+        addRemoteZwaveDoorLock(1,"srg");
+        logger.info("waiting for new device name");
+        waitForTextInElement(adc.driver1,dealerPage.newlyAddDeviceName,"Door Lock", 130);
+        adc.verifyOneDeviceAdded();
+        adc.exitRemoteAddMode();
+        Thread.sleep(4000);
+    }
+
+
+
+
+
+
 
         //pair 1 door lock locally and expect max number failure
 
         //change max number setting with setters service call
 
         //pair other 3 lock with custom name with node id
-    }
 
 
 
-    @Test
-    public void disArmNameVerificationTest(){
-        //verify all name are correct on the panel
+//
+//    @Test
+//    public void disArmNameVerificationTest(){
+//        //verify all name are correct on the panel
+//
+//        //verify all names are correct on ADC Dealer
+//    }
+//
+//    @Test
+//    public void disArmNameChangeTest(){
+//        // Change stock name Front Door to custom name "Door Lock with # and Node ID" locally
+//        //change 3rd door lock with custom named to stock name "Side Door" locally
+//        // verify change on panel
+//        // verify change on ADC Dealer site
+//        // verify change on user site
+//        // change side door lock name to "srg door" on user site
+//        // verify side door lock changed to srg door on the panel
+//    }
+//
+//    @Test
+//    public void disArmUserCodeTest(){
+//        //add longterm user code
+//        //verify user code work on door lock
+//        //add a user code with an expiration time
+//        //verify user code works when active and doesn't work when deactivated
+//    }
 
-        //verify all names are correct on ADC Dealer
-    }
+//    @Test
+//    public void disArmLockActionTest() throws Exception{
+//        DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
+//        swipeToDoorLockPage(lockPage);
+//        System.out.println("At Door Lock Page");
+//        //panel test
+//        //lock all door locks one at a time and verify each change one at a time
+//        //unlock all door locks one at a time and verify each change one at a time
+//        //lock all door lock function and verify all
+//        //unlock all door locks
+//        //*ADC user site test
+//        //lock all door locks one at a time
+//        //verify each status change one at a time on user site
+//        //*(transmitter only)
+//        // unlock lock all door lock devices and verify the panel changes status.
+//        //verify the user site reflects the new device status
+//        //verify history events appear on panel event page
+//    }
 
-    @Test
-    public void disArmNameChangeTest(){
-        // Change stock name Front Door to custom name "Door Lock with # and Node ID" locally
-        //change 3rd door lock with custom named to stock name "Side Door" locally
-        // verify change on panel
-        // verify change on ADC Dealer site
-        // verify change on user site
-        // change side door lock name to "srg door" on user site
-        // verify side door lock changed to srg door on the panel
-    }
+//    @Test
+//    public void disArmRulesTest(){
+//        //create rules for Front door lock to
+//    }
+//    @Test
+//    public void armStayLockActionTest() throws Exception{
+//        DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
+//        swipeToDoorLockPage(lockPage);
+//        System.out.println("At Door Lock Page");
+//        //panel test in arm stay
+//        //lock all door locks one at a time and verify each change one at a time
+//        //unlock all door locks one at a time and verify each change one at a time
+//        //lock all door lock function and verify all locked
+//        //unlock all door locks and verify all unlocked
+//        //*ADC user site test
+//        //lock all door locks one at a time
+//        //verify each status change one at a time on user site
+//        //*(transmitter only)
+//        // unlock lock all door lock devices and verify the panel changes status.
+//        //verify the user site reflects the new device status
+//        //verify history events appear on panel event page
+//    }
 
-    @Test
-    public void disArmUserCodeTest(){
-        //add longterm user code
-        //verify user code work on door lock
-        //add a user code with an expiration time
-        //verify user code works when active and doesn't work when deactivated
-    }
-
-    @Test
-    public void disArmLockActionTest() throws Exception{
-        DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
-        swipeToDoorLockPage(lockPage);
-        System.out.println("At Door Lock Page");
-        //panel test
-        //lock all door locks one at a time and verify each change one at a time
-        //unlock all door locks one at a time and verify each change one at a time
-        //lock all door lock function and verify all
-        //unlock all door locks
-        //*ADC user site test
-        //lock all door locks one at a time
-        //verify each status change one at a time on user site
-        //*(transmitter only)
-        // unlock lock all door lock devices and verify the panel changes status.
-        //verify the user site reflects the new device status
-        //verify history events appear on panel event page
-    }
-
-    @Test
-    public void disArmRulesTest(){
-        //create rules for Front door lock to
-    }
-    @Test
-    public void armStayLockActionTest() throws Exception{
-        DoorLockPage lockPage = PageFactory.initElements(driver,DoorLockPage.class);
-        swipeToDoorLockPage(lockPage);
-        System.out.println("At Door Lock Page");
-        //panel test in arm stay
-        //lock all door locks one at a time and verify each change one at a time
-        //unlock all door locks one at a time and verify each change one at a time
-        //lock all door lock function and verify all locked
-        //unlock all door locks and verify all unlocked
-        //*ADC user site test
-        //lock all door locks one at a time
-        //verify each status change one at a time on user site
-        //*(transmitter only)
-        // unlock lock all door lock devices and verify the panel changes status.
-        //verify the user site reflects the new device status
-        //verify history events appear on panel event page
-    }
-
-    @Test
-    public void armStayRulesTest(){
-        //same rules as disArmRuleTest
-        //verify panel is in armStay
-    }
+//    @Test
+//    public void armStayRulesTest(){
+//        //same rules as disArmRuleTest
+//        //verify panel is in armStay
+//    }
 
     public void Z_Wave_Door_Locks_Disarm_Mode() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -446,13 +441,14 @@ public class DoorLockTest extends Setup {
         logger.info("*************************ZD_AW_005*******************************");
         logger.info("Arm Away mode: Verify that  a Door Lock can be deleted from the ADC website");
     }
-    @AfterMethod
-    public void wedriverTearDown(){
-        adc.driver1.quit();
-    }
+//    @AfterMethod
+//    public void wedriverTearDown(){
+//        adc.driver1.quit();
+//    }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {
+        adc.driver1.quit();
         driver.quit();
         service.stop();
     }

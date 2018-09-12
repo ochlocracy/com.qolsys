@@ -2741,6 +2741,11 @@ public class Disarm extends Setup {
         }
     }
 
+    @Test
+    public void add128Sensors() throws Exception{
+        add128();
+    }
+
     @AfterTest(alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();

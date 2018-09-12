@@ -70,6 +70,7 @@ public class Driver {
                         .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
+//        cap.setCapability("automationName", "UiAutomator2");//new
         cap.setCapability("platformName", "Android");
         cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
@@ -86,6 +87,7 @@ public class Driver {
 
 
         driver = new AndroidDriver<>(service.getUrl(), cap);
+
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
