@@ -125,7 +125,7 @@ public class HomePage {
     public WebElement System_Disarmed_State;
     @FindBy(id = "com.qolsys:id/partitionName")
     public WebElement Partition_Name;
-
-
+    @FindBy(id = "com.qolsys:id/tv_keyFive")
+    public WebElement pinpad;
 }
 

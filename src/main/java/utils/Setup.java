@@ -179,6 +179,20 @@ public class Setup extends Driver {
         Thread.sleep(1000);
     }
 
+    public void navigate_to_partitions_autolearn_page() throws InterruptedException {
+        Thread.sleep(2000);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        navigateToPartitionsAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        ss.Auto_Learn_Sensor.click();
+        Thread.sleep(1000);
+    }
+
     public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
@@ -514,7 +528,7 @@ public class Setup extends Driver {
 
         System.out.println("Will delete all security sensors, not z wave, must have no partitions enabled.");
 
-        navigateToPartitionsAdvancedSettingsPage();
+        navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         instal.DEALER_SETTINGS.click();
         swipeVertical();

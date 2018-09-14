@@ -29,6 +29,8 @@ public class AdvancedSettingsPage {
     public WebElement SOUND;
     @FindBy(xpath = "//android.widget.TextView[@text='DATE & TIME']")
     public WebElement DATE_TIME;
+    @FindBy(xpath = "//android.widget.TextView[@text='PARTITIONS']")
+    public WebElement PARTITIONS;
 
 
 }

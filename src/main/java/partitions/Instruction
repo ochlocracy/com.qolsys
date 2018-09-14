@@ -11,6 +11,8 @@ p 3 srf / power g
 
 p 4 srf / power g
 
+COmbined 1 and 2, adding them created separate partitions.
+
 3) PartitionSensorTest
 
 open close tamper
