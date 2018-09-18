@@ -1,8 +1,6 @@
 package partitions;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.commons.digester.ParserFeatureSetterFactory;
-import org.openqa.jetty.html.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -17,7 +15,6 @@ import utils.Setup;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 public class AddSensors extends Setup {
 
@@ -71,7 +68,6 @@ public class AddSensors extends Setup {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-
         String Partition1SRF = "6500A1";
 
         rep.create_report("Add_Sensors_01");
@@ -129,7 +125,7 @@ public class AddSensors extends Setup {
         }
         }catch(NoSuchElementException e)
         {}
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
         navigateToAddSensorsPage();
         WebElement sensor_DLID = driver.findElementById("com.qolsys:id/sensor_id");
