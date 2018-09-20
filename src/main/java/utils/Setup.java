@@ -250,6 +250,13 @@ public class Setup extends Driver {
         TimeUnit.SECONDS.sleep(delay);
     }
 
+    public void ARM_AWAY() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        logger.info("Arm Away");
+        home_page.DISARM.click();
+        home_page.ARM_AWAY.click();
+    }
+
     public void enterDefaultDuressCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.Nine.click();

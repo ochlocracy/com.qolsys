@@ -112,10 +112,10 @@ public class SanitySensors extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
         logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        //emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification

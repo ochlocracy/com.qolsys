@@ -1710,7 +1710,7 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall("67 00 22", "02 01");
         Thread.sleep(2000);
-        elementVerification(emg.Fire_Emergency_Alarmed, "Fire Emergency Sent");
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         log.log(LogStatus.PASS, ("Pass: Fire Emergency Sent is displayed"));
         Thread.sleep(2000);
         sensors.primaryCall("61 12 13", "03 01");
@@ -1774,8 +1774,8 @@ public class Disarm extends Setup {
         home.Emergency_Button.click();
         emg.Fire_icon.click();
         Thread.sleep(2000);
-        elementVerification(emg.Fire_Emergency_Alarmed, "Fire Emergency Sent");
-        log.log(LogStatus.PASS, ("Pass: Fire Emergency Sent is displayed"));
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
+        log.log(LogStatus.PASS, ("Pass: Fire Emergency is displayed"));
         sensors.primaryCall(keyfob1, "08 01");
         Thread.sleep(2000);
         verifyDisarm();

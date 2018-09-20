@@ -34,6 +34,8 @@ public class EmergencyPage {
     public WebElement Police_Emergency_Alarmed;
     @FindBy(xpath = "//android.widget.TextView[@text='Auxiliary Emergency']")
     public WebElement Auxiliary_Emergency_Alarmed;
-    @FindBy(xpath = "//android.widget.TextView[@text='Fire Emergency']")
-    public WebElement Fire_Emergency_Alarmed;
+
+    @FindBy(id = "com.qolsys:id/tv_status")
+    public WebElement Alarm_verification;
+
 }
