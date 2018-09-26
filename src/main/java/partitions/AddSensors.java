@@ -219,31 +219,31 @@ public class AddSensors extends Setup {
 
     }
 
+//    @Test (priority = 3)
+//    public void Add_PG_Sensors() throws Exception {
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//
+//        rep.create_report("Add_Sensors_02");
+//        rep.log.log(LogStatus.INFO, ("*Add_Sensors_02* Add List of PowerG sensors -> Expected result = New Sensors will be added."));
+//
+//        try {
+//            if (home.pinpad.isDisplayed()) ;
+//            {
+//                enterDefaultDealerCode();
+//            }
+//        }catch(NoSuchElementException e)
+//        {}
+//        navigate_to_partitions_autolearn_page();
+//        addPartitionPGSensors("DW", 104, 1152, 1, 0);//gr12
+//        addPartitionPGSensors("DW", 104, 1231, 2, 1);//gr13
+//        addPartitionPGSensors("DW", 104, 1216, 3, 2);//gr14
+//        addPartitionPGSensors("DW", 104, 1331, 4, 3);//gr16
+//
+//        rep.log.log(LogStatus.PASS, ("Pass: PowerG sensors added"));
+//
+//    }
+
     @Test (priority = 3)
-    public void Add_PG_Sensors() throws Exception {
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-
-        rep.create_report("Add_Sensors_02");
-        rep.log.log(LogStatus.INFO, ("*Add_Sensors_02* Add List of PowerG sensors -> Expected result = New Sensors will be added."));
-
-        try {
-            if (home.pinpad.isDisplayed()) ;
-            {
-                enterDefaultDealerCode();
-            }
-        }catch(NoSuchElementException e)
-        {}
-        navigate_to_partitions_autolearn_page();
-        addPartitionPGSensors("DW", 104, 1152, 1, 0);//gr12
-        addPartitionPGSensors("DW", 104, 1231, 2, 1);//gr13
-        addPartitionPGSensors("DW", 104, 1216, 3, 2);//gr14
-        addPartitionPGSensors("DW", 104, 1331, 4, 3);//gr16
-
-        rep.log.log(LogStatus.PASS, ("Pass: PowerG sensors added"));
-
-    }
-
-    @Test (priority = 4)
     public void Assign_Partitions_to_SRF() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
