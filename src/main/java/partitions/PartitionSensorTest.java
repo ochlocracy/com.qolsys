@@ -9,11 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
 import sensors.Sensors;
-import sun.security.krb5.Config;
-import utils.ConfigProps;
-import utils.ExtentReport;
-import utils.SensorsActivity;
-import utils.Setup;
+import utils.*;
 
 import java.io.IOException;
 
@@ -25,6 +21,8 @@ public class PartitionSensorTest extends Setup {
 
 
     public PartitionSensorTest() throws Exception {
+        ConfigProps.init();
+        PGSensorsActivity.init();
     }
 
     public void Open(String DLID) throws InterruptedException, IOException {
@@ -41,7 +39,7 @@ public class PartitionSensorTest extends Setup {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
     }
 
-    @Test
+    @Test (priority = 1)
     public void P_Tamper_SRF_Test() throws IOException, InterruptedException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
@@ -62,7 +60,7 @@ public class PartitionSensorTest extends Setup {
         ARM_STAY();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 1A", "01 00");
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 1A", "04 00");
 
@@ -81,7 +79,7 @@ public class PartitionSensorTest extends Setup {
         ARM_STAY();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 2A", "01 00");
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 2A", "04 00");
 
@@ -100,7 +98,7 @@ public class PartitionSensorTest extends Setup {
         ARM_STAY();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 3A", "01 00");
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 3A", "04 00");
 
@@ -117,9 +115,9 @@ public class PartitionSensorTest extends Setup {
         Thread.sleep(2000);
 
         ARM_STAY();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         sensors.primaryCall("65 00 4A", "01 00");
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 4A", "04 00");
 
@@ -131,7 +129,7 @@ public class PartitionSensorTest extends Setup {
         sensors.primaryCall("65 00 4A", "01 00");
         Thread.sleep(2000);
         enterDefaultUserCode();
-        sensors.primaryCall("65 00 2A", "04 00");
+        sensors.primaryCall("65 00 4A", "04 00");
         Thread.sleep(4000);
         swipeVertical();
         Thread.sleep(2000);
@@ -139,7 +137,7 @@ public class PartitionSensorTest extends Setup {
         rep.log.log(LogStatus.PASS, ("Pass: SRF sensors put panel into alarm in different partitions"));
     }
 
-    @Test
+    @Test (priority = 2)
     public void P_OpenClose_SRF_Test() throws IOException, InterruptedException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
@@ -162,7 +160,9 @@ public class PartitionSensorTest extends Setup {
         sensors.primaryCall("65 00 1A", "06 00");
         Thread.sleep(2000);
         sensors.primaryCall("65 00 1A", "04 00");
-        Thread.sleep(4000);
+        Thread.sleep(10000);
+        enterDefaultUserCode();
+        Thread.sleep(5000);
         home.DISARM.click();
         home.ARM_AWAY.click();
         Thread.sleep(14000);
@@ -170,6 +170,7 @@ public class PartitionSensorTest extends Setup {
         Thread.sleep(11000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 1A", "04 00");
+        Thread.sleep(3000);
         swipeVertical();
         Thread.sleep(2000);
 
@@ -177,7 +178,9 @@ public class PartitionSensorTest extends Setup {
         sensors.primaryCall("65 00 2A", "06 00");
         Thread.sleep(2000);
         sensors.primaryCall("65 00 2A", "04 00");
-        Thread.sleep(4000);
+        Thread.sleep(10000);
+        enterDefaultUserCode();
+        Thread.sleep(5000);
         home.DISARM.click();
         home.ARM_AWAY.click();
         Thread.sleep(14000);
@@ -185,6 +188,7 @@ public class PartitionSensorTest extends Setup {
         Thread.sleep(11000);
         enterDefaultUserCode();
         sensors.primaryCall("65 00 2A", "04 00");
+        Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
 
@@ -192,7 +196,9 @@ public class PartitionSensorTest extends Setup {
         sensors.primaryCall("65 00 3A", "06 00");
         Thread.sleep(2000);
         sensors.primaryCall("65 00 3A", "04 00");
-        Thread.sleep(4000);
+        Thread.sleep(10000);
+        enterDefaultUserCode();
+        Thread.sleep(5000);
         home.DISARM.click();
         home.ARM_AWAY.click();
         Thread.sleep(14000);
@@ -201,6 +207,7 @@ public class PartitionSensorTest extends Setup {
         enterDefaultUserCode();
         Thread.sleep(4000);
         sensors.primaryCall("65 00 3A", "04 00");
+        Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
 
@@ -208,7 +215,9 @@ public class PartitionSensorTest extends Setup {
         sensors.primaryCall("65 00 4A", "06 00");
         Thread.sleep(2000);
         sensors.primaryCall("65 00 4A", "04 00");
-        Thread.sleep(4000);
+        Thread.sleep(10000);
+        enterDefaultUserCode();
+        Thread.sleep(5000);
         home.DISARM.click();
         home.ARM_AWAY.click();
         Thread.sleep(14000);
@@ -216,14 +225,211 @@ public class PartitionSensorTest extends Setup {
         Thread.sleep(11000);
         enterDefaultUserCode();
         Thread.sleep(4000);
-        sensors.primaryCall("65 00 4A", "01 00");
+        sensors.primaryCall("65 00 4A", "04 00");
+        Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
 
         rep.log.log(LogStatus.PASS, ("Pass: SRF sensors put panel into alarm in different partitions"));
     }
+//                  PowerG does not signal in partitions
+//    @Test (priority = 3)
+//    public void P_Tamper_PG_Test() throws IOException, InterruptedException {
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//
+//        serv.set_DIALER_DELAY(0);
+//        rep.create_report("Sensortest_03");
+//        rep.log.log(LogStatus.INFO, ("*Sensortest_03* Tamper / Restore events to PG on Arm Away and Stay -> Expected result = Sensors will signal and panel will go into alarm."));
+//        Thread.sleep(4000);
+//
+//        try {
+//            if (home.pinpad.isDisplayed()) ;
+//            {
+//                enterDefaultDealerCode();
+//            }
+//        } catch (NoSuchElementException e) {
+//        }
+//        Thread.sleep(15000);
+//
+//        ARM_STAY();
+//        Thread.sleep(5000);
+//        pgprimaryCall(104, 1152, PGSensorsActivity.TAMPER);
+//        Thread.sleep(2000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1152,PGSensorsActivity.TAMPERREST);
+//
+//        Thread.sleep(2000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1152,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1152,PGSensorsActivity.TAMPERREST);
+//        Thread.sleep(4000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1231,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1231,PGSensorsActivity.TAMPERREST);
+//
+//        Thread.sleep(2000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1231,PGSensorsActivity.TAMPER);
+//        Thread.sleep(2000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1231,PGSensorsActivity.TAMPERREST);
+//        Thread.sleep(4000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1216,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1216,PGSensorsActivity.TAMPERREST);
+//
+//        Thread.sleep(2000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1216,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1216,PGSensorsActivity.TAMPERREST);
+//        Thread.sleep(4000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        Thread.sleep(3000);
+//        pgprimaryCall(104, 1331,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1331,PGSensorsActivity.TAMPERREST);
+//
+//
+//        Thread.sleep(2000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1331,PGSensorsActivity.TAMPER);
+//        Thread.sleep(4000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1331,PGSensorsActivity.TAMPERREST);
+//        Thread.sleep(4000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        rep.log.log(LogStatus.PASS, ("Pass: PG sensors put panel into alarm in different partitions"));
+//    }
+//
+//    @Test (priority = 4)
+//    public void P_OpenClose_PG_Test() throws IOException, InterruptedException {
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//
+//        serv.set_DIALER_DELAY(0);
+//        rep.create_report("Sensortest_04");
+//        rep.log.log(LogStatus.INFO, ("*Sensortest_04* Open / Close events to srf on Arm Away and Stay -> Expected result = Sensors will signal and panel will go into alarm."));
+//        Thread.sleep(4000);
+//
+//        try {
+//            if (home.pinpad.isDisplayed()) ;
+//            {
+//                enterDefaultDealerCode();
+//            }
+//        } catch (NoSuchElementException e) {
+//        }
+//
+//        Thread.sleep(15000);
+//
+//        ARM_STAY();
+//        pgprimaryCall(104, 1152,PGSensorsActivity.INOPEN);
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1152,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(10000);
+//        enterDefaultUserCode();
+//        Thread.sleep(5000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1152,PGSensorsActivity.INOPEN);
+//        Thread.sleep(11000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1152,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(3000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        pgprimaryCall(104, 1231,PGSensorsActivity.INOPEN);
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1231,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(10000);
+//        enterDefaultUserCode();
+//        Thread.sleep(5000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1231,PGSensorsActivity.INOPEN);
+//        Thread.sleep(11000);
+//        enterDefaultUserCode();
+//        pgprimaryCall(104, 1231,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(2000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        pgprimaryCall(104, 1216,PGSensorsActivity.INOPEN);
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1216,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(10000);
+//        enterDefaultUserCode();
+//        Thread.sleep(5000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1216,PGSensorsActivity.INOPEN);
+//        Thread.sleep(11000);
+//        enterDefaultUserCode();
+//        Thread.sleep(4000);
+//        pgprimaryCall(104, 1216,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(2000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        ARM_STAY();
+//        pgprimaryCall(104, 1331,PGSensorsActivity.INOPEN);
+//        Thread.sleep(2000);
+//        pgprimaryCall(104, 1331,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(10000);
+//        enterDefaultUserCode();
+//        Thread.sleep(5000);
+//        home.DISARM.click();
+//        home.ARM_AWAY.click();
+//        Thread.sleep(14000);
+//        pgprimaryCall(104, 1331,PGSensorsActivity.INOPEN);
+//        Thread.sleep(11000);
+//        enterDefaultUserCode();
+//        Thread.sleep(4000);
+//        pgprimaryCall(104, 1331,PGSensorsActivity.INCLOSE);
+//        Thread.sleep(2000);
+//        swipeVertical();
+//        Thread.sleep(2000);
+//
+//        rep.log.log(LogStatus.PASS, ("Pass: PG sensors put panel into alarm in different partitions"));
+//    }
 
-        @AfterMethod(alwaysRun = true)
+
+
+    @AfterMethod(alwaysRun = true)
         public void tearDown(ITestResult result) throws IOException, InterruptedException {
             rep.report_tear_down(result);
             driver.quit();
