@@ -63,7 +63,7 @@ public class ADC extends Setup {
     private int med_pendant = 21;
     private int doorbell = 109;
     private int occupancy = 114;
-
+    private String empowerURL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx";
 
 
     public ADC() throws Exception {
@@ -148,7 +148,7 @@ public class ADC extends Setup {
         if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
-        } else if (get_UDID().equals("ac8312fd")) {    //Sergio
+        } else if (get_UDID().equals("ac8312fb")) {    //Sergio
             accountId = "5390018";
             return accountId;
         } else if (get_UDID().equals("acf112e3")) {    //Zach
@@ -536,9 +536,13 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_txtNewCustomerId")).sendKeys(accountID);
         driver1.findElement(By.id("ctl00_butChangeCustomer")).click();
         logger.info("Entering Empower URL");
-        driver1.get("https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx");
+        driver1.get(empowerURL);
         logger.info("waiting for next action");
         Thread.sleep(2000);
+    }
+    public void directEmpowerPage()throws Exception{
+        logger.info("Going to Empower page");
+        driver1.get(empowerURL);
     }
 
     public void remoteAddMode(String accountID) throws Exception {
@@ -633,7 +637,7 @@ public class ADC extends Setup {
         Thread.sleep(3000);
         logger.info("Requesting Equipment list ");
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnZWaveUpdateEquipmentList")).click();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         logger.info("Refreshing the page");
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         Thread.sleep(3000);

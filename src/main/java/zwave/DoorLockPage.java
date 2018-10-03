@@ -39,8 +39,8 @@ public class DoorLockPage {
     @FindBy(xpath = "//android.widget.TextView[@text='UNLOCKED']")
     public WebElement unlockedText;
 
-    public final By LockedTxt = By.xpath("//android.widget.TextView[@text='LOCKED']");
-    public final By UnlockedTxt = By.xpath("//android.widget.TextView[@text='UNLOCKED']");
+//    public final By LockedTxt = By.xpath("//android.widget.TextView[@text='LOCKED']");
+//    public final By UnlockedTxt = By.xpath("//android.widget.TextView[@text='UNLOCKED']");
 
 
 

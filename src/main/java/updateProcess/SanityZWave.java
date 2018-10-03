@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class SanityZWave extends Setup {
+
     ExtentReports report;
     ExtentTest log;
     ExtentTest test;
@@ -20,7 +21,33 @@ public class SanityZWave extends Setup {
     @BeforeClass
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+//        smokeReportSetup("Sergio Bustos");
+        sanityReportSetup("Sergio Bustos");
+//        regressionReportSetup("Sergio Bustos");
     }
+
+    public void regressionReportSetup(String nameOfReporter)throws Exception{
+        String file = projectPath + "/extent-config-Regression.xml";
+        report = new ExtentReports(projectPath + "/Report/RegressionReport.html", false);
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("User Name", nameOfReporter)
+                .addSystemInfo("Software Version", softwareVersion());
+
+        log = report.startTest("Zwave.Light");
+    }
+
+    public void sanityReportSetup(String nameOfReporter)throws Exception{
+        String file = projectPath + "/extent-config-Sanity.xml";
+        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("User Name", nameOfReporter)
+                .addSystemInfo("Software Version", softwareVersion());
+
+        log = report.startTest("Zwave.Light");
+    }
+
 
     @BeforeMethod
     public void transmitterPair() throws Exception {
@@ -29,14 +56,18 @@ public class SanityZWave extends Setup {
 
     @Test
     public void verifyLight() throws Exception {
-        String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        report.loadConfig(new File(file));
-        report
-                .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", softwareVersion());
-
-        log = report.startTest("Zwave.Light");
+//        String file = projectPath + "/extent-config.xml";
+//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+//        report.loadConfig(new File(file));
+//        report
+//        String file = projectPath + "/extent-config-Smoke.xml";
+//        report = new ExtentReports(projectPath + "/Report/SmokeReport.html", false);
+//        report.loadConfig(new File(file));
+//        report
+//                .addSystemInfo("User Name", "Sergio Bustos")
+//                .addSystemInfo("Software Version", softwareVersion());
+//
+//        log = report.startTest("Zwave.Light");
 
         swipeFromRighttoLeft();
         driver.findElement(By.id("com.qolsys:id/statusButton")).click();
@@ -46,6 +77,7 @@ public class SanityZWave extends Setup {
         log.log(LogStatus.PASS, "Light is turned Off");
         Thread.sleep(2000);
     }
+
 
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {

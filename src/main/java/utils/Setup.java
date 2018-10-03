@@ -2,6 +2,7 @@ package utils;
 
 import adc.ADC;
 import adc.AdcDealerPage;
+import com.relevantcodes.extentreports.ExtentReports;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -19,6 +20,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import panel.*;
 import zwave.DoorLockPage;
 import zwave.LightsPage;
@@ -734,6 +736,12 @@ public class Setup extends Driver{
         rt.exec(adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
+    public void addPrimaryCall(String transmitterID,int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+        String add_primary = " -s " + transmitterID + " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
+        rt.exec(adbPath + add_primary);
+        System.out.println(add_primary);
+        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+    }
 
     public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
@@ -876,7 +884,6 @@ public class Setup extends Driver{
         }
     }
 
-
     public boolean alarmVerification(String sensor_name) throws Exception {
         swipeFromRighttoLeft();
         Thread.sleep(1000);
@@ -899,13 +906,145 @@ public class Setup extends Driver{
     public void addDwSensor(int numOfDw) throws IOException, InterruptedException {
         int dlid = 12345;
         int new_dlid = ++dlid;
+        logger.info("adding "+ numOfDw +" Door Windows sensors");
         for(int i = 1; i <= numOfDw; i++){
             addPrimaryCall(i, 10, ++new_dlid, 1);
             System.out.println(i + " " + new_dlid);
             Thread.sleep(1000);
         }
     }
+    public void addDwSensor(String transmitterID, int numOfDw) throws IOException, InterruptedException {
+        int dlid = 12345;
+        int new_dlid = ++dlid;
+        logger.info("adding "+ numOfDw +" Door Windows sensors");
+        for(int i = 1; i <= numOfDw; i++){
+            addPrimaryCall(transmitterID, i, 10, ++new_dlid, 1);
+            System.out.println(i + " " + new_dlid);
+            Thread.sleep(1000);
+        }
+    }
 
+//*********************************************Report Methods***************************************************
+
+
+
+    //************Sanity reporting
+
+
+    //Creating report
+
+//    public void sanityReportSetup(String nameOfReporter)throws Exception{
+//        String file = projectPath + "/extent-config-Sanity.xml";
+//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+//        report.loadConfig(new File(file));
+//        report
+//                .addSystemInfo("User Name", nameOfReporter)
+//                .addSystemInfo("Software Version", softwareVersion());
+//
+//        log = report.startTest("Zwave.Light");
+//    }
+
+    //Adding to Report
+
+    //    public void addToSanityReport(String testName){
+//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+//        log = report.startTest(testName);
+//    }
+
+    //Deleting report
+
+
+//    public void deleteSanityReport() {
+//        try {
+//            File file = new File(projectPath + "Report/SanityReport.html");
+//            if (file.delete()) {
+//                System.out.println(file.getName() + " is deleted!");
+//            } else {
+//                System.out.println("Failed to delete!");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    //*************Smoke Reporting
+
+    //Creating report
+
+    //    public void smokeReportSetup(String nameOfReporter)throws Exception{
+//        String file = projectPath + "/extent-config-Smoke.xml";
+//        report = new ExtentReports(projectPath + "/Report/SmokeReport.html", false);
+//        report.loadConfig(new File(file));
+//        report
+//                .addSystemInfo("User Name", nameOfReporter)
+//                .addSystemInfo("Software Version", softwareVersion());
+//
+//        log = report.startTest("Zwave.Light");
+//    }
+
+
+    //Adding to Report
+
+    //    public void addToSmokeReport(String testName){
+//        report = new ExtentReports(projectPath + "/Report/SmokeReport.html", false);
+//        log = report.startTest(testName);
+//    }
+
+
+//    public void deleteSmokeReport() {
+//        try {
+//            File file = new File(projectPath + "Report/SmokeReport.html");
+//            if (file.delete()) {
+//                System.out.println(file.getName() + " is deleted!");
+//            } else {
+//                System.out.println("Failed to delete!");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
+    // ********* Regression Reporting
+
+    //Creating Report
+
+//    public void regressionReportSetup(String nameOfReporter)throws Exception{
+//        String file = projectPath + "/extent-config-Regression.xml";
+//        report = new ExtentReports(projectPath + "/Report/RegressionReport.html", false);
+//        report.loadConfig(new File(file));
+//        report
+//                .addSystemInfo("User Name", nameOfReporter)
+//                .addSystemInfo("Software Version", softwareVersion());
+//
+//        log = report.startTest("Zwave.Light");
+//    }
+
+
+    //Adding to Report
+
+    //    public void addToRegressionReport(String testName){
+//        report = new ExtentReports(projectPath + "/Report/RegressionReport.html", false);
+//        log = report.startTest(testName);
+//    }
+
+
+    // Deleting Report
+
+
+//    public void deleteRegressionReport() {
+//        try {
+//            File file = new File(projectPath + "Report/RegressionReport.html");
+//            if (file.delete()) {
+//                System.out.println(file.getName() + " is deleted!");
+//            } else {
+//                System.out.println("Failed to delete!");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
@@ -940,7 +1079,7 @@ public class Setup extends Driver{
 
 
     // i might not need this method with the use of the waitForTextInElement method
-    public void verifyOneDeviceAdded() throws Exception{
+    public String verifyOneDeviceAdded() throws Exception{
         AdcDealerPage dealerPage = PageFactory.initElements(driver1, AdcDealerPage.class);
         TimeUnit.SECONDS.sleep(5);
         logger.info("Verifying new device is added");
@@ -950,12 +1089,15 @@ public class Setup extends Driver{
             TimeUnit.SECONDS.sleep(3);
         }
 
-        String name = dealerPage.newlyAddDeviceName.getText();
-        logger.info("device name is " + name);
+        String remoteDeviceName = dealerPage.newlyAddDeviceName.getText();
+        logger.info("device name is " + remoteDeviceName);
         TimeUnit.SECONDS.sleep(2);
+        return remoteDeviceName;
     }
 
-    public void addRemoteZwaveDoorLock(int numOfDoorLocks, String deviceName) throws Exception {
+
+
+    public void addRemoteZwaveDoorLock(int numOfDoorLocks) throws Exception {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         AdcDealerPage adcPage = new AdcDealerPage();
         for (int i=0; i<= numOfDoorLocks; i++) {
@@ -1076,6 +1218,7 @@ public class Setup extends Driver{
     //have to crate an instances of the DoorLockPage with the name locksPage to use this method
     public void swipeToDoorLockPage(DoorLockPage locksPage) throws Exception {
         while (!isOnDoorLockPage(locksPage))
+            logger.info("Swipping left");
             swipeFromRighttoLeft();
     }
 
@@ -1128,30 +1271,38 @@ public class Setup extends Driver{
 //    }
 
 
-    public void zwaveSettingReset() throws Exception {
+    public void zwaveSettingReset(String transmitterId) throws Exception {
         PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+        logger.info("resetting all device limits to factory litmits");
         logger.info("Setting thermostat limit to 3");
-        System.out.println("Setting Thermostat limit to 3");
-        servcall.setDeviceLimitThermostat(3);
+        servcall.setDeviceLimitThermostatWithTrans(3,transmitterId);
         logger.info("Setting smartsocket limit to 0");
-        System.out.println("Setting SmartSocket Limit to 0");
-        servcall.setDeviceLimitSmartSocket(0);
+        servcall.setDeviceLimitSmartSocketWithTrans(0,transmitterId);
         logger.info("Setting Lihgts limit to 5");
-        servcall.setDeviceLimitLights(5);
+        servcall.setDeviceLimitLightsWithTrans(5,transmitterId);
         logger.info("Setting Door Lock Limit to 3");
-        servcall.setDeviceLimitDoorLock(3);
+        servcall.setDeviceLimitDoorLockWithTrans(3,transmitterId);
         logger.info("Setting Other Device Limit to 3");
-        servcall.setDeviceLimitOtherDevices(3);
+        servcall.setDeviceLimitOtherDevicesWithTrans(3,transmitterId);
         logger.info("Setting Garage Door Limit to 3");
-        servcall.setDeviceLimitGarageDoor(3);
+        servcall.setDeviceLimitGarageDoorWithTrans(3,transmitterId);
     }
 
-    public void localZwaveAdd() throws IOException, InterruptedException {
+    public void zwaveChipReset(String transmitterId) throws Exception {
+        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+//
+        servcall.setZwaveOnOff(1);
+        servcall.getZwaveOnOff();
+    }
+
+
+
+        public void localZwaveAdd() throws IOException, InterruptedException {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        logger.info("adding new device");
+        logger.info("adding new device locally ");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         Install.DEVICES.click();
@@ -1307,7 +1458,45 @@ public class Setup extends Driver{
         //Add assertion and logger message
         //add a retry if add process fails
     }
+    public void addCustomMaxZwaveDoorLockFailure(String... deviceNames) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceNames) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            logger.info("wating for max device button to be displayed ");
+            waitForElement(driver, zwave.maxDeviceAcknowledgement, 60);
+            zwave.maxDeviceAcknowledgement.click();
+            logger.info("max number door locks have been reached");
+        }
+    }
+    public void addCustomZwaveDoorLockNode(String... deviceTypeName) throws Exception {
+        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+        for (String deviceName : deviceTypeName) {
+            zwave.includeZwaveDeviceButton.click();
+            Thread.sleep(2000);
+            logger.info("Adding " + deviceName);
+            rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 5");
+            logger.info("wating for add button to be displayed ");
+            waitForElement(driver, zwave.newDevicePageAddBtn, 60);
+            String deviceId = zwave.nodeId.getText();
+            zwave.nameSelectionDropDown.click();
+            zwave.customDeviceName.click();
+            zwave.customNameField.sendKeys(deviceName+deviceId);
+            try {
+                driver.hideKeyboard();
+                logger.info("Hidding Keyboard");
+            } catch (Exception e) {
+                logger.info("Keyboard was Present");
+            }
+            zwave.newDevicePageAddBtn.click();
+            logger.info("add complete for " + deviceTypeName);
 
+        }
+    }
 
     public void addCustomZwaveThermostat(String... deviceNames) throws Exception {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
@@ -1407,6 +1596,8 @@ public class Setup extends Driver{
         //Add assertion and logger message
         //add a retry if add process fails
     }
+
+
 
     public void addStockNameFrontDoor()throws Exception{
         ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);

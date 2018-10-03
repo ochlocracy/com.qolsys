@@ -54,6 +54,8 @@ public class ZWavePage extends Setup{
     @FindBy(id = "com.qolsys:id/button")
     public WebElement newDevicePageAddBtn;// Add button in the new device page
 
+    @FindBy(id = "com.qolsys:id/deviceId")
+    public WebElement nodeId;
 
     @FindBy(xpath = "//android.widget.Button[@text='Automation']")
     public WebElement panelLightAutomation; //Automation button for panel selection
@@ -71,6 +73,9 @@ public class ZWavePage extends Setup{
 
     @FindBy(id = "com.qolsys:id/ok")
     public WebElement UnsupportedDeviceAcknowledgement;
+
+    @FindBy(id = "com.qolsys:id/ok")
+    public WebElement maxDeviceAcknowledgement;
 
     @FindBy(id= "com.qolsys:id/customDesc1")
     public WebElement customNameField;

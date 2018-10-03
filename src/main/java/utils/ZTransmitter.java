@@ -45,8 +45,8 @@ public class ZTransmitter extends ConfigPropsBase {
 
         includeTransmitter = getString("transmitterInclusion");
         excludeTransmitter = getString("transmitterExclude");
-        addLight = getString("ligthInclusion");
-        clearLight = getString("ligthExclude");
+        addLight = getString("lightInclusion");
+        clearLight = getString("lightExclude");
         addThermostat = getString("thermostatInclude");
         clearThermostat = getString("thermostatExclude");
         doorLockInclusion = getString("doorLockInclusion");

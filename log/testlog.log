@@ -1,64 +1,54 @@
 
-2018-09-11 17:29:42,650 - utils.Log -INFO - ********************************************************************
-2018-09-11 17:29:42,652 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Door Lock Testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2018-09-11 17:29:42,653 - utils.Log -INFO - ********************************************************************
-2018-09-11 17:29:44,677 - zwave.DoorLockTest -INFO - Removing All Devices
-2018-09-11 17:29:44,986 - zwave.DoorLockTest -INFO - Settings Menue
-2018-09-11 17:29:47,622 - zwave.DoorLockTest -INFO - Advance Settings
-2018-09-11 17:29:53,025 - zwave.DoorLockTest -INFO - entering Advance Installation
-2018-09-11 17:29:53,979 - zwave.DoorLockTest -INFO - entering devices
-2018-09-11 17:29:54,820 - zwave.DoorLockTest -INFO - selecting zwave devices
-2018-09-11 17:29:55,723 - zwave.DoorLockTest -INFO - removing all devices
-2018-09-11 17:29:56,645 - zwave.DoorLockTest -INFO - selecting ok button
-2018-09-11 17:30:05,895 - zwave.DoorLockTest -INFO - All devices have been removed
-2018-09-11 17:30:05,896 - Door Lock Testing -INFO - reseting Zwave setting to factory
-2018-09-11 17:30:05,907 - zwave.DoorLockTest -INFO - Setting thermostat limit to 3
-2018-09-11 17:30:05,912 - zwave.DoorLockTest -INFO - Setting smartsocket limit to 0
-2018-09-11 17:30:05,917 - zwave.DoorLockTest -INFO - Setting Lihgts limit to 5
-2018-09-11 17:30:05,924 - zwave.DoorLockTest -INFO - Setting Door Lock Limit to 3
-2018-09-11 17:30:05,927 - zwave.DoorLockTest -INFO - Setting Other Device Limit to 3
-2018-09-11 17:30:05,932 - zwave.DoorLockTest -INFO - Setting Garage Door Limit to 3
-2018-09-11 17:30:09,198 - zwave.DoorLockTest -INFO - Navigating to setting
-2018-09-11 17:30:10,852 - zwave.DoorLockTest -INFO - Settings Menue
-2018-09-11 17:30:13,347 - zwave.DoorLockTest -INFO - Advance Settings
-2018-09-11 17:30:21,421 - zwave.DoorLockTest -INFO - Clearing Transmitter
-2018-09-11 17:30:35,581 - zwave.DoorLockTest -INFO - Removing all devices
-2018-09-11 17:30:36,774 - zwave.DoorLockTest -INFO - waiting for [[AndroidDriver:  on LINUX (ddc8a80c-2f6d-4de8-9f9c-fa670c77e0f3)] -> id: com.qolsys:id/ok] for next action
-2018-09-11 17:30:42,457 - zwave.DoorLockTest -INFO - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/ok' for next action
-2018-09-11 17:30:54,555 - zwave.DoorLockTest -INFO - All Devices have been removed
-2018-09-11 17:30:55,557 - zwave.DoorLockTest -INFO - Including transmitter
-2018-09-11 17:31:05,435 - zwave.DoorLockTest -INFO - Waiting for Element
-2018-09-11 17:31:10,568 - zwave.DoorLockTest -INFO - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
-2018-09-11 17:31:55,888 - zwave.DoorLockTest -INFO - Naming transmitter
-2018-09-11 17:32:03,508 - zwave.DoorLockTest -INFO - Keyboard was Present
-2018-09-11 17:32:06,798 - zwave.DoorLockTest -INFO - Transmitter has been added successfully
-2018-09-11 17:32:11,028 - zwave.DoorLockTest -INFO - adding new device
-2018-09-11 17:32:11,258 - zwave.DoorLockTest -INFO - Settings Menue
-2018-09-11 17:32:13,747 - zwave.DoorLockTest -INFO - Advance Settings
-2018-09-11 17:32:26,570 - zwave.DoorLockTest -INFO - ready to add new device
-2018-09-11 17:32:26,570 - Door Lock Testing -INFO - Paring Two Door locks with stock names, Front Door and Back Door
-2018-09-11 17:32:28,882 - zwave.DoorLockTest -INFO - Adding Stock Front Door
-2018-09-11 17:32:28,887 - zwave.DoorLockTest -INFO - waiting for ADD button to appear
-2018-09-11 17:32:33,931 - zwave.DoorLockTest -INFO - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
-2018-09-11 17:33:06,814 - zwave.DoorLockTest -INFO - Selecting Front Door as a name
-2018-09-11 17:33:10,032 - zwave.DoorLockTest -INFO - Front Door has been added successfully
-2018-09-11 17:33:14,847 - zwave.DoorLockTest -INFO - Adding Stock Back Door
-2018-09-11 17:33:14,851 - zwave.DoorLockTest -INFO - waiting for ADD button to appear
-2018-09-11 17:33:20,179 - zwave.DoorLockTest -INFO - waiting for Proxy element for: DefaultElementLocator 'By.id: com.qolsys:id/button' for next action
-2018-09-11 17:33:32,182 - zwave.DoorLockTest -INFO - Selecting Back Door as a name
-2018-09-11 17:33:35,376 - zwave.DoorLockTest -INFO - Back Door has been added successfully
-2018-09-11 17:33:41,657 - adc.ADC -INFO - Logging in to qautomation
-2018-09-11 17:33:41,658 - adc.ADC -INFO - logging in to user dealer 
-2018-09-11 17:33:46,049 - adc.ADC -INFO - selecting Customer
-2018-09-11 17:33:48,296 - adc.ADC -INFO - navigating to add mode
-2018-09-11 17:33:50,317 - adc.ADC -INFO - Getting mode message
-2018-09-11 17:33:50,354 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:33:52,393 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:33:54,461 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:33:56,521 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:33:58,549 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:34:00,598 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:34:02,652 - adc.ADC -INFO - Panel is not in add mode. Wating 2 seconds
-2018-09-11 17:34:04,681 - adc.ADC -INFO - Panel is in add mode
-2018-09-11 17:34:07,682 - Door Lock Testing -INFO - waiting for new device name
-2018-09-11 17:34:07,683 - zwave.DoorLockTest -INFO - wating for text in the element
+2018-10-02 12:13:02,677 - utils.Log -INFO - ********************************************************************
+2018-10-02 12:13:02,698 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Allow Master Code to access Siren and Alarms testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-02 12:13:02,699 - utils.Log -INFO - ********************************************************************
+2018-10-02 12:13:05,757 - Allow Master Code to access Siren and Alarms testing -INFO - Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code
+2018-10-02 12:13:06,074 - settings.AllowMasterCodeToAccessSirenAndAlarmsTest -INFO - Settings Menue
+2018-10-02 12:58:05,972 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 12:58:08,669 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 12:58:59,537 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 12:59:02,056 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 13:01:33,840 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 13:01:36,434 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 13:05:33,804 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 13:05:36,378 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 13:06:51,104 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 13:06:53,661 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 14:33:13,876 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 14:33:16,521 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 14:36:08,986 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 14:36:11,540 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 14:39:13,284 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 14:39:15,752 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 14:43:57,828 - updateProcess.SanityZWave -INFO - Settings Menue
+2018-10-02 14:44:00,411 - updateProcess.SanityZWave -INFO - Advance Settings
+2018-10-02 16:38:34,363 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-02 16:38:36,884 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-02 16:41:12,718 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-02 16:41:15,303 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-02 16:45:05,879 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-02 16:45:08,498 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-02 16:46:09,828 - adc.ADC -INFO - Request sensor list and Sensor names
+2018-10-02 16:46:21,345 - adc.ADC -INFO - Request equipment list
+2018-10-02 16:47:46,648 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-02 16:47:49,292 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-02 16:48:41,437 - adc.ADC -INFO - Request sensor list and Sensor names
+2018-10-02 16:48:53,076 - adc.ADC -INFO - Request equipment list
+2018-10-02 16:49:40,740 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 16:49:59,349 - utils.Log -ERROR - *Fire icon Alarmed* - Element is not found!
+2018-10-02 16:49:59,352 - updateProcess.SanitySensors -INFO - Cancel Emergency Alarm
+2018-10-02 16:50:07,072 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 16:50:14,539 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 17:29:16,628 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-02 17:29:19,282 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-02 17:30:11,167 - adc.ADC -INFO - Request sensor list and Sensor names
+2018-10-02 17:30:22,684 - adc.ADC -INFO - Request equipment list
+2018-10-02 17:31:08,247 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 17:31:26,798 - utils.Log -ERROR - *Fire icon Alarmed* - Element is not found!
+2018-10-02 17:31:26,808 - updateProcess.SanitySensors -INFO - Cancel Emergency Alarm
+2018-10-02 17:34:27,594 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 17:35:12,416 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 17:35:20,316 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-02 17:36:00,121 - updateProcess.SanitySensors -INFO - Failed: System is NOT ARMED STAY
+2018-10-02 17:36:07,543 - utils.Log -ERROR - *Tampered* - Element is not found!
+2018-10-02 17:36:14,554 - updateProcess.SanitySensors -INFO - Disarm
