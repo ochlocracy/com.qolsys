@@ -71,7 +71,7 @@ public class ArmedAwayAuxiliary extends Setup {
         }
     }
 
-    public void ArmStay_Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
+    public void ArmAway_Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Silent Auxiliary Police Pendant during Arm Away");
         ARM_AWAY(ConfigProps.longExitDelay);
         Thread.sleep(1000);
@@ -86,7 +86,7 @@ public class ArmedAwayAuxiliary extends Setup {
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
-    public void ArmStay_Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
+    public void ArmAway_Activate_Medical_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Auxiliary Medical Pendant during Arm Away");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -98,13 +98,12 @@ public class ArmedAwayAuxiliary extends Setup {
         elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         Thread.sleep(60000);
         logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
 
-    public void ArmStay_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
+    public void ArmAway_Activate_Police_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
         logger.info("ArmAway -Activate Group " + group + " Auxiliary Police Pendant during Arm Away");
         EmergencyPage emg = PageFactory.initElements(driver, EmergencyPage.class);
         ARM_AWAY(ConfigProps.longExitDelay + 2);
@@ -115,7 +114,6 @@ public class ArmedAwayAuxiliary extends Setup {
         elementVerification(emg.Police_Emergency_Alarmed, "Police Alarmed");
         Thread.sleep(35000);
         logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
@@ -123,27 +121,27 @@ public class ArmedAwayAuxiliary extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_2() throws Exception {
-        ArmStay_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 49) Police Panic')]", "//*[contains(text(), ' Sensor 49 Alarm** ')]");
+        ArmAway_Activate_Silent_Sensor(2, "61 12 53", "//*[contains(text(), '(Sensor 49) Police Panic')]", "//*[contains(text(), ' Sensor 49 Alarm** ')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_4() throws Exception {
-        ArmStay_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 50) Pending Alarm')]", "//*[contains(text(), ' Sensor 50 Alarm** ')]");
+        ArmAway_Activate_Medical_Sensor(4, "61 12 63", "//*[contains(text(), '(Sensor 50) Pending Alarm')]", "//*[contains(text(), ' Sensor 50 Alarm** ')]");
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_6() throws Exception {
-        ArmStay_Activate_Medical_Sensor(6, "61 12 13", "//*[contains(text(), '(Sensor 43) Pending Alarm')]", "//*[contains(text(), ' Sensor 43 Alarm** ')]");
+        ArmAway_Activate_Medical_Sensor(6, "61 12 13", "//*[contains(text(), '(Sensor 43) Pending Alarm')]", "//*[contains(text(), ' Sensor 43 Alarm** ')]");
     }
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_1() throws Exception {
-        ArmStay_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 48) Pending Alarm')]", "//*[contains(text(), ' Sensor 48 Alarm**')]");
+        ArmAway_Activate_Police_Sensor(1, "61 12 43", "//*[contains(text(), '(Sensor 48) Pending Alarm')]", "//*[contains(text(), ' Sensor 48 Alarm**')]");
     }
 
     @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayActivateSensor_0() throws Exception {
-        ArmStay_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), ' (Sensor 44) Police Panic ')]");
+        ArmAway_Activate_Police_Sensor(0, "61 12 23", "//*[contains(text(), '(Sensor 44) Pending Alarm')]", "//*[contains(text(), ' (Sensor 44) Police Panic ')]");
             for (int i = 50; i > 42; i--) {
                 deleteFromPrimary(i);
             }}

@@ -121,7 +121,6 @@ public class Smoke_Test_Freeze_Heat_Water extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in Disarm mode");}
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.heat_zones, 26,Idle);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -134,7 +133,6 @@ public class Smoke_Test_Freeze_Heat_Water extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in ArmStay mode");}
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.heat_zones, 26,Idle);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -147,7 +145,6 @@ public class Smoke_Test_Freeze_Heat_Water extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in ArmAway mode");}
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.heat_zones, 26,Idle);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 

@@ -53,7 +53,6 @@ public class PanelCameraPageTest extends Setup {
         TimeUnit.SECONDS.sleep(2);
         emergency.Police_icon.click();
         TimeUnit.SECONDS.sleep(3);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromRighttoLeft();
         swipeFromRighttoLeft();
@@ -75,7 +74,6 @@ public class PanelCameraPageTest extends Setup {
         TimeUnit.SECONDS.sleep(2);
         emergency.Police_icon.click();
         TimeUnit.SECONDS.sleep(3);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromRighttoLeft();
         swipeFromRighttoLeft();

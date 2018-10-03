@@ -92,9 +92,8 @@ public class ArmedStayAuxiliary extends Setup {
         Thread.sleep(2000);
         elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         Thread.sleep(35000);
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
+        logger.info("Disarm the Alarm");
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);
     }
@@ -109,8 +108,7 @@ public class ArmedStayAuxiliary extends Setup {
         Thread.sleep(2000);
         elementVerification(emg.Police_Emergency_Alarmed, "Police Alarmed");
         Thread.sleep(35000);
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         // adc website verification
         adc.ADC_verification(element_to_verify1, element_to_verify2);

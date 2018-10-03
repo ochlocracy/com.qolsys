@@ -67,9 +67,8 @@ public class ArmedAwaySmokeSensor extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Fire_Emergency_Alarmed, "Fire Emergency");
         logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification

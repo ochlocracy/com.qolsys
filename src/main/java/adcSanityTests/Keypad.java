@@ -101,9 +101,8 @@ public class Keypad extends Setup {
         sensors.primaryCall("85 00 AF", keypadActivated);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
+        logger.info("Cancel Emergency Alarm");
         String element_to_verify2 = "//*[contains(text(), ' KeypadTouchscreen 41 Delayed Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
         Thread.sleep(2000);
@@ -142,9 +141,8 @@ public class Keypad extends Setup {
         sensors.primaryCall("85 00 AF", keypadActivated);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
+        logger.info("Cancel Emergency Alarm");
         String element_to_verify2 = "//*[contains(text(), ' KeypadTouchscreen 41 Delayed Police Panic')]";
         ADC_verification(element_to_verify1, element_to_verify2, element_to_verify3);
         Thread.sleep(2000);

@@ -315,7 +315,6 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate smoke sensor");
         sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: smoke sensor behavior is as expected");
@@ -369,7 +368,6 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate heat sensor");
         sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: heat sensor behavior is as expected");
@@ -386,19 +384,16 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate keyfobs");
         sensors.primaryCall("65 00 AF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
 
         sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
 
         sensors.primaryCall("65 00 CF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: keyfobs behavior is as expected");
@@ -407,7 +402,6 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate keypads");
         sensors.primaryCall("85 00 AF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
 
@@ -422,13 +416,11 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate medical pendants");
         sensors.primaryCall("61 12 13", "03 01");
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
 
         sensors.primaryCall("61 12 23", "03 01");
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: medical pendants behavior is as expected");

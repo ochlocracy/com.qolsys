@@ -96,8 +96,7 @@ public class SmokeSensor extends Setup {
             Thread.sleep(1000);
             DISARM();
         } else if(state == PGSensorsActivity.SMOKE){
-            elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
-            emg.Cancel_Emergency.click();
+            elementVerification(emg.Alarm_verification, "Fire Emergency");
             enterDefaultUserCode();
         }
         Thread.sleep(2000);
@@ -143,8 +142,7 @@ public class SmokeSensor extends Setup {
             verifyInAlarm();
             enterDefaultUserCode();
         }else if (state == PGSensorsActivity.SMOKE) {
-            elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
-            emg.Cancel_Emergency.click();
+            elementVerification(emg.Alarm_verification, "Fire Emergency");
             enterDefaultUserCode();
         }
         Thread.sleep(2000);

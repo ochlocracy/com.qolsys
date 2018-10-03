@@ -79,10 +79,9 @@ public class HeatSensor extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         enterDefaultUserCode();
+        logger.info("Disarm the system");
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());
@@ -172,10 +171,9 @@ public class HeatSensor extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         enterDefaultUserCode();
+        logger.info("Disarm the Alarm");
         Thread.sleep(15000);
         // adc website verification
         adc.New_ADC_session(adc.getAccountId());

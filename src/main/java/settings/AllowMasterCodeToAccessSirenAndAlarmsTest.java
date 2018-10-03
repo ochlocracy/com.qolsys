@@ -11,6 +11,7 @@ import panel.AdvancedSettingsPage;
 import panel.InstallationPage;
 import panel.SettingsPage;
 import panel.SirenAlarmsPage;
+import utils.ConfigProps;
 import utils.ExtentReport;
 import utils.Setup;
 
@@ -21,6 +22,7 @@ public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
     ExtentReport rep = new ExtentReport("Settings_Siren_and_Alarms");
 
     public AllowMasterCodeToAccessSirenAndAlarmsTest() throws Exception {
+        ConfigProps.init();
     }
 
     @BeforeMethod

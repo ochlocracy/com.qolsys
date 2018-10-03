@@ -1568,7 +1568,7 @@ public class Disarm extends Setup {
         adc.update_sensors_list();
         sensors.primaryCall("67 00 22", "02 01");
         Thread.sleep(1000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire Emergency Sent");
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         adc.New_ADC_session_User(ConfigProps.login, ConfigProps.password);
         Thread.sleep(30000);
         adc.driver1.get("https://www.alarm.com/web/system/alerts-issues");
@@ -1663,7 +1663,6 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         elementVerification(emg.Police_Emergency_Alarmed, "Police Emergency Sent");
         log.log(LogStatus.PASS, ("Pass: Police Emergency Sent is displayed"));
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         servcall.set_KEYFOB_ALARM_DISARM(01);
         Thread.sleep(2000);
@@ -1721,7 +1720,6 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall("75 00 AA", "02 01");
         Thread.sleep(5000);
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
 
         //     ADC_verification("//*[contains(text(), 'Fire Alarm')]", "//*[contains(text(), 'Auxiliary Pendant 2 (Sensor 2) BeClose Button Press')]");
@@ -1753,7 +1751,6 @@ public class Disarm extends Setup {
         Thread.sleep(2000);
         elementVerification(emg.Auxiliary_Emergency_Alarmed, "Auxiliary Emergency Sent");
         log.log(LogStatus.PASS, ("Pass: Auxiliary Emergency Sent is displayed"));
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         servcall.set_KEYFOB_ALARM_DISARM(01);
         Thread.sleep(1000);

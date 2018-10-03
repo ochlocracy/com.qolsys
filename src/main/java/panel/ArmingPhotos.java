@@ -48,7 +48,6 @@ public class ArmingPhotos {
             TimeUnit.SECONDS.sleep(2);
             emg.Fire_icon.click();
             TimeUnit.SECONDS.sleep(5);
-            emg.Cancel_Emergency.click();
             s.enterDefaultUserCode();
             TimeUnit.SECONDS.sleep(5);
 

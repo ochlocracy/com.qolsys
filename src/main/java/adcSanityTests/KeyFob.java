@@ -99,8 +99,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 AF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 38 Delayed Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -115,8 +114,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 CF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 40 Delayed Aux')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -131,8 +129,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 BF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), 'Keyfob 39 Delayed Aux')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -150,8 +147,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 AF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 38 Delayed Police Panic')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -169,8 +165,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 BF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 39 Delayed Aux')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -188,8 +183,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 CF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 40 Delayed Aux')]";
         ADC_verification(element_to_verify, element_to_verify2, element_to_verify3);
@@ -207,8 +201,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 AF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        logger.info("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 38 Delayed Police Panic')]";
         ADC_verification(element_to_verify1, element_to_verify2, element_to_verify3);
@@ -226,8 +219,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 BF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        System.out.println("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        System.out.println("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 39 Delayed Aux')]";
         ADC_verification(element_to_verify1, element_to_verify2, element_to_verify3);
@@ -245,8 +237,7 @@ public class KeyFob extends Setup {
         sensors.primaryCall("65 00 CF", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
         elementVerification(emg.Emergency_sent_text, "Emergency Icon");
-        System.out.println("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
+        System.out.println("Disarm the Alarm");
         enterDefaultUserCode();
         String element_to_verify2 = "//*[contains(text(), ' Keyfob 40 Delayed Aux')]";
         ADC_verification(element_to_verify1, element_to_verify2, element_to_verify3);

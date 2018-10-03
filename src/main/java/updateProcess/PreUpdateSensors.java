@@ -116,7 +116,6 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate smoke sensors");
             sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
@@ -158,7 +157,6 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate heat sensors");
             sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
@@ -171,26 +169,22 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate keyfob sensors");
             sensors.primaryCall("65 00 AF", SensorsActivity.OPEN);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             sensors.primaryCall("65 00 CF", SensorsActivity.OPEN);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate keypad sensors");
             sensors.primaryCall("85 00 AF", SensorsActivity.OPEN);
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
@@ -203,13 +197,11 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate medical pendant sensors");
             sensors.primaryCall("61 12 13", "03 01");
             Thread.sleep(2000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             sensors.primaryCall("61 12 23", "03 01");
             Thread.sleep(1000);
-            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 

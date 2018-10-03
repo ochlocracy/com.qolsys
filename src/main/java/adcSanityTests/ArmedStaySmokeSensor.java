@@ -71,7 +71,6 @@ public class ArmedStaySmokeSensor extends Setup {
         Thread.sleep(2000);
         elementVerification(emg.Alarm_verification, "Fire Emergency");
         logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification

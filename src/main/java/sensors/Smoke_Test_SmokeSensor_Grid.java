@@ -57,7 +57,6 @@ public class Smoke_Test_SmokeSensor_Grid {
             logger.info("Failed: Fire emergency is NOT sent in Disarm mode");
         }
         TimeUnit.SECONDS.sleep(2);
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 
@@ -75,7 +74,6 @@ public class Smoke_Test_SmokeSensor_Grid {
             logger.info("Failed: Fire emergency is NOT sent in ArmStay mode");
         }
         TimeUnit.SECONDS.sleep(2);
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 
@@ -93,7 +91,6 @@ public class Smoke_Test_SmokeSensor_Grid {
             logger.info("Failed: Fire emergency is NOT sent in ArmAway mode");
         }
         TimeUnit.SECONDS.sleep(2);
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 

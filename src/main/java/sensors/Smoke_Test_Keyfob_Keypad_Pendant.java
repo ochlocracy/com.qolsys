@@ -83,7 +83,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmStay_state);
@@ -93,7 +92,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,ArmAway_state);
@@ -103,7 +101,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -126,7 +123,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmStay_state);
@@ -136,7 +132,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmAway_state);
@@ -146,7 +141,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -169,7 +163,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmStay_state);
@@ -179,7 +172,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmAway_state);
@@ -189,7 +181,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
        enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -212,7 +203,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmStay_state);
@@ -221,7 +211,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,ArmAway_state);
@@ -230,7 +219,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 0,Keypad_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -290,7 +278,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmStay_state);
@@ -300,7 +287,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keypad_zones, 1,ArmAway_state);
@@ -310,7 +296,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
         TimeUnit.SECONDS.sleep(5);
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -319,7 +304,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 0,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -328,7 +312,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 6,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -338,7 +321,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 0,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -348,7 +330,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 6,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -358,7 +339,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 0,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -368,7 +348,6 @@ public class Smoke_Test_Keyfob_Keypad_Pendant extends Setup {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.pendant_zones, 6,Activate);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 

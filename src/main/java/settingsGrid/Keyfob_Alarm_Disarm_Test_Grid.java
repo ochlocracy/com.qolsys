@@ -50,7 +50,6 @@ public class Keyfob_Alarm_Disarm_Test_Grid {
                 logger.info(UDID_ +" Pass: Police Emergency is displayed");
             } else { s.take_screenshot();
                 logger.info(UDID_ +" Failed: Police Emergency is NOT displayed");}
-            emergency.Cancel_Emergency.click();
             s.enter_default_user_code();
             Thread.sleep(2000);
             logger.info("Verify that Keyfod Alarm Disarm  works when enabled");

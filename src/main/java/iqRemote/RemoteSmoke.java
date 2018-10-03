@@ -74,7 +74,6 @@ public class RemoteSmoke extends SetupRemote {
             System.out.println("Police Emergency");
             emergency_page.Police_icon.click();
             Thread.sleep(10000);
-            emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(10000);
 
@@ -83,7 +82,6 @@ public class RemoteSmoke extends SetupRemote {
             System.out.println("Fire Emergency");
             emergency_page.Fire_icon.click();
             Thread.sleep(10000);
-            emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(10000);
 
@@ -92,7 +90,6 @@ public class RemoteSmoke extends SetupRemote {
             System.out.println("Auxiliary Emergency");
             emergency_page.Auxiliary_icon.click();
             Thread.sleep(10000);
-            emergency_page.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(10000);
             rt.exec(ConfigProps.adbPath + " shell echo ***END*** >> /sdcard/meminfo.txt");

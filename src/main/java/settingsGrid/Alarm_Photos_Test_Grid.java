@@ -43,7 +43,6 @@ public class Alarm_Photos_Test_Grid {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         s.swipeFromLefttoRight();
         logger.info("Verifying Alarm photo is taken...");
@@ -75,7 +74,6 @@ public class Alarm_Photos_Test_Grid {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         s.swipeFromLefttoRight();
         logger.info("Verifying Alarm photo is not taken...");

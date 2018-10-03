@@ -56,7 +56,6 @@ public class Smoke_Test_Smoke_CO extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in Disarm mode");
         }
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -73,7 +72,6 @@ public class Smoke_Test_Smoke_CO extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in ArmStay mode");
         }
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 
@@ -90,7 +88,6 @@ public class Smoke_Test_Smoke_CO extends Setup {
         else { takeScreenshot();
             logger.info("Failed: Fire emergency is NOT sent in ArmAway mode");
         }
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         TimeUnit.SECONDS.sleep(5);
 

@@ -41,7 +41,7 @@ public class AutoStayTest extends Setup {
         rep.log.log(LogStatus.INFO, ("*Auto_Stay_01* Enable Auto Stay -> Expected result = System goes into Arm Stay when Arm Away is clicked"));
         Thread.sleep(2000);
         ARM_AWAY(delay);
-        verifyArmstay();
+        Thread.sleep(13000);
         try {
             if (home.ArwAway_State.isDisplayed())
                 takeScreenshot();
@@ -65,7 +65,6 @@ public class AutoStayTest extends Setup {
         Thread.sleep(2000);
         settings.Home_button.click();
         ARM_AWAY(delay);
-        verifyArmaway();
         try {
             if (home.ArwAway_State.isDisplayed())
                 takeScreenshot();

@@ -80,7 +80,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         TimeUnit.SECONDS.sleep(1);
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
@@ -91,7 +90,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         TimeUnit.SECONDS.sleep(1);
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
@@ -102,7 +100,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 1,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_police_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 
@@ -125,7 +122,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmStay_state);
@@ -135,7 +131,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,ArmAway_state);
@@ -145,7 +140,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 4,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 
@@ -168,7 +162,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmStay_state);
@@ -178,7 +171,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,ArmAway_state);
@@ -188,7 +180,6 @@ public class Smoke_Test_Keyfob_Grid {
         MySensors.sendPacket_allSensors_selectedGroup(MySensors.keyfob_zones, 6,Keyfob_Panic);
         TimeUnit.SECONDS.sleep(5);
         verify_auxiliary_emergency();
-        emergency.Cancel_Emergency.click();
         s.enter_default_user_code();
         TimeUnit.SECONDS.sleep(5);
 

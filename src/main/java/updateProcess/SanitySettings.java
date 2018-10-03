@@ -973,7 +973,6 @@ public class SanitySettings extends Setup {
             System.out.println("Failed: Police Emergency is NOT displayed");
             log.log(LogStatus.FAIL, "Failed: Police Emergency is NOT displayed");
         }
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
         System.out.println("Verify that Keyfod Alarm Disarm  works when enabled");

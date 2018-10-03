@@ -669,16 +669,6 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(5000);
         adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(27)')]", "//*[contains(text(), 'Police Panic')]");
         rep.log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr2 works as expected");
-        try {
-            if (emergency.Cancel_Emergency.isDisplayed()) {
-                System.out.println("***Failed*** Emergency icon is displayed");
-                emergency.Cancel_Emergency.click();
-                enterDefaultUserCode();
-            }
-        } catch (NoSuchElementException ignored) {
-        } finally {
-            System.out.println("***Pass*** Emergency is Silent, no emergency icon is displayed");
-        }
         Thread.sleep(5000);
 
         System.out.println("Activate medical pendants");
@@ -842,14 +832,22 @@ public class SanityUpdatePG extends Setup {
     public void Low_Battery() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
 
         rep.add_to_report("Sanity_14");
-        rep.log.log(LogStatus.INFO, ("*Sanity_14* Low battery events verification"));
+        rep.log.log(LogStatus.INFO, ("*Sanity_14* DW Low battery events verification"));
         Thread.sleep(4000);
         try {
             home.Home_button.click();
         } catch (NoSuchElementException e) {
         }
+        navigateToSettingsPage();
+        set.STATUS.click();
+        WebElement lowb = driver.findElement(By.id("com.qolsys:id/textView4"));
+        if (lowb.getText().contains("Low")) {
+        pgprimaryCall(104, 1101, "80 0"); }
+        set.Home_button.click();
+        Thread.sleep(2000);
         pgprimaryCall(104, 1101, "80 1");
         Thread.sleep(5000);
         home.Contact_Us.click();
