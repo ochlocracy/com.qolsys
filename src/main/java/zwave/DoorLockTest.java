@@ -9,13 +9,12 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import panel.AdvancedSettingsPage;
-import panel.DevicesPage;
-import panel.HomePage;
-import panel.InstallationPage;
+import panel.*;
 import utils.ConfigProps;
 import utils.Setup;
 import utils.ZTransmitter;
@@ -45,7 +44,7 @@ public class DoorLockTest extends Setup {
         ConfigProps.init();
     }
 
-    public void sanityReportSetup(String nameOfReporter)throws Exception{
+    public void sanityReportSetup(String nameOfReporter) throws Exception {
         String file = projectPath + "/extent-config-Sanity.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         report.loadConfig(new File(file));
@@ -56,7 +55,7 @@ public class DoorLockTest extends Setup {
 //        log = report.startTest("Zwave.Light");
     }
 
-        public void addToSanityReport(String testName){
+    public void addToSanityReport(String testName) {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest(testName);
     }
@@ -82,22 +81,20 @@ public class DoorLockTest extends Setup {
 // Add method to change transmitter or real devices
 
 
-
-
-
-
-
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setupDriver(primary , "http://127.0.1.1", "4723");
+        setupDriver(primary, "http://127.0.1.1", "4723");
 //        adc.webDriverSetUp();
         setupLogger(pageName);
+        adc.webDriverSetUp();
         sanityReportSetup("Sergio Bustos");
+
     }
-    @BeforeClass
-    public void webDriver() {
-            adc.webDriverSetUp();
-    }
+
+//    @BeforeClass
+//    public void webDriver() {
+//        adc.webDriverSetUp();
+//    }
 
 //    @Test(priority = 0)
 //    public void CheckAllElementsOnDoorLockPage() throws Exception {
@@ -145,14 +142,13 @@ public class DoorLockTest extends Setup {
 ////    }
 
 
-
     public void verifyDoorLockNamesLocaly(String newLockName) throws Exception {
         DoorLockPage lockPage = PageFactory.initElements(driver, DoorLockPage.class);
         int counter = 1;
         swipeToDoorLockPage(lockPage);
         String lockName = lockPage.doorLockName.getText();
         while (!lockName.equalsIgnoreCase(newLockName) && counter <= 6) {
-            logger.info("counter is: "  +counter);
+            logger.info("counter is: " + counter);
             logger.info("Incorrect lock name. Current lock name is " + lockName);
             logger.info("Swiping up");
             swipeUp();
@@ -163,42 +159,41 @@ public class DoorLockTest extends Setup {
         logger.info("Door lock name is " + newLockName);
     }
 
+//
+//    public void editlockNameLocally() throws Exception {
+//        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
+//        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+//        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+//        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//        logger.info("Navigating to setting");
+//        navigateToAdvancedSettingsPage();
+//        adv.INSTALLATION.click();
+//        Install.DEVICES.click();
+//        dev.zwaveDevices.click();
+//        zwave.editDeviceZwavePage.click();
+//        editDeviceBtn();
+//
+//    }
 
 
-    public void editlockNameLocally()throws Exception{
-        InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        logger.info("Navigating to setting");
-        navigateToAdvancedSettingsPage();
-        adv.INSTALLATION.click();
-        Install.DEVICES.click();
-        dev.zwaveDevices.click();
-        zwave.editDeviceZwavePage.click();
-        editDeviceBtn();
+//    @Test
+//    public void testTest() throws Exception{
+////        PanelInfo_ServiceCalls serviceCalls = new PanelInfo_ServiceCalls();
+////        serviceCalls.setZwaveOnOff("ac8312fd",0);
+////        String zwaveStatus = serviceCalls.getZwaveOnOff();
+////        verifyNamesLocaly("SIDE DOOR",lockPage.doorLockName);
+////        addDwSensor("ac8312fb",3);
+////        verifyDoorLockNamesLocaly("back door");
+//        editlockNameLocally();
+//    }
 
-    }
-
-
-    @Test
-    public void testTest() throws Exception{
-//        PanelInfo_ServiceCalls serviceCalls = new PanelInfo_ServiceCalls();
-//        serviceCalls.setZwaveOnOff("ac8312fd",0);
-//        String zwaveStatus = serviceCalls.getZwaveOnOff();
-//        verifyNamesLocaly("SIDE DOOR",lockPage.doorLockName);
-//        addDwSensor("ac8312fb",3);
-//        verifyDoorLockNamesLocaly("back door");
-        editlockNameLocally();
-    }
-
-    public void editDeviceBtn()throws Exception{
+    public void editDeviceBtn(int index) throws Exception {
         List<WebElement> editBtn = driver.findElements(By.id("com.qolsys:id/edit"));
 
         int editBtnSize = editBtn.size();
-        System.out.println("size is "+ editBtnSize);
-        editBtn.get(1).click();
+        System.out.println("size is " + editBtnSize);
+        editBtn.get(index).click();
         TimeUnit.SECONDS.sleep(10);
     }
 
@@ -206,26 +201,28 @@ public class DoorLockTest extends Setup {
 //************************Test Suite****************************************************************************
 
 
-    public void getDeviceName(){
-        //
-    }
-
-    @Test(priority = 1)
-    public void preDoorLockTestSetup() throws Exception {
-        addToSanityReport("Pre Setup");
+    public void preTestSetup(String testName) throws Exception {
+        addToSanityReport(testName);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         //remove all zwave devices
-        log.log(LogStatus.INFO,"Removing all device");
+        log.log(LogStatus.INFO, "Removing all device");
         removeAllDevices();
         log.log(LogStatus.PASS, "All devices have been removed");
         //change all zwave settings to default
+        log.log(LogStatus.INFO,"Changing all Zwave setting to default");
         zwaveSettingReset("ac8312fb");
         log.log(LogStatus.PASS, "Zwave settings set to default");
         //Add 3 door window sensor and call it Front Door, back door, bathroom window
         log.log(LogStatus.INFO, "Adding 3 door window sensors");
-        addDwSensor("ac8312fb",3);
-        log.log(LogStatus.PASS,"3 DW sensors added successfully");
+        addDwSensor("ac8312fb", 3);
+        log.log(LogStatus.PASS, "3 DW sensors added successfully");
         home.Home_button.click();
+    }
+
+
+    @Test(priority = 1)
+    public void preDoorLockTestSetup() throws Exception {
+        preTestSetup("Test Setup");
     }
 //    @Test
 //    public void preDoorLockTestWithRealDoorLock() throws Exception{
@@ -239,67 +236,69 @@ public class DoorLockTest extends Setup {
 //    }
 
 
-
     @Test(priority = 2)
     public void pairingTransmitter() throws Exception {
-        log.log(LogStatus.INFO,"Including transmitter");
+        addToSanityReport("Paring Transmitter");
+        log.log(LogStatus.INFO, "Including transmitter");
         localIncludeBridge();
-        log.log(LogStatus.PASS,"Transmitter has been included successfully ");
+        log.log(LogStatus.PASS, "Transmitter has been included successfully ");
     }
 
     @Test(priority = 3)
     public void disarmLocalDeviceParingTest() throws Exception {
+        addToSanityReport("Disarm local device paring");
         AdcDealerPage dealerPage = PageFactory.initElements(driver1, AdcDealerPage.class);
         //* add a way to store node numbers to names of device
         //Pair 2 door lock locally( name it stock "Front Door" and "Back Door")
         log.log(LogStatus.INFO, "Adding Light with stock light name");
         localZwaveAdd();
         addStockNameLight();
-        log.log(LogStatus.PASS,"Light has been added successfully");
+        log.log(LogStatus.PASS, "Light has been added successfully");
         logger.info("Paring Two Door locks with stock names, Front Door and Back Door");
-        log.log(LogStatus.INFO,"Paring 2 door locks with stock name \"Front Door\" & \"Back Door\" ");
+        log.log(LogStatus.INFO, "Paring 2 door locks with stock name \"Front Door\" & \"Back Door\" ");
         addStockNameFrontDoor();
         addStockNameBackDoor();
         log.log(LogStatus.PASS, "\"FrontDoor\" and  \"Back Door\" have been paired successfully");
     }
 
     @Test(priority = 4)
-    public void remoteAddParingTest() throws Exception{
+    public void remoteAddParingTest() throws Exception {
         //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
         AdcDealerPage dealerPage = PageFactory.initElements(adc.driver1, AdcDealerPage.class);
-        log.log(LogStatus.INFO,"Add door lock remotely");
+        addToSanityReport("Remote pairing door lock");
+        log.log(LogStatus.INFO, "Adding door lock remotely");
         adc.remoteAddMode("5390018");
         addRemoteZwaveDoorLock(1);
         logger.info("waiting for new device name");
-        waitForTextInElement(adc.driver1,dealerPage.newlyAddDeviceName,"Door Lock", 500);
+        waitForTextInElement(adc.driver1, dealerPage.newlyAddDeviceName, "Door Lock", 500);
         adc.verifyOneDeviceAdded();
         adc.exitRemoteAddMode();
         Thread.sleep(4000);
-        log.log(LogStatus.PASS,"Door lock has been added remotely successfully ");
+        log.log(LogStatus.PASS, "Door lock has been added remotely successfully ");
     }
 
 
-//    @Test(priority = 5)
-//    public void maxNumberDeviceTest() throws Exception {
-//        ZWavePage zpage = PageFactory.initElements(driver,ZWavePage.class);
-//        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-//        localZwaveAdd();
-//        //pair 1 door lock locally and expect max number failure
-//        addCustomMaxZwaveDoorLockFailure("Max Doors");
-//        //change max number setting with setters service call to 6
-//        logger.info("Changing door lock limit to 6");
-//        servcall.setDeviceLimitDoorLockWithTrans(6, "ac8312fb");
-//        logger.info("getting limit");
-//        servcall.getDeviceLimitDoorLockWithTrans("ac8312fb");
-//        //pair other 3 lock with custom name with node id
-//        logger.info("paring 3 door locks");
-//        logger.info("adding stock side door");
-//        addStockNameSideDoor();
-//        logger.info("adding stock Garage Door");
-//        addStockNameGarageDoor();
-//        logger.info("adding stock door lock with node name");
-//        addCustomZwaveDoorLockNode("Door Lock");
-//    }
+    @Test(priority = 5)
+    public void maxNumberDeviceTest() throws Exception {
+        ZWavePage zpage = PageFactory.initElements(driver,ZWavePage.class);
+        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+        localZwaveAdd();
+        //pair 1 door lock locally and expect max number failure
+        addCustomMaxZwaveDoorLockFailure("Max Doors");
+        //change max number setting with setters service call to 6
+        logger.info("Changing door lock limit to 6");
+        servcall.setDeviceLimitDoorLockWithTrans(6, "ac8312fb");
+        logger.info("getting limit");
+        servcall.getDeviceLimitDoorLockWithTrans("ac8312fb");
+        //pair other 3 lock with custom name with node id
+        logger.info("paring 3 door locks");
+        logger.info("adding stock side door");
+        addStockNameSideDoor();
+        logger.info("adding stock Garage Door");
+        addStockNameGarageDoor();
+        logger.info("adding stock door lock with node name");
+        addCustomZwaveDoorLockNode("Door Lock");
+    }
 
 //    public void localDoorLockNameVerification(String... doorLockName) throws Exception{
 //        DoorLockPage doorlockPage = PageFactory.initElements(driver, DoorLockPage.class);
@@ -312,22 +311,22 @@ public class DoorLockTest extends Setup {
 //        swipeUp();
 //    }
 
-    public void adcDoorLockNameVerification()throws Exception{
+    public void adcDoorLockNameVerification() throws Exception {
         adc.directEmpowerPage();
         adc.adcGetZWaveEquipmentList();
 
 
     }
 
-    @Test
-    public void disArmNameVerificationTest()throws Exception{
-        //verify all name are correct on the panel
-//        doorLockNameVerification();
+//    @Test
+//    public void disArmNameVerificationTest() throws Exception {
+//        //verify all name are correct on the panel
+////        doorLockNameVerification();
+//
+//        //verify all names are correct on ADC Dealer
+//    }
 
-        //verify all names are correct on ADC Dealer
-    }
-
-    public String editStockNameToNode(String currentName, String newNameWithNode)throws Exception{
+    public String editStockNameToNode(String currentName, String newNameWithNode) throws Exception {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -340,7 +339,8 @@ public class DoorLockTest extends Setup {
         zwave.editDeviceZwavePage.click();
         return newNameWithNode;
     }
-    public String editStockName(String currentName, String newName)throws Exception{
+
+    public String editStockName(String currentName, String newName) throws Exception {
         InstallationPage Install = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -353,21 +353,22 @@ public class DoorLockTest extends Setup {
         zwave.editDeviceZwavePage.click();
         return newName;
     }
-    public void verifyDeviceNameLocally() throws Exception{
+
+    public void verifyDeviceNameLocally() throws Exception {
         //get device name on app and compare to editName method
     }
 
-    @Test
-    public void disArmNameChangeTest()throws Exception{
-        // Change stock name Front Door to custom name "Door Lock with # and Node ID" locally
-//        editStockNameToNode();
-        //change 3rd door lock with custom named to stock name "Side Door" locally
-        // verify change on panel
-        // verify change on ADC Dealer site
-        // verify change on user site
-        // change side door lock name to "srg door" on user site
-        // verify side door lock changed to srg door on the panel
-    }
+//    @Test
+//    public void disArmNameChangeTest() throws Exception {
+//        // Change stock name Front Door to custom name "Door Lock with # and Node ID" locally
+////        editStockNameToNode();
+//        //change 3rd door lock with custom named to stock name "Side Door" locally
+//        // verify change on panel
+//        // verify change on ADC Dealer site
+//        // verify change on user site
+//        // change side door lock name to "srg door" on user site
+//        // verify side door lock changed to srg door on the panel
+//    }
 
 //    @Test
 //    public void disArmUserCodeTest(){
@@ -570,10 +571,24 @@ public class DoorLockTest extends Setup {
         logger.info("*************************ZD_AW_005*******************************");
         logger.info("Arm Away mode: Verify that  a Door Lock can be deleted from the ADC website");
     }
-//    @AfterMethod
+
+    //    @AfterMethod
 //    public void wedriverTearDown(){
 //        adc.driver1.quit();
 //    }
+    @AfterMethod
+    public void reportTearDown(ITestResult result) throws IOException {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshot_path = captureScreenshot(driver, result.getName());
+            log.log(LogStatus.FAIL, "Test Case failed is " + result.getName());
+            log.log(LogStatus.FAIL, "Snapshot below:  " + test.addScreenCapture(screenshot_path));
+            //      log.log(LogStatus.FAIL,"Test Case failed", screenshot_path);
+            test.addScreenCapture(captureScreenshot(driver, result.getName()));
+        }
+        report.endTest(log);
+        report.flush();
+        
+    }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {

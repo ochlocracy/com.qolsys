@@ -3,6 +3,7 @@ package utils;
 import adc.ADC;
 import adc.AdcDealerPage;
 import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -1100,7 +1101,7 @@ public class Setup extends Driver{
     public void addRemoteZwaveDoorLock(int numOfDoorLocks) throws Exception {
         ZWavePage zwave = PageFactory.initElements(driver, ZWavePage.class);
         AdcDealerPage adcPage = new AdcDealerPage();
-        for (int i=0; i<= numOfDoorLocks; i++) {
+        for (int i=1; i<= numOfDoorLocks; i++) {
             String deviceNames = "ctl00_phBody_ZWaveDeviceList_EditDeviceNames_rptAddedDevices_ctl0"+i+"_txtDeviceName";
             Thread.sleep(2000);
             logger.info("Adding door lock number " + i);
@@ -1560,7 +1561,7 @@ public class Setup extends Driver{
     public void addStockNameLight()throws Exception{
         ZWavePage zwave = PageFactory.initElements(driver,ZWavePage.class);
         zwave.includeZwaveDeviceButton.click();
-        Thread.sleep(2000);
+        TimeUnit.SECONDS.sleep(5);
         logger.info("Adding Stock Light");
         rt.exec(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
         System.out.println(adbPath + " -s " + transmitter + " shell service call zwavetransmitservice 3 i32 1");
@@ -1679,6 +1680,22 @@ public class Setup extends Driver{
         //add a retry if add process fails
     }
 
-
+//    public void preTestSetup(String testName) throws Exception {
+//        addToSanityReport(testName);
+//        HomePage home = PageFactory.initElements(driver, HomePage.class);
+//        //remove all zwave devices
+//        log.log(LogStatus.INFO, "Removing all device");
+//        removeAllDevices();
+//        log.log(LogStatus.PASS, "All devices have been removed");
+//        //change all zwave settings to default
+//        log.log(LogStatus.INFO,"Changing all Zwave setting to default");
+//        zwaveSettingReset("ac8312fb");
+//        log.log(LogStatus.PASS, "Zwave settings set to default");
+//        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+//        log.log(LogStatus.INFO, "Adding 3 door window sensors");
+//        addDwSensor("ac8312fb", 3);
+//        log.log(LogStatus.PASS, "3 DW sensors added successfully");
+//        home.Home_button.click();
+//    }
 }
 

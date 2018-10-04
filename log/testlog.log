@@ -1,54 +1,30 @@
 
-2018-10-02 12:13:02,677 - utils.Log -INFO - ********************************************************************
-2018-10-02 12:13:02,698 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Allow Master Code to access Siren and Alarms testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2018-10-02 12:13:02,699 - utils.Log -INFO - ********************************************************************
-2018-10-02 12:13:05,757 - Allow Master Code to access Siren and Alarms testing -INFO - Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code
-2018-10-02 12:13:06,074 - settings.AllowMasterCodeToAccessSirenAndAlarmsTest -INFO - Settings Menue
-2018-10-02 12:58:05,972 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 12:58:08,669 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 12:58:59,537 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 12:59:02,056 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 13:01:33,840 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 13:01:36,434 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 13:05:33,804 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 13:05:36,378 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 13:06:51,104 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 13:06:53,661 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 14:33:13,876 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 14:33:16,521 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 14:36:08,986 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 14:36:11,540 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 14:39:13,284 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 14:39:15,752 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 14:43:57,828 - updateProcess.SanityZWave -INFO - Settings Menue
-2018-10-02 14:44:00,411 - updateProcess.SanityZWave -INFO - Advance Settings
-2018-10-02 16:38:34,363 - updateProcess.SanitySensors -INFO - Settings Menue
-2018-10-02 16:38:36,884 - updateProcess.SanitySensors -INFO - Advance Settings
-2018-10-02 16:41:12,718 - updateProcess.SanitySensors -INFO - Settings Menue
-2018-10-02 16:41:15,303 - updateProcess.SanitySensors -INFO - Advance Settings
-2018-10-02 16:45:05,879 - updateProcess.SanitySensors -INFO - Settings Menue
-2018-10-02 16:45:08,498 - updateProcess.SanitySensors -INFO - Advance Settings
-2018-10-02 16:46:09,828 - adc.ADC -INFO - Request sensor list and Sensor names
-2018-10-02 16:46:21,345 - adc.ADC -INFO - Request equipment list
-2018-10-02 16:47:46,648 - updateProcess.SanitySensors -INFO - Settings Menue
-2018-10-02 16:47:49,292 - updateProcess.SanitySensors -INFO - Advance Settings
-2018-10-02 16:48:41,437 - adc.ADC -INFO - Request sensor list and Sensor names
-2018-10-02 16:48:53,076 - adc.ADC -INFO - Request equipment list
-2018-10-02 16:49:40,740 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 16:49:59,349 - utils.Log -ERROR - *Fire icon Alarmed* - Element is not found!
-2018-10-02 16:49:59,352 - updateProcess.SanitySensors -INFO - Cancel Emergency Alarm
-2018-10-02 16:50:07,072 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 16:50:14,539 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 17:29:16,628 - updateProcess.SanitySensors -INFO - Settings Menue
-2018-10-02 17:29:19,282 - updateProcess.SanitySensors -INFO - Advance Settings
-2018-10-02 17:30:11,167 - adc.ADC -INFO - Request sensor list and Sensor names
-2018-10-02 17:30:22,684 - adc.ADC -INFO - Request equipment list
-2018-10-02 17:31:08,247 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 17:31:26,798 - utils.Log -ERROR - *Fire icon Alarmed* - Element is not found!
-2018-10-02 17:31:26,808 - updateProcess.SanitySensors -INFO - Cancel Emergency Alarm
-2018-10-02 17:34:27,594 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 17:35:12,416 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 17:35:20,316 - updateProcess.SanitySensors -INFO - Arm Stay
-2018-10-02 17:36:00,121 - updateProcess.SanitySensors -INFO - Failed: System is NOT ARMED STAY
-2018-10-02 17:36:07,543 - utils.Log -ERROR - *Tampered* - Element is not found!
-2018-10-02 17:36:14,554 - updateProcess.SanitySensors -INFO - Disarm
+2018-10-04 15:10:56,988 - utils.Log -INFO - ********************************************************************
+2018-10-04 15:10:56,990 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-04 15:10:56,991 - utils.Log -INFO - ********************************************************************
+2018-10-04 15:10:57,005 - Add sensors + sensors activity -INFO - Adding a list of sensors
+2018-10-04 15:11:02,086 - Add sensors + sensors activity -INFO - Open-Close contact sensors
+2018-10-04 15:11:27,982 - Add sensors + sensors activity -INFO - Activate motion sensors
+2018-10-04 15:11:33,008 - Add sensors + sensors activity -INFO - Activate smoke sensors
+2018-10-04 15:11:38,564 - Add sensors + sensors activity -INFO - Activate CO sensors
+2018-10-04 15:11:44,163 - Add sensors + sensors activity -INFO - Activate glassbreak sensors
+2018-10-04 15:11:46,176 - Add sensors + sensors activity -INFO - Open/close tilt sensors
+2018-10-04 15:11:53,191 - Add sensors + sensors activity -INFO - Activate IQShock sensors
+2018-10-04 15:11:55,203 - Add sensors + sensors activity -INFO - Activate freeze sensors
+2018-10-04 15:12:01,018 - Add sensors + sensors activity -INFO - Activate heat sensors
+2018-10-04 15:12:07,106 - Add sensors + sensors activity -INFO - Activate water sensors
+2018-10-04 15:12:12,869 - Add sensors + sensors activity -INFO - Activate keyfob sensors
+2018-10-04 15:12:29,503 - Add sensors + sensors activity -INFO - Activate keypad sensors
+2018-10-04 15:12:37,122 - updateProcess.PreUpdateSensors -INFO - Pass: panel is in Arm Away mode
+2018-10-04 15:12:38,124 - Add sensors + sensors activity -INFO - Activate medical pendant sensors
+2018-10-04 15:12:50,383 - Add sensors + sensors activity -INFO - Activate doorbell sensors
+2018-10-04 15:13:00,009 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-10-04 16:21:42,476 - updateProcess.SanitySensors -INFO - Settings Menue
+2018-10-04 16:21:45,044 - updateProcess.SanitySensors -INFO - Advance Settings
+2018-10-04 16:22:34,732 - adc.ADC -INFO - Request sensor list and Sensor names
+2018-10-04 16:22:46,220 - adc.ADC -INFO - Request equipment list
+2018-10-04 16:23:34,598 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-04 16:23:52,814 - utils.Log -ERROR - *Fire icon Alarmed* - Element is not found!
+2018-10-04 16:23:52,822 - updateProcess.SanitySensors -INFO - Cancel Emergency Alarm
+2018-10-04 16:24:01,990 - updateProcess.SanitySensors -INFO - Arm Stay
+2018-10-04 16:24:10,721 - updateProcess.SanitySensors -INFO - Arm Stay
