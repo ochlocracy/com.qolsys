@@ -6,10 +6,12 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -18,10 +20,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import panel.*;
 import zwave.DoorLockPage;
 import zwave.LightsPage;
@@ -39,10 +43,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+
 import static utils.ConfigProps.adbPath;
 import static utils.ConfigProps.transmitter;
 
 public class Setup extends Driver{
+
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM.dd_HH.mm.ss");
     public String projectPath = new String(System.getProperty("user.dir"));
@@ -225,6 +231,25 @@ public class Setup extends Driver{
         enterDefaultDealerCode();
     }
 
+    public void navigateToAddSensorsPage() throws InterruptedException {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        Thread.sleep(1000);
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
+        enterDefaultDealerCode();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        sec.Add_Sensor.click();
+    }
+
     public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
@@ -242,6 +267,11 @@ public class Setup extends Driver{
         navigateToAdvancedSettingsPage();
         advanced.USER_MANAGEMENT.click();
         Thread.sleep(1000);
+    }
+
+    public void disarmServiceCall() throws IOException {
+        String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
+        rt.exec(ConfigProps.adbPath + " " + servicecall);
     }
 
     public void DISARM() {
@@ -298,13 +328,38 @@ public class Setup extends Driver{
         home_page.Two.click();
     }
 
-    public void verifyDisarm() throws Exception {
+    public String verifySystemState(String state) throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        if (home_page.Disarmed_text.getText().equals("DISARMED")) {
-            logger.info("Pass: System is DISARMED");
+        String panel_state = home_page.Disarmed_text.getText();
+        if (home_page.Disarmed_text.getText().equals(state.toUpperCase())) {
+            switch (state) {
+                case "DISARMED":
+                    break;
+                case "ARMED STAY":
+                    break;
+                case "ARMED AWAY":
+                    break;
+            }
+            return "System is: " + panel_state;
+
         } else {
             takeScreenshot();
-            logger.info("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
+            System.out.println("Failed: System is not in the expected state! Current state: " + home_page.Disarmed_text.getText());
+            System.exit(0);
+        }
+        return "System is: " + panel_state;
+    }
+
+    public void verifyDisarm() throws Exception {
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        try {
+            if (home_page.Disarmed_text.getText().equals("DISARMED")) {
+                System.out.println("Pass: System is DISARMED");
+            } else {
+                takeScreenshot();
+                System.out.println("Failed: System is not DISARMED " + home_page.Disarmed_text.getText());
+            }
+        } catch (NoSuchElementException e) {
         }
     }
 
@@ -462,7 +517,6 @@ public class Setup extends Driver{
             }
         } catch (Exception e) {
             System.out.println("No photos to delete...");
-        } finally {
         }
         swipeFromRighttoLeft();
         Thread.sleep(1000);
@@ -795,16 +849,6 @@ public class Setup extends Driver{
         powerGregistrator(Type, Id);
         Thread.sleep(3000);
         driver.findElementById("com.qolsys:id/ok").click();
-        Thread.sleep(2000);
-//        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-//        Thread.sleep(2000);
-//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
-//        nli.get(1).click();
-//        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
-////        List<WebElement> li = driver.findElements(By.id("android:id/text1"));
-////        Thread.sleep(2000);
-//        List<WebElement> nli = driver.findElements(By.id("android:id/text1"));
-//        nli.get(0).click();
 
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
@@ -826,6 +870,36 @@ public class Setup extends Driver{
         powerGactivator(Type, Id);
         Thread.sleep(2000);
     }
+
+    public void addPGSensors(String sensor, int Type, int Id, String gn, String text) throws IOException, InterruptedException {
+        Thread.sleep(1000);
+        powerGregistrator(Type, Id);
+        Thread.sleep(3000);
+        driver.findElementById("com.qolsys:id/ok").click();
+
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+            //       e.printStackTrace();
+        }
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+        driver.scrollTo(gn);
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ text+"']")).click();
+        Thread.sleep(1000);
+        driver.findElementById("com.qolsys:id/addsensor").click();
+        Thread.sleep(1000);
+        Thread.sleep(1000);
+        powerGactivator(Type, Id);
+        Thread.sleep(2000);
+    }
+
 
     public void powerGregistrator(int type, int id) throws IOException {
         String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
@@ -899,7 +973,8 @@ public class Setup extends Driver{
                 swipeFromLefttoRight();
             }
             return true;
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
         return false;
 
     }

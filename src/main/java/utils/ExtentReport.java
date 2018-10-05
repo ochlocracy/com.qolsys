@@ -19,16 +19,15 @@ public class ExtentReport extends Setup{
         this.name = name;
     }
 
-
     public void create_report(String test_area_name) throws InterruptedException {
         String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_" + name + ".html");
+        report = new ExtentReports(projectPath + "/Report/" + name + ".html");
         report.loadConfig(new File(file));
         log = report.startTest(test_area_name);
     }
 
     public void add_to_report(String test_case_name) {
-        report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_" + name + ".html", false);
+        report = new ExtentReports(projectPath + "/Report/" + name + ".html", false);
         log = report.startTest(test_case_name);
     }
 

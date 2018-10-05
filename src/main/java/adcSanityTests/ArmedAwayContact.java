@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
+import utils.RetryAnalizer;
 import utils.Setup;
 import sensors.Sensors;
 import utils.ConfigProps;

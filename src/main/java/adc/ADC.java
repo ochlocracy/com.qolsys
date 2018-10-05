@@ -14,6 +14,7 @@ import utils.Setup;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class ADC extends Setup {
@@ -63,17 +64,19 @@ public class ADC extends Setup {
     private int med_pendant = 21;
     private int doorbell = 109;
     private int occupancy = 114;
+    public String pageName;
     private String empowerURL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx";
+    org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(pageName);
+
 
 
     public ADC() throws Exception {
 
         ConfigProps.init();
     }
+    HashMap<String, String> hmap = new HashMap<String, String>();
 
-    public String getADCexecute() {
-        return ADCexecute;
-    }
+    public String getADCexecute() {return ADCexecute;}
 
     public void setADCexecute(String ADCexecute) {
         this.ADCexecute = ADCexecute;
@@ -151,8 +154,8 @@ public class ADC extends Setup {
         } else if (get_UDID().equals("ac8312fb")) {    //Sergio
             accountId = "5390018";
             return accountId;
-        } else if (get_UDID().equals("acf112e3")) {    //Zach
-            accountId = "5635456";
+        } else if (get_UDID().equals("623cf0f1")) {    //Zach
+            accountId = "6468179";
             return accountId;
         } else if (get_UDID().equals("a994132a")) {
             accountId = "5635550";
@@ -178,10 +181,20 @@ public class ADC extends Setup {
             accountId = "6045616";
         } else if (get_UDID().equals("ac8312d3")) {
             accountId = "6074610";
+        } else if (get_UDID().equals("6231f044")) {   // Denis
+            accountId = "6079262";
+        } else if (get_UDID().equals("2c68bc67")) {    // Denis
+            accountId = "5323198";
     }
         return accountId;
     }
 
+    public String getLogin(String UDID){
+        hmap.put("ac8312d3", "powerG_prod");
+        hmap.put("62864b84", "LeBron_James");
+        hmap.put("623cf0f1", "qautozone");
+        return hmap.get(UDID);
+    }
 
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
@@ -212,6 +225,7 @@ public class ADC extends Setup {
         }
         Thread.sleep(7000);
     }
+
     public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
             Thread.sleep(4000);
@@ -319,7 +333,10 @@ public class ADC extends Setup {
     public void New_ADC_session(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
-        String ADC_URL = "https://alarmadmin.alarm.com/";
+
+        String ADC_URL = "https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID;
+ //       System.out.println("https://alarmadmin.alarm.com/Support/CustomerInfo.aspx?customer_Id=" + accountID);
+
         driver1.get(ADC_URL);
         String login = "qautomation";
         String password = "Qolsys123";
@@ -341,6 +358,26 @@ public class ADC extends Setup {
         String ADC_URL = "https://www.alarm.com/login.aspx";
         driver1.get(ADC_URL);
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(User);
+        driver1.findElement(By.className("password")).sendKeys(Password);
+        Thread.sleep(1000);
+        driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_signInButton")).click();
+        Thread.sleep(1000);
+        try {
+            if (driver1.findElement(By.xpath("//*[@id='ember735']")).isDisplayed()) {
+                driver1.findElement(By.xpath("//*[@id='ember735']")).click();
+            }
+        } catch (NoSuchElementException e) {
+        }
+        Thread.sleep(2000);
+        driver1.get("https://www.alarm.com/web/system/home");
+        Thread.sleep(3000);
+    }
+    public void New_ADC_session_User(String Password) throws InterruptedException, IOException {
+        TimeUnit.SECONDS.sleep(2);
+        driver1.manage().window().maximize();
+        String ADC_URL = "https://www.alarm.com/login.aspx";
+        driver1.get(ADC_URL);
+        driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_txtUserName")).sendKeys(getLogin(get_UDID()));
         driver1.findElement(By.className("password")).sendKeys(Password);
         Thread.sleep(1000);
         driver1.findElement(By.id("ctl00_ContentPlaceHolder1_loginform_signInButton")).click();

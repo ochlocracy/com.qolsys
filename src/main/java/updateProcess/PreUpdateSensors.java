@@ -31,7 +31,6 @@ public class PreUpdateSensors extends Setup {
         setupLogger(page_name);
     }
 
-    @Test
     public void addSensors() throws IOException, InterruptedException {
         logger.info("Adding a list of sensors");
         addPrimaryCall(3, 10, 6619296, 1); // 65 00 A0

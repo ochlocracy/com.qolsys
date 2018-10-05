@@ -34,7 +34,7 @@ public class SetupRemote {
         cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
         cap.setCapability("newCommandTimeout", "1000");
         driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     public void DISARM() throws InterruptedException {

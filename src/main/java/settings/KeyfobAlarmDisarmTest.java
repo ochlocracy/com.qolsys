@@ -37,22 +37,21 @@ public class KeyfobAlarmDisarmTest extends Setup {
         logger.info("Adding sensors...");
         sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
-        logger.info("Verify that Keyfod Alarm Disarm does not work when disabled");
+        logger.info("Verify that Keyfob Alarm Disarm does not work when disabled");
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 AF", disarm);
-        Thread.sleep(2000);
-        if (emergency.Emergency_sent_text.isDisplayed()) {
+        Thread.sleep(8000);
+        if (emergency.Police_Emergency_Alarmed.isDisplayed()) {
             logger.info("Pass: Police Emergency is displayed");
         } else {
             takeScreenshot();
             logger.info("Failed: Police Emergency is NOT displayed");
         }
-        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
-        logger.info("Verify that Keyfod Alarm Disarm  works when enabled");
+        logger.info("Verify that Keyfob Alarm Disarm  works when enabled");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();

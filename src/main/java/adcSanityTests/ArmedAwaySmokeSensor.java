@@ -12,6 +12,7 @@ import panel.EmergencyPage;
 import panel.HomePage;
 import sensors.Sensors;
 import utils.ConfigProps;
+import utils.RetryAnalizer;
 import utils.SensorsActivity;
 import utils.Setup;
 

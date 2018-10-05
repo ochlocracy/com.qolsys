@@ -1,19 +1,21 @@
 package settings;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
 
 public class ArmStayNoDelayTest extends Setup {
 
-    String page_name = "Arm Stay No Delay testing";
-    Logger logger = Logger.getLogger(page_name);
+    ExtentReport rep = new ExtentReport("Settings_Arm_Stay_No_Delay");
 
     public ArmStayNoDelayTest() throws Exception {
     }
@@ -21,7 +23,6 @@ public class ArmStayNoDelayTest extends Setup {
     @BeforeMethod
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
     }
 
     @Test
@@ -31,14 +32,18 @@ public class ArmStayNoDelayTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+        rep.create_report("Arm_Stay_No_Delay_01");
+        rep.log.log(LogStatus.INFO, ("*Arm_Stay_No_Delay_01* Enable Arm Stay - No delay -> Expected result = Panel goes into Arm Stay immediately"));
         Thread.sleep(2000);
-        logger.info("Verify that Arm Stay - No Delay works when enabled");
         ARM_STAY();
         verifyArmstay();
         home.DISARM.click();
         enterDefaultUserCode();
+        rep.log.log(LogStatus.PASS, ("Pass: System is ARMED STAY immediately"));
         Thread.sleep(2000);
-        logger.info("Verify that Arm Stay - No Delay does not work when disabled");
+        rep.create_report("Arm_Stay_No_Delay_02");
+        rep.log.log(LogStatus.INFO, ("*Arm_Stay_No_Delay_02* Disable Arm Stay - No delay -> Expected result = Panel counts down into Arm Stay"));
+        Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -52,9 +57,9 @@ public class ArmStayNoDelayTest extends Setup {
         try {
             if (home.Disarmed_text.getText().equals("ARMED STAY"))
                 takeScreenshot();
-            logger.info("Failed: System is ARMED STAY");
+            rep.log.log(LogStatus.FAIL, ("Failed: System is ARMED STAY without delay"));
         } catch (Exception e) {
-            logger.info("Pass: System is NOT ARMED STAY");
+            rep.log.log(LogStatus.PASS, ("Pass: System is NOT ARMED STAY"));
         } finally {
         }
         Thread.sleep(15000);
@@ -74,9 +79,9 @@ public class ArmStayNoDelayTest extends Setup {
         Thread.sleep(2000);
     }
 
-    @AfterMethod
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterMethod (alwaysRun = true)
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+        rep.report_tear_down(result);
         driver.quit();
     }
 }

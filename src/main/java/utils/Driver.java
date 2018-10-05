@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,7 +93,10 @@ public class Driver {
     }
 
     public void webDriverSetUp() {
+
         driver1 = new FirefoxDriver();
         wait = new WebDriverWait(driver1, 60);
     }
+
+
 }

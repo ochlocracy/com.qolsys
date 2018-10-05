@@ -218,6 +218,13 @@ public class Sensors {
         transmitter_sensor_int_map.put("heat", 10);
     }
 
+    public void transmitterCall(String DLID, int sensor_type, int z) throws IOException {
+        String send_packet = " shell service call srftransmitservice 1 s16 " + DLID + " i32 0 i32 " + transmitter_sensor_int_map.get(sensor_type) + " i32 0 i32 0 i32 " + z;
+        rt.exec(ConfigProps.adbPath + " -s " + ConfigProps.transmitter + send_packet);
+        System.out.println(send_packet);
+
+
+    }
     public void add_primary_call(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(ConfigProps.adbPath + add_primary);
