@@ -43,7 +43,7 @@ public class SettingsPage {
     public WebElement Clear;
     @FindBy(id = "com.qolsys:id/TV12")
     public WebElement Delete;
-    @FindBy(id = "com.qolsys:id/tv_pin_number")
+    @FindBy(id = "com.qolsys:id/usr_error_msg")
     public WebElement Invalid_User_Code;
     @FindBy(id = "com.qolsys:id/uiTabName4")
     public WebElement Panel_history;

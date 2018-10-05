@@ -641,11 +641,16 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
         user.User_Management_Save.click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+        navigateToSettingsPage();
+        settings.ADVANCED_SETTINGS.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
         logger.info("Verify Dealer name changed");
         Assert.assertTrue(driver.findElement(By.xpath("//android.widget.TextView[@text='NewDealer']")).isDisplayed());
@@ -688,9 +693,10 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("2222");
         user.User_Management_Save.click();
-        Thread.sleep(2000);
-        settings.Home_button.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+
     }
 
     @Test(priority = 9)
@@ -822,7 +828,7 @@ public class SanitySettings extends Setup {
         }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        settings.Home_button.click();
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(1000);
         home.DISARM.click();
         home.ARM_STAY.click();
@@ -863,7 +869,9 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
-
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
     }
 
     @Test(priority = 11)
@@ -892,11 +900,16 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
         user.User_Management_Save.click();
-        Thread.sleep(7000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+        navigateToSettingsPage();
+        settings.ADVANCED_SETTINGS.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
         System.out.println("Verify Installer name changed");
         log.log(LogStatus.INFO, "Verify Installer name changed");

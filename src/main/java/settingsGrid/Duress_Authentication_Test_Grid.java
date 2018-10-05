@@ -100,7 +100,7 @@ public class Duress_Authentication_Test_Grid extends Setup {
         }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        settings.Home_button.click();
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(1000);
         home.DISARM.click();
         home.ARM_STAY.click();
@@ -141,6 +141,9 @@ public class Duress_Authentication_Test_Grid extends Setup {
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
 
     }
     @AfterClass

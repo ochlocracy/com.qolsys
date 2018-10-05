@@ -84,7 +84,6 @@ public class DuressAuthenticationTest extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("9998");
-//        driver.pressKeyCode(AndroidKeyCode.ENTER);
         try {
             driver.hideKeyboard();
         } catch (Exception e) {

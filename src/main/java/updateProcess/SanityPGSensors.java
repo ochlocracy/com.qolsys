@@ -89,11 +89,10 @@ public class SanityPGSensors extends Setup {
         System.out.println("Activate/Restore a sensor");
         activation_restoration(type, id, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST);
         Thread.sleep(2000);
-        elementVerification(emg.Fire_icon_Alarmed, "Fire icon Alarmed");
+        elementVerification(emg.Alarm_verification, "Fire Emergency");
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
-        logger.info("Cancel Emergency Alarm");
-        emg.Cancel_Emergency.click();
         enterDefaultUserCode();
+        logger.info("Disarm the Alarm");
         Thread.sleep(15000);
         adc.ADC_verification(element_to_verify1, element_to_verify2);
         Thread.sleep(5000);

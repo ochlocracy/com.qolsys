@@ -50,10 +50,15 @@ public class Dealer_Code_Test_Grid {
         user.Add_Confirm_User_Code.sendKeys("5555");
         Thread.sleep(2000);
         user.User_Management_Save.click();
+        Thread.sleep(1000);
+        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(3000);
-        settings.Back_button.click();
-        Thread.sleep(3000);
-        settings.Back_button.click();
+        s.navigateToSettingsPage();
+        settings.ADVANCED_SETTINGS.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
         Thread.sleep(3000);
         adv.USER_MANAGEMENT.click();
         logger.info("Verify Dealer name changed");
@@ -95,7 +100,9 @@ public class Dealer_Code_Test_Grid {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("2222");
         user.User_Management_Save.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(3000);
     }
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {

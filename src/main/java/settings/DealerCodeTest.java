@@ -54,12 +54,17 @@ public class DealerCodeTest extends Setup {
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
-        driver.findElement(By.id("com.qolsys:id/ft_back")).click();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+        navigateToPartitionsAdvancedSettingsPage();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        Thread.sleep(1000);
         adv.USER_MANAGEMENT.click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.TextView[@text='NewDealer']")).isDisplayed();
         Thread.sleep(2000);
         settings.Back_button.click();
@@ -97,7 +102,10 @@ public class DealerCodeTest extends Setup {
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+
     }
 
     @AfterMethod (alwaysRun = true)

@@ -51,11 +51,15 @@ public class Installer_Code_Test_Grid {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
         user.User_Management_Save.click();
-        Thread.sleep(2000);
-        settings.Back_button.click();
         Thread.sleep(1000);
-        settings.Back_button.click();
-        Thread.sleep(2000);
+        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+        s.navigateToSettingsPage();
+        settings.ADVANCED_SETTINGS.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
+        settings.Five.click();
         adv.USER_MANAGEMENT.click();
         logger.info("Verify Installer name changed");
         s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='NewInstall']")).isDisplayed();
@@ -94,9 +98,9 @@ public class Installer_Code_Test_Grid {
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("1111");
         user.User_Management_Save.click();
-        Thread.sleep(2000);
-        settings.Home_button.click();
-//        contact.acknowledge_all_alerts();
+        Thread.sleep(1000);
+        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
 }
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {
