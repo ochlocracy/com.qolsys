@@ -807,3 +807,130 @@
 2018-10-04 16:23:52,822 [main] INFO updateProcess.SanitySensors - Cancel Emergency Alarm
 2018-10-04 16:24:01,990 [main] INFO updateProcess.SanitySensors - Arm Stay
 2018-10-04 16:24:10,721 [main] INFO updateProcess.SanitySensors - Arm Stay
+2018-10-05 11:22:39,120 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:22:39,124 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Pre-updateProcess panel settings   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-05 11:22:39,124 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:22:39,138 [main] INFO Pre-updateProcess panel settings - SIA Limits: Disabled
+2018-10-05 11:22:40,140 [main] INFO Pre-updateProcess panel settings - Media Volume: 1/7
+2018-10-05 11:22:41,141 [main] INFO Pre-updateProcess panel settings - Voice Prompts: Disabled
+2018-10-05 11:22:42,147 [main] INFO Pre-updateProcess panel settings - All Chimes: Enabled
+2018-10-05 11:22:43,151 [main] INFO Pre-updateProcess panel settings - Trouble Beeps: Enabled
+2018-10-05 11:22:44,154 [main] INFO Pre-updateProcess panel settings - Fire Safety Device Trouble Beeps: Enabled
+2018-10-05 11:22:45,156 [main] INFO Pre-updateProcess panel settings - Wifi: Enabled
+2018-10-05 11:22:46,158 [main] INFO Pre-updateProcess panel settings - Secure Delete Images: Disabled
+2018-10-05 11:22:47,161 [main] INFO Pre-updateProcess panel settings - Disarm Photos: Disabled
+2018-10-05 11:22:48,163 [main] INFO Pre-updateProcess panel settings - Alarm Videos: Enabled
+2018-10-05 11:22:49,166 [main] INFO Pre-updateProcess panel settings - Alarm Photos: Disabled
+2018-10-05 11:22:50,170 [main] INFO Pre-updateProcess panel settings - Settings Photos: Enabled
+2018-10-05 11:22:51,172 [main] INFO Pre-updateProcess panel settings - Duress Authentication: Enabled
+2018-10-05 11:22:52,178 [main] INFO Pre-updateProcess panel settings - Secure Arming: Enabled
+2018-10-05 11:22:53,180 [main] INFO Pre-updateProcess panel settings - No Arming On Low Battery: Enabled
+2018-10-05 11:22:54,191 [main] INFO Pre-updateProcess panel settings - Auto Bypass: Disabled
+2018-10-05 11:22:55,193 [main] INFO Pre-updateProcess panel settings - Auto Stay: Disabled
+2018-10-05 11:22:56,196 [main] INFO Pre-updateProcess panel settings - Arm Stay No Delay: Disabled
+2018-10-05 11:22:57,198 [main] INFO Pre-updateProcess panel settings - Auto Exit Time Extension: Disabled
+2018-10-05 11:22:58,201 [main] INFO Pre-updateProcess panel settings - Keyfob Alarm Disarm: Enabled
+2018-10-05 11:22:59,204 [main] INFO Pre-updateProcess panel settings - Keyfob Disarming: Disabled
+2018-10-05 11:23:00,207 [main] INFO Pre-updateProcess panel settings - Normal Entry Delay: 33 seconds
+2018-10-05 11:23:01,210 [main] INFO Pre-updateProcess panel settings - Normal Exit Delay: 57 seconds
+2018-10-05 11:23:02,213 [main] INFO Pre-updateProcess panel settings - Long Entry Delay: 113 seconds
+2018-10-05 11:23:03,214 [main] INFO Pre-updateProcess panel settings - Long Exit Delay: 117 seconds
+2018-10-05 11:23:04,216 [main] INFO Pre-updateProcess panel settings - Siren Disable: Disabled
+2018-10-05 11:23:05,218 [main] INFO Pre-updateProcess panel settings - Fire Verification: Enabled
+2018-10-05 11:23:06,223 [main] INFO Pre-updateProcess panel settings - Severe Weather Siren Warning: Disabled
+2018-10-05 11:23:07,225 [main] INFO Pre-updateProcess panel settings - Dialer Delay: 23 seconds
+2018-10-05 11:23:08,229 [main] INFO Pre-updateProcess panel settings - Siren Timeout: 7 minutes
+2018-10-05 11:23:09,231 [main] INFO Pre-updateProcess panel settings - Water Freeze Alarm: Enabled
+2018-10-05 11:23:10,234 [main] INFO Pre-updateProcess panel settings - Police Panic: Disabled
+2018-10-05 11:23:11,246 [main] INFO Pre-updateProcess panel settings - Fire Panic: Disabled
+2018-10-05 11:23:12,249 [main] INFO Pre-updateProcess panel settings - Auxiliary Panic: Disabled
+2018-10-05 11:23:13,253 [main] INFO Pre-updateProcess panel settings - Auto Upload Logs: Enabled
+2018-10-05 11:23:14,255 [main] INFO Pre-updateProcess panel settings - Power Management: Disabled
+2018-10-05 11:23:15,257 [main] INFO Pre-updateProcess panel settings - SIA Power Restoration: Enabled
+2018-10-05 11:23:16,269 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Non-emergency sensors: 12 hours
+2018-10-05 11:23:17,271 [main] INFO Pre-updateProcess panel settings - Loss of Supervisory Signals for Emergency sensors: 12 hours
+2018-10-05 11:23:18,274 [main] INFO Pre-updateProcess panel settings - Cell Signal Timeout: 25 seconds
+2018-10-05 11:23:19,277 [main] INFO Pre-updateProcess panel settings - RF Jam Detection: Enabled
+2018-10-05 11:23:20,279 [main] INFO Pre-updateProcess panel settings - Open/Close Reports for Auto Learn: Disabled
+2018-10-05 11:23:21,291 [main] INFO Pre-updateProcess panel settings - Bluetooth: Enabled
+2018-10-05 11:23:22,293 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm: Enabled
+2018-10-05 11:23:23,297 [main] INFO Pre-updateProcess panel settings - Bluetooth Disarm Timeout: 30 seconds
+2018-10-05 11:23:24,298 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Camera settings: Enabled
+2018-10-05 11:23:25,304 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Security and Arming settings: Enabled
+2018-10-05 11:23:26,307 [main] INFO Pre-updateProcess panel settings - Allow Master Code to Access Siren and Alarms settings: Enabled
+2018-10-05 11:23:27,312 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-10-05 11:24:50,580 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:24:50,583 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-05 11:24:50,583 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:24:50,596 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2018-10-05 11:24:55,697 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2018-10-05 11:25:20,700 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2018-10-05 11:25:25,710 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2018-10-05 11:25:30,353 [main] INFO Add sensors + sensors activity - Activate CO sensors
+2018-10-05 11:25:35,175 [main] INFO Add sensors + sensors activity - Activate glassbreak sensors
+2018-10-05 11:25:37,184 [main] INFO Add sensors + sensors activity - Open/close tilt sensors
+2018-10-05 11:25:44,197 [main] INFO Add sensors + sensors activity - Activate IQShock sensors
+2018-10-05 11:25:46,203 [main] INFO Add sensors + sensors activity - Activate freeze sensors
+2018-10-05 11:25:51,083 [main] INFO Add sensors + sensors activity - Activate heat sensors
+2018-10-05 11:25:55,992 [main] INFO Add sensors + sensors activity - Activate water sensors
+2018-10-05 11:26:01,348 [main] INFO Add sensors + sensors activity - Activate keyfob sensors
+2018-10-05 11:26:15,786 [main] INFO Add sensors + sensors activity - Activate keypad sensors
+2018-10-05 11:26:22,746 [main] INFO updateProcess.PreUpdateSensors - Pass: panel is in Arm Away mode
+2018-10-05 11:26:23,748 [main] INFO Add sensors + sensors activity - Activate medical pendant sensors
+2018-10-05 11:26:33,957 [main] INFO Add sensors + sensors activity - Activate doorbell sensors
+2018-10-05 11:26:43,457 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-10-05 11:27:58,808 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:27:58,812 [main] INFO utils.Log - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-05 11:27:58,812 [main] INFO utils.Log - ********************************************************************
+2018-10-05 11:27:58,831 [main] INFO Add sensors + sensors activity - Adding a list of sensors
+2018-10-05 11:28:03,923 [main] INFO Add sensors + sensors activity - Open-Close contact sensors
+2018-10-05 11:28:28,899 [main] INFO Add sensors + sensors activity - Activate motion sensors
+2018-10-05 11:28:33,911 [main] INFO Add sensors + sensors activity - Activate smoke sensors
+2018-10-05 11:28:40,237 [main] INFO utils.Log - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-10-05 16:10:13,244 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:10:15,790 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:10:25,418 [main] INFO updateProcess.TestSanityTranszwave - Removing All Devices
+2018-10-05 16:10:26,323 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:10:28,831 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:10:35,018 [main] INFO updateProcess.TestSanityTranszwave - entering Advance Installation
+2018-10-05 16:10:36,141 [main] INFO updateProcess.TestSanityTranszwave - entering devices
+2018-10-05 16:10:36,993 [main] INFO updateProcess.TestSanityTranszwave - selecting zwave devices
+2018-10-05 16:10:37,874 [main] INFO updateProcess.TestSanityTranszwave - removing all devices
+2018-10-05 16:10:38,854 [main] INFO updateProcess.TestSanityTranszwave - selecting ok button
+2018-10-05 16:10:48,198 [main] INFO updateProcess.TestSanityTranszwave - All devices have been removed
+2018-10-05 16:10:48,205 [main] INFO updateProcess.TestSanityTranszwave - resetting all device limits to factory litmits
+2018-10-05 16:10:48,205 [main] INFO updateProcess.TestSanityTranszwave - Setting thermostat limit to 3
+2018-10-05 16:10:48,206 [main] INFO updateProcess.TestSanityTranszwave - Setting smartsocket limit to 0
+2018-10-05 16:10:48,208 [main] INFO updateProcess.TestSanityTranszwave - Setting Lihgts limit to 5
+2018-10-05 16:10:48,210 [main] INFO updateProcess.TestSanityTranszwave - Setting Door Lock Limit to 3
+2018-10-05 16:10:48,213 [main] INFO panel.PanelInfo_ServiceCalls - /home/qolsys/Applications/Android_sdk/platform-tools/adb -s ac8312fb shell service call qservice 39 i32 0 i32 0 i32 87 i32 3 i32 0 i32 0
+2018-10-05 16:10:48,213 [main] INFO updateProcess.TestSanityTranszwave - Setting Other Device Limit to 3
+2018-10-05 16:10:48,217 [main] INFO updateProcess.TestSanityTranszwave - Setting Garage Door Limit to 3
+2018-10-05 16:10:48,481 [main] INFO updateProcess.TestSanityTranszwave - In Home Page
+2018-10-05 16:10:52,514 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:10:54,959 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:11:04,398 [main] INFO updateProcess.TestSanityTranszwave - Navigating to setting
+2018-10-05 16:11:05,374 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:11:07,745 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:11:16,746 [main] INFO updateProcess.TestSanityTranszwave - Clearing Transmitter
+2018-10-05 16:11:32,578 [main] INFO updateProcess.TestSanityTranszwave - Removing all devices
+2018-10-05 16:11:33,212 [main] INFO updateProcess.TestSanityTranszwave - waiting for element to perform next action
+2018-10-05 16:11:34,395 [main] INFO updateProcess.TestSanityTranszwave - waiting for element to perform next action
+2018-10-05 16:11:41,789 [main] INFO updateProcess.TestSanityTranszwave - All Devices have been removed
+2018-10-05 16:11:42,790 [main] INFO updateProcess.TestSanityTranszwave - Including transmitter
+2018-10-05 16:11:52,567 [main] INFO updateProcess.TestSanityTranszwave - Waiting for Element
+2018-10-05 16:11:52,568 [main] INFO updateProcess.TestSanityTranszwave - waiting for element to perform next action
+2018-10-05 16:13:19,667 [main] INFO updateProcess.TestSanityTranszwave - Naming transmitter
+2018-10-05 16:13:27,329 [main] INFO updateProcess.TestSanityTranszwave - Hidding Keyboard
+2018-10-05 16:13:30,570 [main] INFO updateProcess.TestSanityTranszwave - Transmitter has been added successfully
+2018-10-05 16:13:38,172 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:13:40,593 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:13:49,704 [main] INFO updateProcess.TestSanityTranszwave - adding new device locally 
+2018-10-05 16:13:50,536 [main] INFO updateProcess.TestSanityTranszwave - Settings Menue
+2018-10-05 16:13:53,009 [main] INFO updateProcess.TestSanityTranszwave - Advance Settings
+2018-10-05 16:14:06,922 [main] INFO updateProcess.TestSanityTranszwave - ready to add new device
+2018-10-05 16:14:12,229 [main] INFO updateProcess.TestSanityTranszwave - Adding Stock Light
+2018-10-05 16:14:12,240 [main] INFO updateProcess.TestSanityTranszwave - waiting for ADD button to appear
+2018-10-05 16:14:12,240 [main] INFO updateProcess.TestSanityTranszwave - waiting for element to perform next action
+2018-10-05 16:14:16,253 [main] INFO updateProcess.TestSanityTranszwave - Selecting Light as a stock name
+2018-10-05 16:14:19,427 [main] INFO updateProcess.TestSanityTranszwave - Light has been added
