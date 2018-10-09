@@ -8,8 +8,8 @@ public class DevicesPage {
     public WebElement Security_Sensors;
     @FindBy(xpath = "//android.widget.TextView[@text='Wi-Fi Devices']")
     public WebElement WiFi_Devices;
-    @FindBy(xpath = "//android.widget.TextView[@text='Z-wave Devices']")
-    public WebElement Zwave_Devices;
+    @FindBy(xpath = "//android.widget.TextView[@text='Z-Wave Devices']")
+    public WebElement zwaveDevices;
     @FindBy(xpath = "//android.widget.TextView[@text='Bluetooth Devices']")
     public WebElement Bluetooth_Devices;
     @FindBy(xpath = "//android.widget.TextView[@text='Z-wave Devices Unsupported']")

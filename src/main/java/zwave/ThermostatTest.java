@@ -1,10 +1,13 @@
 package zwave;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import panel.AdvancedSettingsPage;
 import panel.DevicesPage;
@@ -14,19 +17,95 @@ import utils.Setup;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /* Pair 1 thermostat prior to testing, set the Mode to OFF */
 
 public class ThermostatTest extends Setup {
-
+    ThermostatPage thermPage = new ThermostatPage();
     ArrayList<WebElement> elem = new ArrayList<>();
-
+    HashMap<String, String> thermostatDiv;
     String page_name = "Thermostat_Testing";
     Logger logger = Logger.getLogger(page_name);
+    public String thermostat1 = "Thermostat 1";
+    public String thermostat2 = "Thermostat 2";
+    public String thermostat3 = "Thermostat 3";
+    public String thermostat4 = "Thermostat 4";
+    public String thermostat5 = "Thermostat 5";
+    public String thermostat6 = "Thermostat 6";
 
     public ThermostatTest() throws Exception {
+        thermostatDiv = new HashMap<>();
+        thermostatDiv.put(thermostat1, "1");
+        thermostatDiv.put(thermostat2, "2");
+        thermostatDiv.put(thermostat3, "3");
+        thermostatDiv.put(thermostat4, "4");
+        thermostatDiv.put(thermostat5, "5");
+        thermostatDiv.put(thermostat6, "6");
+    }
+// add a way to select panel only test, panel and user site test, and transmitter or real devices
+
+
+//************************************User Site Methods************************************************************************************
+
+    public String getThermDiv(String thermName){
+        return thermostatDiv.get(thermName);
+    }
+    public void setThermModeUserSite(String thermName, String thermMode) {
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Changing Thermostat Mode");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[2]")).click();
+        System.out.println("Selecting " + thermMode + " Mode");
+        driver.findElement(By.xpath(thermMode)).click();
+        System.out.println(thermMode + " Has Been Selected");
+        System.out.println(thermMode + " Mode Verified");
     }
 
+    public void getThermSetTempUserSiteText(String thermName){
+        String thermDiv = getThermDiv(thermName);
+        System.out.println(thermName + "'s Div is "+ thermDiv);
+        System.out.println("Getting current set Temp for " + thermName);
+        String currentTemp = driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv+ "]/div[1]/div/div/div[@class='row temps']/div[1]")).getText();
+        System.out.println(thermName +"'s new current thermostat temp is " + currentTemp);
+        System.out.println("");
+    }
+    public void userThermTempUp(String thermName, int x) throws InterruptedException{
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Going to temp selection");
+        getThermSetTempUserSiteText(thermName);
+        System.out.println("Selecting Temp");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[1]")).click();
+        System.out.println("changing temp down " + x + " degrees");
+        for (int i=0; i<x; i++){
+            driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div/div[@class='row temps']/div[1]/div[2]/button[2]/div")).click();
+        }
+        Thread.sleep(10000);
+        getThermSetTempUserSiteText(thermName);
+    }
+
+    public void userThermTempDown(String thermName, int x) throws InterruptedException{
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Going to temp selection");
+        getThermSetTempUserSiteText(thermName);
+        System.out.println("Selecting Temp");
+        driver.findElement(By.xpath("//div[@id='app-content']/div/div["+ thermDiv + "]/div/div//div[@class='btn-group']/button[1]")).click();
+        System.out.println("changing temp down " + x + " degrees");
+        for (int i=0; i<x; i++){
+            driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div/div[@class='row temps']/div[1]/div[2]/button[1]/div")).click();
+        }
+        Thread.sleep(10000);
+        getThermSetTempUserSiteText(thermName);
+    }
+
+    public void getCurrentRoomTempUserSite(String thermName){
+        String thermDiv = getThermDiv(thermName);
+        System.out.println("Getting current room temp for " + thermName);
+        String currentTemp = driver.findElement(By.xpath("//div[@id='app-content']/div["+ thermDiv +"]/div[1]/div/div//p[@class='temp']")).getText();
+        System.out.println(thermName +"'s current room thermostat temp is " + currentTemp);
+        System.out.println("");
+    }
+
+//*************************************************************************************************************************************************************
     public String method(String str) {
         return str.split("°")[0];
     } /**/
@@ -37,42 +116,60 @@ public class ThermostatTest extends Setup {
         setupLogger(page_name);
     }
 
+    public void swipeToThermostatPage(ThermostatPage therm) throws Exception {
+        while (!isOnThermostatPage(therm)){
+            swipeFromRighttoLeft();
+        }
+    }
+    private boolean isOnThermostatPage (ThermostatPage therm) {
+        try {
+            System.out.println("Checking For Thermostat Page ");
+            return therm.Current_Temp_Txt.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("Handling NoSuchElementException ");
+            return false;
+        }
+    }
+
+    @Test
+    public void PracticeTest(){
+
+    }
     @Test
     public void Check_elements_on_page() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
-
-        swipeFromRighttoLeft();
-        elementVerification(therm.Target_Temp, "Target temperature");
-        elementVerification(therm.Temp_Up, "Set target temperature Up");
-        elementVerification(therm.Temp_Down, "Set target temperature Down");
+        swipeToThermostatPage(therm);
+        elementVerification(therm.targetTemp, "Target temperature");
+        elementVerification(therm.tempUp, "Set target temperature Up");
+        elementVerification(therm.tempDown, "Set target temperature Down");
         elementVerification(therm.Thermostat_Name, "Thermostat name");
-        elementVerification(therm.Current_Mode, "Current Mode");
+        elementVerification(therm.currentMode, "Current Mode");
         elementVerification(therm.Fan_Mode, "Fan Mode");
-        elementVerification(therm.Set_Mode, "Set thermostat mode");
+        elementVerification(therm.setFanMode, "Set thermostat mode");
         elementVerification(therm.Therm_Battery, "Thermostat battery");
         elementVerification(therm.Current_Temp, "Current temperature");
         elementVerification(therm.Current_Temp_Txt, "Current temperature text");
+//
+//        therm.Fan_Mode.click();
+//        Thread.sleep(2000);
+//        elementVerification(therm.Fan_On_Icon, "Fan On icon");
+//        elementVerification(therm.Fan_On_Txt, "Fan On text");
+//        elementVerification(therm.Fan_On_Message, "Fan On Message");
+//        elementVerification(therm.Fan_Auto_Icon, "Fan Auto icon");
+//        elementVerification(therm.Fan_Auto_Txt, "Fan Auto text");
+//        elementVerification(therm.Fan_Auto_Message, "Fan Auto message");
+//        tap(1111, 405);
 
-        therm.Fan_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(2000);
-        elementVerification(therm.Fan_On_Icon, "Fan On icon");
-        elementVerification(therm.Fan_On_Txt, "Fan On text");
-        elementVerification(therm.Fan_On_Message, "Fan On Message");
-        elementVerification(therm.Fan_Auto_Icon, "Fan Auto icon");
-        elementVerification(therm.Fan_Auto_Txt, "Fan Auto text");
-        elementVerification(therm.Fan_Auto_Message, "Fan Auto message");
-        tap(1111, 405);
-
-        therm.Set_Mode.click();
-        Thread.sleep(2000);
-        elementVerification(therm.Off_Mode_Icon, "Off Mode icon");
-        elementVerification(therm.Off_Mode_Txt, "Off Mode text");
-        elementVerification(therm.Off_Mode_Message, "Off Mode message");
-        elementVerification(therm.Heat_Icon, "Heat Mode icon");
+        elementVerification(therm.offModeIcon, "Off Mode icon");
+        elementVerification(therm.offModeTxt, "Off Mode text");
+        elementVerification(therm.offModeMessage, "Off Mode message");
+        elementVerification(therm.heatMode, "Heat Mode icon");
         elementVerification(therm.Heat_Mode_Txt, "Heat Mode text");
         elementVerification(therm.Heat_Mode_Message, "Heat Mode message");
-        elementVerification(therm.Cool_Icon, "Cool Mode icon");
-        elementVerification(therm.Cool_Mode_Txt, "Cool Mode text");
+        elementVerification(therm.coolModeSelection, "Cool Mode icon");
+        elementVerification(therm.coolModeTxt, "Cool Mode text");
         elementVerification(therm.Cool_Mode_Message, "Cool Mode message");
         elementVerification(therm.Auto_Icon, "Auto Mode icon");
         elementVerification(therm.Auto_Mode_Txt, "Auto Mode text");
@@ -80,36 +177,40 @@ public class ThermostatTest extends Setup {
         swipeFromLefttoRight();
         Thread.sleep(2000);
     }
+    @BeforeMethod
+    public void onThermostatPage() throws Exception{
+        ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
+        swipeToThermostatPage(therm);
 
+    }
     @Test
     public void Thermostat_test() throws Exception {
         ThermostatPage therm = PageFactory.initElements(driver, ThermostatPage.class);
-        swipeFromRighttoLeft();
-        swipeFromRighttoLeft();
+        swipeToThermostatPage(therm);
         Thread.sleep(2000);
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(4000);
-        therm.Heat_Icon.click();
+        therm.heatMode.click();
         Thread.sleep(7000);
-        if (therm.Target_Temp.getText().equals("OFF")) {
+        if (therm.targetTemp.getText().equals("OFF")) {
             System.out.println("Failed: Thermostat mode is not HEAT");
         }
 
-        if (therm.Current_Mode.getText().equals("HEAT")) {
+        if (therm.currentMode.getText().equals("HEAT")) {
             System.out.println("Pass: Mode successfully changed to HEAT");
         } else {
             System.out.println("Failed: Mode is not set to HEAT");
         }
 
-        String target_temp_up = therm.Target_Temp.getText();
+        String target_temp_up = therm.targetTemp.getText();
         Integer target_temp_up_int = Integer.valueOf(method(target_temp_up));
         System.out.println("Target temperature is " + target_temp_up_int);
 
-        therm.Temp_Up.click();
-        therm.Temp_Up.click();
+        therm.tempUp.click();
+        therm.tempUp.click();
         Thread.sleep(4000);
 
-        String new_target_temp_up = therm.Target_Temp.getText();
+        String new_target_temp_up = therm.targetTemp.getText();
         Integer new_target_temp_up_int = Integer.valueOf(method(new_target_temp_up));
         System.out.println("New target temperature is " + new_target_temp_up_int);
 
@@ -120,15 +221,15 @@ public class ThermostatTest extends Setup {
         }
         Thread.sleep(5000);
 
-        String target_temp_down = therm.Target_Temp.getText();
+        String target_temp_down = therm.targetTemp.getText();
         Integer target_temp_down_int = Integer.valueOf(method(target_temp_down));
         System.out.println("Target temperature is " + target_temp_down_int);
 
-        therm.Temp_Down.click();
-        therm.Temp_Down.click();
+        therm.tempDown.click();
+        therm.tempDown.click();
         Thread.sleep(4000);
 
-        String new_target_temp_down = therm.Target_Temp.getText();
+        String new_target_temp_down = therm.targetTemp.getText();
         Integer new_target_temp_down_int = Integer.valueOf(method(new_target_temp_down));
         System.out.println("New target temperature is " + new_target_temp_down_int);
 
@@ -138,36 +239,36 @@ public class ThermostatTest extends Setup {
             System.out.println("Failed: the temperature was not successfully changed");
         }
         Thread.sleep(5000);
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(3000);
-        therm.Off_Mode_Icon.click();
+        therm.offModeIcon.click();
         Thread.sleep(7000);
 
         /** COOL MODE **/
 
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(4000);
-        therm.Cool_Icon.click();
+        therm.coolModeSelection.click();
         Thread.sleep(5000);
-        if (therm.Target_Temp.getText().equals("OFF")) {
+        if (therm.targetTemp.getText().equals("OFF")) {
             System.out.println("Failed: Thermostat mode is not COOL");
         }
 
-        if (therm.Current_Mode.getText().equals("COOL")) {
+        if (therm.currentMode.getText().equals("COOL")) {
             System.out.println("Pass: Mode successfully changed to COOL");
         } else {
             System.out.println("Failed: Mode is not set to COOL");
         }
 
-        String cool_target_temp_up = therm.Target_Temp.getText();
+        String cool_target_temp_up = therm.targetTemp.getText();
         Integer cool_target_temp_up_int = Integer.valueOf(method(cool_target_temp_up));
         System.out.println("Target temperature is " + cool_target_temp_up_int);
 
-        therm.Temp_Up.click();
-        therm.Temp_Up.click();
+        therm.tempUp.click();
+        therm.tempUp.click();
         Thread.sleep(4000);
 
-        String new_cool_target_temp_up = therm.Target_Temp.getText();
+        String new_cool_target_temp_up = therm.targetTemp.getText();
         Integer new_cool_target_temp_up_int = Integer.valueOf(method(new_cool_target_temp_up));
         System.out.println("New target temperature is " + new_cool_target_temp_up_int);
 
@@ -178,15 +279,15 @@ public class ThermostatTest extends Setup {
         }
         Thread.sleep(5000);
 
-        String cool_target_temp_down = therm.Target_Temp.getText();
+        String cool_target_temp_down = therm.targetTemp.getText();
         Integer cool_target_temp_down_int = Integer.valueOf(method(cool_target_temp_down));
         System.out.println("Target temperature is " + cool_target_temp_down_int);
 
-        therm.Temp_Down.click();
-        therm.Temp_Down.click();
+        therm.tempDown.click();
+        therm.tempDown.click();
         Thread.sleep(4000);
 
-        String new_cool_target_temp_down = therm.Target_Temp.getText();
+        String new_cool_target_temp_down = therm.targetTemp.getText();
         Integer new_cool_target_temp_down_int = Integer.valueOf(method(new_cool_target_temp_down));
         System.out.println("New target temperature is " + new_cool_target_temp_down_int);
 
@@ -196,37 +297,62 @@ public class ThermostatTest extends Setup {
             System.out.println("Failed: the temperature was not successfully changed");
         }
         Thread.sleep(5000);
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(3000);
-        therm.Off_Mode_Icon.click();
+        therm.offModeIcon.click();
         Thread.sleep(7000);
 
         /** AUTO MODE **/
 
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(4000);
         therm.Auto_Icon.click();
         Thread.sleep(5000);
-        if (therm.Target_Temp.getText().equals("OFF")) {
+        if (therm.targetTemp.getText().equals("OFF")) {
             System.out.println("Failed: Thermostat mode is not AUTO");
         }
 
-        if (therm.Current_Mode.getText().equals("AUTO")) {
+        if (therm.currentMode.getText().equals("AUTO")) {
             System.out.println("Pass: Mode successfully changed to AUTO");
         } else {
             System.out.println("Failed: Mode is not set to AUTO");
         }
 
-        if (therm.Target_Temp.getText().equals("N/A")) {
+        if (therm.targetTemp.getText().equals("N/A")) {
             System.out.println("Pass: Current temp is displayed as N/A");
         }
 
         Thread.sleep(5000);
-        therm.Set_Mode.click();
+        therm.setFanMode.click();
         Thread.sleep(3000);
-        therm.Off_Mode_Icon.click();
+        therm.offModeIcon.click();
         Thread.sleep(7000);
     }
+
+
+    public void preTestSetup(){
+        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+        //remove all devices
+        //change all zwave settings to default
+    }
+    public void disArmParingDeviceTest(){
+        //Pair 2 light switches locally( name it stock "Front Door" and "Back Door")
+        //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
+        //pair 1 door lock locally and expect max number failure
+        //change max number setting with setters service call
+        //pair other 3 lock with custom name with node id
+        //verify all name are correct on the panel
+        //verify all names are correct on ADC Dealer
+    }
+    public void disArmNameChangeTest(){}
+    public void disArmActionTest(){}
+    public void disArmRulesTest(){}
+    public void armStayActionTest(){}
+    public void armStayRulesTest(){}
+    public void armAwayRulesTest(){}
+    public void armAwayActionTest(){}
+
+
 
     public void Z_Wave_Thermostat_Disarm_Mode(String UDID_) throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -433,7 +559,7 @@ public class ThermostatTest extends Setup {
         logger.info("Arm Away mode: Verify that away from home thermostat override mode works as expected");
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void tearDown() throws IOException, InterruptedException {
         log.endTestCase(page_name);
         driver.quit();

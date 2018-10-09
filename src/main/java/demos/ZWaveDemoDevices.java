@@ -33,9 +33,9 @@ public class ZWaveDemoDevices extends Setup{
             for(int i=0; i<=5; i++) {
                 swipeFromRighttoLeft();
                 Thread.sleep(1000);
-                lite.Select_All.click();
+                lite.selectAllLigtsBtn.click();
                 Thread.sleep(1000);
-                lite.On_Button.click();
+                lite.allOnBtn.click();
                 Thread.sleep(1000);
                 swipeFromRighttoLeft();
                 Thread.sleep(2000);
@@ -46,13 +46,13 @@ public class ZWaveDemoDevices extends Setup{
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();
                 Thread.sleep(1000);
-                lite.Select_All.click();
+                lite.selectAllLigtsBtn.click();
                 Thread.sleep(1000);
-                lite.Off_Button.click();
+                lite.allOffBtn.click();
                 Thread.sleep(1000);
                 swipeFromRighttoLeft();
                 Thread.sleep(2000);
-                door.Unlock_ALL.click();
+                door.unlockAll.click();
                 Thread.sleep(3000);
                 swipeFromRighttoLeft();
                 swipeFromRighttoLeft();

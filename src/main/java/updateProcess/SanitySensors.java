@@ -96,7 +96,7 @@ public class SanitySensors extends Setup {
 
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(10000);
-        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        adc.driver1.get("https://alarmadmin.alarm.com/Support/Commands/GetSensorNames.aspx");
         Thread.sleep(10000);
         adc.Request_equipment_list();
     }
@@ -115,7 +115,7 @@ public class SanitySensors extends Setup {
         elementVerification(emg.Alarm_verification, "Fire Emergency");
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
         logger.info("Cancel Emergency Alarm");
-        //emg.Cancel_Emergency.click();
+
         enterDefaultUserCode();
         Thread.sleep(15000);
         // adc website verification
@@ -190,10 +190,16 @@ public class SanitySensors extends Setup {
         Thread.sleep(5000);
     }
 
+    public void addToSanityReport(String testName){
+        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+        log = report.startTest(testName);
+    }
+
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayExitDelay_26() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmStay_SmokeSensor");
+//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
+//        log = report.startTest("Sensors.ArmStay_SmokeSensor");
+        addToSanityReport("Sernsos.ArmStay SmokeSensor");
         ArmStay_Activate_Restore_sensor_during_Exit_Delay(26, "67 00 22", "//*[contains(text(), '(Sensor 26) Fire Alarm')]", "//*[contains(text(), '(Sensor 26) Reset')]");
     }
 

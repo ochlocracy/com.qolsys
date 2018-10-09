@@ -1,77 +1,56 @@
 
-2017-12-05 11:39:27,056 - utils.Log -INFO - ********************************************************************
-2017-12-05 11:39:27,058 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   About page testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2017-12-05 11:39:27,058 - utils.Log -INFO - ********************************************************************
-2017-12-05 11:39:27,080 - About page testing -INFO - Verifying elements on the page...
-2017-12-05 11:39:41,870 - panel.AboutPageTest -INFO - Pass: Battery is present, value = Battery
-2017-12-05 11:39:44,322 - panel.AboutPageTest -INFO - Pass: Battery Status is present, value = Battery Status
-2017-12-05 11:39:44,872 - panel.AboutPageTest -INFO - Pass: Battery Level is present, value = Battery Level
-2017-12-05 11:39:46,840 - panel.AboutPageTest -INFO - Pass: Software is present, value = Software
-2017-12-05 11:39:48,476 - panel.AboutPageTest -INFO - Pass: Software Version is present, value = Software Version
-2017-12-05 11:39:49,046 - panel.AboutPageTest -INFO - Pass: Build Number is present, value = Build Number
-2017-12-05 11:39:49,567 - panel.AboutPageTest -INFO - Pass: Linux Version is present, value = Linux Version
-2017-12-05 11:39:50,134 - panel.AboutPageTest -INFO - Pass: Android OS Version is present, value = Android OS Version
-2017-12-05 11:39:52,287 - panel.AboutPageTest -INFO - Pass: Hardware is present, value = Hardware
-2017-12-05 11:39:54,310 - panel.AboutPageTest -INFO - Pass: Manufacturer is present, value = Manufacturer
-2017-12-05 11:40:00,433 - panel.AboutPageTest -INFO - Pass: PCA Serial Number is present, value = PCA Serial Number
-2017-12-05 11:40:01,105 - panel.AboutPageTest -INFO - Pass: Part Number is present, value = Part Number
-2017-12-05 11:40:01,709 - panel.AboutPageTest -INFO - Pass: System Configuration is present, value = System Configuration
-2017-12-05 11:40:02,228 - panel.AboutPageTest -INFO - Pass: System Serial Number is present, value = System Serial Number
-2017-12-05 11:40:08,330 - panel.AboutPageTest -INFO - Pass: RF Pic Version is present, value = RF PIC Version
-2017-12-05 11:40:08,878 - panel.AboutPageTest -INFO - Pass: EEPROM Format Version is present, value = EEPROM Format Version
-2017-12-05 11:40:09,392 - panel.AboutPageTest -INFO - Pass: Image Sensor Version is present, value = Image Sensor Version
-2017-12-05 11:40:10,841 - panel.AboutPageTest -INFO - Pass: Patches is present, value = Patches
-2017-12-05 11:40:12,860 - panel.AboutPageTest -INFO - Pass: Patch Description is present, value = Patch Description
-2017-12-05 11:40:13,417 - panel.AboutPageTest -INFO - Pass: Last Upgrade Date is present, value = Last Upgrade Date
-2017-12-05 11:40:15,397 - panel.AboutPageTest -INFO - Pass: Panel is present, value = Panel
-2017-12-05 11:40:16,945 - panel.AboutPageTest -INFO - Pass: MAC Address is present, value = MAC Address
-2017-12-05 11:40:17,494 - panel.AboutPageTest -INFO - Pass: Panel Up Time is present, value = Panel Up Time(YY:MM:DD:HH:mm)
-2017-12-05 11:40:19,525 - panel.AboutPageTest -INFO - Pass: Cellular is present, value = Cellular
-2017-12-05 11:40:21,430 - panel.AboutPageTest -INFO - Pass: Carrier is present, value = Carrier
-2017-12-05 11:40:21,979 - panel.AboutPageTest -INFO - Pass: Cellular Connection is present, value = Cellular Connection
-2017-12-05 11:40:22,536 - panel.AboutPageTest -INFO - Pass: Cellular Signal Strength is present, value = Cellular Signal Strength
-2017-12-05 11:40:23,073 - panel.AboutPageTest -INFO - Pass: IMEI is present, value = IMEI
-2017-12-05 11:40:28,044 - panel.AboutPageTest -INFO - Pass: IMSI is present, value = IMSI
-2017-12-05 11:40:28,524 - panel.AboutPageTest -INFO - Pass: ICCID is present, value = ICCID
-2017-12-05 11:40:29,087 - panel.AboutPageTest -INFO - Pass: Baseband Version is present, value = Baseband Version
-2017-12-05 11:40:31,118 - panel.AboutPageTest -INFO - Pass: Z-Wave is present, value = Z-Wave
-2017-12-05 11:40:33,159 - panel.AboutPageTest -INFO - Pass: Home-ID is present, value = Home ID
-2017-12-05 11:40:33,736 - panel.AboutPageTest -INFO - Pass: Z-Wave Firmware Version is present, value = Z-Wave Firmware Version
-2017-12-05 11:40:34,289 - panel.AboutPageTest -INFO - Pass: Z-Wave Api Version is present, value = Z-Wave Api Version
-2017-12-05 11:40:39,383 - panel.AboutPageTest -INFO - Pass: Manufacturing ID is present, value = Manufacturing ID
-2017-12-05 11:40:39,891 - panel.AboutPageTest -INFO - Pass: Product Type is present, value = Product Type
-2017-12-05 11:40:40,379 - panel.AboutPageTest -INFO - Pass: Product ID is present, value = Product ID
-2017-12-05 11:40:41,803 - panel.AboutPageTest -INFO - Pass: Ethernet is present, value = Ethernet
-2017-12-05 11:40:42,290 - panel.AboutPageTest -INFO - Pass: Wi-Fi Info is present, value = WI-FI Information
-2017-12-05 11:40:44,453 - panel.AboutPageTest -INFO - Pass: Connection is present, value = Connection
-2017-12-05 11:40:44,969 - panel.AboutPageTest -INFO - Pass: IP Address is present, value = IP Address
-2017-12-05 11:40:49,993 - panel.AboutPageTest -INFO - Pass: SSID is present, value = SSID
-2017-12-05 11:40:50,548 - panel.AboutPageTest -INFO - Pass: Speed is present, value = Speed
-2017-12-05 11:40:51,594 - panel.AboutPageTest -INFO - Pass: Internet is present, value = Internet
-2017-12-05 11:40:53,044 - panel.AboutPageTest -INFO - Pass: Internal storage is present, value = Internal storage
-2017-12-05 11:40:54,941 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
-2017-12-05 11:41:00,283 - panel.AboutPageTest -INFO - Pass: Total space is present, value = Total space
-2017-12-05 11:41:00,831 - panel.AboutPageTest -INFO - Pass: Photos is present, value = Photos
-2017-12-05 11:41:01,315 - panel.AboutPageTest -INFO - Pass: Videos is present, value = Videos
-2017-12-05 11:41:01,840 - panel.AboutPageTest -INFO - Pass: Logs is present, value = Logs
-2017-12-05 11:41:02,288 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 14:23:22,438 - zwave.ZwaveTransmitter -INFO - Panel in remote clear mode with service call
-2017-12-05 14:23:28,494 - zwave.ZwaveTransmitter -INFO - Exclude/Clear transmitter to panel 
-2017-12-05 14:24:28,496 - zwave.ZwaveTransmitter -INFO - Aborting remote Add
-2017-12-05 14:26:18,350 - zwave.ZwaveTransmitter -INFO - Panel in remote add mode with service call
-2017-12-05 14:26:27,416 - zwave.ZwaveTransmitter -INFO - Including transmitter to panel 
-2017-12-05 14:58:23,043 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 15:01:26,703 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:15:51,794 - zwave -INFO - Adding door lock
-2017-12-05 16:15:51,847 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:18:07,219 - zwave -INFO - Adding door lock
-2017-12-05 16:18:07,268 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:18:37,158 - zwave -INFO - Adding door lock
-2017-12-05 16:18:37,209 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:19:09,969 - zwave -INFO - Adding door lock
-2017-12-05 16:19:10,019 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:19:41,924 - zwave -INFO - Adding door lock
-2017-12-05 16:19:41,974 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2017-12-05 16:20:16,746 - zwave -INFO - Adding door lock
-2017-12-05 16:20:16,796 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2018-01-11 14:01:00,984 - utils.Setup -INFO - Arm Stay
+2018-10-05 11:27:58,808 - utils.Log -INFO - ********************************************************************
+2018-10-05 11:27:58,812 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
+2018-10-05 11:27:58,812 - utils.Log -INFO - ********************************************************************
+2018-10-05 11:27:58,831 - Add sensors + sensors activity -INFO - Adding a list of sensors
+2018-10-05 11:28:03,923 - Add sensors + sensors activity -INFO - Open-Close contact sensors
+2018-10-05 11:28:28,899 - Add sensors + sensors activity -INFO - Activate motion sensors
+2018-10-05 11:28:33,911 - Add sensors + sensors activity -INFO - Activate smoke sensors
+2018-10-05 11:28:40,237 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2018-10-05 16:10:13,244 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:10:15,790 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:10:25,418 - updateProcess.TestSanityTranszwave -INFO - Removing All Devices
+2018-10-05 16:10:26,323 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:10:28,831 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:10:35,018 - updateProcess.TestSanityTranszwave -INFO - entering Advance Installation
+2018-10-05 16:10:36,141 - updateProcess.TestSanityTranszwave -INFO - entering devices
+2018-10-05 16:10:36,993 - updateProcess.TestSanityTranszwave -INFO - selecting zwave devices
+2018-10-05 16:10:37,874 - updateProcess.TestSanityTranszwave -INFO - removing all devices
+2018-10-05 16:10:38,854 - updateProcess.TestSanityTranszwave -INFO - selecting ok button
+2018-10-05 16:10:48,198 - updateProcess.TestSanityTranszwave -INFO - All devices have been removed
+2018-10-05 16:10:48,205 - updateProcess.TestSanityTranszwave -INFO - resetting all device limits to factory litmits
+2018-10-05 16:10:48,205 - updateProcess.TestSanityTranszwave -INFO - Setting thermostat limit to 3
+2018-10-05 16:10:48,206 - updateProcess.TestSanityTranszwave -INFO - Setting smartsocket limit to 0
+2018-10-05 16:10:48,208 - updateProcess.TestSanityTranszwave -INFO - Setting Lihgts limit to 5
+2018-10-05 16:10:48,210 - updateProcess.TestSanityTranszwave -INFO - Setting Door Lock Limit to 3
+2018-10-05 16:10:48,213 - panel.PanelInfo_ServiceCalls -INFO - /home/qolsys/Applications/Android_sdk/platform-tools/adb -s ac8312fb shell service call qservice 39 i32 0 i32 0 i32 87 i32 3 i32 0 i32 0
+2018-10-05 16:10:48,213 - updateProcess.TestSanityTranszwave -INFO - Setting Other Device Limit to 3
+2018-10-05 16:10:48,217 - updateProcess.TestSanityTranszwave -INFO - Setting Garage Door Limit to 3
+2018-10-05 16:10:48,481 - updateProcess.TestSanityTranszwave -INFO - In Home Page
+2018-10-05 16:10:52,514 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:10:54,959 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:11:04,398 - updateProcess.TestSanityTranszwave -INFO - Navigating to setting
+2018-10-05 16:11:05,374 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:11:07,745 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:11:16,746 - updateProcess.TestSanityTranszwave -INFO - Clearing Transmitter
+2018-10-05 16:11:32,578 - updateProcess.TestSanityTranszwave -INFO - Removing all devices
+2018-10-05 16:11:33,212 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
+2018-10-05 16:11:34,395 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
+2018-10-05 16:11:41,789 - updateProcess.TestSanityTranszwave -INFO - All Devices have been removed
+2018-10-05 16:11:42,790 - updateProcess.TestSanityTranszwave -INFO - Including transmitter
+2018-10-05 16:11:52,567 - updateProcess.TestSanityTranszwave -INFO - Waiting for Element
+2018-10-05 16:11:52,568 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
+2018-10-05 16:13:19,667 - updateProcess.TestSanityTranszwave -INFO - Naming transmitter
+2018-10-05 16:13:27,329 - updateProcess.TestSanityTranszwave -INFO - Hidding Keyboard
+2018-10-05 16:13:30,570 - updateProcess.TestSanityTranszwave -INFO - Transmitter has been added successfully
+2018-10-05 16:13:38,172 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:13:40,593 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:13:49,704 - updateProcess.TestSanityTranszwave -INFO - adding new device locally 
+2018-10-05 16:13:50,536 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
+2018-10-05 16:13:53,009 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
+2018-10-05 16:14:06,922 - updateProcess.TestSanityTranszwave -INFO - ready to add new device
+2018-10-05 16:14:12,229 - updateProcess.TestSanityTranszwave -INFO - Adding Stock Light
+2018-10-05 16:14:12,240 - updateProcess.TestSanityTranszwave -INFO - waiting for ADD button to appear
+2018-10-05 16:14:12,240 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
+2018-10-05 16:14:16,253 - updateProcess.TestSanityTranszwave -INFO - Selecting Light as a stock name
+2018-10-05 16:14:19,427 - updateProcess.TestSanityTranszwave -INFO - Light has been added

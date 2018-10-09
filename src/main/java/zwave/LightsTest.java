@@ -2,7 +2,7 @@ package zwave;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
@@ -26,121 +26,256 @@ public class LightsTest extends Setup {
     String page_name = "Z-Wave Lights and Switches Test";
     Logger logger = Logger.getLogger(page_name);
 
+
+
     public LightsTest() throws Exception {
     }
 
+    public void swipeToLightsPage(LightsPage lightsPage) throws Exception {
+        while (!isOnLightsPage(lightsPage)){
+            swipeFromRighttoLeft();
+        }
+        System.out.println("lights page");
+    }
+    private boolean isOnLightsPage(LightsPage lightsPage){
+        try{
+            System.out.println("Looking For Lights Page");
+            return lightsPage.selectAllLigtsBtn.isDisplayed();
+        }catch (NoSuchElementException e){
+            System.out.println("Not on lights page");
+            return false;
+        }
+    }
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        setupDriver("ac82129c", "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
+    @Test
+    public void test() throws Exception{
+       LightsPage lightsPage = PageFactory.initElements(driver,LightsPage.class);
+       swipeToLightsPage(lightsPage);
 
-    @Test(priority = 1)
-    public void Test_Lights_Page() throws Exception {
+       for (int i=0; i<5; i++){
+           getLightStatus();
+           System.out.println("clicking on light");
+           lightsPage.lightIcon.click();
+       } System.out.println("out of the loop");
+
+        getLightStatus();
+
+    }
+
+
+    public void isLightMalfunction(String lightName){
+
+    }
+
+    public void verifyLigtStatus(String lightName, String lightStatus) throws Exception {
+
+
+
+
+// LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
+//
+//        File LightOnIconImg = new File(projectPath + "/scr/LightOnIconImg");
+//        File LightOffIconImg = new File(projectPath + "/scr/LightOffIconImg");
+//
+//        String onStatus =  " Light is ON";
+//        String offStatus = " Light is Off";
+//        if (checkStatus(LightOffIconImg, lights.lightIcon)){
+//            System.out.println("Light is OFF");
+//        }
+//        else if (checkStatus(LightOnIconImg, lights.lightIcon)){
+//            System.out.println("Light is ON");
+//        }
+    }
+
+    public boolean getLightStatus() throws Exception{
+        LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
+        //lightname gives index
+        File LightOnIconImg = new File(projectPath + "/scr/LightOnIconImg");
+        File LightOffIconImg = new File(projectPath + "/scr/LightOffIconImg");
+        String onStatus = /* lightName +*/ " Light is ON";
+        String offStatus = /*lightName +*/  " Light is Off";
+        boolean lightONStatus= checkStatus(LightOnIconImg,lights.lightIcon);
+        boolean lightOffStatus = checkStatus(LightOffIconImg,lights.lightIcon);
+        if (checkStatus(LightOnIconImg,lights.lightIcon)) {
+            System.out.println(onStatus);
+            return lightONStatus;
+        }
+        else {
+            System.out.println(offStatus);
+            return lightOffStatus;
+        }
+    }
+
+    @Test
+    public void LightTest () throws Exception {
         // navigate to lights page and initialize variables
         LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
-        File light_on = new File(projectPath + "/scr/light_on");
-        File light_off = new File(projectPath + "/scr/light_off");
+        File LightOnIconImg = new File(projectPath + "/scr/LightOnIconImg");
+        File LightOffIconImg = new File(projectPath + "/scr/LightOffIconImg");
         swipeLeft();
-        List<WebElement> li = driver.findElements(By.id("com.qolsys:id/lightSelect"));
+        List<WebElement> li =  driver.findElements(By.id("com.qolsys:id/lightSelect"));
         List<WebElement> status = driver.findElements(By.id("com.qolsys:id/statusButton"));
-
-        //File screenshot = driver.getScreenshotAs(OutputType.FILE);
-        //File screenshotLocation = new File(projectPath+"/scr/test");
-        //FileUtils.copyFile(screenshot, screenshotLocation);
-        //return;
-
-        // check if light can be selected
-        li.get(0).click();
-        if (!checkAttribute(li.get(0), "checked", "true"))
-            return;
-
-        // check if light can be turned on
-        lights.On_Button.click();
-        Thread.sleep(6000);
-        if (!checkAttribute(li.get(0), "checked", "false"))
-            return;
-
-        // check if light icon turns yellow
-        if (!checkStatus(light_on, status.get(0)))
-            return;
-
-        //test dimmer functionality
-        Point DimLocation = lights.Dimmer.getLocation();
-        int DimWidth = lights.Dimmer.getSize().getWidth();
-        int startx = DimLocation.getX();
-        int starty = DimLocation.getY();
-        int endx = startx + DimWidth - 10;
-
-        touchSwipe(endx, starty, startx, starty);
-        if (!checkStatus(light_off, status.get(0)))
-            return;
-
-        li.get(0).click();
-        lights.On_Button.click();
-
-        // ensure light can be selected
-        li.get(0).click();
-        if (!checkAttribute(li.get(0), "checked", "true"))
-            return;
-
-        // check if light is deselected upon turn-off
-        lights.Off_Button.click();
-        Thread.sleep(10000);
-        if (!checkAttribute(li.get(0), "checked", "false")) {
-            return;
+        for (int i = 0; i <= 1; i++) {
+            if (checkStatus(LightOffIconImg, status.get(0)))
+                lights.lightIcon.click();
+            if (checkStatus(LightOnIconImg, status.get(0)))
+                lights.lightIcon.click();
         }
-
-        // check if light icon turns grey
-        if (!checkStatus(light_off, status.get(0)))
-            return;
-
-        // repeat above process but for multiple lights
-        clickAll(li);
-
-        lights.On_Button.click();
-        Thread.sleep(10000);
-
-        //check that they're deselected
-        if (!checkAttribute(li.get(0), "checked", "false"))
-            return;
-
-        if (!checkAttribute(li.get(1), "checked", "false"))
-            return;
-
-        if (!checkAttribute(li.get(2), "checked", "false"))
-            return;
-
-        // check that lights turn yellow
-        checkAllStatus(light_on, status);
-
-        clickAll(li);
-        lights.Off_Button.click();
-        Thread.sleep(10000);
-
-        //check that they're deselected
-        if (!checkAttribute(li.get(0), "checked", "false"))
-            return;
-
-        if (!checkAttribute(li.get(1), "checked", "false"))
-            return;
-
-        if (!checkAttribute(li.get(2), "checked", "false"))
-            return;
-
-        // check that lights turn grey
-        checkAllStatus(light_off, status);
-
-        //check that the lights can be turned on/off by clicking on their status buttons
-        clickAll(status);
-        Thread.sleep(10000);
-        checkAllStatus(light_on, status);
-        clickAll(status);
-        Thread.sleep(10000);
-        checkAllStatus(light_off, status);
-
-        Thread.sleep(6000);
     }
+//
+//    @Test(priority = 1)
+//    public void Test_Lights_Page() throws Exception {
+//        // navigate to lights page and initialize variables
+//        LightsPage lights = PageFactory.initElements(driver, LightsPage.class);
+//        File light_on = new File(projectPath + "/scr/light_on");
+//        File light_off = new File(projectPath + "/scr/light_off");
+//        swipeLeft();
+//        List<WebElement> li = driver.findElements(By.id("com.qolsys:id/lightSelect"));
+//        List<WebElement> status = driver.findElements(By.id("com.qolsys:id/statusButton"));
+//
+//        File screenshot = driver.getScreenshotAs(OutputType.FILE);
+//        File screenshotLocation = new File(projectPath+"/scr/test");
+//        FileUtils.copyFile(screenshot, screenshotLocation);
+//
+//
+//        // check if light can be selected
+//        li.get(0).click();
+//        if (!checkAttribute(li.get(0), "checked", "true"))
+//            return;
+//
+//        // check if light can be turned on
+//        lights.allOnBtn.click();
+//        Thread.sleep(6000);
+//        if (!checkAttribute(li.get(0), "checked", "false"))
+//            return;
+//
+//        // check if light icon turns yellow
+//        if (!checkStatus(light_on, status.get(0)))
+//            return;
+//
+//        //test dimmer functionality
+//        Point DimLocation = lights.Dimmer.getLocation();
+//        int DimWidth = lights.Dimmer.getSize().getWidth();
+//        int startx = DimLocation.getX();
+//        int starty = DimLocation.getY();
+//        int endx = startx + DimWidth - 10;
+//
+//        touchSwipe(endx, starty, startx, starty);
+//        if (!checkStatus(light_off, status.get(0)))
+//            return;
+//
+//        li.get(0).click();
+//        lights.allOnBtn.click();
+//
+//        // ensure light can be selected
+//        li.get(0).click();
+//        if (!checkAttribute(li.get(0), "checked", "true"))
+//            return;
+//
+//        // check if light is deselected upon turn-off
+//        lights.allOffBtn.click();
+//        Thread.sleep(10000);
+//        if (!checkAttribute(li.get(0), "checked", "false")) {
+//            return;
+//        }
+//
+//        // check if light icon turns grey
+//        if (!checkStatus(light_off, status.get(0)))
+//            lights.lightIcon.click();
+//            return;
+//
+//        // repeat above process but for multiple lights
+////        clickAll(li);
+//
+//        lights.allOnBtn.click();
+//        Thread.sleep(10000);
+//
+//        //check that they're deselected
+//        if (!checkAttribute(li.get(0), "checked", "false"))
+//            return;
+//
+//        if (!checkAttribute(li.get(1), "checked", "false"))
+//            return;
+//
+//        if (!checkAttribute(li.get(2), "checked", "false"))
+//            return;
+//
+//        // check that lights turn yellow
+//        checkAllStatus(light_on, status);
+//
+//        clickAll(li);
+//        lights.allOffBtn.click();
+//        Thread.sleep(10000);
+//
+//        //check that they're deselected
+//        if (!checkAttribute(li.get(0), "checked", "false"))
+//            return;
+//
+//        if (!checkAttribute(li.get(1), "checked", "false"))
+//            return;
+//
+//        if (!checkAttribute(li.get(2), "checked", "false"))
+//            return;
+//
+//        // check that lights turn grey
+//        checkAllStatus(light_off, status);
+//
+//        //check that the lights can be turned on/off by clicking on their status buttons
+//        clickAll(status);
+//        Thread.sleep(10000);
+//        checkAllStatus(light_on, status);
+//        clickAll(status);
+//        Thread.sleep(10000);
+//        checkAllStatus(light_off, status);
+//
+//        Thread.sleep(6000);
+//    }
+
+    @Test
+    public void dmLightsTest(){
+        //light is paired with custom name
+
+        //*05,11
+        System.out.println("verifying cutome name is displayed correctly ");
+        System.out.println("Turning light on and off");
+        System.out.println("light status is ");
+
+    }
+
+    @Test
+    public void disarmLightParing(){
+
+    }
+    public void preTestSetup(){
+        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+        //remove all zwave devices
+        //change all zwave settings to default
+    }
+    public void disArmParingDeviceTest(){
+        //Pair 2 regular light switches locally(use stock name "light" and "Bedroom Light")
+        //pair 1 smart light switch with power metering with custom name (light and node id) if real devices have a device connected to start getting power consumption
+        //pair 1 light switch from ADC (name custom "Qolsys light with node ID")
+        //Pair 1 dimmer switch from ADC (name custom "dimmer with node id")
+        //pair 1 smart light switch with power metering locally and expect max number failure
+        //change max number setting with setters service call
+        //pair other 3 lock with custom name with node id
+        //verify all name are correct on the panel
+        //verify all names are correct on ADC Dealer
+    }
+    public void disArmNameChangeTest(){}
+    public void disArmActionTest(){}
+    public void disArmRulesTest(){}
+    public void armStayActionTest(){}
+    public void armStayRulesTest(){}
+    public void armAwayRulesTest(){}
+    public void armAwayActionTest(){}
+
+
+
 
     public void Z_Wave_Lights_Disarm_Mode(String UDID_) throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
@@ -166,8 +301,8 @@ public class LightsTest extends Setup {
         logger.info("************************ZLS_DDD_002********************************");
         logger.info("Disarm mode: Verify that a new Light appears on the ADC websites");
 
-        logger.info("*****************************ZLS_DDD_005***************************");
-        logger.info("Disarm mode: Verify that you can edit a device name (panel)");
+//        logger.info("*****************************ZLS_DDD_005***************************");
+//        logger.info("Disarm mode: Verify that you can edit a device name (panel)");
 
         logger.info("**************************ZLS_DDD_006******************************");
         logger.info("Disarm mode: Verify that you can edit a device name (ADC");
@@ -431,6 +566,7 @@ public class LightsTest extends Setup {
         logger.info("Arm Away: Verify that  a Light can be deleted from the ADC website");
 
     }
+
 
     public void Z_Wave_Lights_Scedules(String UDID_) throws Exception {
 

@@ -61,7 +61,7 @@ public class SanityPGSensors extends Setup {
         report = new ExtentReports(projectPath + "/Report/PGSanityReport.html", false);
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Olga Kulik")
+                .addSystemInfo("User Name", "Sergio Bustos")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("PGSensors.SmokeSensor");
 

@@ -159,6 +159,7 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate heat sensors");
             sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
             Thread.sleep(1000);
+
             enterDefaultUserCode();
             Thread.sleep(1000);
 

@@ -48,7 +48,7 @@ public class ImageSensorScratch extends Setup {
         Thread.sleep(three_sec);*/
 
         adc.New_ADC_session(adc.getAccountId());
-        adc.get_image_sensors();
+        adc.getImageSensors();
     }
 
     @AfterTest

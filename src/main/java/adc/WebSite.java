@@ -9,12 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.ConfigProps;
 import utils.Log;
 import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import static utils.ConfigProps.primary;
 
 public class WebSite extends Setup {
 
@@ -28,14 +31,16 @@ public class WebSite extends Setup {
     String restore = "00";
     String tamper = "01";
 
-    public WebSite() throws Exception {}
+    public WebSite() throws Exception {
+        ConfigProps.init();
+    }
 
     @BeforeMethod
     public void capabilitiesSetup() throws Exception {
-        PropertyConfigurator.configure(new File(appDir, "log4j.properties").getAbsolutePath());
-        log.clearLog();
-        log.startTestCase("adc sensors name change");
-        setupDriver(get_UDID(),"http://127.0.1.1", "4723");
+//        PropertyConfigurator.configure(new File(appDir, "log4j.properties").getAbsolutePath());
+//        log.clearLog();
+//        log.startTestCase("adc sensors name change");
+        setupDriver(primary,"http://127.0.1.1", "4723");
         myADC.webDriverSetUp();
     }
 

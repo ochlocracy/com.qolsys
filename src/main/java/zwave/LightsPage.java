@@ -4,20 +4,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LightsPage {
+
+    //******* Panel Elements********
     @FindBy(id = "com.qolsys:id/allOn")
-    public WebElement On_Button;
+    public WebElement allOnBtn;
     @FindBy(id = "com.qolsys:id/allOff")
-    public WebElement Off_Button;
+    public WebElement allOffBtn;
     @FindBy(id = "com.qolsys:id/lightSelect")
-    public WebElement Light_Select;
+    public WebElement lightSelectionBox;
     @FindBy(id = "com.qolsys:id/statusButton")
-    public WebElement Light_Icon;
+    public WebElement lightIcon;
     @FindBy(id = "com.qolsys:id/getStatusButton")
-    public WebElement Get_Status_Button;
-    @FindBy(id = "com.qolsys:id/uiName")
-    public WebElement UI_Name;
+    public WebElement getStatusButton;
     @FindBy(id = "com.qolsys:id/dimmer_seek_bar")
-    public WebElement Dimmer;
+    public WebElement dimmerBar;
     @FindBy(id = "com.qolsys:id/selectallbtn")
-    public WebElement Select_All;
+    public WebElement selectAllLigtsBtn;
+
+
+    //******ADC User Site Elements*********
+
+
+
+
 }

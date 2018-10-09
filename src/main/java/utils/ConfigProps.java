@@ -10,6 +10,7 @@ public class ConfigProps extends ConfigPropsBase {
     public static String url;
     public static String login;
     public static String password;
+    public static String srgTransmitter;
     public static int normalExitDelay;
     public static int normalEntryDelay;
     public static int longExitDelay;
@@ -18,7 +19,7 @@ public class ConfigProps extends ConfigPropsBase {
 
     private ConfigProps() throws Exception {
         super("config.properties");
-
+        srgTransmitter =getString("srgTransmitter");
         adbPath = getString("adb.path");
         appiumPath = getString("appium.path");
         nodePath = getString("node.path");

@@ -501,13 +501,29 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 41 i32 0 i32 0 i32 62 s16 " + BCBC +" i32 0 i32 0";
         rt.exec(command);}
 
-    public void get_ZWAVE_ON_OFF() throws IOException, InterruptedException {
+    public String getZwaveOnOff() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 71 i32 0 i32 0";
-        rt.exec(command);}
+        rt.exec(command);
+        return command;
+    }
 
-    public void set_ZWAVE_ON_OFF(int value) throws IOException, InterruptedException {
+    public void setZwaveOnOff(int value) throws IOException, InterruptedException {// 0 is for off and 1 is for on
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 71 i32 "+value+" i32 0 i32 0";
         rt.exec(command);}
+
+
+
+    public void getZwaveOnOff(String panelID) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s "+panelID  +" shell service call qservice 37 i32 0 i32 0 i32 71 i32 0 i32 0";
+        rt.exec(command);
+
+    }
+
+    public void setZwaveOnOff(String panelID,int value) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s " + panelID  + " shell service call qservice 40 i32 0 i32 0 i32 71 i32 "+value+" i32 0 i32 0";
+        rt.exec(command);}
+
+
 
     public void get_POWER_MANAGEMENT_ON_OFF() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 37 i32 0 i32 0 i32 73 i32 0 i32 0";
@@ -529,36 +545,70 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 84 i32 " + state + " i32 0 i32 0";
         rt.exec(command);}
 
-    public void get_DEVICE_LIMIT_SMART_SOCKET() throws IOException, InterruptedException {
+    public void getDeviceLimitSmartSocket() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 85 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_DEVICE_LIMIT_SMART_SOCKET(int LIMIT) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 85 i32 10 " + LIMIT + " i32 0 i32 0";
+    public void setDeviceLimitSmartSocket(int limit) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 85 i32 10 " + limit + " i32 0 i32 0";
+        rt.exec(command);}
+    public void setDeviceLimitSmartSocketWithTrans(int limit,String transmitterId) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s " + transmitterId + " shell service call qservice 39 i32 0 i32 0 i32 85 i32 " + limit + " i32 0 i32 0";
         rt.exec(command);}
 
-    public void get_DEVICE_LIMIT_THERMOSTAT() throws IOException, InterruptedException {
+    public void getDeviceLimitThermostat() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 86 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_DEVICE_LIMIT_THERMOSTAT(int LIMIT) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 86 i32 5 " + LIMIT + " i32 0 i32 0";
+    public void setDeviceLimitThermostat(int limit) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 86 i32 " + limit + " i32 0 i32 0";
+        rt.exec(command);}
+    public void setDeviceLimitThermostatWithTrans(int limit, String transmitterId) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s " + transmitterId + " shell service call qservice 39 i32 0 i32 0 i32 86 i32 " + limit + " i32 0 i32 0";
         rt.exec(command);}
 
-    public void get_DEVICE_LIMIT_DOORLOCK() throws IOException, InterruptedException {
+    public void getDeviceLimitDoorLock() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 87 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_DEVICE_LIMIT_DOORLOCK(int LIMIT) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 87 i32 4 " + LIMIT + " i32 0 i32 0";
+    public void setDeviceLimitDoorLock(int limit) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 87 i32 " + limit + " i32 0 i32 0";
         rt.exec(command);}
 
-    public void get_DEVICE_LIMIT_DIMMER() throws IOException, InterruptedException {
+
+    public void setDeviceLimitDoorLockWithTrans(int limit, String transmitterId) throws Exception {
+        String command = ConfigProps.adbPath + " -s " + transmitterId + " shell service call qservice 39 i32 0 i32 0 i32 87 i32 " + limit + " i32 0 i32 0";
+        rt.exec(command);
+        logger.info(command);
+    }
+    public void getDeviceLimitDoorLockWithTrans(String transmitterId) throws Exception {
+        String command = ConfigProps.adbPath + " -s " + transmitterId + " shell service call qservice 36 i32 0 i32 0 i32 87 i32 0 i32 0";
+        rt.exec(command);
+        logger.info(command);
+    }
+
+    public void getDeviceLimitLights() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 88 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_DEVICE_LIMIT_DIMMER(int LIMIT) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 88 i32 4 " + LIMIT + " i32 0 i32 0";
+    public void setDeviceLimitLights(int limit) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath +  " shell service call qservice 39 i32 0 i32 0 i32 88 i32 4 " + limit + " i32 0 i32 0";
+        rt.exec(command);}
+
+    public void setDeviceLimitLightsWithTrans(int limit, String transmitterId) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s " + transmitterId +" shell service call qservice 39 i32 0 i32 0 i32 88 i32 " + limit + " i32 0 i32 0";
+        rt.exec(command);}
+
+    public void getDeviceLimitGarageDoor() throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 145 i32 0 i32 0";
+        rt.exec(command);}
+
+    public void setDeviceLimitGarageDoor(int limit) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 145 i32 4 " + limit + " i32 0 i32 0";
+        rt.exec(command);}
+
+    public void setDeviceLimitGarageDoorWithTrans(int limit, String transmitterId) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath +" -s " + transmitterId + " shell service call qservice 39 i32 0 i32 0 i32 145 i32 " + limit + " i32 0 i32 0";
         rt.exec(command);}
 
     public void get_AUTO_UPLOAD_LOGS() throws IOException, InterruptedException {
@@ -611,12 +661,16 @@ public class PanelInfo_ServiceCalls extends Setup {
         String command = ConfigProps.adbPath + " shell service call qservice 41 i32 0 i32 0 i32 126 s16 " + userName + " i32 " + userID + " i32 0";
         rt.exec(command);}
 
-    public void get_DEVICE_LIMIT_OTHERDEVICES () throws IOException, InterruptedException {
+    public void getDeviceLimitOtherDevices() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 125 i32 0 i32 0";
         rt.exec(command);}
 
-    public void set_DEVICE_LIMIT_OTHERDEVICES( int LIMIT) throws IOException, InterruptedException {
-        String command = ConfigProps.adbPath + " shell service call qservice 39 i32 0 i32 0 i32 125 i32 " + LIMIT + " i32 0 i32 0";
+    public void setDeviceLimitOtherDevices(int LIMIT) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath +  " shell service call qservice 39 i32 0 i32 0 i32 125 i32 " + LIMIT + " i32 0 i32 0";
+        rt.exec(command);}
+
+    public void setDeviceLimitOtherDevicesWithTrans(int limit, String transmitterId) throws IOException, InterruptedException {
+        String command = ConfigProps.adbPath + " -s " + transmitterId +" shell service call qservice 39 i32 0 i32 0 i32 125 i32 " + limit + " i32 0 i32 0";
         rt.exec(command);}
 
     public void get_POLICE_PANIC () throws IOException, InterruptedException {

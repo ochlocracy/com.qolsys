@@ -33,6 +33,7 @@ public class LogTest extends Setup {
         DISARM();
     }
 
+
     @Test
     public void  Test2 () throws IOException, BiffException {
         Workbook wb = Workbook.getWorkbook(new File("/home/qolsys/Desktop/config.xls"));

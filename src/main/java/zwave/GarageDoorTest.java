@@ -12,6 +12,28 @@ public class GarageDoorTest extends Setup {
     public GarageDoorTest() throws Exception {
     }
 
+    public void preTestSetup(){
+        //Add 3 door window sensor and call it Front Door, back door, bathroom window
+        //remove all devices
+        //change all zwave settings to default
+    }
+    public void disArmParingDeviceTest(){
+        //Pair 2 light switches locally( name it stock "Front Door" and "Back Door")
+        //pair 1 door lock from ADC( name custom name "Door Lock with node ID")
+        //pair 1 door lock locally and expect max number failure
+        //change max number setting with setters service call
+        //pair other 3 lock with custom name with node id
+        //verify all name are correct on the panel
+        //verify all names are correct on ADC Dealer
+    }
+    public void disArmNameChangeTest(){}
+    public void disArmActionTest(){}
+    public void disArmRulesTest(){}
+    public void armStayActionTest(){}
+    public void armStayRulesTest(){}
+    public void armAwayRulesTest(){}
+    public void armAwayActionTest(){}
+
     public void Z_Wave_Garage_Door_Disarm_Mode(String UDID_) throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
