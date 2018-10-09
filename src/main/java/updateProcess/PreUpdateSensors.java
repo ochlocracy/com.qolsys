@@ -9,6 +9,7 @@ import panel.ContactUs;
 import panel.EmergencyPage;
 import sensors.Sensors;
 import utils.ConfigProps;
+import utils.ExtentReport;
 import utils.SensorsActivity;
 import utils.Setup;
 
@@ -19,6 +20,8 @@ public class PreUpdateSensors extends Setup {
     String page_name = "Add sensors + sensors activity";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
+    ExtentReport rep = new ExtentReport("PG_Sensors_Sanity");
+
 
     public PreUpdateSensors() throws Exception {
         ConfigProps.init();
@@ -27,10 +30,10 @@ public class PreUpdateSensors extends Setup {
 
     @BeforeTest
     public void setup() throws Exception {
-        setupDriver("2c63bc4a", "http://127.0.1.1", "4723");
+        setupDriver("623cf0f1", "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
-
+    @Test
     public void addSensors() throws IOException, InterruptedException {
         logger.info("Adding a list of sensors");
         addPrimaryCall(3, 10, 6619296, 1); // 65 00 A0
@@ -80,10 +83,9 @@ public class PreUpdateSensors extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(dependsOnMethods = {"addSensors"})
+    @Test//(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
-        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         for (int i = 1; i > 0; i--) {
 

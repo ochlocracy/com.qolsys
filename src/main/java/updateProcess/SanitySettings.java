@@ -640,16 +640,20 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(1000);
         navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
+        settings.Two.click();
+        settings.Two.click();
+        settings.Two.click();
+        settings.Two.click();
         Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
         logger.info("Verify Dealer name changed");
@@ -692,6 +696,10 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("2222");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/ok")).click();
@@ -899,16 +907,15 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        settings.Back_button.click();
         Thread.sleep(1000);
-        navigateToSettingsPage();
-        settings.ADVANCED_SETTINGS.click();
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
+        settings.Back_button.click();
         Thread.sleep(2000);
         adv.USER_MANAGEMENT.click();
         System.out.println("Verify Installer name changed");
@@ -952,6 +959,10 @@ public class SanitySettings extends Setup {
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("1111");
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
         settings.Home_button.click();

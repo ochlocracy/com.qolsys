@@ -20,6 +20,7 @@ import utils.Setup;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class SanityUpdate extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
@@ -187,7 +188,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Alarm Videos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Alarm Photos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", OFF);
+        verifySetting("Alarm Photos", "37 i32 0 i32 0 i32 109 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("settings Photos", "37 i32 0 i32 0 i32 143 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
@@ -272,7 +273,8 @@ public class SanityUpdate extends Setup {
     }
 
     @Test(priority = 1)
-    public void sensorsCheck() throws Exception {
+    public void sensorsCheck() throws Exception, IOException {
+
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("UpdateProcess.Sensors");
 
@@ -315,7 +317,13 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate smoke sensor");
         sensors.primaryCall("67 00 22", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        try {
+//            if (home.pinpad.isDisplayed()) ;
+//            {
+//                enterDefaultUserCode();
+//            }
+//        }catch(NoSuchElementException e){}
+
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: smoke sensor behavior is as expected");
 
@@ -368,7 +376,7 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate heat sensor");
         sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: heat sensor behavior is as expected");
 
@@ -376,7 +384,7 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate water sensor");
         sensors.primaryCall("75 11 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: water sensor behavior is as expected");
 

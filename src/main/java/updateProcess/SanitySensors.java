@@ -58,8 +58,8 @@ public class SanitySensors extends Setup {
         }
     }
 
-    @BeforeClass
-    public void setUp() throws Exception {
+    @BeforeMethod
+    public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
         Thread.sleep(1000);
