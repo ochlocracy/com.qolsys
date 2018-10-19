@@ -80,7 +80,7 @@ public class  DoorLockTest extends Setup {
 
 // Add method to change transmitter or real devices
 
-    
+
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
