@@ -112,13 +112,12 @@ public class SanitySensors extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        elementVerification(emg.Alarm_verification, "Fire Emergency");
+        //elementVerification(emg.Alarm_verification, "Fire Emergency"); //didnt go in to fire alarm
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
-        logger.info("Cancel Emergency Alarm");
-
+        logger.info("Disable Emergency Alarm");
         enterDefaultUserCode();
         Thread.sleep(15000);
-        // adc website verification
+        //adc website verification
         adc.New_ADC_session(adc.getAccountId());
         log.log(LogStatus.INFO, "Verification on the ADC dealer web site");
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();

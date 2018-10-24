@@ -66,7 +66,7 @@ public class ADC extends Setup {
     private int occupancy = 114;
     public String pageName;
     private String empowerURL = "https://alarmadmin.alarm.com/Support/DeviceAutomation.aspx";
-    org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(pageName);
+//    org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(pageName);
 
 
 

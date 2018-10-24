@@ -9,6 +9,8 @@ public class InstallationPage {
     public WebElement DEVICES;
     @FindBy(xpath = "//android.widget.TextView[@text='Dealer Settings']")
     public WebElement DEALER_SETTINGS;
+    @FindBy(xpath = "//android.widget.TextView[@text='Installer Settings']")
+    public WebElement INSTALLER_SETTINGS;
     @FindBy(xpath = "//android.widget.TextView[@text='System Logs']")
     public WebElement SYSTEM_LOGS;
     @FindBy(xpath = "//android.widget.TextView[@text='Siren and Alarms']")

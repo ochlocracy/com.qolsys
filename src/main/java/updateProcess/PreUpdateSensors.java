@@ -20,8 +20,7 @@ public class PreUpdateSensors extends Setup {
     String page_name = "Add sensors + sensors activity";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
-    ExtentReport rep = new ExtentReport("PG_Sensors_Sanity");
-
+    ExtentReport rep = new ExtentReport("SRF_Sensors_Sanity");
 
     public PreUpdateSensors() throws Exception {
         ConfigProps.init();
@@ -30,9 +29,10 @@ public class PreUpdateSensors extends Setup {
 
     @BeforeTest
     public void setup() throws Exception {
-        setupDriver("623cf0f1", "http://127.0.1.1", "4723");
+        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
+
     @Test
     public void addSensors() throws IOException, InterruptedException {
         logger.info("Adding a list of sensors");

@@ -83,7 +83,7 @@ public class KeyfobInstantArmingTest extends Setup {
         Thread.sleep(1000);
         try {
             if (home.ARM_STAY_text.isDisplayed())
-            rep.log.log(LogStatus.FAIL, ("Failed: System is ARMED STAY without delay"));
+                rep.log.log(LogStatus.FAIL, ("Failed: System is ARMED STAY without delay"));
         } catch (Exception e) {
             rep.log.log(LogStatus.PASS, ("Pass: System is NOT ARMED STAY yet"));
         }

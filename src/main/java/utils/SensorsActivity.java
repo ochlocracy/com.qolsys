@@ -10,8 +10,6 @@ public class SensorsActivity extends ConfigPropsBase {
     public static String KAWAY;
     public static String KSTAY;
     public static String KDISARM;
-    public static String DWTamper;
-    public static String DWRestore;
     private static SensorsActivity instance;
 
     private SensorsActivity() throws Exception {
@@ -24,8 +22,6 @@ public class SensorsActivity extends ConfigPropsBase {
         KAWAY = getString("keyfobAway");
         KSTAY = getString("keyfobStay");
         KDISARM = getString("keyfobDisarm");
-        DWTamper = getString ("tamperDWSensor");
-        DWRestore = getString ("restoreDWSensor");
     }
 
     public static void init() throws Exception {

@@ -39,6 +39,8 @@ public class SettingsPage {
     public WebElement Four;
     @FindBy(id = "com.qolsys:id/tv_keyFive")
     public WebElement Five;
+    @FindBy(id = "com.qolsys:id/tv_zero")
+    public WebElement Zero;
     @FindBy(id = "com.qolsys:id/tv_clear")
     public WebElement Clear;
     @FindBy(id = "com.qolsys:id/TV12")

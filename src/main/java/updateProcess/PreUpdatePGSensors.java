@@ -26,9 +26,9 @@ public class PreUpdatePGSensors extends Setup {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
     }
+
     @BeforeMethod
     public void webdriver(){
-
     }
 
     @Test
@@ -95,7 +95,6 @@ public class PreUpdatePGSensors extends Setup {
     @Test//(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
-        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
 
             logger.info("Activate Contact sensors");
@@ -125,34 +124,30 @@ public class PreUpdatePGSensors extends Setup {
             logger.info("Activate smoke sensors");
             activation_restoration(201, 1541, PGSensorsActivity.SMOKEM, PGSensorsActivity.SMOKEMREST);
             Thread.sleep(3000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(200, 1531, PGSensorsActivity.SMOKE, PGSensorsActivity.SMOKEREST);//smoke - not works for real sensor at 01/17/1
             Thread.sleep(1000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(200, 1531, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
             Thread.sleep(1000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(201, 1541, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
             Thread.sleep(1000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate CO sensors");
             activation_restoration(220, 1661, PGSensorsActivity.CO, PGSensorsActivity.COREST);
             Thread.sleep(1000);
-//            //emergency.Cancel_Emergency.click();
+
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(220, 1661, PGSensorsActivity.GAS, PGSensorsActivity.GASREST);//smoke - not works for real sensor at 01/17/1
             Thread.sleep(1000);
-//            //emergency.Cancel_Emergency.click();
+
             enterDefaultUserCode();
             Thread.sleep(1000);
 
@@ -188,46 +183,38 @@ public class PreUpdatePGSensors extends Setup {
             logger.info("Activate Key-fob sensors");
             activation_restoration(300, 1004, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(305, 1009, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(306, 1003, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate Keypad sensors");
             activation_restoration(371, 1005, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr0
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(371, 1006, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(371, 1008, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr2
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate Aux pendant");
             activation_restoration(320, 1015, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr6
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(320, 1016, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr4
             Thread.sleep(2000);
-//            emergency.Cancel_Emergency.click();
             enterDefaultUserCode();
             Thread.sleep(1000);
             activation_restoration(320, 1018, PGSensorsActivity.AUXPANIC, PGSensorsActivity.AUXPANICREST);//gr25

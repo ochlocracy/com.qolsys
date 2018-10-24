@@ -18,20 +18,11 @@ public class PartitionSensorTest extends Setup {
     ExtentReport rep = new ExtentReport("Partitions_SensorTest");
     Sensors sensors = new Sensors();
     PanelInfo_ServiceCalls serv = new PanelInfo_ServiceCalls();
-
+    String open = "01 00";
 
     public PartitionSensorTest() throws Exception {
         ConfigProps.init();
         PGSensorsActivity.init();
-    }
-
-    public void Open(String DLID) throws InterruptedException, IOException {
-        sensors.primaryCall(DLID, SensorsActivity.OPEN);
-        Thread.sleep(500);
-    }
-    public void Close(String DLID) throws InterruptedException, IOException {
-        sensors.primaryCall(DLID,SensorsActivity.DWRestore);
-        Thread.sleep(500);
     }
 
     @BeforeMethod
@@ -59,8 +50,9 @@ public class PartitionSensorTest extends Setup {
 
         ARM_STAY();
         Thread.sleep(2000);
-        sensors.primaryCall("65 00 1A", "01 00");
+        sensors.primaryCall("65 00 1A", open); //does local variable work?
         Thread.sleep(5000);
+        home.DISARM.click();
         enterDefaultUserCode();
         sensors.primaryCall("65 00 1A", "04 00");
 
@@ -68,9 +60,9 @@ public class PartitionSensorTest extends Setup {
         home.DISARM.click();
         home.ARM_AWAY.click();
         Thread.sleep(14000);
-        sensors.primaryCall("65 00 1A", "01 00");
+        sensors.primaryCall("65 00 1A", open);
         Thread.sleep(2000);
-        enterDefaultUserCode();
+        enterDefaultUserCode(); //rfinjector 02 65 00 1A 06 00 works, but the open should trigger an alarm state.
         sensors.primaryCall("65 00 1A", "04 00");
         Thread.sleep(4000);
         swipeVertical();
