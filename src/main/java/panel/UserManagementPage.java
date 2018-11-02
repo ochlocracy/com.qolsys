@@ -70,6 +70,7 @@ public class UserManagementPage {
     public WebElement User_Management_Delete_User_Ok;
     @FindBy(id = "com.qolsys:id/Save")
     public WebElement User_Management_Save;
-
+    @FindBy(id = "com.qolsys:id/ft_home_button")
+    public WebElement Home_Button;
 
 }

@@ -120,6 +120,8 @@ public class PreUpdateSensors extends Setup {
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("67 00 22", SensorsActivity.RESTORE);
+
 
             logger.info("Activate CO sensors");
             sensors.primaryCall("75 00 AA", SensorsActivity.ACTIVATE);
@@ -132,7 +134,7 @@ public class PreUpdateSensors extends Setup {
             sensors.primaryCall("67 00 99", SensorsActivity.RESTORE);
             Thread.sleep(1000);
             sensors.primaryCall("67 00 39", SensorsActivity.ACTIVATE);
-            sensors.primaryCall("67 00 39", SensorsActivity.RESTORE);
+            sensors.primaryCall("67 00 39", SensorsActivity.RESTORE);  //NOT
             Thread.sleep(1000);
 
             logger.info("Open/close tilt sensors");
@@ -143,7 +145,7 @@ public class PreUpdateSensors extends Setup {
 
             logger.info("Activate IQShock sensors");
             sensors.primaryCall("66 00 C9", SensorsActivity.ACTIVATE);
-            sensors.primaryCall("66 00 C9", SensorsActivity.RESTORE);
+            sensors.primaryCall("66 00 C9", SensorsActivity.RESTORE); //NOT working
             Thread.sleep(1000);
             sensors.primaryCall("66 00 D9", SensorsActivity.ACTIVATE);
             sensors.primaryCall("66 00 D9", SensorsActivity.RESTORE);
@@ -159,37 +161,47 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate heat sensors");
             sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
             Thread.sleep(1000);
-
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("75 00 26", SensorsActivity.RESTORE);
+
 
             logger.info("Activate water sensors");
             sensors.primaryCall("75 11 0A", SensorsActivity.OPEN);
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("75 11 0A", SensorsActivity.RESTORE);
+
 
             logger.info("Activate keyfob sensors");
             sensors.primaryCall("65 00 AF", SensorsActivity.OPEN);
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("65 00 AF", SensorsActivity.RESTORE);
+
 
             sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("65 00 BF", SensorsActivity.RESTORE);
+
 
             sensors.primaryCall("65 00 CF", SensorsActivity.OPEN);
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("65 00 CF", SensorsActivity.RESTORE);
 
             logger.info("Activate keypad sensors");
             sensors.primaryCall("85 00 AF", SensorsActivity.OPEN);
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("85 00 AF", SensorsActivity.RESTORE);
+
 
             sensors.primaryCall("85 00 BF", "04 04");
             Thread.sleep(2000);
@@ -207,6 +219,8 @@ public class PreUpdateSensors extends Setup {
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            sensors.primaryCall("61 12 23", "04 01");
+
 
             logger.info("Activate doorbell sensors");
             open_close("61 BD AA");
@@ -217,6 +231,7 @@ public class PreUpdateSensors extends Setup {
             Thread.sleep(1000);
 
             System.out.println(i);
+
         }
     }
 

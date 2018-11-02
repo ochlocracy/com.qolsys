@@ -36,6 +36,6 @@ public class PanelCameraPage {
     public WebElement Alarm_Video_img;
     @FindBy(id = "com.qolsys:id/tv_no_photos")
     public WebElement No_Alarm_Photos_to_display;
-    @FindBy(xpath = "//android.widget.TextView[@text='DURESS DISARM']")
-    public WebElement Duress_Disarm_Photo;
+    @FindBy(xpath = "//android.widget.TextView[@text='DISARMED BY NEWDURESS']") //they changed the name for duress disarm to ADMIN. if you change the title to anything else,
+    public WebElement Duress_Disarm_Photo; //then that name is posted. Since the test changes it to NewDuress. That will be the text
 }

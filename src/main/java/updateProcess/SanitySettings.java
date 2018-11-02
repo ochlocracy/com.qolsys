@@ -60,12 +60,17 @@ public class SanitySettings extends Setup {
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is taken when setting in enabled...");
         //serv.set_ALARM_VIDEOS(00); alarm videos are the same service call as alarm photos
+        serv.set_SECURE_ARMING_disable();
+        serv.set_AUXILIARY_PANIC(1);
+        serv.set_POLICE_PANIC(1);
+        serv.set_FIRE_PANIC(1);
+        serv.set_SECURE_DELETE_IMAGES(1);
+        serv.set_ALARM_PHOTOS(1);
         deleteAllCameraPhotos();
         Thread.sleep(1000);
-        home.Emergency_Button.click();
+        home.Emergency_Button.click(); //turn fire police and auxilliary on
         emergency.Police_icon.click();
         Thread.sleep(1000);
-//        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -79,7 +84,7 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enterDefaultUserCode();
+        enterDefaultUserCode(); //secure delete
         Thread.sleep(1000);
         System.out.println("Verifying Alarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is NOT taken when setting in disabled...");
@@ -95,7 +100,6 @@ public class SanitySettings extends Setup {
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
-//        emergency.Cancel_Emergency.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -105,7 +109,7 @@ public class SanitySettings extends Setup {
                 System.out.println("Pass: Alarm photo is not displayed");
             log.log(LogStatus.PASS, "Pass: Alarm photo is not displayed");
         } catch (Exception e) {
-            log.log(LogStatus.FAIL, "Fail: Alarm photo is displayed");
+            log.log(LogStatus.FAIL, "Fail: Alarm photo is displayed"); //fails?
             System.out.println("Fail: Alarm photo is displayed");
         } finally {
         }
@@ -174,7 +178,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         try {
             if (inst.CAMERA_SETTINGS.isDisplayed())
-                System.out.println("Failed: Camera settings icon is present");
+                System.out.println("Failed: Camera settings icon is present"); //fails?
             log.log(LogStatus.FAIL, "Failed: Camera settings icon is present");
         } catch (Exception e) {
             System.out.println("Pass: Camera settings icon is NOT present");
@@ -354,6 +358,7 @@ public class SanitySettings extends Setup {
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
         swipeVertical();
+        Thread.sleep(2000);
         swipeVertical();
         arming.Arm_Stay_No_Delay.click();
         Thread.sleep(2000);
@@ -396,7 +401,7 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Adding sensors...");
-        serv.set_ARM_STAY_NO_DELAY_enable();
+        serv.set_AUTO_BYPASS(1);
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         System.out.println("Verify that Auto Bypass works when enabled");
@@ -415,7 +420,6 @@ public class SanitySettings extends Setup {
         sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
         sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
-        Thread.sleep(1000);
         verifyArmstay();
         log.log(LogStatus.PASS, "Pass: sensors bypassed, system is in Arm Stay mode");
         home.DISARM.click();
@@ -465,6 +469,8 @@ public class SanitySettings extends Setup {
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
         swipeVertical();
+        Thread.sleep(2000);
+
         swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();
@@ -515,7 +521,6 @@ public class SanitySettings extends Setup {
         } finally {
         }
         Thread.sleep(60000);
-        verifyArmaway();
         Thread.sleep(2000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
@@ -542,10 +547,17 @@ public class SanitySettings extends Setup {
         sensors.primaryCall("65 00 0A", SensorsActivity.OPEN);
         Thread.sleep(2000);
         sensors.primaryCall("65 00 0A", SensorsActivity.CLOSE);
-        Thread.sleep(10000);
-        verifyArmaway();
-        log.log(LogStatus.PASS, "Pass: system is ARMED AWAY, Auto Exit Time Extension does not work");
-        Thread.sleep(2000);
+        Thread.sleep(14000);
+        try {
+            if (home.ArwAway_State.isDisplayed())
+                System.out.println("Pass: System is ARMED AWAY");
+            log.log(LogStatus.PASS, "Pass: system is ARMED AWAY, Auto Exit Time Extension does not work");
+        } catch (Exception e) {
+            System.out.println("Fail: System is NOT ARMED AWAY");
+            log.log(LogStatus.FAIL, "Fail: System is NOT ARMED AWAY");
+        } finally {
+        }
+        Thread.sleep(13000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -668,6 +680,10 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         settings.Back_button.click();
         Thread.sleep(2000);
+        settings.Back_button.click();
+        Thread.sleep(2000);
+        settings.Back_button.click();
+        Thread.sleep(2000);
         System.out.println("Verify old Dealer code does not work");
         log.log(LogStatus.INFO, "Verify old Dealer code does not work");
         settings.ADVANCED_SETTINGS.click();
@@ -724,11 +740,13 @@ public class SanitySettings extends Setup {
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is taken when setting in enabled");
         deleteAllCameraPhotos();
+        serv.set_DISARM_PHOTO(1);
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
+        Thread.sleep(2000);
         swipeFromLefttoRight();
         camera.Disarm_photos.click();
         if (camera.Photo_lable.isDisplayed()) {
@@ -778,13 +796,11 @@ public class SanitySettings extends Setup {
     }
 
     @Test(priority = 10)
-    public void Settings_Test11 (int type, int id, String Status, String Status2, String State, String State1, int line) throws Exception, InterruptedException {
+    public void Settings_Test11() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Duress_Authentication");
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
-        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
@@ -800,10 +816,13 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Nine.click();
+        home.Eight.click();
         Thread.sleep(1000);
         swipeFromRighttoLeft();
-        if (cam.Duress_Disarm_Photo.isDisplayed()) {
+        Thread.sleep(1000);
+        cam.Disarm_photos.click();
+        Thread.sleep(1000);
+        if (cam.Duress_Disarm_Photo.isDisplayed()) { //change name to new duress and it says disarmed by newduress, keep at duress it comes up as admin.
             log.log(LogStatus.PASS, ("Pass: Duress code does work"));
         } else {
             takeScreenshot();
@@ -813,12 +832,13 @@ public class SanitySettings extends Setup {
         navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed();
-        Thread.sleep(2000);
-        settings.Back_button.click();
-        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
-        Thread.sleep(2000);
-        adv.USER_MANAGEMENT.click();
+//        driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed(); cannot see the duress name unless the code is written to go into editing it
+//        Thread.sleep(2000);
+//        settings.Back_button.click();
+//        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
+//        Thread.sleep(2000);
+//        adv.USER_MANAGEMENT.click();
+        //scroll down and then do the click edit to change it
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/editImg"));
         Thread.sleep(2000);
         li_status1.get(1).click();
@@ -828,19 +848,19 @@ public class SanitySettings extends Setup {
         user.Add_User_Name_field.sendKeys("NewDuress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
-        user.Add_User_Code_field.sendKeys("9998");
+        user.Add_User_Code_field.sendKeys("9999");
         driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
-        user.Add_Confirm_User_Code.sendKeys("9998");
-//        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        user.Add_Confirm_User_Code.sendKeys("9999");
+        Thread.sleep(2000);
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
-        Thread.sleep(1000);
-        driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(2000);
+        user.Home_Button.click();
         Thread.sleep(1000);
         home.DISARM.click();
         home.ARM_STAY.click();
@@ -849,9 +869,12 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Eight.click();
+        home.Nine.click();
         Thread.sleep(1000);
         swipeFromRighttoLeft();
+        Thread.sleep(1000);
+        cam.Disarm_photos.click();
+        Thread.sleep(1000);
         if (cam.Duress_Disarm_Photo.isDisplayed()) {
             log.log(LogStatus.PASS, ("Pass: new Duress code works"));
         } else {
@@ -867,7 +890,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
-        user.Add_User_Name_field.sendKeys("NewDuress");
+        user.Add_User_Name_field.sendKeys("Duress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
         user.Add_User_Code_field.sendKeys("9998");

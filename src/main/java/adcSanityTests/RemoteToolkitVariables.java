@@ -13,6 +13,12 @@ public class RemoteToolkitVariables {
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_phBody_UcAirFxNaviFooter1_btnBack']")
     public WebElement Remote_Back;
 
+    @FindBy(how = How.XPATH, xpath = "//*[@id='centeredmenu']/ul/li[3]/a")
+    public WebElement Sensors_Tab;
+
+    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_phBody_sensorList_butRequest']")
+    public WebElement Request_Updated_Sensors;
+
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_ucTurnOnOffTroubleBeeps_btnSendCommand']")
     public WebElement Trouble_Beeps_Send_Command;
 

@@ -57,7 +57,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_FIRE_SAFETY_DEVICE_TROUBLE_BEEPS(OFF);
         Thread.sleep(one_sec);
-        servcall.set_SECURE_DELETE_IMAGES(ON);
+        servcall.set_SECURE_DELETE_IMAGES(OFF);
         Thread.sleep(one_sec);
         servcall.set_DISARM_PHOTO(ON);
         Thread.sleep(one_sec);
@@ -67,7 +67,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_DURESS_AUTHENTICATION_disable();
         Thread.sleep(one_sec);
-        servcall.set_SECURE_ARMING_disable();
+        servcall.set_SECURE_ARMING_enable();
         Thread.sleep(one_sec);
         servcall.set_NO_ARMING_ON_LOW_BATTERY_disable();
         Thread.sleep(one_sec);
@@ -85,9 +85,9 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_NORMAL_ENTRY_DELAY(10);
         Thread.sleep(one_sec);
-        servcall.set_NORMAL_EXIT_DELAY(11);
+        servcall.set_NORMAL_EXIT_DELAY(12);
         Thread.sleep(one_sec);
-        servcall.set_LONG_ENTRY_DELAY(12);
+        servcall.set_LONG_ENTRY_DELAY(11);
         Thread.sleep(one_sec);
         servcall.set_LONG_EXIT_DELAY(13);
         Thread.sleep(one_sec);
@@ -181,7 +181,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("WiFi", "37 i32 0 i32 0 i32 32 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verifySetting("Secure Delete Images", "37 i32 0 i32 0 i32 104 i32 0 i32 0", OFF);
+        verifySetting("Secure Delete Images", "37 i32 0 i32 0 i32 104 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("Disarm Photo", "37 i32 0 i32 0 i32 102 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
@@ -193,7 +193,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Duress Authentication", "37 i32 0 i32 0 i32 61 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verifySetting("Secure Arming", "37 i32 0 i32 0 i32 35 i32 0 i32 0", ON);
+        verifySetting("Secure Arming", "37 i32 0 i32 0 i32 35 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
         verifySetting("No Arming On Low Battery", "37 i32 0 i32 0 i32 36 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
@@ -201,7 +201,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Auto Stay", "37 i32 0 i32 0 i32 20 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", OFF);
+        verifySetting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("Auto Exit Time Extension", "37 i32 0 i32 0 i32 84 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
@@ -209,13 +209,13 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Keyfob Disarming", "37 i32 0 i32 0 i32 134 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "00000021");
+        verifySetting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "00000010");
         Thread.sleep(one_sec);
-        verifySetting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "00000039");
+        verifySetting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "00000012");
         Thread.sleep(one_sec);
-        verifySetting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "00000071");
+        verifySetting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "00000011");
         Thread.sleep(one_sec);
-        verifySetting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "00000075");
+        verifySetting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "00000013");
         Thread.sleep(one_sec);
         verifySetting("Siren Disable", "37 i32 0 i32 0 i32 14 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
@@ -229,11 +229,11 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Water Freeze Alarm", "37 i32 0 i32 0 i32 122  i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verifySetting("Police Panic", "37 i32 0 i32 0 i32 131 i32 0 i32 0", OFF);
+        verifySetting("Police Panic", "37 i32 0 i32 0 i32 131 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verifySetting("Fire Panic", "37 i32 0 i32 0 i32 132 i32 0 i32 0", OFF);
+        verifySetting("Fire Panic", "37 i32 0 i32 0 i32 132 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
-        verifySetting("Auxillary Panic", "37 i32 0 i32 0 i32 133 i32 0 i32 0", OFF);
+        verifySetting("Auxillary Panic", "37 i32 0 i32 0 i32 133 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("Auto Upload Logs", "37 i32 0 i32 0 i32 90 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
@@ -278,9 +278,7 @@ public class SanityUpdate extends Setup {
         log = report.startTest("UpdateProcess.Sensors");
 
         System.out.println("Open-Close contact sensors");
-        EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(2000);
         log.log(LogStatus.INFO, "Verify sensors activity");
         log.log(LogStatus.INFO, "Activate DW sensors");
@@ -290,7 +288,7 @@ public class SanityUpdate extends Setup {
         open_close("65 00 3A");
         open_close("65 00 4A");
         open_close("65 00 5A");
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         open_close("65 00 6A");
         enterDefaultUserCode();
@@ -375,7 +373,6 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate heat sensor");
         sensors.primaryCall("75 00 26", SensorsActivity.ACTIVATE);
         Thread.sleep(1000);
-//        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: heat sensor behavior is as expected");
 
@@ -383,7 +380,6 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate water sensor");
         sensors.primaryCall("75 11 0A", SensorsActivity.OPEN);
         Thread.sleep(1000);
-//        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: water sensor behavior is as expected");
 
@@ -451,8 +447,10 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Verifying a new user code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
-        Thread.sleep(3000);
-        home.DISARM.click();
+//        servcall.set_SECURE_ARMING_disable();
+//        servcall.set_ARM_STAY_NO_DELAY_enable();
+        Thread.sleep(13000);
+        home.DISARM.click(); //if this fails, must turn off arm stay delay and secure arming.
         home.Five.click();
         home.Six.click();
         home.Four.click();
@@ -470,7 +468,7 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Verifying a new master code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
-        Thread.sleep(3000);
+        Thread.sleep(13000);
         home.DISARM.click();
         home.Three.click();
         home.Three.click();
@@ -489,7 +487,7 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Verifying a new guest code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
-        Thread.sleep(3000);
+        Thread.sleep(13000);
         home.DISARM.click();
         home.Eight.click();
         home.Eight.click();
@@ -531,6 +529,7 @@ public class SanityUpdate extends Setup {
     public void driver_quit() throws IOException, InterruptedException {
         for (int i = 3; i < 36; i++) {
             deleteFromPrimary(i);
+            System.out.println("3-35 nodes deleted");
         }
         System.out.println("*****Stop driver*****");
         driver.quit();
