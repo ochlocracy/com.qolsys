@@ -7,15 +7,24 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage {
 
     @FindBy(id = "com.qolsys:id/t3_home_iv_SensorStatus")
-    public WebElement Sensor_status;
+    public WebElement Sensor_status_bypass;
+
+    @FindBy(id = "com.qolsys:id/message")
+    public WebElement Message;
+
+
     @FindBy(id = "com.qolsys:id/t3_img_disarm")
     public WebElement DISARM;
+
     @FindBy(id = "com.qolsys:id/main")
     public WebElement DISARM_from_away;
+
     @FindBy(id = "com.qolsys:id/img_arm_stay")
     public WebElement ARM_STAY;
+
     @FindBy(xpath = "//android.widget.TextView[@text='ARMED STAY']")
     public WebElement ARM_STAY_text;
+
     @FindBy(id = "com.qolsys:id/img_arm_away")
     public WebElement ARM_AWAY;
     @FindBy(xpath = "//android.widget.TextView[@text='ARMED AWAY']")

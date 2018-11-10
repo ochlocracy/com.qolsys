@@ -204,7 +204,7 @@ public class PreUpdateSensors extends Setup {
 
 
             sensors.primaryCall("85 00 BF", "04 04");
-            Thread.sleep(2000);
+            Thread.sleep(13000);
             verifyArmaway();
             sensors.primaryCall("85 00 BF", "08 01");
             Thread.sleep(1000);

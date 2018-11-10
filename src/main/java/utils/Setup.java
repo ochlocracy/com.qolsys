@@ -223,10 +223,10 @@ public class Setup extends Driver{
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
-        logger.info("Settings Menue");
+        logger.info("Settings Menu");
         menu.Settings.click();
         Thread.sleep(1000);
-        logger.info("Advance Settings");
+        logger.info("Advanced Settings");
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(2000);
         enterDefaultDealerCode();
