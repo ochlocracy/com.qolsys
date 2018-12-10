@@ -26,17 +26,20 @@ public class CreatePartitions extends Setup{
 
     @Test
     public void Edit_Sensor_To_Create_Partitions() throws Exception {
-        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
 
-        rep.create_report("Create_Partitions_01");
-        rep.log.log(LogStatus.INFO, ("*Create_Partitions_01* Change Sensor Partition Name -> Expected result = New Partitions will be created."));
+        rep.create_report("Create_Partitions_01.User_Codes");
+        rep.log.log(LogStatus.INFO, ("*Create_Partitions_01* Create User Codes for each Partition Name -> Expected result = New Partitions code will work for each."));
         Thread.sleep(2000);
-        navigateToEditSensorPage();
+        navigateToPartitionsAdvancedSettingsPage();
+        adv.USER_MANAGEMENT.click();
+
+
         List<WebElement> editSensor = driver.findElements(By.id("com.qolsys:id/imageView1"));
         Thread.sleep(1000);
         editSensor.get(0).click();
@@ -53,5 +56,7 @@ public class CreatePartitions extends Setup{
         driver.findElement(By.linkText("partition2")).click();
         sec.Save.click();
         Thread.sleep(1000);
+
+
     }
 }

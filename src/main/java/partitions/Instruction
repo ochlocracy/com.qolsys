@@ -1,31 +1,31 @@
 
-1) Add Sensors (PreupdatePGSensors + SRF add sensors //where is the srf add sensors page. which should be run?
+1) Add Sensors (adding all sensors and assigning to partitions. maybe change to preupdate sensors and then divy up)
 
-2) Create Partitions
+2) Create Partitions (assigning user codes to all partitions, then testing arm disarm, then if they signaled on adc)
 
-create partition 1 for srf / power g / z wave
+3) PartitionSensorTest (stay and away, tamper on each sensor on each partition)
 
-p 2 for srf / power g
+requests noted with //
+//needs a universal partition in the sensors edit
+when partitions are created, user duress codes are created
+9998  can stay, it is original (p1)
+//9991 should be 9992 (P2)
+//9992 should be 9993 (p3)
+//9993 should be 9994 (p4)
 
-p 3 srf / power g
-
-p 4 srf / power g
-
-COmbined 1 and 2, adding them created separate partitions.
-
-3) PartitionSensorTest
-
-open close tamper
+2222, 1111 are taken dealer and installer are taken away when signing in to specific partition user code
 
 open close tamper with alarm
 
 4) Partition user Code
 
-1 has 1234
-2 has 2345
-3 has 3456
-4 has 4567
+// need to have the text clickable for partition access in user code. cant select checkbox on code, especially with the same index value.
+
+1 has 5551
+2 has 5552
+3 has 5553
+4 has 5554
 
 5) partition settings test
 
-folow example of powerg test.
+follow example of sanitysettings test

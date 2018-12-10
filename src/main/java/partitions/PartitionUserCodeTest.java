@@ -16,14 +16,14 @@ import java.util.List;
 
 public class PartitionUserCodeTest extends Setup {
 
+    ExtentReport rep = new ExtentReport("Partitions_UserCode");
+    Sensors sensors = new Sensors();
+    PanelInfo_ServiceCalls serv = new PanelInfo_ServiceCalls();
+
     public PartitionUserCodeTest() throws Exception {
         ConfigProps.init();
         PGSensorsActivity.init();
     }
-
-    ExtentReport rep = new ExtentReport("Partitions_SensorTest");
-    Sensors sensors = new Sensors();
-    PanelInfo_ServiceCalls serv = new PanelInfo_ServiceCalls();
 
     @BeforeMethod
     public void capabilities_setup() throws Exception {
@@ -36,7 +36,11 @@ public class PartitionUserCodeTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         UserManagementPage usr = PageFactory.initElements(driver, UserManagementPage.class);
 
-        List<WebElement> pli = driver.findElements(By.id("com.qolsys:id/partitionCheckBox"));
+        rep.create_report("UserCode_01.Add_Users");
+        rep.log.log(LogStatus.INFO, ("*UserCode_01.Add_Users* Create User Codes for each Partition Name -> Expected result = New Partitions code will be added."));
+        Thread.sleep(2000);
+
+        //List<WebElement> driver.findElement = driver.findElements(By.id("com.qolsys:id/partitionName"));
 
         String P1usr = "P1usr";
         String P2usr = "P2usr";
@@ -68,7 +72,7 @@ public class PartitionUserCodeTest extends Setup {
         } catch (Exception e) {
         }
         Thread.sleep(1000);
-        pli.get(0).click();
+        driver.findElement(By.xpath("android.widget.RelativeLayout[@text='PARTITION1']")).click();
         Thread.sleep(1000);
         usr.Add_User_add_page.click();
 
@@ -82,7 +86,7 @@ public class PartitionUserCodeTest extends Setup {
         } catch (Exception e) {
         }
         Thread.sleep(1000);
-        pli.get(1).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PARTITION2']")).click();
         Thread.sleep(1000);
         usr.Add_User_add_page.click();
 
@@ -95,7 +99,7 @@ public class PartitionUserCodeTest extends Setup {
         } catch (Exception e) {
         }
         Thread.sleep(1000);
-        pli.get(2).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PARTITION3']")).click();
         Thread.sleep(1000);
         usr.Add_User_add_page.click();
 
@@ -108,12 +112,22 @@ public class PartitionUserCodeTest extends Setup {
         } catch (Exception e) {
         }
         Thread.sleep(1000);
-        pli.get(3).click();
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PARTITION4']")).click();
         Thread.sleep(1000);
         usr.Add_User_add_page.click();
     }
 
     @Test(priority = 3)
+    public void UserTestAllP() throws Exception {
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);
+
+        rep.create_report("UserCode_02.User_Codes_Test");
+        rep.log.log(LogStatus.INFO, ("*UserCode_02.User_Codes_Test* Arm and Disarm using Partition User Codes  -> Expected result = New Partitions code will work for each."));
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 4)
     public void DuressTestAllP() throws Exception {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);

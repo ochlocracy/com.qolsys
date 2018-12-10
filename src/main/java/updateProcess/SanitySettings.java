@@ -45,7 +45,7 @@ public class SanitySettings extends Setup {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("User Name", "Zachary Pulling")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Settings.Alarm_Photos");
 
@@ -142,6 +142,11 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(1000);
+        if  (inst.CameraSettingsDisabled.isDisplayed()) {
+            log.log(LogStatus.INFO, "setting is disabled, continue with the test."); }
+        else {
+            set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
+        }
         set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
         Thread.sleep(1000);
         settings.Home_button.click();
@@ -201,8 +206,8 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
-        System.out.println("Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
-        log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
+        System.out.println("Navigate to the Installation page to enable the access to the Security and Arming page using Master Code");
+        log.log(LogStatus.INFO, "Navigate to the Installation page to enable the access to the Security and Arming page using Master Code");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -213,6 +218,11 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         swipeVertical();
+        if  (inst.SecAndArmingDisabled.isDisplayed()) {
+            log.log(LogStatus.INFO, "setting is disabled, continue with the test."); }
+            else {
+            arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
+        }
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -272,9 +282,9 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         Thread.sleep(3000);
-        System.out.println("Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
-        log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Siren and Alarms page using Master Code");
-        navigateToAdvancedSettingsPage();
+        System.out.println("Navigate to the Installation page to enable the access to the Siren and Alarms page using Master Code");
+        log.log(LogStatus.INFO, "Navigate to the Installation page to enable the access to the Siren and Alarms page using Master Code");
+        navigateToAdvancedSettingsPage(); //check if
         adv.INSTALLATION.click();
         inst.SIREN_AND_ALARMS.click();
         Thread.sleep(2000);
@@ -283,6 +293,11 @@ public class SanitySettings extends Setup {
         swipeVertical();
         Thread.sleep(1000);
         swipeVertical();
+        if  (inst.SirenandAlarmsDisabled.isDisplayed()) {
+            log.log(LogStatus.INFO, "setting is disabled, continue with the test to enable it."); }
+        else {
+            siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
+        }
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -309,6 +324,7 @@ public class SanitySettings extends Setup {
         swipeVertical();
         Thread.sleep(1000);
         swipeVertical();
+        Thread.sleep(1000);
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -522,8 +538,7 @@ public class SanitySettings extends Setup {
             log.log(LogStatus.PASS, "Pass: System is NOT ARMED AWAY");
         } finally {
         }
-        Thread.sleep(60000);
-        Thread.sleep(2000);
+        Thread.sleep(50000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -559,7 +574,7 @@ public class SanitySettings extends Setup {
             log.log(LogStatus.FAIL, "Fail: System is NOT ARMED AWAY");
         } finally {
         }
-        Thread.sleep(13000);
+        Thread.sleep(14000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -593,7 +608,8 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Verify that Auto Stay works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Stay works when enabled");
-        Thread.sleep(3000);
+        //cant do check if its enabled, no text change, the checkbox only.
+        Thread.sleep(2000);
         System.out.println("Arm Away the system");
         ARM_AWAY(delay);
         verifyArmstay();
@@ -823,7 +839,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         cam.Disarm_photos.click();
         Thread.sleep(1000);
-        if (cam.DISARMED_BY_ADMIN.isDisplayed()) { //change name to new duress and it says disarmed by newduress, keep at duress it comes up as admin.
+        if (cam.DISARMED_BY_ADMIN.isDisplayed()) { //shows up as admin to hide from criminal that it was a duress code
             log.log(LogStatus.PASS, ("Pass: Duress code does work"));
         } else {
             takeScreenshot();
@@ -833,20 +849,17 @@ public class SanitySettings extends Setup {
         navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
         Thread.sleep(5000);
-//        driver.findElement(By.xpath("//android.widget.TextView[@text='Duress']")).isDisplayed(); cannot see the duress name unless the code is written to go into editing it
-//        Thread.sleep(2000);
-//        settings.Back_button.click();
-//        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
-//        Thread.sleep(2000);
-//        adv.USER_MANAGEMENT.click();
-        //scroll down and then do the click edit to change it
+        swipeUserManagementVertical();
+        log.log(LogStatus.INFO, ("Change Duress Code -> Expected result = system can be disarmed with New Duress"));
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/editImg"));
         Thread.sleep(2000);
-        li_status1.get(1).click();
+        swipeUserManagementVertical();
+        Thread.sleep(1000);
+        li_status1.get(2).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
-        user.Add_User_Name_field.sendKeys("NewDuresss");
+        user.Add_User_Name_field.sendKeys("NewDuress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
         user.Add_User_Code_field.sendKeys("9999");
@@ -885,13 +898,18 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.USER_MANAGEMENT.click();
+        Thread.sleep(2000);
+        swipeUserManagementVertical();
+        Thread.sleep(1000);
         List<WebElement> li_status2 = driver.findElements(By.id("com.qolsys:id/editImg"));
         Thread.sleep(2000);
-        li_status2.get(1).click();
+        swipeUserManagementVertical();
+        Thread.sleep(1000);
+        li_status2.get(2).click();
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
-        user.Add_User_Name_field.sendKeys("Duresss");
+        user.Add_User_Name_field.sendKeys("Duress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
         user.Add_User_Code_field.sendKeys("9998");
@@ -1017,14 +1035,14 @@ public class SanitySettings extends Setup {
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
-        System.out.println("Verify that Keyfod Alarm Disarm does not work when disabled");
-        log.log(LogStatus.INFO, "Verify that Keyfod Alarm Disarm does not work when disabled");
+        System.out.println("Verify that keyfob Alarm Disarm does not work when disabled");
+        log.log(LogStatus.INFO, "Verify that keyfob Alarm Disarm does not work when disabled");
         home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        if (emergency.Police_Emergency_Alarmed.isDisplayed()) {
+        if (emergency.Police_Emergency_Alarmed.isDisplayed()) { //f
             System.out.println("Pass: Police Emergency is displayed");
             log.log(LogStatus.PASS, "Pass: Police Emergency is displayed");
         } else {
@@ -1033,8 +1051,8 @@ public class SanitySettings extends Setup {
         }
         enterDefaultUserCode();
         Thread.sleep(2000);
-        System.out.println("Verify that Keyfod Alarm Disarm  works when enabled");
-        log.log(LogStatus.INFO, "Verify that Keyfod Alarm Disarm  works when enabled");
+        System.out.println("Verify that keyfob Alarm Disarm  works when enabled");
+        log.log(LogStatus.INFO, "Verify that keyfob Alarm Disarm  works when enabled");
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
@@ -1088,6 +1106,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Verify that Keyfob Disarming works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Disarming works when enabled");
+        //cant check if box is clicked, the text doesn't change"
         ARM_STAY();
         Thread.sleep(2000);
         sensors.primaryCall("65 00 AF", disarm);
@@ -1150,7 +1169,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 14)
+    //@Test(priority = 14)
     public void Settings_Test15() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Instant_Arming");

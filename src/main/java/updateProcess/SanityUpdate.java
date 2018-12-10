@@ -85,13 +85,13 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_KEYFOB_DISARMING(ON);
         Thread.sleep(one_sec);
-        servcall.set_NORMAL_ENTRY_DELAY(10);
+        servcall.set_NORMAL_ENTRY_DELAY(11);
         Thread.sleep(one_sec);
-        servcall.set_NORMAL_EXIT_DELAY(12);
+        servcall.set_NORMAL_EXIT_DELAY(10);
         Thread.sleep(one_sec);
-        servcall.set_LONG_ENTRY_DELAY(11);
+        servcall.set_LONG_ENTRY_DELAY(13);
         Thread.sleep(one_sec);
-        servcall.set_LONG_EXIT_DELAY(13);
+        servcall.set_LONG_EXIT_DELAY(12);
         Thread.sleep(one_sec);
         servcall.set_SIREN_DISABLE(ON);
         Thread.sleep(one_sec);
@@ -162,7 +162,7 @@ public class SanityUpdate extends Setup {
         deleteReport();
     }
 
-   @Test
+   //@Test
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html");
@@ -214,13 +214,13 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Keyfob Disarming", "37 i32 0 i32 0 i32 134 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "00000011");
+        verifySetting("Normal Entry Delay", "36 i32 0 i32 0 i32 15 i32 0 i32 0", "0000000b");
         Thread.sleep(one_sec);
-        verifySetting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "00000010");
+        verifySetting("Normal Exit Delay", "36 i32 0 i32 0 i32 16 i32 0 i32 0", "0000000a");
         Thread.sleep(one_sec);
-        verifySetting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "00000013");
+        verifySetting("Long Entry Delay", "36 i32 0 i32 0 i32 114 i32 0 i32 0", "0000000d");
         Thread.sleep(one_sec);
-        verifySetting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "00000012");
+        verifySetting("Long Exit Delay", "36 i32 0 i32 0 i32 115 i32 0 i32 0", "0000000c");
         Thread.sleep(one_sec);
         verifySetting("Siren Disable", "37 i32 0 i32 0 i32 14 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
@@ -228,11 +228,11 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Severe Weather Siren Warning", "37 i32 0 i32 0 i32 103 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Dialer Delay", "36 i32 0 i32 0 i32 12 i32 0 i32 0", "00000023");
+        verifySetting("Dialer Delay", "36 i32 0 i32 0 i32 12 i32 0 i32 0", "00000017");
         Thread.sleep(one_sec);
-        verifySetting("Siren Timeout", "36 i32 0 i32 0 i32 13 i32 0 i32 0", "00000420"); //1a4
+        verifySetting("Siren Timeout", "36 i32 0 i32 0 i32 13 i32 0 i32 0", "000001a4"); //1a4
         Thread.sleep(one_sec);
-        verifySetting("Water Freeze Alarm", "37 i32 0 i32 0 i32 122  i32 0 i32 0", OFF);
+        verifySetting("Water Freeze Alarm", "37 i32 0 i32 0 i32 122  i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("Police Panic", "37 i32 0 i32 0 i32 131 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
@@ -250,7 +250,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Loss of Supervisory Signals for Emergency sensors", "36 i32 0 i32 0 i32 118 i32 0 i32 0", "0000000c"); //12 hours
         Thread.sleep(one_sec);
-        verifySetting("Cell Signal Timeout", "36 i32 0 i32 0 i32 101 i32 0 i32 0", "00000025");
+        verifySetting("Cell Signal Timeout", "36 i32 0 i32 0 i32 101 i32 0 i32 0", "00000019");
         Thread.sleep(one_sec);
         verifySetting("RF Jam Detect", "37 i32 0 i32 0 i32 25 i32 0 i32 0", ON);
         Thread.sleep(one_sec);

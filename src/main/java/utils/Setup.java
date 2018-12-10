@@ -200,6 +200,14 @@ public class Setup extends Driver{
         Thread.sleep(2000);
     }
 
+    public void swipeUserManagementVertical() throws InterruptedException {
+        int starty = 630;
+        int endy = 230;
+        int startx = 502;
+        driver.swipe(startx, starty, startx, endy, 3000);
+        Thread.sleep(2000);
+    }
+
     public void swipeVerticalUp() throws InterruptedException {
         int starty = 260;
         int endy = 660;
@@ -431,8 +439,7 @@ public class Setup extends Driver{
 
     public void verifyArmaway() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        if (//home_page.ArwAway_State.isDisplayed()) {
-                home_page.Disarmed_text.getText().equals("ARMED AWAY")) {    //a change appeared in rc18.1 12/19
+        if ( home_page.ArwAway_State.isDisplayed() && home_page.Disarmed_text.getText().equals("ARMED AWAY")) {
             logger.info("Pass: panel is in Arm Away mode");
         } else {
             takeScreenshot();
@@ -992,16 +999,16 @@ public class Setup extends Driver{
         } catch (Exception e) {
             //       e.printStackTrace();
         }
-        Thread.sleep(2000);
-        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
-        List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
-        gli.get(gn).click();
-
-        Thread.sleep(1000);
+//        Thread.sleep(2000);
+//        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+//        List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
+//        gli.get(gn).click();
+//
+//        Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);
         powerGactivator(Type, Id);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
     public void addPGSensors(String sensor, int Type, int Id, String gn, String text) throws IOException, InterruptedException {

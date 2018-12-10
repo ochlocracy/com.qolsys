@@ -83,7 +83,7 @@ public class PreUpdateSensors extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test//(dependsOnMethods = {"addSensors"})
+    //@Test//(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);

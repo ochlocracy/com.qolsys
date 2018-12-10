@@ -68,21 +68,19 @@ public class AddSensors extends Setup {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
         DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        String Partition1SRF = "6500A1";
 
+        System.out.println("No remote panel allowed to run this test, wont allocate sensors to correct paritition");
         rep.create_report("Add_Sensors_01");
         rep.log.log(LogStatus.INFO, ("*Add_Sensors_01* Start Fresh: Add List of SRF sensors -> Expected result = New Sensors will be added."));
         Thread.sleep(2000);
-
-        try {
+        try { //getting rid of partition sign in
             if (home.pinpad.isDisplayed()) ;
             {
                 enterDefaultDealerCode();
             }
         }catch(NoSuchElementException e)
         {}
-
-        try {
+        try { //removing partitions to add them after
             if (home.Partition_Name.isDisplayed());
             {
                 menu.Slide_menu_open.click();
@@ -114,11 +112,10 @@ public class AddSensors extends Setup {
                 settings.Home_button.click();
             }
         }catch(NoSuchElementException e)
-        {}
-
+        {} //deleting sensors.
         Thread.sleep(3000);
         home.All_Tab.click();
-
+        logger.info("checking for bad sensor add.");
         try {
         if (home.Tamper_Status.isDisplayed()); {
             deleteAllSensorsOnPanel();
@@ -126,6 +123,8 @@ public class AddSensors extends Setup {
         }catch(NoSuchElementException e)
         {}
         Thread.sleep(4000);
+
+        String Partition1SRF = "6500A1";
 
         navigateToAddSensorsPage();
         WebElement sensor_DLID = driver.findElementById("com.qolsys:id/sensor_id");
@@ -219,7 +218,7 @@ public class AddSensors extends Setup {
 
     }
 
-//    @Test (priority = 3)
+//    @Test (priority = 3) powerg not enabled for partitions yet
 //    public void Add_PG_Sensors() throws Exception {
 //        HomePage home = PageFactory.initElements(driver, HomePage.class);
 //
@@ -297,7 +296,34 @@ public class AddSensors extends Setup {
 
             }
 
-        @AfterMethod(alwaysRun = true)
+            //motion
+            //550044
+//550045
+//        550046
+//        550047
+
+
+    //smoke
+    //670022
+
+    //co
+    //7500AA
+
+    //glass
+    //670099
+    //670093
+
+    //tilt
+    //6300AE
+    //6300AF
+    //6300A0
+
+    //shock
+    //66009C
+    //66009D
+
+
+    @AfterMethod(alwaysRun = true)
         public void tearDown(ITestResult result) throws IOException, InterruptedException {
             rep.report_tear_down(result);
             driver.quit();

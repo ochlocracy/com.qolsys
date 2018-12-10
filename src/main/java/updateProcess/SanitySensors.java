@@ -83,7 +83,7 @@ public class SanitySensors extends Setup {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("User Name", "Zachary Pulling")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Sensors.SmokeSensorArmStay");
 
@@ -112,7 +112,7 @@ public class SanitySensors extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(2000);
-        //elementVerification(emg.Alarm_verification, "Fire Emergency"); //didnt go in to fire alarm
+        elementVerification(emg.Alarm_verification, "Fire Emergency"); //didnt go in to fire alarm
         log.log(LogStatus.PASS, "Pass: System is in Alarm");
         logger.info("Disable Emergency Alarm");
         enterDefaultUserCode();

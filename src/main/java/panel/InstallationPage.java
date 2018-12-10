@@ -22,4 +22,20 @@ public class InstallationPage {
     @FindBy(xpath = "//android.widget.TextView[@text='Load Help Videos']")
     public WebElement LOAD_HELP_VIDEOS;
 
+
+    //within the security and arming page. enabled / disabled linktext.
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Allowing Master Code to access Security and Arming settings is Disabled']")
+    public WebElement SecAndArmingDisabled;
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Allowing Master Code to access Siren and Alarms settings is Disabled']")
+    public WebElement SirenandAlarmsDisabled;
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Allowing Master Code to access Camera settings is Disabled']")
+    public WebElement CameraSettingsDisabled;
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Allow Keyfob to disarm']")
+    public WebElement Keyfob_Disarm;
+
+
 }
