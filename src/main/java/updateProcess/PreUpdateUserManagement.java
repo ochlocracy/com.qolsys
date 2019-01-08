@@ -51,6 +51,7 @@ public class PreUpdateUserManagement extends Setup {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
         servcall.set_ARM_STAY_NO_DELAY_enable();
+        rt.exec("adb shell service call qservice 40 i32 0 i32 0 i32 35 i32 0 i32 0 i32 0"); //secure arming off
     }
 
     @Test

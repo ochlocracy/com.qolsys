@@ -56,19 +56,22 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-
+//      removing alarm videos on setting manually. (The service call is for both photo and video. It messes up the test.
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        inst.CAMERA_SETTINGS.click();
+        try {
+            if (set_cam.Alarm_Videos_summery.isDisplayed())
+                log.log(LogStatus.INFO, "setting is disabled, continue with the test.");
+        } catch (Exception e) {
+            set_cam.Alarm_Videos_summery_enabled.click();
+        }
+        home.Home_button.click();
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Alarm photo is taken when setting in enabled...");
-        //serv.set_ALARM_VIDEOS(00); alarm videos are the same service call as alarm photos
-        serv.set_SECURE_ARMING_disable();
-        serv.set_AUXILIARY_PANIC(1);
-        serv.set_POLICE_PANIC(1);
-        serv.set_FIRE_PANIC(1);
-        serv.set_SECURE_DELETE_IMAGES(1);
-        serv.set_ALARM_PHOTOS(1);
         deleteAllCameraPhotos();
         Thread.sleep(1000);
-        home.Emergency_Button.click(); //turn fire police and auxilliary on
+        home.Emergency_Button.click();
         emergency.Police_icon.click();
         Thread.sleep(1000);
         enterDefaultUserCode();
@@ -79,7 +82,7 @@ public class SanitySettings extends Setup {
             System.out.println("Pass: Alarm photo is displayed");
             log.log(LogStatus.PASS, "Pass: Alarm photo is displayed");
         } else {
-            System.out.println("Failed: Alarm photo is NOT displayed");
+            System.out.println("Fail: Alarm photo is NOT displayed");
             log.log(LogStatus.FAIL, "Failed: Alarm photo is NOT displayed");
         }
         Thread.sleep(1000);
@@ -112,7 +115,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             log.log(LogStatus.PASS, "Pass: Alarm photo is displayed"); //fails?
             System.out.println("Pass: Alarm photo is not displayed");
-        } finally {
         }
         Thread.sleep(1000);
         navigateToAdvancedSettingsPage();
@@ -141,13 +143,13 @@ public class SanitySettings extends Setup {
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(2000);
         swipeVertical();
-        Thread.sleep(1000);
-        if  (inst.CameraSettingsDisabled.isDisplayed()) {
-            log.log(LogStatus.INFO, "setting is disabled, continue with the test."); }
-        else {
-            set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
-        }
-        set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
+        Thread.sleep(3000);
+        try {
+            if (inst.CameraSettingsEnabled.isDisplayed())
+                log.log(LogStatus.INFO, "setting is enabled, continue with the test.");
+        } catch (Exception e) {
+                set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
+            }
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);
@@ -156,14 +158,12 @@ public class SanitySettings extends Setup {
         enterDefaultUserCode();
         Thread.sleep(2000);
         try {
-            if (inst.CAMERA_SETTINGS.isDisplayed()) {
+            if (inst.CAMERA_SETTINGS.isDisplayed())
                 System.out.println("Pass: Camera settings icon is present");
                 log.log(LogStatus.PASS, "Pass: Camera settings icon is present");
-            } else {
+        } catch (Exception e) {
                 System.out.println("Failed: Camera settings icon is NOT present");
                 log.log(LogStatus.FAIL, "Failed: Camera settings icon is NOT present");
-            }
-        } catch (Exception e) {
         }
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -189,7 +189,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Camera settings icon is NOT present");
             log.log(LogStatus.PASS, "Pass: Camera settings icon is NOT present");
-        } finally {
         }
         settings.Home_button.click();
         Thread.sleep(2000);
@@ -197,7 +196,6 @@ public class SanitySettings extends Setup {
 
     @Test(priority = 2)
     public void Settings_Test3() throws InterruptedException {
-
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Allow_Master_Code_Access_Security_Arming");
 
@@ -205,6 +203,7 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         Thread.sleep(3000);
         System.out.println("Navigate to the Installation page to enable the access to the Security and Arming page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the Installation page to enable the access to the Security and Arming page using Master Code");
@@ -218,12 +217,12 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         swipeVertical();
-        if  (inst.SecAndArmingDisabled.isDisplayed()) {
-            log.log(LogStatus.INFO, "setting is disabled, continue with the test."); }
-            else {
+        try {
+            if (inst.SecAndArmingEnabled.isDisplayed())
+                log.log(LogStatus.INFO, "setting is enabled, continue with the test.");
+        } catch (Exception e) {
             arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         }
-        arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
@@ -231,10 +230,11 @@ public class SanitySettings extends Setup {
         settings.ADVANCED_SETTINGS.click();
         enterDefaultUserCode();
         Thread.sleep(3000);
-        if (inst.SECURITY_AND_ARMING.isDisplayed()) {
+        try {
+        if (inst.SECURITY_AND_ARMING.isDisplayed())
             System.out.println("Pass: Security and Arming icon is present");
             log.log(LogStatus.PASS, "Pass: Security and Arming icon is present");
-        } else {
+        } catch (Exception e) {
             System.out.println("Failed: Security and Arming icon is NOT present");
             log.log(LogStatus.FAIL, "Failed: Security and Arming icon is NOT present");
         }
@@ -281,6 +281,7 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         Thread.sleep(3000);
         System.out.println("Navigate to the Installation page to enable the access to the Siren and Alarms page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the Installation page to enable the access to the Siren and Alarms page using Master Code");
@@ -293,12 +294,13 @@ public class SanitySettings extends Setup {
         swipeVertical();
         Thread.sleep(1000);
         swipeVertical();
-        if  (inst.SirenandAlarmsDisabled.isDisplayed()) {
-            log.log(LogStatus.INFO, "setting is disabled, continue with the test to enable it."); }
-        else {
-            siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
+        try {
+        if  (inst.SirenandAlarmsEnabled.isDisplayed())
+            log.log(LogStatus.INFO, "setting is enabled, continue with the test to enable it.");
         }
+        catch (Exception e) {
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
+        }
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
@@ -306,10 +308,12 @@ public class SanitySettings extends Setup {
         settings.ADVANCED_SETTINGS.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
-        if (inst.SIREN_AND_ALARMS.isDisplayed()) {
-            System.out.println("Pass: Siren and Alarms icon is present");
+        try {
+            if (inst.SIREN_AND_ALARMS.isDisplayed())
+                System.out.println("Pass: Siren and Alarms icon is present");
             log.log(LogStatus.PASS, "Pass: Siren and Alarms icon is present");
-        } else {
+        }
+        catch (Exception e) {
             System.out.println("Failed: Siren and Alarms icon is NOT present");
             log.log(LogStatus.FAIL, "Failed: Siren and Alarms icon is NOT present");
         }
@@ -341,7 +345,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Siren and Alarms icon is NOT present");
             log.log(LogStatus.PASS, "Pass: Siren and Alarms icon is NOT present");
-        } finally {
         }
         settings.Home_button.click();
         Thread.sleep(2000);
@@ -388,7 +391,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: System is NOT ARMED STAY");
             log.log(LogStatus.PASS, "Pass: System is NOT ARMED STAY");
-        } finally {
         }
         Thread.sleep(15000);
         verifyArmstay();
@@ -418,7 +420,6 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Adding sensors...");
-        serv.set_AUTO_BYPASS(1);
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         System.out.println("Verify that Auto Bypass works when enabled");
@@ -488,7 +489,6 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(2000);
-
         swipeVertical();
         Thread.sleep(1000);
         arming.Auto_Bypass.click();
@@ -505,7 +505,7 @@ public class SanitySettings extends Setup {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("User Name", "Zachary Pulling")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest("Settings.Auto_Exit_Time_Extention");
 
@@ -517,6 +517,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Verify that Auto Exit Time Extension works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Exit Time Extension works when enabled");
+        //do check for if its enabled. Needs a checkbox check
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
@@ -536,7 +537,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: System is NOT ARMED AWAY");
             log.log(LogStatus.PASS, "Pass: System is NOT ARMED AWAY");
-        } finally {
         }
         Thread.sleep(50000);
         home.ArwAway_State.click();
@@ -572,7 +572,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Fail: System is NOT ARMED AWAY");
             log.log(LogStatus.FAIL, "Fail: System is NOT ARMED AWAY");
-        } finally {
         }
         Thread.sleep(14000);
         home.ArwAway_State.click();
@@ -757,8 +756,7 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is taken when setting in enabled");
-        deleteAllCameraPhotos();
-        serv.set_DISARM_PHOTO(1);
+        deleteAllCameraPhotos(); //must have secure delete on
         Thread.sleep(1000);
         ARM_STAY();
         home.DISARM.click();
@@ -776,7 +774,9 @@ public class SanitySettings extends Setup {
         }
         camera.Camera_delete.click();
         camera.Camera_delete_yes.click();
-        enterDefaultUserCode();
+        if (home.Four.isDisplayed()) {
+            enterDefaultUserCode();
+        }
         Thread.sleep(1000);
         System.out.println("Verifying Disarm photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is NOT taken when setting in disabled");
@@ -801,7 +801,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Disarm photo is NOT displayed");
             log.log(LogStatus.PASS, "Pass: Disarm photo is NOT displayed");
-        } finally {
         }
         Thread.sleep(1000);
         navigateToAdvancedSettingsPage();
@@ -833,7 +832,7 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Eight.click();
+        home.Nine.click();
         Thread.sleep(1000);
         swipeFromRighttoLeft();
         Thread.sleep(1000);
@@ -862,11 +861,11 @@ public class SanitySettings extends Setup {
         user.Add_User_Name_field.sendKeys("NewDuress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
-        user.Add_User_Code_field.sendKeys("9999");
+        user.Add_User_Code_field.sendKeys("9996");
         driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
-        user.Add_Confirm_User_Code.sendKeys("9999");
+        user.Add_Confirm_User_Code.sendKeys("9996");
         Thread.sleep(2000);
         try {
             driver.hideKeyboard();
@@ -883,7 +882,7 @@ public class SanitySettings extends Setup {
         home.Nine.click();
         home.Nine.click();
         home.Nine.click();
-        home.Nine.click();
+        home.Six.click();
         Thread.sleep(1000);
         swipeFromRighttoLeft();
         Thread.sleep(1000);
@@ -912,11 +911,11 @@ public class SanitySettings extends Setup {
         user.Add_User_Name_field.sendKeys("Duress");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
-        user.Add_User_Code_field.sendKeys("9998");
+        user.Add_User_Code_field.sendKeys("9999");
         driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
-        user.Add_Confirm_User_Code.sendKeys("9998");
+        user.Add_Confirm_User_Code.sendKeys("9999");
 //        driver.pressKeyCode(AndroidKeyCode.ENTER);
         try {
             driver.hideKeyboard();
@@ -1169,7 +1168,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
-    //@Test(priority = 14)
+    //@Test(priority = 14) delay coutndown is not showing up as visible, when it clearly is.
     public void Settings_Test15() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Instant_Arming");
@@ -1183,18 +1182,18 @@ public class SanitySettings extends Setup {
         Thread.sleep(3000);
         System.out.println("Verify that Keyfob Instant Arming works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Instant Arming works when enabled");
-//        System.out.println("Make Keyfob instant arming toggled on (no service call for it).");
-//        navigateToAdvancedSettingsPage();
-//        Thread.sleep(1000);
-//        adv.INSTALLATION.click();
-//        Thread.sleep(1000);
-//        inst.SECURITY_AND_ARMING.click();
-//        swipeVertical();
-//        Thread.sleep(2000);
-//        swipeVertical();
-//        Thread.sleep(20000);
-//        home.Home_button.click();
-        //line open to toggle instant arming if needed.
+        System.out.println("Make Keyfob instant arming toggled on (no service call for it).");
+        navigateToAdvancedSettingsPage();
+        Thread.sleep(1000);
+        adv.INSTALLATION.click();
+        Thread.sleep(1000);
+        inst.SECURITY_AND_ARMING.click();
+        swipeVertical();
+        Thread.sleep(2000);
+        swipeVertical();
+        Thread.sleep(20000);
+        home.Home_button.click();
+//        line open to toggle instant arming if needed.
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 4, 6619386, 102);
         System.out.println("Arm Stay the system");
@@ -1302,7 +1301,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Police Emergency is NOT displayed");
             log.log(LogStatus.PASS, "Pass: Police Emergency is NOT displayed");
-        } finally {
         }
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -1326,7 +1324,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Fire Emergency is NOT displayed");
             log.log(LogStatus.PASS, "Pass: Fire Emergency is NOT displayed");
-        } finally {
         }
         swipeFromLefttoRight();
         swipeFromLefttoRight();
@@ -1349,7 +1346,6 @@ public class SanitySettings extends Setup {
         } catch (Exception e) {
             System.out.println("Pass: Emergency button is NOT displayed");
             log.log(LogStatus.PASS, "Pass: Emergency button is NOT displayed");
-        } finally {
         }
         siren.Police_Panic.click();
         siren.Fire_Panic.click();
@@ -1492,7 +1488,7 @@ public class SanitySettings extends Setup {
     @Test(priority = 18)
     public void Settings_Test19() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Settings.Settings_Potos");
+        log = report.startTest("Settings.Settings_Photos");
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);

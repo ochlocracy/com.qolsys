@@ -88,6 +88,11 @@ public class SanitySensors extends Setup {
         log = report.startTest("Sensors.SmokeSensorArmStay");
 
         Thread.sleep(2000);
+        log.log(LogStatus.INFO, "Deleting Previous sensors");
+
+        for (int i = 2; i < 36; i++) {
+            deleteFromPrimary(i);
+        }
         log.log(LogStatus.INFO, "Adding sensors");
         addPrimaryCall(26, 26, 6750242, 5);
         addPrimaryCall(3, 10, 6488238, 16);
@@ -400,7 +405,7 @@ public class SanitySensors extends Setup {
         }
         deleteFromPrimary(26);
         System.out.println("*****Stop driver*****");
-        driver.quit();
+        //driver.quit();
         Thread.sleep(1000);
         System.out.println("\n\n*****Stop appium service*****" + "\n\n");
         service.stop();

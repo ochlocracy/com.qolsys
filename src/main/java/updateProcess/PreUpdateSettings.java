@@ -81,8 +81,8 @@ public class PreUpdateSettings extends Setup {
         logger.info("Auto Stay: Disabled");
         servcall.set_AUTO_STAY(OFF);
         Thread.sleep(one_sec);
-        logger.info("Arm Stay No Delay: Disabled");
-        servcall.set_ARM_STAY_NO_DELAY_disable();
+        logger.info("Arm Stay No Delay: Enabled"); //cant disable and enable for some reason.
+        servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(one_sec);
         logger.info("Auto Exit Time Extension: Disabled");
         servcall.set_AUTO_EXIT_TIME_EXTENSION(OFF);

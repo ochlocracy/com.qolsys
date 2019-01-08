@@ -59,7 +59,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_FIRE_SAFETY_DEVICE_TROUBLE_BEEPS(OFF);
         Thread.sleep(one_sec);
-        servcall.set_SECURE_DELETE_IMAGES(OFF);
+        servcall.set_SECURE_DELETE_IMAGES(ON);
         Thread.sleep(one_sec);
         servcall.set_DISARM_PHOTO(ON);
         Thread.sleep(one_sec);
@@ -69,7 +69,8 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_DURESS_AUTHENTICATION_disable();
         Thread.sleep(one_sec);
-        servcall.set_SECURE_ARMING_disable();
+        rt.exec("adb shell service call qservice 40 i32 0 i32 0 i32 35 i32 0 i32 0 i32 0"); //since the servcall wasnt working.
+//        servcall.set_SECURE_ARMING_disable();
         Thread.sleep(one_sec);
         servcall.set_NO_ARMING_ON_LOW_BATTERY_disable();
         Thread.sleep(one_sec);
@@ -111,7 +112,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         servcall.set_AUXILIARY_PANIC(ON);
         Thread.sleep(one_sec);
-        servcall.set_AUTO_UPLOAD_LOGS(OFF);
+        servcall.set_AUTO_UPLOAD_LOGS(ON);
         Thread.sleep(one_sec);
         servcall.set_POWER_MANAGEMENT_ON_OFF_enable();
         Thread.sleep(one_sec);
@@ -162,7 +163,7 @@ public class SanityUpdate extends Setup {
         deleteReport();
     }
 
-   //@Test
+   @Test
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html");
@@ -206,7 +207,7 @@ public class SanityUpdate extends Setup {
         Thread.sleep(one_sec);
         verifySetting("Auto Stay", "37 i32 0 i32 0 i32 20 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);
-        verifySetting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", OFF);
+        verifySetting("Arm Stay No Delay", "37 i32 0 i32 0 i32 21 i32 0 i32 0", ON);
         Thread.sleep(one_sec);
         verifySetting("Auto Exit Time Extension", "37 i32 0 i32 0 i32 84 i32 0 i32 0", OFF);
         Thread.sleep(one_sec);

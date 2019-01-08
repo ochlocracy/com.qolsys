@@ -245,6 +245,12 @@ public class Sensors {
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
         System.out.println(primary_send); }
 
+    public void slprimaryCall(String DLID, String State) throws IOException {
+        String primary_send =" shell rfinjector 12 "+DLID+" "+State;
+        rt.exec(ConfigProps.adbPath + primary_send);
+        // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+        System.out.println(primary_send); }
+
     // add all sensors from CSV file
     public void addAllSensors() throws IOException, InterruptedException {
         for (int i = 2; i < SensorObject_ArrayList.size(); i++) {

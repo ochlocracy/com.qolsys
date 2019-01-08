@@ -211,6 +211,8 @@ public class AddSensors extends Setup {
         Thread.sleep(1500);
         swipeVertical();
         Thread.sleep(1500);
+        swipeVertical();
+        Thread.sleep(1500);
         driver.findElementByXPath("//android.widget.TextView[@text='Partitions']").click();
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(2000);
@@ -252,7 +254,6 @@ public class AddSensors extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         rep.create_report("Add_Sensors_03");
         rep.log.log(LogStatus.INFO, ("*Add_Sensors_03* Separate SRF into different Partitions -> Expected result = New Sensors wil be on different Partitions."));
-
 
         try {
             if (home.pinpad.isDisplayed()) ;

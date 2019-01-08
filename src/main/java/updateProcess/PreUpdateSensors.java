@@ -83,7 +83,7 @@ public class PreUpdateSensors extends Setup {
         Thread.sleep(1000);
     }
 
-    //@Test//(dependsOnMethods = {"addSensors"})
+    @Test//(dependsOnMethods = {"addSensors"})
     public void sensorsCheck() throws Exception {
         logger.info("Open-Close contact sensors");
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
@@ -94,13 +94,13 @@ public class PreUpdateSensors extends Setup {
             open_close("65 00 2A");
             open_close("65 00 3A");
             open_close("65 00 4A");
-            open_close("65 00 5A");
+            open_close("65 00 5A"); //Reporting Safety Sensor
             enterDefaultUserCode();
-            Thread.sleep(1000);
-            open_close("65 00 6A");
+            Thread.sleep(4000);
+            open_close("65 00 6A"); //Delayed Reporting Safety Sensor
             enterDefaultUserCode();
-            Thread.sleep(1000);
-            open_close("65 00 7A");
+            Thread.sleep(4000);
+            open_close("65 00 7A"); //Local Safety Sensor. (Doesn't Alarm)
             Thread.sleep(1000);
 
             logger.info("Activate motion sensors");
