@@ -393,8 +393,7 @@ public class SanitySettings extends Setup {
             log.log(LogStatus.PASS, "Pass: System is NOT ARMED STAY");
         }
         Thread.sleep(15000);
-        verifyArmstay();
-        home.DISARM.click();
+        home.DISARM.click(); //if this failed, the delay is not taken down to 13 seconds from the settings update.
         enterDefaultUserCode();
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
@@ -812,7 +811,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void Settings_Test11() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Duress_Authentication");
@@ -874,6 +873,11 @@ public class SanitySettings extends Setup {
         user.User_Management_Save.click();
         Thread.sleep(5000);
         user.Home_Button.click();
+//        user.User_Management_Delete_User_Cancel.click();
+        try {
+            driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         Thread.sleep(2000);
         home.DISARM.click();
         home.ARM_STAY.click();
@@ -908,7 +912,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         user.Add_User_Name_field.clear();
         logger.info("Changing Duress name");
-        user.Add_User_Name_field.sendKeys("Duress");
+        user.Add_User_Name_field.sendKeys("Duresss");
         user.Add_User_Code_field.clear();
         logger.info("Changing Duress password");
         user.Add_User_Code_field.sendKeys("9999");

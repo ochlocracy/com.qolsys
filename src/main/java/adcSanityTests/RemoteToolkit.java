@@ -1775,13 +1775,14 @@ public class RemoteToolkit extends Setup {
         Thread.sleep(2000);
         logger.info("Garage_Doors Test 0-6 finish");
 
-        logger.info("Get_Equipment_List Test begin");
-        remote.Z_Wave_Dropdown.click();
-        remote.Get_Equipment_List.click();
-        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_responsiveBody_ucCommands_ucUpdateZWaveList_btnSendCommand"))).click();
-
-        Thread.sleep(2000);
-        logger.info("Get_Equipment_List Test finish");
+//        logger.info("Get_Equipment_List Test begin");
+//        remote.Z_Wave_Dropdown.click();
+//        Thread.sleep(1000);
+//        remote.Get_Equipment_List.click();
+//        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_responsiveBody_ucCommands_ucUpdateZWaveList_btnSendCommand"))).click();
+//
+//        Thread.sleep(2000);
+//        logger.info("Get_Equipment_List Test finish");
 
         logger.info("Light_Limit Change Test numeral change begin");
         remote.Z_Wave_Dropdown.click();

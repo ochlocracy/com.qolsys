@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.ContactUs;
 import panel.EmergencyPage;
+import panel.HomePage;
+import panel.UserManagementPage;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.ExtentReport;
@@ -155,7 +157,7 @@ public class PreUpdateSensors extends Setup {
             sensors.primaryCall("73 00 1A", SensorsActivity.ACTIVATE);
             sensors.primaryCall("73 00 1A", SensorsActivity.RESTORE);
             Thread.sleep(1000);
-            enterDefaultUserCode();
+            //enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate heat sensors");
@@ -184,6 +186,8 @@ public class PreUpdateSensors extends Setup {
 
             sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
             Thread.sleep(1000);
+            //UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
+            //user_m.User_Management_Delete_User_Ok.click(); when wellness is enabled
             enterDefaultUserCode();
             Thread.sleep(1000);
             sensors.primaryCall("65 00 BF", SensorsActivity.RESTORE);
@@ -212,6 +216,7 @@ public class PreUpdateSensors extends Setup {
             logger.info("Activate medical pendant sensors");
             sensors.primaryCall("61 12 13", "03 01");
             Thread.sleep(2000);
+//            user_m.User_Management_Delete_User_Ok.click(); when wellness is enabled
             enterDefaultUserCode();
             Thread.sleep(1000);
 

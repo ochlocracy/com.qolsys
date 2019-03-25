@@ -15,6 +15,7 @@ import utils.Setup;
 import java.io.IOException;
 
 public class AutoStayTest extends Setup {
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
     ExtentReport rep = new ExtentReport("Settings_Auto_Stay");
     Sensors sensors = new Sensors();
@@ -35,6 +36,17 @@ public class AutoStayTest extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
+        servcall.set_SIA_LIMITS_disable();
+        Thread.sleep(1000);
+        servcall.set_NORMAL_ENTRY_DELAY(11);
+        Thread.sleep(1000);
+        servcall.set_NORMAL_EXIT_DELAY(10);
+        Thread.sleep(1000);
+        servcall.set_LONG_ENTRY_DELAY(13);
+        Thread.sleep(1000);
+        servcall.set_LONG_EXIT_DELAY(12);
+        Thread.sleep(1000);
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
         rep.create_report("Auto_Stay_01");
@@ -50,7 +62,7 @@ public class AutoStayTest extends Setup {
             rep.log.log(LogStatus.PASS, ("Pass: System is in ARMED Stay"));
         } finally {
         }
-        home.DISARM.click();
+        home.DISARM.click(); //need to lower the sia limit for the exit delay
         enterDefaultUserCode();
         rep.create_report("Auto_Stay_02");
         rep.log.log(LogStatus.INFO, ("*Auto_Stay_02* Disable Auto Stay -> Expected result = System goes into Arm Away when Arm Away is clicked"));

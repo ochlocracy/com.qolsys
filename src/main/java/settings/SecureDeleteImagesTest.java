@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class SecureDeleteImagesTest extends Setup {
 
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     ExtentReport rep = new ExtentReport("Settings_Secure_Delete_Images");
 
     public SecureDeleteImagesTest() throws Exception {
@@ -33,6 +34,8 @@ public class SecureDeleteImagesTest extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
+        servcall.set_ARM_STAY_NO_DELAY_enable();
 
         rep.create_report("Secure_Del_Img_01");
         rep.log.log(LogStatus.INFO, ("*Secure_Del_Img_01* Delete a Photo -> Expected result = A code required to Delete the image"));

@@ -356,30 +356,33 @@ public class RemoteToolkitVariables {
     public WebElement User_Codes_Dropdown;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl00_lbtnCommandSetting']")
-    public WebElement Allow_Master_Code_to_Access_Image_Settings;
+    public WebElement Six_Digit_User_Code;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl01_lbtnCommandSetting']")
-    public WebElement Allow_Master_Code_to_Access_Security_and_Arming;
+    public WebElement Allow_Master_Code_to_Access_Image_Settings;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl02_lbtnCommandSetting']")
-    public WebElement Allow_Master_Code_to_Access_Siren_and_Alarms;
+    public WebElement Allow_Master_Code_to_Access_Security_and_Arming;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl03_lbtnCommandSetting']")
-    public WebElement Allow_Master_Code_ZWave_Management;
+    public WebElement Allow_Master_Code_to_Access_Siren_and_Alarms;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl04_lbtnCommandSetting']")
-    public WebElement Allow_Master_Code_ZWave_Settings;
+    public WebElement Allow_Master_Code_ZWave_Management;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl05_lbtnCommandSetting']")
-    public WebElement Dealer_Code;
+    public WebElement Allow_Master_Code_ZWave_Settings;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl06_lbtnCommandSetting']")
-    public WebElement Duress_Authentication;
+    public WebElement Dealer_Code;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl07_lbtnCommandSetting']")
-    public WebElement Installer_Code;
+    public WebElement Duress_Authentication;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl08_lbtnCommandSetting']")
+    public WebElement Installer_Code;
+
+    @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl20_rptSettingsCommands_ctl09_lbtnCommandSetting']")
     public WebElement Request_User_Code_Names;
 
     @FindBy(how = How.XPATH, xpath = "//*[@id='ctl00_responsiveBody_ucCommands_rptCommandCategories_ctl22_lblCategoryName']")

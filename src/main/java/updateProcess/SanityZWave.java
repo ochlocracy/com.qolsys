@@ -69,12 +69,12 @@ public class SanityZWave extends Setup {
 //
 //        log = report.startTest("Zwave.Light");
 
-        swipeFromRighttoLeft();
-        driver.findElement(By.id("com.qolsys:id/statusButton")).click();
-        log.log(LogStatus.PASS, "Light is turned On");
-        Thread.sleep(2000);
-        driver.findElement(By.id("com.qolsys:id/statusButton")).click();
-        log.log(LogStatus.PASS, "Light is turned Off");
+//        swipeFromRighttoLeft();
+//        driver.findElement(By.id("com.qolsys:id/statusButton")).click();
+//        log.log(LogStatus.PASS, "Light is turned On");
+//        Thread.sleep(2000);
+//        driver.findElement(By.id("com.qolsys:id/statusButton")).click();
+//        log.log(LogStatus.PASS, "Light is turned Off");
         Thread.sleep(2000);
     }
 

@@ -6,7 +6,7 @@ PreUpdateUserManagement
 PreUpdateSettings
 Pair one light
 
-After software update, please run tests in the following order:
+After software update, make sure the panel is connected with adb devices, adb root, adb remount, then run tests in the following order:
 
 SanityUpdate
 SanitySettings

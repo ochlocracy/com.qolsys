@@ -3,8 +3,6 @@ package updateProcess;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -14,18 +12,14 @@ import org.testng.annotations.Test;
 import panel.*;
 import sensors.Sensors;
 import utils.ConfigProps;
-import utils.ExtentReport;
 import utils.SensorsActivity;
 import utils.Setup;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 public class SanityUpdate extends Setup {
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-//    ExtentReport rep = new ExtentReport("SRF_Sensors_Sanity");
 
     ExtentReports report;
     ExtentTest log;
@@ -163,7 +157,7 @@ public class SanityUpdate extends Setup {
         deleteReport();
     }
 
-   @Test
+    @Test
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html");
@@ -294,7 +288,7 @@ public class SanityUpdate extends Setup {
 //        enterDefaultUserCode();
         Thread.sleep(1000);
         open_close("65 00 6A");
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         open_close("65 00 7A");
         Thread.sleep(1000);
@@ -368,7 +362,7 @@ public class SanityUpdate extends Setup {
         sensors.primaryCall("73 00 1A", SensorsActivity.ACTIVATE);
         sensors.primaryCall("73 00 1A", SensorsActivity.RESTORE);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
         log.log(LogStatus.PASS, "Pass: freeze sensor behavior is as expected");
 
@@ -390,12 +384,12 @@ public class SanityUpdate extends Setup {
         log.log(LogStatus.INFO, "Activate keyfobs");
         sensors.primaryCall("65 00 AF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
 
         sensors.primaryCall("65 00 BF", SensorsActivity.OPEN);
         Thread.sleep(1000);
-        enterDefaultUserCode();
+//        enterDefaultUserCode();
         Thread.sleep(1000);
 
         sensors.primaryCall("65 00 CF", SensorsActivity.OPEN);
