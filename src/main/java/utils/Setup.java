@@ -612,6 +612,8 @@ public class Setup extends Driver{
 
     public void deleteAllCameraPhotos() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+
         swipeFromRighttoLeft();
         Thread.sleep(2000);
         try {
@@ -619,10 +621,12 @@ public class Setup extends Driver{
                 camera.Camera_delete.click();
                 Thread.sleep(2000);
                 camera.Camera_delete_yes.click();
-                enterDefaultUserCode();
+                if (home_page.Four.isDisplayed()) {
+                    enterDefaultUserCode();
+                }
             }
         } catch (Exception e) {
-            System.out.println("No photos to delete...");
+            System.out.println("No photos left to delete...");
         }
         swipeFromLefttoRight();
         Thread.sleep(1000);
@@ -1030,7 +1034,7 @@ public class Setup extends Driver{
         Thread.sleep(2000);
         driver.findElement(By.id("com.qolsys:id/grouptype")).click();
         driver.scrollTo(gn);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ text+"']")).click();
         Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();

@@ -157,7 +157,7 @@ public class SanityUpdate extends Setup {
         deleteReport();
     }
 
-    @Test
+    //@Test
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html");

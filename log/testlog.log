@@ -1,56 +1,7 @@
 
-2018-10-05 11:27:58,808 - utils.Log -INFO - ********************************************************************
-2018-10-05 11:27:58,812 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Add sensors + sensors activity   $$$$$$$$$$$$$$$$$$$$$$$$$
-2018-10-05 11:27:58,812 - utils.Log -INFO - ********************************************************************
-2018-10-05 11:27:58,831 - Add sensors + sensors activity -INFO - Adding a list of sensors
-2018-10-05 11:28:03,923 - Add sensors + sensors activity -INFO - Open-Close contact sensors
-2018-10-05 11:28:28,899 - Add sensors + sensors activity -INFO - Activate motion sensors
-2018-10-05 11:28:33,911 - Add sensors + sensors activity -INFO - Activate smoke sensors
-2018-10-05 11:28:40,237 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
-2018-10-05 16:10:13,244 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:10:15,790 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:10:25,418 - updateProcess.TestSanityTranszwave -INFO - Removing All Devices
-2018-10-05 16:10:26,323 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:10:28,831 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:10:35,018 - updateProcess.TestSanityTranszwave -INFO - entering Advance Installation
-2018-10-05 16:10:36,141 - updateProcess.TestSanityTranszwave -INFO - entering devices
-2018-10-05 16:10:36,993 - updateProcess.TestSanityTranszwave -INFO - selecting zwave devices
-2018-10-05 16:10:37,874 - updateProcess.TestSanityTranszwave -INFO - removing all devices
-2018-10-05 16:10:38,854 - updateProcess.TestSanityTranszwave -INFO - selecting ok button
-2018-10-05 16:10:48,198 - updateProcess.TestSanityTranszwave -INFO - All devices have been removed
-2018-10-05 16:10:48,205 - updateProcess.TestSanityTranszwave -INFO - resetting all device limits to factory litmits
-2018-10-05 16:10:48,205 - updateProcess.TestSanityTranszwave -INFO - Setting thermostat limit to 3
-2018-10-05 16:10:48,206 - updateProcess.TestSanityTranszwave -INFO - Setting smartsocket limit to 0
-2018-10-05 16:10:48,208 - updateProcess.TestSanityTranszwave -INFO - Setting Lihgts limit to 5
-2018-10-05 16:10:48,210 - updateProcess.TestSanityTranszwave -INFO - Setting Door Lock Limit to 3
-2018-10-05 16:10:48,213 - panel.PanelInfo_ServiceCalls -INFO - /home/qolsys/Applications/Android_sdk/platform-tools/adb -s ac8312fb shell service call qservice 39 i32 0 i32 0 i32 87 i32 3 i32 0 i32 0
-2018-10-05 16:10:48,213 - updateProcess.TestSanityTranszwave -INFO - Setting Other Device Limit to 3
-2018-10-05 16:10:48,217 - updateProcess.TestSanityTranszwave -INFO - Setting Garage Door Limit to 3
-2018-10-05 16:10:48,481 - updateProcess.TestSanityTranszwave -INFO - In Home Page
-2018-10-05 16:10:52,514 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:10:54,959 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:11:04,398 - updateProcess.TestSanityTranszwave -INFO - Navigating to setting
-2018-10-05 16:11:05,374 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:11:07,745 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:11:16,746 - updateProcess.TestSanityTranszwave -INFO - Clearing Transmitter
-2018-10-05 16:11:32,578 - updateProcess.TestSanityTranszwave -INFO - Removing all devices
-2018-10-05 16:11:33,212 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
-2018-10-05 16:11:34,395 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
-2018-10-05 16:11:41,789 - updateProcess.TestSanityTranszwave -INFO - All Devices have been removed
-2018-10-05 16:11:42,790 - updateProcess.TestSanityTranszwave -INFO - Including transmitter
-2018-10-05 16:11:52,567 - updateProcess.TestSanityTranszwave -INFO - Waiting for Element
-2018-10-05 16:11:52,568 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
-2018-10-05 16:13:19,667 - updateProcess.TestSanityTranszwave -INFO - Naming transmitter
-2018-10-05 16:13:27,329 - updateProcess.TestSanityTranszwave -INFO - Hidding Keyboard
-2018-10-05 16:13:30,570 - updateProcess.TestSanityTranszwave -INFO - Transmitter has been added successfully
-2018-10-05 16:13:38,172 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:13:40,593 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:13:49,704 - updateProcess.TestSanityTranszwave -INFO - adding new device locally 
-2018-10-05 16:13:50,536 - updateProcess.TestSanityTranszwave -INFO - Settings Menue
-2018-10-05 16:13:53,009 - updateProcess.TestSanityTranszwave -INFO - Advance Settings
-2018-10-05 16:14:06,922 - updateProcess.TestSanityTranszwave -INFO - ready to add new device
-2018-10-05 16:14:12,229 - updateProcess.TestSanityTranszwave -INFO - Adding Stock Light
-2018-10-05 16:14:12,240 - updateProcess.TestSanityTranszwave -INFO - waiting for ADD button to appear
-2018-10-05 16:14:12,240 - updateProcess.TestSanityTranszwave -INFO - waiting for element to perform next action
-2018-10-05 16:14:16,253 - updateProcess.TestSanityTranszwave -INFO - Selecting Light as a stock name
-2018-10-05 16:14:19,427 - updateProcess.TestSanityTranszwave -INFO - Light has been added
+2019-04-05 11:54:02,744 - utils.Log -INFO - ********************************************************************
+2019-04-05 11:54:02,750 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Arm Stay Arm Away KeyFob sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
+2019-04-05 11:54:02,751 - utils.Log -INFO - ********************************************************************
+2019-04-05 11:54:15,497 - qtmsSRF.AlarmDialerDelay -INFO - Pass: System is ARMED STAY
+2019-04-05 11:55:06,856 - qtmsSRF.AlarmDialerDelay -INFO - Pass: System is in ALARM
+2019-04-05 11:58:29,796 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX

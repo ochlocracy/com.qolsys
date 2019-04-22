@@ -1,30 +1,35 @@
-package updateProcess;
+package qtmsSRF;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 import panel.ContactUs;
-import panel.EmergencyPage;
-import panel.HomePage;
-import panel.UserManagementPage;
+import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.ExtentReport;
 import utils.SensorsActivity;
 import utils.Setup;
 
+import java.io.File;
 import java.io.IOException;
 
-public class PreUpdateSensors extends Setup {
+public class ActivateSRF extends Setup {
 
-    String page_name = "Add sensors + sensors activity";
-    Logger logger = Logger.getLogger(page_name);
+    ExtentReports report;
+    ExtentTest log;
+    ExtentTest test;
     Sensors sensors = new Sensors();
-    ExtentReport rep = new ExtentReport("SRF_Sensors_Sanity");
+    PanelInfo_ServiceCalls serv = new PanelInfo_ServiceCalls();
+    String OFF = "00000000";
 
-    public PreUpdateSensors() throws Exception {
+    ExtentReport rep = new ExtentReport("SRF_Sensors");
+
+    public ActivateSRF() throws Exception {
         ConfigProps.init();
         SensorsActivity.init();
     }
@@ -32,51 +37,6 @@ public class PreUpdateSensors extends Setup {
     @BeforeTest
     public void setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        setupLogger(page_name);
-    }
-
-    @Test
-    public void addSensors() throws IOException, InterruptedException {
-        logger.info("Adding a list of sensors");
-        //srf all groups
-        addPrimaryCall(3, 10, 6619296, 1); // 65 00 A0 //dw's
-        addPrimaryCall(4, 12, 6619297, 1); // 65 00 A1
-        addPrimaryCall(5, 13, 6619298, 1); // 65 00 A2
-        addPrimaryCall(6, 14, 6619299, 1); // 65 00 A3
-        addPrimaryCall(7, 16, 6619300, 1); // 65 00 A4
-        addPrimaryCall(8, 8, 6619301, 1); // 65 00 A5
-        addPrimaryCall(9, 9, 6619302, 1); // 65 00 A6
-        addPrimaryCall(10, 25, 6619303, 1); // 65 00 A7
-        Thread.sleep(1000);
-        addPrimaryCall(11, 15, 5570628, 2); // 55 00 44 //motion's
-        addPrimaryCall(12, 17, 5570629, 2); // 55 00 45
-        addPrimaryCall(13, 20, 5570630, 2); // 55 00 46
-        addPrimaryCall(14, 25, 5570631, 2); // 55 00 47
-        addPrimaryCall(15, 35, 5570632, 2); // 55 00 48
-        Thread.sleep(1000);
-        addPrimaryCall(16, 26, 6750242, 5); // 67 00 22 //smoke
-        addPrimaryCall(17, 34, 7667882, 6); // 75 00 AA //co
-        addPrimaryCall(18, 13, 6750361, 19); // 67 00 99 //glass
-        addPrimaryCall(19, 17, 6750355, 19); // 67 00 93 //glass
-        Thread.sleep(1000);
-        addPrimaryCall(20, 10, 6488238, 16); // 63 00 AE //tilt
-        addPrimaryCall(21, 12, 6488239, 16); // 63 00 AF //tilt
-        addPrimaryCall(22, 25, 6488224, 16); // 63 00 A0 //tilt
-        addPrimaryCall(23, 13, 6684828, 107); // 66 00 9C //shock
-        addPrimaryCall(24, 17, 6684829, 107); // 66 00 9D //shock
-        addPrimaryCall(25, 52, 7536801, 17); // 73 00 A1 //freeze
-        Thread.sleep(1000);
-        addPrimaryCall(26, 26, 7667810, 111); // 75 00 62 //heat
-        addPrimaryCall(27, 38, 7672224, 22); // 75 11 A0 //water
-        addPrimaryCall(28, 1, 6619386, 102); // 65 00 FA //keyfob
-        addPrimaryCall(29, 6, 6619387, 102); // 65 00 FB //keyfob
-        addPrimaryCall(30, 4, 6619388, 102); // 65 00 FC //keyfob
-        addPrimaryCall(31, 0, 8716538, 104); // 85 00 FA //keypad
-        addPrimaryCall(32, 2, 8716539, 104); // 85 00 FB //keypad
-        Thread.sleep(1000);
-        addPrimaryCall(33, 25, 6405546, 109); // 61 BD AA //doorbell
-        addPrimaryCall(34, 6, 6361649, 21); // 61 12 31 // medical
-        addPrimaryCall(35, 0, 6361650, 21); // 61 12 32 //medical
     }
 
     public void open_close(String DLID) throws InterruptedException, IOException {
@@ -86,8 +46,16 @@ public class PreUpdateSensors extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test//(dependsOnMethods = {"addSensors"})
+    @Test
     public void sensorsCheck() throws Exception {
+        String file = projectPath + "/extent-config.xml";
+        report = new ExtentReports(projectPath + "/Report/SRFreport.html", false);
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("User Name", "Becky Jameson")
+                .addSystemInfo("Software Version", softwareVersion());
+        log = report.startTest("QTMS.ActivateAllSRF");
+
         logger.info("Open-Close contact sensors");
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         for (int i = 1; i > 0; i--) {
@@ -240,16 +208,21 @@ public class PreUpdateSensors extends Setup {
 
         }
     }
+    @AfterMethod
+    public void tearDown(ITestResult result) throws IOException {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshot_path = captureScreenshot(driver, result.getName());
+            log.log(LogStatus.FAIL, "Test Case failed is " + result.getName());
+            log.log(LogStatus.FAIL, "Snapshot below:  " + test.addScreenCapture(screenshot_path));
+            //      log.log(LogStatus.FAIL,"Test Case failed", screenshot_path);
+            test.addScreenCapture(captureScreenshot(driver, result.getName()));
+        }
+        report.endTest(log);
+        report.flush();
+    }
 
-    //    @Test
-//    public void deleteSensors() throws IOException, InterruptedException {
-//        for (int i = 33; i>0; i--) {
-//            deleteFromPrimary(i);
-//        }
-//    }
-    @AfterTest
-    public void tearDown() throws IOException, InterruptedException {
-        log.endTestCase(page_name);
+    @AfterClass
+    public void driver_quit() throws InterruptedException {
         System.out.println("*****Stop driver*****");
         driver.quit();
         Thread.sleep(1000);

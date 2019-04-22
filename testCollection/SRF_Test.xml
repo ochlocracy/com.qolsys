@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SRF_Test">
+
+    <test name="Testing_SRF">
+        <classes>
+            <class name="qtmsSRF.AddSRF" />
+            <class name="qtmsSRF.ActivateSRF" />
+            <class name="settings.AutoStayTest" />
+            <class name="settings.ArmStayNoDelayTest" />
+            <class name="settings.AutoExitTimeExtensionTest" />
+        </classes>
+    </test>
+</suite>
