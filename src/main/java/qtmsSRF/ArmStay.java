@@ -128,7 +128,7 @@ public class ArmStay extends Setup {
     }
 
 
-    @Test(priority = 0)
+    //@Test(priority = 0)
     public void AS_02() throws Exception {
         create_report("ASK319_02");
         homePage = PageFactory.initElements(adc.driver1, UIRepo.class);
@@ -1080,7 +1080,7 @@ public class ArmStay extends Setup {
     @Test(priority = 30)
     public void AS_37b() throws Exception {
         add_to_report("AS_37b");
-        logger.info("Verify the panel will notvreport an immediate tamper alarm (17 group). ");
+        logger.info("Verify the panel will not report an immediate tamper alarm (17 group). ");
         addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(4000);
         Thread.sleep(4000);
@@ -2205,7 +2205,7 @@ public class ArmStay extends Setup {
     public void AS_76() throws Exception {
         add_to_report("AS_76");
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
+        logger.info("Verify the panel will just create notification if a shock-detector in group 17 is tampered");
         addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
@@ -2231,7 +2231,7 @@ public class ArmStay extends Setup {
     @Test(priority = 61)
     public void AS_77() throws Exception {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
-        logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
+        logger.info("Verify the panel will just create notification if a shock-detector in group 17 is tampered");
         addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();
@@ -2276,7 +2276,7 @@ public class ArmStay extends Setup {
 
     @Test(priority = 63)
     public void AS_79() throws Exception {
-        logger.info("Verify the panel will will just create notification if a shock-detector in group 17 is tampered");
+        logger.info("Verify the panel will just create notification if a shock-detector in group 17 is tampered");
         addPrimaryCall(34, 17, 6684829, 107);
         Thread.sleep(3000);
         servcall.EVENT_ARM_STAY();

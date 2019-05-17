@@ -1,33 +1,36 @@
 package settings;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import panel.AdvancedSettingsPage;
-import panel.InstallationPage;
-import panel.SettingsPage;
-import panel.SirenAlarmsPage;
-import utils.ConfigProps;
+import org.testng.annotations.*;
+import panel.*;
+import sensors.Sensors;
 import utils.ExtentReport;
+import utils.SensorsActivity;
 import utils.Setup;
 
+import java.io.File;
 import java.io.IOException;
 
 public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("Settings_Siren_and_Alarms");
+    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReports report;
+    ExtentTest log;
+
+    Sensors sensors = new Sensors();
 
     public AllowMasterCodeToAccessSirenAndAlarmsTest() throws Exception {
-        ConfigProps.init();
+        SensorsActivity.init();
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+        deleteSettingsReport();
     }
 
     @Test
@@ -36,7 +39,16 @@ public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-        rep.create_report("MasterCodeAccessSirens_and_Alarms_01");
+
+        String file = projectPath + "/extent-config.xml";
+        report = new ExtentReports(projectPath + "/Report/SanityReport.html");
+        report.loadConfig(new File(file));
+        report
+                .addSystemInfo("User Name", "Zachary Pulling")
+                .addSystemInfo("Software Version", softwareVersion());
+        log = report.startTest("SettingsReport");
+
+        rep.add_to_report("MasterCodeAccessSirens_and_Alarms_01");
         rep.log.log(LogStatus.INFO, ("*MasterCodeAccessSirens_and_Alarms_01* Enable access to Sirens and Alarms page using Master Code -> Expected result = Sirens and Alarms icon is present"));
         Thread.sleep(3000);
         navigateToAdvancedSettingsPage();
@@ -74,7 +86,7 @@ public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
         siren.Allow_Master_Code_To_Access_Siren_and_Alarms.click();
         Thread.sleep(2000);
         settings.Home_button.click();
-        rep.create_report("MasterCodeAccessSirens_and_Alarms_02");
+        rep.add_to_report("MasterCodeAccessSirens_and_Alarms_02");
         rep.log.log(LogStatus.INFO, ("*MasterCodeAccessSirens_and_Alarms_02* Disable access to Sirens and Alarms page using Master Code -> Expected result = Sirens and Alarms icon is gone"));
         Thread.sleep(2000);
         navigateToSettingsPage();

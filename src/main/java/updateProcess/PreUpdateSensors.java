@@ -3,6 +3,7 @@ package updateProcess;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.ContactUs;
@@ -29,7 +30,7 @@ public class PreUpdateSensors extends Setup {
         SensorsActivity.init();
     }
 
-    @BeforeTest
+    @BeforeClass
     public void setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
@@ -98,10 +99,10 @@ public class PreUpdateSensors extends Setup {
             open_close("65 00 3A");
             open_close("65 00 4A");
             open_close("65 00 5A"); //Reporting Safety Sensor
-            enterDefaultUserCode();
+            enterDefaultUserCode(); //if it fails needs activity monitoring enabled.
             Thread.sleep(4000);
             open_close("65 00 6A"); //Delayed Reporting Safety Sensor
-            enterDefaultUserCode();
+            enterDefaultUserCode(); //if it fails needs activity monitoring enabled.
             Thread.sleep(4000);
             open_close("65 00 7A"); //Local Safety Sensor. (Doesn't Alarm)
             Thread.sleep(1000);
@@ -158,7 +159,7 @@ public class PreUpdateSensors extends Setup {
             sensors.primaryCall("73 00 1A", SensorsActivity.ACTIVATE);
             sensors.primaryCall("73 00 1A", SensorsActivity.RESTORE);
             Thread.sleep(1000);
-            //enterDefaultUserCode();
+            enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate heat sensors");

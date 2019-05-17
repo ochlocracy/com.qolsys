@@ -9,12 +9,12 @@ import utils.Setup;
 
 import java.io.IOException;
 
-public class PostUpdate_WiFi extends Setup {
+public class PostUpdateWiFi extends Setup {
     String page_name = "Verify Wi-Fi connection after upgrade";
     Logger logger = Logger.getLogger(page_name);
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
-    public PostUpdate_WiFi() throws Exception {
+    public PostUpdateWiFi() throws Exception {
     }
 
     @BeforeTest

@@ -36,6 +36,7 @@ public class SystemTestWiFiCell extends Setup {
         Thread.sleep(2000);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
+        logger.info("Verify Wi-Fi test can be passed when connecting to a router/hotspot network");
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.WIFI_TEST.click();
@@ -55,6 +56,7 @@ public class SystemTestWiFiCell extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
+        logger.info("Verify cellular test passed successfully when wifi is enabled");
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.CELLULAR_TEST.click();
@@ -81,6 +83,7 @@ public class SystemTestWiFiCell extends Setup {
         Cellular_test_page_elements cell = PageFactory.initElements(driver, Cellular_test_page_elements.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         WiFi_setting_page_elements wifi = PageFactory.initElements(driver, WiFi_setting_page_elements.class);
+        logger.info("Verify cellular test passed successfully when wifi is disabled");
         navigateToSettingsPage();
         Thread.sleep(1000);
         wifi.OK.click();
@@ -103,7 +106,7 @@ public class SystemTestWiFiCell extends Setup {
         elementVerification(cell.Cellular_status, "cellular Status");
         elementVerification(cell.signal_strength, "signal strength");
         elementVerification(cell.test_result, "Test Result");
-        System.out.println(" SASST_4 Pass: cellular test passed successfully when wifi is disabled");
+        logger.info(" SASST_4 Pass: cellular test passed successfully when wifi is disabled");
         servcall.data_verification();
         Thread.sleep(2000);
         servcall.get_Cell_data();

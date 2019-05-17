@@ -1,32 +1,27 @@
-
-Please run the following tests before the panel update in the following order:
+**** FOR SRF PANEL ****
+Run the following tests before the panel update in the following order:
 
 PreUpdateSensors
 PreUpdateUserManagement
 PreUpdateSettings
-Pair one light
 
-After software update, make sure the panel is connected with adb devices, adb root, adb remount, then run tests in the following order:
+After software update: make sure the panel is connected with adb devices, adb root, adb remount, then run tests in the following order:
 
 SanityUpdate
 SanitySettings
 SanitySensors
-SanityZwave
 
-
-
-
-***** FOR PowerG panel *****
-Please run the following tests before the panel update in the following order:
+***** FOR PowerG PANEL *****
+Run the following tests before the panel update in the following order:
 
 PreUpdatePGSensors
 PreUpdateUserManagement
 PreUpdateSettings
-Pair one light
 
-After software update, please run tests in the following order:
+After software update: make sure the panel is connected with adb devices, adb root, adb remount, then run tests in the following order:
 
 SanityUpdatePG
 SanitySettings // this needs srf card
 SanityPGSensors
-SanityZwave
+
+**** FOR ZWAVE PANEL ****

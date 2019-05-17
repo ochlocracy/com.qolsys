@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("Settings_Sec_and_Arming");
+    ExtentReport rep = new ExtentReport("SettingsReport");
 
     public AllowMasterCodeToAccessSecurityAndArmingTest() throws Exception {
     }

@@ -99,6 +99,7 @@ public class ActivateSRF extends Setup {
             Thread.sleep(1000);
             enterDefaultUserCode();
             Thread.sleep(1000);
+            //Needs a restore?
 
             logger.info("Activate glassbreak sensors");
             sensors.primaryCall("67 00 99", SensorsActivity.ACTIVATE);

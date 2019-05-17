@@ -21,7 +21,7 @@ public class ExtentReport extends Setup{
 
     public void create_report(String test_area_name) throws InterruptedException {
         String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/" + name + ".html");
+        report = new ExtentReports(projectPath + "/Report/" + name + ".html", false);
         report.loadConfig(new File(file));
         log = report.startTest(test_area_name);
     }

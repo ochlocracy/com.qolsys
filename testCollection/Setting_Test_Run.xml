@@ -8,6 +8,7 @@
             <class name="settings.AllowMasterCodeToAccessSirenAndAlarmsTest" />
             <class name="settings.DealerCodeTest" />
             <class name="settings.InstallerCodeTest" />
+            <!--<class name="settings.DuressAuthenticationTest" />-->
             <class name="settings.AllowMasterCodeToAccessSecurityAndArmingTest" />
             <class name="settings.AllowMasterCodeToAccessCameraSettingsTest" />
         </classes>

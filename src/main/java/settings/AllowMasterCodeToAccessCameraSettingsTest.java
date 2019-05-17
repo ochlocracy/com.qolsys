@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("Settings_Cam_Settings");
+    ExtentReport rep = new ExtentReport("SettingsReport");
 
     public AllowMasterCodeToAccessCameraSettingsTest() throws Exception {
     }

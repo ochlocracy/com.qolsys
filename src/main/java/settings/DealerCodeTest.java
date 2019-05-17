@@ -1,11 +1,14 @@
 package settings;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,12 +16,13 @@ import panel.*;
 import utils.ExtentReport;
 import utils.Setup;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class DealerCodeTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("Settings_Dealer_Code");
+    ExtentReport rep = new ExtentReport("SettingsReport");
 
     public DealerCodeTest() throws Exception {
     }
@@ -36,8 +40,10 @@ public class DealerCodeTest extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
 
-        rep.create_report("Dealer_Code_01");
+        rep.create_report("Dealer_Code");
         rep.log.log(LogStatus.INFO, ("*Dealer_Code_01* Change Dealer Name and Dealer Pass -> Expected result = Old Dealer Code will not access the settings page"));
+
+        //rep.create_report("Dealer_Code_01");
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
@@ -119,7 +125,7 @@ public class DealerCodeTest extends Setup {
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
 
-        rep.create_report("Dealer_Code_02");
+        rep.add_to_report("Dealer_Code_02");
         rep.log.log(LogStatus.INFO, ("*Dealer_Code_02* Change Dealer Code to 6 digits -> Expected result = Old Dealer Code will not access the settings page"));
         Thread.sleep(2000);
 
@@ -203,9 +209,11 @@ public class DealerCodeTest extends Setup {
         Thread.sleep(2000);
     }
 
+
     @AfterMethod (alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException, InterruptedException {
         rep.report_tear_down(result);
         driver.quit();
     }
 }
+

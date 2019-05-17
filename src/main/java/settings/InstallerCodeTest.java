@@ -19,7 +19,7 @@ import java.util.List;
 
 public class InstallerCodeTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("Settings_Installer_Code");
+    ExtentReport rep = new ExtentReport("SettingsReport");
 
     public InstallerCodeTest() throws Exception {
     }
@@ -197,6 +197,7 @@ public class InstallerCodeTest extends Setup {
     @AfterMethod (alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException, InterruptedException {
         rep.report_tear_down(result);
+        //rep.report.flush();
         driver.quit();
     }
 }

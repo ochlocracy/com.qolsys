@@ -660,8 +660,8 @@ public class Disarm extends Setup {
         add_to_report("Disb319_28");
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        log.log(LogStatus.INFO, ("*Disb_28* readd same sensor from panel"));
-        logger.info("*Disb_28* readd same sensor from panel");
+        log.log(LogStatus.INFO, ("*Disb_28* read same sensor from panel"));
+        logger.info("*Disb_28* read same sensor from panel");
         navigate_to_Security_Sensors_page();
         sen.Add_Sensor.click();
         logger.info("Adding sensor with DLID 1234a5");
@@ -778,6 +778,7 @@ public class Disarm extends Setup {
 //        deleteFromPrimary(1);
 //        Thread.sleep(1000);
 //    }
+
     @Test(priority = 25)
     public void Disb_38_DW14_DW16() throws Exception {
         add_to_report("Disb319_38");
@@ -806,8 +807,8 @@ public class Disarm extends Setup {
     @Test(priority = 26)
     public void Disb_40_KF1() throws Exception {
         add_to_report("Disb319_40");
-        log.log(LogStatus.INFO, ("*Disb-40* System will ArmStay at the end of exit delay from feyfob group 1"));
-        logger.info("*Disb-40* System will ArmStay at the end of exit delay from feyfob group 1");
+        log.log(LogStatus.INFO, ("*Disb-40* System will ArmStay at the end of exit delay from Keyfob group 1"));
+        logger.info("*Disb-40* System will ArmStay at the end of exit delay from Keyfob group 1");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 1, 6619386, 102);
         Thread.sleep(1000);
@@ -826,8 +827,8 @@ public class Disarm extends Setup {
     @Test(priority = 27)
     public void Disb_41_KF1() throws Exception {
         add_to_report("Disb319_41");
-        log.log(LogStatus.INFO, ("*Disb-41* System will Disarm while count down by keyfob group 1, while armed from keyfob"));
-        logger.info("*Disb-41* System will Disarm while count down by keyfob group 1, while armed from keyfob");
+        log.log(LogStatus.INFO, ("*Disb-41* System will Disarm while countdown by keyfob group 1, while armed from keyfob"));
+        logger.info("*Disb-41* System will Disarm while countdown by keyfob group 1, while armed from keyfob");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 1, 6619386, 102);
         Thread.sleep(1000);
@@ -846,8 +847,8 @@ public class Disarm extends Setup {
     @Test(priority = 28)
     public void Disb_42_KF1() throws Exception {
         add_to_report("Disb319_42");
-        log.log(LogStatus.INFO, ("*Disb-42* System will ArmStay after count down disarmed by keyfob group 1 while armed from panel"));
-        logger.info("*Disb-42* System will ArmStay after count down disarmed by keyfob group 1 while armed from panel");
+        log.log(LogStatus.INFO, ("*Disb-42* System will ArmStay after countdown disarmed by keyfob group 1 while armed from panel"));
+        logger.info("*Disb-42* System will ArmStay after countdown disarmed by keyfob group 1 while armed from panel");
         addPrimaryCall(3, 1, 6619386, 102);
         Thread.sleep(5000);
         ARM_STAY();
@@ -865,8 +866,8 @@ public class Disarm extends Setup {
     @Test(priority = 29)
     public void Disb_44_KF4() throws Exception {
         add_to_report("Disb319_44");
-        log.log(LogStatus.INFO, ("*Disb-44* System will Disarm while count down by keyfob group 4, while armed from keyfob"));
-        logger.info("*Disb-44* System will Disarm while count down by keyfob group 4, while armed from keyfob");
+        log.log(LogStatus.INFO, ("*Disb-44* System will Disarm while countdown by keyfob group 4, while armed from keyfob"));
+        logger.info("*Disb-44* System will Disarm while countdown by keyfob group 4, while armed from keyfob");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 4, 6619387, 102);
         Thread.sleep(1000);
@@ -885,8 +886,8 @@ public class Disarm extends Setup {
     @Test(priority = 30)
     public void Disb_45_KF4() throws Exception {
         add_to_report("Disb319_45");
-        log.log(LogStatus.INFO, ("*Disb-45* System will ArmStay after count down disarmed by keyfob group 4 while armed from panel"));
-        logger.info("*Disb-45* System will ArmStay after count down disarmed by keyfob group 4 while armed from panel");
+        log.log(LogStatus.INFO, ("*Disb-45* System will ArmStay after countdown disarmed by keyfob group 4 while armed from panel"));
+        logger.info("*Disb-45* System will ArmStay after countdown disarmed by keyfob group 4 while armed from panel");
         addPrimaryCall(3, 4, 6619387, 102);
         Thread.sleep(1000);
         ARM_STAY();
@@ -943,8 +944,8 @@ public class Disarm extends Setup {
     @Test(priority = 33)
     public void Disb_48_KF6() throws Exception {
         add_to_report("Disb319_48");
-        log.log(LogStatus.INFO, ("*Disb-48* System will Disarm while count down by keyfob group 6, while armed from keyfob"));
-        logger.info("*Disb-48* System will Disarm while count down by keyfob group 6, while armed from keyfob");
+        log.log(LogStatus.INFO, ("*Disb-48* System will Disarm while countdown by keyfob group 6, while armed from keyfob"));
+        logger.info("*Disb-48* System will Disarm while countdown by keyfob group 6, while armed from keyfob");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 6, 6619388, 102);
         Thread.sleep(1000);
@@ -963,8 +964,8 @@ public class Disarm extends Setup {
     @Test(priority = 34)
     public void Disb_49_KF6() throws Exception {
         add_to_report("Disb319_49");
-        log.log(LogStatus.INFO, ("*Disb-49* System will ArmStay after count down disarmed by keyfob group 6 while armed from panel"));
-        logger.info("*Disb-49* System will ArmStay after count down disarmed by keyfob group 6 while armed from panel");
+        log.log(LogStatus.INFO, ("*Disb-49* System will ArmStay after countdown disarmed by keyfob group 6 while armed from panel"));
+        logger.info("*Disb-49* System will ArmStay after countdown disarmed by keyfob group 6 while armed from panel");
         addPrimaryCall(3, 6, 6619388, 102);
         Thread.sleep(1000);
         ARM_STAY();
@@ -1235,8 +1236,8 @@ public class Disarm extends Setup {
     @Test(priority = 46)
     public void Disb_71_KF1() throws Exception {
         add_to_report("Disb319_71");
-        log.log(LogStatus.INFO, ("*Disb-71* System will Disarm while count down by keyfob group 1, while armed from keyfob"));
-        logger.info("*Disb-71* System will Disarm while count down by keyfob group 1, while armed from keyfob");
+        log.log(LogStatus.INFO, ("*Disb-71* System will Disarm while countdown by keyfob group 1, while armed from keyfob"));
+        logger.info("*Disb-71* System will Disarm while countdown by keyfob group 1, while armed from keyfob");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 1, 6619386, 102);
         Thread.sleep(1000);
@@ -1255,8 +1256,8 @@ public class Disarm extends Setup {
     @Test(priority = 47)
     public void Disb_72_KF1() throws Exception {
         add_to_report("Disb319_72");
-        log.log(LogStatus.INFO, ("*Disb-72* System will ArmAway after count down armed from panel, press disarm on keyfob 1"));
-        logger.info("*Disb-72* System will ArmAway after count down armed from panel, press disarm on keyfob 1");
+        log.log(LogStatus.INFO, ("*Disb-72* System will ArmAway after countdown armed from panel, press disarm on keyfob 1"));
+        logger.info("*Disb-72* System will ArmAway after countdown armed from panel, press disarm on keyfob 1");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 1, 6619386, 102);
         Thread.sleep(1000);
@@ -1354,8 +1355,8 @@ public class Disarm extends Setup {
     @Test(priority = 52)
     public void Disb_77_KF4() throws Exception {
         add_to_report("Disb319_77");
-        log.log(LogStatus.INFO, ("*Disb-77* System will ArmAway after count down armed from panel, press disarm on keyfob 4"));
-        logger.info("*Disb-77* System will ArmAway after count down armed from panel, press disarm on keyfob 4");
+        log.log(LogStatus.INFO, ("*Disb-77* System will ArmAway after countdown armed from panel, press disarm on keyfob 4"));
+        logger.info("*Disb-77* System will ArmAway after countdown armed from panel, press disarm on keyfob 4");
         servcall.set_KEYFOB_NO_DELAY_disable();
         addPrimaryCall(3, 4, 6619387, 102);
         Thread.sleep(000);
@@ -1392,8 +1393,8 @@ public class Disarm extends Setup {
     @Test(priority = 54)
     public void Disb_79_KF6() throws Exception {
         add_to_report("Disb319_79");
-        log.log(LogStatus.INFO, ("*Disb-79* System will ArmAway at the end of countdowm from keyfob 6"));
-        logger.info("*Disb-79* System will ArmAway at the end of countdowm from keyfob 6");
+        log.log(LogStatus.INFO, ("*Disb-79* System will ArmAway at the end of countdown from keyfob 6"));
+        logger.info("*Disb-79* System will ArmAway at the end of countdown from keyfob 6");
         addPrimaryCall(3, 6, 6619388, 102);
         servcall.set_KEYFOB_NO_DELAY_disable();
         Thread.sleep(2000);
@@ -1412,8 +1413,8 @@ public class Disarm extends Setup {
     @Test(priority = 55)
     public void Disb_80_KF6() throws Exception {
         add_to_report("Disb319_80");
-        log.log(LogStatus.INFO, ("*Disb-80* System will Disarm while count down by keyfob group 6, while armed from keyfob"));
-        logger.info("*Disb-80* System will Disarm while count down by keyfob group 6, while armed from keyfob");
+        log.log(LogStatus.INFO, ("*Disb-80* System will Disarm while countdown by keyfob group 6, while armed from keyfob"));
+        logger.info("*Disb-80* System will Disarm while countdown by keyfob group 6, while armed from keyfob");
         servcall.set_KEYFOB_NO_DELAY_disable();
         Thread.sleep(1000);
         addPrimaryCall(3, 6, 6619388, 102);
@@ -1433,8 +1434,8 @@ public class Disarm extends Setup {
     @Test(priority = 56)
     public void Disb_81_KF6() throws Exception {
         add_to_report("Disb319_81");
-        log.log(LogStatus.INFO, ("*Disb-81* System will ArmAway after count down armed from panel, press disarm on keyfob 6"));
-        logger.info("*Disb-81* System will ArmAway after count down armed from panel, press disarm on keyfob 6");
+        log.log(LogStatus.INFO, ("*Disb-81* System will ArmAway after countdown armed from panel, press disarm on keyfob 6"));
+        logger.info("*Disb-81* System will ArmAway after countdown armed from panel, press disarm on keyfob 6");
         servcall.set_KEYFOB_NO_DELAY_disable();
         Thread.sleep(1000);
         addPrimaryCall(3, 6, 6619388, 102);
@@ -1825,8 +1826,8 @@ public class Disarm extends Setup {
     @Test(priority = 72)
     public void Disb_141_GB() throws Exception {
         add_to_report("Disb319_141");
-        log.log(LogStatus.INFO, ("*Disb_141* System restors status for glass-break from Activated to Normal"));
-        logger.info("*Disb_141* System restors status for glass-break from Activated to Normal");
+        log.log(LogStatus.INFO, ("*Disb_141* System restores status for glass-break from Activated to Normal"));
+        logger.info("*Disb_141* System restores status for glass-break from Activated to Normal");
         addPrimaryCall(3, 13, 6750361, 19);
         Thread.sleep(2000);
         sensor_status_check("67 00 99", "Activated", "Normal");

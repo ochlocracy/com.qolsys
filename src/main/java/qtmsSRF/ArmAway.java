@@ -44,7 +44,7 @@ public class ArmAway extends Setup {
         adc.webDriverSetUp();
     }
 
-    @Test
+    //@Test
     public void AA_01() throws Exception {
         logger.info("Verify the panel can be disarmed from adc");
         servcall.set_AUTO_STAY(0);
@@ -232,6 +232,7 @@ public class ArmAway extends Setup {
     }
 
     public void sensor_status_check(String Status, String Status1, int n, int n1) throws InterruptedException, IOException {
+        logger.info("Check if the sensor status is displayed correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
         navigateToSettingsPage();
@@ -292,9 +293,9 @@ public class ArmAway extends Setup {
         servcall.set_AUTO_STAY(0);
         addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(1000);
-        servcall.EVENT_ARM_AWAY();
+        ARM_AWAY();
         Thread.sleep(3000);
-        verifyArmaway();
+        verifyArmaway(); // if it fails then you need to disable arm away delay.
         Thread.sleep(3000);
         sensors.primaryCall("55 00 64", SensorsActivity.ACTIVATE);
         Thread.sleep(2000);
@@ -410,9 +411,10 @@ public class ArmAway extends Setup {
 //        System.out.println("Pass");
 //    }
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void AA_11() throws Exception {
         logger.info("Verify the system can not use a duress code if Duress Authentication is disabled");
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
         servcall.set_DURESS_AUTHENTICATION_disable();
@@ -429,7 +431,12 @@ public class ArmAway extends Setup {
         Thread.sleep(1000);
         enterDefaultDuressCode();
         Thread.sleep(1000);
-        System.out.println("Pass: invalid User code");
+        if (home_page.Three.isDisplayed()){
+            System.out.println("Pass: Duress code did not work");
+        } else {
+            System.out.println("Fail: Duress code worked when Duress Authentication is disabled");
+
+        }
         enterDefaultUserCode();
         Thread.sleep(2000);
         verifyDisarm();
@@ -439,7 +446,7 @@ public class ArmAway extends Setup {
         System.out.println("Pass");
     }
 
-    @Test(priority = 11)
+   //@Test(priority = 11)
     public void AA_12() throws Exception {
         logger.info("Verify the system can not use a duress code if Duress Authentication is disabled");
         servcall.set_AUTO_STAY(0);
@@ -640,7 +647,7 @@ public class ArmAway extends Setup {
         Thread.sleep(1000);
         addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(1000);
-        servcall.EVENT_ARM_AWAY();
+        ARM_AWAY();
         Thread.sleep(3000);
         verifyArmaway();
         Thread.sleep(3000);
@@ -795,7 +802,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 21)
     public void AA_22() throws Exception {
-        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
+        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays (10,14) ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
         addPrimaryCall(10, 10, 6619296, 1);
@@ -843,7 +850,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 22)
     public void AA_23() throws Exception {
-        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
+        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays (10,16) ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
         addPrimaryCall(10, 10, 6619296, 1);
@@ -891,7 +898,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 23)
     public void AA_24() throws Exception {
-        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays ");
+        logger.info("Verify the system will report alarm on both sensors at the end of the entry delays (10,15) ");
         servcall.set_AUTO_STAY(0);
         Thread.sleep(1000);
         addPrimaryCall(10, 10, 6619296, 1);
@@ -1069,7 +1076,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 29)
     public void AA_35() throws Exception {
-        logger.info("Verify the panel will report an immediate tamper alarm (12 group). ");
+        logger.info("Verify the panel will report an immediate tamper alarm (13 group). ");
         addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(2000);
         servcall.EVENT_ARM_AWAY();
@@ -1511,7 +1518,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 54)
     public void AA_62() throws Exception {
-        logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
+        logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13, 10 is activated");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
         addPrimaryCall(10, 10, 6619296, 1);
@@ -1579,7 +1586,7 @@ public class ArmAway extends Setup {
 
     @Test(priority = 55)
     public void AA_63() throws Exception {
-        logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13 is activated");
+        logger.info("Verify the panel will go into immediate alarm if shock-detector in group 13, 12 is activated");
         addPrimaryCall(33, 13, 6684828, 107);
         Thread.sleep(4000);
         addPrimaryCall(12, 12, 6619297, 1);

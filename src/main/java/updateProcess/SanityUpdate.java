@@ -154,10 +154,10 @@ public class SanityUpdate extends Setup {
     @BeforeClass
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        deleteReport();
+        deleteSanityReport();
     }
 
-    //@Test
+    @Test
     public void settingsCheck() throws InterruptedException, IOException {
         String file = projectPath + "/extent-config.xml";
         report = new ExtentReports(projectPath + "/Report/SanityReport.html");
@@ -273,7 +273,6 @@ public class SanityUpdate extends Setup {
     public void sensorsCheck() throws Exception, IOException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("UpdateProcess.Sensors");
-
         System.out.println("Open-Close contact sensors");
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         Thread.sleep(2000);

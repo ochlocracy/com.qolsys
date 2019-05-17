@@ -56,6 +56,7 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
 //      removing alarm videos on setting manually. (The service call is for both photo and video. It messes up the test.
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
@@ -135,6 +136,7 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         Thread.sleep(3000);
         System.out.println("Navigate to the setting page to enable the access to the Camera settings page using Master Code");
         log.log(LogStatus.INFO, "Navigate to the setting page to enable the access to the Camera settings page using Master Code");
@@ -354,13 +356,14 @@ public class SanitySettings extends Setup {
     public void Settings_Test5() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Arm_Stay_No_Delay");
-        serv.set_ARM_STAY_NO_DELAY_enable();
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
+        serv.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
         System.out.println("Verify that Arm Stay - No Delay works when enabled");
         log.log(LogStatus.INFO, "Verify that Arm Stay - No Delay works when enabled");
@@ -418,6 +421,7 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
@@ -500,12 +504,7 @@ public class SanitySettings extends Setup {
 
     @Test(priority = 6)
     public void Settings_Test7() throws Exception {
-        String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        report.loadConfig(new File(file));
-        report
-                .addSystemInfo("User Name", "Zachary Pulling")
-                .addSystemInfo("Software Version", softwareVersion());
+       report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Auto_Exit_Time_Extention");
 
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -513,6 +512,7 @@ public class SanitySettings extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
         Thread.sleep(2000);
         System.out.println("Verify that Auto Exit Time Extension works when enabled");
         log.log(LogStatus.INFO, "Verify that Auto Exit Time Extension works when enabled");
@@ -595,12 +595,14 @@ public class SanitySettings extends Setup {
     public void Settings_Test8() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Auto_Stay");
-        int delay = 15;
+
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
+        int delay = 15;
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
@@ -648,11 +650,13 @@ public class SanitySettings extends Setup {
     public void Settings_Test9() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Dealer_Code");
+
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
+
         navigateToAdvancedSettingsPage();
         log.log(LogStatus.INFO, "Verify a Dealer code can be changed");
         adv.INSTALLATION.click();
@@ -747,12 +751,14 @@ public class SanitySettings extends Setup {
     public void Settings_Test10() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Disarm_Photos");
+
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is taken when setting in enabled");
         deleteAllCameraPhotos(); //must have secure delete on
@@ -815,6 +821,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test11() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Duress_Authentication");
+
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage cam = PageFactory.initElements(driver, PanelCameraPage.class);
@@ -933,11 +940,13 @@ public class SanitySettings extends Setup {
     public void Settings_Test12() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Installer_Code");
+
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         UserManagementPage user = PageFactory.initElements(driver, UserManagementPage.class);
+
         System.out.println("Verify Installer Code can be modified");
         log.log(LogStatus.INFO, "Verify Installer Code can be modified");
         navigateToAdvancedSettingsPage();
@@ -1028,13 +1037,15 @@ public class SanitySettings extends Setup {
     public void Settings_Test13() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Keyfob_Alarm_Disarm");
-        String disarm = "08 01";
+
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+
+        String disarm = "08 01";
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
@@ -1095,6 +1106,7 @@ public class SanitySettings extends Setup {
     public void Settings_Test14() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Keyfob_Disarming");
+
         int delay = 15;
         String disarm = "08 01";
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -1103,6 +1115,7 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelInfo_ServiceCalls service = PageFactory.initElements(driver, PanelInfo_ServiceCalls.class);
+
         System.out.println("Adding sensors...");
         //service.set_AUTO_STAY(00);
         sensors.add_primary_call(3, 4, 6619386, 102);
@@ -1176,13 +1189,16 @@ public class SanitySettings extends Setup {
     public void Settings_Test15() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Instant_Arming");
-        String armstay = "04 01";
-        String armaway = "04 04";
+
+
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
+        String armstay = "04 01";
+        String armaway = "04 04";
         Thread.sleep(3000);
         System.out.println("Verify that Keyfob Instant Arming works when enabled");
         log.log(LogStatus.INFO, "Verify that Keyfob Instant Arming works when enabled");
@@ -1278,11 +1294,13 @@ public class SanitySettings extends Setup {
     public void Settings_Test16() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Panic_Disable");
+
         SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+
         Thread.sleep(1000);
         System.out.println("Verify panic disappears from the Emergency page when disabled");
         log.log(LogStatus.INFO, "Verify panic disappears from the Emergency page when disabled");
@@ -1363,11 +1381,13 @@ public class SanitySettings extends Setup {
     public void Settings_Test17() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Secure_Arming");
+
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
+
         Thread.sleep(2000);
         logger.info("Verify no code is required to Arm the system when setting is disabled");
         log.log(LogStatus.INFO, "Verify no code is required to Arm the system when setting is disabled");
@@ -1416,12 +1436,14 @@ public class SanitySettings extends Setup {
     public void Settings_Test18() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Secure_Delete_Images");
+
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         System.out.println("Verifying deleting panel images requires valid code...");
         log.log(LogStatus.INFO, "Verifying deleting panel images requires valid code");
         deleteAllCameraPhotos();
@@ -1493,11 +1515,13 @@ public class SanitySettings extends Setup {
     public void Settings_Test19() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Settings_Photos");
+
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
         CameraSettingsPage set_cam = PageFactory.initElements(driver, CameraSettingsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
         System.out.println("Verifying settings photo is NOT taken when setting in disabled...");
         log.log(LogStatus.INFO, "Verifying settings photo is NOT taken when setting in disabled");
         deleteAllCameraPhotos();

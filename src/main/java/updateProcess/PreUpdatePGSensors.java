@@ -36,13 +36,13 @@ public class PreUpdatePGSensors extends Setup {
         logger.info("Adding a list of sensors");
         navigate_to_autolearn_page();
         /*** DW ***/
-        addPGSensors("DW", 104, 1101, 0);//gr10
-        addPGSensors("DW", 104, 1152, 1);//gr12
-        addPGSensors("DW", 104, 1231, 2);//gr13
-        addPGSensors("DW", 104, 1216, 3);//gr14
-        addPGSensors("DW", 104, 1331, 4);//gr16
-        addPGSensors("DW", 104, 1127, "8", "8-Reporting Safety Sensor");//gr8 //scrolls to
-        addPGSensors("DW", 104, 1123, "9", "9-Delayed Reporting Safety Sensor");//gr9 //scrolls to
+//        addPGSensors("DW", 104, 1101, 0);//gr10
+//        addPGSensors("DW", 104, 1152, 1);//gr12
+//        addPGSensors("DW", 104, 1231, 2);//gr13
+//        addPGSensors("DW", 104, 1216, 3);//gr14
+//        addPGSensors("DW", 104, 1331, 4);//gr16
+//        addPGSensors("DW", 104, 1127, "8", "8-Reporting Safety Sensor");//gr8 //scrolls to
+//        addPGSensors("DW", 104, 1123, "9", "9-Delayed Reporting Safety Sensor");//gr9 //scrolls to
         addPGSensors("DW", 104, 1311, "25", "25-Local Safety Sensor");//gr25 //scrolls to
         /*** Motion ***/
         addPGSensors("Motion", 120, 1411, 1);//gr15
@@ -73,9 +73,9 @@ public class PreUpdatePGSensors extends Setup {
         addPGSensors("Keypad", 371, 1006, 1);//gr1
         addPGSensors("Keypad", 371, 1008, 2);//gr2
         /***Aux pendant ***/
-        addPGSensors("AuxPendant", 320, 1015, 0);//gr6
-        addPGSensors("AuxPendant", 320, 1016, 4);//gr4
-        addPGSensors("AuxPendant", 320, 1018, 5);//gr25
+        addPGSensors("AuxPendant", 320, 1015, 6);
+        addPGSensors("AuxPendant", 320, 1016, 4);
+        addPGSensors("AuxPendant", 320, 1018, 25);
         /***Siren ***/
         addPGSensors("Siren", 400, 1995, 0);//gr33
         addPGSensors("Siren", 410, 1998, 1);//gr25
@@ -99,17 +99,18 @@ public class PreUpdatePGSensors extends Setup {
 
             logger.info("Activate Contact sensors");
 
-            activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
-            activation_restoration(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr12
-            activation_restoration(104, 1231, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr13
-            activation_restoration(104, 1216, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr14
-            activation_restoration(104, 1331, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr16
-            activation_restoration(104, 1311, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr25
-            activation_restoration(104, 1127, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr8
-            Thread.sleep(1000);
+//            activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
+//            activation_restoration(104, 1152, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr12
+//            activation_restoration(104, 1231, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr13
+//            activation_restoration(104, 1216, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr14
+//            activation_restoration(104, 1331, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr16
+//            activation_restoration(104, 1311, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr25
+            activation_restoration(104, 1127, PGSensorsActivity.INCLOSE, PGSensorsActivity.INCLOSE);//gr8
+            Thread.sleep(4000);
             enterDefaultUserCode();
             Thread.sleep(2000);
             activation_restoration(104, 1123, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr9
+            Thread.sleep(2000);
             Thread.sleep(ConfigProps.longExitDelay);
             enterDefaultUserCode();
             Thread.sleep(2000);

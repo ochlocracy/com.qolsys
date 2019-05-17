@@ -197,22 +197,6 @@ public class Arm_stay_transmitter extends Setup {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @AfterTest
     public void tearDown () throws IOException, InterruptedException {
         log.endTestCase(page_name);

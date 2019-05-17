@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SecureDeleteImagesTest extends Setup {
 
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    ExtentReport rep = new ExtentReport("Settings_Secure_Delete_Images");
+    ExtentReport rep = new ExtentReport("SettingsReport");
 
     public SecureDeleteImagesTest() throws Exception {
     }

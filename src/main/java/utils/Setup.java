@@ -48,15 +48,23 @@ import java.util.concurrent.TimeUnit;
 import static utils.ConfigProps.adbPath;
 import static utils.ConfigProps.transmitter;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 public class Setup extends Driver{
 
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM.dd_HH.mm.ss");
     public String projectPath = new String(System.getProperty("user.dir"));
+    public String newPath = new String("/home/qolsys/Documents/Intellij_src/com.qolsys");
     public File appDir = new File("src");
     public Log log = new Log();
     public Logger logger = Logger.getLogger(this.getClass().getName());
     public Runtime rt = Runtime.getRuntime();
+    ExtentReports report;
+    ExtentTest logs;
+    ExtentTest test;
 
     public Setup() throws Exception {
         ConfigProps.init();
@@ -947,6 +955,8 @@ public class Setup extends Driver{
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(adbPath + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
+        //adb.path shell service call qservice 50 i32 8 i32 10 i32 6619303 i32 1
+
     }
     public void addPrimaryCall(String transmitterID,int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " -s " + transmitterID + " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
@@ -1090,7 +1100,7 @@ public class Setup extends Driver{
         Thread.sleep(1000);
     }
 
-    public void deleteReport() {
+    public void deleteSanityReport() {
         try {
             File file = new File(projectPath + "Report/SanityReport.html");
             if (file.delete()) {
@@ -1101,6 +1111,23 @@ public class Setup extends Driver{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void deleteSettingsReport() {
+        try { //Delete settings report
+            File file = new File("/home/qolsys/Documents/Intellij_src/com.qolsys/Report/SettingsReport.html");
+            if (file.delete()) {
+                System.out.println("/home/qolsys/Documents/Intellij_src/com.qolsys/Report/SettingsReport.html File deleted");
+            } else
+            System.out.println("File /home/qolsys/Documents/Intellij_src/com.qolsys/Report/SettingsReport.html doesn't exist");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    public void addToReport(String testName){
+        report = new ExtentReports(projectPath + "/Report/SettingsReport.html", false);
+        logs = report.startTest(testName);
     }
 
     public boolean alarmVerification(String sensor_name) throws Exception {

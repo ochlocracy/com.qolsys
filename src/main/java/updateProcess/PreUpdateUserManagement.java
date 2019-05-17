@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.HomePage;
@@ -46,7 +47,7 @@ public class PreUpdateUserManagement extends Setup {
         }
     }
 
-    @BeforeTest
+    @BeforeClass
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);

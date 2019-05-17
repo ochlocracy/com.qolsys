@@ -1,10 +1,9 @@
 package updateProcess;
 
 import adc.ADC;
+import adcSanityTests.RemoteToolkitVariables;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.*;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -15,7 +14,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import panel.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -174,7 +172,7 @@ public class SanityUpdatePG extends Setup {
     @BeforeClass
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        deleteReport();
+        deleteSanityReport();
     }
 
     @BeforeMethod
@@ -288,7 +286,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 1)
     public void Add_Sensor() throws Exception {
-        rep.create_report("Sanity_01");
+        rep.create_report("Sanity_01.add_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_01* Add a sensor"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         deleteFromPrimary(1);
@@ -301,7 +299,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Edit_Name() throws InterruptedException, IOException {
-        rep.add_to_report("Sanity_02");
+        rep.add_to_report("Sanity_02.edit_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_02* Edit sensor Name"));
 
         SecuritySensorsPage sen = PageFactory.initElements(driver, SecuritySensorsPage.class);
@@ -328,8 +326,8 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(10000);
         ADC_Equipment(accountID);
         adc.driver1.manage().window().maximize();
-        Thread.sleep(3000);
-        driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
+        Thread.sleep(5000);
+        adc.driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         Thread.sleep(4000);
         WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
         Thread.sleep(5000);
@@ -340,18 +338,27 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Delete_Sensor() throws InterruptedException, IOException {
-        rep.add_to_report("Sanity_03");
+        RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
+
+        rep.add_to_report("Sanity_03.delete_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_03* Delete the sensor"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(2000);
         deleteFromPrimary(1);
         Thread.sleep(2000);
+        adc.New_ADC_session(adc.getAccountId());
+        Thread.sleep(2000);
+        adc.driver1.get("https://alarmadmin.alarm.com/Support/CustomerSensorList.aspx");
         rep.log.log(LogStatus.INFO, ("Verify sensor is deleted"));
-        adc.update_sensors_list();
-        adc.Request_equipment_list();
         Thread.sleep(4000);
+        remote.Sensors_Tab.click();
+        Thread.sleep(1000);
+        remote.Request_Updated_Sensors.click();
+        Thread.sleep(10000);
         WebElement webname = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
-        Thread.sleep(5000);
+        Thread.sleep(15000);
+        remote.Request_Updated_Sensors.click();
+        Thread.sleep(1000);
         try {
             Assert.assertTrue(webname.getText().equals("DW 104-1152"));
         } catch (NoSuchElementException ignored) {
@@ -366,7 +373,8 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 4)
     public void contactSensorCheck() throws Exception {
-        rep.add_to_report("Sanity_04");
+        RemoteToolkitVariables remote = PageFactory.initElements(adc.driver1, RemoteToolkitVariables.class);
+        rep.add_to_report("Sanity_04.contact_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_04* Contact Sensors"));
 
         System.out.println("Open-Close contact sensors");
@@ -376,9 +384,11 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(10000);
         adc.New_ADC_session(adc.getAccountId());
         Thread.sleep(1000);
-        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
+        adc.driver1.get("https://alarmadmin.alarm.com/Support/CustomerSensorList.aspx");
+        Thread.sleep(1000);
+        remote.Sensors_Tab.click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        remote.Request_Updated_Sensors.click();
         Thread.sleep(2000);
         adc.ADC_verification_PG("//*[contains(text(), 'DW 104-1101 ')]", "//*[contains(text(), ' Sensor 1 Open/Close')]");
         rep.log.log(LogStatus.PASS, "System is DISARMED, ADC events are displayed correctly, DW sensor gr10 works as expected");
@@ -417,7 +427,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 5)
     public void motionSensorCheck() throws Exception {
-        rep.add_to_report("Sanity_05");
+        rep.add_to_report("Sanity_05.motion_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_05* Motion Sensors"));
         System.out.println("Activate motion sensors");
         rep.log.log(LogStatus.INFO, "Activate motion sensors in ARM AWAY mode");
@@ -480,7 +490,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 6)
     public void smokeCOSensorCheck() throws IOException, InterruptedException {
-        rep.add_to_report("Sanity_06");
+        rep.add_to_report("Sanity_06.smoke_CO_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_06* Smoke + SmokeM + CO Sensors"));
 
         System.out.println("Activate smoke and smokeM sensors");
@@ -523,7 +533,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 7)
     public void waterSensorCheck() throws Exception {
-        rep.add_to_report("Sanity_07");
+        rep.add_to_report("Sanity_07.water_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_07* Water Sensors"));
         rep.log.log(LogStatus.INFO, "Activate water sensor");
         HomePage home_page = PageFactory.initElements(this.driver, HomePage.class);
@@ -550,7 +560,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 8)
     public void shockSensorCheck() throws Exception {
-        rep.add_to_report("Sanity_08");
+        rep.add_to_report("Sanity_08.shock_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_08* Shock Sensors"));
         rep.log.log(LogStatus.INFO, "Activate shock sensor in ARM AWAY mode");
         servcall.set_AUTO_STAY(0);
@@ -582,7 +592,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 9)
     public void glassbreakSensorCheck() throws Exception {
-        rep.add_to_report("Sanity_09");
+        rep.add_to_report("Sanity_09.glassbreak_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_09* Glassbreak Sensors"));
         System.out.println("Activate glassbreak sensors");
         rep.log.log(LogStatus.INFO, "Activate glassbreak sensor in ARM AWAY mode");
@@ -615,7 +625,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 10)
     public void keyfobKeypadPendantCheck() throws Exception {
-        rep.add_to_report("Sanity_10");
+        rep.add_to_report("Sanity_10.keyfob_Aux_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_10* Keyfob + AuxPendant Sensors"));
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         System.out.println("Activate keyfobs");
@@ -712,7 +722,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 11)
     public void Tamper() throws IOException, InterruptedException {
-        rep.add_to_report("Sanity_11");
+        rep.add_to_report("Sanity_11.tamper_sensor");
         rep.log.log(LogStatus.INFO, ("*Sanity_11* Tamper Sensor"));
         rep.log.log(LogStatus.INFO, "Tamper events verification");
         activation_restoration(104, 1101, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);//gr10
@@ -744,7 +754,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 12)
     public void Supervisory() throws IOException, InterruptedException {
-        rep.add_to_report("Sanity_12");
+        rep.add_to_report("Sanity_12.supervisory_verification");
         rep.log.log(LogStatus.INFO, ("*Sanity_12* Supervisory Verification"));
         rep.log.log(LogStatus.INFO, "Supervisory verification");
         driver.findElement(By.id("com.qolsys:id/tray_layout")).click();
@@ -801,7 +811,7 @@ public class SanityUpdatePG extends Setup {
 
     @Test(priority = 13)
     public void Jam() throws Exception {
-        rep.add_to_report("Sanity_13");
+        rep.add_to_report("Sanity_13.jam_event_verification");
         rep.log.log(LogStatus.INFO, ("*Sanity_13* Jam Event Verification"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
@@ -846,12 +856,12 @@ public class SanityUpdatePG extends Setup {
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
 
-        rep.add_to_report("Sanity_14");
+        rep.add_to_report("Sanity_14.low_battery");
         rep.log.log(LogStatus.INFO, ("*Sanity_14* DW Low battery events verification"));
         Thread.sleep(4000);
         try {
             home.Home_button.click();
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException ignored) {
         }
         navigateToSettingsPage();
         set.STATUS.click();
@@ -884,8 +894,6 @@ public class SanityUpdatePG extends Setup {
     @AfterClass(alwaysRun = true)
     public void driver_quit() throws IOException, InterruptedException {
         System.out.println("*****Stop driver*****");
-        int i = 1;
-        deleteFromPrimary(i);
         driver.quit();
         Thread.sleep(1000);
         System.out.println("\n\n*****Stop appium service*****" + "\n\n");

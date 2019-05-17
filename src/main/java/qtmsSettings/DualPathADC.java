@@ -55,6 +55,7 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
+        logger.info("Verify Dual Path Test works");
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
@@ -78,6 +79,7 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
+        logger.info("Verify Chime changed on ADC works");
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();
@@ -114,6 +116,7 @@ public class DualPathADC extends Setup {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         System_Tests_page sys = PageFactory.initElements(driver, System_Tests_page.class);
         Dual_path_page_elements dual = PageFactory.initElements(driver, Dual_path_page_elements.class);
+        logger.info("verify Remote arming takes less than 5 minutes after Dual path test passed.");
         navigateToAdvancedSettingsPage();
         adv.SYSTEM_TESTS.click();
         sys.DUAL_PATH_TEST.click();

@@ -50,7 +50,7 @@ public class AutoBypass extends Setup {
         report = new ExtentReports(projectPath + "/Report/QTMS_Auto-Bypass.html");
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Olga Kulik")
+                .addSystemInfo("User Name", "Zachary Pulling")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest(test_area_name);
     }
@@ -229,7 +229,7 @@ public class AutoBypass extends Setup {
     public void AB319_10_AB319_11() throws Exception {
         add_to_report("AB319_05_AB319_10_AB319_11");
         logger.info("*AB319_05* Verify that Open Sensor Protest will appear if bypass is unselected and system is armed");
-        logger.info("*AB319_10*Verify that Open Sensor Protest appears when Auto Bypass is dissabled, sensor is opened, and arm is attempted.");
+        logger.info("*AB319_10*Verify that Open Sensor Protest appears when Auto Bypass is disabled, sensor is opened, and arm is attempted.");
         Thread.sleep(10000);
         addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(2000);

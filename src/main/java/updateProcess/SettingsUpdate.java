@@ -602,7 +602,7 @@ public class SettingsUpdate extends Setup {
     @BeforeClass
     public void setUp() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
-        deleteReport();
+        deleteSanityReport();
     }
 
     @Test

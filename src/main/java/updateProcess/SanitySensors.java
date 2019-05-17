@@ -201,16 +201,13 @@ public class SanitySensors extends Setup {
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayExitDelay_26() throws Exception {
-//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-//        log = report.startTest("Sensors.ArmStay_SmokeSensor");
-        addToSanityReport("Sernsos.ArmStay SmokeSensor");
+        addToSanityReport("Sensors.ArmStay SmokeSensor");
         ArmStay_Activate_Restore_sensor_during_Exit_Delay(26, "67 00 22", "//*[contains(text(), '(Sensor 26) Fire Alarm')]", "//*[contains(text(), '(Sensor 26) Reset')]");
     }
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void ArmStayTamper_26() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmStay_SmokeSensor_Tamper");
+        addToSanityReport("Sensors.ArmStay_SmokeSensor_Tamper");
         ArmStay_Tamper_sensor_during_Arm_Stay(26, "67 00 22", "//*[contains(text(), '(Sensor 26) Tamper')]", "//*[contains(text(), '(Sensor 26) End of Tamper')]");
     }
 
@@ -236,22 +233,19 @@ public class SanitySensors extends Setup {
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void ArmAwayExitDelay_10() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt10_ExitDelay");
+        addToSanityReport("Sensors.ArmAway_Tilt10_ExitDelay");
         ArmAway_Open_Close_sensor_during_Exit_Delay(10, "63 00 EA", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 3)
     public void ArmAwayExitDelay_12() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt12_ExitDelay");
+        addToSanityReport("Sensors.ArmAway_Tilt12_ExitDelay");
         ArmAway_Open_Close_sensor_during_Exit_Delay(12, "63 00 FA", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 4)
     public void ArmAwayExitDelay_25() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt25_ExitDelay");
+        addToSanityReport("Sensors.ArmAway_Tilt25_ExitDelay");
         ArmAway_Open_Close_sensor_during_Exit_Delay(25, "63 00 0A", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
@@ -298,22 +292,19 @@ public class SanitySensors extends Setup {
 
     @Test(priority = 5)
     public void ArmAway_10() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt10_DisarmDuringDialerDelay");
+        addToSanityReport("Sensors.ArmAway_Tilt10_DisarmDuringDialerDelay");
         ArmAway_Open_Close_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 6)
     public void ArmAway_12() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("sensors.ArmAway_Tilt12_DisarmDuringDialerDelay");
+        addToSanityReport("sensors.ArmAway_Tilt12_DisarmDuringDialerDelay");
         ArmAway_Open_Close_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Entry delay')]", "//*[contains(text(), 'Armed Away')]");
     }
 
     @Test(priority = 7)
     public void ArmAway_25() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt25_DisarmDuringDialerDelay");
+        addToSanityReport("Sensors.ArmAway_Tilt25_DisarmDuringDialerDelay");
         ArmAway_Open_Close_sensor(25, "63 00 0A", "//*[contains(text(), 'Opened/Closed')]", "//*[contains(text(), 'Armed Away')]");
     }
 
@@ -360,27 +351,19 @@ public class SanitySensors extends Setup {
 
     @Test(priority = 8)
     public void ArmAway_Tamper_10() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt10_Tamper");
+        addToSanityReport("Sensors.ArmAway_Tilt10_Tamper");
         ArmAway_Tamper_sensor_Alarm(10, "63 00 EA", "//*[contains(text(), 'Sensor 3 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 9)
     public void ArmAway_Tamper_12() throws Exception {
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        log = report.startTest("Sensors.ArmAway_Tilt12_Tamper");
+        addToSanityReport("Sensors.ArmAway_Tilt12_Tamper");
         ArmAway_Tamper_sensor_Alarm(12, "63 00 FA", "//*[contains(text(), 'Sensor 4 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
     @Test(priority = 10)
     public void ArmAway_Tamper_25() throws Exception {
-        String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-        report.loadConfig(new File(file));
-        report
-                .addSystemInfo("User Name", "Anya Dyshleva")
-                .addSystemInfo("Software Version", softwareVersion());
-        log = report.startTest("Sensors.ArmAway_Tilt25_Tamper");
+        addToSanityReport("Sensors.ArmAway_Tilt25_Tamper");
         ArmAway_Tamper_sensor(25, "63 00 0A", "//*[contains(text(), 'Sensor 5 Tamper**')]", "//*[contains(text(), 'End of Tamper')]");
     }
 
