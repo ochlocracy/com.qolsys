@@ -35,7 +35,7 @@ public class Duress_Authentication_Test_Grid extends Setup {
         s.setCapabilities(URL_);
         s.setup_logger(page_name, UDID_);
     }
-    @Parameters({ "UDID_" })
+    @Parameters({ "UDID_" }) //we cant test the duress code since we cant change it anymore. only on adc. add adc account verification? need to buy through company.
     @Test
     public void Verify_Duress_Authentication_works(String UDID_) throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);

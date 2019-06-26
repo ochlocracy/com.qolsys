@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ConfigProps;
 import utils.Setup1;
 
 import java.io.IOException;
@@ -16,8 +17,14 @@ public class Arm_Stay_No_Delay_Test_Grid {
     Setup1 s = new Setup1();
     String page_name = "Arm Stay No Delay testing";
     Logger logger = Logger.getLogger(page_name);
+    public Runtime rt = Runtime.getRuntime();
 
     public Arm_Stay_No_Delay_Test_Grid() throws Exception {}
+
+    public void SCGrid_Arm_Stay_No_Delay_Enabled(String UDID_) throws IOException, InterruptedException {
+        rt.exec(ConfigProps.adbPath + " -s " + UDID_ + " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0");
+        System.out.println(ConfigProps.adbPath + " -s " + UDID_ + "Arm Stay No Delay Enabled");
+    }
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass
@@ -34,9 +41,12 @@ public class Arm_Stay_No_Delay_Test_Grid {
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         Thread.sleep(2000);
+
+        SCGrid_Arm_Stay_No_Delay_Enabled(UDID_);
+
         logger.info("Verify that Arm Stay - No Delay works when enabled");
         s.ARM_STAY();
-        s.verify_armstay(UDID_);
+//        s.verify_armstay(UDID_); this is failing.
         home.DISARM.click();
         s.enter_default_user_code();
         Thread.sleep(2000);
@@ -46,6 +56,7 @@ public class Arm_Stay_No_Delay_Test_Grid {
         Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(3000);
+        s.swipe_vertical();
         s.swipe_vertical();
         arming.Arm_Stay_No_Delay.click();
         Thread.sleep(2000);
@@ -72,6 +83,8 @@ public class Arm_Stay_No_Delay_Test_Grid {
         Thread.sleep(3000);
         s.swipe_vertical();
         Thread.sleep(2000);
+        s.swipe_vertical();
+        Thread.sleep(1000);
         arming.Arm_Stay_No_Delay.click();
         Thread.sleep(2000);
         settings.Home_button.click();

@@ -44,51 +44,51 @@ public class SecurityArmingPageTest extends Setup {
         swipeVertical();
 
 
-        elementVerification(arming.Secure_Arming_summery, "Secure Arming summery");  //DISABLED by default
+        elementVerification(arming.Secure_Arming_Summary, "Secure Arming summery");  //DISABLED by default
         arming.Secure_Arming.click();
-        elementVerification(arming.Secure_Arming_summery, " Secure Arming summery when enabled");
+        elementVerification(arming.Secure_Arming_Summary, " Secure Arming summery when enabled");
         arming.Secure_Arming.click();
         swipeVertical();
         Thread.sleep(1000);
-        elementVerification(arming.Refuse_Arming_When_Battery_Low_summery, "Refuse Arming When Battery Low summery"); //DISABLED by default
+        elementVerification(arming.Refuse_Arming_When_Battery_Low_Summary, "Refuse Arming When Battery Low summery"); //DISABLED by default
         arming.Refuse_Arming_When_Battery_Low.click();
-        elementVerification(arming.Refuse_Arming_When_Battery_Low_summery, "Refuse Arming When Battery Low summery");
+        elementVerification(arming.Refuse_Arming_When_Battery_Low_Summary, "Refuse Arming When Battery Low summery");
         arming.Refuse_Arming_When_Battery_Low.click();
-        elementVerification(arming.Auto_Bypass_summery, "Auto Bypass summery"); //ENABLED by default
+        elementVerification(arming.Auto_Bypass_Summary, "Auto Bypass summery"); //ENABLED by default
         arming.Auto_Bypass.click();
-        elementVerification(arming.Auto_Bypass_summery, "Auto Bypass summery when disabled");
+        elementVerification(arming.Auto_Bypass_Summary, "Auto Bypass summery when disabled");
         arming.Auto_Bypass.click();
-        elementVerification(arming.Auto_Stay_summery, " Auto Stay summery"); //ENABLED by default
+        elementVerification(arming.Auto_Stay_Summary, " Auto Stay summery"); //ENABLED by default
         arming.Auto_Stay.click();
-        elementVerification(arming.Auto_Stay_summery, "Auto Stay summery when disabled");
+        elementVerification(arming.Auto_Stay_Summary, "Auto Stay summery when disabled");
         arming.Auto_Stay.click();
         swipeVertical();
         Thread.sleep(1000);
-        elementVerification(arming.Arm_Stay_No_Delay_summery, "Auto Stay No Delay summery when enabled");
+        elementVerification(arming.Arm_Stay_No_Delay_Summary, "Auto Stay No Delay summery when enabled");
         arming.Arm_Stay_No_Delay.click();
-        elementVerification(arming.Arm_Stay_No_Delay_summery, "Auto Stay No Delay summery"); //ENABLED by default
+        elementVerification(arming.Arm_Stay_No_Delay_Summary, "Auto Stay No Delay summery"); //ENABLED by default
         arming.Arm_Stay_No_Delay.click();
-        elementVerification(arming.Auto_Exit_Time_Extension_summery, "Auto Exit Time Extension summery"); //ENABLED by default
+        elementVerification(arming.Auto_Exit_Time_Extension_Summary, "Auto Exit Time Extension summery"); //ENABLED by default
         arming.Auto_Exit_Time_Extension.click();
-        elementVerification(arming.Auto_Exit_Time_Extension_summery, "Auto Exit Time Extension summery when disabled");
+        elementVerification(arming.Auto_Exit_Time_Extension_Summary, "Auto Exit Time Extension summery when disabled");
         arming.Auto_Exit_Time_Extension.click();
-        elementVerification(arming.Keyfob_Instant_Arming_summery, "Keyfob Instant Arming");  //ENABLED by default
+        elementVerification(arming.Keyfob_Instant_Arming_Summary, "Keyfob Instant Arming");  //ENABLED by default
         arming.Keyfob_Instant_Arming.click();
-        elementVerification(arming.Keyfob_Instant_Arming_summery, "Keyfob Instant Arming summery when disabled");
+        elementVerification(arming.Keyfob_Instant_Arming_Summary, "Keyfob Instant Arming summery when disabled");
         arming.Keyfob_Instant_Arming.click();
         swipeVertical();
         Thread.sleep(1000);
-        elementVerification(arming.Keyfob_Alarm_Disarm_summery, "Keyfob Alarm Disarm summery");  //DISABLED by default
+        elementVerification(arming.Keyfob_Alarm_Disarm_Is_Disabled, "Keyfob Alarm Disarm summery");  //DISABLED by default
         arming.Keyfob_Alarm_Disarm.click();
-        elementVerification(arming.Keyfob_Alarm_Disarm_summery_enabled, "Keyfob Alarm Disarm summery when enabled");
+        elementVerification(arming.Keyfob_Alarm_Disarm_Is_Enabled, "Keyfob Alarm Disarm summery when enabled");
         arming.Keyfob_Alarm_Disarm.click();
-        elementVerification(arming.Keyfob_Disarming_summery, "Keyfob Disarming summery");  //ENABLED by default
+        elementVerification(arming.Keyfob_Disarming_Summary, "Keyfob Disarming summery");  //ENABLED by default
         arming.Keyfob_Disarming.click();
-        elementVerification(arming.Keyfob_Disarming_summery, "Keyfob Disarming summery when disabled");
+        elementVerification(arming.Keyfob_Disarming_Summary, "Keyfob Disarming summery when disabled");
         arming.Keyfob_Disarming.click();
-        elementVerification(arming.Allow_Master_Code_To_Access_Security_and_Arming_summery, "Allow Master Code To Access Security and Arming summery");  //DISABLED by default
+        elementVerification(arming.Allow_Master_Code_To_Access_Security_and_Arming_Is_Disabled, "Allow Master Code To Access Security and Arming summery");  //DISABLED by default
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
-        elementVerification(arming.Allow_Master_Code_To_Access_Security_and_Arming_summery_enabled, "Allow Master Code To Access Security and Arming summery when enabled");
+        elementVerification(arming.Allow_Master_Code_To_Access_Security_and_Arming_Is_Enabled, "Allow Master Code To Access Security and Arming summery when enabled");
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         swipeVertical();
         elementVerification(arming.Normal_Entry_Delay, "Normal Entry Delay");

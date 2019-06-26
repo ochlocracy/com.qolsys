@@ -33,12 +33,10 @@ public class Allow_Master_Code_to_access_Security_and_Arming_Test_Grid {
         SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
-        Thread.sleep(3000);
+
         logger.info("Navigate to the setting page to enable the access to the Security and Arming page using Master Code");
         s.navigate_to_Advanced_Settings_page();
-        Thread.sleep(2000);
         adv.INSTALLATION.click();
-        Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
         s.swipe_vertical();
@@ -47,7 +45,14 @@ public class Allow_Master_Code_to_access_Security_and_Arming_Test_Grid {
         Thread.sleep(1000);
         s.swipe_vertical();
         Thread.sleep(1000);
-        arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
+        s.swipe_vertical();
+        Thread.sleep(1000);
+        try {
+            if (arming.Allow_Master_Code_To_Access_Security_and_Arming_Is_Disabled.isDisplayed())
+                arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
+        } catch (Exception e) {
+            logger.info("setting is already enabled, continue.");
+        }
         Thread.sleep(2000);
         settings.Home_button.click();
         Thread.sleep(2000);
@@ -70,10 +75,13 @@ public class Allow_Master_Code_to_access_Security_and_Arming_Test_Grid {
         inst.SECURITY_AND_ARMING.click();
         Thread.sleep(2000);
         s.swipe_vertical();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         s.swipe_vertical();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         s.swipe_vertical();
+        Thread.sleep(1000);
+        s.swipe_vertical();
+        Thread.sleep(1000);
         arming.Allow_Master_Code_To_Access_Security_and_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();

@@ -1,5 +1,6 @@
 package settingsGrid;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -26,30 +27,36 @@ public class Disarm_Photos_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Disarm_Photos_works(String UDID_) throws Exception {
-        HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
-        PanelCameraPage camera = PageFactory.initElements(s.getDriver(), PanelCameraPage.class);
-        CameraSettingsPage set_cam = PageFactory.initElements(s.getDriver(), CameraSettingsPage.class);
-        SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
-        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
-        logger.info("Verifying Disarm photo is taken when setting in enabled...");
-        s.delete_all_camera_photos();
+        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
+        PanelCameraPage camera = PageFactory.initElements(s.driver, PanelCameraPage.class);
+        CameraSettingsPage set_cam = PageFactory.initElements(s.driver, CameraSettingsPage.class);
+        SettingsPage settings = PageFactory.initElements(s.driver, SettingsPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.driver, InstallationPage.class);
+
+        System.out.println("Verifying Disarm photo is taken when setting in enabled...");
+        logger.info("Verifying Disarm photo is taken when setting in enabled");
+        s.delete_all_camera_photos(); //must have secure delete on
         Thread.sleep(1000);
         s.ARM_STAY();
         home.DISARM.click();
-        s.enter_default_user_code();
+        s.enterDefaultUserCode();
+        s.swipeFromLefttoRight();
+        Thread.sleep(2000);
         s.swipeFromLefttoRight();
         camera.Disarm_photos.click();
-        if (camera.Photo_lable.isDisplayed()){
-            logger.info(UDID_ + " Pass: Disarm photo is displayed");
-        }else { s.take_screenshot();
-            logger.info(UDID_ + " Failed: Disarm photo is NOT displayed");}
-        camera.Camera_delete.click();
-        camera.Camera_delete_yes.click();
-        s.enter_default_user_code();
+        if (camera.Photo_lable.isDisplayed()) {
+            System.out.println("Pass: Disarm photo is displayed");
+            logger.info("Pass: Disarm photo is displayed");
+        } else {
+            System.out.println("Failed: Disarm photo is NOT displayed");
+            logger.info("Failed: Disarm photo is NOT displayed");
+        }
+        s.delete_all_camera_photos();
         Thread.sleep(1000);
-        logger.info("Verifying Disarm photo is NOT taken when setting in disabled...");
-        s.navigate_to_Advanced_Settings_page();
+        System.out.println("Verifying Disarm photo is NOT taken when setting in disabled...");
+        logger.info("Disarm photo is NOT taken when setting in disabled");
+        s.navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
         Thread.sleep(1000);
@@ -59,27 +66,28 @@ public class Disarm_Photos_Test_Grid {
         Thread.sleep(1000);
         s.ARM_STAY();
         home.DISARM.click();
-        s.enter_default_user_code();
+        s.enterDefaultUserCode();
+        s.swipeFromLefttoRight();
         s.swipeFromLefttoRight();
         camera.Disarm_photos.click();
         try {
             if (camera.Photo_lable.isDisplayed())
-                s.take_screenshot();
-            logger.info(UDID_ + " Failed: Disarm photo is displayed");
+                System.out.println("Failed: Disarm photo is displayed");
+            logger.info("Failed: Disarm photo is displayed");
         } catch (Exception e) {
-            logger.info(UDID_ + " Pass: Disarm photo is NOT displayed");
-        } finally {
+            System.out.println("Pass: Disarm photo is NOT displayed");
+            logger.info("Pass: Disarm photo is NOT displayed");
         }
         Thread.sleep(1000);
-        s.navigate_to_Advanced_Settings_page();
+        s.navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
-        Thread.sleep(1000);
         inst.CAMERA_SETTINGS.click();
-        Thread.sleep(1000);
         set_cam.Disarm_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
+        Thread.sleep(2000);
     }
+
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {
         s.log.endTestCase(page_name);

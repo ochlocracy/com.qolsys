@@ -1,8 +1,15 @@
-java -jar /home/qolsys/Desktop/selenium-server-standalone-2.53.0.jar -port 4444 -role hub &
+java -jar /home/qolsys/Downloads/selenium-server-standalone-2.53.0.jar -port 4444 -role hub &
 
 sleep 5
 
 echo "done 0"
-appium --nodeconfig /home/qolsys/IdeaProjects/com.qolsys/src/main/java/gridTesting/android1.json -p 4727 -bp 5726 --udid 6231f044 &
+appium --nodeconfig /home/qolsys/Documents/Intellij_src/com.qolsys/src/main/java/gridTesting/android1.json -p 4725 -bp 5725 --udid bb928d42 &
 echo "done 1"
-appium --nodeconfig /home/qolsys/IdeaProjects/com.qolsys/src/main/java/gridTesting/android2.json -p 4728 -bp 5727 --udid 2c68bc67 &
+appium --nodeconfig /home/qolsys/Documents/Intellij_src/com.qolsys/src/main/java/gridTesting/android2.json -p 4726 -bp 5726 --udid 42164ff &
+echo "done 2"
+appium --nodeconfig /home/qolsys/Documents/Intellij_src/com.qolsys/src/main/java/gridTesting/android3.json -p 4727 -bp 5727 --udid 6e548d39 &
+echo "done 3"
+appium --nodeconfig /home/qolsys/Documents/Intellij_src/com.qolsys/src/main/java/gridTesting/android4.json -p 4728 -bp 5728 --udid c85a3a6e &
+echo "done 4"
+
+//keep adding these for more devices. This is node setup config.

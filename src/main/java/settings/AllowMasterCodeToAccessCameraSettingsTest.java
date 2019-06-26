@@ -44,7 +44,9 @@ public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
         Thread.sleep(2000);
         swipeVertical();
         Thread.sleep(1000);
-        set_cam.Allow_Master_Code_to_access_Camera_Settings.click();
+        if (set_cam.Allow_Master_Code_to_access_Camera_Settings_Is_Disabled.isDisplayed()){
+            set_cam.Allow_Master_Code_to_access_Camera_Settings.click(); //added this if statement without checking if the if passes.
+        }
         Thread.sleep(1000);
         settings.Home_button.click();
         Thread.sleep(1000);

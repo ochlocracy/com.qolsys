@@ -4,10 +4,10 @@
 <suite name="Suite" parallel="tests" thread-count="4">
     <test name="Test1">
         <parameter name="deviceName_" value="android1"/>
-        <parameter name="applicationName_" value="8ebdbcc4"/>
-        <parameter name="UDID_" value="8ebdbcc4"/>
+        <parameter name="applicationName_" value="bb928d42"/>
+        <parameter name="UDID_" value="bb928d42"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4725/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.189:4725/wd/hub"/>
         <parameter name="PORT_" value="4725"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
@@ -15,33 +15,33 @@
     </test>
     <test name="Test2">
         <parameter name="deviceName_" value="android2"/>
-        <parameter name="applicationName_" value="6231f062"/>
-        <parameter name="UDID_" value="6231f062"/>
+        <parameter name="applicationName_" value="42164ff"/>
+        <parameter name="UDID_" value="42164ff"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4727/wd/hub"/>
-        <parameter name="PORT_" value="4727"/>
+        <parameter name="URL_" value="http://192.168.136.189:4726/wd/hub"/>
+        <parameter name="PORT_" value="4726"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
         </classes>
     </test>
     <test name="Test3">
         <parameter name="deviceName_" value="android3"/>
-        <parameter name="applicationName_" value="62864b8c"/>
-        <parameter name="UDID_" value="62864b8c"/>
+        <parameter name="applicationName_" value="6e548d39"/>
+        <parameter name="UDID_" value="6e548d39"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4729/wd/hub"/>
-        <parameter name="PORT_" value="4729"/>
+        <parameter name="URL_" value="http://192.168.136.189:4727/wd/hub"/>
+        <parameter name="PORT_" value="4727"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
         </classes>
     </test>
     <test name="Test4">
         <parameter name="deviceName_" value="android4"/>
-        <parameter name="applicationName_" value="4216551"/>
-        <parameter name="UDID_" value="4216551"/>
+        <parameter name="applicationName_" value="c85a3a6e"/>
+        <parameter name="UDID_" value="c85a3a6e"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4731/wd/hub"/>
-        <parameter name="PORT_" value="4731"/>
+        <parameter name="URL_" value="http://192.168.136.189:4728/wd/hub"/>
+        <parameter name="PORT_" value="4728"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
         </classes>

@@ -9,16 +9,16 @@
       "platform": "ANDROID",
       "applicationName": "test3",
       "newCommandTimeout":"500",
-      "deviceReadyTimeout":5
+      "deviceReadyTimeout":10
     }
   ],
   "configuration": {
     "nodeTimeout": 500,
-    "port": 4729,
+    "port": 4727,
     "hubPort": 4444,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
-    "url": "http://172.16.101.48:4729/wd/hub",
-    "hubHost": "172.16.101.48",
+    "url": "http://192.168.136.189:4727/wd/hub",
+    "hubHost": "192.168.136.189",
     "nodePolling": 2000,
     "registerCycle": 10000,
     "register": true,

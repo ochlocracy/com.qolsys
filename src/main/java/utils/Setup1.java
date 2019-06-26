@@ -30,6 +30,7 @@ public class Setup1 {
 
     public AndroidDriver<WebElement> driver;
     DesiredCapabilities capabilities = new DesiredCapabilities();
+    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
     public AndroidDriver<WebElement> getDriver() {return driver;}
 
@@ -59,7 +60,7 @@ public class Setup1 {
 
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass(alwaysRun=true)
-    public void setCapabilities(String URL_) throws MalformedURLException, InterruptedException {
+    public void setCapabilities(String URL_) throws MalformedURLException {
         capabilities.setCapability("BROWSER_NAME", "Android");
         capabilities.setCapability("deviceName", "deviceName_");
         capabilities.setCapability("UDID", "UDID_");
@@ -68,10 +69,9 @@ public class Setup1 {
         capabilities.setCapability("appPackage", "com.qolsys");
         capabilities.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         capabilities.setCapability("PORT", "PORT_");
-        capabilities.setCapability("newCommandTimeout", "5000");
-        this.driver = new AndroidDriver<WebElement>(new URL(URL_), getCapabilities());
+        this.driver = new AndroidDriver<>(new URL(URL_), getCapabilities());
     }
-//    WebDriverWait wait = new WebDriverWait(driver, 10);
+
 
     public void setup_logger(String test_case_name, String UDID_) throws Exception {
         PropertyConfigurator.configure(new File(appDir, "log4j.properties").getAbsolutePath());
@@ -323,15 +323,29 @@ public class Setup1 {
     }
     public void delete_all_camera_photos() throws Exception {
         PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
-        swipeFromLefttoRight();
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        try {
+            if (home.Disarmed_text.isDisplayed()) {
+                swipeFromRighttoLeft();
+            }
+        }catch (Exception e) {
+        }
         Thread.sleep(3000);
         try {
-            while (camera.Photo_lable.isDisplayed()){
+            while (camera.Camera_delete.isDisplayed())
+            {
                 camera.Camera_delete.click();
                 camera.Camera_delete_yes.click();
-                enter_default_user_code();}
+                Thread.sleep(1000);
+                try {
+                    if (home.One.isDisplayed()) {
+                        enter_default_user_code();
+                    }
+                }catch (Exception e) {
+                }
+            }
         }catch (Exception e) {
-            System.out.println("No photos to delete...");
+            System.out.println("No photos to delete...continue");
         } finally {
         }
         swipeFromLefttoRight();
@@ -382,6 +396,7 @@ public class Setup1 {
     public void add_primary_call(int zone, int group, int sencor_dec, int sensor_type, String UDID_) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sencor_dec + " i32 " + sensor_type;
         rt.exec(ConfigProps.adbPath + " -s " + UDID_ + add_primary);
+        System.out.println(ConfigProps.adbPath +  " -s " + UDID_ + add_primary);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
     }
 
@@ -397,6 +412,15 @@ public class Setup1 {
         rt.exec(ConfigProps.adbPath + " -s " +UDID_+ deleteFromPrimary);
         System.out.println(deleteFromPrimary);
     }
+
+    public void primary_service_call(String UDID_, String call) throws IOException, InterruptedException {
+        //String serv_send = " shell service call qservice 40 i32 0 i32 0 i32 21 i32 1 i32 0 i32 0";
+        PanelInfo_ServiceCalls pisc = PageFactory.initElements(driver, PanelInfo_ServiceCalls.class);
+
+        rt.exec(ConfigProps.adbPath + " -s " + UDID_ + " " + pisc + "." + call);
+
+        System.out.println(ConfigProps.adbPath + " -s " + UDID_ + " " + pisc + "." + call); }
+
     public void enterDefaultUserCode() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         home_page.One.click();

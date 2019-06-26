@@ -3,45 +3,45 @@
 
 <suite name="Suite" parallel="tests" thread-count="4">
     <test name="Test1">
-        <parameter name="deviceName_" value="android5"/>
-        <parameter name="applicationName_" value="62c74a45"/>
-        <parameter name="UDID_" value="62c74a45"/>
+        <parameter name="deviceName_" value="android1"/>
+        <parameter name="applicationName_" value="bb928d42"/>
+        <parameter name="UDID_" value="8ebdbcc4"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4733/wd/hub"/>
-        <parameter name="PORT_" value="4733"/>
+        <parameter name="URL_" value="http://192.168.136.188:4725/wd/hub"/>
+        <parameter name="PORT_" value="4725"/>
         <classes>
             <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
         </classes>
     </test>
     <test name="Test2">
-        <parameter name="deviceName_" value="android6"/>
-        <parameter name="applicationName_" value="62e9f0df"/>
-        <parameter name="UDID_" value="62e9f0df"/>
+        <parameter name="deviceName_" value="android2"/>
+        <parameter name="applicationName_" value="42164ff"/>
+        <parameter name="UDID_" value="6231f062"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4735/wd/hub"/>
-        <parameter name="PORT_" value="4735"/>
+        <parameter name="URL_" value="http://192.168.136.188:4726/wd/hub"/>
+        <parameter name="PORT_" value="4726"/>
         <classes>
             <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
         </classes>
     </test>
     <test name="Test3">
-        <parameter name="deviceName_" value="android7"/>
-        <parameter name="applicationName_" value="628f4aa0"/>
-        <parameter name="UDID_" value="628f4aa0"/>
+        <parameter name="deviceName_" value="android3"/>
+        <parameter name="applicationName_" value="6e548d39"/>
+        <parameter name="UDID_" value="62864b8c"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4737/wd/hub"/>
-        <parameter name="PORT_" value="4737"/>
+        <parameter name="URL_" value="http://192.168.136.188:4727/wd/hub"/>
+        <parameter name="PORT_" value="4727"/>
         <classes>
             <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
         </classes>
     </test>
     <test name="Test4">
-        <parameter name="deviceName_" value="android8"/>
-        <parameter name="applicationName_" value="2c63bc81"/>
-        <parameter name="UDID_" value="2c63bc81"/>
+        <parameter name="deviceName_" value="android4"/>
+        <parameter name="applicationName_" value="c85a3a6e"/>
+        <parameter name="UDID_" value="4216551"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://172.16.101.48:4739/wd/hub"/>
-        <parameter name="PORT_" value="4739"/>
+        <parameter name="URL_" value="http://192.168.136.188:4728/wd/hub"/>
+        <parameter name="PORT_" value="4728"/>
         <classes>
             <class name="sensors.Smoke_Test_DW_Grid_ArmAway"/>
         </classes>

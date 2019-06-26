@@ -5,10 +5,12 @@ import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import panel.HomePage;
 import utils.ConfigProps;
 import utils.SensorsActivity;
 
@@ -74,7 +76,9 @@ public class ArmingTestGrid {
     @Parameters({"UDID_"})
     public void Test2(String UDID_) throws InterruptedException, IOException {
         Thread.sleep(5000);
+        HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+//        home.Two.click();
         add_primary_call(UDID_, 1, 10, 123411, 1);
         add_primary_call(UDID_, 2, 10, 123412, 1);
         add_primary_call(UDID_, 3, 10, 123413, 1);
@@ -93,17 +97,18 @@ public class ArmingTestGrid {
         for (int i = 500; i > 0; i--) {
             Thread.sleep(5000);
             System.out.println("ArmStay");
-            getDriver().findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
-            getDriver().findElement(By.id("com.qolsys:id/img_arm_stay")).click();
+            primary_call(UDID_, "01 E2 31", SensorsActivity.CLOSE);
+            home.DISARM.click();
+            home.ARM_STAY.click();
             Thread.sleep(5000);
             primary_call(UDID_, "01 E2 31", SensorsActivity.OPEN);
-            Thread.sleep(2000);
-            //       driver_primary.findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
-            //       Thread.sleep(3000);
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyOne")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
+            Thread.sleep(12000);
+//            home.DISARM.click(); //needs instant armstay or wait for 11 sec //the open call goes into alarm.
+            Thread.sleep(3000);
+            home.One.click();
+            home.Two.click();
+            home.Three.click();
+            home.Four.click();
             primary_call(UDID_, "01 E2 31", SensorsActivity.CLOSE);
             Thread.sleep(5000);
             System.out.println("ArmAway");
@@ -111,22 +116,24 @@ public class ArmingTestGrid {
             getDriver().findElement(By.id("com.qolsys:id/img_arm_away")).click();
             Thread.sleep(20000);
             primary_call(UDID_, "01 E2 71", SensorsActivity.OPEN);
-            Thread.sleep(2000);
+            Thread.sleep(3000);
+//            home.DISARM.click();
             ///       driver_primary.findElement(By.id("com.qolsys:id/main")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyOne")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
+            home.One.click();
+            home.Two.click();
+            home.Three.click();
+            home.Four.click();
             primary_call(UDID_, "01 E2 71", SensorsActivity.CLOSE);
             System.out.println("Fire Emergency");
             getDriver().findElement(By.id("com.qolsys:id/t3_emergency_icon")).click();
             Thread.sleep(3000);
             getDriver().findElement(By.id("com.qolsys:id/tv_fire")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_emg_cancel")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyOne")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
+//            home.DISARM.click();
+//            getDriver().findElement(By.id("com.qolsys:id/tv_emg_cancel")).click(); no cancel
+            home.One.click();
+            home.Two.click();
+            home.Three.click();
+            home.Four.click();
             Thread.sleep(300000);
             System.out.println("Open/close door window sensors");
             primary_call(UDID_, "01 E2 31", SensorsActivity.OPEN);
@@ -157,10 +164,10 @@ public class ArmingTestGrid {
             Thread.sleep(5000);
             getDriver().findElement(By.id("com.qolsys:id/t3_img_disarm")).click();
             Thread.sleep(3000);
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyOne")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyTwo")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyThree")).click();
-            getDriver().findElement(By.id("com.qolsys:id/tv_keyFour")).click();
+            home.One.click();
+            home.Two.click();
+            home.Three.click();
+            home.Four.click();
             Thread.sleep(10000);
             System.out.println("Activate motion sensors ");
             primary_call(UDID_, "05 16 18", SensorsActivity.ACTIVATE);

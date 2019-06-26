@@ -380,7 +380,9 @@ public class PanelInfo_ServiceCalls extends Setup {
 
     public void set_SIA_LIMITS_disable() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 40 i32 0 i32 0 i32 37 i32 0 i32 0 i32 0";
-        rt.exec(command);}
+        rt.exec(command);
+        System.out.println(command);
+    }
 
     public void get_SPEAKER_VOLUME() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 39 i32 0 i32 0";

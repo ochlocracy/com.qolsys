@@ -45,8 +45,8 @@ public class Activity_Monitor_Page_Test1 {
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass
     public void setUp(String deviceName_, String applicationName_, String UDID_, String platformVersion_, String URL_, String PORT_) throws Exception {
-       s.setCapabilities(URL_);
-       s.setup_logger(page_name, UDID_);
+        s.setCapabilities(URL_);
+        s.setup_logger(page_name, UDID_);
     }
 
     @Parameters ({"UDID_"})
@@ -101,7 +101,7 @@ public class Activity_Monitor_Page_Test1 {
     }
 
     @Parameters ({"UDID_"})
-   @Test
+    @Test
     public void Test2_Check_Activity_Monitor_behavior(String UDID_) throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements( s.getDriver(), ActivityMonitorPage.class);
         SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
@@ -122,8 +122,8 @@ public class Activity_Monitor_Page_Test1 {
         Thread.sleep(2000);
         settings.ACTIVITY_MONITOR.click();
         Thread.sleep(3000);
-        activity.Safety_All.click();
-        Thread.sleep(3000);
+        activity.Safety_All.click(); //what is this supposed to click?
+        Thread.sleep(5000);
         WebElement dw1 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door/Window 1']"));
         s.verify_sensor_is_displayed(UDID_, dw1);
         WebElement dw2 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door/Window 2']"));
@@ -216,7 +216,7 @@ public class Activity_Monitor_Page_Test1 {
         Thread.sleep(1000);
         contact.acknowledge_all_alerts();
         for (int i = 1; i < 8; i++)
-        delete_sensor(UDID_, i);
+            delete_sensor(UDID_, i);
         Thread.sleep(2000);
     }
 

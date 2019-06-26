@@ -61,11 +61,17 @@ public class SanitySettings extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
-        try {
-            if (set_cam.Alarm_Videos_summery.isDisplayed())
-                log.log(LogStatus.INFO, "setting is disabled, continue with the test.");
+        try { //need to remove alarm videos for test to work.
+            if (set_cam.Alarm_Photos_Is_Enabled.isDisplayed())
+                logger.info("setting is enabled, continue with the test.");
         } catch (Exception e) {
-            set_cam.Alarm_Videos_summery_enabled.click();
+            set_cam.Alarm_Photos.click();
+        }
+        try {
+            if (set_cam.Alarm_Videos_Summary_Is_Disabled.isDisplayed())
+                log.log(LogStatus.INFO, "Video taking setting is disabled, continue with the test.");
+        } catch (Exception e) {
+            set_cam.Alarm_Videos.click();
         }
         home.Home_button.click();
         System.out.println("Verifying Alarm photo is taken when setting in enabled...");
@@ -76,8 +82,7 @@ public class SanitySettings extends Setup {
         emergency.Police_icon.click();
         Thread.sleep(1000);
         enterDefaultUserCode();
-        swipeFromLefttoRight();
-        swipeFromLefttoRight();
+        swipeFromRighttoLeft();
         camera.Alarms_photo.click();
         if (camera.Photo_lable.isDisplayed()) {
             System.out.println("Pass: Alarm photo is displayed");
@@ -106,8 +111,7 @@ public class SanitySettings extends Setup {
         emergency.Police_icon.click();
         Thread.sleep(1000);
         enterDefaultUserCode();
-        swipeFromLefttoRight();
-        swipeFromLefttoRight();
+        swipeFromRighttoLeft();
         camera.Alarms_photo.click();
         try {
             if (camera.Camera_delete.isDisplayed())
@@ -744,7 +748,6 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/ok")).click();
         Thread.sleep(1000);
-
     }
 
     @Test(priority = 9)
@@ -1045,7 +1048,23 @@ public class SanitySettings extends Setup {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
 
-        String disarm = "08 01";
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(2000);
+        swipeVertical();
+        Thread.sleep(2000);
+        swipeVertical();
+        swipeVertical();
+        try {
+            if (arming.Keyfob_Alarm_Disarm_Is_Disabled.isDisplayed())
+                arming.Keyfob_Alarm_Disarm.click();
+        } catch (Exception e) {
+            System.out.println("Keyfob alarm disarm is enabled, continue");
+            log.log(LogStatus.PASS, "Keyfob alarm disarm is enabled, continue");
+        }
+        home.Home_button.click();
+        String disarm = "08 01"; //check needs to be enabled
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 4, 6619386, 102);
         Thread.sleep(2000);
@@ -1301,6 +1320,14 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
 
+        try {
+            if (emergency.Police_icon.isDisplayed())
+                System.out.println("Failed: Police Emergency is displayed");
+            log.log(LogStatus.FAIL, "Failed: Police Emergency is displayed");
+        } catch (Exception e) {
+            System.out.println("Pass: Police Emergency is NOT displayed");
+            log.log(LogStatus.PASS, "Pass: Police Emergency is NOT displayed");
+        }
         Thread.sleep(1000);
         System.out.println("Verify panic disappears from the Emergency page when disabled");
         log.log(LogStatus.INFO, "Verify panic disappears from the Emergency page when disabled");

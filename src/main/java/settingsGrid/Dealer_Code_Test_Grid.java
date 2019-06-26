@@ -1,8 +1,10 @@
 package settingsGrid;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -27,83 +29,102 @@ public class Dealer_Code_Test_Grid {
     @Parameters({"UDID_"})
     @Test
     public void Verify_Dealer_Code_Change(String UDID_) throws Exception {
-        SettingsPage settings =  PageFactory.initElements(s.getDriver(), SettingsPage.class);
-        SecurityArmingPage arming = PageFactory.initElements(s.getDriver(), SecurityArmingPage.class);
-        AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
-        InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
-        UserManagementPage user = PageFactory.initElements(s.getDriver(), UserManagementPage.class);
-        s.navigate_to_Advanced_Settings_page();
+        SettingsPage settings = PageFactory.initElements(s.driver, SettingsPage.class);
+        SecurityArmingPage arming = PageFactory.initElements(s.driver, SecurityArmingPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(s.driver, AdvancedSettingsPage.class);
+        InstallationPage inst = PageFactory.initElements(s.driver, InstallationPage.class);
+        UserManagementPage user = PageFactory.initElements(s.driver, UserManagementPage.class);
+
+        s.navigateToAdvancedSettingsPage();
+        System.out.println("Verify a Dealer code can be changed");
         adv.INSTALLATION.click();
-        Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
-        Thread.sleep(2000);
         arming.Dealer_Code.click();
         user.Add_User_Name_field.clear();
-        logger.info("Changing Dealer name");
+        System.out.println("Changing Dealer name");
         user.Add_User_Name_field.sendKeys("NewDealer");
         user.Add_User_Code_field.clear();
-        logger.info("Changing Dealer password");
+        System.out.println("Changing Dealer password");
         user.Add_User_Code_field.sendKeys("5555");
         s.driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("5555");
-        Thread.sleep(2000);
+        try {
+            s.driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
-        Thread.sleep(3000);
+        s.driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
         s.navigateToSettingsPage();
         settings.ADVANCED_SETTINGS.click();
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
-        Thread.sleep(3000);
-        adv.USER_MANAGEMENT.click();
+        Thread.sleep(2000);
         logger.info("Verify Dealer name changed");
-        s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='NewDealer']")).isDisplayed();
+        adv.INSTALLATION.click();
+        inst.SECURITY_AND_ARMING.click();
+        arming.Dealer_Code.click();
+//        <WebElement> name = driver.findElement(By.id("com.qolsys:id/username"));
+//        user.Add_User_Name_field.clear();
+        Assert.assertTrue(s.driver.findElement(By.xpath("//android.widget.EditText[@text='NewDealer']")).isDisplayed());
+        logger.info("Pass: new dealer name is displayed");
         Thread.sleep(2000);
         settings.Back_button.click();
         Thread.sleep(2000);
         settings.Back_button.click();
         Thread.sleep(2000);
+        settings.Back_button.click();
+        Thread.sleep(2000);
+        settings.Back_button.click();
+        Thread.sleep(2000);
+        System.out.println("Verify old Dealer code does not work");
         logger.info("Verify old Dealer code does not work");
         settings.ADVANCED_SETTINGS.click();
         settings.Two.click();
         settings.Two.click();
         settings.Two.click();
         settings.Two.click();
-        if(settings.Invalid_User_Code.isDisplayed()){
-            logger.info(UDID_ + " Pass: old Dealer code does not work");
-        }else { logger.info(UDID_ + "Failed: old Dealer code works");}
+        if (settings.Invalid_User_Code.isDisplayed()) {
+            System.out.println("Pass: old Dealer code does not work");
+            logger.info("Pass: old Dealer code does not work");
+        }
         Thread.sleep(2000);
+        System.out.println("Verify new Dealer code works");
         logger.info("Verify new Dealer code works");
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
         settings.Five.click();
-        if(adv.INSTALLATION.isDisplayed()){
-        logger.info(UDID_ + "Pass: new Dealer code works as expected");}
+        System.out.println("Pass: new Dealer code works as expected");
+        logger.info("Pass: new Dealer code works as expected");
         adv.INSTALLATION.click();
-        Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
-        Thread.sleep(2000);
         arming.Dealer_Code.click();
         Thread.sleep(2000);
         user.Add_User_Name_field.clear();
         user.Add_User_Name_field.sendKeys("Dealer");
         user.Add_User_Code_field.clear();
         user.Add_User_Code_field.sendKeys("2222");
-        s.getDriver().hideKeyboard();
+        s.driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
         user.Add_Confirm_User_Code.sendKeys("2222");
+        try {
+            s.driver.hideKeyboard();
+        } catch (Exception e) {
+        }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        s.getDriver().findElement(By.id("com.qolsys:id/ok")).click();
-        Thread.sleep(3000);
+        s.driver.findElement(By.id("com.qolsys:id/ok")).click();
+        Thread.sleep(1000);
+
     }
+
     @AfterClass
     public void tearDown () throws IOException, InterruptedException {
         s.log.endTestCase(page_name);
