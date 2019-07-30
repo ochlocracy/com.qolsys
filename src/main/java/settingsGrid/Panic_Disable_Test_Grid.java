@@ -43,7 +43,12 @@ public class Panic_Disable_Test_Grid {
         Thread.sleep(2000);
         s.swipe_vertical();
         Thread.sleep(2000);
-        siren.Police_Panic.click();
+        try {
+            if (siren.Police_Panic_Is_Enabled.isDisplayed())
+            siren.Police_Panic.click();
+        } catch (Exception e) {
+            logger.info(UDID_ +"Police Emergency is already disabled, continue.");
+        }
         Thread.sleep(2000);
         settings.Emergency_button.click();
         try {
@@ -52,7 +57,6 @@ public class Panic_Disable_Test_Grid {
             logger.info(UDID_ +" Failed: Police Emergency is displayed");
         } catch (Exception e) {
             logger.info(UDID_ +" Pass: Police Emergency is NOT displayed");
-        } finally {
         }
         s.swipeFromLefttoRight();
         Thread.sleep(2000);
@@ -66,7 +70,13 @@ public class Panic_Disable_Test_Grid {
         Thread.sleep(2000);
         s.swipe_vertical();
         Thread.sleep(2000);
-        siren.Fire_Panic.click();
+        siren.Police_Panic.click();
+        try {
+            if (siren.Fire_Panic_Is_Enabled.isDisplayed())
+            siren.Fire_Panic.click();
+        } catch (Exception e) {
+            logger.info(UDID_ +"Fire Emergency is already disabled, continue.");
+        }
         Thread.sleep(1000);
         settings.Emergency_button.click();
         try {
@@ -89,7 +99,15 @@ public class Panic_Disable_Test_Grid {
         Thread.sleep(2000);
         s.swipe_vertical();
         Thread.sleep(2000);
-        siren.Auxiliary_Panic.click();
+        s.swipe_vertical();
+        Thread.sleep(2000);
+        siren.Fire_Panic.click();
+        try {
+            if (siren.Auxiliary_Panic_Is_Enabled.isDisplayed())
+            siren.Auxiliary_Panic.click();
+        } catch (Exception e) {
+            logger.info(UDID_ +"Fire Emergency is already disabled, continue.");
+        }
         Thread.sleep(2000);
         settings.Emergency_button.click();
         try {
@@ -111,10 +129,6 @@ public class Panic_Disable_Test_Grid {
         s.swipe_vertical();
         Thread.sleep(2000);
         s.swipe_vertical();
-        Thread.sleep(2000);
-        siren.Police_Panic.click();
-        Thread.sleep(2000);
-        siren.Fire_Panic.click();
         Thread.sleep(2000);
         siren.Auxiliary_Panic.click();
         Thread.sleep(2000);

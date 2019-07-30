@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import panel.*;
 import sensors.Sensors;
+import utils.ConfigProps;
 import utils.Setup1;
 
 import java.io.IOException;
@@ -19,7 +20,11 @@ public class Keyfob_Disarming_Test_Grid {
     Sensors sensors = new Sensors();
     private int delay = 15;
     private String disarm = "08 01";
-
+    public Runtime rt = Runtime.getRuntime();
+    public void SCGrid_Keyfob_Disarm(String UDID_, int state) throws IOException, InterruptedException {
+        rt.exec(ConfigProps.adbPath + " -s " + UDID_ + " shell service call qservice 40 i32 0 i32 0 i32 134 i32 " + state + " i32 0 i32 0");
+        System.out.println(ConfigProps.adbPath + " -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " +state+ " i32 0 i32 0" + " Auto Stay Enabled");
+    }
     public Keyfob_Disarming_Test_Grid() throws Exception {}
         @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
         @BeforeClass
@@ -35,6 +40,8 @@ public class Keyfob_Disarming_Test_Grid {
             AdvancedSettingsPage adv = PageFactory.initElements(s.getDriver(), AdvancedSettingsPage.class);
             InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
             HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
+            SCGrid_Keyfob_Disarm(UDID_, 1 );
+
             logger.info("Adding sensors...");
             s.add_primary_call(1, 4, 6619386, 102,UDID_);
             Thread.sleep(2000);
@@ -91,6 +98,7 @@ public class Keyfob_Disarming_Test_Grid {
             s.swipe_vertical();
             Thread.sleep(2000);
             s.swipe_vertical();
+            Thread.sleep(1000);
             s.swipe_vertical();
             Thread.sleep(2000);
             arming.Keyfob_Disarming.click();

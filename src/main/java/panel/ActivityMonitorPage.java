@@ -9,7 +9,7 @@ public class ActivityMonitorPage {
     @FindBy(id = "com.qolsys:id/t3_img_quick_access")
     public WebElement Quick_Access_img; //hand
     @FindBy(id = "com.qolsys:id/t3_iv_safety_state")
-    public WebElement Safty_State;
+    public WebElement Safety_State;
     @FindBy(id = "com.qolsys:id/t3_tv_state")
     public WebElement Safety_State_txt;
     @FindBy(id = "com.qolsys:id/t3_tv_safety_active")
@@ -20,5 +20,13 @@ public class ActivityMonitorPage {
     public WebElement Safety_Bypass;
     @FindBy(id = "com.qolsys:id/ui_relative_progress")
     public WebElement Quick_Access_CountDown; //300 sec
+    @FindBy(xpath = "//android.widget.TextView[@text='Press to Activate']")
+    public WebElement Summary_Press_To_Activate;
+    @FindBy(xpath = "//android.widget.TextView[@text='Press to Deactivate']")
+    public WebElement Summary_Press_To_Deactivate;
+
+
+
+
 
 }

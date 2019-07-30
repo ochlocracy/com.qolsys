@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import panel.*;
+import utils.ConfigProps;
 import utils.Setup1;
 
 import java.io.IOException;
@@ -16,7 +17,12 @@ public class Disarm_Photos_Test_Grid {
     Setup1 s = new Setup1();
     String page_name = "Disarm Photos testing";
     Logger logger = Logger.getLogger(page_name);
+    public Runtime rt = Runtime.getRuntime();
 
+    public void SCGrid_Secure_Photo_Enabled(String UDID_) throws IOException, InterruptedException {
+        rt.exec("adb -s " + UDID_ + " shell service call qservice 40 i32 0 i32 0 i32 34 i32 1 i32 0 i32 0");
+        System.out.println(ConfigProps.adbPath + " -s " + UDID_ +   " shell service call qservice 40 i32 0 i32 0 i32 34 i32 1 i32 0 i32 0  secure delete photos enabled");
+    }
     public Disarm_Photos_Test_Grid() throws Exception {}
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass
@@ -34,8 +40,11 @@ public class Disarm_Photos_Test_Grid {
         AdvancedSettingsPage adv = PageFactory.initElements(s.driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(s.driver, InstallationPage.class);
 
+        SCGrid_Secure_Photo_Enabled(UDID_);
+
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         logger.info("Verifying Disarm photo is taken when setting in enabled");
+
         s.delete_all_camera_photos(); //must have secure delete on
         Thread.sleep(1000);
         s.ARM_STAY();

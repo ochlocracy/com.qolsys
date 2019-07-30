@@ -5,9 +5,9 @@
     <test name="Test1">
         <parameter name="deviceName_" value="android1"/>
         <parameter name="applicationName_" value="bb928d42"/>
-        <parameter name="UDID_" value="8ebdbcc4"/>
+        <parameter name="UDID_" value="bb928d42"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.188:4725/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4725/wd/hub"/>
         <parameter name="PORT_" value="4725"/>
         <classes>
             <class name="settingsGrid.Settings_Photos_Test_Grid"/>
@@ -16,9 +16,9 @@
     <test name="Test2">
         <parameter name="deviceName_" value="android2"/>
         <parameter name="applicationName_" value="42164ff"/>
-        <parameter name="UDID_" value="6231f062"/>
+        <parameter name="UDID_" value="42164ff"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.188:4726/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4726/wd/hub"/>
         <parameter name="PORT_" value="4726"/>
         <classes>
             <class name="settingsGrid.Settings_Photos_Test_Grid"/>
@@ -27,9 +27,9 @@
     <test name="Test3">
         <parameter name="deviceName_" value="android3"/>
         <parameter name="applicationName_" value="6e548d39"/>
-        <parameter name="UDID_" value="62864b8c"/>
+        <parameter name="UDID_" value="6e548d39"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.188:4727/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4727/wd/hub"/>
         <parameter name="PORT_" value="4727"/>
         <classes>
             <class name="settingsGrid.Settings_Photos_Test_Grid"/>
@@ -38,9 +38,9 @@
     <test name="Test4">
         <parameter name="deviceName_" value="android4"/>
         <parameter name="applicationName_" value="c85a3a6e"/>
-        <parameter name="UDID_" value="4216551"/>
+        <parameter name="UDID_" value="c85a3a6e"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.188:4728/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4728/wd/hub"/>
         <parameter name="PORT_" value="4728"/>
         <classes>
             <class name="settingsGrid.Settings_Photos_Test_Grid"/>

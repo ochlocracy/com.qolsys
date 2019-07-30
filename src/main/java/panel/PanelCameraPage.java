@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 public class PanelCameraPage {
     @FindBy(id = "com.qolsys:id/tv_name")
     public WebElement Panel_camera_page_title;
+    @FindBy(id = "//android.widget.TextView[@text='Anyone can delete panel camera images")
+    public WebElement Summary_No_Code_Delete;
+    @FindBy(id = "//android.widget.TextView[@text='Deleting panel camera images requires valid Master code")
+    public WebElement Summary_Code_Required;
     @FindBy(id = "com.qolsys:id/camera_arm_disarm_filter")
     public WebElement Disarm_photos;
     @FindBy(id = "com.qolsys:id/camera_settings_filter")

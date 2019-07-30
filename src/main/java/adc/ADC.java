@@ -1,9 +1,7 @@
 package adc;
 
-import mx4j.log.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -13,7 +11,6 @@ import utils.ConfigProps;
 import utils.Setup;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 

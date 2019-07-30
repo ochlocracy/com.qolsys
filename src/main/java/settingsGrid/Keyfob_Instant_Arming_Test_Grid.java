@@ -63,6 +63,8 @@ public class Keyfob_Instant_Arming_Test_Grid {
         s.swipe_vertical();
         Thread.sleep(2000);
         s.swipe_vertical();
+        Thread.sleep(2000);
+        s.swipe_vertical();
         arming.Keyfob_Instant_Arming.click();
         Thread.sleep(2000);
         settings.Home_button.click();
@@ -103,6 +105,8 @@ public class Keyfob_Instant_Arming_Test_Grid {
         adv.INSTALLATION.click();
         Thread.sleep(2000);
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(2000);
+        s.swipe_vertical();
         Thread.sleep(2000);
         s.swipe_vertical();
         Thread.sleep(2000);

@@ -204,9 +204,20 @@ public class Setup extends Driver{
         int starty = 660;
         int endy = 260;
         int startx = 502;
-        driver.swipe(startx, starty, startx, endy, 3000);
+        int endx = 502;
+        driver.swipe(startx, starty, endx, endy, 3000);
         Thread.sleep(2000);
     }
+
+//    [435,725]
+//            [435,370]
+//
+//    public void swipeGroupName() throws InterruptedException { //swipe vertical is right over the group name section.
+//        int starty = ;
+//        int endy = ;
+//        int startx = ;
+//        driver.swipe(startx, starty, startx, endy, 3000);
+//    }
 
     public void swipeUserManagementVertical() throws InterruptedException {
         int starty = 630;
@@ -244,7 +255,7 @@ public class Setup extends Driver{
         Thread.sleep(1000);
         logger.info("Advanced Settings");
         settings.ADVANCED_SETTINGS.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         enterDefaultDealerCode();
     }
 
@@ -642,16 +653,12 @@ public class Setup extends Driver{
 
     public void deleteAllSensorsOnPanel() throws Exception {
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
-        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
-        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         DealerSettingsPage deal = PageFactory.initElements(driver, DealerSettingsPage.class);
-
         System.out.println("Will delete all security sensors, not z wave, must have no partitions enabled.");
-
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
-        instal.DEALER_SETTINGS.click();
+        inst.DEALER_SETTINGS.click();
         swipeVertical();
         Thread.sleep(1500);
         swipeVertical();
@@ -668,11 +675,13 @@ public class Setup extends Driver{
         Thread.sleep(1500);
         deal.Delete_All_Sensors.click();
         Thread.sleep(1000);
-
+        try {
+            if (driver.findElement(By.id("com.qolsys:id/ok")).isDisplayed())
+                driver.findElement(By.id("com.qolsys:id/ok")).click();
+        }catch (Exception e){
+        }
         driver.findElement(By.id("com.qolsys:id/ok")).click();
-
         deal.Home_Button.click();
-
         Thread.sleep(1000);
     }
 
@@ -1000,10 +1009,10 @@ public class Setup extends Driver{
     public void addPGSensors(String sensor, int Type, int Id, int gn) throws IOException, InterruptedException {
         Thread.sleep(1000);
         powerGregistrator(Type, Id);
-        Thread.sleep(3000);
-        driver.findElementById("com.qolsys:id/ok").click();
-
         Thread.sleep(2000);
+        driver.findElementById("com.qolsys:id/ok").click(); //Device wants to be registered, press ok.
+
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
@@ -1016,22 +1025,23 @@ public class Setup extends Driver{
 //        Thread.sleep(2000);
 //        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
 //        List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
+//        Thread.sleep(1000);
 //        gli.get(gn).click();
-//
+
 //        Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);
         powerGactivator(Type, Id);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
 
-    public void addPGSensors(String sensor, int Type, int Id, String gn, String text) throws IOException, InterruptedException {
+    public void addMaxPGSensors(String sensor, int Type, int Id, int gn) throws IOException, InterruptedException {
         Thread.sleep(1000);
         powerGregistrator(Type, Id);
-        Thread.sleep(3000);
-        driver.findElementById("com.qolsys:id/ok").click();
-
         Thread.sleep(2000);
+        driver.findElementById("com.qolsys:id/ok").click(); //Device wants to be registered, press ok.
+
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
@@ -1041,18 +1051,50 @@ public class Setup extends Driver{
         } catch (Exception e) {
             //       e.printStackTrace();
         }
-        Thread.sleep(2000);
-        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
-        driver.scrollTo(gn);
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ text+"']")).click();
-        Thread.sleep(1000);
         driver.findElementById("com.qolsys:id/addsensor").click();
         Thread.sleep(1000);
-        Thread.sleep(1000);
+        try {
+            if (driver.findElementByPartialLinkText("com.qolsys:id/message").isDisplayed()) {
+                logger.info("Pass, sensor max is reached.");
+                driver.findElementById("com.qolsys:id/ok").click();
+            } else {
+                logger.info("Fail, sensor max was not reached.");
+            }
+        } catch (Exception e) {
+        }
         powerGactivator(Type, Id);
         Thread.sleep(2000);
     }
+
+//    public void addPGSensors(String sensor, int Type, int Id, String gn) throws IOException, InterruptedException {
+//        Thread.sleep(1000);
+//        powerGregistrator(Type, Id);
+//        Thread.sleep(3000);
+//        driver.findElementById("com.qolsys:id/ok").click();
+//
+//        Thread.sleep(2000);
+//        driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
+//        Thread.sleep(1000);
+//        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+//        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
+//        try {
+//            driver.hideKeyboard();
+//        } catch (Exception e) {
+//            //       e.printStackTrace();
+//        }
+//        Thread.sleep(2000);
+//        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+//        swipeVertical();
+//        //driver.scrollTo(gn);
+//        Thread.sleep(3000);
+//        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ text+"']")).click();
+//        Thread.sleep(1000);
+//        driver.findElementById("com.qolsys:id/addsensor").click();
+//        Thread.sleep(1000);
+//        Thread.sleep(1000);
+//        powerGactivator(Type, Id);
+//        Thread.sleep(2000);
+//    }
 
 
     public void powerGregistrator(int type, int id) throws IOException {

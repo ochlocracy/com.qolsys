@@ -115,6 +115,7 @@ public class Setup1 {
         int startx = 502;
         driver.swipe(startx, starty, startx, endy, 3000);
         Thread.sleep(2000);
+
     }
     public void swipe_vertical_up() throws InterruptedException {
         int starty = 260;
@@ -348,7 +349,12 @@ public class Setup1 {
             System.out.println("No photos to delete...continue");
         } finally {
         }
-        swipeFromLefttoRight();
+        try {
+            if (camera.No_Alarm_Photos_to_display.isDisplayed()) {
+                swipeFromLefttoRight();
+            }}catch (Exception e) {
+            }
+
     }
     public void take_screenshot() throws Exception {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -402,7 +408,7 @@ public class Setup1 {
 
     public void primary_call(String UDID_, String DLID, String State) throws IOException {
         String primary_send =" shell rfinjector 02 "+DLID+" "+State;
-        rt.exec(ConfigProps.adbPath + " -s " +UDID_+ primary_send);
+        rt.exec("adb -s " +UDID_+ primary_send);
         // shell service call qservice 50 i32 2 i32 10 i32 6619296 i32 1
         System.out.println(ConfigProps.adbPath + " -s " +UDID_+ primary_send); }
 
@@ -453,6 +459,8 @@ public class Setup1 {
         adv.INSTALLATION.click();
         Thread.sleep(1000);
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
+        swipe_vertical();
         Thread.sleep(1000);
         swipe_vertical();
         Thread.sleep(1000);

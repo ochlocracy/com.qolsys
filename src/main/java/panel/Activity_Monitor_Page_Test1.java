@@ -54,7 +54,9 @@ public class Activity_Monitor_Page_Test1 {
     public void Test1_Check_all_elements_on_Activity_Monitor_page(String UDID_) throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements(s.getDriver(), ActivityMonitorPage.class);
         SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
-        logger.info("Verifying elements on the page...");
+        for (int i = 1; i < 8; i++) //delete all sensors before the test starts
+            delete_sensor(UDID_, i); //group 8, go into alarm when opened iunder moniotring. can didsable
+        logger.info("Verifying elements on the page when Activity Monitoring is enabled...");
         Thread.sleep(1000);
         logger.info("Adding sensors...");
         s.add_primary_call(1, 25, 6619814, 1, UDID_);
@@ -62,10 +64,17 @@ public class Activity_Monitor_Page_Test1 {
         s.navigate_to_Settings_page();
         Thread.sleep(2000);
         settings.ACTIVITY_MONITOR.click();
+        try { //making sure AM is on
+            if (activity.Summary_Press_To_Deactivate.isDisplayed())
+                logger.info("setting is enabled, continue with the test.");
+        } catch (Exception e) {
+            activity.Safety_State.click();
+            s.enter_default_user_code();
+        }
         Thread.sleep(2000);
         s.element_verification(UDID_, activity.Quick_Access, "Quick Access");
         s.element_verification(UDID_, activity.Quick_Access_img, "Quick Access image");
-        s.element_verification(UDID_, activity.Safty_State, "Safety State icon");
+        s.element_verification(UDID_, activity.Safety_State, "Safety State icon");
         s.element_verification(UDID_, activity.Safety_State_txt, "Safety State text");
         Thread.sleep(2000);
         if(activity.Safety_State_txt.getText().equals("Press to Deactivate")){
@@ -74,16 +83,17 @@ public class Activity_Monitor_Page_Test1 {
             logger.info(UDID_ + "Failed: Incorrect Safety state text: "+activity.Safety_State_txt.getText());}
         s.element_verification(UDID_, activity.Safety_Active, "Safety Active tab");
         s.element_verification(UDID_, activity.Safety_All, "Safety All tab");
+        Thread.sleep(2000);
         activity.Quick_Access_img.click();
         s.enter_default_user_code();
         Thread.sleep(2000);
         s.element_verification(UDID_, activity.Quick_Access_CountDown, "Quick Access countdown window");
         s.tap(110,620);
         Thread.sleep(1000);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         s.enter_default_user_code();
         Thread.sleep(1000);
-        s.element_verification(UDID_, activity.Safty_State, "Safety State icon");
+        s.element_verification(UDID_, activity.Safety_State, "Safety State icon");
         s.element_verification(UDID_, activity.Safety_State_txt, "Safety State text");
         if(activity.Safety_State_txt.getText().equals("Press to Activate")){
             logger.info(UDID_ + "Pass: Correct Safety state text: "+activity.Safety_State_txt.getText());
@@ -93,7 +103,7 @@ public class Activity_Monitor_Page_Test1 {
         s.element_verification(UDID_, activity.Safety_All, "Safety All tab");
         s.element_verification(UDID_, activity.Safety_Bypass, "Safety Bypass tab");
         Thread.sleep(1000);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         s.enter_default_user_code();
         Thread.sleep(1000);
         delete_sensor(UDID_,1);
@@ -122,13 +132,15 @@ public class Activity_Monitor_Page_Test1 {
         Thread.sleep(2000);
         settings.ACTIVITY_MONITOR.click();
         Thread.sleep(3000);
+//        home.All_Tab.click();
+ //       Thread.sleep(1000);
         activity.Safety_All.click(); //what is this supposed to click?
         Thread.sleep(5000);
-        WebElement dw1 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door/Window 1']"));
+        WebElement dw1 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door-Window 1']"));
         s.verify_sensor_is_displayed(UDID_, dw1);
-        WebElement dw2 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door/Window 2']"));
+        WebElement dw2 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door-Window 2']"));
         s.verify_sensor_is_displayed(UDID_, dw2);
-        WebElement dw3 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door/Window 3']"));
+        WebElement dw3 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Door-Window 3']"));
         s.verify_sensor_is_displayed(UDID_, dw3);
         WebElement motion4 =  s.getDriver().findElement(By.xpath("//android.widget.TextView[@text='Motion 4']"));
         s.verify_sensor_is_displayed(UDID_, motion4);
@@ -163,7 +175,7 @@ public class Activity_Monitor_Page_Test1 {
         Thread.sleep(3000);
         activity.Safety_All.click();
         Thread.sleep(2000);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         s.enter_default_user_code();
         Thread.sleep(2000);
         activity.Safety_All.click();
@@ -171,7 +183,7 @@ public class Activity_Monitor_Page_Test1 {
         s.tap(815,335);
         Thread.sleep(1000);
         s.tap(815,420);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         Thread.sleep(2000);
         s.enter_default_user_code();
         Thread.sleep(1000);

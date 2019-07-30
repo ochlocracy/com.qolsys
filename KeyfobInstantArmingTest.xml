@@ -7,7 +7,7 @@
         <parameter name="applicationName_" value="bb928d42"/>
         <parameter name="UDID_" value="bb928d42"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.189:4725/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4725/wd/hub"/>
         <parameter name="PORT_" value="4725"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
@@ -18,7 +18,7 @@
         <parameter name="applicationName_" value="42164ff"/>
         <parameter name="UDID_" value="42164ff"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.189:4726/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4726/wd/hub"/>
         <parameter name="PORT_" value="4726"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
@@ -29,7 +29,7 @@
         <parameter name="applicationName_" value="6e548d39"/>
         <parameter name="UDID_" value="6e548d39"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.189:4727/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4727/wd/hub"/>
         <parameter name="PORT_" value="4727"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>
@@ -40,7 +40,7 @@
         <parameter name="applicationName_" value="c85a3a6e"/>
         <parameter name="UDID_" value="c85a3a6e"/>
         <parameter name="platformVersion_" value="5.1"/>
-        <parameter name="URL_" value="http://192.168.136.189:4728/wd/hub"/>
+        <parameter name="URL_" value="http://192.168.136.190:4728/wd/hub"/>
         <parameter name="PORT_" value="4728"/>
         <classes>
             <class name="settingsGrid.Keyfob_Instant_Arming_Test_Grid"/>

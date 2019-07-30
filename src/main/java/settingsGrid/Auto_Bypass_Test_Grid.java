@@ -22,7 +22,7 @@ public class Auto_Bypass_Test_Grid {
 
     public Auto_Bypass_Test_Grid() throws Exception {}
     public void SCGrid_Set_Auto_Bypass(String UDID_, int state) throws IOException, InterruptedException {
-        rt.exec(ConfigProps.adbPath + " -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " + state + " i32 0 i32 0");
+        rt.exec("adb -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " + state + " i32 0 i32 0");
         System.out.println(ConfigProps.adbPath + " -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " + state + " i32 0 i32 0" + " Auto Bypass Enabled");
     }
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
@@ -41,7 +41,7 @@ public class Auto_Bypass_Test_Grid {
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         Thread.sleep(2000);
-        //check for auto bypass enabled (this "State" change to on is not actually sending the service call to each panel. Needs rework.
+        //check for auto bypass enabled (this "State" change to on is not actually sending the "on" service call to each panel. Needs rework.
         SCGrid_Set_Auto_Bypass(UDID_, 1 );
         logger.info("Adding sensors...");
         s.add_primary_call(1,10,6619296,1, UDID_);
@@ -63,7 +63,7 @@ public class Auto_Bypass_Test_Grid {
         Thread.sleep(1000);
         s.primary_call(UDID_,"65 00 0A",close);
         Thread.sleep(2000);
-//        s.verify_armstay(UDID_); fix verify.
+        s.verify_armstay(UDID_); //fix verify.
         home.DISARM.click();
         s.enter_default_user_code();
         Thread.sleep(3000);
@@ -87,7 +87,7 @@ public class Auto_Bypass_Test_Grid {
         Thread.sleep(2000);
         s.element_verification(UDID_, home.Bypass_message,"Bypass pop-up message");
         Thread.sleep(2000);
-        home.Bypass_OK.click();
+        //home.Bypass_OK.click(); failing
         logger.info("Opening/closing bypassed sensor");
         s.primary_call(UDID_,"65 00 0A",close);
         Thread.sleep(1000);

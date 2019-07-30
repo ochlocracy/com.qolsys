@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import panel.*;
 import sensors.Sensors;
+import utils.ConfigProps;
 import utils.Setup1;
 
 import java.io.IOException;
@@ -19,7 +20,12 @@ public class Auto_Exit_Time_Extension_Test_Grid {
     Sensors sensors = new Sensors();
     private String open = "06 00";
     private String close = "04 00";
+    public Runtime rt = Runtime.getRuntime();
 
+    public void SCGrid_Set_Auto_Exit_Time_Extension(String UDID_, int state) throws IOException, InterruptedException {
+        rt.exec("adb -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 84 i32 " + state + " i32 0 i32 0");
+        System.out.println(ConfigProps.adbPath + " -s " + UDID_ +  " shell service call qservice 40 i32 0 i32 0 i32 19 i32 " + state + " i32 0 i32 0" + " Auto Bypass Enabled");
+    }
     public Auto_Exit_Time_Extension_Test_Grid() throws Exception {}
     @Parameters({"deviceName_", "applicationName_", "UDID_", "platformVersion_", "URL_", "PORT_" })
     @BeforeClass
@@ -37,6 +43,7 @@ public class Auto_Exit_Time_Extension_Test_Grid {
         InstallationPage inst = PageFactory.initElements(s.getDriver(), InstallationPage.class);
         HomePage home = PageFactory.initElements(s.getDriver(), HomePage.class);
         Thread.sleep(2000);
+        SCGrid_Set_Auto_Exit_Time_Extension(UDID_, 1 );
         logger.info("Verify that Auto Exit Time Extension works when enabled");
         logger.info("Adding sensors...");
         s.add_primary_call(1, 10, 6619296, 1, UDID_);

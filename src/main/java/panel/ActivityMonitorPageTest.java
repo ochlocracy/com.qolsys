@@ -64,7 +64,7 @@ public class ActivityMonitorPageTest extends Setup {
         settings.ACTIVITY_MONITOR.click();
         elementVerification(activity.Quick_Access, "Quick Access");
         elementVerification(activity.Quick_Access_img, "Quick Access image");
-        elementVerification(activity.Safty_State, "Safety State icon");
+        elementVerification(activity.Safety_State, "Safety State icon");
         elementVerification(activity.Safety_State_txt, "Safety State text");
         if (activity.Safety_State_txt.getText().equals("Press to Deactivate")) {
             logger.info("Pass: Correct Safety state text: " + activity.Safety_State_txt.getText());
@@ -80,10 +80,10 @@ public class ActivityMonitorPageTest extends Setup {
         elementVerification(activity.Quick_Access_CountDown, "Quick Access countdown window");
         tap(110, 620);
         Thread.sleep(1000);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
-        elementVerification(activity.Safty_State, "Safety State icon");
+        elementVerification(activity.Safety_State, "Safety State icon");
         elementVerification(activity.Safety_State_txt, "Safety State text");
         if (activity.Safety_State_txt.getText().equals("Press to Activate")) {
             logger.info("Pass: Correct Safety state text: " + activity.Safety_State_txt.getText());
@@ -95,7 +95,7 @@ public class ActivityMonitorPageTest extends Setup {
         elementVerification(activity.Safety_All, "Safety All tab");
         elementVerification(activity.Safety_Bypass, "Safety Bypass tab");
         Thread.sleep(1000);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         sensors.delete_from_primary(3);
@@ -157,14 +157,14 @@ public class ActivityMonitorPageTest extends Setup {
         navigateToSettingsPage();
         settings.ACTIVITY_MONITOR.click();
         activity.Safety_All.click();
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
         activity.Safety_All.click();
         tap(815, 335);
         Thread.sleep(1000);
         tap(815, 420);
-        activity.Safty_State.click();
+        activity.Safety_State.click();
         enterDefaultUserCode();
         Thread.sleep(1000);
         settings.Home_button.click();

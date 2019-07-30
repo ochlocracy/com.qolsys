@@ -1,4 +1,4 @@
-java -jar /home/qolsys/Downloads/selenium-server-standalone-2.53.0.jar -port 4444 -role hub &
+java -jar /home/qolsys/Downloads/selenium-server-standalone-2.53.0.jar -port 4444 -host 192.168.136.190 -role hub &
 
 sleep 5
 

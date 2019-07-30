@@ -57,14 +57,13 @@ public class Installer_Code_Test_Grid {
         }
         user.User_Management_Save.click();
         Thread.sleep(1000);
-        settings.Back_button.click();
-        Thread.sleep(1000);
-        settings.Back_button.click();
+        settings.Home_button.click();
+        Thread.sleep(10000);
+        s.navigate_to_Advanced_Settings_page();
         Thread.sleep(2000);
-//        settings.Back_button.click();
-//        Thread.sleep(2000);
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
         arming.Installer_Code.click();
         System.out.println("Verify Installer name changed");
         logger.info("Verify Installer name changed");
