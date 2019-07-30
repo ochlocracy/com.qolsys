@@ -1,7 +1,6 @@
-package gridTesting;
+package gridTestingSetup;
 
 import sensors.Sensors;
-import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

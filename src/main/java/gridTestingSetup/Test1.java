@@ -1,4 +1,4 @@
-package gridTesting;
+package gridTestingSetup;
 
 import org.junit.Test;
 

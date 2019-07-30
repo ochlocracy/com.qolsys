@@ -10,7 +10,7 @@
         <parameter name="URL_" value="http://172.16.101.81:4725/wd/hub"/>
         <parameter name="PORT_" value="4725"/>
         <classes>
-            <class name="gridTesting.Test1"/>
+            <class name="gridTestingSetup.Test3"/>
         </classes>
     </test>
     <test name="Test2">
@@ -21,7 +21,7 @@
         <parameter name="URL_" value="http://172.16.101.81:4727/wd/hub"/>
         <parameter name="PORT_" value="4727"/>
         <classes>
-            <class name="gridTesting.Test1"/>
+            <class name="gridTestingSetup.Test4"/>
         </classes>
     </test>
     <test name="Test3">
@@ -32,7 +32,8 @@
         <parameter name="URL_" value="http://172.16.101.81:4729/wd/hub"/>
         <parameter name="PORT_" value="4729"/>
         <classes>
-            <class name="gridTesting.Test1"/>
+            <class name="gridTestingSetup.Test3"/>
+            <class name="gridTestingSetup.Test4"/>
         </classes>
     </test>
 </suite>

@@ -1,4 +1,4 @@
-package gridTesting;
+package gridTestingSetup;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package gridTesting;
+package gridTestingSetup;
 
 import panel.*;
 import io.appium.java_client.android.AndroidDriver;
