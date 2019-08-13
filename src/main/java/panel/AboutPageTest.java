@@ -1,6 +1,7 @@
 package panel;
 
 import org.apache.log4j.Logger;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -41,7 +42,7 @@ public class AboutPageTest extends Setup {
         about = PageFactory.initElements(driver, AboutPage.class);
         adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
-        navigateToAdvancedSettingsPage();
+//        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         Thread.sleep(1000);
         elementVerification(about.Battery, "Battery");

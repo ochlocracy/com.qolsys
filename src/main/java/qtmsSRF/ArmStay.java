@@ -71,7 +71,7 @@ public class ArmStay extends Setup {
         report = new ExtentReports(projectPath + "/Report/QTMS_ArmStay.html");
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("User Name", "Automation Team")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest(test_area_name);
     }
@@ -128,7 +128,7 @@ public class ArmStay extends Setup {
     }
 
 
-    //@Test(priority = 0)
+    @Test(priority = 0)
     public void AS_02() throws Exception {
         create_report("ASK319_02");
         homePage = PageFactory.initElements(adc.driver1, UIRepo.class);

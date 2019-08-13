@@ -6,10 +6,9 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +22,7 @@ public class Driver {
     public Runtime rt = Runtime.getRuntime();
     public AndroidDriver<WebElement> driver;
     public WebDriver driver1;
+
     public WebDriverWait wait;
 
     public static String execCmd(String cmd) throws java.io.IOException {
@@ -94,7 +94,9 @@ public class Driver {
 
     public void webDriverSetUp() {
 
-        driver1 = new FirefoxDriver();
+//        driver1 = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "/home/sergio/Downloads/chromedriver");
+        driver1 = new ChromeDriver();
         wait = new WebDriverWait(driver1, 60);
     }
 

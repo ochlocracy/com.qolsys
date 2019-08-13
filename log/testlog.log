@@ -1,7 +1,8 @@
 
-2019-04-05 11:54:02,744 - utils.Log -INFO - ********************************************************************
-2019-04-05 11:54:02,750 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   Arm Stay Arm Away KeyFob sensor testing   $$$$$$$$$$$$$$$$$$$$$$$$$
-2019-04-05 11:54:02,751 - utils.Log -INFO - ********************************************************************
-2019-04-05 11:54:15,497 - qtmsSRF.AlarmDialerDelay -INFO - Pass: System is ARMED STAY
-2019-04-05 11:55:06,856 - qtmsSRF.AlarmDialerDelay -INFO - Pass: System is in ALARM
-2019-04-05 11:58:29,796 - utils.Log -INFO - XXXXXXXXXXXXXXXXXXXXXXX -E---N---D- XXXXXXXXXXXXXXXXXXXXXX
+2019-08-12 16:49:53,900 - utils.Log -INFO - ********************************************************************
+2019-08-12 16:49:53,902 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   QTMS: ARM STAY   $$$$$$$$$$$$$$$$$$$$$$$$$
+2019-08-12 16:49:53,902 - utils.Log -INFO - ********************************************************************
+2019-08-12 16:50:08,875 - qtmsSRF.ArmStay -INFO - Settings Menu
+2019-08-12 16:50:11,629 - qtmsSRF.ArmStay -INFO - Advanced Settings
+2019-08-12 16:50:20,169 - QTMS: ARM STAY -INFO - Verify the panel can be disarmed from adc
+2019-08-12 16:50:27,252 - qtmsSRF.ArmStay -INFO - Pass: System is ARMED STAY
