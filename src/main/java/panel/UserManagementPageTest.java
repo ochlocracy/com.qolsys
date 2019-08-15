@@ -64,14 +64,14 @@ public class UserManagementPageTest extends Setup {
             elementVerification(um.User_Type_User, "User Type User");
             elementVerification(um.User_Type_Master, "User Type Master");
             elementVerification(um.User_Type_Guest, "User Type Guest");
-            um.User_Type_Guest.click();
+            //um.User_Type_Guest.click();
             elementVerification(um.Add_User_Expiration_Date, "Add User Expiration Date");
             elementVerification(um.Add_User_Expiration_Date_entry, "Add User Expiration Date widget");
             um.Add_User_Expiration_Date_entry.click();
             elementVerification(um.Calendar_Clear, "Calendar Clear button");
             elementVerification(um.Calendar_Cancel, "Calendar Cancel button");
             elementVerification(um.Calendar_Ok, "Calendar Ok button");
-            um.Calendar_Cancel.click();
+            swipeVertical();
             elementVerification(um.Add_User_add_page, "Add User button");
             um.Add_User_add_page.click();
             Thread.sleep(4000);

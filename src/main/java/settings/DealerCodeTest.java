@@ -1,14 +1,9 @@
 package settings;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,13 +11,11 @@ import panel.*;
 import utils.ExtentReport;
 import utils.Setup;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class DealerCodeTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Dealer_Code");
 
     public DealerCodeTest() throws Exception {
     }

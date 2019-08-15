@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.HomePage;
 import panel.PanelInfo_ServiceCalls;
@@ -55,7 +54,20 @@ public class PreUpdateUserManagement extends Setup {
         rt.exec("adb shell service call qservice 40 i32 0 i32 0 i32 35 i32 0 i32 0 i32 0"); //secure arming off
     }
 
-    @Test
+//    @Test (priority = 1)
+//    public void deleteUsers() throws InterruptedException {
+//        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
+//        logger.info("Delete Users If They Are Added.");
+//        navigateToUserManagementPage();
+//        while (user_m.Delete.isDisplayed()) {
+//            user_m.Delete.click();
+//            Thread.sleep(1000);
+//            user_m.User_Management_Delete_User_Ok.click();
+//        }
+//    } //I added in a check  for if the user name already exists then it just presses okay and continues
+
+
+    @Test (priority = 2)
     public void addUserUnlimited() throws InterruptedException {
         logger.info("Adding a new user NewUser with the user code 5643");
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
@@ -65,11 +77,20 @@ public class PreUpdateUserManagement extends Setup {
         Thread.sleep(1000);
         addUser("NewUser", "5643");
         user_m.Add_User_add_page.click();
-        home.Home_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
+        try {
+                user_m.User_Management_Delete_User_Ok.click();
+                logger.info("User Code was already created");
+        } catch (Exception e) {
+        }
+        try {
+            home.Home_button.click();
+        } catch (Exception e) {
+        }
+        Thread.sleep(2000);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 3)
     public void verifyNewUserCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -85,7 +106,7 @@ public class PreUpdateUserManagement extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 4)
     public void addMasterUnlimited() throws InterruptedException {
         logger.info("Adding a new Master NewMaster with the code 3331");
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
@@ -97,11 +118,20 @@ public class PreUpdateUserManagement extends Setup {
         user_m.Add_User_Type_options.click();
         user_m.User_Type_Master.click();
         user_m.Add_User_add_page.click();
-        home.Home_button.click();
+        Thread.sleep(1000);
+        try {
+                user_m.User_Management_Delete_User_Ok.click();
+                logger.info("User Code was already created");
+        } catch (Exception e) {
+        }
+        try {
+            home.Home_button.click();
+        } catch (Exception e) {
+        }
         Thread.sleep(1000);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 5)
     public void verifyNewMasterCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -117,7 +147,7 @@ public class PreUpdateUserManagement extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 6)
     public void addGuestUnlimited() throws InterruptedException {
         logger.info("Adding a new Guest NewGuest with the code 8800");
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
@@ -129,11 +159,20 @@ public class PreUpdateUserManagement extends Setup {
         user_m.Add_User_Type_options.click();
         user_m.User_Type_Guest.click();
         user_m.Add_User_add_page.click();
-        home.Home_button.click();
+        Thread.sleep(1000);
+        try {
+                user_m.User_Management_Delete_User_Ok.click();
+                logger.info("User Code was already created");
+        } catch (Exception e) {
+        }
+        try {
+            home.Home_button.click();
+        } catch (Exception e) {
+        }
         Thread.sleep(1000);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 7)
     public void verifyNewGuestCodeWorks() throws Exception {
         logger.info("Verifying a new user code is working correctly");
         HomePage home = PageFactory.initElements(driver, HomePage.class);

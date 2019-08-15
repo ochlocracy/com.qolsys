@@ -1,7 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -18,7 +17,7 @@ import java.io.IOException;
 
 public class AllowMasterCodeToAccessCameraSettingsTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Camera_Settings");
 
     public AllowMasterCodeToAccessCameraSettingsTest() throws Exception {
     }

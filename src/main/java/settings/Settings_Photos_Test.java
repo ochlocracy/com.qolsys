@@ -1,7 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -59,6 +58,8 @@ public class Settings_Photos_Test extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
+        Thread.sleep(1000);
+        swipeVertical();
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();
@@ -82,6 +83,7 @@ public class Settings_Photos_Test extends Setup {
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
         inst.CAMERA_SETTINGS.click();
+        swipeVertical();
         set_cam.Settings_Photos.click();
         Thread.sleep(1000);
         settings.Home_button.click();

@@ -49,12 +49,11 @@ public class HomePageTest extends Setup {
         elementVerification(home_page.All_Tab, "All Tab");
         home_page.DISARM.click();
 
-        elementVerification(home_page.System_status, "System Status");
+        elementVerification(home_page.System_status, "DISARMED");
         elementVerification(home_page.ARM_STAY_text, "ArmStay text");
         elementVerification(home_page.ARM_AWAY_text, "ArmAway text");
         elementVerification(home_page.System_state_expand, "Window expand");
         home_page.System_state_expand.click();
-        elementVerification(home_page.System_status, "System Status");
         elementVerification(home_page.ARM_STAY_text, "ArmStay text");
         elementVerification(home_page.ARM_AWAY_text, "ArmAway text");
         elementVerification(home_page.Bypass_Tab, "Bypass Tab");

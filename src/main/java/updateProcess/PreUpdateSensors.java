@@ -4,12 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import panel.ContactUs;
-import panel.EmergencyPage;
-import panel.HomePage;
-import panel.UserManagementPage;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.ExtentReport;
@@ -159,7 +155,7 @@ public class PreUpdateSensors extends Setup {
             sensors.primaryCall("73 00 1A", SensorsActivity.ACTIVATE);
             sensors.primaryCall("73 00 1A", SensorsActivity.RESTORE);
             Thread.sleep(1000);
-            enterDefaultUserCode();
+//            enterDefaultUserCode();
             Thread.sleep(1000);
 
             logger.info("Activate heat sensors");

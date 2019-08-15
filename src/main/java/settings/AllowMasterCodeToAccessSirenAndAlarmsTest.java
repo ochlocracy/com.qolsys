@@ -5,8 +5,13 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
-import panel.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import panel.AdvancedSettingsPage;
+import panel.InstallationPage;
+import panel.SettingsPage;
+import panel.SirenAlarmsPage;
 import sensors.Sensors;
 import utils.ExtentReport;
 import utils.SensorsActivity;
@@ -17,7 +22,7 @@ import java.io.IOException;
 
 public class AllowMasterCodeToAccessSirenAndAlarmsTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Siren_And_Alarms");
     ExtentReports report;
     ExtentTest log;
 

@@ -1,12 +1,14 @@
 package panel;
 
-import sensors.Sensors;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import sensors.Sensors;
 import utils.ConfigProps;
 import utils.Setup1;
 
@@ -54,7 +56,7 @@ public class Activity_Monitor_Page_Test1 {
     public void Test1_Check_all_elements_on_Activity_Monitor_page(String UDID_) throws Exception {
         ActivityMonitorPage activity = PageFactory.initElements(s.getDriver(), ActivityMonitorPage.class);
         SettingsPage settings = PageFactory.initElements(s.getDriver(), SettingsPage.class);
-        for (int i = 1; i < 8; i++) //delete all sensors before the test starts
+        for (int i = 1; i < 17; i++) //delete all sensors before the test starts
             delete_sensor(UDID_, i); //group 8, go into alarm when opened iunder moniotring. can didsable
         logger.info("Verifying elements on the page when Activity Monitoring is enabled...");
         Thread.sleep(1000);

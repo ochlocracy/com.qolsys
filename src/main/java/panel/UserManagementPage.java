@@ -60,6 +60,8 @@ public class UserManagementPage {
     public WebElement Add_User_add_page;
     @FindBy(xpath = "//android.widget.LinearLayout[@index=1']/com.qolsys:id/deleteImg")
     public WebElement Delete_User;
+    @FindBy(id = "com.qolsys:id/deleteImg")
+    public WebElement Delete;
     @FindBy(xpath = "//android.widget.TextView[@text='User Management']")
     public WebElement User_Management_Delete_User_title;
     @FindBy(id = "com.qolsys:id/message")
@@ -72,5 +74,6 @@ public class UserManagementPage {
     public WebElement User_Management_Save;
     @FindBy(id = "com.qolsys:id/ft_home_button")
     public WebElement Home_Button;
-
+    @FindBy(xpath = "com.qolsys:id/message")
+    public WebElement User_Exist;
 }

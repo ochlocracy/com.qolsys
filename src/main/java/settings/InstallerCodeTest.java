@@ -1,8 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import io.appium.java_client.android.AndroidKeyCode;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
@@ -14,12 +12,11 @@ import utils.ExtentReport;
 import utils.Setup;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class InstallerCodeTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Installer_Code");
 
     public InstallerCodeTest() throws Exception {
     }

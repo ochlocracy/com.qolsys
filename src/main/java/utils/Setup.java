@@ -1,32 +1,23 @@
 package utils;
 
-import adc.ADC;
 import adc.AdcDealerPage;
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.ExtentTest;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-
-import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.xpath.SourceTree;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import panel.*;
 import zwave.DoorLockPage;
 import zwave.LightsPage;
@@ -37,20 +28,14 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 import java.io.*;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-
 import static utils.ConfigProps.adbPath;
 import static utils.ConfigProps.transmitter;
-
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class Setup extends Driver{
 
@@ -200,6 +185,20 @@ public class Setup extends Driver{
         }
     }
 
+    public WebElement imageElementVerification(WebElement element, String my_name) throws Exception {
+        try {
+            if (element.isDisplayed()) {
+                logger.info("Pass: " + my_name + " is present, value = " + element);
+            }
+        } catch (Exception e) {
+            takeScreenshot();
+            Log.error("*" + my_name + "* - Element is not found!");
+            e.printStackTrace();
+        } finally {
+            return element;
+        }
+    }
+
     public void swipeVertical() throws InterruptedException {
         int starty = 660;
         int endy = 260;
@@ -250,10 +249,11 @@ public class Setup extends Driver{
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
-        logger.info("Settings Menu");
+        //logger.info("Settings Menu");
+        Thread.sleep(1000);
         menu.Settings.click();
         Thread.sleep(1000);
-        logger.info("Advanced Settings");
+        //logger.info("Advanced Settings");
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(1000);
         enterDefaultDealerCode();
@@ -644,6 +644,24 @@ public class Setup extends Driver{
                     enterDefaultUserCode();
                 }
             }
+        } catch (Exception e) {
+            System.out.println("No photos left to delete...");
+        }
+        swipeFromLefttoRight();
+        swipeFromLefttoRight();
+        swipeFromLefttoRight();
+        Thread.sleep(1000);
+    }
+
+    public void TEMPdeleteAllCameraPhotos() throws Exception {
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+
+        swipeFromRighttoLeft();
+        Thread.sleep(2000);
+        try { camera.Camera_delete.click();
+                Thread.sleep(2000);
+                camera.Camera_delete_yes.click();
         } catch (Exception e) {
             System.out.println("No photos left to delete...");
         }
