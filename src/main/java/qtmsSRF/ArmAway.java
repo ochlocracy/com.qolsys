@@ -44,7 +44,7 @@ public class ArmAway extends Setup {
         adc.webDriverSetUp();
     }
 
-    //@Test
+    @Test
     public void AA_01() throws Exception {
         logger.info("Verify the panel can be disarmed from adc");
         servcall.set_AUTO_STAY(0);

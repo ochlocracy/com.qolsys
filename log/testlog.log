@@ -1,8 +1,0 @@
-
-2019-08-12 16:49:53,900 - utils.Log -INFO - ********************************************************************
-2019-08-12 16:49:53,902 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   QTMS: ARM STAY   $$$$$$$$$$$$$$$$$$$$$$$$$
-2019-08-12 16:49:53,902 - utils.Log -INFO - ********************************************************************
-2019-08-12 16:50:08,875 - qtmsSRF.ArmStay -INFO - Settings Menu
-2019-08-12 16:50:11,629 - qtmsSRF.ArmStay -INFO - Advanced Settings
-2019-08-12 16:50:20,169 - QTMS: ARM STAY -INFO - Verify the panel can be disarmed from adc
-2019-08-12 16:50:27,252 - qtmsSRF.ArmStay -INFO - Pass: System is ARMED STAY
