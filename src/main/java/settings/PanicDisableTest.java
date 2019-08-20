@@ -1,7 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -34,7 +33,7 @@ public class PanicDisableTest extends Setup {
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
 
         rep.create_report("Panic_Disable_01");
-        rep.log.log(LogStatus.INFO, ("*Panic_Disable_01* Fire, Police, Auxiliary disabled -> Expected result = Element will not be there"));
+        rep.log.log(LogStatus.INFO, ("*Panic_Disable_01* Fire, Police, Auxiliary all enabled then get disabled -> Expected result = Element will not be there"));
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
@@ -44,6 +43,17 @@ public class PanicDisableTest extends Setup {
         Thread.sleep(1000);
         swipeVertical();
         Thread.sleep(1000);
+        //turn all the settings on if they are off.
+        try {
+            if (siren.Police_Panic_Is_Disabled.isDisplayed())
+                siren.Police_Panic.click();
+            else if (siren.Fire_Panic_Is_Disabled.isDisplayed())
+                siren.Fire_Panic.click();
+            else if (siren.Auxiliary_Panic_Is_Disabled.isDisplayed())
+                siren.Auxiliary_Panic.click();
+        } catch (Exception e) {
+            System.out.println("All settings enabled, continue");
+        }
         siren.Police_Panic.click();
         Thread.sleep(1000);
         settings.Emergency_button.click();

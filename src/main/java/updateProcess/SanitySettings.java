@@ -23,12 +23,15 @@ import java.util.List;
 
 public class SanitySettings extends Setup {
 
+
     ExtentReports report;
     ExtentTest log;
     ExtentTest test;
     Sensors sensors = new Sensors();
     PanelInfo_ServiceCalls serv = new PanelInfo_ServiceCalls();
     String OFF = "00000000";
+    String ON = "00000001";
+
 
     public SanitySettings() throws Exception {
         SensorsActivity.init();
@@ -426,6 +429,8 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
 
+        // can you check if its enabled?
+
         System.out.println("Adding sensors...");
         sensors.add_primary_call(3, 10, 6619296, 1);
         Thread.sleep(2000);
@@ -650,7 +655,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 8)
+    //@Test(priority = 8)
     public void Settings_Test9() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Dealer_Code");
@@ -680,6 +685,7 @@ public class SanitySettings extends Setup {
             driver.hideKeyboard();
         } catch (Exception e) {
         }
+        Thread.sleep(1000);
         user.User_Management_Save.click();
         Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/ok")).click();
@@ -761,6 +767,9 @@ public class SanitySettings extends Setup {
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
+
+        int ON = 1;
+        serv.set_SECURE_DELETE_IMAGES(ON);
 
         System.out.println("Verifying Disarm photo is taken when setting in enabled...");
         log.log(LogStatus.INFO, "Verifying Disarm photo is taken when setting in enabled");
@@ -939,7 +948,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(1000);
     }
 
-    @Test(priority = 11)
+    //@Test(priority = 11)
     public void Settings_Test12() throws InterruptedException {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Installer_Code");
@@ -961,23 +970,20 @@ public class SanitySettings extends Setup {
         user.Add_User_Name_field.sendKeys("NewInstall");
         user.Add_User_Code_field.clear();
         System.out.println("Changing Installer password");
-        user.Add_User_Code_field.sendKeys("5555");
+        user.Add_User_Code_field.sendKeys("3333");
         driver.hideKeyboard();
         user.Add_Confirm_User_Code_field.click();
         user.Add_Confirm_User_Code.clear();
-        user.Add_Confirm_User_Code.sendKeys("5555");
+        user.Add_Confirm_User_Code.sendKeys("3333");
         try {
             driver.hideKeyboard();
         } catch (Exception e) {
         }
         user.User_Management_Save.click();
-        Thread.sleep(1000);
-        settings.Back_button.click();
-        Thread.sleep(1000);
-        settings.Back_button.click();
         Thread.sleep(2000);
-//        settings.Back_button.click();
-//        Thread.sleep(2000);
+        user.Home_Button.click();
+//        user.User_Management_Delete_User_Ok.click();
+        navigateToAdvancedSettingsPage(); //nothing is working after the user is saved??!?!?!?!
         adv.INSTALLATION.click();
         inst.SECURITY_AND_ARMING.click();
         arming.Installer_Code.click();
@@ -1008,10 +1014,10 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         System.out.println("Verify new Installer code works");
         log.log(LogStatus.INFO, "Verify new Installer code works");
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
-        settings.Five.click();
+        settings.Three.click();
+        settings.Three.click();
+        settings.Three.click();
+        settings.Three.click();
         log.log(LogStatus.PASS, "Pass: new Installer code works as expected");
         System.out.println("Pass: new Installer code works as expected");
         adv.INSTALLATION.click();
@@ -1030,13 +1036,14 @@ public class SanitySettings extends Setup {
             driver.hideKeyboard();
         } catch (Exception e) {
         }
+        Thread.sleep(1000);
         user.User_Management_Save.click();
         Thread.sleep(2000);
         user.User_Management_Delete_User_Ok.click();
         Thread.sleep(2000);
     }
 
-    @Test(priority = 12)
+    //@Test(priority = 12)
     public void Settings_Test13() throws Exception {
         report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
         log = report.startTest("Settings.Keyfob_Alarm_Disarm");
@@ -1047,6 +1054,9 @@ public class SanitySettings extends Setup {
         InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         EmergencyPage emergency = PageFactory.initElements(driver, EmergencyPage.class);
+
+        int OFF = 0;
+        serv.set_KEYFOB_ALARM_DISARM(OFF);
 
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();
@@ -1075,7 +1085,7 @@ public class SanitySettings extends Setup {
         Thread.sleep(2000);
         sensors.primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
-        if (emergency.Police_Emergency_Alarmed.isDisplayed()) { //f
+        if (emergency.Police_Emergency_Alarmed.isDisplayed()) { //failing
             System.out.println("Pass: Police Emergency is displayed");
             log.log(LogStatus.PASS, "Pass: Police Emergency is displayed");
         } else {

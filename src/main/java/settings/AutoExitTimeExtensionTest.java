@@ -3,7 +3,6 @@ package settings;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -21,6 +20,7 @@ import java.io.IOException;
 
 public class AutoExitTimeExtensionTest extends Setup {
 
+    ExtentReport rep = new ExtentReport("Settings_Auto_Exit_Time_Extension");
     ExtentReports report;
     ExtentTest logs;
     ExtentTest test;

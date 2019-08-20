@@ -184,6 +184,20 @@ public class Setup extends Driver{
         }
     }
 
+    public WebElement imageElementVerification(WebElement element, String my_name) throws Exception {
+        try {
+            if (element.isDisplayed()) {
+                logger.info("Pass: " + my_name + " is present, value = " + element);
+            }
+        } catch (Exception e) {
+            takeScreenshot();
+            Log.error("*" + my_name + "* - Element is not found!");
+            e.printStackTrace();
+        } finally {
+            return element;
+        }
+    }
+
     public void swipeVertical() throws InterruptedException {
         int starty = 660;
         int endy = 260;
@@ -234,10 +248,11 @@ public class Setup extends Driver{
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
         menu.Slide_menu_open.click();
-        logger.info("Settings Menu");
+        //logger.info("Settings Menu");
+        Thread.sleep(1000);
         menu.Settings.click();
         Thread.sleep(1000);
-        logger.info("Advanced Settings");
+        //logger.info("Advanced Settings");
         settings.ADVANCED_SETTINGS.click();
         Thread.sleep(1000);
         enterDefaultDealerCode();
@@ -628,6 +643,24 @@ public class Setup extends Driver{
                     enterDefaultUserCode();
                 }
             }
+        } catch (Exception e) {
+            System.out.println("No photos left to delete...");
+        }
+        swipeFromLefttoRight();
+        swipeFromLefttoRight();
+        swipeFromLefttoRight();
+        Thread.sleep(1000);
+    }
+
+    public void TEMPdeleteAllCameraPhotos() throws Exception {
+        PanelCameraPage camera = PageFactory.initElements(driver, PanelCameraPage.class);
+        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+
+        swipeFromRighttoLeft();
+        Thread.sleep(2000);
+        try { camera.Camera_delete.click();
+                Thread.sleep(2000);
+                camera.Camera_delete_yes.click();
         } catch (Exception e) {
             System.out.println("No photos left to delete...");
         }

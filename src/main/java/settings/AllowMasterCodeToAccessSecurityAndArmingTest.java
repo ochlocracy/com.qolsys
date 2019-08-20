@@ -1,7 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class AllowMasterCodeToAccessSecurityAndArmingTest extends Setup {
 
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Security_And_Arming");
 
     public AllowMasterCodeToAccessSecurityAndArmingTest() throws Exception {
     }

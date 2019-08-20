@@ -1,7 +1,6 @@
 package settings;
 
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +15,7 @@ import java.io.IOException;
 public class SecureDeleteImagesTest extends Setup {
 
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
-    ExtentReport rep = new ExtentReport("SettingsReport");
+    ExtentReport rep = new ExtentReport("Settings_Delete_Images");
 
     public SecureDeleteImagesTest() throws Exception {
     }
@@ -73,7 +72,7 @@ public class SecureDeleteImagesTest extends Setup {
         rep.create_report("Secure_Del_Img_02");
         rep.log.log(LogStatus.INFO, ("*Secure_Del_Img_02* Disable code required to Delete a Photo -> Expected result = Image deleted without code"));
         Thread.sleep(2000);
-        ARM_STAY();
+        ARM_STAY(); // here
         home.DISARM.click();
         enterDefaultUserCode();
         swipeFromLefttoRight();
