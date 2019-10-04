@@ -35,7 +35,7 @@ public class RemoteSmoke extends SetupRemote {
 
     @BeforeClass
     public void capabilities_setup() throws Exception {
-        setup_driver("6NJUM1H24Z", "http://127.0.1.1", "4723");
+        setup_driver("6C21A2483940", "http://127.0.1.1", "4723");
     }
 
     @Test

@@ -5,15 +5,11 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -99,50 +95,80 @@ public class Setup extends Driver{
         return panel_UDID;
     }
 
-    public void setupDriver(String getUdid, String url_, String port_) throws Exception {
+//    public void setupDriver() throws Exception {
+//        service = AppiumDriverLocalService
+//                .buildService(new AppiumServiceBuilder()
+//                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+//                        .withAppiumJS(new File(ConfigProps.appiumPath))
+//                        .withArgument(GeneralServerFlag.LOG_LEVEL, "error")
+//                        .withIPAddress("127.0.0.1").usingPort(4723));
 //        DesiredCapabilities cap = new DesiredCapabilities();
-
-//        System.out.println("\n*****killing all nodes*****\n");
-//        rt.exec("killall node");
-//        cap.setCapability("deviceName", "IQPanel2");
-//        cap.setCapability("BROWSER_NAME", "Android");
-//        cap.setCapability("udid", getUdid);
+//        cap.setCapability("automationName", "UiAutomator2");
+//        cap.setCapability("platformName", "Android");
+//        cap.setCapability("platformVersion", "5.1");
+//        cap.setCapability("deviceName", "Android");
+//        cap.setCapability("udid", get_UDID());
 //        cap.setCapability("appPackage", "com.qolsys");
 //        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-//        cap.setCapability("newCommandTimeout", "1000");
-//        cap.setCapability("clearSystemFiles", true);
-//        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+//
+////        adbroot();
+//        //in case previous session was not stopped
+//        killnode();
+//        service.stop();
+//        Thread.sleep(2000);
+//        service.start();
+//        System.out.println("\n*****Start Appium*****\n");
+//        Thread.sleep(2000);
+//
+//        driver = new AndroidDriver<>(service.getUrl(), cap);
+////        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//    }
 
-        System.out.println("\n*****killing all nodes*****\n");
-        rt.exec("killall node");
-        service = AppiumDriverLocalService
-                .buildService(new AppiumServiceBuilder()
-                        .usingDriverExecutable(new File(ConfigProps.nodePath))
-                        .withAppiumJS(new File(ConfigProps.appiumPath))
-                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
-                        .withIPAddress("127.0.1.1").usingPort(4723));
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "IQPanel2");
-        cap.setCapability("platformName", "Android");
-//        cap.setCapability("automationName", "UiAutomator2");//new
-        cap.setCapability("udid", get_UDID());
-        cap.setCapability("appPackage", "com.qolsys");
-        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-        cap.setCapability("newCommandTimeout", 1000);
-        //in case previous session was not stopped
-
-
-
-        service.stop();
-        Thread.sleep(2000);
-        service.start();
-        System.out.println("\n*****Start Appium*****\n");
-        Thread.sleep(2000);
-
-
-        driver = new AndroidDriver<>(service.getUrl(), cap);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    }
+//    Old one
+//    public void setupDriver(String getUdid, String url_, String port_) throws Exception {
+////        DesiredCapabilities cap = new DesiredCapabilities();
+//
+////        System.out.println("\n*****killing all nodes*****\n");
+////        rt.exec("killall node");
+////        cap.setCapability("deviceName", "IQPanel2");
+////        cap.setCapability("BROWSER_NAME", "Android");
+////        cap.setCapability("udid", getUdid);
+////        cap.setCapability("appPackage", "com.qolsys");
+////        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+////        cap.setCapability("newCommandTimeout", "1000");
+////        cap.setCapability("clearSystemFiles", true);
+////        driver = new AndroidDriver(new URL(String.format("%s:%s/wd/hub", url_, port_)), cap);
+//
+//        System.out.println("\n*****killing all nodes*****\n");
+//        rt.exec("killall node");
+//        service = AppiumDriverLocalService
+//                .buildService(new AppiumServiceBuilder()
+//                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+//                        .withAppiumJS(new File(ConfigProps.appiumPath))
+//                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
+//                        .withIPAddress("127.0.1.1").usingPort(4723));
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("deviceName", "IQPanel2");
+//        cap.setCapability("platformName", "Android");
+////        cap.setCapability("automationName", "UiAutomator2");//new
+//        cap.setCapability("udid", get_UDID());
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+//        cap.setCapability("newCommandTimeout", 1000);
+//        //in case previous session was not stopped
+//
+//
+//
+//        service.stop();
+//        Thread.sleep(2000);
+//        service.start();
+//        System.out.println("\n*****Start Appium*****\n");
+//        Thread.sleep(2000);
+//
+//
+//        driver = new AndroidDriver<>(service.getUrl(), cap);
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//    }
 
 
 
@@ -238,9 +264,11 @@ public class Setup extends Driver{
         touch.tap(x, y).perform();
     }
 
-    public void navigateToSettingsPage() {
+    public void navigateToSettingsPage() throws InterruptedException {
         SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        Thread.sleep(2000);
         menu.Slide_menu_open.click();
+        Thread.sleep(2000);
         menu.Settings.click();
     }
 
@@ -611,7 +639,9 @@ public class Setup extends Driver{
         AboutPage about = PageFactory.initElements(driver, AboutPage.class);
         navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
+        Thread.sleep(1000);
         about.Software.click();
+        Thread.sleep(2000);
         WebElement soft_version = driver.findElement(By.id("com.qolsys:id/summary"));
         String current_version = soft_version.getText();
         driver.findElementById("com.qolsys:id/ft_home_button").click();

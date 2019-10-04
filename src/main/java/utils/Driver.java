@@ -69,15 +69,29 @@ public class Driver {
                         .withAppiumJS(new File(ConfigProps.appiumPath))
                         .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
                         .withIPAddress("127.0.0.1").usingPort(4723));
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("deviceName", "IQPanel2");
+////        cap.setCapability("automationName", "UiAutomator2");//new
+//        cap.setCapability("platformName", "Android");
+//        cap.setCapability("udid", get_UDID());
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+//        cap.setCapability("noReset", "true");
+//        cap.setCapability("newCommandTimeout", 1000);
+
+
+
         DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "IQPanel2");
-//        cap.setCapability("automationName", "UiAutomator2");//new
+        cap.setCapability("automationName", "UiAutomator2");
+        cap.setCapability("deviceName", "IQ2");
         cap.setCapability("platformName", "Android");
+        cap.setCapability("platformVersion", "5.1");
+        cap.setCapability("noReset", true);
         cap.setCapability("udid", get_UDID());
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-        cap.setCapability("noReset", "true");
-        cap.setCapability("newCommandTimeout", 1000);
+
+
         //in case previous session was not stopped
         killnode();
         service.stop();
@@ -92,12 +106,41 @@ public class Driver {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+//    public void setupDriver() throws Exception {
+//        service = AppiumDriverLocalService
+//                .buildService(new AppiumServiceBuilder()
+//                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+//                        .withAppiumJS(new File(ConfigProps.appiumPath))
+//                        .withArgument(GeneralServerFlag.LOG_LEVEL, "error")
+//                        .withIPAddress("127.0.0.1").usingPort(4723));
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("automationName", "UiAutomator2");
+//        cap.setCapability("platformName", "Android");
+//        cap.setCapability("platformVersion", "5.1");
+//        cap.setCapability("deviceName", "Android");
+//        cap.setCapability("udid", get_UDID());
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
+//
+////        adbroot();
+//        //in case previous session was not stopped
+//        killnode();
+//        service.stop();
+//        Thread.sleep(2000);
+//        service.start();
+//        System.out.println("\n*****Start Appium*****\n");
+//        Thread.sleep(2000);
+//
+//        driver = new AndroidDriver<>(service.getUrl(), cap);
+////        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//    }
+
     public void webDriverSetUp() {
 
 //        driver1 = new FirefoxDriver();
         System.setProperty("webdriver.chrome.driver", "/home/sergio/Downloads/chromedriver");
         driver1 = new ChromeDriver();
-        wait = new WebDriverWait(driver1, 60);
+        wait = new WebDriverWait(driver1, 180);
     }
 
 

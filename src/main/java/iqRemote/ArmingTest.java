@@ -2,25 +2,33 @@ package iqRemote;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import panel.HomePage;
 import sensors.Sensors;
 import utils.ConfigProps;
 import utils.SensorsActivity;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class ArmingTest {
+public class ArmingTest  {
     public AndroidDriver<WebElement> driver_remote;
     public AndroidDriver<WebElement> driver_primary;
+    public AppiumDriverLocalService service;
     public Runtime rt = Runtime.getRuntime();
     Sensors s = new Sensors();
     String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -31,24 +39,66 @@ public class ArmingTest {
     }
 
     public void setup_driver(String url_, String port_) throws Exception {
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("deviceName", "IQRemote");
+//        cap.setCapability("BROWSER_NAME", "Android");
+//        cap.setCapability("udid", "6C21A2483244");
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.themes.IQRemoteHomeActivity");
+//        driver_remote = new AndroidDriver<WebElement>(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
+
+
+        System.out.println("\n*****killing all nodes*****\n");
+        rt.exec("killall node");
+        service = AppiumDriverLocalService
+                .buildService(new AppiumServiceBuilder()
+                        .usingDriverExecutable(new File(ConfigProps.nodePath))
+                        .withAppiumJS(new File(ConfigProps.appiumPath))
+                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
+                        .withIPAddress("127.0.1.1").usingPort(4723));
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("deviceName", "Andorid");
+//        cap.setCapability("platformName", "Android");
+////        cap.setCapability("automationName", "UiAutomator2");//new
+//        cap.setCapability("udid", "6C21A2483244");
+//        cap.setCapability("appPackage", "com.qolsys");
+//        cap.setCapability("appActivity", "com.qolsys.themes.IQRemoteHomeActivity");
+//        cap.setCapability("newCommandTimeout", 10000);
+//        //in case previous session was not stopped
+//
+//
+//
+//        service.stop();
+//        Thread.sleep(2000);
+//        service.start();
+//        System.out.println("\n*****Start Appium*****\n");
+//        Thread.sleep(2000);
+//
+//
+//        driver_remote = new AndroidDriver<>(service.getUrl(), cap);
+//        driver_remote.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+
         DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "IQPanel2");
-        cap.setCapability("BROWSER_NAME", "Android");
-        cap.setCapability("udid", "6NJUM1H24Z");
+        cap.setCapability("platformName","Android");
+        cap.setCapability("automationName", "UiAutomator2");
+        cap.setCapability("deviceName", "IQPanel");
+        cap.setCapability("platformVersion", "Android");
+        cap.setCapability("udid", "6C21A2483244");
         cap.setCapability("appPackage", "com.qolsys");
-        cap.setCapability("appActivity", "com.qolsys.activites.MainActivity");
+        cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
         driver_remote = new AndroidDriver<WebElement>(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
     }
 
     public void setup_driver1(String url_, String port_) throws Exception {
         DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability("platformName","Android");
+        cap.setCapability("automationName", "UiAutomator2");
         cap.setCapability("deviceName", "IQPanel");
-        cap.setCapability("BROWSER_NAME", "Android1");
-        cap.setCapability("udid", "8ebdbc76");
+        cap.setCapability("platformVersion", "Android");
+        cap.setCapability("udid", "6C21A2483244");
         cap.setCapability("appPackage", "com.qolsys");
         cap.setCapability("appActivity", "com.qolsys.activites.Theme3HomeActivity");
-        cap.setCapability("newCommandTimeout", "1000");
-        driver_primary = new AndroidDriver<WebElement>(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
+        driver_remote = new AndroidDriver<WebElement>(new URL(url_ + ":" + port_ + "/wd/hub"), cap);
     }
 
     public void swipeFromLefttoRight_primary() throws Exception {
@@ -90,10 +140,32 @@ public class ArmingTest {
         touch.tap(x, y).perform();
     }
 
+    public void ARM_AWAY(int delay) throws Exception {
+        HomePage home_page = PageFactory.initElements(driver_remote, HomePage.class);
+        System.out.println("Arm Away");
+        home_page.DISARM.click();
+        home_page.ARM_AWAY.click();
+        TimeUnit.SECONDS.sleep(delay);
+    }
+
     @BeforeMethod
     public void capabilities_setup() throws Exception {
-        setup_driver("http://127.0.1.1", "4723");
-        //      setup_driver1("http://127.0.1.1", "4725");
+//        setup_driver("http://127.0.1.1", "4723");
+              setup_driver1("http://127.0.1.1", "4725");
+//        setupDriver(get_UDID(), "http://127.0.1.1", "4723");
+    }
+    @Test
+    public void Testsb() throws Exception{
+        Thread.sleep(15000);
+        ARM_AWAY(17);
+        System.out.println("Swiping from left to right");
+        swipeFromLefttoRight_remote();
+        System.out.println("Swiping from left to right 2");
+        swipeFromLefttoRight_remote();
+        System.out.println("Swiping from left to right3");
+
+
+
     }
 
     @Test
@@ -101,20 +173,22 @@ public class ArmingTest {
         for (int i = 10; i > 0; i--) {
             Thread.sleep(10000);
             swipeFromLefttoRight_primary();
+            System.out.println("swipe from left to right");
             Thread.sleep(2000);
             swipeFromLefttoRight_primary();
             Thread.sleep(4000);
+            System.out.println("swipe from left to right");
             System.out.println("Click Mode button");
             tap(1055, 275);
             //           driver_primary.findElement(By.id("com.qolsys:id/btThermoMode")).click();
             Thread.sleep(4000);
             System.out.println("Select Heat mode, OFF mode");
-            driver_primary.findElement(By.id("com.qolsys:id/heat")).click();
+//            driver.findElement(By.id("com.qolsys:id/heat")).click();
             Thread.sleep(10000);
             tap(1055, 275);
 //            driver_primary.findElement(By.id("com.qolsys:id/btThermoMode")).click();
             Thread.sleep(3000);
-            driver_primary.findElement(By.id("com.qolsys:id/off")).click();
+//            driver.findElement(By.id("com.qolsys:id/off")).click();
             Thread.sleep(4000);
 //        swipeFromLefttoRight_remote();
 //        Thread.sleep(3000);

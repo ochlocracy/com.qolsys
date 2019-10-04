@@ -148,7 +148,7 @@ public class ADC extends Setup {
         if (get_UDID().equals("8ebdbcf6")) {    //Olga
             accountId = "5432189";
             return accountId;
-        } else if (get_UDID().equals("ac8312fb")) {    //Sergio
+        } else if (get_UDID().equals("ac8312fb")) {    //Sergio Automation7423
             accountId = "5390018";
             return accountId;
         } else if (get_UDID().equals("42164ff")) {    //Zach
@@ -195,7 +195,7 @@ public class ADC extends Setup {
 
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
-        if (getADCexecute().equals("true")) {
+        if (getADCexecute().equals("TRUE")) {
             New_ADC_session(getAccountId());
             driver1.findElement(By.partialLinkText("Sensors")).click();
             Thread.sleep(2000);
@@ -432,7 +432,7 @@ public class ADC extends Setup {
         logger.info("Request sensor list and Sensor names");
         driver1.findElement(By.id("ctl00_phBody_sensorList_butRequest")).click();
         //ctl00_phBody_sensorList_butRequest
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(5);
         logger.info("Request equipment list");
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(3);
@@ -626,6 +626,7 @@ public class ADC extends Setup {
 //        getAddModeMessage();
     }
 
+
     public void getAddModeMessage() throws Exception{
         String addModeMessage = "ctl00_phBody_ZWaveRemoteAddDevices_lblAddStatus";
         logger.info("Getting mode message");
@@ -730,9 +731,10 @@ public class ADC extends Setup {
     public void update_sensors_list() throws InterruptedException, IOException {
         New_ADC_session(getAccountId());
         Thread.sleep(1000);
-        driver1.findElement(By.partialLinkText("Sensors")).click();
-        Thread.sleep(10000);
+        driver1.get("https://alarmadmin.alarm.com/Support/Commands/GetSensorNamesV2.aspx");
+        Thread.sleep(1000);
         Request_equipment_list();
+        System.out.println("Equipment List requested");
         Thread.sleep(1000);
     }
 

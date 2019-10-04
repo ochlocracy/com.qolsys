@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class ArmAway extends Setup {
-    String page_name = "QTMS: ARM AWAY";
+    String page_name = "ARM AWAY";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
-    String login = "mypanel01";
+    String login = "automation7423";
     String password = "qolsys123";
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
     ADC adc = new ADC();
@@ -52,7 +52,7 @@ public class ArmAway extends Setup {
         servcall.set_DIALER_DELAY(7);
         Thread.sleep(1000);
         servcall.EVENT_ARM_AWAY();
-        Thread.sleep(3000);
+        Thread.sleep(10000);
         verifyArmaway();
         adc.New_ADC_session_User(login, password);
         Thread.sleep(5000);

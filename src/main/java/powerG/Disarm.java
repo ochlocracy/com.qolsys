@@ -142,7 +142,7 @@ public class Disarm extends Setup {
 
         if (!isElementPresent(locator)) {
             Assert.fail();
-        }
+        }https://getpocket.com/explore/item/science-says-the-most-successful-kids-have-parents-who-do-these-9-things?utm_source=pocket-newtab
         Assert.assertTrue(adc.driver1.findElement(locator).isDisplayed());
     }
 

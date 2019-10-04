@@ -47,6 +47,8 @@ public class Disarm extends Setup {
     String keyfob6 = "65 00 CF";
     String newName = "NewSensorName";
     String page_name = "SRF Disarm";
+    String mActive = "Active";
+    String mIdle = "Idle";
     Logger logger = Logger.getLogger(page_name);
     Sensors sensors = new Sensors();
     ADC adc = new ADC();
@@ -56,7 +58,7 @@ public class Disarm extends Setup {
         ConfigProps.init();
         SensorsActivity.init();
         /*** If you want to run tests only on the panel, please setADCexecute value to false ***/
-        adc.setADCexecute("false");
+        adc.setADCexecute("TRUE");
     }
 
     public void navigate_to_Security_Sensors_page() throws InterruptedException {
@@ -74,7 +76,7 @@ public class Disarm extends Setup {
         report = new ExtentReports(projectPath + "/Report/QTMS_Disarm.html");
         report.loadConfig(new File(file));
         report
-                .addSystemInfo("User Name", "Anya Dyshleva")
+                .addSystemInfo("User Name", "Automation")
                 .addSystemInfo("Software Version", softwareVersion());
         log = report.startTest(test_area_name);
     }
@@ -107,7 +109,7 @@ public class Disarm extends Setup {
         }
     }
 
-    @BeforeTest
+    @BeforeClass
     public void capabilities_setup() throws Exception {
         setupDriver(get_UDID(), "http://127.0.1.1", "4723");
         setupLogger(page_name);
@@ -122,7 +124,7 @@ public class Disarm extends Setup {
         servcall.set_ARM_STAY_NO_DELAY_disable();
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void webDriver() {
         adc.webDriverSetUp();
     }
@@ -130,10 +132,15 @@ public class Disarm extends Setup {
     public void sensor_status_check(String DLID, String Status, String Status2) throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         SettingsPage sett = PageFactory.initElements(driver, SettingsPage.class);
+        System.out.println("Going to setting page");
+        Thread.sleep(900);
         navigateToSettingsPage();
-        Thread.sleep(1000);
+        System.out.println("clicking on status page");
+        Thread.sleep(3000);
         sett.STATUS.click();
+        Thread.sleep(3000);
         sensors.primaryCall(DLID, SensorsActivity.OPEN);
+        Thread.sleep(3000);
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
         if (li_status1.get(1).getText().equals(Status)) {
             logger.info("Pass: sensor status is displayed correctly: ***" + li_status1.get(1).getText() + "***");
@@ -142,6 +149,7 @@ public class Disarm extends Setup {
             logger.info("Failed: sensor status is displayed incorrect: ***" + li_status1.get(1).getText() + "***");
             log.log(LogStatus.FAIL, "Failed: sensor status is displayed incorrect: ***" + li_status1.get(1).getText() + "***");
         }
+//        sensors.primaryCall(DLID, SensorsActivity.OPEN);
         Thread.sleep(2000);
         li_status1.clear();
         sensors.primaryCall(DLID, SensorsActivity.CLOSE);
@@ -158,35 +166,36 @@ public class Disarm extends Setup {
         home.Home_button.click();
     }
 
+
     @Test
     public void Disb_01_DW10() throws IOException, InterruptedException {
-        create_report("Disb319_01");
+        create_report("Disb319_01:GEN-2064");
         log.log(LogStatus.INFO, ("*Disb_01* Open/Close event is displayed in panel history for sensor group 10"));
         logger.info("*Disb_01* Open/Close event is displayed in panel history for sensor group 10");
         addPrimaryCall(3, 10, 6619296, 1);
-        Thread.sleep(1000);
-        sensor_status_check(door_window10, "Open", "Closed");
         Thread.sleep(2000);
+        sensor_status_check(door_window10, "Open", "Closed");
+        Thread.sleep(3000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
 
     @Test(priority = 1)
     public void Disb_02_DW12() throws IOException, InterruptedException {
-        add_to_report("Disb319_02");
+        add_to_report("Disb319_02:GEN-2065");
         log.log(LogStatus.INFO, ("*Disb_02* Open/Close event is displayed in panel history for sensor group 12"));
         logger.info("*Disb_02* Open/Close event is displayed in panel history for sensor group 12");
         addPrimaryCall(3, 12, 6619297, 1);
-        Thread.sleep(1000);
-        sensor_status_check(door_window12, "Open", "Closed");
         Thread.sleep(2000);
+        sensor_status_check(door_window12, "Open", "Closed");
+        Thread.sleep(3000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
 
     @Test(priority = 2)
     public void Disb_03_DW13() throws IOException, InterruptedException {
-        add_to_report("Disb319_03");
+        add_to_report("Disb319_03:GEN-2066");
         log.log(LogStatus.INFO, ("*Disb_03* Open/Close event is displayed in panel history for sensor group 13"));
         logger.info("*Disb_03* Open/Close event is displayed in panel history for sensor group 13");
         addPrimaryCall(3, 13, 6619298, 1);
@@ -199,7 +208,7 @@ public class Disarm extends Setup {
 
     @Test(priority = 3)
     public void Disb_04_DW14() throws IOException, InterruptedException {
-        add_to_report("Disb319_04");
+        add_to_report("Disb319_04:GEN-2067");
         log.log(LogStatus.INFO, ("*Disb_04* Open/Close event is displayed in panel history for sensor group 14"));
         logger.info("*Disb_04* Open/Close event is displayed in panel history for sensor group 14");
         addPrimaryCall(3, 14, 6619299, 1);
@@ -212,7 +221,7 @@ public class Disarm extends Setup {
 
     @Test(priority = 4)
     public void Disb_05_DW16() throws IOException, InterruptedException {
-        add_to_report("Disb319_05");
+        add_to_report("Disb319_05:GEN-2068");
         log.log(LogStatus.INFO, ("*Disb_05* Open/Close event is displayed in panel history for sensor group 16"));
         logger.info("*Disb_05* Open/Close event is displayed in panel history for sensor group 16");
         addPrimaryCall(3, 16, 6619300, 1);
@@ -225,7 +234,7 @@ public class Disarm extends Setup {
 
     @Test(priority = 5)
     public void Disb_06_M15() throws IOException, InterruptedException {
-        add_to_report("Disb319_06");
+        add_to_report("Disb319_06:GEN-2069");
         log.log(LogStatus.INFO, ("*Disb_06* Activate event is displayed in panel history for motion sensor group 15"));
         logger.info("*Disb_06* Activate event is displayed in panel history for motion sensor group 15");
         addPrimaryCall(3, 15, 5570628, 2);
@@ -242,22 +251,22 @@ public class Disarm extends Setup {
         log.log(LogStatus.PASS, ("Pass: Idle event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Activated"));
         log.log(LogStatus.PASS, ("Pass: Activated event is displayed"));
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         li_status1.clear();
-
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
 
     @Test(priority = 6)
     public void Disb_07_M17() throws IOException, InterruptedException {
-        add_to_report("Disb319_07");
+        add_to_report("Disb319_07:GEN-2070");
         log.log(LogStatus.INFO, ("*Disb_07* Activate event is displayed in panel history for motion sensor group 17"));
         logger.info("*Disb_07* Activate event is displayed in panel history for motion sensor group 17");
+        System.out.println("adding Sensor");
         addPrimaryCall(3, 17, 5570629, 2);
         Thread.sleep(1000);
-        sensor_status_check(motion17, "Activated", "Idle");
+        sensor_status_check(motion17, mActive, mIdle);
         Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
@@ -265,12 +274,12 @@ public class Disarm extends Setup {
 
     @Test(priority = 7)
     public void Disb_08_M20() throws IOException, InterruptedException {
-        add_to_report("Disb319_08");
+        add_to_report("Disb319_08:GEN-2071");
         log.log(LogStatus.INFO, ("*Disb_08* Activate event is displayed in panel history for motion sensor group 20"));
         logger.info("*Disb_08* Activate event is displayed in panel history for motion sensor group 20");
-        addPrimaryCall(3, 20, 5570630, 2);
+        addPrimaryCall(4, 20, 5570630, 2);
         Thread.sleep(1000);
-        sensor_status_check(motion20, "Activated", "Idle");
+        sensor_status_check(motion20, mActive, mIdle);
         Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
@@ -278,12 +287,12 @@ public class Disarm extends Setup {
 
     @Test(priority = 8)
     public void Disb_09_M35() throws IOException, InterruptedException {
-        add_to_report("Disb319_09");
+        add_to_report("Disb319_09:GEN-2072");
         log.log(LogStatus.INFO, ("*Disb_09* Activate event is displayed in panel history for motion sensor group 35"));
         logger.info("*Disb_09* Activate event is displayed in panel history for motion sensor group 35");
         addPrimaryCall(3, 35, 5570631, 2);
         Thread.sleep(1000);
-        sensor_status_check(motion35, "Activated", "Idle");
+        sensor_status_check(motion35, mActive, mIdle);
         Thread.sleep(2000);
         deleteFromPrimary(3);
         Thread.sleep(2000);
@@ -298,24 +307,22 @@ public class Disarm extends Setup {
         addPrimaryCall(3, 10, 6619296, 1);
         Thread.sleep(1000);
         sensors.primaryCall(door_window10, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(22000);
         sensors.primaryCall(door_window10, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-
         Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
         log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
         log.log(LogStatus.PASS, ("Pass: Open event is displayed"));
         Thread.sleep(2000);
         li_status1.clear();
-
         adc.ADC_verification("//*[contains(text(), '  (Sensor 3) Opened/Closed')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
         log.log(LogStatus.PASS, ("Pass: (Sensor 3) Opened/Closed and Sensor 3 Open/Close messages are displayed"));
-
         deleteFromPrimary(3);
         Thread.sleep(2000);
     }
@@ -328,11 +335,12 @@ public class Disarm extends Setup {
         addPrimaryCall(3, 12, 6619297, 1);
         Thread.sleep(1000);
         sensors.primaryCall(door_window12, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window12, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
 
@@ -358,14 +366,15 @@ public class Disarm extends Setup {
         addPrimaryCall(3, 13, 6619298, 1);
         Thread.sleep(1000);
         sensors.primaryCall(door_window13, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window13, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-
+        Thread.sleep(1000);
         Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
         log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
@@ -388,14 +397,15 @@ public class Disarm extends Setup {
         addPrimaryCall(3, 14, 6619299, 1);
         Thread.sleep(1000);
         sensors.primaryCall(door_window14, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window14, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-
+        Thread.sleep(1000);
         Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
         log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
@@ -418,14 +428,15 @@ public class Disarm extends Setup {
         addPrimaryCall(3, 16, 6619300, 1);
         Thread.sleep(1000);
         sensors.primaryCall(door_window16, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window16, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-
+        Thread.sleep(1000);
         Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
         log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
@@ -450,14 +461,15 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
         Thread.sleep(1000);
         sensors.primaryCall(door_window25, SensorsActivity.OPEN);
-        Thread.sleep(21000);
+        Thread.sleep(2000);
         sensors.primaryCall(door_window25, SensorsActivity.CLOSE);
         navigateToSettingsPage();
         Thread.sleep(1000);
         sett.STATUS.click();
+        Thread.sleep(1000);
         driver.findElement(By.id("com.qolsys:id/tab4")).click();
         List<WebElement> li_status1 = driver.findElements(By.id("com.qolsys:id/textView3"));
-
+        Thread.sleep(1000);
         Assert.assertTrue(li_status1.get(1).getText().equals("Closed"));
         log.log(LogStatus.PASS, ("Pass: Closed event is displayed"));
         Assert.assertTrue(li_status1.get(2).getText().equals("Open"));
@@ -479,6 +491,7 @@ public class Disarm extends Setup {
         add_to_report("Disb319_21");
         log.log(LogStatus.INFO, ("*Disb_21* Open/Close event is displayed in panel history for sensor group 8"));
         logger.info("*Disb_21* Open/Close event is displayed in panel history for sensor group 8");
+        Thread.sleep(3000);
         addPrimaryCall(3, 8, 6619302, 1);
         adc.update_sensors_list();
         Thread.sleep(1000);
@@ -1856,6 +1869,6 @@ public class Disarm extends Setup {
         }
         report.endTest(log);
         report.flush();
-        adc.driver1.quit();
+//        adc.driver1.quit();
     }
 }

@@ -42,7 +42,7 @@ public class AboutPageTest extends Setup {
         about = PageFactory.initElements(driver, AboutPage.class);
         adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
         logger.info("Verifying elements on the page...");
-//        navigateToAdvancedSettingsPage();
+        navigateToAdvancedSettingsPage();
         adv.ABOUT.click();
         Thread.sleep(1000);
         elementVerification(about.Battery, "Battery");
@@ -58,6 +58,7 @@ public class AboutPageTest extends Setup {
         Thread.sleep(1000);
         elementVerification(about.Software, "Software");
         about.Software.click();
+        Thread.sleep(2000);
         elementVerification(about.Software_Version, "Software Version");
         elementVerification(about.Build_Number, "Build Number");
         elementVerification(about.Linux_Version, "Linux Version");
@@ -89,6 +90,7 @@ public class AboutPageTest extends Setup {
         Thread.sleep(1000);
         elementVerification(about.Panel_About, "Panel");
         about.Panel_About.click();
+        Thread.sleep(2000);
         elementVerification(about.MAC_Address, "MAC Address");
         elementVerification(about.Panel_Up_Time, "Panel Up Time");
         about.Panel_About.click();
@@ -123,6 +125,7 @@ public class AboutPageTest extends Setup {
         elementVerification(about.WI_FI_Info, "Wi-Fi Info");
         about.WI_FI_Info.click();
         Thread.sleep(1000);
+        swipe_vertical1();
         elementVerification(about.Connection, "Connection");
         elementVerification(about.IP_Address, "IP Address");
         swipe_vertical1();
