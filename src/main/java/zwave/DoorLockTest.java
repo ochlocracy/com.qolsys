@@ -28,7 +28,7 @@ import static utils.ConfigProps.primary;
 
 /* One door lock, default name, status unlocked */
 
-public class DoorLockTest extends Setup {
+public class  DoorLockTest extends Setup {
 
     String pageName = "Door Lock Testing";
     Logger logger = Logger.getLogger(pageName);
@@ -79,6 +79,7 @@ public class DoorLockTest extends Setup {
 
 
 // Add method to change transmitter or real devices
+
 
 
     @BeforeClass
