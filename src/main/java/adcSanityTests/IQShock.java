@@ -1,10 +1,8 @@
 package adcSanityTests;
 
 import adc.ADC;
-import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import panel.PanelInfo_ServiceCalls;
 import sensors.Sensors;
@@ -62,11 +60,11 @@ public class IQShock extends Setup {
         addPrimaryCall(3, 13, 6684828, 107);
         addPrimaryCall(4, 17, 6684829, 107);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     /*** Disarm Activate***/

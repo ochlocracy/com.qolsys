@@ -1,0 +1,37 @@
+
+2019-10-21 12:24:02,596 - utils.Log -INFO - ********************************************************************
+2019-10-21 12:24:02,599 - utils.Log -INFO - $$$$$$$$$$$$$$$$$$$$$   SRF Disarm 319   $$$$$$$$$$$$$$$$$$$$$$$$$
+2019-10-21 12:24:02,599 - utils.Log -INFO - ********************************************************************
+2019-10-21 12:24:21,625 - SRF Disarm 319 -INFO - *Disb_01* Open/Close event is displayed in panel history for sensor group 10
+2019-10-21 12:24:38,517 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:24:40,211 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:24:46,859 - SRF Disarm 319 -INFO - *Disb_02* Open/Close event is displayed in panel history for sensor group 12
+2019-10-21 12:25:03,762 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:25:05,505 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:25:11,765 - SRF Disarm 319 -INFO - *Disb_03* Open/Close event is displayed in panel history for sensor group 13
+2019-10-21 12:25:27,571 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:25:29,283 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:25:34,514 - SRF Disarm 319 -INFO - *Disb_04* Open/Close event is displayed in panel history for sensor group 14
+2019-10-21 12:25:50,362 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:25:52,091 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:25:57,361 - SRF Disarm 319 -INFO - *Disb_05* Open/Close event is displayed in panel history for sensor group 16
+2019-10-21 12:26:14,416 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:26:16,067 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:26:21,313 - SRF Disarm 319 -INFO - *Disb_06* Activate event is displayed in panel history for motion sensor group 15
+2019-10-21 12:26:37,207 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Activated***
+2019-10-21 12:26:40,951 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Idle***
+2019-10-21 12:26:46,141 - SRF Disarm 319 -INFO - *Disb_07* Activate event is displayed in panel history for motion sensor group 17
+2019-10-21 12:27:02,012 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Activated***
+2019-10-21 12:27:05,734 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Idle***
+2019-10-21 12:27:10,945 - SRF Disarm 319 -INFO - *Disb_08* Activate event is displayed in panel history for motion sensor group 20
+2019-10-21 12:27:28,799 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Activated***
+2019-10-21 12:27:32,523 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Idle***
+2019-10-21 12:27:37,734 - SRF Disarm 319 -INFO - *Disb_09* Activate event is displayed in panel history for motion sensor group 35
+2019-10-21 12:27:54,781 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Activated***
+2019-10-21 12:27:58,489 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Idle***
+2019-10-21 12:28:03,671 - SRF Disarm 319 -INFO - Verify the sensor is being monitored, dw sensor group 10
+2019-10-21 12:28:20,807 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Open***
+2019-10-21 12:28:22,530 - SRF Disarm 319 -INFO - Pass: sensor status is displayed correctly: ***Closed***
+2019-10-21 12:28:54,474 - SRF Disarm 319 -INFO - History displays Opened/Closed
+2019-10-21 12:28:56,555 - SRF Disarm 319 -INFO - *Disb_15* Verify the sensor is being monitored, dw sensor group 12
+2019-10-21 12:29:32,389 - SRF Disarm 319 -INFO - *Disb_16* Verify the sensor is being monitored, dw sensor group 13

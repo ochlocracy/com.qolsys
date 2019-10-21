@@ -57,11 +57,11 @@ public class Freeze extends Setup {
         logger.info("Adding a list of sensors");
         addPrimaryCall(52, 52, 7536801, 17);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmStay_Activate_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {

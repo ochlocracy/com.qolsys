@@ -61,11 +61,11 @@ public class ArmedStayAuxiliary extends Setup {
         addPrimaryCall(14, 2, 6361653, 21);
         addPrimaryCall(15, 4, 6361654, 21);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(10000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmStay_Activate_Silent_Sensor(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {

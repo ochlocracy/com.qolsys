@@ -36,7 +36,7 @@ public class DealerCodeTest extends Setup {
         rep.create_report("Dealer_Code");
         rep.log.log(LogStatus.INFO, ("*Dealer_Code_01* Change Dealer Name and Dealer Pass -> Expected result = Old Dealer Code will not access the settings page"));
 
-        //rep.create_report("Dealer_Code_01");
+        //rep.createReport("Dealer_Code_01");
         Thread.sleep(2000);
         navigateToAdvancedSettingsPage();
         adv.INSTALLATION.click();

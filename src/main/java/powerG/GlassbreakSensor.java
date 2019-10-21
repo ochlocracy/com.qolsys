@@ -24,7 +24,7 @@ public class GlassbreakSensor extends Setup{
         PGSensorsActivity.init();
     }
     public void ADC_verification(String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);

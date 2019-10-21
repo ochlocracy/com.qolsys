@@ -76,11 +76,11 @@
 //        addPrimaryCall(7, 9, 6619302, 1);
 //        addPrimaryCall(8, 25, 6619303, 1);
 //
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.partialLinkText("sensors")).click();
 //        Thread.sleep(2000);
-//        adc.Request_equipment_list();
+//        adc.requestEquipmentList();
 //
 //    }
 //    @Test (dependsOnMethods = {"addContactSensors"}, retryAnalyzer = RetryAnalizer.class)
@@ -99,7 +99,7 @@
 //
 //        /*** adc website verification ***/
 //
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        adc.driver1.findElement(By.partialLinkText("History")).click();
 //        Thread.sleep(10000);
 //        WebElement history_message = adc.driver1.findElement(By.xpath("//*[contains(text(), 'Door/Window 1 (Sensor 1) Opened/Closed')]"));
@@ -126,7 +126,7 @@
 //        Thread.sleep(3000);
 //        DISARM();
 //
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.partialLinkText("History")).click();
 //        Thread.sleep(10000);
@@ -151,7 +151,7 @@
 //
 //        /*** adc website verification ***/
 //
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        Thread.sleep(2000);
 //        adc.driver1.findElement(By.partialLinkText("History")).click();
 //        adc.driver1.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

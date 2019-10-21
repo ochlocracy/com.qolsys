@@ -184,7 +184,7 @@ public class ArmStay extends Setup {
         eventLogsGenerating(log_path, new String[]{
                 "SYSTEM_STATUS_CHANGED_TIME value : ARM-AWAY-EXIT-DELAY"}, 1);
         Thread.sleep(ConfigProps.longExitDelay);
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         verifyArmaway();
         log.log(LogStatus.PASS, ("Pass: system is Armed Away"));
         // sensors.primaryCall("65 00 AF", keyfobDisarm);
@@ -302,10 +302,10 @@ public class ArmStay extends Setup {
         int zone = 10;
         int group = 10;
         addPrimaryCall(zone, group, 6619296, 1);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window10);
         Thread.sleep(15000);
@@ -330,9 +330,9 @@ public class ArmStay extends Setup {
         int group = 12;
         addPrimaryCall(zone, group, 6619297, 1);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window12);
         Thread.sleep(ConfigProps.longEntryDelay);
@@ -358,10 +358,10 @@ public class ArmStay extends Setup {
         int group = 14;
         addPrimaryCall(zone, group, 6619299, 1);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(1000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window14);
         Thread.sleep(1000);
@@ -386,9 +386,9 @@ public class ArmStay extends Setup {
         int group = 13;
         addPrimaryCall(zone, group, 6619298, 1);
         Thread.sleep(2000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window13);
         Thread.sleep(1000);
@@ -413,10 +413,10 @@ public class ArmStay extends Setup {
         int group = 16;
         addPrimaryCall(zone, group, 6619300, 1);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_sensor_event(zone, group, door_window16);
         Thread.sleep(1000);
@@ -440,10 +440,10 @@ public class ArmStay extends Setup {
         //deleteFromPrimary(zone);
         addPrimaryCall(zone, group, 5570629, 2);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
@@ -471,10 +471,10 @@ public class ArmStay extends Setup {
         int group = 15;
         addPrimaryCall(zone, group, 5570628, 2);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
@@ -504,10 +504,10 @@ public class ArmStay extends Setup {
         int group = 20;
         addPrimaryCall(zone, group, 5570630, 2);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
@@ -536,10 +536,10 @@ public class ArmStay extends Setup {
         log.log(LogStatus.INFO, ("*ASK319_14* Verify the system will go into alarm at the end of the entry delay if a sensor in group 35 is Activated in Arm Stay"));
         addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
@@ -573,10 +573,10 @@ public class ArmStay extends Setup {
         int group = 15;
         addPrimaryCall(zone, group, 5570628, 2);
         Thread.sleep(1000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         servcall.set_ARM_STAY_NO_DELAY_enable();
         Thread.sleep(2000);
@@ -691,10 +691,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(1000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 12, door_window10, door_window12, "Open", "Open", ConfigProps.normalEntryDelay);
 
@@ -708,10 +708,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(14, 14, 6619299, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 14, door_window10, door_window14, "Open", "Open", ConfigProps.normalEntryDelay);
     }
@@ -724,9 +724,9 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(13, 13, 6619298, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 13, door_window10, door_window13, "Open", "Open", 1000);
     }
@@ -739,10 +739,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(16, 16, 6619300, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 16, door_window10, door_window16, "Open", "Open", ConfigProps.longEntryDelay);
         System.out.println("passed if only 1 status shown in Alarm page and 'Door/Window 16 (Sensor 16) Pending Alarm' event " +
@@ -758,10 +758,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(15, 15, 5570628, 2);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 15, door_window10, motion15, "Open", "Activated", ConfigProps.longEntryDelay);
     }
@@ -774,10 +774,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(35, 35, 5570631, 2);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 35, door_window10, motion35, "Open", "Activated", ConfigProps.longEntryDelay);
     }
@@ -790,10 +790,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(20, 20, 5570630, 2);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 20, door_window10, motion20, "Open", "Activated", ConfigProps.longEntryDelay);
         logger.info("Passed.The system does not report alarm on group 20. Event not present in Alarm page and User website history");
@@ -808,10 +808,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(17, 17, 5570629, 2);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         arm_stay_2sensors_event(10, 17, door_window10, motion17, "Open", "Activated", ConfigProps.longEntryDelay);
         logger.info("Passed.The system does not report alarm on group 17. Event not present in Alarm page and User website history");
@@ -826,10 +826,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(13, 10, 6619298, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         disarm_during_entry_delay(10, 13, door_window10, door_window13, "Disarmed", "Open", "Arm-Stay", "Open", "Arm-Stay", 15000, 1, 2, 3, 4, 5);
         log.log(LogStatus.PASS, ("Pass: system is successfully disarmed during entry delay"));
@@ -930,10 +930,10 @@ public class ArmStay extends Setup {
         addPrimaryCall(10, 10, 6619296, 1);
         addPrimaryCall(12, 12, 6619297, 1);
         Thread.sleep(4000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         disarm_during_entry_delay(10, 12, door_window10, door_window12, "Disarmed", "Open", "Closed", "Open", "Arm-Stay", 15000, 1, 4, 5, 1, 2);
         log.log(LogStatus.PASS, ("Pass: system is successfully disarmed during entry delay"));
@@ -1525,11 +1525,11 @@ public class ArmStay extends Setup {
         logger.info("Verify that the websites report that the sensor has been left open");
         Thread.sleep(3000);
         addPrimaryCall(10, 10, 6619296, 1);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(2000);
         adc.driver1.get("https://alarmadmin.alarm.com/Support/SensorActions.aspx?device_id=10");
         Thread.sleep(2000);

@@ -73,11 +73,11 @@ public class SanityPGSensors extends Setup {
 //        addPGSensors(104, 1311, 5);//gr25
 //        addPGSensors(201, 1541, 0);//gr26 smoke-M
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(10000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmStay_Activate_Restore_sensor_during_Exit_Delay(int type, int id, String element_to_verify1, String element_to_verify2) throws Exception {

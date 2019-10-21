@@ -63,11 +63,11 @@ public class ArmedAwayAuxiliary extends Setup {
             addPrimaryCall(48, 1, 6361652, 21);
             addPrimaryCall(49, 2, 6361653, 21);
             addPrimaryCall(50, 4, 6361654, 21);
-            adc.New_ADC_session(adc.getAccountId());
+            adc.newAdcSession(adc.getAccountId());
             Thread.sleep(10000);
             adc.driver1.findElement(By.partialLinkText("Sensors")).click();
             Thread.sleep(10000);
-            adc.Request_equipment_list();
+            adc.requestEquipmentList();
         }
     }
 

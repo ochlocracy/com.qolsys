@@ -53,11 +53,11 @@ public class CarbonMonoxide extends Setup {
         logger.info("Adding Sensor");
         addPrimaryCall(27, 34, 7667882, 6);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(2000);
     }
 

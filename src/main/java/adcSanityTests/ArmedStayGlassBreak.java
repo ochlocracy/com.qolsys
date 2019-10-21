@@ -48,7 +48,7 @@ public class ArmedStayGlassBreak extends Setup {
 
         /*** adc website verification ***/
         logger.info("adc website verification");
-        adc.New_ADC_session(AccountID);
+        adc.newAdcSession(AccountID);
         Thread.sleep(3000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(3000);
@@ -82,7 +82,7 @@ public class ArmedStayGlassBreak extends Setup {
 
         /*** adc website verification ***/
         logger.info("adc website verification");
-        adc.New_ADC_session(AccountID);
+        adc.newAdcSession(AccountID);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(3000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
@@ -117,7 +117,7 @@ public class ArmedStayGlassBreak extends Setup {
 
         /*** adc website verification ***/
         logger.info("adc website verification");
-        adc.New_ADC_session(AccountID);
+        adc.newAdcSession(AccountID);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(3000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
@@ -151,7 +151,7 @@ public class ArmedStayGlassBreak extends Setup {
 
         /*** adc website verification ***/
         logger.info("adc website verification");
-        adc.New_ADC_session(AccountID);
+        adc.newAdcSession(AccountID);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(3000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
@@ -188,11 +188,11 @@ public class ArmedStayGlassBreak extends Setup {
         addPrimaryCall(11,13,6750361,19);
         addPrimaryCall(12,17,6750355,19);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     @Test(dependsOnMethods = {"addGlassBreakSensor"})

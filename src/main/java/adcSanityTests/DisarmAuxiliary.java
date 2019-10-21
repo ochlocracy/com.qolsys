@@ -60,11 +60,11 @@ public class DisarmAuxiliary extends Setup {
         addPrimaryCall(50, 4, 6361654, 21);
         addPrimaryCall(47, 25, 6361665, 21);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(10000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
 
     }
 

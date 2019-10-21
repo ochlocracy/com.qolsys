@@ -224,7 +224,7 @@ public class AddSensors extends Setup {
 //    public void Add_PG_Sensors() throws Exception {
 //        HomePage home = PageFactory.initElements(driver, HomePage.class);
 //
-//        rep.create_report("Add_Sensors_02");
+//        rep.createReport("Add_Sensors_02");
 //        rep.log.log(LogStatus.INFO, ("*Add_Sensors_02* Add List of PowerG sensors -> Expected result = New Sensors will be added."));
 //
 //        try {

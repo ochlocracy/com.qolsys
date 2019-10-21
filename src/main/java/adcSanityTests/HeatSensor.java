@@ -62,11 +62,11 @@ public class HeatSensor extends Setup {
         servcall.set_LONG_ENTRY_DELAY(ConfigProps.longEntryDelay);
         Thread.sleep(2000);
         servcall.set_LONG_EXIT_DELAY(ConfigProps.longExitDelay);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(10000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(10000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmStay_Activate_Restore_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
@@ -84,7 +84,7 @@ public class HeatSensor extends Setup {
         logger.info("Disarm the system");
         Thread.sleep(15000);
         // adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         Thread.sleep(2000);
@@ -126,7 +126,7 @@ public class HeatSensor extends Setup {
         DISARM();
         Thread.sleep(15000);
         // adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         Thread.sleep(2000);
@@ -176,7 +176,7 @@ public class HeatSensor extends Setup {
         logger.info("Disarm the Alarm");
         Thread.sleep(15000);
         // adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         Thread.sleep(2000);
@@ -217,7 +217,7 @@ public class HeatSensor extends Setup {
         sensors.primaryCall(DLID, SensorsActivity.RESTORE);
         Thread.sleep(15000);
         // adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
         Thread.sleep(2000);

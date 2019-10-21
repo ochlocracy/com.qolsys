@@ -196,10 +196,14 @@ public class ADC extends Setup {
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
         if (getADCexecute().equals("TRUE")) {
-            New_ADC_session(getAccountId());
+            System.out.println("loging in to ADC");
+            newAdcSession(getAccountId());
+            System.out.println("");
             driver1.findElement(By.partialLinkText("Sensors")).click();
             Thread.sleep(2000);
-            Request_equipment_list();
+            System.out.println("requesting Equiptment list");
+            requestEquipmentList();
+            System.out.println("going to history page");
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(7000);
             driver1.navigate().refresh();
@@ -221,6 +225,35 @@ public class ADC extends Setup {
             System.out.println("Set execute to TRUE to run ADC verification part");
         }
         Thread.sleep(7000);
+    }
+
+    public String adcSensorHistoryVerification(String sensorName,String verifiTag) throws IOException, InterruptedException {
+        String passFail = null;
+        if (getADCexecute().equals("TRUE")) {
+            System.out.println("loging in to ADC");
+            newAdcSession(getAccountId());
+            System.out.println("looking up history");
+            driver1.get("https://alarmadmin.alarm.com/Support/Events.aspx");
+            WebElement search = driver1.findElement(By.id("ctl00_phBody_txtStringSearch"));
+            search.click();
+            search.sendKeys(sensorName);
+            WebElement searchBtn = driver1.findElement(By.id("ctl00_phBody_butSearch"));
+            Thread.sleep(2000);
+            searchBtn.click();
+            Thread.sleep(2000);
+            String sensorMessage = driver1.findElement(By.id("ctl00_phBody_dgEvents_ctl02_lblEventDesc")).getText();
+            System.out.println(sensorMessage);
+            if (sensorMessage.contains(verifiTag)) {
+                passFail = "Pass";
+                System.out.println(passFail);
+//            : Sensor Status is Displayed correct: *****" + sensorMessage + "*****";
+            } else {
+                passFail = "Fail";
+                System.out.println(passFail);
+//                        ": Sensor Status is Displayed correct: *****" + sensorMessage + "*****";
+            }
+        }return passFail;
+
     }
 
     public void ADC_verification_PG(String string, String string1) throws IOException, InterruptedException {
@@ -327,7 +360,7 @@ public class ADC extends Setup {
         act.sendKeys(Keys.ENTER).perform();
     }
 
-    public void New_ADC_session(String accountID) throws InterruptedException {
+    public void newAdcSession(String accountID) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.manage().window().maximize();
 
@@ -428,7 +461,7 @@ public class ADC extends Setup {
                 "Control_SwitchesAndDimmers_rptDevices_ctl00_btnDevicesViewDeviceOn')")));
     }
 
-    public void Request_equipment_list() throws InterruptedException {
+    public void requestEquipmentList() throws InterruptedException {
         logger.info("Request sensor list and Sensor names");
         driver1.findElement(By.id("ctl00_phBody_sensorList_butRequest")).click();
         //ctl00_phBody_sensorList_butRequest
@@ -699,7 +732,7 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btn_RemoteDelete")).click();
     }
 
-    //Use "New_ADC_session" prior to this class
+    //Use "newAdcSession" prior to this class
     public void adcServicePlanZWaveEnergyMonitoring() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         driver1.findElement(By.partialLinkText("Service Plan")).click();
@@ -710,7 +743,7 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_ucsAddons_chkSmartEnergyPlus")).click();
         driver1.findElement(By.id("ctl00_phBody_ucsNewSelectServicePlan_butSave")).click();
     }
-    //Use "New_ADC_session" prior to this class
+    //Use "newAdcSession" prior to this class
     //Has service call
     public void adcTurnOFFZWave() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
@@ -729,11 +762,11 @@ public class ADC extends Setup {
     }
 
     public void update_sensors_list() throws InterruptedException, IOException {
-        New_ADC_session(getAccountId());
+        newAdcSession(getAccountId());
         Thread.sleep(1000);
         driver1.get("https://alarmadmin.alarm.com/Support/Commands/GetSensorNamesV2.aspx");
         Thread.sleep(1000);
-        Request_equipment_list();
+        requestEquipmentList();
         System.out.println("Equipment List requested");
         Thread.sleep(1000);
     }

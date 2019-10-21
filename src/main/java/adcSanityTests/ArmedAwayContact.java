@@ -69,11 +69,11 @@ public class ArmedAwayContact extends Setup {
         addPrimaryCall(8, 25, 6619303, 1);
         addPrimaryCall(9, 17, 5570628, 2);
         addPrimaryCall(10, 20, 5570629, 2);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmAway_Open_Close_during_Exit_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {

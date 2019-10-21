@@ -346,7 +346,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(2000);
         deleteFromPrimary(1);
         Thread.sleep(2000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.get("https://alarmadmin.alarm.com/Support/CustomerSensorList.aspx");
         rep.log.log(LogStatus.INFO, ("Verify sensor is deleted"));
@@ -382,7 +382,7 @@ public class SanityUpdatePG extends Setup {
         rep.log.log(LogStatus.INFO, "Activate DW sensors in DISARM mode");
         activation_restoration(104, 1101, PGSensorsActivity.INOPEN, PGSensorsActivity.INCLOSE);//gr10
         Thread.sleep(10000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(1000);
         adc.driver1.get("https://alarmadmin.alarm.com/Support/CustomerSensorList.aspx");
         Thread.sleep(1000);
@@ -437,7 +437,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(10000);
         verifyInAlarm();
         Thread.sleep(10000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), ' Alarm ')]");
         Thread.sleep(2000);
         enterDefaultUserCode();
@@ -499,7 +499,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(3000);
         enterDefaultUserCode();
         Thread.sleep(5000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 14 Alarm**')]", "//*[contains(text(), 'Fire Alarm')]");
         rep.log.log(LogStatus.PASS, "System is in ALARM (Fire), ADC events are displayed correctly, smokeM works as expected");
         activation_restoration(200, 1531, PGSensorsActivity.SMOKE, PGSensorsActivity.SMOKEREST); //Sensor15
@@ -542,7 +542,7 @@ public class SanityUpdatePG extends Setup {
         try {
             if (home_page.ALARM.isDisplayed()) {
                 Thread.sleep(5000);
-                adc.New_ADC_session(adc.getAccountId());
+                adc.newAdcSession(adc.getAccountId());
                 adc.ADC_verification_PG("//*[contains(text(), 'Water Alarm')]", "//*[contains(text(), 'Sensor 21 Alarm**')]");
                 enterDefaultUserCode();
                 rep.log.log(LogStatus.PASS, "System is in ALARM, ADC events are displayed correctly, water sensor works as expected");
@@ -571,7 +571,7 @@ public class SanityUpdatePG extends Setup {
         activation_restoration(171, 1741, PGSensorsActivity.SHOCK, PGSensorsActivity.SHOCKREST); //Sensor17
         Thread.sleep(10000);
         verifyInAlarm();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Shock 171-1741')]", "//*[contains(text(), 'Sensor 17 Alarm**')]");
         Thread.sleep(2000);
         enterDefaultUserCode();
@@ -605,7 +605,7 @@ public class SanityUpdatePG extends Setup {
         Thread.sleep(5000);
         verifyInAlarm();
         Thread.sleep(2000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'GBreak 160-1874')]", "//*[contains(text(), 'Sensor 19 Alarm**')]");
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -632,7 +632,7 @@ public class SanityUpdatePG extends Setup {
         rep.log.log(LogStatus.INFO, "Activate keyfobs");
         activation_restoration(300, 1004, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
         Thread.sleep(5000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Keyfob 300-1004')]", "//*[contains(text(), 'Police Panic')]");
         rep.log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keyfob gr1 works as expected");
         enterDefaultUserCode();
@@ -726,7 +726,7 @@ public class SanityUpdatePG extends Setup {
         rep.log.log(LogStatus.INFO, ("*Sanity_11* Tamper Sensor"));
         rep.log.log(LogStatus.INFO, "Tamper events verification");
         activation_restoration(104, 1101, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);//gr10
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.ADC_verification_PG("//*[contains(text(), 'Sensor 1 Tamper')]", "//*[contains(text(), 'End of Tamper')]");
         rep.log.log(LogStatus.PASS, "Tamper event for Sensor 1 is displayed correctly");
         activation_restoration(120, 1411, PGSensorsActivity.TAMPER, PGSensorsActivity.TAMPERREST);

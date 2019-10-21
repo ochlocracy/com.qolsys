@@ -41,7 +41,7 @@ public class Keypad extends Setup {
         String[] message = {string, string1, string3};
 
         if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(AccountID);
+            adc.newAdcSession(AccountID);
             adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(10000);
             for (int i = 0; i < message.length; i++) {
@@ -82,11 +82,11 @@ public class Keypad extends Setup {
         Thread.sleep(2000);
         addPrimaryCall(42, 2, 8716539, 104);
         Thread.sleep(2000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     @Test(dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)

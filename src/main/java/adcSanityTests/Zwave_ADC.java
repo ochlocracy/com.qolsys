@@ -43,7 +43,7 @@ public class Zwave_ADC extends Setup {
     @Test
     public void remote_add() throws Exception {
         logger.info("navigating to dealer site...");
-        adc.New_ADC_session(accountID);
+        adc.newAdcSession(accountID);
         adc.driver1.findElement(By.xpath("/html/body/form/table/tbody/tr/td[2]/div/div[2]/div[3]/div/div/ul/" +
                 "li[5]/a")).click();
         adc.driver1.findElement(By.id("ctl00_phBody_ZWaveDeviceList_btnAdvancedZWaveCommands")).click();

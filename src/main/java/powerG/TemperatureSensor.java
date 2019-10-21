@@ -1,13 +1,10 @@
 package powerG;
 
 import adc.ADC;
-import adcSanityTests.Freeze;
-import cellular.WiFi_setting_page_elements;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -18,7 +15,6 @@ import utils.PGSensorsActivity;
 import utils.Setup;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TemperatureSensor extends Setup {
@@ -32,7 +28,7 @@ public class TemperatureSensor extends Setup {
     }
 
     public void ADC_verification(String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);

@@ -1,7 +1,6 @@
 package adc;
 
 import panel.*;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -65,11 +64,11 @@ public class WebSite extends Setup {
     public void Test2() throws IOException, InterruptedException {
         logger.info("********************************************************");
         logger.info("Verify sensors appear on the dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(5);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         TimeUnit.SECONDS.sleep(3);
-        myADC.Request_equipment_list();
+        myADC.requestEquipmentList();
         myADC.Sensor_verification("Door/Window 1", "10","Door/Window", 2);
         myADC.Sensor_verification("Motion 2","17", "Motion", 3);
         myADC.Sensor_verification("Smoke Detector 3", "26", "Smoke Detector", 4);
@@ -146,7 +145,7 @@ public class WebSite extends Setup {
     public void Test4() throws InterruptedException {
         logger.info("********************************************************");
         logger.info("Verify new sensor name, group, type are displayed correctly on the dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(3);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         myADC.driver1.findElement(By.xpath("//input[@value='Request Sensor Names']")).click();
@@ -156,7 +155,7 @@ public class WebSite extends Setup {
         TimeUnit.SECONDS.sleep(5);
         myADC.driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(10);
-        myADC.Request_equipment_list();
+        myADC.requestEquipmentList();
         myADC.Sensor_verification(myADC.new_dw_name, "10", "Door/Window", 2);
         myADC.Sensor_verification(myADC.new_motion_name, "17", "Motion", 3);
         myADC.Sensor_verification(myADC.new_smoke_name, "26", "Smoke Detector", 4);
@@ -177,7 +176,7 @@ public class WebSite extends Setup {
     public void Test5() throws InterruptedException {
         logger.info("********************************************************");
         logger.info("Verify new sensor name, group, type, reporting type, status are displayed correctly on the dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(3);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         myADC.driver1.findElement(By.xpath("//input[@value='Request Sensor Names']")).click();
@@ -187,7 +186,7 @@ public class WebSite extends Setup {
         TimeUnit.SECONDS.sleep(5);
         myADC.driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(10);
-        myADC.Request_equipment_list();
+        myADC.requestEquipmentList();
         myADC.Sensor_verification_full(myADC.new_dw_name,"10", "Door/Window", "Entry/Exit", "Closed",2);
         myADC.Sensor_verification_full(myADC.new_motion_name, "17", "Motion", "Interior", "Idle", 3);
         myADC.Sensor_verification_full(myADC.new_smoke_name, "26", "Smoke Detector", "Fire", "OK", 4);
@@ -228,7 +227,7 @@ public class WebSite extends Setup {
     public void Test7() throws InterruptedException {
         logger.info("********************************************************");
         logger.info("Verify new sensor name, group, type, reporting type, status are displayed correctly on the dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(3);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         myADC.driver1.findElement(By.xpath("//input[@value='Request Sensor Names']")).click();
@@ -238,7 +237,7 @@ public class WebSite extends Setup {
         TimeUnit.SECONDS.sleep(5);
         myADC.driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(10);
-        myADC.Request_equipment_list();
+        myADC.requestEquipmentList();
         myADC.Sensor_verification_full(myADC.new_dw_name, "10", "Door/Window", "Entry/Exit", "Open",2);
         myADC.Sensor_verification_full(myADC.new_motion_name, "17", "Motion", "Interior", "Activated", 3);
         myADC.Sensor_verification_full(myADC.new_smoke_name, "26", "Smoke Detector", "Fire", "OK", 4);
@@ -278,7 +277,7 @@ public class WebSite extends Setup {
     public void Test9() throws InterruptedException {
         logger.info("********************************************************");
         logger.info("Renaming sensors from the adc dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(3);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         myADC.driver1.findElement(By.partialLinkText("Change Sensor Names")).click();

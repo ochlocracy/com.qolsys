@@ -29,7 +29,7 @@ public class ShockSensor extends Setup {
     }
 
     public void ADC_verification(String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);
@@ -78,7 +78,7 @@ public class ShockSensor extends Setup {
     public void Shock() throws IOException, InterruptedException {
         rep.create_report("Shock_0");
         rep.log.log(LogStatus.INFO, ("*Shock_0* Set sensitivity lvl from ADC dealer website"));
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         TimeUnit.SECONDS.sleep(2);
         adc.driver1.findElement(By.xpath("//*[@id='ctl00_navLinks']/ul/li[10]/a/i")).click();
         TimeUnit.SECONDS.sleep(2);

@@ -71,11 +71,11 @@ public class Misc extends Setup {
         addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(2000);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     /***** ARM AWAY BY KEY FOB *****/
@@ -92,7 +92,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -121,7 +121,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -150,7 +150,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.ArwAway_State.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -180,7 +180,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.DISARM.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -209,7 +209,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.DISARM.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -238,7 +238,7 @@ public class Misc extends Setup {
         Thread.sleep(3000);
         home.DISARM.click();
         enterDefaultUserCode();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(3000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(10000);
@@ -270,7 +270,7 @@ public class Misc extends Setup {
         sensors.primaryCall("65 00 AF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verifyDisarm();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(10000);
@@ -301,7 +301,7 @@ public class Misc extends Setup {
         sensors.primaryCall("65 00 BF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verifyDisarm();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(10000);
@@ -332,7 +332,7 @@ public class Misc extends Setup {
         sensors.primaryCall("65 00 CF", SensorsActivity.KDISARM);
         Thread.sleep(5000);
         verifyDisarm();
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(10000);

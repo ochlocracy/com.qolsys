@@ -40,7 +40,7 @@ public class SanitySensors extends Setup {
     public void ADC_verification(String string, String string1) throws IOException, InterruptedException {
         String[] message = {string, string1};
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         Thread.sleep(10000);
         for (int i = 0; i < message.length; i++) {
@@ -99,11 +99,11 @@ public class SanitySensors extends Setup {
         addPrimaryCall(4, 12, 6488239, 16);
         addPrimaryCall(5, 25, 6488224, 16);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(10000);
         adc.driver1.get("https://alarmadmin.alarm.com/Support/Commands/GetSensorNames.aspx");
         Thread.sleep(10000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmStay_Activate_Restore_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify1, String element_to_verify2) throws Exception {
@@ -123,7 +123,7 @@ public class SanitySensors extends Setup {
         enterDefaultUserCode();
         Thread.sleep(15000);
         //adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         log.log(LogStatus.INFO, "Verification on the ADC dealer web site");
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();
@@ -167,7 +167,7 @@ public class SanitySensors extends Setup {
         DISARM();
         Thread.sleep(15000);
         // adc website verification
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         log.log(LogStatus.INFO, "Verification on the ADC dealer web site");
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
         adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_phBody_butSearch"))).click();

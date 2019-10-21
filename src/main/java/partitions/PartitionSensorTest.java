@@ -230,7 +230,7 @@ public class PartitionSensorTest extends Setup {
 //        HomePage home = PageFactory.initElements(driver, HomePage.class);
 //
 //        serv.set_DIALER_DELAY(0);
-//        rep.create_report("Sensortest_03");
+//        rep.createReport("Sensortest_03");
 //        rep.log.log(LogStatus.INFO, ("*Sensortest_03* Tamper / Restore events to PG on Arm Away and Stay -> Expected result = Sensors will signal and panel will go into alarm."));
 //        Thread.sleep(4000);
 //
@@ -328,7 +328,7 @@ public class PartitionSensorTest extends Setup {
 //        HomePage home = PageFactory.initElements(driver, HomePage.class);
 //
 //        serv.set_DIALER_DELAY(0);
-//        rep.create_report("Sensortest_04");
+//        rep.createReport("Sensortest_04");
 //        rep.log.log(LogStatus.INFO, ("*Sensortest_04* Open / Close events to srf on Arm Away and Stay -> Expected result = Sensors will signal and panel will go into alarm."));
 //        Thread.sleep(4000);
 //

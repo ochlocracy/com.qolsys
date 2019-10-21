@@ -61,11 +61,11 @@ public class ArmedAwayTilt extends Setup {
         addPrimaryCall(12, 12, 6488239, 16);
         addPrimaryCall(13, 25, 6488224, 16);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     public void ArmAway_Open_Close_sensor_during_Exit_Delay(int group, String DLID, String element_to_verify, String element_to_verify2) throws Exception {

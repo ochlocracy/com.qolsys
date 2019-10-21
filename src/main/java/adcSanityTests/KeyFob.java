@@ -41,7 +41,7 @@ public class KeyFob extends Setup {
         String[] message = {string, string1, string3};
 
         if (ADCexecute.equals("true")) {
-            adc.New_ADC_session(adc.getAccountId());
+            adc.newAdcSession(adc.getAccountId());
             adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("History"))).click();
             Thread.sleep(10000);
             for (int i = 0; i < message.length; i++) {
@@ -82,11 +82,11 @@ public class KeyFob extends Setup {
         addPrimaryCall(39, 6, 6619387, 102);
         addPrimaryCall(40, 4, 6619388, 102);
         Thread.sleep(2000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(2000);
     }
 

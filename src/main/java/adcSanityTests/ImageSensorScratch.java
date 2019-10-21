@@ -47,7 +47,7 @@ public class ImageSensorScratch extends Setup {
         servcall.EVENT_IMAGE_SENSOR_TAMPERED();
         Thread.sleep(three_sec);*/
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         adc.getImageSensors();
     }
 

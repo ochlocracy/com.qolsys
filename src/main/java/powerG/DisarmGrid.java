@@ -5,7 +5,6 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,7 +55,7 @@ public class DisarmGrid {
     }
 
     public void ADC_verification(String account, String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(account);
+        adc.newAdcSession(account);
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);
@@ -550,7 +549,7 @@ public class DisarmGrid {
 //        SecuritySensorsPage sen = PageFactory.initElements(s.driver, SecuritySensorsPage.class);
 //        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
 //        log.log(LogStatus.INFO, ("*Dis_25* sensor name can be edited and changes will be reflected on the panel and website"));
-//        navigate_to_Security_Sensors_page();
+//        navigateToSecuritySensorsPage();
 //        sen.Edit_Sensor.click();
 //        sen.Edit_Img.click();
 //        s.driver.findElement(By.id("com.qolsys:id/powergsensorDescText")).clear();
@@ -587,10 +586,10 @@ public class DisarmGrid {
 //        Thread.sleep(1000);
 //        s.delete_from_primary(UDID_, 1);
 //        Thread.sleep(5000);
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        adc.driver1.findElement(By.partialLinkText("Sensors")).click();
 //        Thread.sleep(2000);
-//        adc.Request_equipment_list();
+//        adc.requestEquipmentList();
 //        Thread.sleep(1000);
 //        WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
 //        if (ispresent.getText().contains("DW 104-1101")) {
@@ -612,7 +611,7 @@ public class DisarmGrid {
 //        HomePage home = PageFactory.initElements(s.driver, HomePage.class);
 //        log.log(LogStatus.INFO, ("*Dis_27* readd same sensor from panel"));
 //        s.delete_from_primary(UDID_, 1);
-//        navigate_to_Security_Sensors_page();
+//        navigateToSecuritySensorsPage();
 //        sen.Add_Sensor.click();
 //        Thread.sleep(1000);
 //        s.driver.findElement(By.id("com.qolsys:id/sensorprotocaltype")).click();
@@ -1688,9 +1687,9 @@ public class DisarmGrid {
 //        addPrimaryCallPG(33, 1, 3201105, 21);
 //        addPrimaryCallPG(34, 0, 3201116, 21);
 //        addPrimaryCallPG(35, 2, 3201207, 21);
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sensors"))).click();
-//        adc.Request_equipment_list();
+//        adc.requestEquipmentList();
 //    }
 //
 //    @Test(/*dependsOnMethods = {"addAux"},*/ priority = 81)

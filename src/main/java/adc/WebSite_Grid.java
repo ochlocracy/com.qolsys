@@ -39,11 +39,11 @@ public class WebSite_Grid {
     public void Test2() throws IOException, InterruptedException {
         logger.info("********************************************************");
         logger.info("Verify sensors appear on the dealer website");
-        myADC.New_ADC_session("4679473");
+        myADC.newAdcSession("4679473");
         TimeUnit.SECONDS.sleep(5);
         myADC.driver1.findElement(By.partialLinkText("sensors")).click();
         TimeUnit.SECONDS.sleep(5);
-        myADC.Request_equipment_list();
+        myADC.requestEquipmentList();
         myADC.Sensor_verification("Door/Window 1", "10","Door/Window", 2);
         myADC.Sensor_verification("Motion 2","17", "Motion", 3);
         myADC.Sensor_verification("Smoke Detector 3", "26", "Smoke Detector", 4);

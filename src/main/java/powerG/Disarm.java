@@ -39,7 +39,7 @@ public class Disarm extends Setup {
     }
 
     public void ADC_verification(String string, String string1) throws InterruptedException, IOException {
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("History")).click();
         Thread.sleep(7000);
@@ -142,7 +142,7 @@ public class Disarm extends Setup {
 
         if (!isElementPresent(locator)) {
             Assert.fail();
-        }https://getpocket.com/explore/item/science-says-the-most-successful-kids-have-parents-who-do-these-9-things?utm_source=pocket-newtab
+        }
         Assert.assertTrue(adc.driver1.findElement(locator).isDisplayed());
     }
 
@@ -597,11 +597,11 @@ public class Disarm extends Setup {
         Thread.sleep(1000);
         deleteFromPrimary(1);
         Thread.sleep(5000);
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(1000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
         Thread.sleep(1000);
         WebElement ispresent = adc.driver1.findElement(By.xpath("//*[@id='ctl00_phBody_sensorList_AlarmDataGridSensor']/tbody/tr[2]/td[2]"));
         if (ispresent.getText().contains("DW 104-1101")) {
@@ -1727,9 +1727,9 @@ public class Disarm extends Setup {
         addPrimaryCallPG(37, 0, 3201116, 21);
         Thread.sleep(5000);
         addPrimaryCallPG(38, 2, 3201207, 21);
-//        adc.New_ADC_session(adc.getAccountId());
+//        adc.newAdcSession(adc.getAccountId());
 //        adc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sensors"))).click();
-//        adc.Request_equipment_list();
+//        adc.requestEquipmentList();
 
     }
 

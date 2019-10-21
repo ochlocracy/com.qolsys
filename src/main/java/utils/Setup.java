@@ -172,10 +172,10 @@ public class Setup extends Driver{
 
 
 
-    public void setupLogger(String test_case_name) throws Exception {
+    public void setupLogger(String testCaseName) throws Exception {
         PropertyConfigurator.configure(new File(appDir, "/main/resources/log4j.properties").getAbsolutePath());
         log.clearLog();
-        log.startTestCase(" " + test_case_name + " ");
+        log.startTestCase(" " + testCaseName + " ");
     }
 
     public void swipeFromLefttoRight() throws Exception {
@@ -642,10 +642,11 @@ public class Setup extends Driver{
         Thread.sleep(1000);
         about.Software.click();
         Thread.sleep(2000);
-        WebElement soft_version = driver.findElement(By.id("com.qolsys:id/summary"));
-        String current_version = soft_version.getText();
+        WebElement softVersion = driver.findElement(By.id("com.qolsys:id/summary"));
+        String currentVersion = softVersion.getText();
+        System.out.println(currentVersion);
         driver.findElementById("com.qolsys:id/ft_home_button").click();
-        return current_version;
+        return currentVersion;
     }
 
     public void renameSensor(int number, String new_name) {

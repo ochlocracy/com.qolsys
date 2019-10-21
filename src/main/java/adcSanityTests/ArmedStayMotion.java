@@ -157,11 +157,11 @@ public class ArmedStayMotion extends Setup{
         addPrimaryCall(14, 25, 5570631, 2);
         addPrimaryCall(15, 35, 5570632, 2);
 
-        adc.New_ADC_session(adc.getAccountId());
+        adc.newAdcSession(adc.getAccountId());
         Thread.sleep(2000);
         adc.driver1.findElement(By.partialLinkText("Sensors")).click();
         Thread.sleep(2000);
-        adc.Request_equipment_list();
+        adc.requestEquipmentList();
     }
 
     @Test (dependsOnMethods = {"addSensors"}, retryAnalyzer = RetryAnalizer.class)
